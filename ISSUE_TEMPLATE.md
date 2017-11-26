@@ -13,7 +13,7 @@
   * **What's the forge version?**
     * *Forge (minecraft version) - (forge version)*
 
-  * **What were you doing when the bug occured?**
+  * **What were you doing when the bug occurred?**
     * *example: I was placing the drain*
 
   * **What happened that should not have happened?**
