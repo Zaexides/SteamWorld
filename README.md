@@ -12,3 +12,5 @@ Bugs can also be reported via the issue tracker, using the template.
 
 ## Copyright
 SteamWorld is © 2017 Zaexides
+
+*May contain traces of McJty, Harry's Tech Reviews and CJMinecraft*
