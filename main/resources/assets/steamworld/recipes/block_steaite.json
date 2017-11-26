@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "iii",
+        "iii",
+        "iii"
+    ],
+    
+    "key":
+    {
+        "i":
+        {
+            "item": "steamworld:ingot_steaite"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:block_steaite",
+        "count": 1
+    }
+}

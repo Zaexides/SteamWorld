@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "   ",
+        "imi",
+        "ifi"
+    ],
+    
+    "key":
+    {
+        "i":
+        {
+            "item": "steamworld:ingot_steaite"
+        },
+        "f":
+        {
+            "item": "minecraft:fishing_rod"
+        },
+        "m":
+        {
+            "item": "steamworld:machine_base"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:fisher_steaite",
+        "count": 1
+    }
+}

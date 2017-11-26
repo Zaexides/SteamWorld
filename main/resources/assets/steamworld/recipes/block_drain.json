@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients":
+    [
+        {
+            "item": "minecraft:iron_bars"
+        },
+        {
+            "item": "minecraft:bucket"
+        },
+        {
+            "item": "steamworld:machine_base"
+        }
+    ],
+    "result":
+    {
+        "item": "steamworld:block_drain"
+    }
+}

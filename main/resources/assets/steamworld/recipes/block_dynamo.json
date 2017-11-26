@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "iIi",
+        "ImI",
+        "iIi"
+    ],
+    
+    "key":
+    {
+        "i":
+        {
+            "item": "steamworld:ingot_steaite"
+        },
+        "m":
+        {
+            "item": "steamworld:machine_base"
+        },
+        "I":
+        {
+            "item": "minecraft:iron_ingot"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:block_dynamo",
+        "count": 1
+    }
+}

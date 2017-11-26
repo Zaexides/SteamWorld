@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "nnn",
+        "nnn",
+        "nnn"
+    ],
+    
+    "key":
+    {
+        "n":
+        {
+            "item": "steamworld:nugget",
+            "data": 1
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:ingot_ancite",
+        "count": 1
+    }
+}

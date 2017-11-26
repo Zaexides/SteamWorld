@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "steamworld:blocks/block_endritch",
+        "down": "steamworld:blocks/block_endritch",
+        "up": "steamworld:blocks/machines/endritch/item_in",
+        "north": "#front",
+        "west": "steamworld:blocks/block_endritch",
+        "east": "steamworld:blocks/block_endritch",
+        "south": "steamworld:blocks/block_endritch"
+    }
+}

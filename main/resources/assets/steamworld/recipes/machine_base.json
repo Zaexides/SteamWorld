@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "sss",
+        "sis",
+        "sss"
+    ],
+    
+    "key":
+    {
+        "i":
+        {
+            "item": "steamworld:ingot_steaite"
+        },
+        "s":
+        {
+            "item": "minecraft:stone",
+            "data": 0
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:machine_base",
+        "count": 1
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "steamworld:blocks/block_endritch",
+        "down": "#valveState",
+        "up": "#valveState",
+        "west": "#valveState",
+        "east": "#valveState",
+        "north": "steamworld:blocks/valve/valve_endritch_out",
+        "south": "steamworld:blocks/valve/valve_endritch_in"
+    }
+}

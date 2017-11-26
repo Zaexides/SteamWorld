@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "S"
+    ],
+    
+    "key":
+    {
+        "S":
+        {
+            "item": "steamworld:block_ancite",
+            "data": 3
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:ingot_ancite",
+        "count": 9
+    }
+}

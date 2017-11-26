@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "variant=block_endritch": { "model": "steamworld:block_endritch" }
+    }
+}

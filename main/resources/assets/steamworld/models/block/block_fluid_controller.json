@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "steamworld:blocks/machines/machine_rock",
+        "down": "#valveState",
+        "up": "#valveState",
+        "west": "#valveState",
+        "east": "#valveState",
+        "north": "steamworld:blocks/valve/valve_out",
+        "south": "steamworld:blocks/valve/valve_in"
+    }
+}

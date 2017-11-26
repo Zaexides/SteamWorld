@@ -1,0 +1,33 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "   ",
+        "imi",
+        "ibi"
+    ],
+    
+    "key":
+    {
+        "i":
+        {
+            "item": "steamworld:ingot_steaite"
+        },
+        "b":
+        {
+            "item": "minecraft:dye",
+            "data": 15
+        },
+        "m":
+        {
+            "item": "steamworld:machine_base"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:fertilizer_steaite",
+        "count": 1
+    }
+}

@@ -1,0 +1,33 @@
+
+{
+    "forge_marker": 1,
+    "defaults":
+    {
+        "model": "steamworld:machine_endritch_noin",
+        "textures": { "front": "steamworld:blocks/machines/endritch/fertilizer_off" }
+    },
+
+    "variants": 
+    {
+        "normal": [{}],
+        "inventory": [{}],
+        "facing":
+        {
+            "north": { },
+            "south": { "y": 180 },
+            "west":  { "y": 270 },
+            "east":  { "y": 90 }
+        },
+        "active":
+        {
+            "false":
+            {
+                "textures": { "front": "steamworld:blocks/machines/endritch/fertilizer_off" }
+            },
+            "true":
+            {
+                "textures": { "front": "steamworld:blocks/machines/endritch/fertilizer_on" }
+            }
+        }
+    }
+}

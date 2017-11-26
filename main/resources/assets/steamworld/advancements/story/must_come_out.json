@@ -1,0 +1,30 @@
+{
+	"parent": "steamworld:story/let_it_flow",
+	
+	"display":
+	{
+	    "icon": { "item": "steamworld:block_faucet" },
+	    "title": { "translate": "advancement.steamworld.must_come_out.title" },
+	    "description": { "translate": "advancement.steamworld.must_come_out.desc" }
+	},
+	
+	"criteria":
+	{
+	   "crafted":
+	   {
+	       "trigger": "minecraft:inventory_changed",
+	       "conditions":
+	       {
+	           "items": 
+	           [
+	               { "item": "steamworld:block_faucet" }
+	           ]
+	       }
+	   }
+	},
+	
+	"requirements":
+	[
+	   ["crafted"]
+	]
+}

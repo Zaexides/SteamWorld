@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "nnn",
+        "nnn",
+        "nnn"
+    ],
+    
+    "key":
+    {
+        "n":
+        {
+            "item": "steamworld:nugget",
+            "data": 3
+        }
+    },
+    
+    "result":
+    {
+        "item": "minecraft:emerald",
+        "count": 1
+    }
+}

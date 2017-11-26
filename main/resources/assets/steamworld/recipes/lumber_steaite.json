@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "   ",
+        "imi",
+        "iai"
+    ],
+    
+    "key":
+    {
+        "i":
+        {
+            "item": "steamworld:ingot_steaite"
+        },
+        "a":
+        {
+            "item": "minecraft:iron_axe"
+        },
+        "m":
+        {
+            "item": "steamworld:machine_base"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:lumber_steaite",
+        "count": 1
+    }
+}

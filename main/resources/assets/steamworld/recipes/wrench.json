@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "asa",
+        " s "
+    ],
+    
+    "key":
+    {
+        "s":
+        {
+            "item": "steamworld:ingot_steaite"
+        },
+        "a":
+        {
+            "item": "steamworld:nugget",
+            "data": 1
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:wrench",
+        "count": 1
+    }
+}

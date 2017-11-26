@@ -1,0 +1,37 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "eee",
+        "ama",
+        "aga"
+    ],
+    
+    "key":
+    {
+        "g":
+        {
+            "item": "minecraft:gold_block"
+        },
+        "e":
+        {
+            "item": "steamworld:nugget",
+            "data": 3
+        },
+        "m":
+        {
+            "item": "steamworld:machine_base"
+        },
+        "a":
+        {
+            "item": "steamworld:ingot_ancite"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:experience_machine_ancite",
+        "count": 1
+    }
+}

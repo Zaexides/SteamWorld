@@ -1,0 +1,51 @@
+package zaexides.steamworld.worldgen;
+
+import java.util.Random;
+
+import net.minecraft.block.state.pattern.BlockMatcher;
+import net.minecraft.init.Blocks;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraft.world.gen.IChunkGenerator;
+import net.minecraft.world.gen.feature.WorldGenMinable;
+import net.minecraft.world.gen.feature.WorldGenerator;
+import net.minecraftforge.fml.common.IWorldGenerator;
+import scala.sys.process.processInternal;
+import zaexides.steamworld.BlockInitializer;
+import zaexides.steamworld.ConfigHandler;
+
+public class WorldGenerationOres implements IWorldGenerator
+{
+	private WorldGenerator ore_steaite;
+	
+	public WorldGenerationOres()
+	{
+		ore_steaite = new WorldGenMinable(BlockInitializer.ORE_STEAITE.getDefaultState(), 5);
+	}
+
+	@Override
+	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) 
+	{
+		switch(world.provider.getDimension())
+		{
+			case 0:
+			if(ConfigHandler.generateSteaiteOre)
+				GenerateOre(ore_steaite, world, random, chunkX, chunkZ, 20, 5, 20);
+			break;
+		}
+	}
+	
+	private void GenerateOre(WorldGenerator generator, World world, Random random, int x, int z, int chance, int heightMin, int heightMax)
+	{
+		int deltaHeight = heightMax - heightMin + 1;
+		for(int i = 0; i < chance; i++)
+		{
+			int local_x = x * 16 + random.nextInt(16);
+			int local_y = heightMin + random.nextInt(deltaHeight);
+			int local_z = z * 16 + random.nextInt(16);
+			
+			generator.generate(world, random, new BlockPos(local_x, local_y, local_z));
+		}
+	}
+}

@@ -1,0 +1,30 @@
+{
+	"parent": "steamworld:root",
+	
+	"display":
+	{
+	    "icon": { "item": "steamworld:machine_base" },
+	    "title": { "translate": "advancement.steamworld.machine_base.title" },
+	    "description": { "translate": "advancement.steamworld.machine_base.desc" }
+	},
+	
+	"criteria":
+	{
+	   "crafted_machine_base":
+	   {
+	       "trigger": "minecraft:inventory_changed",
+	       "conditions":
+	       {
+	           "items": 
+	           [
+	               { "item": "steamworld:machine_base" }
+	           ]
+	       }
+	   }
+	},
+	
+	"requirements":
+	[
+	   ["crafted_machine_base"]
+	]
+}

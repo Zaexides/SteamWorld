@@ -1,0 +1,30 @@
+{
+	"parent": "steamworld:story/assembly_time",
+	
+	"display":
+	{
+	    "icon": { "item": "steamworld:shard_endritch" },
+	    "title": { "translate": "advancement.steamworld.otherworldly_shard.title" },
+	    "description": { "translate": "advancement.steamworld.otherworldly_shard.desc" }
+	},
+	
+	"criteria":
+	{
+	   "crafted_shard":
+	   {
+	       "trigger": "minecraft:inventory_changed",
+	       "conditions":
+	       {
+	           "items": 
+	           [
+	               { "item": "steamworld:shard_endritch" }
+	           ]
+	       }
+	   }
+	},
+	
+	"requirements":
+	[
+	   ["crafted_shard"]
+	]
+}

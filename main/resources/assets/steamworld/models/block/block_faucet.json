@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "steamworld:blocks/machines/machine_rock",
+        "down": "steamworld:blocks/machines/machine_rock",
+        "up": "steamworld:blocks/machines/machine_rock",
+        "west": "steamworld:blocks/machines/machine_rock",
+        "east": "steamworld:blocks/machines/machine_rock",
+        "north": "steamworld:blocks/machines/fluid_exit",
+        "south": "steamworld:blocks/machines/machine_rock"
+    }
+}

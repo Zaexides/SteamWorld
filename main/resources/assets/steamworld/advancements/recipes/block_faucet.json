@@ -1,0 +1,28 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "steamworld:block_faucet"
+    ]
+  },
+  "criteria": {
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "steamworld:block_faucet"
+      }
+    },
+    "has_controller_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "steamworld:block_fluid_controller"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_controller_recipe"
+    ]
+  ]
+}

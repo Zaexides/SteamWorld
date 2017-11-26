@@ -1,0 +1,30 @@
+{
+	"parent": "steamworld:story/treasure",
+	
+	"display":
+	{
+	    "icon": { "item": "steamworld:assembler_ancite" },
+	    "title": { "translate": "advancement.steamworld.assembly_time.title" },
+	    "description": { "translate": "advancement.steamworld.assembly_time.desc" }
+	},
+	
+	"criteria":
+	{
+	   "crafted_assembler":
+	   {
+	       "trigger": "minecraft:inventory_changed",
+	       "conditions":
+	       {
+	           "items": 
+	           [
+	               { "item": "steamworld:assembler_ancite" }
+	           ]
+	       }
+	   }
+	},
+	
+	"requirements":
+	[
+	   ["crafted_assembler"]
+	]
+}

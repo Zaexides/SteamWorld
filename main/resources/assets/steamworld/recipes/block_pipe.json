@@ -1,0 +1,27 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "isi"
+    ],
+    
+    "key":
+    {
+        "i":
+        {
+            "item": "steamworld:ingot_steaite"
+        },
+        "s":
+        {
+            "item": "minecraft:stone",
+            "data": 0
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:block_pipe",
+        "count": 8
+    }
+}

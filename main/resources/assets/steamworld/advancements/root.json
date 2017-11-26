@@ -1,0 +1,40 @@
+{
+    "display":
+    {
+        "icon": { "item": "steamworld:ingot_steaite" },
+        "title": { "translate": "advancement.steamworld.root.title" },
+        "description": { "translate": "advancement.steamworld.root.desc" },
+        "background": "steamworld:textures/gui/advancements_bg.png",
+        "show_toast": false,
+        "announce_to_chat": false
+    },
+    "criteria":
+    {
+        "has_steaite_ore":
+        {
+            "trigger": "minecraft:inventory_changed",
+            "conditions":
+            {
+                "items":
+                [
+                    { "item": "steamworld:ore_steaite" }
+                ]
+            }
+        },
+        "has_ancite_block":
+        {
+            "trigger": "minecraft:inventory_changed",
+            "conditions":
+            {
+                "items":
+                [
+                    { "item": "steamworld:block_ancite", "data": 3 }
+                ]
+            }
+        }
+    },
+    "requirements":
+    [
+        ["has_steaite_ore","has_ancite_block"]
+    ]
+}

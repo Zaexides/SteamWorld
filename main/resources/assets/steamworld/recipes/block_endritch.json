@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "ss",
+        "ss"
+    ],
+    
+    "key":
+    {
+        "s":
+        {
+            "item": "steamworld:shard_endritch"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:block_decorative",
+        "data": 0,
+        "count": 1
+    }
+}

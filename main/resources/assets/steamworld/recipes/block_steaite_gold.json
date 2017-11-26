@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "gsg",
+        "sss",
+        "gsg"
+    ],
+    
+    "key":
+    {
+        "s":
+        {
+            "item": "steamworld:ingot_steaite"
+        },
+        "g":
+        {
+            "item": "minecraft:gold_ingot"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:block_steaite_gold",
+        "count": 1
+    }
+}

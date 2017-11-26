@@ -1,0 +1,47 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "nen",
+        "sms",
+        "IAI"
+    ],
+    
+    "key":
+    {
+        "s":
+        {
+            "item": "steamworld:ingot_steaite"
+        },
+        "n":
+        {
+            "item": "steamworld:nugget",
+            "data": 0
+        },
+        "e":
+        {
+            "item": "steamworld:nugget",
+            "data": 3
+        },
+        "m":
+        {
+            "item": "steamworld:generator_steaite"
+        },
+        "I":
+        {
+            "item": "minecraft:iron_ingot"
+        },
+        "A":
+        {
+            "item": "steamworld:block_ancite",
+            "data": 3
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:generator_electric",
+        "count": 1
+    }
+}

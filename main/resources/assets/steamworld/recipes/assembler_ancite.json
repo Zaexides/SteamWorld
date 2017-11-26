@@ -1,0 +1,40 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "dcd",
+        "ama",
+        "aia"
+    ],
+    
+    "key":
+    {
+        "i":
+        {
+            "item": "minecraft:iron_block"
+        },
+        "d":
+        {
+            "item": "minecraft:diamond"
+        },
+        "c":
+        {
+            "item": "minecraft:crafting_table"
+        },
+        "m":
+        {
+            "item": "steamworld:machine_base"
+        },
+        "a":
+        {
+            "item": "steamworld:ingot_ancite"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:assembler_ancite",
+        "count": 1
+    }
+}

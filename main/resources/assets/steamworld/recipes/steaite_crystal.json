@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "sds",
+        "drd",
+        "sds"
+    ],
+    
+    "key":
+    {
+        "d":
+        {
+            "item": "minecraft:diamond"
+        },
+        "s":
+        {
+            "item": "steamworld:ingot_steaite"
+        },
+        "r":
+        {
+            "item": "minecraft:redstone"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:steaite_crystal",
+        "count": 1
+    }
+}

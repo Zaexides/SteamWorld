@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        " s ",
+        "sgs",
+        " s "
+    ],
+    
+    "key":
+    {
+        "s":
+        {
+            "item": "steamworld:shard_endritch"
+        },
+        "g":
+        {
+            "item": "minecraft:glowstone_dust"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:lamp_endritch",
+        "count": 1
+    }
+}

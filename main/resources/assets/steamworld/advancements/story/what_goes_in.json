@@ -1,0 +1,30 @@
+{
+	"parent": "steamworld:story/let_it_flow",
+	
+	"display":
+	{
+	    "icon": { "item": "steamworld:block_drain" },
+	    "title": { "translate": "advancement.steamworld.what_goes_in.title" },
+	    "description": { "translate": "advancement.steamworld.what_goes_in.desc" }
+	},
+	
+	"criteria":
+	{
+	   "crafted":
+	   {
+	       "trigger": "minecraft:inventory_changed",
+	       "conditions":
+	       {
+	           "items": 
+	           [
+	               { "item": "steamworld:block_drain" }
+	           ]
+	       }
+	   }
+	},
+	
+	"requirements":
+	[
+	   ["crafted"]
+	]
+}

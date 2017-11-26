@@ -1,0 +1,30 @@
+{
+	"parent": "steamworld:story/machine_base",
+	
+	"display":
+	{
+	    "icon": { "item": "steamworld:block_fluid_controller" },
+	    "title": { "translate": "advancement.steamworld.let_it_flow.title" },
+	    "description": { "translate": "advancement.steamworld.let_it_flow.desc" }
+	},
+	
+	"criteria":
+	{
+	   "crafted_valve":
+	   {
+	       "trigger": "minecraft:inventory_changed",
+	       "conditions":
+	       {
+	           "items": 
+	           [
+	               { "item": "steamworld:block_fluid_controller" }
+	           ]
+	       }
+	   }
+	},
+	
+	"requirements":
+	[
+	   ["crafted_valve"]
+	]
+}

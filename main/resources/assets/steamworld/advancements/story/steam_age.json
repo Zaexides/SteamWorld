@@ -1,0 +1,30 @@
+{
+	"parent": "steamworld:story/machine_base",
+	
+	"display":
+	{
+	    "icon": { "item": "steamworld:generator_steaite" },
+	    "title": { "translate": "advancement.steamworld.steam_age.title" },
+	    "description": { "translate": "advancement.steamworld.steam_age.desc" }
+	},
+	
+	"criteria":
+	{
+	   "crafted_generator":
+	   {
+	       "trigger": "minecraft:inventory_changed",
+	       "conditions":
+	       {
+	           "items": 
+	           [
+	               { "item": "steamworld:generator_steaite" }
+	           ]
+	       }
+	   }
+	},
+	
+	"requirements":
+	[
+	   ["crafted_generator"]
+	]
+}

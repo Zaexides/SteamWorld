@@ -1,0 +1,41 @@
+{
+	"parent": "steamworld:root",
+	
+	"display":
+	{
+	    "icon": { "item": "steamworld:block_ancite", "data": 3 },
+	    "title": { "translate": "advancement.steamworld.treasure.title" },
+	    "description": { "translate": "advancement.steamworld.treasure.desc" }
+	},
+	
+	"criteria":
+	{
+	   "got_ancite":
+	   {
+	       "trigger": "minecraft:inventory_changed",
+	       "conditions":
+	       {
+	           "items": 
+	           [
+	               { "item": "steamworld:block_ancite", "data": 3 }
+	           ]
+	       }
+	   },
+	   "got_ancite_ingot":
+       {
+           "trigger": "minecraft:inventory_changed",
+           "conditions":
+           {
+               "items": 
+               [
+                   { "item": "steamworld:ingot_ancite" }
+               ]
+           }
+       }
+	},
+	
+	"requirements":
+	[
+	   ["got_ancite", "got_ancite_ingot"]
+	]
+}

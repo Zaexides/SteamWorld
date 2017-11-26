@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "steamworld:blocks/machines/machine_side_nether",
+        "down": "steamworld:blocks/block_ancite",
+        "up": "minecraft:blocks/nether_brick",
+        "north": "#front",
+        "west": "steamworld:blocks/machines/machine_side_nether",
+        "east": "steamworld:blocks/machines/machine_side_nether",
+        "south": "steamworld:blocks/machines/machine_side_nether"
+    }
+}

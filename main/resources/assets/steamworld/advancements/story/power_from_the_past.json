@@ -1,0 +1,30 @@
+{
+	"parent": "steamworld:story/steam_age",
+	
+	"display":
+	{
+	    "icon": { "item": "steamworld:generator_ancite" },
+	    "title": { "translate": "advancement.steamworld.power_from_the_past.title" },
+	    "description": { "translate": "advancement.steamworld.power_from_the_past.desc" }
+	},
+	
+	"criteria":
+	{
+	   "crafted_generator":
+	   {
+	       "trigger": "minecraft:inventory_changed",
+	       "conditions":
+	       {
+	           "items": 
+	           [
+	               { "item": "steamworld:generator_ancite" }
+	           ]
+	       }
+	   }
+	},
+	
+	"requirements":
+	[
+	   ["crafted_generator"]
+	]
+}

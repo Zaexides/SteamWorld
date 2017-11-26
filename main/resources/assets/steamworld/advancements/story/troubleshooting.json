@@ -1,0 +1,30 @@
+{
+	"parent": "steamworld:story/treasure",
+	
+	"display":
+	{
+	    "icon": { "item": "steamworld:wrench" },
+	    "title": { "translate": "advancement.steamworld.troubleshooting.title" },
+	    "description": { "translate": "advancement.steamworld.troubleshooting.desc" }
+	},
+	
+	"criteria":
+	{
+	   "crafted_wrench":
+	   {
+	       "trigger": "minecraft:inventory_changed",
+	       "conditions":
+	       {
+	           "items": 
+	           [
+	               { "item": "steamworld:wrench" }
+	           ]
+	       }
+	   }
+	},
+	
+	"requirements":
+	[
+	   ["crafted_wrench"]
+	]
+}

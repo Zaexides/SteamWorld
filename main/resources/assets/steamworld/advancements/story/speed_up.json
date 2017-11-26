@@ -1,0 +1,31 @@
+{
+	"parent": "steamworld:story/otherworldly_shard",
+	
+	"display":
+	{
+	    "icon": { "item": "steamworld:nether_accelerator" },
+	    "title": { "translate": "advancement.steamworld.speed_up.title" },
+	    "description": { "translate": "advancement.steamworld.speed_up.desc" },
+	    "frame": "goal"
+	},
+	
+	"criteria":
+	{
+	   "crafted_accelerator":
+	   {
+	       "trigger": "minecraft:inventory_changed",
+	       "conditions":
+	       {
+	           "items": 
+	           [
+	               { "item": "steamworld:nether_accelerator" }
+	           ]
+	       }
+	   }
+	},
+	
+	"requirements":
+	[
+	   ["crafted_accelerator"]
+	]
+}

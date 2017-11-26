@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "   ",
+        "sgs",
+        "aaa"
+    ],
+    
+    "key":
+    {
+        "s":
+        {
+            "item": "steamworld:ingot_steaite"
+        },
+        "g":
+        {
+            "item": "steamworld:fertilizer_steaite"
+        },
+        "a":
+        {
+            "item": "steamworld:ingot_ancite"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:fertilizer_ancite",
+        "count": 1
+    }
+}

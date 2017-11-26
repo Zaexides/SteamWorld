@@ -1,0 +1,41 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "ifi",
+        "imi",
+        "bnb"
+    ],
+    
+    "key":
+    {
+        "i":
+        {
+            "item": "minecraft:netherbrick"
+        },
+        "f":
+        {
+            "item": "minecraft:furnace"
+        },
+        "m":
+        {
+            "item": "steamworld:machine_base"
+        },
+        "b":
+        {
+            "item": "steamworld:block_ancite",
+            "data": 3
+        },
+        "n":
+        {
+            "item": "minecraft:netherrack"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:generator_nether",
+        "count": 1
+    }
+}

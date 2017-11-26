@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients":
+    [
+        {
+            "item": "steamworld:ingot_ancite"
+        }
+    ],
+    "result":
+    {
+        "item": "steamworld:nugget",
+        "data": 1,
+        "count": 9
+    }
+}

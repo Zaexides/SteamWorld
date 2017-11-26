@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        " p ",
+        "pmp",
+        " p "
+    ],
+    
+    "key":
+    {
+        "p":
+        {
+            "item": "steamworld:block_pipe"
+        },
+        "m":
+        {
+            "item": "steamworld:machine_base"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:block_fluid_controller",
+        "count": 1
+    }
+}

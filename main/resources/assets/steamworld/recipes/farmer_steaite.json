@@ -1,0 +1,32 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "   ",
+        "imi",
+        "ihi"
+    ],
+    
+    "key":
+    {
+        "i":
+        {
+            "item": "steamworld:ingot_steaite"
+        },
+        "h":
+        {
+            "item": "minecraft:iron_hoe"
+        },
+        "m":
+        {
+            "item": "steamworld:machine_base"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:farmer_steaite",
+        "count": 1
+    }
+}
