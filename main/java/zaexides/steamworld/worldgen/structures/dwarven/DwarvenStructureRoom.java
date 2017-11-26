@@ -114,11 +114,11 @@ public class DwarvenStructureRoom
 	
 	public void GenerateDecoration(World world, BlockPos start, BlockPos end)
 	{
-		boolean cobwebs = rand.nextFloat() > .85f;
-		boolean slime = rand.nextFloat() > .99f;
-		boolean gravel = rand.nextFloat() > .75f;
-		boolean ice = world.getBiome(start).isSnowyBiome() && rand.nextFloat() > .5f;
-		boolean lava = start.getY() < 26 && rand.nextFloat() > .95f;
+		boolean cobwebs = rand.nextFloat() <= .15f;
+		boolean slime = rand.nextFloat() <= .01f;
+		boolean gravel = rand.nextFloat() <= .25f;
+		boolean ice = world.getBiome(start).isSnowyBiome() && rand.nextFloat() <= .95f;
+		boolean lava = start.getY() < 26 && rand.nextFloat() <= .05f;
 		
 		if(cobwebs)
 		{

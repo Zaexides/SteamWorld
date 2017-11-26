@@ -19,9 +19,13 @@ public class WorldGenerationOres implements IWorldGenerator
 {
 	private WorldGenerator ore_steaite;
 	
+	private static final int ORE_VEIN_SIZE = 5;
+	private static final int GENERATION_CHANCE = 20;
+	private static final int MIN_HEIGHT = 5, MAX_HEIGHT = 20;
+	
 	public WorldGenerationOres()
 	{
-		ore_steaite = new WorldGenMinable(BlockInitializer.ORE_STEAITE.getDefaultState(), 5);
+		ore_steaite = new WorldGenMinable(BlockInitializer.ORE_STEAITE.getDefaultState(), ORE_VEIN_SIZE);
 	}
 
 	@Override
@@ -31,7 +35,7 @@ public class WorldGenerationOres implements IWorldGenerator
 		{
 			case 0:
 			if(ConfigHandler.generateSteaiteOre)
-				GenerateOre(ore_steaite, world, random, chunkX, chunkZ, 20, 5, 20);
+				GenerateOre(ore_steaite, world, random, chunkX, chunkZ, GENERATION_CHANCE, MIN_HEIGHT, MAX_HEIGHT);
 			break;
 		}
 	}

@@ -72,6 +72,7 @@ public class TileEntityFertilizer extends TileEntityMachine implements ITickable
 	public boolean cropOnlyMode = true;
 	
 	private static final int COST_PER_GROWABLE = 20;
+	private static final int CROP_PER_BONEMEAL = 16;
 	
 	public void SetStats(int efficiency)
 	{
@@ -179,12 +180,12 @@ public class TileEntityFertilizer extends TileEntityMachine implements ITickable
 			}
 		}
 		
-		while(fertilizedBlocks >= 16)
+		while(fertilizedBlocks >= CROP_PER_BONEMEAL)
 		{
 			ItemStack itemStack = inputStack.getStackInSlot(0).copy();
 			itemStack.shrink(1);
 			inputStack.setStackInSlot(0, itemStack);
-			fertilizedBlocks -= 16;
+			fertilizedBlocks -= CROP_PER_BONEMEAL;
 		}
 	}
 

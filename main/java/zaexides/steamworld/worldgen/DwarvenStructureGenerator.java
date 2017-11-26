@@ -21,6 +21,9 @@ public class DwarvenStructureGenerator implements IWorldGenerator
 {
 	private WorldGenerator structure_dwarven_core;
 	
+	private static final float CHANCE_PER_CHUNK = 0.005f;
+	private static final int MIN_HEIGHT = 10, MAX_HEIGHT = 40;
+	
 	public DwarvenStructureGenerator() 
 	{
 		structure_dwarven_core = new WorldGenDwarvenStructure();
@@ -32,8 +35,8 @@ public class DwarvenStructureGenerator implements IWorldGenerator
 		if(!ConfigHandler.generateDwarvenStructure)
 			return;
 		
-		if(world.provider.getDimension() == 0 && random.nextFloat() > 0.995f)
-			GenerateStructure(structure_dwarven_core, world, random, chunkX, chunkZ, 10, 40);
+		if(world.provider.getDimension() == 0 && random.nextFloat() <= CHANCE_PER_CHUNK)
+			GenerateStructure(structure_dwarven_core, world, random, chunkX, chunkZ, MIN_HEIGHT, MAX_HEIGHT);
 	}
 	
 	private void GenerateStructure(WorldGenerator generator, World world, Random random, int x, int z, int heightMin, int heightMax)

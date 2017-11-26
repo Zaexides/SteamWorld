@@ -38,15 +38,16 @@ import zaexides.steamworld.utility.SteamWorksFluidTank;
 
 public class TileEntityAssembler extends TileEntityMachine implements ITickable
 {
+	private static final int CRYSTAL_SLOT = 6;
 	public ItemStackHandler inputStack = new ItemStackHandler(7)
 	{
 		@Override
 		public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) 
 		{
 			if(stack.getItem() == ItemInitializer.STEAITE_CRYSTAL)
-				slot = 6;
+				slot = CRYSTAL_SLOT;
 			
-			if(slot == 6)
+			if(slot == CRYSTAL_SLOT)
 			{
 				if(stack.getItem() == ItemInitializer.STEAITE_CRYSTAL)
 					return super.insertItem(slot, stack, simulate);
@@ -192,11 +193,11 @@ public class TileEntityAssembler extends TileEntityMachine implements ITickable
 				ItemStack crystalStack = inputStack.getStackInSlot(6).copy();
 				int damage = crystalStack.getItemDamage();
 				if(damage >= crystalStack.getMaxDamage()-1)
-					inputStack.setStackInSlot(6, ItemStack.EMPTY);
+					inputStack.setStackInSlot(CRYSTAL_SLOT, ItemStack.EMPTY);
 				else
 				{
 					crystalStack.setItemDamage(damage + 1);
-					inputStack.setStackInSlot(6, crystalStack);
+					inputStack.setStackInSlot(CRYSTAL_SLOT, crystalStack);
 				}
 				
 				progression = 0;

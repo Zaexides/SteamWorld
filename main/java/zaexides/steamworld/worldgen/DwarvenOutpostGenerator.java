@@ -22,6 +22,9 @@ public class DwarvenOutpostGenerator implements IWorldGenerator
 {
 	private WorldGenerator structure_outpost;
 	
+	private static final float CHANCE_PER_CHUNK = 0.15f;
+	private static final int MIN_HEIGHT = 60, MAX_HEIGHT = 90;
+	
 	public DwarvenOutpostGenerator() 
 	{
 		structure_outpost = new WorldGenDwarvenOutpost();
@@ -33,8 +36,8 @@ public class DwarvenOutpostGenerator implements IWorldGenerator
 		if(!ConfigHandler.generateDwarvenStructure)
 			return;
 		
-		if(world.provider.getDimension() == 0 && random.nextFloat() > 0.85f)
-			GenerateStructure(structure_outpost, world, random, chunkX, chunkZ, 60, 90);
+		if(world.provider.getDimension() == 0 && random.nextFloat() <= CHANCE_PER_CHUNK)
+			GenerateStructure(structure_outpost, world, random, chunkX, chunkZ, MIN_HEIGHT, MAX_HEIGHT);
 	}
 	
 	private void GenerateStructure(WorldGenerator generator, World world, Random random, int x, int z, int heightMin, int heightMax)

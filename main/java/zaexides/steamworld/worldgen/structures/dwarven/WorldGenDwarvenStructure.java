@@ -32,6 +32,8 @@ public class WorldGenDwarvenStructure extends WorldGenerator
 	
 	private Queue<PosDir> nextPositions;
 	private List<BlockPos> claimed;
+	
+	private static final int ROOM_DISTANCE = 10;
 
 	@Override
 	public boolean generate(World worldIn, Random rand, BlockPos position)
@@ -45,10 +47,10 @@ public class WorldGenDwarvenStructure extends WorldGenerator
 		
 		room_core.Generate(worldIn, position.getX(), position.getY(), position.getZ());
 		claimed.add(position);
-		nextPositions.offer(new PosDir(position.add(0, 0, -10), (byte)0));
-		nextPositions.offer(new PosDir(position.add(-10, 0, 0), (byte)1));
-		nextPositions.offer(new PosDir(position.add(0, 0, 10), (byte)2));
-		nextPositions.offer(new PosDir(position.add(10, 0, 0), (byte)3));
+		nextPositions.offer(new PosDir(position.add(0, 0, -ROOM_DISTANCE), (byte)0));
+		nextPositions.offer(new PosDir(position.add(-ROOM_DISTANCE, 0, 0), (byte)1));
+		nextPositions.offer(new PosDir(position.add(0, 0, ROOM_DISTANCE), (byte)2));
+		nextPositions.offer(new PosDir(position.add(ROOM_DISTANCE, 0, 0), (byte)3));
 		
 		while(nextPositions.size() > 0 && size < maxSize)
 		{
@@ -99,17 +101,17 @@ public class WorldGenDwarvenStructure extends WorldGenerator
 		room.Generate(world, posDir.position.getX(), posDir.position.getY(), posDir.position.getZ());
 		claimed.add(posDir.position);
 		if((room.directions & (1 << 0)) > 0)
-			nextPositions.offer(new PosDir(posDir.position.add(0, 0, -10), (byte)0));
+			nextPositions.offer(new PosDir(posDir.position.add(0, 0, -ROOM_DISTANCE), (byte)0));
 		if((room.directions & (1 << 1)) > 0)
-			nextPositions.offer(new PosDir(posDir.position.add(-10, 0, 0), (byte)1));
+			nextPositions.offer(new PosDir(posDir.position.add(-ROOM_DISTANCE, 0, 0), (byte)1));
 		if((room.directions & (1 << 2)) > 0)
-			nextPositions.offer(new PosDir(posDir.position.add(0, 0, 10), (byte)2));
+			nextPositions.offer(new PosDir(posDir.position.add(0, 0, ROOM_DISTANCE), (byte)2));
 		if((room.directions & (1 << 3)) > 0)
-			nextPositions.offer(new PosDir(posDir.position.add(10, 0, 0), (byte)3));
+			nextPositions.offer(new PosDir(posDir.position.add(ROOM_DISTANCE, 0, 0), (byte)3));
 		if((room.directions & (1 << 4)) > 0)
-			nextPositions.offer(new PosDir(posDir.position.add(0, 10, 0), (byte)4));
+			nextPositions.offer(new PosDir(posDir.position.add(0, ROOM_DISTANCE, 0), (byte)4));
 		if((room.directions & (1 << 5)) > 0)
-			nextPositions.offer(new PosDir(posDir.position.add(0, -10, 0), (byte)5));
+			nextPositions.offer(new PosDir(posDir.position.add(0, -ROOM_DISTANCE, 0), (byte)5));
 		return true;
 	}
 	

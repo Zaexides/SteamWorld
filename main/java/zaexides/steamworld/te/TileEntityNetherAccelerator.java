@@ -29,6 +29,8 @@ public class TileEntityNetherAccelerator extends TileEntity implements ITickable
 	private static final float ENDERMITE_SPAWN_CHANCE = 0.003f;
 	private static final float TELEPORT_CHANCE = 0.002f;
 	
+	private static final int SIDE_EFFECT_AREA_SIZE = 10;
+	
 	@Override
 	public void update() 
 	{
@@ -77,7 +79,7 @@ public class TileEntityNetherAccelerator extends TileEntity implements ITickable
 	private void SpawnMob(EntityLiving entity)
 	{
 		int mobAmount = world.getEntitiesWithinAABB(entity.getClass(),
-				(new AxisAlignedBB(pos.add(-10,-10,-10), pos.add(10,10,10)))).size();
+				(new AxisAlignedBB(pos.add(-SIDE_EFFECT_AREA_SIZE,-SIDE_EFFECT_AREA_SIZE,-SIDE_EFFECT_AREA_SIZE), pos.add(SIDE_EFFECT_AREA_SIZE,SIDE_EFFECT_AREA_SIZE,SIDE_EFFECT_AREA_SIZE)))).size();
 		
 		if(mobAmount >= 6)
 			return;
@@ -87,9 +89,9 @@ public class TileEntityNetherAccelerator extends TileEntity implements ITickable
 		
 		while(!success && attempts < 32)
 		{
-			double spawn_x = ((double)pos.getX()) + (world.rand.nextDouble() - world.rand.nextDouble()) * 10 + 0.5d;
-			double spawn_y = ((double)pos.getY()) + (world.rand.nextDouble() - world.rand.nextDouble()) * 10 + 0.5d;
-			double spawn_z = ((double)pos.getZ()) + (world.rand.nextDouble() - world.rand.nextDouble()) * 10 + 0.5d;
+			double spawn_x = ((double)pos.getX()) + (world.rand.nextDouble() - world.rand.nextDouble()) * SIDE_EFFECT_AREA_SIZE + 0.5d;
+			double spawn_y = ((double)pos.getY()) + (world.rand.nextDouble() - world.rand.nextDouble()) * SIDE_EFFECT_AREA_SIZE + 0.5d;
+			double spawn_z = ((double)pos.getZ()) + (world.rand.nextDouble() - world.rand.nextDouble()) * SIDE_EFFECT_AREA_SIZE + 0.5d;
 			
 			entity.setLocationAndAngles(spawn_x, spawn_y, spawn_z, world.rand.nextFloat()*360, 0);
 			if(entity.isNotColliding())
@@ -112,7 +114,7 @@ public class TileEntityNetherAccelerator extends TileEntity implements ITickable
 	{
 		List<EntityLivingBase> livingEntities = world.getEntitiesWithinAABB(
 				EntityLivingBase.class,
-				new AxisAlignedBB(pos.add(-10,-10,-10), pos.add(10,10,10))
+				new AxisAlignedBB(pos.add(-SIDE_EFFECT_AREA_SIZE,-SIDE_EFFECT_AREA_SIZE,-SIDE_EFFECT_AREA_SIZE), pos.add(SIDE_EFFECT_AREA_SIZE,SIDE_EFFECT_AREA_SIZE,SIDE_EFFECT_AREA_SIZE))
 				);
 		
 		for(EntityLivingBase entityLiving : livingEntities)
@@ -128,9 +130,9 @@ public class TileEntityNetherAccelerator extends TileEntity implements ITickable
 				
 				while(!success && attempts < 128)
 				{
-					double target_x = ((double)pos.getX()) + (world.rand.nextDouble() - world.rand.nextDouble()) * 10 + 0.5d;
-					double target_y = ((double)pos.getY()) + (world.rand.nextDouble() - world.rand.nextDouble()) * 10 + 0.5d;
-					double target_z = ((double)pos.getZ()) + (world.rand.nextDouble() - world.rand.nextDouble()) * 10 + 0.5d;
+					double target_x = ((double)pos.getX()) + (world.rand.nextDouble() - world.rand.nextDouble()) * SIDE_EFFECT_AREA_SIZE + 0.5d;
+					double target_y = ((double)pos.getY()) + (world.rand.nextDouble() - world.rand.nextDouble()) * SIDE_EFFECT_AREA_SIZE + 0.5d;
+					double target_z = ((double)pos.getZ()) + (world.rand.nextDouble() - world.rand.nextDouble()) * SIDE_EFFECT_AREA_SIZE + 0.5d;
 					
 					if(entityLiving.attemptTeleport(target_x, target_y, target_z))
 					{
