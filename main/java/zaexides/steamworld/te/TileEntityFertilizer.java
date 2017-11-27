@@ -44,11 +44,12 @@ import zaexides.steamworld.blocks.machines.BlockGrinder;
 import zaexides.steamworld.blocks.machines.BlockSWFurnace;
 import zaexides.steamworld.fluids.FluidSteam;
 import zaexides.steamworld.recipe.handling.DustRecipeHandler;
-import zaexides.steamworld.utility.SteamWorksFluidTank;
+import zaexides.steamworld.utility.capability.ItemStackHandlerInput;
+import zaexides.steamworld.utility.capability.SteamWorksFluidTank;
 
 public class TileEntityFertilizer extends TileEntityMachine implements ITickable, IGuiButtonHandler
 {
-	public ItemStackHandler inputStack = new ItemStackHandler(1)
+	public ItemStackHandlerInput inputStack = new ItemStackHandlerInput(1)
 			{
 				@Override
 				public ItemStack insertItem(int slot, ItemStack stack, boolean simulate)
@@ -182,7 +183,7 @@ public class TileEntityFertilizer extends TileEntityMachine implements ITickable
 		
 		while(fertilizedBlocks >= CROP_PER_BONEMEAL)
 		{
-			ItemStack itemStack = inputStack.getStackInSlot(0).copy();
+			ItemStack itemStack = inputStack.getStack(0);
 			itemStack.shrink(1);
 			inputStack.setStackInSlot(0, itemStack);
 			fertilizedBlocks -= CROP_PER_BONEMEAL;

@@ -34,12 +34,15 @@ import zaexides.steamworld.fluids.FluidSteam;
 import zaexides.steamworld.recipe.handling.AssemblyRecipe;
 import zaexides.steamworld.recipe.handling.AssemblyRecipeHandler;
 import zaexides.steamworld.recipe.handling.DustRecipeHandler;
-import zaexides.steamworld.utility.SteamWorksFluidTank;
+import zaexides.steamworld.utility.capability.ItemStackHandlerInput;
+import zaexides.steamworld.utility.capability.ItemStackHandlerOutput;
+import zaexides.steamworld.utility.capability.ItemStackInputOutputHandler;
+import zaexides.steamworld.utility.capability.SteamWorksFluidTank;
 
 public class TileEntityAssembler extends TileEntityMachine implements ITickable
 {
 	private static final int CRYSTAL_SLOT = 6;
-	public ItemStackHandler inputStack = new ItemStackHandler(7)
+	public ItemStackHandlerInput inputStack = new ItemStackHandlerInput(7)
 	{
 		@Override
 		public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) 
@@ -58,7 +61,7 @@ public class TileEntityAssembler extends TileEntityMachine implements ITickable
 				return super.insertItem(slot, stack, simulate);
 		}
 	};
-	public ItemStackHandler outputStack = new ItemStackHandler(1);
+	public ItemStackHandlerOutput outputStack = new ItemStackHandlerOutput(1);
 	
 	private int efficiency = 1;
 	public int duration;
@@ -91,9 +94,7 @@ public class TileEntityAssembler extends TileEntityMachine implements ITickable
 			return CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY.cast(steamTank);
 		if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
 		{
-			if(facing == EnumFacing.UP)
-				return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(inputStack);
-			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(outputStack);
+			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(new ItemStackInputOutputHandler(inputStack, outputStack));
 		}
 		return super.getCapability(capability, facing);
 	}
@@ -175,7 +176,7 @@ public class TileEntityAssembler extends TileEntityMachine implements ITickable
 			
 			if(progression >= duration)
 			{
-				ItemStack outputSlot = outputStack.getStackInSlot(0).copy();
+				ItemStack outputSlot = outputStack.getStack(0);
 				if(outputSlot.getItem() != Items.AIR)
 				{
 					outputSlot.grow(output.getCount());
@@ -185,7 +186,7 @@ public class TileEntityAssembler extends TileEntityMachine implements ITickable
 					outputStack.setStackInSlot(0, output);
 				for(int i = 0; i < 6; i++)
 				{
-					ItemStack itemStack = inputStack.getStackInSlot(i).copy();
+					ItemStack itemStack = inputStack.getStack(i);
 					itemStack.shrink(1);
 					inputStack.setStackInSlot(i, itemStack);
 				}

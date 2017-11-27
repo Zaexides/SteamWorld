@@ -34,12 +34,13 @@ import scala.languageFeature.postfixOps;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.machines.BlockSteamGenerator;
 import zaexides.steamworld.fluids.FluidSteam;
-import zaexides.steamworld.utility.FluidInputOutput;
-import zaexides.steamworld.utility.SteamWorksFluidTank;
+import zaexides.steamworld.utility.capability.FluidInputOutput;
+import zaexides.steamworld.utility.capability.ItemStackHandlerInput;
+import zaexides.steamworld.utility.capability.SteamWorksFluidTank;
 
 public class TileEntitySteamGenerator extends SyncedTileEntity implements ICapabilityProvider, ITickable
 {
-	private ItemStackHandler itemStackHandler = new ItemStackHandler(1);
+	public ItemStackHandlerInput itemStackHandler = new ItemStackHandlerInput(1);
 	public SteamWorksFluidTank fluidIn = new SteamWorksFluidTank(Fluid.BUCKET_VOLUME * 4, this)
 			{
 				@Override
@@ -177,7 +178,7 @@ public class TileEntitySteamGenerator extends SyncedTileEntity implements ICapab
 	
 	private void SetBurnTime()
 	{
-		ItemStack stack = itemStackHandler.getStackInSlot(0);
+		ItemStack stack = itemStackHandler.getStack(0);
 		int localBurnTime = getBurnTime(stack);
 		if(localBurnTime > 0)
 		{

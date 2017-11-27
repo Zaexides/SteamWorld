@@ -19,12 +19,13 @@ import zaexides.steamworld.ItemInitializer;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.recipe.handling.DustRecipeHandler;
 import zaexides.steamworld.te.TileEntityAssembler;
+import zaexides.steamworld.utility.capability.ItemStackHandlerSteamWorld;
 
 public class ContainerAssembler extends SWContainer
 {
 	private TileEntityAssembler tileEntity;
-	private IItemHandler handlerOut;
-	private IItemHandler handlerIn;
+	private ItemStackHandlerSteamWorld handlerOut;
+	private ItemStackHandlerSteamWorld handlerIn;
 	private EntityPlayer player;
 	
 	public ContainerAssembler(EntityPlayer player, IInventory playerInv, TileEntityAssembler tileEntity) 
@@ -42,10 +43,10 @@ public class ContainerAssembler extends SWContainer
 	{
 		for(int y = 0; y < 3; y++)
 		{
-			addSlotToContainer(new SlotItemHandler(handlerIn, 0 + y,  54, 32 + y * 18));
-			addSlotToContainer(new SlotItemHandler(handlerIn, 3 + y, 106, 32 + y * 18));
+			addSlotToContainer(new SlotItemHandlerSteamWork(handlerIn, 0 + y,  54, 32 + y * 18));
+			addSlotToContainer(new SlotItemHandlerSteamWork(handlerIn, 3 + y, 106, 32 + y * 18));
 		}
-		addSlotToContainer(new SlotItemHandler(handlerIn, 6, 80, 24)
+		addSlotToContainer(new SlotItemHandlerSteamWork(handlerIn, 6, 80, 24)
 				{
 					@Override
 					public boolean isItemValid(ItemStack stack) 
@@ -54,7 +55,7 @@ public class ContainerAssembler extends SWContainer
 					}
 				});
 		
-		addSlotToContainer(new SlotItemHandler(handlerOut, 0, 80, 50)
+		addSlotToContainer(new SlotItemHandlerSteamWork(handlerOut, 0, 80, 50)
 				{
 					@Override
 					public boolean isItemValid(ItemStack stack) {

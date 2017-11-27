@@ -15,12 +15,10 @@ import zaexides.steamworld.te.TileEntitySteamGeneratorNether;
 public class ContainerSteamGeneratorNether extends SWContainer
 {
 	private TileEntitySteamGeneratorNether tileEntity;
-	private IItemHandler handler;
 	
 	public ContainerSteamGeneratorNether(IInventory playerInv, TileEntitySteamGeneratorNether tileEntity) 
 	{
 		this.tileEntity = tileEntity;
-		this.handler = tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
 		
 		AddPlayerSlots(playerInv, 8, 84);
 	}
@@ -31,7 +29,7 @@ public class ContainerSteamGeneratorNether extends SWContainer
 		ItemStack itemstack = ItemStack.EMPTY;
         Slot slot = this.inventorySlots.get(index);
         
-        int ownSlotCount = handler.getSlots();
+        int ownSlotCount = 0;
         int playerSlotCountToolbar = ownSlotCount + playerIn.inventory.mainInventory.size();
         int playerSlotCount = playerSlotCountToolbar - 9;
 

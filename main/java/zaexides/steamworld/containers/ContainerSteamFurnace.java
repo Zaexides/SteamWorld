@@ -17,11 +17,12 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.te.TileEntitySWFurnace;
+import zaexides.steamworld.utility.capability.ItemStackHandlerSteamWorld;
 
 public class ContainerSteamFurnace extends SWContainer
 {
 	private TileEntitySWFurnace tileEntity;
-	private IItemHandler handlerIn, handlerOut;
+	private ItemStackHandlerSteamWorld handlerIn, handlerOut;
 	private EntityPlayer player;
 	
 	public ContainerSteamFurnace(EntityPlayer player, IInventory playerInv, TileEntitySWFurnace tileEntity) 
@@ -37,8 +38,8 @@ public class ContainerSteamFurnace extends SWContainer
 	
 	private void AddOwnSlots()
 	{
-		addSlotToContainer(new SlotItemHandler(handlerIn, 0, 56, 35));
-		addSlotToContainer(new SlotItemHandler(handlerOut, 0, 116, 35)
+		addSlotToContainer(new SlotItemHandlerSteamWork(handlerIn, 0, 56, 35));
+		addSlotToContainer(new SlotItemHandlerSteamWork(handlerOut, 0, 116, 35)
 				{
 					@Override
 					public boolean isItemValid(ItemStack stack) {

@@ -34,8 +34,8 @@ import scala.languageFeature.postfixOps;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.machines.BlockSteamGeneratorNether;
 import zaexides.steamworld.fluids.FluidSteam;
-import zaexides.steamworld.utility.FluidInputOutput;
-import zaexides.steamworld.utility.SteamWorksFluidTank;
+import zaexides.steamworld.utility.capability.FluidInputOutput;
+import zaexides.steamworld.utility.capability.SteamWorksFluidTank;
 
 public class TileEntitySteamGeneratorNether extends SyncedTileEntity implements ICapabilityProvider, ITickable
 {

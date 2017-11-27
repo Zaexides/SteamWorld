@@ -36,7 +36,7 @@ import zaexides.steamworld.ConfigHandler;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.machines.BlockValve;
 import zaexides.steamworld.utility.PosFacing;
-import zaexides.steamworld.utility.SteamWorksFluidTank;
+import zaexides.steamworld.utility.capability.SteamWorksFluidTank;
 
 public class TileEntityValve extends SyncedTileEntity implements ICapabilityProvider, ITickable
 {

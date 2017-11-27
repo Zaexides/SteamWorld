@@ -1,4 +1,4 @@
-package zaexides.steamworld.utility;
+package zaexides.steamworld.utility.capability;
 
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fluids.Fluid;

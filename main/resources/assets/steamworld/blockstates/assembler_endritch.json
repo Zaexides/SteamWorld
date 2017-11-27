@@ -3,7 +3,7 @@
     "forge_marker": 1,
     "defaults":
     {
-        "model": "steamworld:machine_endritch_In",
+        "model": "steamworld:machine_endritch_noIn",
         "textures": { "front": "steamworld:blocks/machines/endritch/assembler_off" }
     },
 

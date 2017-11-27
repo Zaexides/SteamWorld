@@ -1,4 +1,4 @@
-package zaexides.steamworld.utility;
+package zaexides.steamworld.utility.capability;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,7 +24,7 @@ public class FluidInputOutput implements IFluidHandler
 		List<IFluidTankProperties> properties = new ArrayList<IFluidTankProperties>();
 		properties.addAll(Arrays.asList(input.getTankProperties()));
 		properties.addAll(Arrays.asList(output.getTankProperties()));
-		return (IFluidTankProperties[]) properties.toArray();
+		return Arrays.copyOf(properties.toArray(), properties.size(), IFluidTankProperties[].class);
 	}
 
 	@Override

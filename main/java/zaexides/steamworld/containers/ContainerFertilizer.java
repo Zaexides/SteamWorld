@@ -19,11 +19,12 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.te.TileEntityFertilizer;
+import zaexides.steamworld.utility.capability.ItemStackHandlerSteamWorld;
 
 public class ContainerFertilizer extends SWContainer
 {
 	private TileEntityFertilizer tileEntity;
-	private IItemHandler handlerIn;
+	private ItemStackHandlerSteamWorld handlerIn;
 	private EntityPlayer player;
 	
 	public ContainerFertilizer(EntityPlayer player, IInventory playerInv, TileEntityFertilizer tileEntity) 
@@ -38,7 +39,7 @@ public class ContainerFertilizer extends SWContainer
 	
 	private void AddOwnSlots()
 	{
-		addSlotToContainer(new SlotItemHandler(handlerIn, 0, 80, 35)
+		addSlotToContainer(new SlotItemHandlerSteamWork(handlerIn, 0, 80, 35)
 				{
 					@Override
 					public boolean isItemValid(ItemStack stack) {

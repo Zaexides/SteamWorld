@@ -18,11 +18,12 @@ import net.minecraftforge.items.SlotItemHandler;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.recipe.handling.DustRecipeHandler;
 import zaexides.steamworld.te.TileEntityFisher;
+import zaexides.steamworld.utility.capability.ItemStackHandlerSteamWorld;
 
 public class ContainerFisher extends SWContainer
 {
 	private TileEntityFisher tileEntity;
-	private IItemHandler handlerOut;
+	private ItemStackHandlerSteamWorld handlerOut;
 	private EntityPlayer player;
 	
 	public ContainerFisher(EntityPlayer player, IInventory playerInv, TileEntityFisher tileEntity) 
@@ -37,7 +38,7 @@ public class ContainerFisher extends SWContainer
 	
 	private void AddOwnSlots()
 	{
-		addSlotToContainer(new SlotItemHandler(handlerOut, 0, 80, 35)
+		addSlotToContainer(new SlotItemHandlerSteamWork(handlerOut, 0, 80, 35)
 				{
 					@Override
 					public boolean isItemValid(ItemStack stack) {

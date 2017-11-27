@@ -11,16 +11,17 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import zaexides.steamworld.te.TileEntitySteamGenerator;
+import zaexides.steamworld.utility.capability.ItemStackHandlerSteamWorld;
 
 public class ContainerSteamGenerator extends SWContainer
 {
 	private TileEntitySteamGenerator tileEntity;
-	private IItemHandler handler;
+	private ItemStackHandlerSteamWorld handler;
 	
 	public ContainerSteamGenerator(IInventory playerInv, TileEntitySteamGenerator tileEntity) 
 	{
 		this.tileEntity = tileEntity;
-		this.handler = tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
+		this.handler = tileEntity.itemStackHandler;
 		
 		AddOwnSlots();
 		AddPlayerSlots(playerInv, 8, 84);
@@ -30,7 +31,7 @@ public class ContainerSteamGenerator extends SWContainer
 	{
 		int xStart = 61;
 		int yStart = 48;
-		addSlotToContainer(new SlotItemHandler(handler, 0, xStart, yStart));
+		addSlotToContainer(new SlotItemHandlerSteamWork(handler, 0, xStart, yStart));
 	}
 	
 	@Override

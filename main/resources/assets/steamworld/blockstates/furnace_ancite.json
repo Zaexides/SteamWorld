@@ -3,7 +3,7 @@
     "forge_marker": 1,
     "defaults":
     {
-        "model": "steamworld:machine_ancite_In",
+        "model": "steamworld:machine_ancite_noIn",
         "textures": { "front": "steamworld:blocks/machines/machine_furnace_ancite_off" }
     },
 

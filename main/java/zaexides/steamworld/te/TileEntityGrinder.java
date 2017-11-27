@@ -19,12 +19,15 @@ import zaexides.steamworld.blocks.machines.BlockGrinder;
 import zaexides.steamworld.blocks.machines.BlockSWFurnace;
 import zaexides.steamworld.fluids.FluidSteam;
 import zaexides.steamworld.recipe.handling.DustRecipeHandler;
-import zaexides.steamworld.utility.SteamWorksFluidTank;
+import zaexides.steamworld.utility.capability.ItemStackHandlerInput;
+import zaexides.steamworld.utility.capability.ItemStackHandlerOutput;
+import zaexides.steamworld.utility.capability.ItemStackInputOutputHandler;
+import zaexides.steamworld.utility.capability.SteamWorksFluidTank;
 
 public class TileEntityGrinder extends TileEntityMachine implements ITickable
 {
-	public ItemStackHandler inputStack = new ItemStackHandler(1);
-	public ItemStackHandler outputStack = new ItemStackHandler(1);
+	public ItemStackHandlerInput inputStack = new ItemStackHandlerInput(1);
+	public ItemStackHandlerOutput outputStack = new ItemStackHandlerOutput(1);
 			
 	private int amount = 1;
 	public final int MAX_PROGRESSION = 200;
@@ -54,10 +57,7 @@ public class TileEntityGrinder extends TileEntityMachine implements ITickable
 			return CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY.cast(steamTank);
 		if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
 		{
-			if(facing == EnumFacing.UP)
-				return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(inputStack);
-			else
-				return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(outputStack);
+			return CapabilityItemHandler.ITEM_HANDLER_CAPABILITY.cast(new ItemStackInputOutputHandler(inputStack, outputStack));
 		}
 		return super.getCapability(capability, facing);
 	}
@@ -127,7 +127,9 @@ public class TileEntityGrinder extends TileEntityMachine implements ITickable
 			
 			if(progression == MAX_PROGRESSION)
 			{
-				inputStack.getStackInSlot(0).shrink(1);
+				ItemStack inStack = inputStack.getStack(0);
+				inStack.shrink(1);
+				inputStack.setStackInSlot(0, inStack);
 				targetStack = new ItemStack(itemStack.getItem(), targetStack.getCount() + count, itemStack.getMetadata());
 				outputStack.setStackInSlot(0, targetStack);
 				progression = 0;

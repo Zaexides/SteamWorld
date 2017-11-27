@@ -29,7 +29,7 @@ import zaexides.steamworld.ConfigHandler;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.machines.BlockDrain;
 import zaexides.steamworld.utility.PosFacing;
-import zaexides.steamworld.utility.SteamWorksFluidTank;
+import zaexides.steamworld.utility.capability.SteamWorksFluidTank;
 
 public class TileEntityDrain extends SyncedTileEntity implements ICapabilityProvider, ITickable
 {

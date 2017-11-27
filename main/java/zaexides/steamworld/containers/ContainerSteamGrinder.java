@@ -18,11 +18,12 @@ import net.minecraftforge.items.SlotItemHandler;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.recipe.handling.DustRecipeHandler;
 import zaexides.steamworld.te.TileEntityGrinder;
+import zaexides.steamworld.utility.capability.ItemStackHandlerSteamWorld;
 
 public class ContainerSteamGrinder extends SWContainer
 {
 	private TileEntityGrinder tileEntity;
-	private IItemHandler handlerIn, handlerOut;
+	private ItemStackHandlerSteamWorld handlerIn, handlerOut;
 	private EntityPlayer player;
 	
 	public ContainerSteamGrinder(EntityPlayer player, IInventory playerInv, TileEntityGrinder tileEntity) 
@@ -38,8 +39,8 @@ public class ContainerSteamGrinder extends SWContainer
 	
 	private void AddOwnSlots()
 	{
-		addSlotToContainer(new SlotItemHandler(handlerIn, 0, 56, 35));
-		addSlotToContainer(new SlotItemHandler(handlerOut, 0, 116, 35)
+		addSlotToContainer(new SlotItemHandlerSteamWork(handlerIn, 0, 56, 35));
+		addSlotToContainer(new SlotItemHandlerSteamWork(handlerOut, 0, 116, 35)
 				{
 					@Override
 					public boolean isItemValid(ItemStack stack) {

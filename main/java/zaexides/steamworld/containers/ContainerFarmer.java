@@ -19,11 +19,12 @@ import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.te.TileEntityFarmer;
 import zaexides.steamworld.te.TileEntityLumber;
 import zaexides.steamworld.te.TileEntityMachine;
+import zaexides.steamworld.utility.capability.ItemStackHandlerSteamWorld;
 
 public class ContainerFarmer extends SWContainer
 {
 	private TileEntityMachine tileEntity;
-	private IItemHandler handlerOut;
+	private ItemStackHandlerSteamWorld handlerOut;
 	private EntityPlayer player;
 	
 	public ContainerFarmer(EntityPlayer player, IInventory playerInv, TileEntityMachine tileEntity) 
@@ -45,7 +46,7 @@ public class ContainerFarmer extends SWContainer
 		{
 			for(int x = 0; x < 3; x++, i++)
 			{
-				addSlotToContainer(new SlotItemHandler(handlerOut, i, 62 + x*18, 17 + y*18)
+				addSlotToContainer(new SlotItemHandlerSteamWork(handlerOut, i, 62 + x*18, 17 + y*18)
 				{
 					@Override
 					public boolean isItemValid(ItemStack stack) {

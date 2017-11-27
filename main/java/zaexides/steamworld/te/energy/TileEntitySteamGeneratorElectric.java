@@ -17,8 +17,8 @@ import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import zaexides.steamworld.ConfigHandler;
 import zaexides.steamworld.fluids.FluidSteam;
 import zaexides.steamworld.te.SyncedTileEntity;
-import zaexides.steamworld.utility.FluidInputOutput;
-import zaexides.steamworld.utility.SteamWorksFluidTank;
+import zaexides.steamworld.utility.capability.FluidInputOutput;
+import zaexides.steamworld.utility.capability.SteamWorksFluidTank;
 
 public class TileEntitySteamGeneratorElectric extends SyncedTileEntity implements ITickable, ICapabilityProvider
 {
