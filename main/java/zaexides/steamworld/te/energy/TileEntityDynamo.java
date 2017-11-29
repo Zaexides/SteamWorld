@@ -74,9 +74,9 @@ public class TileEntityDynamo extends SyncedTileEntity implements ITickable, ICa
 		if(world.isRemote)
 			return;
 		
-		int FLUID_TO_ENERGY = ConfigHandler.fluid_to_energy;
-		int ENERGY_FROM_FLUID = ConfigHandler.energy_from_fluid;
-		int MAX_CONVERSIONS = ConfigHandler.max_conversions_per_tick;
+		int FLUID_TO_ENERGY = ConfigHandler.fluidToEnergy;
+		int ENERGY_FROM_FLUID = ConfigHandler.energyFromFluid;
+		int MAX_CONVERSIONS = ConfigHandler.maxConversionsPerTick;
 		int currentConversions = 0;
 		
 		while(currentConversions < MAX_CONVERSIONS)

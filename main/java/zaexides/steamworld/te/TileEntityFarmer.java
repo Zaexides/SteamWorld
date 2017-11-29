@@ -27,6 +27,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.storage.loot.LootContext;
 import net.minecraft.world.storage.loot.LootTableList;
+import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -146,16 +147,20 @@ public class TileEntityFarmer extends TileEntityMachine implements ITickable
 				{
 					ItemStack dropStack = drops.get(i);
 					
-					dropStack.grow(dropStack.getCount() * (production - 1));
-					
-					if(dropStack.getItem() instanceof ItemSeeds)
-						dropStack.shrink(1);
-					
-					ItemStack stack = ItemHandlerHelper.insertItemStacked(outputStack, dropStack, false);
-					
-					if(!stack.isEmpty())
-						success = false;
-					InventoryHelper.spawnItemStack(world, pos.getX() + 0.5f, pos.getY() + 1.5f, pos.getZ() + 0.5f, stack);
+					if(!ConfigHandler.farmerDropBlacklist.contains(dropStack.getItem().getRegistryName().toString()))
+					{
+						if(!(dropStack.getItem() instanceof IPlantable) || ConfigHandler.farmerAllowSeedDropUpgrade)
+							dropStack.grow(dropStack.getCount() * (production - 1));
+						
+						if(dropStack.getItem() instanceof ItemSeeds)
+							dropStack.shrink(1);
+						
+						ItemStack stack = outputStack.insertItemStacked(dropStack, false);
+						
+						if(!stack.isEmpty())
+							success = false;
+						InventoryHelper.spawnItemStack(world, pos.getX() + 0.5f, pos.getY() + 1.5f, pos.getZ() + 0.5f, stack);
+					}
 				}
 				
 				steamTank.drain(COST_PER_CROP * production, true);

@@ -12,28 +12,31 @@ import zaexides.steamworld.proxy.CommonProxy;
 public class ConfigHandler
 {
 	private static final String CATEGORY_GENERAL = "general";
-	private static final String CATEGORY_WORLDGEN = "worldgen";
-	private static final String CATEGORY_GRINDER = "grinder";
-	private static final String CATEGORY_ENERGY = "energy";
-	
-	public static boolean generateSteaiteOre = true;
-	public static boolean generateDwarvenStructure = true;
-	public static boolean generateDwarvenOutpost = true;
-	
-	public static List<String> grinderBlacklist = new ArrayList<String>();
-	
 	public static int drainMaxChecks = 512;
 	public static int faucetMaxChecks = 512;
-	public static int farmerArea = 5;
 	public static int lumberArea = 5;
 	public static int fertilizerArea = 5;
 	public static int fluidControllerUpdateRate = 1;
 	
-	public static int fluid_from_energy = 1;
-	public static int fluid_to_energy = 1;
-	public static int energy_from_fluid = 5;
-	public static int energy_to_fluid = 5;
-	public static int max_conversions_per_tick = 30;
+	private static final String CATEGORY_WORLDGEN = "worldgen";
+	public static boolean generateSteaiteOre = true;
+	public static boolean generateDwarvenStructure = true;
+	public static boolean generateDwarvenOutpost = true;
+	
+	private static final String CATEGORY_GRINDER = "grinder";
+	public static List<String> grinderBlacklist = new ArrayList<String>();
+	
+	private static final String CATEGORY_FARMER = "farmer";
+	public static List<String> farmerDropBlacklist = new ArrayList<String>();
+	public static int farmerArea = 5;
+	public static boolean farmerAllowSeedDropUpgrade = true;
+	
+	private static final String CATEGORY_ENERGY = "energy";
+	public static int fluidFromEnergy = 1;
+	public static int fluidToEnergy = 1;
+	public static int energyFromFluid = 5;
+	public static int energyToFluid = 5;
+	public static int maxConversionsPerTick = 30;
 		
 	public static void ReadConfig()
 	{
@@ -44,6 +47,8 @@ public class ConfigHandler
 			InitGeneral(config);
 			InitWorldgen(config);
 			InitGrinderSettings(config);
+			InitFarmerSettings(config);
+			InitEnergySettings(config);
 		}
 		catch(Exception e)
 		{
@@ -61,7 +66,6 @@ public class ConfigHandler
 		config.addCustomCategoryComment(CATEGORY_GENERAL, "General");
 		drainMaxChecks = config.getInt("drain_max_checks", CATEGORY_GENERAL, drainMaxChecks, 1, Integer.MAX_VALUE, "Maximum amount of blocks a drain can check for fluids to drain.");
 		faucetMaxChecks = config.getInt("faucet_max_checks", CATEGORY_GENERAL, faucetMaxChecks, 1, Integer.MAX_VALUE, "Maximum amount of blocks a faucet can check for places to put fluids.");
-		farmerArea = config.getInt("farmer_area", CATEGORY_GENERAL, farmerArea, 1, Integer.MAX_VALUE, "Area radius the farmer will check in. e.g. entering \"5\" will make it check up to 5 blocks in a cube away (so an 11x11x11 area).");
 		lumberArea = config.getInt("lumber_area", CATEGORY_GENERAL, lumberArea, 1, Integer.MAX_VALUE, "Area radius the lumber will check in. e.g. entering \"5\" will make it check up to 5 blocks in a cube away (so an 11x11x11 area).");
 		fertilizerArea = config.getInt("fertilizer_area", CATEGORY_GENERAL, fertilizerArea, 1, Integer.MAX_VALUE, "Area radius the fertilizer will check in. e.g. entering \"5\" will make it check up to 5 blocks in a cube away (so an 11x11x11 area).");
 		fluidControllerUpdateRate = config.getInt("fluid_controller_update_rate", CATEGORY_GENERAL, fluidControllerUpdateRate, 1, 5, "Update rate of the Fluid Controller. If it's set to 5, it'll update every 5 ticks. It'll scale the amount of fluid transported to the update rate. This can be increased to decrease lag.");
@@ -79,16 +83,23 @@ public class ConfigHandler
 	{
 		config.addCustomCategoryComment(CATEGORY_GRINDER, "Grinder settings");
 		grinderBlacklist = Arrays.asList(config.getStringList("blacklist", CATEGORY_GRINDER, grinderBlacklist.toArray(new String[0]), "Disallow these grinder recipes to be created. e.g.: Steaite Dust would be \"steamworld:dust<2>\" and Iron Ingot would be \"minecraft:iron_ingot<0>\", look at the logs during startup. Also, don't use quotation (\") marks."));
-		
+	}
+	
+	private static void InitFarmerSettings(Configuration config)
+	{
+		config.addCustomCategoryComment(CATEGORY_FARMER, "Farmer settings");
+		farmerArea = config.getInt("farmer_area", CATEGORY_FARMER, farmerArea, 1, Integer.MAX_VALUE, "Area radius the farmer will check in. e.g. entering \"5\" will make it check up to 5 blocks in a cube away (so an 11x11x11 area).");
+		farmerDropBlacklist = Arrays.asList(config.getStringList("farmer_drop_blacklist", CATEGORY_FARMER, farmerDropBlacklist.toArray(new String[0]), "Blacklist for crop drops in the farmer. Enter registry names (e.g. \"minecraft:wheat\") to disable the farmer from harvesting these as drops."));
+		farmerAllowSeedDropUpgrade = config.getBoolean("farmer_upgrade_affect_seeds", CATEGORY_FARMER, farmerAllowSeedDropUpgrade, "Do the farmer upgrades also increase seed yield?");
 	}
 	
 	private static void InitEnergySettings(Configuration config)
 	{
 		config.addCustomCategoryComment(CATEGORY_ENERGY, "Energy settings");
-		fluid_from_energy = config.getInt("fluid_from_energy", CATEGORY_ENERGY, fluid_from_energy, 1, Integer.MAX_VALUE, "The amount of \"fluid\" you get from \"energy_to_fluid\" RF. Should be the same as \"fluid_to_energy\", but can be changed for rebalancing.");
-		fluid_to_energy = config.getInt("fluid_to_energy", CATEGORY_ENERGY, fluid_to_energy, 1, Integer.MAX_VALUE, "The amount of \"fluid\" you need to get \"energy_from_fluid\" RF. Should be the same as \"fluid_from_energy\", but can be changed for rebalancing.");
-		energy_from_fluid = config.getInt("energy_from_fluid", CATEGORY_ENERGY, energy_from_fluid, 1, Integer.MAX_VALUE, "The amount of RF you get from \"fluid_to_energy\" \"fluid\". Should be the same as \"energy_to_fluid\", but can be changed for rebalancing.");
-		energy_to_fluid = config.getInt("energy_to_fluid", CATEGORY_ENERGY, energy_to_fluid, 1, Integer.MAX_VALUE, "The amount of RF you need to get \"fluid_from_energy\" \"fluid\". Should be the same as \"energy_from_fluid\", but can be changed for rebalancing.");
-		max_conversions_per_tick = config.getInt("max_conversions_per_tick", CATEGORY_ENERGY, max_conversions_per_tick, 1, Integer.MAX_VALUE, "The maximum amount of conversions that can be made per tick. i.e. if 1 RF translates to 80 Steam and this is set to 10, you can get up to 800 steam for 10 RF per tick.");
+		fluidFromEnergy = config.getInt("fluid_from_energy", CATEGORY_ENERGY, fluidFromEnergy, 1, Integer.MAX_VALUE, "The amount of \"fluid\" you get from \"energy_to_fluid\" RF. Should be the same as \"fluid_to_energy\", but can be changed for rebalancing.");
+		fluidToEnergy = config.getInt("fluid_to_energy", CATEGORY_ENERGY, fluidToEnergy, 1, Integer.MAX_VALUE, "The amount of \"fluid\" you need to get \"energy_from_fluid\" RF. Should be the same as \"fluid_from_energy\", but can be changed for rebalancing.");
+		energyFromFluid = config.getInt("energy_from_fluid", CATEGORY_ENERGY, energyFromFluid, 1, Integer.MAX_VALUE, "The amount of RF you get from \"fluid_to_energy\" \"fluid\". Should be the same as \"energy_to_fluid\", but can be changed for rebalancing.");
+		energyToFluid = config.getInt("energy_to_fluid", CATEGORY_ENERGY, energyToFluid, 1, Integer.MAX_VALUE, "The amount of RF you need to get \"fluid_from_energy\" \"fluid\". Should be the same as \"energy_from_fluid\", but can be changed for rebalancing.");
+		maxConversionsPerTick = config.getInt("max_conversions_per_tick", CATEGORY_ENERGY, maxConversionsPerTick, 1, Integer.MAX_VALUE, "The maximum amount of conversions that can be made per tick. i.e. if 1 RF translates to 80 Steam and this is set to 10, you can get up to 800 steam for 10 RF per tick.");
 	}
 }

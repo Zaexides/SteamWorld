@@ -102,9 +102,9 @@ public class TileEntitySteamGeneratorElectric extends SyncedTileEntity implement
 		if(world.isRemote)
 			return;
 		
-		int ENERGY_TO_FLUID = ConfigHandler.energy_to_fluid;
-		int FLUID_FROM_ENERGY = ConfigHandler.fluid_from_energy;
-		int MAX_CONVERSIONS = ConfigHandler.max_conversions_per_tick;
+		int ENERGY_TO_FLUID = ConfigHandler.energyToFluid;
+		int FLUID_FROM_ENERGY = ConfigHandler.fluidFromEnergy;
+		int MAX_CONVERSIONS = ConfigHandler.maxConversionsPerTick;
 		int currentConversions = 0;
 		
 		while(currentConversions < MAX_CONVERSIONS)
