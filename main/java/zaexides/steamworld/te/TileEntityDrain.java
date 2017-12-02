@@ -29,11 +29,11 @@ import zaexides.steamworld.ConfigHandler;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.machines.BlockDrain;
 import zaexides.steamworld.utility.PosFacing;
-import zaexides.steamworld.utility.capability.SteamWorksFluidTank;
+import zaexides.steamworld.utility.capability.SteamWorldFluidTank;
 
 public class TileEntityDrain extends SyncedTileEntity implements ICapabilityProvider, ITickable
 {
-	public SteamWorksFluidTank tank = new SteamWorksFluidTank(Fluid.BUCKET_VOLUME, this);
+	public SteamWorldFluidTank tank = new SteamWorldFluidTank(Fluid.BUCKET_VOLUME, this);
 	
 	private int updateTimer = UPDATE_TIMER_RATE;
 	private static final int UPDATE_TIMER_RATE = 5;

@@ -45,7 +45,7 @@ import zaexides.steamworld.blocks.machines.BlockSWFurnace;
 import zaexides.steamworld.fluids.FluidSteam;
 import zaexides.steamworld.recipe.handling.DustRecipeHandler;
 import zaexides.steamworld.utility.capability.ItemStackHandlerInput;
-import zaexides.steamworld.utility.capability.SteamWorksFluidTank;
+import zaexides.steamworld.utility.capability.SteamWorldFluidTank;
 
 public class TileEntityFertilizer extends TileEntityMachine implements ITickable, IGuiButtonHandler
 {

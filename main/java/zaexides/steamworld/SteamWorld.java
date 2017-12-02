@@ -24,7 +24,7 @@ import scala.reflect.internal.Trees.New;
 import scala.tools.nsc.doc.model.Public;
 import zaexides.steamworld.proxy.CommonProxy;
 
-@Mod(modid = ModInfo.MODID, name = ModInfo.MODNAME, version = ModInfo.VERSION, useMetadata = true)
+@Mod(modid = ModInfo.MODID, name = ModInfo.MODNAME, version = ModInfo.VERSION, useMetadata = true, updateJSON = "https://zaexides.net/SteamWorld/update.json")
 public class SteamWorld
 {
     public static Logger logger;

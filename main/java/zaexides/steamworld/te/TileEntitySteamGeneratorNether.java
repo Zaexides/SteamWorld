@@ -35,11 +35,11 @@ import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.machines.BlockSteamGeneratorNether;
 import zaexides.steamworld.fluids.FluidSteam;
 import zaexides.steamworld.utility.capability.FluidInputOutput;
-import zaexides.steamworld.utility.capability.SteamWorksFluidTank;
+import zaexides.steamworld.utility.capability.SteamWorldFluidTank;
 
 public class TileEntitySteamGeneratorNether extends SyncedTileEntity implements ICapabilityProvider, ITickable
 {
-	public SteamWorksFluidTank fluidIn = new SteamWorksFluidTank(Fluid.BUCKET_VOLUME * 4, this)
+	public SteamWorldFluidTank fluidIn = new SteamWorldFluidTank(Fluid.BUCKET_VOLUME * 4, this)
 			{
 				@Override
 				public boolean canFillFluidType(net.minecraftforge.fluids.FluidStack fluid)
@@ -47,7 +47,7 @@ public class TileEntitySteamGeneratorNether extends SyncedTileEntity implements 
 					return fluid.getFluid() == FluidRegistry.WATER;
 				};
 			};
-	public SteamWorksFluidTank fluidOut = new SteamWorksFluidTank(Fluid.BUCKET_VOLUME * 4, this)
+	public SteamWorldFluidTank fluidOut = new SteamWorldFluidTank(Fluid.BUCKET_VOLUME * 4, this)
 			{
 				@Override
 				public boolean canFillFluidType(FluidStack fluid) { return false; };

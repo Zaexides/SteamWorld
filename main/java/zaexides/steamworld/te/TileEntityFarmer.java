@@ -43,7 +43,7 @@ import zaexides.steamworld.blocks.machines.BlockSWFurnace;
 import zaexides.steamworld.fluids.FluidSteam;
 import zaexides.steamworld.recipe.handling.DustRecipeHandler;
 import zaexides.steamworld.utility.capability.ItemStackHandlerOutput;
-import zaexides.steamworld.utility.capability.SteamWorksFluidTank;
+import zaexides.steamworld.utility.capability.SteamWorldFluidTank;
 
 public class TileEntityFarmer extends TileEntityMachine implements ITickable
 {

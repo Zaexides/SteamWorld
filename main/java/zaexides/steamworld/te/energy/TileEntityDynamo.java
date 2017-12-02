@@ -15,7 +15,7 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import zaexides.steamworld.ConfigHandler;
 import zaexides.steamworld.te.SyncedTileEntity;
-import zaexides.steamworld.utility.capability.SteamWorksFluidTank;
+import zaexides.steamworld.utility.capability.SteamWorldFluidTank;
 
 public class TileEntityDynamo extends SyncedTileEntity implements ITickable, ICapabilityProvider
 {
@@ -23,7 +23,7 @@ public class TileEntityDynamo extends SyncedTileEntity implements ITickable, ICa
 	{
 		public boolean canReceive() {return false;};
 	};
-	public SteamWorksFluidTank steamTank = new SteamWorksFluidTank(Fluid.BUCKET_VOLUME * 4, this)
+	public SteamWorldFluidTank steamTank = new SteamWorldFluidTank(Fluid.BUCKET_VOLUME * 4, this)
 	{
 		@Override
 		public boolean canFillFluidType(net.minecraftforge.fluids.FluidStack fluid) 

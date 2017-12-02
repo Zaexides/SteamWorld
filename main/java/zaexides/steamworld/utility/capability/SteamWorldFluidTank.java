@@ -6,12 +6,12 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import zaexides.steamworld.te.TileEntitySteamGenerator;
 
-public class SteamWorksFluidTank extends FluidTank
+public class SteamWorldFluidTank extends FluidTank
 {
 	private TileEntity tileEntity;
 	public boolean allowDirtyMarking = false;
 
-	public SteamWorksFluidTank(int capacity, TileEntity tileEntity) 
+	public SteamWorldFluidTank(int capacity, TileEntity tileEntity) 
 	{
 		super(capacity);
 		this.tileEntity = tileEntity;

@@ -1,8 +1,12 @@
 package zaexides.steamworld.blocks;
 
+import org.apache.logging.log4j.Level;
+
 import net.minecraft.block.material.Material;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import zaexides.steamworld.BlockInitializer;
+import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.utility.IOreDictionaryRegisterable;
 
 public class SteamWorldBlockOre extends SteamWorldBlock implements IOreDictionaryRegisterable
@@ -26,6 +30,6 @@ public class SteamWorldBlockOre extends SteamWorldBlock implements IOreDictionar
 	@Override
 	public void RegisterOreInDictionary() 
 	{
-		OreDictionary.registerOre(oreName, this);
+		OreDictionary.registerOre(oreName, new ItemStack(this, 1));
 	}
 }

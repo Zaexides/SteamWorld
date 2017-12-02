@@ -57,21 +57,27 @@ public class RegistryHandler
 	public static void OnBlockRegister(RegistryEvent.Register<Block> event)
 	{
 		event.getRegistry().registerAll(BlockInitializer.BLOCKS.toArray(new Block[0]));
-		for(Block block : BlockInitializer.BLOCKS)
-		{
-			if(block instanceof IOreDictionaryRegisterable)
-				((IOreDictionaryRegisterable)block).RegisterOreInDictionary();
-		}
 	}
 	
 	@SubscribeEvent
 	public static void OnItemRegister(RegistryEvent.Register<Item> event)
 	{
 		event.getRegistry().registerAll(ItemInitializer.ITEMS.toArray(new Item[0]));
+		
+		RegisterOreDictionaryEntries();
+	}
+	
+	public static void RegisterOreDictionaryEntries()
+	{
 		for(Item item : ItemInitializer.ITEMS)
 		{
 			if(item instanceof IOreDictionaryRegisterable)
 				((IOreDictionaryRegisterable)item).RegisterOreInDictionary();
+		}
+		for(Block block : BlockInitializer.BLOCKS)
+		{
+			if(block instanceof IOreDictionaryRegisterable)
+				((IOreDictionaryRegisterable)block).RegisterOreInDictionary();
 		}
 	}
 	

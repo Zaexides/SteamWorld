@@ -36,7 +36,8 @@ import zaexides.steamworld.ConfigHandler;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.machines.BlockValve;
 import zaexides.steamworld.utility.PosFacing;
-import zaexides.steamworld.utility.capability.SteamWorksFluidTank;
+import zaexides.steamworld.utility.capability.MultiFluidTank;
+import zaexides.steamworld.utility.capability.SteamWorldFluidTank;
 
 public class TileEntityValve extends SyncedTileEntity implements ICapabilityProvider, ITickable
 {
@@ -44,15 +45,14 @@ public class TileEntityValve extends SyncedTileEntity implements ICapabilityProv
 	public boolean ignoreRedstone = false;
 	public boolean enabled = true;
 	
-	public List<SteamWorksFluidTank> tanks = new ArrayList<SteamWorksFluidTank>();
-	public int capacity = (int)(Fluid.BUCKET_VOLUME * 0.25);
+	public MultiFluidTank multiFluidTank = new MultiFluidTank(this);
 	
 	private int updateTimer = ConfigHandler.fluidControllerUpdateRate;
 	private int transportSpeed = 10;
 	
 	public void SetStats(int speed, int capacity)
 	{
-		this.capacity = capacity;
+		multiFluidTank.capacity = capacity;
 		transportSpeed = speed;
 	}
 
@@ -128,15 +128,8 @@ public class TileEntityValve extends SyncedTileEntity implements ICapabilityProv
 		
 		int mode = (ignoreRedstone ? 1 : 0) + (invertedRedstone ? 2 : 0);
 		compound.setInteger("rsmode", mode);
-		
-		for(int i = 0; i < tanks.size(); i++)
-		{
-			NBTTagCompound subCompound = new NBTTagCompound();
-			tanks.get(i).writeToNBT(subCompound);
-			compound.setTag("tank_" + i, subCompound);
-		}
+		multiFluidTank.WriteToNBT(compound);
 		compound.setInteger("speed", transportSpeed);
-		compound.setInteger("capacity", capacity);
 		
 		return compound;
 	}
@@ -151,17 +144,7 @@ public class TileEntityValve extends SyncedTileEntity implements ICapabilityProv
 		ignoreRedstone = (mode & 1) == 1;
 		if(compound.hasKey("speed"))
 			transportSpeed = compound.getInteger("speed");
-		if(compound.hasKey("capacity"))
-			capacity = compound.getInteger("capacity");
-		
-		int i = 0;
-		while(compound.hasKey("tank_" + i))
-		{
-			SteamWorksFluidTank fluidTank = new SteamWorksFluidTank(capacity, this);
-			tanks.add(fluidTank);
-			fluidTank.readFromNBT((NBTTagCompound)compound.getTag("tank_" + i));
-			i++;
-		}
+		multiFluidTank.ReadFromNBT(compound);
 		
 		super.readFromNBT(compound);
 	}
@@ -174,21 +157,9 @@ public class TileEntityValve extends SyncedTileEntity implements ICapabilityProv
 		{
 			GetInput();
 			GetOutput();
-			CleanUp();
 		}
 		
 		markDirty(false);
-	}
-	
-	private void CleanUp()
-	{
-		List<SteamWorksFluidTank> removeList = new ArrayList<SteamWorksFluidTank>();
-		for(int i = 0; i < tanks.size(); i++)
-		{
-			if(tanks.get(i).getFluidAmount() == 0)
-				removeList.add(tanks.get(i));
-		}
-		tanks.removeAll(removeList);
 	}
 	
 	private void GetInput() 
@@ -234,22 +205,13 @@ public class TileEntityValve extends SyncedTileEntity implements ICapabilityProv
 				FluidStack fluidStack = fluidHandler.drain(drainAmount, false);
 				if(fluidStack != null && fluidStack.amount > 0)
 				{
-					for(int j = 0; j <= tanks.size(); j++)
+					int fillAmount = multiFluidTank.fill(fluidStack, true);
+					if(fillAmount > 0)
 					{
-						if(j >= tanks.size())
-							tanks.add(new SteamWorksFluidTank(capacity, this));
-						
-						int fillAmount = tanks.get(j).fill(fluidStack, true);
-						if(fillAmount > 0)
-						{
-							fluidHandler.drain(fillAmount, true);
-							combinations.get(i).tileEntity.markDirty();
-							totalDrainAmount -= fillAmount;
-							break;
-						}
-						
-						if(tanks.get(j).getFluid().getFluid() == fluidStack.getFluid())
-							break;
+						fluidHandler.drain(fillAmount, true);
+						combinations.get(i).tileEntity.markDirty();
+						totalDrainAmount -= fillAmount;
+						break;
 					}
 				}
 			}
@@ -303,16 +265,16 @@ public class TileEntityValve extends SyncedTileEntity implements ICapabilityProv
 	
 	private int FillOutput(TileEntity tileEntity, int drainAmount, IFluidHandler fluidHandler)
 	{
-		for(int j = 0; j < tanks.size(); j++)
+		for(int j = 0; j < multiFluidTank.size(); j++)
 		{
-			FluidStack fluidStack = tanks.get(j).drain(drainAmount, false);
+			FluidStack fluidStack = multiFluidTank.drain(drainAmount, j, false);
 			if(fluidStack != null && fluidStack.amount > 0)
 			{
 				int fillAmount = fluidHandler.fill(fluidStack, true);
 				
 				if(fillAmount > 0)
 				{
-					tanks.get(j).drain(fillAmount, true);
+					multiFluidTank.drain(fillAmount, j, true);
 					tileEntity.markDirty();
 					return fillAmount;
 				}
@@ -379,10 +341,7 @@ public class TileEntityValve extends SyncedTileEntity implements ICapabilityProv
 			EnumFacing blockFacing = world.getBlockState(pos).getValue(BlockValve.FACING);
 			if(facing == blockFacing || facing == blockFacing.getOpposite())
 			{
-				if(tanks.size() > 0)
-					return CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY.cast(tanks.get(0));
-				else
-					return CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY.cast(new FluidTank(0));
+				return CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY.cast(multiFluidTank);
 			}
 		}
 		return super.getCapability(capability, facing);

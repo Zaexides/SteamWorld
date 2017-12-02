@@ -29,7 +29,7 @@ import net.minecraftforge.items.ItemStackHandler;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.machines.BlockExperienceMachine;
 import zaexides.steamworld.fluids.FluidSteam;
-import zaexides.steamworld.utility.capability.SteamWorksFluidTank;
+import zaexides.steamworld.utility.capability.SteamWorldFluidTank;
 
 public class TileEntityExperienceMachine extends TileEntityMachine implements ITickable
 {

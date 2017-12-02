@@ -22,7 +22,7 @@ import zaexides.steamworld.recipe.handling.DustRecipeHandler;
 import zaexides.steamworld.utility.capability.ItemStackHandlerInput;
 import zaexides.steamworld.utility.capability.ItemStackHandlerOutput;
 import zaexides.steamworld.utility.capability.ItemStackInputOutputHandler;
-import zaexides.steamworld.utility.capability.SteamWorksFluidTank;
+import zaexides.steamworld.utility.capability.SteamWorldFluidTank;
 
 public class TileEntityGrinder extends TileEntityMachine implements ITickable
 {

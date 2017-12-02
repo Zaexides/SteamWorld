@@ -10,9 +10,9 @@ import net.minecraftforge.fluids.capability.IFluidTankProperties;
 
 public class FluidInputOutput implements IFluidHandler
 {
-	protected SteamWorksFluidTank input, output;
+	protected SteamWorldFluidTank input, output;
 	
-	public FluidInputOutput(SteamWorksFluidTank input, SteamWorksFluidTank output) 
+	public FluidInputOutput(SteamWorldFluidTank input, SteamWorldFluidTank output) 
 	{
 		this.input = input;
 		this.output = output;

@@ -18,17 +18,17 @@ import zaexides.steamworld.ConfigHandler;
 import zaexides.steamworld.fluids.FluidSteam;
 import zaexides.steamworld.te.SyncedTileEntity;
 import zaexides.steamworld.utility.capability.FluidInputOutput;
-import zaexides.steamworld.utility.capability.SteamWorksFluidTank;
+import zaexides.steamworld.utility.capability.SteamWorldFluidTank;
 
 public class TileEntitySteamGeneratorElectric extends SyncedTileEntity implements ITickable, ICapabilityProvider
 {
 	public SWEnergyStorage energy = new SWEnergyStorage(20000);
-	public SteamWorksFluidTank fluidOut = new SteamWorksFluidTank(Fluid.BUCKET_VOLUME * 4, this)
+	public SteamWorldFluidTank fluidOut = new SteamWorldFluidTank(Fluid.BUCKET_VOLUME * 4, this)
 	{
 		@Override
 		public boolean canFillFluidType(FluidStack fluid) {return false;};
 	};
-	public SteamWorksFluidTank fluidIn = new SteamWorksFluidTank(Fluid.BUCKET_VOLUME * 4, this)
+	public SteamWorldFluidTank fluidIn = new SteamWorldFluidTank(Fluid.BUCKET_VOLUME * 4, this)
 	{
 		@Override
 		public boolean canFillFluidType(net.minecraftforge.fluids.FluidStack fluid)
