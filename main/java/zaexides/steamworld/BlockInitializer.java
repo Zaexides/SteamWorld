@@ -23,6 +23,7 @@ import zaexides.steamworld.blocks.machines.BlockFertilizer;
 import zaexides.steamworld.blocks.machines.BlockFisher;
 import zaexides.steamworld.blocks.machines.BlockGrinder;
 import zaexides.steamworld.blocks.machines.BlockLumber;
+import zaexides.steamworld.blocks.machines.BlockMachineVariant;
 import zaexides.steamworld.blocks.machines.BlockNetherAccelerator;
 import zaexides.steamworld.blocks.machines.BlockSWFurnace;
 import zaexides.steamworld.blocks.machines.BlockSteamGenerator;
@@ -83,8 +84,10 @@ public class BlockInitializer
 	public static final BlockLumber LUMBER_ANCITE = new BlockLumber("lumber_ancite", 4.5f, 2);
 	public static final BlockLumber LUMBER_ENDRITCH = new BlockLumber("lumber_endritch", 5.5f, 3);
 	
+	public static final BlockMachineVariant MACHINE_VARIANT = new BlockMachineVariant("generic_machine", 4.5f);
+	
 	public static final BlockSteam BLOCK_STEAM = new BlockSteam();
-		
+	
 	public static final BlockFluidPipe BLOCK_FLUID_PIPE = new BlockFluidPipe();
 	public static final BlockValve BLOCK_VALVE = new BlockValve("block_fluid_controller", Material.IRON, 2.5f, (int)(Fluid.BUCKET_VOLUME * 0.8), 800);
 	public static final BlockValve BLOCK_VALVE_ENDRITCH = new BlockValve("block_fluid_controller_endritch", SWMaterials.ENDRITCH, 4.5f, (int)(Fluid.BUCKET_VOLUME * 8.5), 8000);

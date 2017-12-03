@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "variant=teleporter": { "model": "steamworld:machine_teleporter" }
+    }
+}

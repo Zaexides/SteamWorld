@@ -41,6 +41,7 @@ import zaexides.steamworld.te.TileEntityNetherAccelerator;
 import zaexides.steamworld.te.TileEntitySWFurnace;
 import zaexides.steamworld.te.TileEntitySteamGenerator;
 import zaexides.steamworld.te.TileEntitySteamGeneratorNether;
+import zaexides.steamworld.te.TileEntityTeleporter;
 import zaexides.steamworld.te.TileEntityValve;
 import zaexides.steamworld.te.energy.TileEntityDynamo;
 import zaexides.steamworld.te.energy.TileEntitySteamGeneratorElectric;
@@ -133,6 +134,7 @@ public class RegistryHandler
 		GameRegistry.registerTileEntity(TileEntityAssembler.class, ModInfo.MODID + "_Assembler");
 		GameRegistry.registerTileEntity(TileEntityNetherAccelerator.class, ModInfo.MODID + "_NetherAccelerator");
 		GameRegistry.registerTileEntity(TileEntityExperienceMachine.class, ModInfo.MODID + "_ExperienceMachine");
+		GameRegistry.registerTileEntity(TileEntityTeleporter.class, ModInfo.MODID + "_Teleporter");
 	
 		GameRegistry.registerTileEntity(TileEntityDynamo.class, ModInfo.MODID + "_Dynamo");
 		GameRegistry.registerTileEntity(TileEntitySteamGeneratorElectric.class, ModInfo.MODID + "_ElectricGenerator");
