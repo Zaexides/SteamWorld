@@ -25,9 +25,14 @@ public class ContainerSimple extends SWContainer
 	
 	public ContainerSimple(EntityPlayer player, IInventory playerInv, TileEntity tileEntity) 
 	{
+		this(player, playerInv, tileEntity, 84);
+	}
+	
+	public ContainerSimple(EntityPlayer player, IInventory playerInv, TileEntity tileEntity, int playerInvYPos)
+	{
 		this.tileEntity = tileEntity;
 		this.player = player;
 		
-		AddPlayerSlots(playerInv, 8, 84);
+		AddPlayerSlots(playerInv, 8, playerInvYPos);
 	}
 }

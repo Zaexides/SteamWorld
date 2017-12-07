@@ -1,5 +1,8 @@
 package zaexides.steamworld.te;
 
+import org.apache.logging.log4j.Level;
+
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
@@ -8,15 +11,18 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
+import net.minecraftforge.fml.relauncher.SideOnly;
+import zaexides.steamworld.SteamWorld;
+import zaexides.steamworld.savedata.world.TeleporterData;
 import zaexides.steamworld.savedata.world.TeleporterSaveData;
 import zaexides.steamworld.utility.capability.SteamWorldFluidTank;
 
 public class TileEntityTeleporter extends SyncedTileEntity implements ICapabilityProvider
 {
-	private int ownId = -1;
+	public int ownId = -1;
 	private int targetId = -1;
 	
-	private SteamWorldFluidTank steamTank = new SteamWorldFluidTank(Fluid.BUCKET_VOLUME * 4, this)
+	public SteamWorldFluidTank steamTank = new SteamWorldFluidTank(Fluid.BUCKET_VOLUME * 4, this)
 	{
 		@Override
 		public boolean canFillFluidType(net.minecraftforge.fluids.FluidStack fluid) 
@@ -68,5 +74,23 @@ public class TileEntityTeleporter extends SyncedTileEntity implements ICapabilit
         {
 			TeleporterSaveData teleporterSaveData = TeleporterSaveData.get(world);
         }
+	}
+	
+	public String getName()
+	{
+		String name = "";
+		TeleporterData teleporterData = TeleporterSaveData.get(world).getTeleporterData(ownId);
+		if(teleporterData != null)
+			name = teleporterData.name;
+		return name;
+	}
+	
+	public String getPass()
+	{
+		String pass = "";
+		TeleporterData teleporterData = TeleporterSaveData.get(world).getTeleporterData(ownId);
+		if(teleporterData != null)
+			pass = teleporterData.password;
+		return pass;
 	}
 }

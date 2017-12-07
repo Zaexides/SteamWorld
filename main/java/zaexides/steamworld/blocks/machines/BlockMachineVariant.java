@@ -1,5 +1,7 @@
 package zaexides.steamworld.blocks.machines;
 
+import org.apache.logging.log4j.Level;
+
 import com.google.common.util.concurrent.Service.State;
 
 import net.minecraft.block.Block;
@@ -12,12 +14,15 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
@@ -30,6 +35,12 @@ import zaexides.steamworld.ItemInitializer;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.item.ItemBlockVariant;
+import zaexides.steamworld.gui.GuiHandler;
+import zaexides.steamworld.network.PacketHandler;
+import zaexides.steamworld.network.messages.MessageGetTeleporterData;
+import zaexides.steamworld.savedata.world.TeleporterData;
+import zaexides.steamworld.savedata.world.TeleporterSaveData;
+import zaexides.steamworld.te.TileEntityFisher;
 import zaexides.steamworld.te.TileEntityTeleporter;
 import zaexides.steamworld.utility.IMetaName;
 import zaexides.steamworld.utility.IModeledObject;
@@ -136,6 +147,31 @@ public class BlockMachineVariant extends Block implements IMetaName, IModeledObj
 	}
 	
 	@Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
+			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) 
+	{
+		if(!worldIn.isRemote)
+		{
+			TileEntity tileEntity = worldIn.getTileEntity(pos);
+			
+			switch(state.getValue(VARIANT))
+			{
+			case TELEPORTER:
+				NBTTagCompound compound = new NBTTagCompound();
+				TeleporterSaveData teleporterSaveData = TeleporterSaveData.get(worldIn);
+				PacketHandler.wrapper.sendTo(new MessageGetTeleporterData(teleporterSaveData.writeToNBT(compound), teleporterSaveData.mapName),(EntityPlayerMP)  playerIn);
+				
+				if(!(tileEntity instanceof TileEntityTeleporter))
+					return false;
+				else
+					playerIn.openGui(SteamWorld.singleton, GuiHandler.TELEPORTER, worldIn, pos.getX(), pos.getY(), pos.getZ());
+				break;
+			}
+		}
+		return true;
+	}
+	
+	@Override
 	public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) 
 	{
 		TileEntity tileEntity = worldIn.getTileEntity(pos);
@@ -150,6 +186,24 @@ public class BlockMachineVariant extends Block implements IMetaName, IModeledObj
 			}
 		}
 		super.onEntityWalk(worldIn, pos, entityIn);
+	}
+	
+	@Override
+	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) 
+	{
+		switch(state.getValue(VARIANT))
+		{
+		case TELEPORTER:
+			TeleporterSaveData teleporterSaveData = TeleporterSaveData.get(worldIn);
+			if(teleporterSaveData != null)
+			{
+				TileEntity tileEntity = worldIn.getTileEntity(pos);
+				if(tileEntity instanceof TileEntityTeleporter)
+					teleporterSaveData.removeTeleporterData(((TileEntityTeleporter)tileEntity).ownId);
+			}
+			break;
+		}
+		super.breakBlock(worldIn, pos, state);
 	}
 	
 	public static enum EnumType implements IStringSerializable

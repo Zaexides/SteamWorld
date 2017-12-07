@@ -3,11 +3,14 @@ package zaexides.steamworld.savedata.world;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.Level;
+
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.MapStorage;
 import net.minecraft.world.storage.WorldSavedData;
 import zaexides.steamworld.ModInfo;
+import zaexides.steamworld.SteamWorld;
 
 public class TeleporterSaveData extends WorldSavedData
 {
@@ -16,9 +19,16 @@ public class TeleporterSaveData extends WorldSavedData
 	private int pointer = 0;
 	private List<TeleporterData> teleporterData = new ArrayList<TeleporterData>();
 	
+	public static TeleporterSaveData instance;
+	
 	public TeleporterSaveData() 
 	{
 		super(DATA_ID);
+	}
+	
+	public TeleporterSaveData(String s)
+	{
+		super(s);
 	}
 
 	@Override
@@ -70,31 +80,36 @@ public class TeleporterSaveData extends WorldSavedData
 		}
 		
 		markDirty();
+		SteamWorld.logger.log(Level.INFO, "Added TP! Currently: " + pointer);
 		return pointer;
 	}
 	
 	public boolean removeTeleporterData(int id)
 	{
-		if(id >= teleporterData.size() || teleporterData.get(id).free)
+		if(id >= teleporterData.size() || id < 0 || teleporterData.get(id).free)
 			return false;
 		
 		teleporterData.get(id).free = true;
-		pointer = id;
+		if(pointer > id)
+			pointer = id;
 		markDirty();
 		return true;
 	}
 	
 	public TeleporterData getTeleporterData(int id)
 	{
-		if(teleporterData.size() < id)
+		if(id < teleporterData.size() && id >= 0)
 			return teleporterData.get(id);
 		return null;
 	}
 	
 	public static TeleporterSaveData get(World world)
 	{
+		if(instance != null)
+			return instance;
+		
 		MapStorage mapStorage = world.getMapStorage();
-		TeleporterSaveData instance = (TeleporterSaveData) mapStorage.getOrLoadData(TeleporterSaveData.class, DATA_ID);
+		instance = (TeleporterSaveData) mapStorage.getOrLoadData(TeleporterSaveData.class, DATA_ID);
 		
 		if(instance == null)
 		{

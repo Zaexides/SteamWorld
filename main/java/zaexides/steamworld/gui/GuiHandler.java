@@ -25,6 +25,7 @@ import zaexides.steamworld.te.TileEntityMachine;
 import zaexides.steamworld.te.TileEntitySWFurnace;
 import zaexides.steamworld.te.TileEntitySteamGenerator;
 import zaexides.steamworld.te.TileEntitySteamGeneratorNether;
+import zaexides.steamworld.te.TileEntityTeleporter;
 import zaexides.steamworld.te.energy.TileEntityDynamo;
 import zaexides.steamworld.te.energy.TileEntitySteamGeneratorElectric;
 
@@ -39,6 +40,7 @@ public class GuiHandler implements IGuiHandler
 	public static final int FERTILIZER = 6;
 	public static final int ASSEMBLER = 7;
 	public static final int EXPERIENCE_MACHINE = 8;
+	public static final int TELEPORTER = 9;
 	
 	public static final int DYNAMO = 100;
 	public static final int GENERATOR_ELECTRIC = 101;
@@ -64,6 +66,8 @@ public class GuiHandler implements IGuiHandler
 			return new ContainerFertilizer(player, player.inventory, (TileEntityFertilizer) world.getTileEntity(new BlockPos(x,y,z)));
 		case ASSEMBLER:
 			return new ContainerAssembler(player, player.inventory, (TileEntityAssembler) world.getTileEntity(new BlockPos(x,y,z)));
+		case TELEPORTER:
+			return new ContainerSimple(player, player.inventory, world.getTileEntity(new BlockPos(x,y,z)), 116);
 		case EXPERIENCE_MACHINE:
 		case DYNAMO:
 		case GENERATOR_ELECTRIC:
@@ -96,6 +100,8 @@ public class GuiHandler implements IGuiHandler
 			return new GuiAssembler(player, player.inventory, (TileEntityAssembler) world.getTileEntity(new BlockPos(x,y,z)));
 		case EXPERIENCE_MACHINE:
 			return new GuiExperienceMachine(player, player.inventory, (TileEntityExperienceMachine) world.getTileEntity(new BlockPos(x,y,z)));
+		case TELEPORTER:
+			return new GuiTeleporter(player, player.inventory, (TileEntityTeleporter) world.getTileEntity(new BlockPos(x,y,z)));
 		case DYNAMO:
 			return new GuiDynamo(player, player.inventory, (TileEntityDynamo) world.getTileEntity(new BlockPos(x,y,z)));
 		case GENERATOR_ELECTRIC:

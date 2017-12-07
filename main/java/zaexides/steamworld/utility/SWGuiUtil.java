@@ -86,12 +86,20 @@ public class SWGuiUtil
 		}
 	}
 	
-	public static void HandleButton(BlockPos position, byte id, int mouseX, int mouseY, int x, int y, int w, int h)
+	public static boolean HandleButton(BlockPos position, byte id, int mouseX, int mouseY, int x, int y, int w, int h)
+	{
+		return HandleButton(position, id, mouseX, mouseY, x, y, w, h, true);
+	}
+	
+	public static boolean HandleButton(BlockPos position, byte id, int mouseX, int mouseY, int x, int y, int w, int h, boolean sendMessage)
 	{
 		if(mouseX >= x && mouseX < x+w && mouseY >= y && mouseY < y+h)
 		{
-			PacketHandler.wrapper.sendToServer(new MessageGuiButton(position, id));
+			if(sendMessage)
+				PacketHandler.wrapper.sendToServer(new MessageGuiButton(position, id));
 			Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0F));
+			return true;
 		}
+		return false;
 	}
 }
