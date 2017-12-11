@@ -10,6 +10,7 @@ public class TeleporterData
 	public String name;
 	public String password;
 	public boolean free = false;
+	public int id;
 	
 	public TeleporterData(BlockPos pos, int dimension)
 	{
@@ -23,6 +24,7 @@ public class TeleporterData
 	
 	public TeleporterData readFromNBT(NBTTagCompound nbt)
 	{
+		id = nbt.getInteger("id");
 		free = nbt.getBoolean("unused");
 		
 		if(!free)
@@ -38,6 +40,7 @@ public class TeleporterData
 	
 	public NBTTagCompound writeToNBT(NBTTagCompound compound)
 	{
+		compound.setInteger("id", id);
 		compound.setBoolean("unused", free);
 		
 		if(!free)

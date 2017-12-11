@@ -74,13 +74,12 @@ container.steamworld.assembler=Assembler
 container.steamworld.experience_machine=Experience Machine
 container.steamworld.energy.dynamo=Steam Dynamo
 
-container.steamworld.teleporter.name=Name
-container.steamworld.teleporter.pass=Pass
-container.steamworld.send=Send
-
 text.steamworld.on=On
 text.steamworld.off=Off
 text.steamworld.cropmode=Crop-Only Mode
+text.steamworld.teleporter.name=Name
+text.steamworld.teleporter.pass=Pass
+text.steamworld.teleporter.upload=Upload
 
 fluid.steamworld.steam=Steam
 fluid.empty=Empty
