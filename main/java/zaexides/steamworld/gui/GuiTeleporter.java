@@ -22,6 +22,7 @@ import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.containers.ContainerSimple;
 import zaexides.steamworld.network.PacketHandler;
+import zaexides.steamworld.network.messages.MessageTeleporterConnect;
 import zaexides.steamworld.network.messages.MessageTeleporterRegister;
 import zaexides.steamworld.savedata.world.TeleporterData;
 import zaexides.steamworld.savedata.world.TeleporterSaveData;
@@ -35,9 +36,9 @@ public class GuiTeleporter extends GuiContainer implements IGuiContainerUtil
 	private IInventory playerInv;
 	
 	private GuiTextField guiTextField;
-	private GuiTextField guiPassField;
+	private GuiTextField guiNetField;
 	private final int GUI_TEXT_ID = 0;
-	private final int GUI_PASS_ID = 1;
+	private final int GUI_NET_ID = 1;
 	
 	private final int BUTTON_X = 146;
 	private final int BUTTON_Y = 42;
@@ -45,6 +46,9 @@ public class GuiTeleporter extends GuiContainer implements IGuiContainerUtil
 	private final int BUTTON_PAGE_X = 131;
 	private final int BUTTON_PREV_Y = 22;
 	private final int BUTTON_NEXT_Y = 43;
+	
+	private final int BUTTON_SHOW_NOMATCH_X = 149;
+	private final int BUTTON_SHOW_NOMATCH_Y = 23;
 	
 	private String originalName;
 	private String originalPass;
@@ -55,7 +59,13 @@ public class GuiTeleporter extends GuiContainer implements IGuiContainerUtil
 	private int updateTimer = 0;
 	private final int UPDATE_TIMER_MAX = 10;
 	
+	private final int LIST_Y_START = 24;
+	private final int LIST_X = 31;
+	private final int LIST_BUTTON_X = LIST_X + 89;
+	
 	private List<TeleporterData> teleporterData;
+	
+	private boolean showNonMatching = false;
 	
 	public GuiTeleporter(EntityPlayer player, IInventory playerInv, TileEntityTeleporter tileEntity) 
 	{
@@ -76,15 +86,15 @@ public class GuiTeleporter extends GuiContainer implements IGuiContainerUtil
 		getTeleporterInfo();
 		
 		originalName = tileEntity.getName();
-		originalPass = tileEntity.getPass();
+		originalPass = tileEntity.getNetID();
 		
 		guiTextField = new GuiTextField(GUI_TEXT_ID, fontRenderer, guiLeft + 54, guiTop + 68, 112, 14);
 		guiTextField.setMaxStringLength(16);
 		guiTextField.setText(originalName);
 		
-		guiPassField = new GuiTextField(GUI_PASS_ID, fontRenderer, guiLeft + 54, guiTop + 86, 112, 14);
-		guiPassField.setMaxStringLength(16);
-		guiPassField.setText(originalPass);
+		guiNetField = new GuiTextField(GUI_NET_ID, fontRenderer, guiLeft + 54, guiTop + 86, 112, 14);
+		guiNetField.setMaxStringLength(16);
+		guiNetField.setText(originalPass);
 	}
 
 	@Override
@@ -93,13 +103,18 @@ public class GuiTeleporter extends GuiContainer implements IGuiContainerUtil
 		mc.getTextureManager().bindTexture(new ResourceLocation(ModInfo.MODID, "textures/gui/machine/gui_teleporter.png"));
 		this.drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
 		
-		if(tileEntity.ownId != -1 && guiTextField.getText() == originalName && guiPassField.getText() == originalPass)
+		if(tileEntity.ownId != -1 && guiTextField.getText() == originalName && guiNetField.getText() == originalPass)
 			drawTexturedModalRect(guiLeft + BUTTON_X, guiTop + BUTTON_Y, 176, 0, 23, 23);
 		
 		if(currentPage > 0)
 			drawTexturedModalRect(guiLeft + BUTTON_PAGE_X, guiTop + BUTTON_PREV_Y, 176, 23, 12, 21);
 		if(currentPage < maxPages)
 			drawTexturedModalRect(guiLeft + BUTTON_PAGE_X, guiTop + BUTTON_NEXT_Y, 188, 23, 12, 21);
+		
+		drawConnectButtons();
+		
+		if(showNonMatching)
+			drawTexturedModalRect(guiLeft + BUTTON_SHOW_NOMATCH_X, guiTop + BUTTON_SHOW_NOMATCH_Y, 199, 0, 17, 17);
 		
 		SWGuiUtil.DrawFluid(this, tileEntity.steamTank, mouseX, mouseY, 8, 23, 16, 41);
 		
@@ -109,7 +124,7 @@ public class GuiTeleporter extends GuiContainer implements IGuiContainerUtil
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) 
 	{
-		String fgString = I18n.format("text.steamworld.teleporter");
+		String fgString = I18n.format("container.steamworld.teleporter");
 		String tpName = I18n.format("text.steamworld.teleporter.name");
 		String tpPass = I18n.format("text.steamworld.teleporter.pass");
 		
@@ -136,6 +151,10 @@ public class GuiTeleporter extends GuiContainer implements IGuiContainerUtil
 		List<String> text = new ArrayList<String>();
 		text.add(new TextComponentTranslation("text.steamworld.teleporter.upload").getFormattedText());
 		SWGuiUtil.DrawHoverText(this, text, mouseX, mouseY, BUTTON_X, BUTTON_Y, 23, 23);
+		
+		List<String> text2 = new ArrayList<String>();
+		text2.add(new TextComponentTranslation("text.steamworld.teleporter.showhide_nomatch").getFormattedText());
+		SWGuiUtil.DrawHoverText(this, text2, mouseX, mouseY, BUTTON_SHOW_NOMATCH_X, BUTTON_SHOW_NOMATCH_Y, 17, 17);
 	}
 	
 	private void DrawTextComponents()
@@ -145,9 +164,9 @@ public class GuiTeleporter extends GuiContainer implements IGuiContainerUtil
 		GlStateManager.pushMatrix();
 		
 		guiTextField.drawTextBox();
-		guiPassField.drawTextBox();
+		guiNetField.drawTextBox();
 		
-		drawTeleporterList();
+		drawTeleporterText();
 		
 		GlStateManager.popMatrix();
 		GlStateManager.enableLighting();
@@ -163,12 +182,20 @@ public class GuiTeleporter extends GuiContainer implements IGuiContainerUtil
 		TeleporterData emptyIncludedData;
 		while((emptyIncludedData = teleporterSaveData.getTeleporterData(id)) != null)
 		{
-			if(!emptyIncludedData.free)
-				teleporterData.add(emptyIncludedData);
+			if(!emptyIncludedData.free && emptyIncludedData.id != tileEntity.ownId)
+			{
+				if(showNonMatching || emptyIncludedData.netId.equals(tileEntity.getNetID()))
+					teleporterData.add(emptyIncludedData);
+			}
 			id++;
 		}
 		
 		maxPages = (int)Math.ceil(teleporterData.size() / 4.0) - 1;
+		if(currentPage > maxPages)
+			currentPage = maxPages;
+		
+		if(currentPage < 0)
+			currentPage = 0;
 	}
 	
 	@Override
@@ -184,11 +211,31 @@ public class GuiTeleporter extends GuiContainer implements IGuiContainerUtil
 		}
 	}
 	
-	private void drawTeleporterList() 
+	private void drawConnectButtons()
 	{
-		final int LIST_Y_START = guiTop + 24;
-		final int LIST_X = guiLeft + 31;
-		
+		for(int y = 0; y < 4; y++)
+		{
+			int id = y + (currentPage * 4);
+			
+			if(id >= this.teleporterData.size())
+				break;
+			
+			TeleporterData teleporterData = this.teleporterData.get(id);
+			
+			int buttonTextOffset = 0;
+			if(tileEntity.ownId == -1 || !teleporterData.netId.equals(tileEntity.getNetID()))
+				buttonTextOffset = 20;
+			else if(tileEntity.targetId == teleporterData.id)
+				buttonTextOffset = 10;
+			
+			if(!teleporterData.netId.equals(tileEntity.getNetID()))
+				drawTexturedModalRect(guiLeft + LIST_BUTTON_X - 10, guiTop + LIST_Y_START + 10 * y - 1, 176, 54, 10, 10); //Draw lock icon
+			drawTexturedModalRect(guiLeft + LIST_BUTTON_X, guiTop + LIST_Y_START + 10 * y - 1, 176 + buttonTextOffset, 44, 10, 10);
+		}
+	}
+	
+	private void drawTeleporterText() 
+	{
 		for(int y = 0; y < 4; y++)
 		{
 			int id = y + (currentPage * 4);
@@ -206,7 +253,7 @@ public class GuiTeleporter extends GuiContainer implements IGuiContainerUtil
 			else
 				text += teleporterData.name;
 			
-			drawString(fontRenderer, text, LIST_X, LIST_Y_START + 10 * y, color);
+			drawString(fontRenderer, text, guiLeft + LIST_X, guiTop + LIST_Y_START + 10 * y, color);
 		}
 	}
 	
@@ -215,27 +262,56 @@ public class GuiTeleporter extends GuiContainer implements IGuiContainerUtil
 	{
 		super.mouseClicked(mouseX, mouseY, mouseButton);
 		guiTextField.mouseClicked(mouseX, mouseY, mouseButton);
-		guiPassField.mouseClicked(mouseX, mouseY, mouseButton);
+		guiNetField.mouseClicked(mouseX, mouseY, mouseButton);
 		if(SWGuiUtil.HandleButton(tileEntity.getPos(), (byte)0, mouseX, mouseY, guiLeft + BUTTON_X, guiTop + BUTTON_Y, 23, 23, false))
 		{
-			PacketHandler.wrapper.sendToServer(new MessageTeleporterRegister(tileEntity.getPos(), guiTextField.getText(), guiPassField.getText()));
+			PacketHandler.wrapper.sendToServer(new MessageTeleporterRegister(tileEntity.getPos(), guiTextField.getText(), guiNetField.getText()));
 			originalName = guiTextField.getText();
-			originalPass = guiPassField.getText();
+			originalPass = guiNetField.getText();
 		}
+		
+		teleporterListButtons(mouseX, mouseY, mouseButton);
 		
 		if(currentPage > 0 && SWGuiUtil.HandleButton(null, (byte)1, mouseX, mouseY, guiLeft + BUTTON_PAGE_X, guiTop + BUTTON_PREV_Y, 12, 21, false))
 			currentPage--;
 		if(currentPage < maxPages && SWGuiUtil.HandleButton(null, (byte)2, mouseX, mouseY, guiLeft + BUTTON_PAGE_X, guiTop + BUTTON_NEXT_Y, 12, 21, false))
 			currentPage++;
+		
+		if(SWGuiUtil.HandleButton(null, (byte) 99, mouseX, mouseY, guiLeft + BUTTON_SHOW_NOMATCH_X, guiTop + BUTTON_SHOW_NOMATCH_Y, 17, 17, false))
+		{
+			showNonMatching = !showNonMatching;
+			getTeleporterInfo();
+		}
+	}
+	
+	private void teleporterListButtons(int mouseX, int mouseY, int mouseButton)
+	{
+		for(int y = 0; y < 4; y++)
+		{
+			int id = y + (currentPage * 4);
+			
+			if(id >= this.teleporterData.size())
+				break;
+			
+			TeleporterData teleporterData = this.teleporterData.get(id);
+			
+			if(tileEntity.ownId != -1 && tileEntity.targetId != teleporterData.id && tileEntity.getNetID().equals(teleporterData.netId))
+			{
+				if(SWGuiUtil.HandleButton(null, (byte)(3 + y), mouseX, mouseY, guiLeft + LIST_BUTTON_X + 1, guiTop + LIST_Y_START + 10 * y + 1, 8, 8, false))
+				{
+					PacketHandler.wrapper.sendToServer(new MessageTeleporterConnect(tileEntity.getPos(), teleporterData.id));
+				}
+			}
+		}
 	}
 	
 	@Override
 	protected void keyTyped(char typedChar, int keyCode) throws IOException 
 	{
 		guiTextField.textboxKeyTyped(typedChar, keyCode);
-		guiPassField.textboxKeyTyped(typedChar, keyCode);
+		guiNetField.textboxKeyTyped(typedChar, keyCode);
 		
-		if(keyCode == 1 || !(guiTextField.isFocused() || guiPassField.isFocused()))
+		if(keyCode == 1 || !(guiTextField.isFocused() || guiNetField.isFocused()))
 			super.keyTyped(typedChar, keyCode);
 	}
 

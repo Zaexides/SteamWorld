@@ -80,7 +80,6 @@ public class TeleporterSaveData extends WorldSavedData
 		}
 		
 		markDirty();
-		SteamWorld.logger.log(Level.INFO, "Added TP! Currently: " + pointer);
 		return pointer;
 	}
 	

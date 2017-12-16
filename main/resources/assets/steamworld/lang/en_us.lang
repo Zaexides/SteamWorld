@@ -73,13 +73,15 @@ container.steamworld.fertilizer=Fertilizer
 container.steamworld.assembler=Assembler
 container.steamworld.experience_machine=Experience Machine
 container.steamworld.energy.dynamo=Steam Dynamo
+container.steamworld.teleporter=Teleporter
 
 text.steamworld.on=On
 text.steamworld.off=Off
 text.steamworld.cropmode=Crop-Only Mode
 text.steamworld.teleporter.name=Name
-text.steamworld.teleporter.pass=Pass
+text.steamworld.teleporter.pass=Net ID
 text.steamworld.teleporter.upload=Upload
+text.steamworld.teleporter.showhide_nomatch=Show/Hide from different Network IDs
 
 fluid.steamworld.steam=Steam
 fluid.empty=Empty

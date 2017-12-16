@@ -56,6 +56,7 @@ public class MessageGetTeleporterData implements IMessage
 			TeleporterSaveData teleporterSaveData = new TeleporterSaveData(message.mapName);
 			teleporterSaveData.readFromNBT(message.teleporterSaveData);
 			teleporterSaveData.markDirty();
+			TeleporterSaveData.instance = teleporterSaveData;
 		}
 	}
 }

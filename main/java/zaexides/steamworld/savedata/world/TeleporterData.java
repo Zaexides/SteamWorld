@@ -8,7 +8,7 @@ public class TeleporterData
 	public BlockPos position;
 	public int dimension;
 	public String name;
-	public String password;
+	public String netId;
 	public boolean free = false;
 	public int id;
 	
@@ -32,7 +32,9 @@ public class TeleporterData
 			position = new BlockPos(nbt.getInteger("x"), nbt.getInteger("y"), nbt.getInteger("z"));
 			dimension = nbt.getInteger("dim");
 			name = nbt.getString("name");
-			password = nbt.getString(password);
+			netId = nbt.getString("net_id");
+			if(netId.isEmpty())
+				netId = "";
 		}
 		
 		return this;
@@ -50,7 +52,7 @@ public class TeleporterData
 			compound.setInteger("z", position.getZ());
 			compound.setInteger("dim", dimension);
 			compound.setString("name", name);
-			compound.setString("password", password);
+			compound.setString("net_id", netId);
 		}
 		
 		return compound;

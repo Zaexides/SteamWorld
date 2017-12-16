@@ -4,8 +4,18 @@ import org.apache.logging.log4j.Level;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.MoverType;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.ITickable;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
+import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fluids.Fluid;
@@ -15,12 +25,16 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.savedata.world.TeleporterData;
 import zaexides.steamworld.savedata.world.TeleporterSaveData;
+import zaexides.steamworld.utility.SteamWorldTeleporter;
 import zaexides.steamworld.utility.capability.SteamWorldFluidTank;
 
-public class TileEntityTeleporter extends SyncedTileEntity implements ICapabilityProvider
+public class TileEntityTeleporter extends SyncedTileEntity implements ICapabilityProvider, ITickable
 {
 	public int ownId = -1;
-	private int targetId = -1;
+	public int targetId = -1;
+	
+	public int cooldown = 0;
+	private final int MAX_COOLDOWN = 100;
 	
 	public SteamWorldFluidTank steamTank = new SteamWorldFluidTank(Fluid.BUCKET_VOLUME * 4, this)
 	{
@@ -53,6 +67,7 @@ public class TileEntityTeleporter extends SyncedTileEntity implements ICapabilit
 		super.readFromNBT(compound);
 		targetId = compound.getInteger("target_id");
 		ownId = compound.getInteger("own_id");
+		cooldown = compound.getInteger("cooldown");
 		steamTank.readFromNBT(compound);
 	}
 	
@@ -62,6 +77,7 @@ public class TileEntityTeleporter extends SyncedTileEntity implements ICapabilit
 		compound.setInteger("target_id", targetId);
 		compound.setInteger("own_id", ownId);
 		steamTank.writeToNBT(compound);
+		compound.setInteger("cooldown", cooldown);
 		return super.writeToNBT(compound);
 	}
 	
@@ -70,9 +86,45 @@ public class TileEntityTeleporter extends SyncedTileEntity implements ICapabilit
 		if(steamTank.getFluidAmount() < 2000 && targetId != -1)
 			return;
 		
-		if (!entity.isRiding() && !entity.isBeingRidden() && entity.isNonBoss())
+		if (cooldown <= 0 && entity instanceof EntityLivingBase && !entity.isRiding() && !entity.isBeingRidden() && entity.isNonBoss())
         {
 			TeleporterSaveData teleporterSaveData = TeleporterSaveData.get(world);
+			TeleporterData teleporterData = teleporterSaveData.getTeleporterData(targetId);
+			if(teleporterData != null && !teleporterData.free && teleporterData.netId.equals(getNetID()))
+			{
+				int currentDimension = world.provider.getDimension();
+				World targetWorld;
+				if(teleporterData.dimension != currentDimension)
+					targetWorld = world.getMinecraftServer().getWorld(teleporterData.dimension);
+				else
+					targetWorld = world;
+				
+				TileEntity otherTileEntity = targetWorld.getTileEntity(teleporterData.position);
+				if(otherTileEntity != null && otherTileEntity instanceof TileEntityTeleporter)
+				{
+					((TileEntityTeleporter)otherTileEntity).cooldown = MAX_COOLDOWN;
+					otherTileEntity.markDirty();
+					
+					if(teleporterData.dimension != currentDimension)
+					{
+						if(entity instanceof EntityPlayer)
+							world.getMinecraftServer().getPlayerList().transferPlayerToDimension((EntityPlayerMP)entity, teleporterData.dimension, new SteamWorldTeleporter((WorldServer)world, teleporterData.position));
+						else
+							world.getMinecraftServer().getPlayerList().transferEntityToWorld(entity, currentDimension, (WorldServer)world, (WorldServer)targetWorld, new SteamWorldTeleporter((WorldServer)world, teleporterData.position));
+					}
+					((EntityLivingBase)entity).setPositionAndUpdate(otherTileEntity.getPos().getX() + 0.5d, otherTileEntity.getPos().getY() + 1.5d, otherTileEntity.getPos().getZ() + 0.5d);
+					
+					if(currentDimension == 1) //The End pulls off some shenanigans, I guess?
+					{
+						((EntityLivingBase)entity).setPositionAndUpdate(entity.posX, entity.posY, entity.posZ);
+						((WorldServer)targetWorld).spawnEntity(entity);
+						((WorldServer)targetWorld).updateEntityWithOptionalForce(entity, true);
+					}
+					
+					steamTank.drain(2000, true);
+					markDirty();
+				}
+			}
         }
 	}
 	
@@ -85,12 +137,19 @@ public class TileEntityTeleporter extends SyncedTileEntity implements ICapabilit
 		return name;
 	}
 	
-	public String getPass()
+	public String getNetID()
 	{
 		String pass = "";
 		TeleporterData teleporterData = TeleporterSaveData.get(world).getTeleporterData(ownId);
 		if(teleporterData != null)
-			pass = teleporterData.password;
+			pass = teleporterData.netId;
 		return pass;
+	}
+
+	@Override
+	public void update() 
+	{
+		if(cooldown > 0)
+			cooldown--;
 	}
 }

@@ -1,5 +1,7 @@
 package zaexides.steamworld.network.messages;
 
+import org.apache.logging.log4j.Level;
+
 import io.netty.buffer.ByteBuf;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -10,6 +12,7 @@ import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.network.PacketHandler;
 import zaexides.steamworld.savedata.world.TeleporterData;
 import zaexides.steamworld.savedata.world.TeleporterSaveData;
@@ -79,12 +82,12 @@ public class MessageTeleporterRegister implements IMessage
 					data.id = teleporter.ownId;
 				}
 				data.name = message.name;
-				data.password = message.pass;
+				data.netId = message.pass;
 				teleporterSaveData.markDirty();
 				teleporter.markDirty();
-				
+								
 				NBTTagCompound compound = new NBTTagCompound();
-				PacketHandler.wrapper.sendToAll(new MessageGetTeleporterData(teleporterSaveData.writeToNBT(compound), teleporterSaveData.mapName));;
+				PacketHandler.wrapper.sendToAll(new MessageGetTeleporterData(teleporterSaveData.writeToNBT(compound), teleporterSaveData.mapName));
 			}
 		}
 	}
