@@ -43,9 +43,15 @@ public class BlockAssembler extends BlockMachine implements ITileEntityProvider
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) 
 	{
-		TileEntityAssembler swFurnace = new TileEntityAssembler();
-		swFurnace.SetStats(efficiency);
-		return swFurnace;
+		TileEntityAssembler assembler = new TileEntityAssembler();
+		setMachineStats(assembler);
+		return assembler;
+	}
+	
+	@Override
+	public void setMachineStats(TileEntity tileEntity) 
+	{
+		((TileEntityAssembler)tileEntity).SetStats(efficiency);
 	}
 	
 	@Override

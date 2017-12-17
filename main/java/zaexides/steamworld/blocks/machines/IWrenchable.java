@@ -1,4 +1,4 @@
-package zaexides.steamworld.utility;
+package zaexides.steamworld.blocks.machines;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;

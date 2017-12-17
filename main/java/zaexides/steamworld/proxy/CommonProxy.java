@@ -24,7 +24,6 @@ import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.gui.GuiHandler;
 import zaexides.steamworld.items.ItemDust;
 import zaexides.steamworld.items.SWItemNugget;
-import zaexides.steamworld.items.SWItemVariant;
 import zaexides.steamworld.network.PacketHandler;
 import zaexides.steamworld.recipe.handling.DustRecipeHandler;
 import zaexides.steamworld.recipe.handling.OreDictionaryScanner;

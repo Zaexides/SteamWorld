@@ -43,9 +43,15 @@ public class BlockExperienceMachine extends BlockMachine implements ITileEntityP
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) 
 	{
-		TileEntityExperienceMachine swFurnace = new TileEntityExperienceMachine();
-		swFurnace.SetStats(efficiency);
-		return swFurnace;
+		TileEntityExperienceMachine experienceMachine = new TileEntityExperienceMachine();
+		setMachineStats(experienceMachine);
+		return experienceMachine;
+	}
+	
+	@Override
+	public void setMachineStats(TileEntity tileEntity) 
+	{
+		((TileEntityExperienceMachine)tileEntity).SetStats(efficiency);
 	}
 	
 	@Override

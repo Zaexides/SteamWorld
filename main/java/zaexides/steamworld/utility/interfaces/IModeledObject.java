@@ -1,4 +1,4 @@
-package zaexides.steamworld.utility;
+package zaexides.steamworld.utility.interfaces;
 
 public interface IModeledObject 
 {

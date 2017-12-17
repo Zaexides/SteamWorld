@@ -22,8 +22,8 @@ import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.BlockSteam;
 import zaexides.steamworld.gui.GuiHandler;
 import zaexides.steamworld.models.BakedModelLoader;
-import zaexides.steamworld.utility.IItemModeledObject;
-import zaexides.steamworld.utility.IModeledObject;
+import zaexides.steamworld.utility.interfaces.IItemModeledObject;
+import zaexides.steamworld.utility.interfaces.IModeledObject;
 
 public class ClientProxy extends CommonProxy
 {

@@ -29,6 +29,7 @@ import net.minecraftforge.fml.client.config.GuiUtils;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.network.PacketHandler;
 import zaexides.steamworld.network.messages.MessageGuiButton;
+import zaexides.steamworld.utility.interfaces.IGuiContainerUtil;
 
 public class SWGuiUtil
 {

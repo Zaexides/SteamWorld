@@ -1,4 +1,4 @@
-package zaexides.steamworld.utility;
+package zaexides.steamworld.utility.interfaces;
 
 import net.minecraft.item.ItemStack;
 

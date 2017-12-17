@@ -42,11 +42,10 @@ import zaexides.steamworld.savedata.world.TeleporterData;
 import zaexides.steamworld.savedata.world.TeleporterSaveData;
 import zaexides.steamworld.te.TileEntityFisher;
 import zaexides.steamworld.te.TileEntityTeleporter;
-import zaexides.steamworld.utility.IMetaName;
-import zaexides.steamworld.utility.IModeledObject;
-import zaexides.steamworld.utility.IOreDictionaryRegisterable;
-import zaexides.steamworld.utility.IWrenchable;
 import zaexides.steamworld.utility.SWMaterials;
+import zaexides.steamworld.utility.interfaces.IMetaName;
+import zaexides.steamworld.utility.interfaces.IModeledObject;
+import zaexides.steamworld.utility.interfaces.IOreDictionaryRegisterable;
 
 public class BlockMachineVariant extends Block implements IMetaName, IModeledObject, IWrenchable, ITileEntityProvider
 {

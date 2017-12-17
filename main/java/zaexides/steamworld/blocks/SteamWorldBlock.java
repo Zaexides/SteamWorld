@@ -14,7 +14,7 @@ import zaexides.steamworld.BlockInitializer;
 import zaexides.steamworld.ItemInitializer;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
-import zaexides.steamworld.utility.IModeledObject;
+import zaexides.steamworld.utility.interfaces.IModeledObject;
 
 public class SteamWorldBlock extends Block implements IModeledObject
 {

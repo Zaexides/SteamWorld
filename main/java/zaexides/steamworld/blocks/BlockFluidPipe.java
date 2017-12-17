@@ -29,9 +29,9 @@ import zaexides.steamworld.ItemInitializer;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.models.PipeBakedModel;
-import zaexides.steamworld.utility.IItemModeledObject;
-import zaexides.steamworld.utility.IModeledObject;
 import zaexides.steamworld.utility.UnlistedPropertyCanConnect;
+import zaexides.steamworld.utility.interfaces.IItemModeledObject;
+import zaexides.steamworld.utility.interfaces.IModeledObject;
 
 public class BlockFluidPipe extends Block implements IItemModeledObject, IModeledObject
 {

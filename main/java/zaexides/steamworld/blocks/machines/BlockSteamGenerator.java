@@ -103,8 +103,14 @@ public class BlockSteamGenerator extends BlockMachine implements ITileEntityProv
 	public TileEntity createNewTileEntity(World worldIn, int meta)
 	{
 		TileEntity tEntity = new TileEntitySteamGenerator();
-		((TileEntitySteamGenerator)tEntity).SetStats(capacity, speed);
+		setMachineStats(tEntity);
 		return tEntity;
+	}
+	
+	@Override
+	public void setMachineStats(TileEntity tileEntity) 
+	{
+		((TileEntitySteamGenerator)tileEntity).SetStats(capacity, speed);
 	}
 	
 	@Override

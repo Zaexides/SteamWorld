@@ -26,7 +26,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import zaexides.steamworld.blocks.BlockAncite;
 import zaexides.steamworld.blocks.BlockSteam;
 import zaexides.steamworld.fluids.FluidSteam;
-import zaexides.steamworld.items.SWItemVariant;
+import zaexides.steamworld.items.ItemDust;
 import zaexides.steamworld.recipe.handling.AssemblyRecipeHandler;
 import zaexides.steamworld.te.TileEntityAssembler;
 import zaexides.steamworld.te.TileEntityDrain;
@@ -45,8 +45,8 @@ import zaexides.steamworld.te.TileEntityTeleporter;
 import zaexides.steamworld.te.TileEntityValve;
 import zaexides.steamworld.te.energy.TileEntityDynamo;
 import zaexides.steamworld.te.energy.TileEntitySteamGeneratorElectric;
-import zaexides.steamworld.utility.IModeledObject;
-import zaexides.steamworld.utility.IOreDictionaryRegisterable;
+import zaexides.steamworld.utility.interfaces.IModeledObject;
+import zaexides.steamworld.utility.interfaces.IOreDictionaryRegisterable;
 import zaexides.steamworld.worldgen.DwarvenOutpostGenerator;
 import zaexides.steamworld.worldgen.DwarvenStructureGenerator;
 import zaexides.steamworld.worldgen.WorldGenerationOres;
@@ -112,10 +112,10 @@ public class RegistryHandler
 	{
 		GameRegistry.addSmelting(BlockInitializer.ORE_STEAITE, new ItemStack(ItemInitializer.INGOT_STEAITE), 1.2f);
 		
-		GameRegistry.addSmelting(new ItemStack(ItemInitializer.METAL_DUST, 1, SWItemVariant.EnumVarietyMaterial.IRON.getMeta()), new ItemStack(Items.IRON_INGOT), FurnaceRecipes.instance().getSmeltingExperience(new ItemStack(Items.IRON_INGOT)));
-		GameRegistry.addSmelting(new ItemStack(ItemInitializer.METAL_DUST, 1, SWItemVariant.EnumVarietyMaterial.GOLD.getMeta()), new ItemStack(Items.GOLD_INGOT), FurnaceRecipes.instance().getSmeltingExperience(new ItemStack(Items.GOLD_INGOT)));
-		GameRegistry.addSmelting(new ItemStack(ItemInitializer.METAL_DUST, 1, SWItemVariant.EnumVarietyMaterial.STEAITE.getMeta()), new ItemStack(ItemInitializer.INGOT_STEAITE), FurnaceRecipes.instance().getSmeltingExperience(new ItemStack(ItemInitializer.INGOT_STEAITE)));
-		GameRegistry.addSmelting(new ItemStack(ItemInitializer.METAL_DUST, 1, SWItemVariant.EnumVarietyMaterial.ANCITE.getMeta()), new ItemStack(ItemInitializer.INGOT_ANCITE), 1.5f);
+		GameRegistry.addSmelting(new ItemStack(ItemInitializer.METAL_DUST, 1, ItemDust.EnumVarietyMaterial.IRON.getMeta()), new ItemStack(Items.IRON_INGOT), FurnaceRecipes.instance().getSmeltingExperience(new ItemStack(Items.IRON_INGOT)));
+		GameRegistry.addSmelting(new ItemStack(ItemInitializer.METAL_DUST, 1, ItemDust.EnumVarietyMaterial.GOLD.getMeta()), new ItemStack(Items.GOLD_INGOT), FurnaceRecipes.instance().getSmeltingExperience(new ItemStack(Items.GOLD_INGOT)));
+		GameRegistry.addSmelting(new ItemStack(ItemInitializer.METAL_DUST, 1, ItemDust.EnumVarietyMaterial.STEAITE.getMeta()), new ItemStack(ItemInitializer.INGOT_STEAITE), FurnaceRecipes.instance().getSmeltingExperience(new ItemStack(ItemInitializer.INGOT_STEAITE)));
+		GameRegistry.addSmelting(new ItemStack(ItemInitializer.METAL_DUST, 1, ItemDust.EnumVarietyMaterial.ANCITE.getMeta()), new ItemStack(ItemInitializer.INGOT_ANCITE), 1.5f);
 	}
 	
 	public static void RegisterTileEntities()

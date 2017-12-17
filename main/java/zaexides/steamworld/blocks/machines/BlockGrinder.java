@@ -43,9 +43,15 @@ public class BlockGrinder extends BlockMachine implements ITileEntityProvider
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) 
 	{
-		TileEntityGrinder swFurnace = new TileEntityGrinder();
-		swFurnace.SetStats(amount);
-		return swFurnace;
+		TileEntityGrinder grinder = new TileEntityGrinder();
+		setMachineStats(grinder);
+		return grinder;
+	}
+	
+	@Override
+	public void setMachineStats(TileEntity tileEntity) 
+	{
+		((TileEntityGrinder)tileEntity).SetStats(amount);
 	}
 	
 	@Override

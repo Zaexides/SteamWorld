@@ -3,9 +3,8 @@
     
     "pattern":
     [
-        "   ",
-        "sgs",
-        "aaa"
+        "asa",
+        "asa"
     ],
     
     "key":
@@ -13,10 +12,6 @@
         "s":
         {
             "item": "steamworld:ingot_steaite"
-        },
-        "g":
-        {
-            "item": "steamworld:grinder_steaite"
         },
         "a":
         {
@@ -26,7 +21,8 @@
     
     "result":
     {
-        "item": "steamworld:grinder_ancite",
+        "item": "steamworld:upgrade",
+        "data": 0,
         "count": 1
     }
 }

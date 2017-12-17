@@ -1,0 +1,30 @@
+{
+	"parent": "steamworld:story/otherworldly_shard",
+	
+	"display":
+	{
+	    "icon": { "item": "steamworld:upgrade", "data": 1 },
+	    "title": { "translate": "advancement.steamworld.upgrade_from_another_world.title" },
+	    "description": { "translate": "advancement.steamworld.upgrade_from_another_world.desc" }
+	},
+	
+	"criteria":
+	{
+	   "crafted_upgrade":
+	   {
+	       "trigger": "minecraft:inventory_changed",
+	       "conditions":
+	       {
+	           "items": 
+	           [
+	               { "item": "steamworld:upgrade", "data": 1 }
+	           ]
+	       }
+	   }
+	},
+	
+	"requirements":
+	[
+	   ["crafted_upgrade"]
+	]
+}

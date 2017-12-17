@@ -2,14 +2,14 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "steamworld:furnace_ancite"
+      "steamworld:upgrade_ancite"
     ]
   },
   "criteria": {
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "steamworld:furnace_ancite"
+        "recipe": "steamworld:upgrade_ancite"
       }
     },
     "has_ancite": {

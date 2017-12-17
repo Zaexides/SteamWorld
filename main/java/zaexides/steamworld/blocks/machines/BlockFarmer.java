@@ -43,9 +43,15 @@ public class BlockFarmer extends BlockMachine implements ITileEntityProvider
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) 
 	{
-		TileEntityFarmer swFurnace = new TileEntityFarmer();
-		swFurnace.SetStats(amount);
-		return swFurnace;
+		TileEntityFarmer farmer = new TileEntityFarmer();
+		setMachineStats(farmer);
+		return farmer;
+	}
+	
+	@Override
+	public void setMachineStats(TileEntity tileEntity)
+	{
+		((TileEntityFarmer)tileEntity).SetStats(amount);
 	}
 	
 	@Override

@@ -23,6 +23,7 @@ import zaexides.steamworld.blocks.machines.BlockFertilizer;
 import zaexides.steamworld.blocks.machines.BlockFisher;
 import zaexides.steamworld.blocks.machines.BlockGrinder;
 import zaexides.steamworld.blocks.machines.BlockLumber;
+import zaexides.steamworld.blocks.machines.BlockMachine;
 import zaexides.steamworld.blocks.machines.BlockMachineVariant;
 import zaexides.steamworld.blocks.machines.BlockNetherAccelerator;
 import zaexides.steamworld.blocks.machines.BlockSWFurnace;
@@ -49,40 +50,41 @@ public class BlockInitializer
 	
 	public static final BlockNetherAccelerator BLOCK_NETHER_ACCELERATOR = new BlockNetherAccelerator("nether_accelerator", SWMaterials.ENDRITCH, 5.0f);
 	
-	public static final BlockSteamGenerator GENERATOR_STEAITE = new BlockSteamGenerator("generator_steaite", Material.IRON, 3.5f, 4, 4);
-	public static final BlockSteamGenerator GENERATOR_ANCITE = new BlockSteamGenerator("generator_ancite", Material.IRON, 4.5f, 8, 16);
-	public static final BlockSteamGenerator GENERATOR_ENDRITCH = new BlockSteamGenerator("generator_endritch", SWMaterials.ENDRITCH, 5.5f, 16, 32);
+	public static final BlockMachine GENERATOR_ENDRITCH = new BlockSteamGenerator("generator_endritch", SWMaterials.ENDRITCH, 5.5f, 16, 32);
+	public static final BlockMachine GENERATOR_ANCITE = new BlockSteamGenerator("generator_ancite", Material.IRON, 4.5f, 8, 16).SetUpgradeData(GENERATOR_ENDRITCH, (byte)1);
+	public static final BlockMachine GENERATOR_STEAITE = new BlockSteamGenerator("generator_steaite", Material.IRON, 3.5f, 4, 4).SetUpgradeData(GENERATOR_ANCITE, (byte)0);
+	
 	public static final BlockSteamGeneratorNether GENERATOR_NETHER = new BlockSteamGeneratorNether("generator_nether", Material.ROCK, 4.0f);
 	
-	public static final BlockExperienceMachine EXPERIENCE_MACHINE_ANCITE = new BlockExperienceMachine("experience_machine_ancite", 4.5f, 1);
-	public static final BlockExperienceMachine EXPERIENCE_MACHINE_ENDRITCH = new BlockExperienceMachine("experience_machine_endritch", 5.5f, 2);
+	public static final BlockMachine EXPERIENCE_MACHINE_ENDRITCH = new BlockExperienceMachine("experience_machine_endritch", 5.5f, 2);
+	public static final BlockMachine EXPERIENCE_MACHINE_ANCITE = new BlockExperienceMachine("experience_machine_ancite", 4.5f, 1).SetUpgradeData(EXPERIENCE_MACHINE_ENDRITCH, (byte)1);
 	
-	public static final BlockFertilizer FERTILIZER_STEAITE = new BlockFertilizer("fertilizer_steaite", 3.5f, 1);
-	public static final BlockFertilizer FERTILIZER_ANCITE = new BlockFertilizer("fertilizer_ancite", 4.5f, 2);
-	public static final BlockFertilizer FERTILIZER_ENDRITCH = new BlockFertilizer("fertilizer_endritch", 5.5f, 3);
+	public static final BlockMachine FERTILIZER_ENDRITCH = new BlockFertilizer("fertilizer_endritch", 5.5f, 3);
+	public static final BlockMachine FERTILIZER_ANCITE = new BlockFertilizer("fertilizer_ancite", 4.5f, 2).SetUpgradeData(FERTILIZER_ENDRITCH, (byte)1);
+	public static final BlockMachine FERTILIZER_STEAITE = new BlockFertilizer("fertilizer_steaite", 3.5f, 1).SetUpgradeData(FERTILIZER_ANCITE, (byte)0);
 	
-	public static final BlockSWFurnace FURNACE_STEAITE = new BlockSWFurnace("furnace_steaite", 3.5f, 1);
-	public static final BlockSWFurnace FURNACE_ANCITE = new BlockSWFurnace("furnace_ancite", 4.5f, 2);
-	public static final BlockSWFurnace FURNACE_ENDRITCH = new BlockSWFurnace("furnace_endritch", 5.5f, 3);
+	public static final BlockMachine FURNACE_ENDRITCH = new BlockSWFurnace("furnace_endritch", 5.5f, 3);
+	public static final BlockMachine FURNACE_ANCITE = new BlockSWFurnace("furnace_ancite", 4.5f, 2).SetUpgradeData(FURNACE_ENDRITCH, (byte)1);
+	public static final BlockMachine FURNACE_STEAITE = new BlockSWFurnace("furnace_steaite", 3.5f, 1).SetUpgradeData(FURNACE_ANCITE, (byte)0);
 	
-	public static final BlockAssembler ASSEMBLER_ANCITE = new BlockAssembler("assembler_ancite", 4.5f, 1);
-	public static final BlockAssembler ASSEMBLER_ENDRITCH = new BlockAssembler("assembler_endritch", 5.5f, 2);
+	public static final BlockMachine ASSEMBLER_ENDRITCH = new BlockAssembler("assembler_endritch", 5.5f, 2);
+	public static final BlockMachine ASSEMBLER_ANCITE = new BlockAssembler("assembler_ancite", 4.5f, 1).SetUpgradeData(ASSEMBLER_ENDRITCH, (byte)1);
+
+	public static final BlockMachine GRINDER_ENDRITCH = new BlockGrinder("grinder_endritch", 5.5f, 3);
+	public static final BlockMachine GRINDER_ANCITE = new BlockGrinder("grinder_ancite", 4.5f, 2).SetUpgradeData(GRINDER_ENDRITCH, (byte)1);
+	public static final BlockMachine GRINDER_STEAITE = new BlockGrinder("grinder_steaite", 3.5f, 1).SetUpgradeData(GRINDER_ANCITE, (byte)0);
 	
-	public static final BlockGrinder GRINDER_STEAITE = new BlockGrinder("grinder_steaite", 3.5f, 1);
-	public static final BlockGrinder GRINDER_ANCITE = new BlockGrinder("grinder_ancite", 4.5f, 2);
-	public static final BlockGrinder GRINDER_ENDRITCH = new BlockGrinder("grinder_endritch", 5.5f, 3);
+	public static final BlockMachine FISHER_ENDRITCH = new BlockFisher("fisher_endritch", 5.5f, 3);
+	public static final BlockMachine FISHER_ANCITE = new BlockFisher("fisher_ancite", 4.5f, 2).SetUpgradeData(FISHER_ENDRITCH, (byte)1);
+	public static final BlockMachine FISHER_STEAITE = new BlockFisher("fisher_steaite", 3.5f, 1).SetUpgradeData(FISHER_ANCITE, (byte)0);
 	
-	public static final BlockFisher FISHER_STEAITE = new BlockFisher("fisher_steaite", 3.5f, 1);
-	public static final BlockFisher FISHER_ANCITE = new BlockFisher("fisher_ancite", 4.5f, 2);
-	public static final BlockFisher FISHER_ENDRITCH = new BlockFisher("fisher_endritch", 5.5f, 3);
+	public static final BlockMachine FARMER_ENDRITCH = new BlockFarmer("farmer_endritch", 5.5f, 3);
+	public static final BlockMachine FARMER_ANCITE = new BlockFarmer("farmer_ancite", 4.5f, 2).SetUpgradeData(FARMER_ENDRITCH, (byte)1);
+	public static final BlockMachine FARMER_STEAITE = new BlockFarmer("farmer_steaite", 3.5f, 1).SetUpgradeData(FARMER_ANCITE, (byte)0);
 	
-	public static final BlockFarmer FARMER_STEAITE = new BlockFarmer("farmer_steaite", 3.5f, 1);
-	public static final BlockFarmer FARMER_ANCITE = new BlockFarmer("farmer_ancite", 4.5f, 2);
-	public static final BlockFarmer FARMER_ENDRITCH = new BlockFarmer("farmer_endritch", 5.5f, 3);
-	
-	public static final BlockLumber LUMBER_STEAITE = new BlockLumber("lumber_steaite", 3.5f, 1);
-	public static final BlockLumber LUMBER_ANCITE = new BlockLumber("lumber_ancite", 4.5f, 2);
-	public static final BlockLumber LUMBER_ENDRITCH = new BlockLumber("lumber_endritch", 5.5f, 3);
+	public static final BlockMachine LUMBER_ENDRITCH = new BlockLumber("lumber_endritch", 5.5f, 3);
+	public static final BlockMachine LUMBER_ANCITE = new BlockLumber("lumber_ancite", 4.5f, 2).SetUpgradeData(LUMBER_ENDRITCH, (byte)1);
+	public static final BlockMachine LUMBER_STEAITE = new BlockLumber("lumber_steaite", 3.5f, 1).SetUpgradeData(LUMBER_ANCITE, (byte)0);
 	
 	public static final BlockMachineVariant MACHINE_VARIANT = new BlockMachineVariant("generic_machine", 4.5f);
 	

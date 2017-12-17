@@ -25,9 +25,9 @@ import zaexides.steamworld.ItemInitializer;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.item.ItemBlockVariant;
-import zaexides.steamworld.utility.IMetaName;
-import zaexides.steamworld.utility.IModeledObject;
-import zaexides.steamworld.utility.IOreDictionaryRegisterable;
+import zaexides.steamworld.utility.interfaces.IMetaName;
+import zaexides.steamworld.utility.interfaces.IModeledObject;
+import zaexides.steamworld.utility.interfaces.IOreDictionaryRegisterable;
 
 public class BlockDecorative extends Block implements IMetaName, IModeledObject
 {

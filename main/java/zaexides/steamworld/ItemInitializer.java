@@ -8,10 +8,10 @@ import net.minecraft.item.Item;
 import scala.reflect.internal.Trees.New;
 import zaexides.steamworld.items.ItemCrystal;
 import zaexides.steamworld.items.ItemDust;
+import zaexides.steamworld.items.ItemUpgrade;
 import zaexides.steamworld.items.ItemWrench;
 import zaexides.steamworld.items.SWItemIngot;
 import zaexides.steamworld.items.SWItemNugget;
-import zaexides.steamworld.items.SWItemVariant;
 import zaexides.steamworld.items.SteamWorldItem;
 
 public class ItemInitializer 
@@ -28,4 +28,5 @@ public class ItemInitializer
 	
 	public static final ItemDust METAL_DUST = new ItemDust("dust");
 	public static final SWItemNugget ITEM_NUGGET = new SWItemNugget("nugget");
+	public static final ItemUpgrade UPGRADE = new ItemUpgrade("upgrade");
 }

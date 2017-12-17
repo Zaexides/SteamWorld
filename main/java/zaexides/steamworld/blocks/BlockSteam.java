@@ -24,7 +24,7 @@ import zaexides.steamworld.ItemInitializer;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.fluids.FluidSteam;
-import zaexides.steamworld.utility.IModeledObject;
+import zaexides.steamworld.utility.interfaces.IModeledObject;
 
 public class BlockSteam extends BlockFluidFinite implements IModeledObject
 {

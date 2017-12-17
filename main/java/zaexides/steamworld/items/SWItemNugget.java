@@ -9,9 +9,8 @@ import net.minecraft.util.NonNullList;
 import net.minecraftforge.oredict.OreDictionary;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.BlockAncite;
-import zaexides.steamworld.items.SWItemVariant.EnumVarietyMaterial;
-import zaexides.steamworld.utility.IModeledObject;
-import zaexides.steamworld.utility.IOreDictionaryRegisterable;
+import zaexides.steamworld.utility.interfaces.IModeledObject;
+import zaexides.steamworld.utility.interfaces.IOreDictionaryRegisterable;
 
 public class SWItemNugget extends SteamWorldItem implements IModeledObject, IOreDictionaryRegisterable
 {
@@ -63,7 +62,7 @@ public class SWItemNugget extends SteamWorldItem implements IModeledObject, IOre
 	@Override
 	public void RegisterModels()
 	{
-		for(int i = 0; i < BlockAncite.EnumType.values().length; i++)
+		for(int i = 0; i < EnumVarietyMaterial.values().length; i++)
 		{
 			SteamWorld.proxy.RegisterItemRenderers(this, i, "inventory", name + "_" + EnumVarietyMaterial.values()[i].getName());
 		}

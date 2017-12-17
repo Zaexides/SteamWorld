@@ -3,7 +3,7 @@ package zaexides.steamworld.blocks.item;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import zaexides.steamworld.utility.IMetaName;
+import zaexides.steamworld.utility.interfaces.IMetaName;
 
 public class ItemBlockVariant extends ItemBlock
 {

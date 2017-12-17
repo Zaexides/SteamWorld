@@ -15,6 +15,8 @@ import zaexides.steamworld.BlockInitializer;
 import zaexides.steamworld.ItemInitializer;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.BlockDecorative;
+import zaexides.steamworld.blocks.machines.BlockMachineVariant;
+import zaexides.steamworld.items.ItemUpgrade;
 import zaexides.steamworld.items.SWItemNugget;
 
 public class AssemblyRecipeHandler 
@@ -45,89 +47,8 @@ public class AssemblyRecipeHandler
 				new ItemStack(ItemInitializer.ITEM_NUGGET, 1, SWItemNugget.EnumVarietyMaterial.ANCITE.getMeta()), new ItemStack(Items.CHORUS_FRUIT)
 				);
 		
-		AssemblyRecipe recipeEndritchGenerator = new AssemblyRecipe(new ItemStack(BlockInitializer.GENERATOR_ENDRITCH), 600,
-				new ItemStack(BlockInitializer.GENERATOR_ANCITE),
-				new ItemStack(BlockInitializer.BLOCK_DECORATIVE, 1, BlockDecorative.EnumType.ENDRITCH_BLOCK.getMeta()),
-				ItemStack.EMPTY,
-				new ItemStack(Items.ENDER_EYE),
-				new ItemStack(BlockInitializer.BLOCK_DECORATIVE, 1, BlockDecorative.EnumType.ENDRITCH_BLOCK.getMeta()),
-				ItemStack.EMPTY
-				);
-		
 		AssemblyRecipe recipeEndritchValve = new AssemblyRecipe(new ItemStack(BlockInitializer.BLOCK_VALVE_ENDRITCH), 600,
 				new ItemStack(BlockInitializer.BLOCK_VALVE),
-				new ItemStack(BlockInitializer.BLOCK_DECORATIVE, 1, BlockDecorative.EnumType.ENDRITCH_BLOCK.getMeta()),
-				ItemStack.EMPTY,
-				new ItemStack(Items.ENDER_EYE),
-				new ItemStack(BlockInitializer.BLOCK_DECORATIVE, 1, BlockDecorative.EnumType.ENDRITCH_BLOCK.getMeta()),
-				ItemStack.EMPTY
-				);
-		
-		AssemblyRecipe recipeEndritchFertilizer = new AssemblyRecipe(new ItemStack(BlockInitializer.FERTILIZER_ENDRITCH), 600,
-				new ItemStack(BlockInitializer.FERTILIZER_ANCITE),
-				new ItemStack(BlockInitializer.BLOCK_DECORATIVE, 1, BlockDecorative.EnumType.ENDRITCH_BLOCK.getMeta()),
-				ItemStack.EMPTY,
-				new ItemStack(Items.ENDER_EYE),
-				new ItemStack(BlockInitializer.BLOCK_DECORATIVE, 1, BlockDecorative.EnumType.ENDRITCH_BLOCK.getMeta()),
-				ItemStack.EMPTY
-				);
-		
-		AssemblyRecipe recipeEndritchFarmer = new AssemblyRecipe(new ItemStack(BlockInitializer.FARMER_ENDRITCH), 600,
-				new ItemStack(BlockInitializer.FARMER_ANCITE),
-				new ItemStack(BlockInitializer.BLOCK_DECORATIVE, 1, BlockDecorative.EnumType.ENDRITCH_BLOCK.getMeta()),
-				ItemStack.EMPTY,
-				new ItemStack(Items.ENDER_EYE),
-				new ItemStack(BlockInitializer.BLOCK_DECORATIVE, 1, BlockDecorative.EnumType.ENDRITCH_BLOCK.getMeta()),
-				ItemStack.EMPTY
-				);
-		
-		AssemblyRecipe recipeEndritchLumber = new AssemblyRecipe(new ItemStack(BlockInitializer.LUMBER_ENDRITCH), 600,
-				new ItemStack(BlockInitializer.LUMBER_ANCITE),
-				new ItemStack(BlockInitializer.BLOCK_DECORATIVE, 1, BlockDecorative.EnumType.ENDRITCH_BLOCK.getMeta()),
-				ItemStack.EMPTY,
-				new ItemStack(Items.ENDER_EYE),
-				new ItemStack(BlockInitializer.BLOCK_DECORATIVE, 1, BlockDecorative.EnumType.ENDRITCH_BLOCK.getMeta()),
-				ItemStack.EMPTY
-				);
-		
-		AssemblyRecipe recipeEndritchFisher = new AssemblyRecipe(new ItemStack(BlockInitializer.FISHER_ENDRITCH), 600,
-				new ItemStack(BlockInitializer.FISHER_ANCITE),
-				new ItemStack(BlockInitializer.BLOCK_DECORATIVE, 1, BlockDecorative.EnumType.ENDRITCH_BLOCK.getMeta()),
-				ItemStack.EMPTY,
-				new ItemStack(Items.ENDER_EYE),
-				new ItemStack(BlockInitializer.BLOCK_DECORATIVE, 1, BlockDecorative.EnumType.ENDRITCH_BLOCK.getMeta()),
-				ItemStack.EMPTY
-				);
-		
-		AssemblyRecipe recipeEndritchGrinder = new AssemblyRecipe(new ItemStack(BlockInitializer.GRINDER_ENDRITCH), 600,
-				new ItemStack(BlockInitializer.GRINDER_ANCITE),
-				new ItemStack(BlockInitializer.BLOCK_DECORATIVE, 1, BlockDecorative.EnumType.ENDRITCH_BLOCK.getMeta()),
-				ItemStack.EMPTY,
-				new ItemStack(Items.ENDER_EYE),
-				new ItemStack(BlockInitializer.BLOCK_DECORATIVE, 1, BlockDecorative.EnumType.ENDRITCH_BLOCK.getMeta()),
-				ItemStack.EMPTY
-				);
-		
-		AssemblyRecipe recipeEndritchFurnace = new AssemblyRecipe(new ItemStack(BlockInitializer.FURNACE_ENDRITCH), 600,
-				new ItemStack(BlockInitializer.FURNACE_ANCITE),
-				new ItemStack(BlockInitializer.BLOCK_DECORATIVE, 1, BlockDecorative.EnumType.ENDRITCH_BLOCK.getMeta()),
-				ItemStack.EMPTY,
-				new ItemStack(Items.ENDER_EYE),
-				new ItemStack(BlockInitializer.BLOCK_DECORATIVE, 1, BlockDecorative.EnumType.ENDRITCH_BLOCK.getMeta()),
-				ItemStack.EMPTY
-				);
-		
-		AssemblyRecipe recipeEndritchAssembler = new AssemblyRecipe(new ItemStack(BlockInitializer.ASSEMBLER_ENDRITCH), 600,
-				new ItemStack(BlockInitializer.ASSEMBLER_ANCITE),
-				new ItemStack(BlockInitializer.BLOCK_DECORATIVE, 1, BlockDecorative.EnumType.ENDRITCH_BLOCK.getMeta()),
-				ItemStack.EMPTY,
-				new ItemStack(Items.ENDER_EYE),
-				new ItemStack(BlockInitializer.BLOCK_DECORATIVE, 1, BlockDecorative.EnumType.ENDRITCH_BLOCK.getMeta()),
-				ItemStack.EMPTY
-				);
-		
-		AssemblyRecipe recipeEndritchExperienceMachine = new AssemblyRecipe(new ItemStack(BlockInitializer.EXPERIENCE_MACHINE_ENDRITCH), 600,
-				new ItemStack(BlockInitializer.EXPERIENCE_MACHINE_ANCITE),
 				new ItemStack(BlockInitializer.BLOCK_DECORATIVE, 1, BlockDecorative.EnumType.ENDRITCH_BLOCK.getMeta()),
 				ItemStack.EMPTY,
 				new ItemStack(Items.ENDER_EYE),
@@ -141,6 +62,24 @@ public class AssemblyRecipeHandler
 				ItemStack.EMPTY,
 				new ItemStack(Items.ENDER_PEARL),
 				new ItemStack(Items.ENDER_PEARL),
+				ItemStack.EMPTY
+				);
+		
+		AssemblyRecipe recipeEndritchUpgrade = new AssemblyRecipe(new ItemStack(ItemInitializer.UPGRADE, 1, ItemUpgrade.EnumUpgradeType.ENDRITCH.getMeta()), 600,
+				new ItemStack(BlockInitializer.BLOCK_DECORATIVE, 1, BlockDecorative.EnumType.ENDRITCH_BLOCK.getMeta()),
+				new ItemStack(Items.ENDER_EYE),
+				new ItemStack(ItemInitializer.ITEM_NUGGET, 1, SWItemNugget.EnumVarietyMaterial.ANCITE.getMeta()),
+				new ItemStack(BlockInitializer.BLOCK_DECORATIVE, 1, BlockDecorative.EnumType.ENDRITCH_BLOCK.getMeta()),
+				new ItemStack(Items.ENDER_EYE),
+				new ItemStack(ItemInitializer.ITEM_NUGGET, 1, SWItemNugget.EnumVarietyMaterial.ANCITE.getMeta())
+				);
+		
+		AssemblyRecipe recipeTeleporter = new AssemblyRecipe(new ItemStack(BlockInitializer.MACHINE_VARIANT, 1, BlockMachineVariant.EnumType.TELEPORTER.getMeta()), 800,
+				new ItemStack(Items.ENDER_PEARL),
+				new ItemStack(BlockInitializer.BLOCK_DECORATIVE, 1, BlockDecorative.EnumType.ENDRITCH_BLOCK.getMeta()),
+				new ItemStack(ItemInitializer.ITEM_NUGGET, 1, SWItemNugget.EnumVarietyMaterial.EMERALD.getMeta()),
+				ItemStack.EMPTY,
+				ItemStack.EMPTY,
 				ItemStack.EMPTY
 				);
 		

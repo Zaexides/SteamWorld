@@ -18,7 +18,6 @@ import net.minecraft.world.World;
 import zaexides.steamworld.blocks.SteamWorldBlock;
 import zaexides.steamworld.te.TileEntityDrain;
 import zaexides.steamworld.te.TileEntityFaucet;
-import zaexides.steamworld.utility.IWrenchable;
 
 public class BlockFaucet extends SteamWorldBlock implements ITileEntityProvider, IWrenchable
 {

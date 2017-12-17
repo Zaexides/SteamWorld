@@ -27,8 +27,8 @@ import zaexides.steamworld.network.messages.MessageTeleporterRegister;
 import zaexides.steamworld.savedata.world.TeleporterData;
 import zaexides.steamworld.savedata.world.TeleporterSaveData;
 import zaexides.steamworld.te.TileEntityTeleporter;
-import zaexides.steamworld.utility.IGuiContainerUtil;
 import zaexides.steamworld.utility.SWGuiUtil;
+import zaexides.steamworld.utility.interfaces.IGuiContainerUtil;
 
 public class GuiTeleporter extends GuiContainer implements IGuiContainerUtil
 {
