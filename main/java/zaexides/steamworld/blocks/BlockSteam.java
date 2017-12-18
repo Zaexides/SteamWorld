@@ -19,11 +19,10 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import zaexides.steamworld.BlockInitializer;
-import zaexides.steamworld.ItemInitializer;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.fluids.FluidSteam;
+import zaexides.steamworld.items.ItemInitializer;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
 
 public class BlockSteam extends BlockFluidFinite implements IModeledObject

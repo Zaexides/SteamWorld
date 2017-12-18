@@ -36,6 +36,8 @@ public class SteamWorld
     @Mod.Instance(ModInfo.MODID)
     public static SteamWorld singleton;
     
+    public static MiscEventHandler eventHandler = new MiscEventHandler();
+    
     static
     {
     	FluidRegistry.enableUniversalBucket();

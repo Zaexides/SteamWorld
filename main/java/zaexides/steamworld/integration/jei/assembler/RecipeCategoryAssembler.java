@@ -11,8 +11,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import zaexides.steamworld.ItemInitializer;
 import zaexides.steamworld.ModInfo;
+import zaexides.steamworld.items.ItemInitializer;
 
 public class RecipeCategoryAssembler implements IRecipeCategory
 {

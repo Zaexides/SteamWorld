@@ -11,11 +11,11 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.oredict.OreDictionary;
-import zaexides.steamworld.BlockInitializer;
-import zaexides.steamworld.ItemInitializer;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.BlockDecorative;
+import zaexides.steamworld.blocks.BlockInitializer;
 import zaexides.steamworld.blocks.machines.BlockMachineVariant;
+import zaexides.steamworld.items.ItemInitializer;
 import zaexides.steamworld.items.ItemUpgrade;
 import zaexides.steamworld.items.SWItemNugget;
 

@@ -1,4 +1,4 @@
-package zaexides.steamworld;
+package zaexides.steamworld.blocks;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,12 +8,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import scala.AnyValCompanion;
 import scala.reflect.internal.Trees.New;
-import zaexides.steamworld.blocks.BlockAncite;
-import zaexides.steamworld.blocks.BlockDecorative;
-import zaexides.steamworld.blocks.BlockFluidPipe;
-import zaexides.steamworld.blocks.BlockSteam;
-import zaexides.steamworld.blocks.SteamWorldBlock;
-import zaexides.steamworld.blocks.SteamWorldBlockOre;
 import zaexides.steamworld.blocks.machines.BlockAssembler;
 import zaexides.steamworld.blocks.machines.BlockDrain;
 import zaexides.steamworld.blocks.machines.BlockExperienceMachine;

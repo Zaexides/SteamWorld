@@ -5,7 +5,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.oredict.OreDictionary;
-import zaexides.steamworld.ItemInitializer;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.BlockAncite;
 import zaexides.steamworld.utility.interfaces.IModeledObject;

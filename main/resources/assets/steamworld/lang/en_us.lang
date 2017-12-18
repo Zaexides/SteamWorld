@@ -62,6 +62,7 @@ item.steamworld.nugget_diamond.name=Diamond Nugget
 item.steamworld.nugget_emerald.name=Emerald Nugget
 item.steamworld.shard_endritch.name=Endritch Shard
 item.steamworld.wrench.name=Steaite Wrench
+item.steamworld.treasure.name=Treasure Box
 item.steamworld.upgrade_ancite.name=MKII Upgrade
 item.steamworld.upgrade_endritch.name=MKIII Upgrade
 
@@ -103,7 +104,7 @@ advancement.steamworld.what_goes_in.desc=Craft a drain, a simple block to drain 
 advancement.steamworld.must_come_out.title=...must come out
 advancement.steamworld.must_come_out.desc=Craft a faucet, a simple block to place liquids.
 advancement.steamworld.treasure.title=Old Treasure
-advancement.steamworld.treasure.desc=Find Ancite in the ancient underground ruins.
+advancement.steamworld.treasure.desc=Find Ancite in ancient ruins or treasure.
 advancement.steamworld.assembly_time.title=Assembly Time
 advancement.steamworld.assembly_time.desc=Craft a Steam Assembler MKI, ready to go to the next level of crafting.
 advancement.steamworld.otherworldly_shard.title=Otherwordly Shard

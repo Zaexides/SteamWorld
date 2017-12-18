@@ -3,7 +3,6 @@ package zaexides.steamworld.items;
 import akka.Main;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import zaexides.steamworld.ItemInitializer;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.utility.interfaces.IModeledObject;

@@ -12,8 +12,8 @@ import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
 import scala.sys.process.processInternal;
-import zaexides.steamworld.BlockInitializer;
 import zaexides.steamworld.ConfigHandler;
+import zaexides.steamworld.blocks.BlockInitializer;
 
 public class WorldGenerationOres implements IWorldGenerator
 {

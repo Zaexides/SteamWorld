@@ -5,7 +5,6 @@ import org.apache.logging.log4j.Level;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
-import zaexides.steamworld.BlockInitializer;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.utility.interfaces.IOreDictionaryRegisterable;
 

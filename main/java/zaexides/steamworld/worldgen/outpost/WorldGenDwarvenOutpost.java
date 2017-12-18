@@ -15,10 +15,10 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import zaexides.steamworld.BlockInitializer;
 import zaexides.steamworld.LootTableInitializer;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.BlockAncite;
+import zaexides.steamworld.blocks.BlockInitializer;
 
 public class WorldGenDwarvenOutpost extends WorldGenerator
 {

@@ -8,8 +8,8 @@ import org.apache.logging.log4j.Level;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import zaexides.steamworld.BlockInitializer;
 import zaexides.steamworld.SteamWorld;
+import zaexides.steamworld.blocks.BlockInitializer;
 
 public class AssemblyRecipe 
 {

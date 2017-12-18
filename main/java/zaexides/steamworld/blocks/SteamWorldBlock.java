@@ -10,10 +10,9 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.common.property.IUnlistedProperty;
-import zaexides.steamworld.BlockInitializer;
-import zaexides.steamworld.ItemInitializer;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
+import zaexides.steamworld.items.ItemInitializer;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
 
 public class SteamWorldBlock extends Block implements IModeledObject

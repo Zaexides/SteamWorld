@@ -1,4 +1,4 @@
-package zaexides.steamworld;
+package zaexides.steamworld.items;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,13 +6,6 @@ import java.util.List;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import scala.reflect.internal.Trees.New;
-import zaexides.steamworld.items.ItemCrystal;
-import zaexides.steamworld.items.ItemDust;
-import zaexides.steamworld.items.ItemUpgrade;
-import zaexides.steamworld.items.ItemWrench;
-import zaexides.steamworld.items.SWItemIngot;
-import zaexides.steamworld.items.SWItemNugget;
-import zaexides.steamworld.items.SteamWorldItem;
 
 public class ItemInitializer 
 {
@@ -23,6 +16,8 @@ public class ItemInitializer
 	public static final SWItemIngot SHARD_ENDRITCH = new SWItemIngot("shard_endritch", "ingotEndritch");
 	public static final SteamWorldItem MACHINE_BASE = new SteamWorldItem("machine_base");
 	public static final SteamWorldItem STEAITE_CRYSTAL = new ItemCrystal("steaite_crystal", 16);
+	
+	public static final SteamWorldItem TREASURE = new ItemTreasure("treasure");
 	
 	public static final ItemWrench WRENCH = new ItemWrench("wrench");
 	

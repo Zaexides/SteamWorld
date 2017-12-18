@@ -14,8 +14,8 @@ import net.minecraft.world.World;
 import scala.annotation.elidable;
 import scala.collection.parallel.ParIterableLike.Min;
 import scala.sys.process.processInternal;
-import zaexides.steamworld.BlockInitializer;
 import zaexides.steamworld.blocks.BlockAncite;
+import zaexides.steamworld.blocks.BlockInitializer;
 import zaexides.steamworld.utility.PosDir;
 
 public class DwarvenStructureRoom
