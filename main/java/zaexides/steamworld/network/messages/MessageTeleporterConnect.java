@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import zaexides.steamworld.network.PacketHandler;
 import zaexides.steamworld.savedata.world.TeleporterData;
 import zaexides.steamworld.savedata.world.TeleporterSaveData;
-import zaexides.steamworld.te.TileEntityTeleporter;
+import zaexides.steamworld.te.generic_machine.TileEntityTeleporter;
 
 public class MessageTeleporterConnect implements IMessage
 {

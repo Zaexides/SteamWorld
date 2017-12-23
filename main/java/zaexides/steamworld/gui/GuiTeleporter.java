@@ -26,7 +26,7 @@ import zaexides.steamworld.network.messages.MessageTeleporterConnect;
 import zaexides.steamworld.network.messages.MessageTeleporterRegister;
 import zaexides.steamworld.savedata.world.TeleporterData;
 import zaexides.steamworld.savedata.world.TeleporterSaveData;
-import zaexides.steamworld.te.TileEntityTeleporter;
+import zaexides.steamworld.te.generic_machine.TileEntityTeleporter;
 import zaexides.steamworld.utility.SWGuiUtil;
 import zaexides.steamworld.utility.interfaces.IGuiContainerUtil;
 

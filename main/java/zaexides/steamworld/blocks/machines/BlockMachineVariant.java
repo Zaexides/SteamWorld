@@ -41,7 +41,9 @@ import zaexides.steamworld.network.messages.MessageGetTeleporterData;
 import zaexides.steamworld.savedata.world.TeleporterData;
 import zaexides.steamworld.savedata.world.TeleporterSaveData;
 import zaexides.steamworld.te.TileEntityFisher;
-import zaexides.steamworld.te.TileEntityTeleporter;
+import zaexides.steamworld.te.generic_machine.TileEntityLauncher;
+import zaexides.steamworld.te.generic_machine.TileEntityTeleporter;
+import zaexides.steamworld.te.generic_machine.interfaces.IGenericMachineWalkActivate;
 import zaexides.steamworld.utility.SWMaterials;
 import zaexides.steamworld.utility.interfaces.IMetaName;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
@@ -141,6 +143,8 @@ public class BlockMachineVariant extends Block implements IMetaName, IModeledObj
 		{
 		case TELEPORTER:
 			return new TileEntityTeleporter();
+		case LAUNCHER:
+			return new TileEntityLauncher();
 		}
 		return null;
 	}
@@ -160,11 +164,19 @@ public class BlockMachineVariant extends Block implements IMetaName, IModeledObj
 				TeleporterSaveData teleporterSaveData = TeleporterSaveData.get(worldIn);
 				PacketHandler.wrapper.sendTo(new MessageGetTeleporterData(teleporterSaveData.writeToNBT(compound), teleporterSaveData.mapName),(EntityPlayerMP)  playerIn);
 				
-				if(!(tileEntity instanceof TileEntityTeleporter))
-					return false;
-				else
+				if(tileEntity instanceof TileEntityTeleporter)
 					playerIn.openGui(SteamWorld.singleton, GuiHandler.TELEPORTER, worldIn, pos.getX(), pos.getY(), pos.getZ());
+				else
+					return false;
 				break;
+			case LAUNCHER:
+				if(tileEntity instanceof TileEntityLauncher)
+					((TileEntityLauncher)tileEntity).ChangeForce(hitY, playerIn);
+				else
+					return false;
+				break;
+			default:
+				return false;
 			}
 		}
 		return true;
@@ -174,16 +186,8 @@ public class BlockMachineVariant extends Block implements IMetaName, IModeledObj
 	public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) 
 	{
 		TileEntity tileEntity = worldIn.getTileEntity(pos);
-		if(tileEntity != null)
-		{
-			switch(worldIn.getBlockState(pos).getValue(VARIANT))
-			{
-			case TELEPORTER:
-				if(tileEntity instanceof TileEntityTeleporter)
-					((TileEntityTeleporter) tileEntity).activate(entityIn);
-				break;
-			}
-		}
+		if(tileEntity != null && tileEntity instanceof IGenericMachineWalkActivate)
+			((IGenericMachineWalkActivate)tileEntity).onWalkedOn(entityIn);
 		super.onEntityWalk(worldIn, pos, entityIn);
 	}
 	
@@ -201,13 +205,16 @@ public class BlockMachineVariant extends Block implements IMetaName, IModeledObj
 					teleporterSaveData.removeTeleporterData(((TileEntityTeleporter)tileEntity).ownId);
 			}
 			break;
+		default:
+			break;
 		}
 		super.breakBlock(worldIn, pos, state);
 	}
 	
 	public static enum EnumType implements IStringSerializable
 	{
-		TELEPORTER(0, "teleporter");
+		TELEPORTER(0, "teleporter"),
+		LAUNCHER(1, "launcher");
 		
 		private static final BlockMachineVariant.EnumType[] META_LOOKUP = new BlockMachineVariant.EnumType[values().length];
 		private final int meta;

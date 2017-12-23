@@ -1,4 +1,4 @@
-package zaexides.steamworld.te;
+package zaexides.steamworld.te.generic_machine;
 
 import org.apache.logging.log4j.Level;
 
@@ -25,10 +25,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.savedata.world.TeleporterData;
 import zaexides.steamworld.savedata.world.TeleporterSaveData;
+import zaexides.steamworld.te.SyncedTileEntity;
+import zaexides.steamworld.te.generic_machine.interfaces.IGenericMachineWalkActivate;
 import zaexides.steamworld.utility.SteamWorldTeleporter;
 import zaexides.steamworld.utility.capability.SteamWorldFluidTank;
+import zaexides.steamworld.utility.capability.SteamWorldSteamTank;
 
-public class TileEntityTeleporter extends SyncedTileEntity implements ICapabilityProvider, ITickable
+public class TileEntityTeleporter extends SyncedTileEntity implements ICapabilityProvider, ITickable, IGenericMachineWalkActivate
 {
 	public int ownId = -1;
 	public int targetId = -1;
@@ -36,14 +39,7 @@ public class TileEntityTeleporter extends SyncedTileEntity implements ICapabilit
 	public int cooldown = 0;
 	private final int MAX_COOLDOWN = 100;
 	
-	public SteamWorldFluidTank steamTank = new SteamWorldFluidTank(Fluid.BUCKET_VOLUME * 4, this)
-	{
-		@Override
-		public boolean canFillFluidType(net.minecraftforge.fluids.FluidStack fluid) 
-		{
-			return FluidRegistry.getFluidName(fluid).endsWith("steam");
-		};
-	};
+	public SteamWorldSteamTank steamTank = new SteamWorldSteamTank(Fluid.BUCKET_VOLUME * 4, this);
 	
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) 
@@ -81,7 +77,8 @@ public class TileEntityTeleporter extends SyncedTileEntity implements ICapabilit
 		return super.writeToNBT(compound);
 	}
 	
-	public void activate(Entity entity)
+	@Override
+	public void onWalkedOn(Entity entity)
 	{
 		if(steamTank.getFluidAmount() < 2000 && targetId != -1)
 			return;

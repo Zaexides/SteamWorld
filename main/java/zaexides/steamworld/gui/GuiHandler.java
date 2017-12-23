@@ -25,9 +25,9 @@ import zaexides.steamworld.te.TileEntityMachine;
 import zaexides.steamworld.te.TileEntitySWFurnace;
 import zaexides.steamworld.te.TileEntitySteamGenerator;
 import zaexides.steamworld.te.TileEntitySteamGeneratorNether;
-import zaexides.steamworld.te.TileEntityTeleporter;
 import zaexides.steamworld.te.energy.TileEntityDynamo;
 import zaexides.steamworld.te.energy.TileEntitySteamGeneratorElectric;
+import zaexides.steamworld.te.generic_machine.TileEntityTeleporter;
 
 public class GuiHandler implements IGuiHandler
 {

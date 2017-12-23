@@ -124,6 +124,8 @@ message.steamworld.rs_ignore=Redstone is ignored.
 message.steamworld.rs_normal=Only active when receiving redstone.
 message.steamworld.rs_inverted=Only active when not receiving redstone.
 message.steamworld.upgrade_fail=This upgrade won't work on this machine...
+message.steamworld.launcher.force_increase=Launcher's force increased to %s.
+message.steamworld.launcher.force_decrease=Launcher's force decreased to %s.
 
 jei.steamworld.grinder=SteamWorld Grinder
 jei.steamworld.assembler=SteamWorld Assembler

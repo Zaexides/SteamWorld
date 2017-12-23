@@ -6,17 +6,11 @@ import net.minecraftforge.fluids.FluidRegistry;
 import zaexides.steamworld.blocks.machines.BlockFisher;
 import zaexides.steamworld.blocks.machines.BlockMachine;
 import zaexides.steamworld.utility.capability.SteamWorldFluidTank;
+import zaexides.steamworld.utility.capability.SteamWorldSteamTank;
 
 public abstract class TileEntityMachine extends SyncedTileEntity implements ITickable
 {
-	public SteamWorldFluidTank steamTank = new SteamWorldFluidTank(Fluid.BUCKET_VOLUME*4, this)
-	{
-		@Override
-		public boolean canFillFluidType(net.minecraftforge.fluids.FluidStack fluid) 
-		{
-			return FluidRegistry.getFluidName(fluid).endsWith("steam");
-		};
-	};
+	public SteamWorldSteamTank steamTank = new SteamWorldSteamTank(Fluid.BUCKET_VOLUME*4, this);
 	
 	public int progression = 0;
 	protected boolean active = false;
