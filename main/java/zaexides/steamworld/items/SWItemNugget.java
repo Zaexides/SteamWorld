@@ -64,7 +64,7 @@ public class SWItemNugget extends SteamWorldItem implements IModeledObject, IOre
 	{
 		for(int i = 0; i < EnumVarietyMaterial.values().length; i++)
 		{
-			SteamWorld.proxy.RegisterItemRenderers(this, i, "inventory", name + "_" + EnumVarietyMaterial.values()[i].getName());
+			SteamWorld.proxy.RegisterItemRenderers(this, i, "inventory", "nugget/" + name + "_" + EnumVarietyMaterial.values()[i].getName());
 		}
 	}
 	

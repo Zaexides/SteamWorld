@@ -62,7 +62,7 @@ public class ItemDust extends SteamWorldItem implements IOreDictionaryRegisterab
 	{
 		for(int i = 0; i < EnumVarietyMaterial.values().length; i++)
 		{
-			SteamWorld.proxy.RegisterItemRenderers(this, i, "inventory", name + "_" + EnumVarietyMaterial.values()[i].getName());
+			SteamWorld.proxy.RegisterItemRenderers(this, i, "inventory", "dust/" + name + "_" + EnumVarietyMaterial.values()[i].getName());
 		}
 	}
 	

@@ -17,7 +17,8 @@ public class LootTableInitializer
 {
 	public static final ResourceLocation CHEST_DWARVEN_STRUCTURE = register("chests/dwarven_structure");
 	public static final ResourceLocation CHEST_DWARVEN_CORE = register("chests/dwarven_structure_core");
-	public static final ResourceLocation TREASURE_BOX = register("fishing/treasure_box");
+	public static final ResourceLocation TREASURE_BOX_FISHING = register("treasure_box/fishing");
+	public static final ResourceLocation TREASURE_BOX_DUNGEON = register("treasure_box/dungeon");
 		
 	private static ResourceLocation register(String location)
 	{

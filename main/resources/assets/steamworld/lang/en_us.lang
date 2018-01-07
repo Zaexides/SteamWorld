@@ -46,6 +46,7 @@ tile.steamworld.assembler_endritch.name=Steam Assembler MKII
 tile.steamworld.experience_machine_ancite.name=Experience Machine MKI
 tile.steamworld.experience_machine_endritch.name=Experience Machine MKII
 tile.steamworld.generic_machine_teleporter.name=Endritch Teleporter
+tile.steamworld.generic_machine_launcher.name=Steam Launcher
 tile.steamworld.generic_machine_error.name=A Future Machine!
 
 item.steamworld.ingot_steaite.name=Steaite Ingot

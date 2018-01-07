@@ -70,7 +70,7 @@ public class ItemUpgrade extends SteamWorldItem implements IModeledObject
 	{
 		for(int i = 0; i < EnumUpgradeType.values().length; i++)
 		{
-			SteamWorld.proxy.RegisterItemRenderers(this, i, "inventory", name + "_" + EnumUpgradeType.values()[i].getName());
+			SteamWorld.proxy.RegisterItemRenderers(this, i, "inventory", "upgrade/" + name + "_" + EnumUpgradeType.values()[i].getName());
 		}
 	}
 	
