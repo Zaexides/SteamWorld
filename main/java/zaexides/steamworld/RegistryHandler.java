@@ -3,6 +3,7 @@ package zaexides.steamworld;
 import org.omg.PortableServer.ServantActivator;
 
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -29,7 +30,9 @@ import zaexides.steamworld.blocks.BlockSteam;
 import zaexides.steamworld.fluids.FluidSteam;
 import zaexides.steamworld.items.ItemDust;
 import zaexides.steamworld.items.ItemInitializer;
+import zaexides.steamworld.items.SWItemNugget;
 import zaexides.steamworld.recipe.handling.AssemblyRecipeHandler;
+import zaexides.steamworld.recipe.handling.DustRecipeHandler;
 import zaexides.steamworld.te.TileEntityAssembler;
 import zaexides.steamworld.te.TileEntityDrain;
 import zaexides.steamworld.te.TileEntityExperienceMachine;
@@ -101,14 +104,18 @@ public class RegistryHandler
 		}
 	}
 	
-	public static void MiscRegister()
+	public static void RegisterWorldGen()
 	{
 		GameRegistry.registerWorldGenerator(new WorldGenerationOres(), 0);
 		GameRegistry.registerWorldGenerator(new DwarvenStructureGenerator(), 5);
 		GameRegistry.registerWorldGenerator(new DwarvenOutpostGenerator(), 1);
-		
+	}
+	
+	public static void RegisterMiscRecipes()
+	{
 		RegisterSmeltingRecipes();
 		AssemblyRecipeHandler.RegisterRecipes();
+		RegisterGrinderRecipes();
 	}
 	
 	public static void RegisterSmeltingRecipes()
@@ -119,6 +126,16 @@ public class RegistryHandler
 		GameRegistry.addSmelting(new ItemStack(ItemInitializer.METAL_DUST, 1, ItemDust.EnumVarietyMaterial.GOLD.getMeta()), new ItemStack(Items.GOLD_INGOT), FurnaceRecipes.instance().getSmeltingExperience(new ItemStack(Items.GOLD_INGOT)));
 		GameRegistry.addSmelting(new ItemStack(ItemInitializer.METAL_DUST, 1, ItemDust.EnumVarietyMaterial.STEAITE.getMeta()), new ItemStack(ItemInitializer.INGOT_STEAITE), FurnaceRecipes.instance().getSmeltingExperience(new ItemStack(ItemInitializer.INGOT_STEAITE)));
 		GameRegistry.addSmelting(new ItemStack(ItemInitializer.METAL_DUST, 1, ItemDust.EnumVarietyMaterial.ANCITE.getMeta()), new ItemStack(ItemInitializer.INGOT_ANCITE), 1.5f);
+	}
+	
+	public static void RegisterGrinderRecipes()
+	{
+		DustRecipeHandler.RegisterRecipe(new ItemStack(Blocks.REDSTONE_ORE), new ItemStack(Items.REDSTONE, 3));
+		DustRecipeHandler.RegisterRecipe(new ItemStack(Blocks.DIAMOND_ORE), new ItemStack(ItemInitializer.ITEM_NUGGET, 10, SWItemNugget.EnumVarietyMaterial.DIAMOND.getMeta()));
+		DustRecipeHandler.RegisterRecipe(new ItemStack(Blocks.EMERALD_ORE), new ItemStack(ItemInitializer.ITEM_NUGGET, 10, SWItemNugget.EnumVarietyMaterial.EMERALD.getMeta()));
+		DustRecipeHandler.RegisterRecipe(new ItemStack(Blocks.COAL_ORE), new ItemStack(Items.COAL, 3));
+		DustRecipeHandler.RegisterRecipe(new ItemStack(Blocks.LAPIS_ORE), new ItemStack(Items.DYE, 3, 4));
+		DustRecipeHandler.RegisterRecipe(new ItemStack(Blocks.QUARTZ_ORE), new ItemStack(Items.QUARTZ, 3));
 	}
 	
 	public static void RegisterTileEntities()

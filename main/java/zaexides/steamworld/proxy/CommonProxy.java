@@ -51,10 +51,8 @@ public class CommonProxy
 		NetworkRegistry.INSTANCE.registerGuiHandler(SteamWorld.singleton, new GuiHandler());
 		MinecraftForge.EVENT_BUS.register(SteamWorld.eventHandler);
 		
-		DustRecipeHandler.RegisterRecipe(new ItemStack(Blocks.REDSTONE_ORE), new ItemStack(Items.REDSTONE, 5));
-		DustRecipeHandler.RegisterRecipe(new ItemStack(Blocks.DIAMOND_ORE), new ItemStack(ItemInitializer.ITEM_NUGGET, 10, SWItemNugget.EnumVarietyMaterial.DIAMOND.getMeta()));
-		DustRecipeHandler.RegisterRecipe(new ItemStack(Blocks.EMERALD_ORE), new ItemStack(ItemInitializer.ITEM_NUGGET, 10, SWItemNugget.EnumVarietyMaterial.EMERALD.getMeta()));
-		DustRecipeHandler.RegisterRecipe(new ItemStack(Blocks.COAL_ORE), new ItemStack(Items.COAL, 5));
+		RegistryHandler.RegisterWorldGen();
+		RegistryHandler.RegisterMiscRecipes();
 	}
 	
 	public void PreInit(FMLPreInitializationEvent e)
@@ -64,6 +62,9 @@ public class CommonProxy
 		ConfigHandler.ReadConfig();
 		
 		PacketHandler.RegisterMessages("SteamWorld_NetChan");
+		
+    	RegistryHandler.RegisterFluids();
+    	RegistryHandler.RegisterTileEntities();
 	}
 	
 	public void PostInit()

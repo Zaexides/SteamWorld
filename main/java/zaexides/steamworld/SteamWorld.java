@@ -46,16 +46,13 @@ public class SteamWorld
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
-    	proxy.PreInit(event);
     	logger = event.getModLog();
-    	RegistryHandler.RegisterFluids();
-    	RegistryHandler.RegisterTileEntities();
+    	proxy.PreInit(event);
     }
     
     @Mod.EventHandler
     public void init(FMLInitializationEvent event)
     {
-    	RegistryHandler.MiscRegister();
     	proxy.Init();
     }
     
