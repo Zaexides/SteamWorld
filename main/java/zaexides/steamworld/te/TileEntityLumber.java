@@ -128,7 +128,7 @@ public class TileEntityLumber extends TileEntityMachine implements ITickable
 				}
 			}
 			
-			if(progression == (radius*2))
+			if(progression >= (radius*2))
 				progression = 0;
 			
 			return true;

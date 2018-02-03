@@ -125,7 +125,7 @@ public class TileEntityGrinder extends TileEntityMachine implements ITickable
 			progression++;
 			steamTank.drain(BASE_COST_PER_TICK * amount, true);
 			
-			if(progression == MAX_PROGRESSION)
+			if(progression >= MAX_PROGRESSION)
 			{
 				ItemStack inStack = inputStack.getStack(0);
 				inStack.shrink(1);

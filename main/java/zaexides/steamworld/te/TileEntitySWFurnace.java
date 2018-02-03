@@ -118,7 +118,7 @@ public class TileEntitySWFurnace extends TileEntityMachine implements ITickable
 			progression += efficiency;
 			steamTank.drain(BASE_COST_PER_TICK * efficiency, true);
 			
-			if(progression == MAX_PROGRESSION)
+			if(progression >= MAX_PROGRESSION)
 			{
 				ItemStack inStack = inputStack.getStack(0);
 				inStack.shrink(1);
