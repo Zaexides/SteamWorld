@@ -83,6 +83,7 @@ public class BlockInitializer
 	public static final BlockMachineVariant MACHINE_VARIANT = new BlockMachineVariant("generic_machine", 4.5f);
 	
 	public static final BlockSteam BLOCK_STEAM = new BlockSteam();
+	public static final BlockPreservationJuice BLOCK_PRESERVATION_JUICE = new BlockPreservationJuice();
 	
 	public static final BlockFluidPipe BLOCK_FLUID_PIPE = new BlockFluidPipe();
 	public static final BlockValve BLOCK_VALVE = new BlockValve("block_fluid_controller", Material.IRON, 2.5f, (int)(Fluid.BUCKET_VOLUME * 0.8), 800);

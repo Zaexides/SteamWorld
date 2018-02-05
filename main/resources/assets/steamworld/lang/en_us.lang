@@ -8,6 +8,7 @@ tile.steamworld.block_ancite_brick.name=Ancite Bricks
 tile.steamworld.block_ancite_floor.name=Ancite Tiles
 tile.steamworld.block_ancite_plate.name=Ancite Plates
 tile.steamworld.block_ancite_block.name=Ancite Block
+tile.steamworld.block_ancite_bigbricks.name=Ancite Big Bricks
 tile.steamworld.block_ancite_error.name=A Future Block, perhaps.
 tile.steamworld.block_decorative_block_endritch.name=Endritch Block
 tile.steamworld.block_decorative_error.name=A Future Block, perhaps.
@@ -87,8 +88,9 @@ text.steamworld.teleporter.pass=Net ID
 text.steamworld.teleporter.upload=Upload
 text.steamworld.teleporter.showhide_nomatch=Show/Hide from different Network IDs
 
-fluid.steamworld.steam=Steam
+fluid.steam=Steam
 fluid.empty=Empty
+fluid.preservationLiquid=Preservation Liquid
 
 energy.name=Energy
 

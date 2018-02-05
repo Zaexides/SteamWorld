@@ -27,6 +27,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import zaexides.steamworld.blocks.BlockAncite;
 import zaexides.steamworld.blocks.BlockInitializer;
 import zaexides.steamworld.blocks.BlockSteam;
+import zaexides.steamworld.fluids.FluidPreservation;
 import zaexides.steamworld.fluids.FluidSteam;
 import zaexides.steamworld.items.ItemDust;
 import zaexides.steamworld.items.ItemInitializer;
@@ -164,5 +165,6 @@ public class RegistryHandler
 	public static void RegisterFluids()
 	{
 		FluidSteam.fluidSteam = new FluidSteam();
+		FluidPreservation.fluidPreservation = new FluidPreservation();
 	}
 }

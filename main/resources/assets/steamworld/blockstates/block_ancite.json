@@ -3,6 +3,7 @@
         "variant=brick": { "model": "steamworld:block_ancite_brick" },
         "variant=floor": { "model": "steamworld:block_ancite_floor" },
         "variant=plate": { "model": "steamworld:block_ancite_plate" },
-        "variant=block": { "model": "steamworld:block_ancite_block" }
+        "variant=block": { "model": "steamworld:block_ancite_block" },
+        "variant=bigbricks": { "model": "steamworld:block_ancite_bigbricks" }
     }
 }

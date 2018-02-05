@@ -106,7 +106,8 @@ public class BlockDecorative extends Block implements IMetaName, IModeledObject
 	
 	public static enum EnumType implements IStringSerializable
 	{
-		ENDRITCH_BLOCK(0, "block_endritch");
+		ENDRITCH_BLOCK(0, "block_endritch"),
+		PRESERVATION_COBBLE(1, "block_preservation_cobble");
 		
 		private static final BlockDecorative.EnumType[] META_LOOKUP = new BlockDecorative.EnumType[values().length];
 		private final int meta;

@@ -115,7 +115,8 @@ public class BlockAncite extends Block implements IMetaName, IModeledObject, IOr
 		BRICKS(0, "brick"),
 		TILES(1, "floor"),
 		PLATES(2, "plate"),
-		BLOCK(3, "block");
+		BLOCK(3, "block"),
+		BIG_BRICKS(4, "bigbricks");
 		
 		private static final BlockAncite.EnumType[] META_LOOKUP = new BlockAncite.EnumType[values().length];
 		private final int meta;
