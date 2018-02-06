@@ -16,7 +16,6 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
 import zaexides.steamworld.ConfigHandler;
 import zaexides.steamworld.worldgen.outpost.WorldGenDwarvenOutpost;
-import zaexides.steamworld.worldgen.structures.dwarven.WorldGenDwarvenStructure;
 
 public class DwarvenOutpostGenerator implements IWorldGenerator
 {

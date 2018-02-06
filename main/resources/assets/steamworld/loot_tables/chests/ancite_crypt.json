@@ -2,34 +2,18 @@
     "pools": 
     [
         {
-            "name": "dwarven_structure_loot",
+            "name": "ancite_crypt",
             "rolls": 
             {
-                "min": 2,
-                "max": 4
+                "min": 4,
+                "max": 8
             },
             "entries": 
             [
                 {
                     "type": "item",
                     "name": "steamworld:ingot_steaite",
-                    "weight": 60,
-                    "functions": 
-                    [
-                        {
-                            "function": "minecraft:set_count",
-                            "count": 
-                            {
-                                "min": 3,
-                                "max": 5
-                            }
-                        }
-                    ]
-                },
-                {
-                    "type": "item",
-                    "name": "steamworld:ingot_ancite",
-                    "weight": 20,
+                    "weight": 40,
                     "functions": 
                     [
                         {
@@ -37,7 +21,39 @@
                             "count": 
                             {
                                 "min": 1,
+                                "max": 3
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:bone",
+                    "weight": 20,
+                    "functions":
+                    [
+                        {
+                            "function": "minecraft:set_count",
+                            "count":
+                            {
+                                "min": 1,
                                 "max": 4
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "steamworld:ingot_ancite",
+                    "weight": 30,
+                    "functions": 
+                    [
+                        {
+                            "function": "minecraft:set_count",
+                            "count": 
+                            {
+                                "min": 2,
+                                "max": 5
                             }
                         }
                     ]
@@ -57,7 +73,7 @@
                 {
                     "type": "item",
                     "name": "steamworld:block_steaite",
-                    "weight": 15
+                    "weight": 5
                 }
             ]
         }

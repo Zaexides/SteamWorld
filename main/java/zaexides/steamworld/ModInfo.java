@@ -8,4 +8,12 @@ public class ModInfo
     
     public static final String CLIENT_PROXY = "zaexides.steamworld.proxy.ClientProxy";
     public static final String COMMON_PROXY = "zaexides.steamworld.proxy.CommonProxy";
+    
+    
+    public static final String[] CREDIT_NAMES = 
+	{
+    		"drakkillen",
+    		"angrychicken83",
+    		"Zaexides",
+    };
 }

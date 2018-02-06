@@ -81,7 +81,7 @@ public class WorldGenDwarvenOutpost extends WorldGenerator
 		TileEntity tileEntity = world.getTileEntity(pos);
 		if(tileEntity instanceof TileEntityChest)
 		{
-			((TileEntityChest)tileEntity).setLootTable(LootTableInitializer.CHEST_DWARVEN_CORE, world.rand.nextLong());
+			//((TileEntityChest)tileEntity).setLootTable(LootTableInitializer.CHEST_DWARVEN_CORE, world.rand.nextLong());
 		}
 	}
 }

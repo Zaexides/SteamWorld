@@ -55,7 +55,7 @@ import zaexides.steamworld.te.generic_machine.TileEntityTeleporter;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
 import zaexides.steamworld.utility.interfaces.IOreDictionaryRegisterable;
 import zaexides.steamworld.worldgen.DwarvenOutpostGenerator;
-import zaexides.steamworld.worldgen.DwarvenStructureGenerator;
+import zaexides.steamworld.worldgen.WorldGenCrypt;
 import zaexides.steamworld.worldgen.WorldGenerationOres;
 
 @EventBusSubscriber
@@ -108,7 +108,7 @@ public class RegistryHandler
 	public static void RegisterWorldGen()
 	{
 		GameRegistry.registerWorldGenerator(new WorldGenerationOres(), 0);
-		GameRegistry.registerWorldGenerator(new DwarvenStructureGenerator(), 5);
+		GameRegistry.registerWorldGenerator(new WorldGenCrypt(), 1000);
 		GameRegistry.registerWorldGenerator(new DwarvenOutpostGenerator(), 1);
 	}
 	
