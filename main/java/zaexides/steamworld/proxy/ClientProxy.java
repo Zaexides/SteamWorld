@@ -71,6 +71,7 @@ public class ClientProxy extends CommonProxy
 	{
 		super.PreInit(e);
 		ModelLoaderRegistry.registerLoader(new BakedModelLoader());
+		OBJLoader.INSTANCE.addDomain(ModInfo.MODID);
 	}
 	
 	@Override

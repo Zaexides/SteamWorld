@@ -42,6 +42,8 @@ public class BlockInitializer
 	public static final BlockAncite BLOCK_ANCITE = new BlockAncite("block_ancite");
 	public static final BlockDecorative BLOCK_DECORATIVE = new BlockDecorative("block_decorative");
 	
+	public static final BlockObilisk OBILISK = new BlockObilisk("block_obilisk", Material.ROCK, 5f);
+	
 	public static final BlockNetherAccelerator BLOCK_NETHER_ACCELERATOR = new BlockNetherAccelerator("nether_accelerator", SWMaterials.ENDRITCH, 5.0f);
 	
 	public static final BlockMachine GENERATOR_ENDRITCH = new BlockSteamGenerator("generator_endritch", SWMaterials.ENDRITCH, 5.5f, 16, 32);

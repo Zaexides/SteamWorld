@@ -7,6 +7,8 @@ import org.apache.logging.log4j.Level;
 import com.mojang.authlib.GameProfile;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockLeaves;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityLockableLoot;
@@ -18,6 +20,8 @@ import net.minecraft.world.gen.structure.template.Template.BlockInfo;
 import zaexides.steamworld.LootTableInitializer;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
+import zaexides.steamworld.blocks.BlockInitializer;
+import zaexides.steamworld.blocks.BlockObilisk;
 
 public class TemplateProcessorCrypt implements ITemplateProcessor
 {
@@ -35,6 +39,16 @@ public class TemplateProcessorCrypt implements ITemplateProcessor
 			if(tileEntity != null && tileEntity instanceof TileEntityLockableLoot)
 			{
 				((TileEntityLockableLoot)tileEntity).setLootTable(LootTableInitializer.ANCITE_CRYPT, worldIn.rand.nextLong());
+				
+				int y = 250;
+				BlockPos obiliskPos = new BlockPos(pos.getX(), y, pos.getZ());
+				while(y > 0 && !BlockInitializer.OBILISK.canGenerateOn(worldIn.getBlockState(obiliskPos).getBlock()))
+				{
+					y--;
+					obiliskPos = new BlockPos(pos.getX(), y, pos.getZ());
+				}
+				worldIn.setBlockState(obiliskPos.up(), BlockInitializer.OBILISK.getStateFromMeta(0)); 
+				
 				return new BlockInfo(pos, blockInfoIn.blockState, tileEntity.serializeNBT());
 			}
 		}

@@ -2,10 +2,12 @@ package zaexides.steamworld.worldgen;
 
 import java.util.Random;
 
+import net.minecraft.init.Biomes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.feature.WorldGenerator;
@@ -38,10 +40,14 @@ public class WorldGenCrypt implements IWorldGenerator
 	private void GenerateStructure(World world, Random random, int x, int z)
 	{
 		int deltaHeight = MAX_HEIGHT - MIN_HEIGHT + 1;
-		int local_x = x * 8 + random.nextInt(8);
+		int local_x = x * 16 + random.nextInt(8) + 4;
 		int local_y = MIN_HEIGHT + random.nextInt(deltaHeight);
-		int local_z = z * 8 + random.nextInt(8);
+		int local_z = z * 16 + random.nextInt(8) + 4;
 		BlockPos pos = new BlockPos(local_x, local_y, local_z);
+		
+		Biome biome = world.getBiome(pos);
+		if(biome == Biomes.OCEAN || biome == Biomes.DEEP_OCEAN)
+			return;
 		
 		Rotation rotation = Rotation.values()[random.nextInt(Rotation.values().length)];
 		PlacementSettings placementSettings = new PlacementSettings().setRotation(rotation);

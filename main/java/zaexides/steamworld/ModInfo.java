@@ -13,7 +13,7 @@ public class ModInfo
     public static final String[] CREDIT_NAMES = 
 	{
     		"drakkillen",
-    		"angrychicken83",
+    		"mAdc0ck83",
     		"Zaexides",
     };
 }
