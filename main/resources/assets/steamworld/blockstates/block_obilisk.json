@@ -11,9 +11,9 @@
     "variants":
     {
         "normal": [{}],
-        "top_part":
+        "part":
         {
-            "false":
+            "0":
             {
                 "model": "steamworld:obilisk_bottom.obj",
                 "textures":
@@ -21,7 +21,15 @@
                     "#initialShadingGroup": "steamworld:blocks/obilisk/obilisk_side_bottom"
                 }
             },
-            "true":
+            "1":
+            {
+                "model": "steamworld:obilisk_center.obj",
+                "textures":
+                {
+                    "#initialShadingGroup": "steamworld:blocks/obilisk/obilisk_side_center"
+                }
+            },
+            "2":
             {
                 "model": "steamworld:obilisk_top.obj",
                 "textures":

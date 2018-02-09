@@ -1,5 +1,6 @@
 package zaexides.steamworld.worldgen;
 
+import java.util.Random;
 import java.util.UUID;
 
 import org.apache.logging.log4j.Level;
@@ -9,6 +10,7 @@ import com.mojang.authlib.GameProfile;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityLockableLoot;
@@ -22,6 +24,7 @@ import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.BlockInitializer;
 import zaexides.steamworld.blocks.BlockObilisk;
+import zaexides.steamworld.te.TileEntityObilisk;
 
 public class TemplateProcessorCrypt implements ITemplateProcessor
 {
@@ -35,7 +38,6 @@ public class TemplateProcessorCrypt implements ITemplateProcessor
 		if(block == Blocks.CHEST)
 		{
 			TileEntity tileEntity = worldIn.getTileEntity(pos);
-			SteamWorld.logger.log(Level.INFO, "Found a chest! Is it null..? " + (tileEntity == null));
 			if(tileEntity != null && tileEntity instanceof TileEntityLockableLoot)
 			{
 				((TileEntityLockableLoot)tileEntity).setLootTable(LootTableInitializer.ANCITE_CRYPT, worldIn.rand.nextLong());
@@ -47,7 +49,13 @@ public class TemplateProcessorCrypt implements ITemplateProcessor
 					y--;
 					obiliskPos = new BlockPos(pos.getX(), y, pos.getZ());
 				}
-				worldIn.setBlockState(obiliskPos.up(), BlockInitializer.OBILISK.getStateFromMeta(0)); 
+				
+				worldIn.setBlockState(obiliskPos.up(), BlockInitializer.OBILISK.getStateFromMeta(0));
+				
+				TileEntityObilisk.instantiateObiliskRandom(worldIn);
+				TileEntity obiliskTileEntity = worldIn.getTileEntity(obiliskPos.up());
+				if(obiliskTileEntity != null && obiliskTileEntity instanceof TileEntityObilisk)
+					((TileEntityObilisk)obiliskTileEntity).generateText(0);
 				
 				return new BlockInfo(pos, blockInfoIn.blockState, tileEntity.serializeNBT());
 			}
