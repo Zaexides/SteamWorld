@@ -2,6 +2,8 @@ package zaexides.steamworld.worldgen;
 
 import java.util.Random;
 
+import org.apache.logging.log4j.Level;
+
 import net.minecraft.init.Biomes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Rotation;
@@ -20,7 +22,10 @@ import zaexides.steamworld.SteamWorld;
 
 public class WorldGenCrypt implements IWorldGenerator
 {
-	private static final float CHANCE_PER_CHUNK = 0.05f;
+	private static final float CHANCE_PER_CHUNK = 0.007f;
+	private static final float CHANCE_MODIFIER_IN_DESERT = 0.5f;
+	private static final float CHANCE_MODIFIER_IN_MOUNTAIN = 10.0f;
+	private static final float CHANCE_MODIFIER_IN_SNOW = 2.5f;
 	private static final int MIN_HEIGHT = 10, MAX_HEIGHT = 30;
 	
 	private static final ResourceLocation CRYPT_TEMPLATE_LOCATION = new ResourceLocation(ModInfo.MODID, "ancitecrypt");
@@ -33,8 +38,21 @@ public class WorldGenCrypt implements IWorldGenerator
 		if(!ConfigHandler.generateDwarvenStructure)
 			return;
 		
+		float generateChance = CHANCE_PER_CHUNK;
+		Biome biome = world.getBiome(new BlockPos(chunkX, 22, chunkZ));
+		if(biome.getBaseHeight() >= 1.0f)
+			generateChance *= CHANCE_MODIFIER_IN_MOUNTAIN;
+		if(!biome.canRain())
+			generateChance *= CHANCE_MODIFIER_IN_DESERT;
+		if(!biome.getEnableSnow())
+			generateChance *= CHANCE_MODIFIER_IN_SNOW;
+		
 		if(world.provider.getDimension() == 0 && random.nextFloat() <= CHANCE_PER_CHUNK)
+		{
 			GenerateStructure(world, random, chunkX, chunkZ);
+			if(biome == Biomes.EXTREME_HILLS)
+				GenerateStructure(world, random, chunkX, chunkZ);
+		}
 	}
 	
 	private void GenerateStructure(World world, Random random, int x, int z)
@@ -44,6 +62,7 @@ public class WorldGenCrypt implements IWorldGenerator
 		int local_y = MIN_HEIGHT + random.nextInt(deltaHeight);
 		int local_z = z * 16 + random.nextInt(8) + 4;
 		BlockPos pos = new BlockPos(local_x, local_y, local_z);
+		SteamWorld.logger.log(Level.INFO, "Generating.." + pos);
 		
 		Biome biome = world.getBiome(pos);
 		if(biome == Biomes.OCEAN || biome == Biomes.DEEP_OCEAN)

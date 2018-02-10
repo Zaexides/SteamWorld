@@ -28,7 +28,7 @@ import zaexides.steamworld.te.TileEntityObilisk;
 
 public class TemplateProcessorCrypt implements ITemplateProcessor
 {
-	private static final float CUSTOM_HEAD_CHANCE = 0.001f;
+	private static final float CUSTOM_HEAD_CHANCE = 0.0005f;
 	
 	@Override
 	public BlockInfo processBlock(World worldIn, BlockPos pos, BlockInfo blockInfoIn) 
@@ -55,7 +55,7 @@ public class TemplateProcessorCrypt implements ITemplateProcessor
 				TileEntityObilisk.instantiateObiliskRandom(worldIn);
 				TileEntity obiliskTileEntity = worldIn.getTileEntity(obiliskPos.up());
 				if(obiliskTileEntity != null && obiliskTileEntity instanceof TileEntityObilisk)
-					((TileEntityObilisk)obiliskTileEntity).generateText(0);
+					((TileEntityObilisk)obiliskTileEntity).generateText();
 				
 				return new BlockInfo(pos, blockInfoIn.blockState, tileEntity.serializeNBT());
 			}

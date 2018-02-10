@@ -93,6 +93,8 @@ text.steamworld.teleporter.showhide_nomatch=Show/Hide from different Network IDs
 fluid.steam=Steam
 fluid.empty=Empty
 fluid.preservationLiquid=Preservation Liquid
+fluid.ancite=Molten Ancite
+fluid.steaite=Molten Steaite
 
 energy.name=Energy
 

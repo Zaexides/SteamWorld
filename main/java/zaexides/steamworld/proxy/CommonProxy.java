@@ -23,6 +23,7 @@ import zaexides.steamworld.RegistryHandler;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.BlockInitializer;
 import zaexides.steamworld.gui.GuiHandler;
+import zaexides.steamworld.integration.tc.TinkersMelting;
 import zaexides.steamworld.items.ItemDust;
 import zaexides.steamworld.items.ItemInitializer;
 import zaexides.steamworld.items.SWItemNugget;
@@ -65,6 +66,8 @@ public class CommonProxy
 		
     	RegistryHandler.RegisterFluids();
     	RegistryHandler.RegisterTileEntities();
+    	
+    	TinkersMelting.integrate();
 	}
 	
 	public void PostInit()

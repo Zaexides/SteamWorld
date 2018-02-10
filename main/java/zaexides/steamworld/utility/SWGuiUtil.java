@@ -16,6 +16,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.client.renderer.texture.TextureUtil;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.renderer.vertex.VertexBuffer;
 import net.minecraft.init.SoundEvents;
@@ -44,6 +45,13 @@ public class SWGuiUtil
 			int drawnHeight = (int)((float)h * percentage);
 			int drawnY = (int) ((float)h * (1 - percentage));
 			
+			int col = tank.getFluid().getFluid().getColor();
+			float a = ((col >> 24) & 255) / 255.0f;
+			float r = ((col >> 16) & 255) / 255.0f;
+			float g = ((col >> 8) & 255) / 255.0f;
+			float b = (col & 255) / 255.0f;
+			
+			GlStateManager.color(r, g, b, a);
 			guiContainer.drawModalRectWithCustomSizedTexture(
 					x + guiContainer.getGuiLeft(),
 					y + guiContainer.getGuiTop() + drawnY,
@@ -51,6 +59,7 @@ public class SWGuiUtil
 					w,drawnHeight + 1,
 					16,16
 					);
+			GlStateManager.color(1, 1, 1, 1);
 		}
 	}
 	

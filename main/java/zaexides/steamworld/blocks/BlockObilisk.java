@@ -6,9 +6,13 @@ import org.apache.logging.log4j.Level;
 
 import akka.event.Logging.Debug;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockGrass;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.BlockLog;
+import net.minecraft.block.BlockSnow;
+import net.minecraft.block.BlockTallGrass;
+import net.minecraft.block.IGrowable;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -30,6 +34,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.IPlantable;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.gui.GuiObilisk;
 import zaexides.steamworld.te.TileEntityObilisk;
@@ -160,6 +165,8 @@ public class BlockObilisk extends SteamWorldBlock implements ITileEntityProvider
 		return !(block instanceof BlockLeaves) &&
 			   !(block instanceof BlockLiquid) &&
 			   !(block instanceof BlockLog) &&
+			   !(block instanceof IPlantable) &&
+			   !(block instanceof BlockSnow) &&
 			   block != Blocks.AIR;
 	}
 

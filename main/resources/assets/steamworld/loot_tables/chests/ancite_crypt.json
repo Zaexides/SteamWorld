@@ -13,7 +13,7 @@
                 {
                     "type": "item",
                     "name": "steamworld:ingot_steaite",
-                    "weight": 40,
+                    "weight": 35,
                     "functions": 
                     [
                         {
@@ -29,7 +29,7 @@
                 {
                     "type": "item",
                     "name": "minecraft:bone",
-                    "weight": 20,
+                    "weight": 10,
                     "functions":
                     [
                         {
@@ -44,8 +44,20 @@
                 },
                 {
                     "type": "item",
+                    "name": "steamworld:treasure",
+                    "weight": 20,
+                    "functions":
+                    [
+                        {
+                            "function": "minecraft:set_data",
+                            "data": 1
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
                     "name": "steamworld:ingot_ancite",
-                    "weight": 30,
+                    "weight": 25,
                     "functions": 
                     [
                         {
