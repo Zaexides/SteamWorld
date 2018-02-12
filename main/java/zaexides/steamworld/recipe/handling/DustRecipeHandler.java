@@ -12,43 +12,109 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.OreDictionary;
 import zaexides.steamworld.ConfigHandler;
 import zaexides.steamworld.SteamWorld;
+import zaexides.steamworld.recipe.handling.utility.IRecipeInput;
+import zaexides.steamworld.recipe.handling.utility.RecipeInputItemStack;
+import zaexides.steamworld.recipe.handling.utility.RecipeInputOreDic;
 
 public class DustRecipeHandler 
 {
-	private static Map<String, ItemStack> recipes = new HashMap<String, ItemStack>();
-	public static List<ItemStack> inputs = new ArrayList<ItemStack>();
+	public static final List<DustRecipe> RECIPES = new ArrayList<DustRecipe>();
+	public static List<IRecipeInput> blacklist = new ArrayList<IRecipeInput>();
 	
-	public static void RegisterRecipe(ItemStack input, ItemStack output)
+	public static DustRecipe RegisterRecipe(ItemStack input, ItemStack output)
 	{
-		String registerName = input.getItem().getRegistryName() + "<" + input.getMetadata() + ">";
-		String outputName = output.getItem().getRegistryName() + "<" + output.getMetadata() + ">";
-		
-		if(ConfigHandler.grinderBlacklist.contains(registerName) || ConfigHandler.grinderBlacklist.contains(outputName))
+		return RegisterRecipe(new RecipeInputItemStack(input), output, false);
+	}
+	
+	public static DustRecipe RegisterRecipe(String oredicInput, ItemStack output)
+	{
+		return RegisterRecipe(new RecipeInputOreDic(oredicInput), output, false);
+	}
+	
+	public static DustRecipe RegisterRecipe(String oredicInput, ItemStack output, boolean affectedByLevel)
+	{
+		DustRecipe dustRecipe = RegisterRecipe(oredicInput, output);
+		if(dustRecipe != null)
+			dustRecipe.setAffectedByLevel(affectedByLevel);
+		return dustRecipe;
+	}
+	
+	public static DustRecipe RegisterRecipe(IRecipeInput input, ItemStack output, boolean forced)
+	{
+		if(isBlackListed(input) && !forced)
 		{
-			SteamWorld.logger.log(Level.INFO, "Skipped " + registerName + " > " + outputName + " as it is blacklisted.");
-			return;
+			SteamWorld.logger.log(Level.INFO, "Skipped SteamWorld Grinder recipe for " + input.toString() + " as it was blacklisted.");
+			return null;
 		}
 		
-		ItemStack itemStack = new ItemStack(input.getItem(), 1, input.getMetadata());
+		for(DustRecipe dustRecipe : RECIPES)
+		{
+			IRecipeInput recipeInput = dustRecipe.getInput();
+			if(recipeInput.isSame(input))
+				return null;
+		}
 		
-		if(recipes.containsKey(registerName))
-			return;
-		
-		SteamWorld.logger.log(Level.INFO, "Registering dust recipe " + registerName + " > " + outputName);
-		recipes.put(registerName, output);
-		inputs.add(input);
+		DustRecipe dustRecipe = new DustRecipe(input, output);
+		RECIPES.add(dustRecipe);
+		return dustRecipe;
 	}
 	
-	public static ItemStack GetResult(ItemStack input)
+	public static boolean isBlackListed(IRecipeInput recipeInput)
 	{
-		String registerName = input.getItem().getRegistryName() + "<" + input.getMetadata() + ">";
-		if(recipes.containsKey(registerName))
-			return recipes.get(registerName).copy();
-		return ItemStack.EMPTY;
+		for(IRecipeInput recipeInput2 : blacklist)
+		{
+			if(recipeInput2.isSame(recipeInput))
+				return true;
+		}
+		return false;
 	}
 	
-	public static List<ItemStack> GetInputs()
+	public static DustRecipe GetRecipe(ItemStack input)
 	{
-		return inputs;
+		for(DustRecipe dustRecipe : RECIPES)
+		{
+			if(dustRecipe.hasInput(input))
+				return dustRecipe;
+		}
+		return null;
+	}
+	
+	public static class DustRecipe
+	{
+		private final IRecipeInput input;
+		private final ItemStack output;
+		private boolean affectedByLevel = false;
+		
+		public DustRecipe(IRecipeInput input, ItemStack output) 
+		{
+			this.input = input;
+			this.output = output;
+		}
+		
+		public boolean hasInput(ItemStack input)
+		{
+			return this.input.matchesItemStack(input);
+		}
+		
+		public ItemStack getOutput()
+		{
+			return output.copy();
+		}
+		
+		public IRecipeInput getInput()
+		{
+			return input.copy();
+		}
+		
+		public DustRecipe setAffectedByLevel(boolean affected)
+		{
+			this.affectedByLevel = affected;
+			return this;
+		}
+		
+		public boolean affectedByLevel()
+		{
+			return this.affectedByLevel;
+		}
 	}
 }

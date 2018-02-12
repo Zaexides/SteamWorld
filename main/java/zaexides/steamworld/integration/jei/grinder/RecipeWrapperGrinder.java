@@ -11,18 +11,34 @@ import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.recipe.handling.DustRecipeHandler;
+import zaexides.steamworld.recipe.handling.DustRecipeHandler.DustRecipe;
+import zaexides.steamworld.recipe.handling.utility.IRecipeInput;
+import zaexides.steamworld.recipe.handling.utility.RecipeInputItemStack;
+import zaexides.steamworld.recipe.handling.utility.RecipeInputOreDic;
 
 public class RecipeWrapperGrinder implements IRecipeWrapper
 {
-	private final ItemStack INPUT;
+	private final List<ItemStack> INPUT;
 	private final ItemStack OUTPUT;
 	
-	public RecipeWrapperGrinder(ItemStack inputStack) 
+	public RecipeWrapperGrinder(DustRecipe dustRecipe) 
 	{
-		INPUT = inputStack;
-		OUTPUT = DustRecipeHandler.GetResult(inputStack);
+		IRecipeInput input = dustRecipe.getInput();
+		
+		if(input instanceof RecipeInputItemStack)
+		{
+			INPUT = new ArrayList<ItemStack>();
+			INPUT.add(((RecipeInputItemStack) input).itemStack);
+		}
+		else
+		{
+			INPUT = OreDictionary.getOres(((RecipeInputOreDic) input).oreDicName);
+		}
+		
+		OUTPUT = dustRecipe.getOutput();
 	}
 
 	@Override

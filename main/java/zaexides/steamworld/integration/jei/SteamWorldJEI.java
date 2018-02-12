@@ -34,6 +34,7 @@ import zaexides.steamworld.items.ItemInitializer;
 import zaexides.steamworld.recipe.handling.AssemblyRecipe;
 import zaexides.steamworld.recipe.handling.AssemblyRecipeHandler;
 import zaexides.steamworld.recipe.handling.DustRecipeHandler;
+import zaexides.steamworld.recipe.handling.DustRecipeHandler.DustRecipe;
 
 @JEIPlugin
 public class SteamWorldJEI implements IModPlugin
@@ -53,8 +54,8 @@ public class SteamWorldJEI implements IModPlugin
 		IRecipeTransferRegistry recipeTransferRegistry = registry.getRecipeTransferRegistry();
 		
 		//Grinder Registering
-		registry.handleRecipes(ItemStack.class, RecipeWrapperGrinder::new, RecipeCategoryGrinder.UID);
-		registry.addRecipes(DustRecipeHandler.inputs, RecipeCategoryGrinder.UID);
+		registry.handleRecipes(DustRecipe.class, RecipeWrapperGrinder::new, RecipeCategoryGrinder.UID);
+		registry.addRecipes(DustRecipeHandler.RECIPES, RecipeCategoryGrinder.UID);
 		registry.addRecipeClickArea(GuiSteamGrinder.class, 80, 31, 24, 24, RecipeCategoryGrinder.UID);
 		registry.addRecipeCatalyst(new ItemStack(BlockInitializer.GRINDER_STEAITE), RecipeCategoryGrinder.UID);
 		registry.addRecipeCatalyst(new ItemStack(BlockInitializer.GRINDER_ANCITE), RecipeCategoryGrinder.UID);

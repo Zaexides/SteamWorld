@@ -23,9 +23,6 @@ public class ConfigHandler
 	public static boolean generateDwarvenStructure = true;
 	public static boolean generateDwarvenOutpost = true;
 	
-	private static final String CATEGORY_GRINDER = "grinder";
-	public static List<String> grinderBlacklist = new ArrayList<String>();
-	
 	private static final String CATEGORY_FARMER = "farmer";
 	public static List<String> farmerDropBlacklist = new ArrayList<String>();
 	public static int farmerArea = 5;
@@ -46,7 +43,6 @@ public class ConfigHandler
 			config.load();
 			InitGeneral(config);
 			InitWorldgen(config);
-			InitGrinderSettings(config);
 			InitFarmerSettings(config);
 			InitEnergySettings(config);
 		}
@@ -77,12 +73,6 @@ public class ConfigHandler
 		generateSteaiteOre = config.getBoolean("generate_steaite", CATEGORY_WORLDGEN, generateSteaiteOre, "Generate Steaite ore in the world?");
 		generateDwarvenStructure = config.getBoolean("generate_ancite_dungeon", CATEGORY_WORLDGEN, generateDwarvenStructure, "Generate the Ancite dungeons in the world?");
 		generateDwarvenOutpost = config.getBoolean("generate_ancite_outpost", CATEGORY_WORLDGEN, generateDwarvenOutpost, "Generate the Ancite outposts in the world?");
-	}
-	
-	private static void InitGrinderSettings(Configuration config)
-	{
-		config.addCustomCategoryComment(CATEGORY_GRINDER, "Grinder settings");
-		grinderBlacklist = Arrays.asList(config.getStringList("blacklist", CATEGORY_GRINDER, grinderBlacklist.toArray(new String[0]), "Disallow these grinder recipes to be created. e.g.: Steaite Dust would be \"steamworld:dust<2>\" and Iron Ingot would be \"minecraft:iron_ingot<0>\", look at the logs during startup. Also, don't use quotation (\") marks."));
 	}
 	
 	private static void InitFarmerSettings(Configuration config)

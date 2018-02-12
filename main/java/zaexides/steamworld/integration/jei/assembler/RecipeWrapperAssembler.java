@@ -11,26 +11,45 @@ import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.recipe.handling.AssemblyRecipe;
 import zaexides.steamworld.recipe.handling.AssemblyRecipeHandler;
 import zaexides.steamworld.recipe.handling.DustRecipeHandler;
+import zaexides.steamworld.recipe.handling.utility.IRecipeInput;
+import zaexides.steamworld.recipe.handling.utility.RecipeInputItemStack;
+import zaexides.steamworld.recipe.handling.utility.RecipeInputOreDic;
 
 public class RecipeWrapperAssembler implements IRecipeWrapper
 {
-	private final List<ItemStack> INPUTS;
+	private final List<List<ItemStack>> INPUTS;
 	private final ItemStack OUTPUT;
 	
 	public RecipeWrapperAssembler(AssemblyRecipe recipe) 
 	{
-		INPUTS = recipe.inputs;
+		INPUTS = new ArrayList<List<ItemStack>>();
+		for(IRecipeInput recipeInput : recipe.inputs)
+		{
+			if(recipeInput instanceof RecipeInputItemStack)
+			{
+				List<ItemStack> soleItemStackList = new ArrayList<ItemStack>();
+				soleItemStackList.add(((RecipeInputItemStack) recipeInput).itemStack);
+				INPUTS.add(soleItemStackList);
+			}
+			else if(recipeInput instanceof RecipeInputOreDic)
+			{
+				String oreDicName = ((RecipeInputOreDic)recipeInput).oreDicName;
+				List<ItemStack> itemStacks = OreDictionary.getOres(oreDicName);
+				INPUTS.add(itemStacks);
+			}
+		}
 		OUTPUT = recipe.output;
 	}
 
 	@Override
 	public void getIngredients(IIngredients ingredients)
 	{
-		ingredients.setInputs(ItemStack.class, INPUTS);
+		ingredients.setInputLists(ItemStack.class, INPUTS);
 		ingredients.setOutput(ItemStack.class, OUTPUT);
 	}
 }

@@ -130,12 +130,13 @@ public class RegistryHandler
 	
 	public static void RegisterGrinderRecipes()
 	{
-		DustRecipeHandler.RegisterRecipe(new ItemStack(Blocks.REDSTONE_ORE), new ItemStack(Items.REDSTONE, 3));
-		DustRecipeHandler.RegisterRecipe(new ItemStack(Blocks.DIAMOND_ORE), new ItemStack(ItemInitializer.ITEM_NUGGET, 10, SWItemNugget.EnumVarietyMaterial.DIAMOND.getMeta()));
-		DustRecipeHandler.RegisterRecipe(new ItemStack(Blocks.EMERALD_ORE), new ItemStack(ItemInitializer.ITEM_NUGGET, 10, SWItemNugget.EnumVarietyMaterial.EMERALD.getMeta()));
-		DustRecipeHandler.RegisterRecipe(new ItemStack(Blocks.COAL_ORE), new ItemStack(Items.COAL, 3));
-		DustRecipeHandler.RegisterRecipe(new ItemStack(Blocks.LAPIS_ORE), new ItemStack(Items.DYE, 3, 4));
-		DustRecipeHandler.RegisterRecipe(new ItemStack(Blocks.QUARTZ_ORE), new ItemStack(Items.QUARTZ, 3));
+		DustRecipeHandler.RegisterRecipe("oreRedstone", new ItemStack(Items.REDSTONE, 3), true);
+		DustRecipeHandler.RegisterRecipe("oreDiamond", new ItemStack(ItemInitializer.ITEM_NUGGET, 10, SWItemNugget.EnumVarietyMaterial.DIAMOND.getMeta()), true);
+		DustRecipeHandler.RegisterRecipe("oreEmerald", new ItemStack(ItemInitializer.ITEM_NUGGET, 10, SWItemNugget.EnumVarietyMaterial.EMERALD.getMeta()), true);
+		DustRecipeHandler.RegisterRecipe("oreCoal", new ItemStack(Items.COAL, 3), true);
+		DustRecipeHandler.RegisterRecipe("oreLapis", new ItemStack(Items.DYE, 3, 4), true);
+		DustRecipeHandler.RegisterRecipe("oreQuartz", new ItemStack(Items.QUARTZ, 3), true);
+		DustRecipeHandler.RegisterRecipe("blockPrismarine", new ItemStack(Items.PRISMARINE_CRYSTALS, 4), false);
 	}
 	
 	public static void RegisterTileEntities()
