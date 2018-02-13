@@ -87,7 +87,8 @@ public class ItemTreasure extends SteamWorldItem implements IModeledObject
 	public static enum EnumTreasure implements IStringSerializable
 	{
 		FISH(0, "fish", LootTableInitializer.TREASURE_BOX_FISHING),
-		DUNGEON(1, "dungeon", LootTableInitializer.TREASURE_BOX_DUNGEON);
+		DUNGEON(1, "dungeon", LootTableInitializer.TREASURE_BOX_DUNGEON),
+		END(2, "end", LootTableInitializer.TREASURE_BOX_END);
 		
 		private final int meta;
 		private final String name;

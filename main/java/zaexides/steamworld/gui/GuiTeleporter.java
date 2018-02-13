@@ -90,11 +90,13 @@ public class GuiTeleporter extends GuiContainer implements IGuiContainerUtil
 		
 		guiTextField = new GuiTextField(GUI_TEXT_ID, fontRenderer, guiLeft + 54, guiTop + 68, 112, 14);
 		guiTextField.setMaxStringLength(16);
-		guiTextField.setText(originalName);
+		if(originalName != null)
+			guiTextField.setText(originalName);
 		
 		guiNetField = new GuiTextField(GUI_NET_ID, fontRenderer, guiLeft + 54, guiTop + 86, 112, 14);
 		guiNetField.setMaxStringLength(16);
-		guiNetField.setText(originalPass);
+		if(originalPass != null)
+			guiNetField.setText(originalPass);
 	}
 
 	@Override
