@@ -35,7 +35,7 @@ public class BlockInitializer
 	public static final List<Block> BLOCKS = new ArrayList<Block>();
 	
 	public static final SteamWorldBlockOre ORE_STEAITE = new SteamWorldBlockOre("ore_steaite", "oreSteaite", Material.ROCK, 2.5f, 3);
-	public static final SteamWorldBlock BLOCK_STEAITE = new SteamWorldBlockOre("block_steaite", "blockSteaite", Material.IRON, 3f, 2);
+	public static final SteamWorldBlock BLOCK_STEAITE = new SteamWorldBlockOre("block_steaite", "blockSteaite", Material.IRON, 3f, 2).SetBeaconBase(true);
 	public static final SteamWorldBlock BLOCK_STEAITE_GOLD = new SteamWorldBlock("block_steaite_gold", Material.IRON, 3.2f);
 	public static final Block LAMP_ENDRITCH = new SteamWorldBlock("lamp_endritch", SWMaterials.ENDRITCH, 3.5f).setLightLevel(1.0f);
 	

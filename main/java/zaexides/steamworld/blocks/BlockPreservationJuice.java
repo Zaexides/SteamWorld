@@ -1,6 +1,7 @@
 package zaexides.steamworld.blocks;
 
 import java.lang.ref.Reference;
+import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
@@ -22,8 +23,10 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.potion.PotionType;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.BlockFluidBase;
@@ -123,5 +126,44 @@ public class BlockPreservationJuice extends BlockFluidClassic implements IModele
 				}
 			}
 		}
+	}
+	
+	@Override
+	public Vec3d getFogColor(World world, BlockPos pos, IBlockState state, Entity entity, Vec3d originalColor,
+			float partialTicks) 
+	{
+		return new Vec3d(0.05f, 0.2f, 0.04f);
+	}
+	
+	@SideOnly(Side.CLIENT)
+	@Override
+	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) 
+	{
+		if(rand.nextDouble() > 0.1)
+			return;
+		
+		double xPos = pos.getX() + rand.nextDouble();
+		double yPos = pos.getY() + rand.nextDouble();
+		double zPos = pos.getZ() + rand.nextDouble();
+		
+		worldIn.spawnParticle(EnumParticleTypes.END_ROD, xPos, yPos, zPos, 0, rand.nextDouble() * 0.1, 0);
+	}
+	
+	@Override
+	public float[] getBeaconColorMultiplier(IBlockState state, World world, BlockPos pos, BlockPos beaconPos) 
+	{
+		final float[] colMain = new float[] { 0.8f, 1.0f, 0.557f};
+		final float[] colAlt1 = new float[] { 0.988f, 0.718f, 0.698f};
+		final float[] colAlt2 = new float[] { 0.89f, 0.718f, 0.98f};
+		
+		final float chance = 0.0234f;
+		float randVal = world.rand.nextFloat();
+		
+		if(randVal <= chance)
+			return colAlt1;
+		else if((randVal - chance) <= chance)
+			return colAlt2;
+		else
+			return colMain;
 	}
 }

@@ -21,6 +21,7 @@ import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -32,6 +33,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
@@ -138,12 +140,12 @@ public class BlockObilisk extends SteamWorldBlock implements ITileEntityProvider
 			otherPos = pos.down();
 				
 		if(!worldIn.getBlockState(otherPos).getBlock().equals(this))
-			worldIn.destroyBlock(pos, true);
+			worldIn.destroyBlock(pos, false);
 		
 		if(meta == 1)
 			otherPos = pos.up();
 		if(!worldIn.getBlockState(otherPos).getBlock().equals(this))
-			worldIn.destroyBlock(pos, true);
+			worldIn.destroyBlock(pos, false);
 	}
 	
 	@Override
@@ -180,30 +182,30 @@ public class BlockObilisk extends SteamWorldBlock implements ITileEntityProvider
 	}
 	
 	@Override
-	public void harvestBlock(World worldIn, EntityPlayer player, BlockPos pos, IBlockState state, TileEntity te,
-			ItemStack stack) 
+	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) 
 	{
-		if(te != null && te instanceof TileEntityObilisk)
+		if(getMetaFromState(state) == 0)
 		{
-			TileEntityObilisk tileEntityObilisk = (TileEntityObilisk)te;
-			NBTTagCompound nbtTagCompound = new NBTTagCompound();
-			SteamWorld.logger.log(Level.INFO, tileEntityObilisk == null);
-			nbtTagCompound.setInteger("text_id", tileEntityObilisk.textId);
-			nbtTagCompound.setInteger("name_id", tileEntityObilisk.nameId);
-			ItemStack itemStack = new ItemStack(this, 1);
-			itemStack.setTagCompound(nbtTagCompound);
-			spawnAsEntity(worldIn, pos, itemStack);
+			TileEntity te = worldIn.getTileEntity(pos);
+			
+			if(te != null && te instanceof TileEntityObilisk)
+			{
+				TileEntityObilisk tileEntityObilisk = (TileEntityObilisk)te;
+				NBTTagCompound nbtTagCompound = new NBTTagCompound();
+				nbtTagCompound.setInteger("text_id", tileEntityObilisk.textId);
+				nbtTagCompound.setInteger("name_id", tileEntityObilisk.nameId);
+				ItemStack itemStack = new ItemStack(this, 1);
+				itemStack.setTagCompound(nbtTagCompound);
+				spawnAsEntity(worldIn, pos, itemStack);
+			}
 		}
-		else
-			super.harvestBlock(worldIn, player, pos, state, te, stack);
+		super.breakBlock(worldIn, pos, state);
 	}
 	
 	@Override
 	public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state,
 			int fortune) 
 	{
-		if(getMetaFromState(state) == 0)
-			super.getDrops(drops, world, pos, state, fortune);
 	}
 	
 	@Override

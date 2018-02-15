@@ -17,6 +17,7 @@ import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 import scala.tools.nsc.transform.patmat.ScalaLogic.TreesAndTypesDomain.Var;
@@ -108,6 +109,12 @@ public class BlockAncite extends Block implements IMetaName, IModeledObject, IOr
 		{
 			SteamWorld.proxy.RegisterItemRenderers(Item.getItemFromBlock(this), i, "inventory", "block_ancite_" + BlockAncite.EnumType.values()[i].getName());
 		}
+	}
+	
+	@Override
+	public boolean isBeaconBase(IBlockAccess worldObj, BlockPos pos, BlockPos beacon) 
+	{
+		return worldObj.getBlockState(pos).equals(getStateFromMeta(EnumType.BLOCK.getMeta()));
 	}
 	
 	public static enum EnumType implements IStringSerializable

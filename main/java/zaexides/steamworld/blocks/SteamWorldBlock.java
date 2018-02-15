@@ -9,6 +9,8 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.common.property.IUnlistedProperty;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
@@ -16,7 +18,9 @@ import zaexides.steamworld.items.ItemInitializer;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
 
 public class SteamWorldBlock extends Block implements IModeledObject
-{
+{	
+	private boolean isBeaconBase = false;
+	
 	public SteamWorldBlock(String name, Material material, float hardness)
 	{
 		super(material);
@@ -56,5 +60,17 @@ public class SteamWorldBlock extends Block implements IModeledObject
 	public void RegisterModels()
 	{
 		SteamWorld.proxy.RegisterItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
+	}
+	
+	public SteamWorldBlock SetBeaconBase(boolean beaconBase) 
+	{
+		this.isBeaconBase = beaconBase;
+		return this;
+	}
+	
+	@Override
+	public boolean isBeaconBase(IBlockAccess worldObj, BlockPos pos, BlockPos beacon) 
+	{
+		return isBeaconBase;
 	}
 }
