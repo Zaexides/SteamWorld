@@ -136,6 +136,9 @@ message.steamworld.launcher.force_decrease=Launcher's force decreased to %s.
 
 jei.steamworld.grinder=SteamWorld Grinder
 jei.steamworld.assembler=SteamWorld Assembler
+jei.steamworld.time=%d minutes %d seconds
+jei.steamworld.time_tier_info=On Tier 1
+jei.steamworld.grinder_info=+1 starting from Tier 2
 
 jei.steamworld.grinder.description=The Steam Grinder is capable of grinding ores and ingots down to their dust counterparts.\nUpgrades increase the production.
 jei.steamworld.furnace.description=The Steam Furnace works just like a regular furnace, but uses the power of steam instead.\nUpgrades increase the efficiency.

@@ -1,6 +1,5 @@
 package zaexides.steamworld.recipe.handling;
 
-
 import java.util.List;
 
 import org.apache.logging.log4j.Level;
@@ -8,7 +7,7 @@ import org.apache.logging.log4j.Level;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import zaexides.steamworld.SteamWorld;
-import zaexides.steamworld.recipe.handling.DustRecipeHandler.DustRecipe;
+import zaexides.steamworld.recipe.handling.DustRecipe;
 
 public class OreDictionaryScanner 
 {

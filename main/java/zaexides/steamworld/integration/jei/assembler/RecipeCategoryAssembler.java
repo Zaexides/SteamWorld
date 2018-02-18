@@ -22,14 +22,14 @@ public class RecipeCategoryAssembler implements IRecipeCategory
 	
 	public RecipeCategoryAssembler(IGuiHelper helper) 
 	{
-		final int xPos = 53;
-		final int yPos = 20;
-		final int width = 70;
+		final int xPos = 0;
+		final int yPos = 0;
+		final int width = 90;
 		final int height = 65;
 		
 		LOCALIZED_NAME = I18n.format("jei.steamworld.assembler");
 		
-		ResourceLocation resourceLocation = new ResourceLocation(ModInfo.MODID, "textures/gui/machine/gui_steam_assembler.png");
+		ResourceLocation resourceLocation = new ResourceLocation(ModInfo.MODID, "textures/gui/jei/jei_map.png");
 		background = helper.createDrawable(resourceLocation, xPos, yPos, width, height, 0, 0, 0, 0);
 	}
 
@@ -69,10 +69,10 @@ public class RecipeCategoryAssembler implements IRecipeCategory
 		for(int y = 0; y < 3; y++)
 			group.init(y + 0, true, 0, 11 + y*18);
 		for(int y = 0; y < 3; y++)
-			group.init(y + 3, true, 52, 11 + y*18);
-		group.init(6, true, 26, 3);
+			group.init(y + 3, true, 72, 11 + y*18);
+		group.init(6, true, 36, 3);
 		
-		group.init(7, false, 26, 29);
+		group.init(7, false, 36, 29);
 		
 		for(int i = 0; i < 6; i++)
 			group.set(i, ingredients.getInputs(ItemStack.class).get(i));

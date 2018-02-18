@@ -11,6 +11,7 @@ import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.ISubtypeRegistry;
 import mezz.jei.api.JEIPlugin;
+import mezz.jei.api.ingredients.IModIngredientRegistration;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import mezz.jei.api.recipe.VanillaRecipeCategoryUid;
 import mezz.jei.api.recipe.transfer.IRecipeTransferRegistry;
@@ -34,7 +35,7 @@ import zaexides.steamworld.items.ItemInitializer;
 import zaexides.steamworld.recipe.handling.AssemblyRecipe;
 import zaexides.steamworld.recipe.handling.AssemblyRecipeHandler;
 import zaexides.steamworld.recipe.handling.DustRecipeHandler;
-import zaexides.steamworld.recipe.handling.DustRecipeHandler.DustRecipe;
+import zaexides.steamworld.recipe.handling.DustRecipe;
 
 @JEIPlugin
 public class SteamWorldJEI implements IModPlugin

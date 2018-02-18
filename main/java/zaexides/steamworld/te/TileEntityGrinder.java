@@ -19,7 +19,7 @@ import zaexides.steamworld.blocks.machines.BlockGrinder;
 import zaexides.steamworld.blocks.machines.BlockSWFurnace;
 import zaexides.steamworld.fluids.FluidSteam;
 import zaexides.steamworld.recipe.handling.DustRecipeHandler;
-import zaexides.steamworld.recipe.handling.DustRecipeHandler.DustRecipe;
+import zaexides.steamworld.recipe.handling.DustRecipe;
 import zaexides.steamworld.utility.capability.ItemStackHandlerInput;
 import zaexides.steamworld.utility.capability.ItemStackHandlerOutput;
 import zaexides.steamworld.utility.capability.ItemStackInputOutputHandler;

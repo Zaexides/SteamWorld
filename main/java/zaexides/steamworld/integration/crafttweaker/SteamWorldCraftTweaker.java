@@ -17,7 +17,7 @@ import stanhebben.zenscript.annotations.ZenMethod;
 import zaexides.steamworld.recipe.handling.AssemblyRecipe;
 import zaexides.steamworld.recipe.handling.AssemblyRecipeHandler;
 import zaexides.steamworld.recipe.handling.DustRecipeHandler;
-import zaexides.steamworld.recipe.handling.DustRecipeHandler.DustRecipe;
+import zaexides.steamworld.recipe.handling.DustRecipe;
 import zaexides.steamworld.recipe.handling.utility.IRecipeInput;
 import zaexides.steamworld.recipe.handling.utility.RecipeInputItemStack;
 import zaexides.steamworld.recipe.handling.utility.RecipeInputOreDic;
@@ -153,4 +153,5 @@ public class SteamWorldCraftTweaker
 				CraftTweakerAPI.logError("Couldn't remove SteamWorld grinder recipe(s) for " + ingredient.toString() + " because it's neither an item stack nor an oredic entry.");
 		}
 	}
+
 }

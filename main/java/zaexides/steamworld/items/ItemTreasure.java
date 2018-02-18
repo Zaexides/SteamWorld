@@ -5,6 +5,7 @@ import java.util.Random;
 
 import org.apache.logging.log4j.Level;
 
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryHelper;
@@ -51,6 +52,15 @@ public class ItemTreasure extends SteamWorldItem implements IModeledObject
 	}
 	
 	@Override
+	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) 
+	{
+		int meta = stack.getMetadata();
+		String tooltipText = EnumTreasure.byMetadata(meta).getTooltip();
+		if(tooltipText != null && tooltipText != "")
+			tooltip.add(tooltipText);
+	}
+	
+	@Override
 	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> items) 
 	{
 		for(EnumTreasure item$material : EnumTreasure.values())
@@ -86,20 +96,22 @@ public class ItemTreasure extends SteamWorldItem implements IModeledObject
 	
 	public static enum EnumTreasure implements IStringSerializable
 	{
-		FISH(0, "fish", LootTableInitializer.TREASURE_BOX_FISHING),
-		DUNGEON(1, "dungeon", LootTableInitializer.TREASURE_BOX_DUNGEON),
-		END(2, "end", LootTableInitializer.TREASURE_BOX_END);
+		FISH(0, "fish", LootTableInitializer.TREASURE_BOX_FISHING, "Rare chance of fishing up."),
+		DUNGEON(1, "dungeon", LootTableInitializer.TREASURE_BOX_DUNGEON, "Found abundantly in Ancite Crypts."),
+		END(2, "end", LootTableInitializer.TREASURE_BOX_END, "Occasionally found in the End Cities.");
 		
 		private final int meta;
 		private final String name;
 		private final ResourceLocation lootTable;
+		private final String tooltip;
 		private static final EnumTreasure[] META_LOOKUP = new EnumTreasure[values().length];
 		
-		private EnumTreasure(int meta, String name, ResourceLocation lootTable)
+		private EnumTreasure(int meta, String name, ResourceLocation lootTable, String tooltip)
 		{
 			this.meta = meta;
 			this.name = name;
 			this.lootTable = lootTable;
+			this.tooltip = tooltip;
 		}
 		
 		public int getMeta()
@@ -110,6 +122,11 @@ public class ItemTreasure extends SteamWorldItem implements IModeledObject
 		public ResourceLocation getLootTable()
 		{
 			return this.lootTable;
+		}
+		
+		public String getTooltip()
+		{
+			return this.tooltip;
 		}
 		
 		@Override

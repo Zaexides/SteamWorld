@@ -145,8 +145,9 @@ public class BlockMachineVariant extends Block implements IMetaName, IModeledObj
 			return new TileEntityTeleporter();
 		case LAUNCHER:
 			return new TileEntityLauncher();
+		default:
+			return null;
 		}
-		return null;
 	}
 	
 	@Override
