@@ -45,6 +45,7 @@ import zaexides.steamworld.te.TileEntityGrinder;
 import zaexides.steamworld.te.TileEntityLumber;
 import zaexides.steamworld.te.TileEntityNetherAccelerator;
 import zaexides.steamworld.te.TileEntityObilisk;
+import zaexides.steamworld.te.TileEntityPipe;
 import zaexides.steamworld.te.TileEntitySWFurnace;
 import zaexides.steamworld.te.TileEntitySteamGenerator;
 import zaexides.steamworld.te.TileEntitySteamGeneratorNether;
@@ -141,6 +142,7 @@ public class RegistryHandler
 	
 	public static void RegisterTileEntities()
 	{
+		GameRegistry.registerTileEntity(TileEntityPipe.class, ModInfo.MODID + "_Pipe");
 		GameRegistry.registerTileEntity(TileEntitySteamGenerator.class, ModInfo.MODID + "_SteamGenerator");
 		GameRegistry.registerTileEntity(TileEntityValve.class, ModInfo.MODID + "_Valve");
 		GameRegistry.registerTileEntity(TileEntityDrain.class, ModInfo.MODID + "_Drain");

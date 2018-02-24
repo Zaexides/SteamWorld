@@ -1,7 +1,10 @@
 package zaexides.steamworld.blocks;
 
+import org.apache.logging.log4j.Level;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
@@ -9,8 +12,10 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
@@ -18,6 +23,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
+import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.property.ExtendedBlockState;
 import net.minecraftforge.common.property.IExtendedBlockState;
 import net.minecraftforge.common.property.IUnlistedProperty;
@@ -28,11 +35,12 @@ import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.items.ItemInitializer;
 import zaexides.steamworld.models.PipeBakedModel;
+import zaexides.steamworld.te.TileEntityPipe;
 import zaexides.steamworld.utility.UnlistedPropertyCanConnect;
 import zaexides.steamworld.utility.interfaces.IItemModeledObject;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
 
-public class BlockFluidPipe extends Block implements IItemModeledObject, IModeledObject
+public class BlockFluidPipe extends Block implements IItemModeledObject, IModeledObject, ITileEntityProvider
 {
 	public static final UnlistedPropertyCanConnect NORTH = new UnlistedPropertyCanConnect("north");
 	public static final UnlistedPropertyCanConnect SOUTH = new UnlistedPropertyCanConnect("south");
@@ -182,5 +190,11 @@ public class BlockFluidPipe extends Block implements IItemModeledObject, IModele
 		if(tEntity != null && tEntity.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, facing))
 			return true;
 		return false;
+	}
+
+	@Override
+	public TileEntity createNewTileEntity(World worldIn, int meta) 
+	{
+		return new TileEntityPipe();
 	}
 }

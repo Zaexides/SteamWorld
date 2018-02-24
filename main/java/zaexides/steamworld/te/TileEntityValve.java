@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Queue;
 
 import javax.swing.plaf.basic.BasicBorders.MarginBorder;
@@ -49,6 +50,10 @@ public class TileEntityValve extends SyncedTileEntity implements ICapabilityProv
 	
 	private int updateTimer = ConfigHandler.fluidControllerUpdateRate;
 	private int transportSpeed = 10;
+	
+	private List<IFluidHandler> inputMachines = new ArrayList<IFluidHandler>();
+	
+	private List<IFluidHandler> outputMachines = new ArrayList<IFluidHandler>();
 	
 	public void SetStats(int speed, int capacity)
 	{
@@ -155,127 +160,88 @@ public class TileEntityValve extends SyncedTileEntity implements ICapabilityProv
 		
 		if(enabled)
 		{
-			GetInput();
-			GetOutput();
+			getInputOutput();
+			drainInput();
+			fillOutput();
 		}
-		
-		markDirty(false);
 	}
 	
-	private void GetInput() 
+	private void getInputOutput()
 	{
-		Queue<PosFacing> neighbors = new LinkedList<PosFacing>();
-		List<FluidHandlerTileEntityCombination> combinations = new ArrayList<FluidHandlerTileEntityCombination>();
-		List<BlockPos> completed = new ArrayList<BlockPos>();
-		completed.add(pos);
+		EnumFacing facing = world.getBlockState(pos).getValue(BlockValve.FACING);
+		fetchListElements(outputMachines, facing);
+		fetchListElements(inputMachines, facing.getOpposite());
+	}
+	
+	private void fetchListElements(List<IFluidHandler> list, EnumFacing side)
+	{
+		list.clear();
+		TileEntity sideEntity = world.getTileEntity(pos.add(side.getDirectionVec()));
 		
-		EnumFacing blockFacing = world.getBlockState(pos).getValue(BlockValve.FACING);
-		Enqueue(neighbors, completed, pos.add(blockFacing.getOpposite().getDirectionVec()), blockFacing);
-		
-		while(neighbors.size() > 0)
+		if(sideEntity != null)
 		{
-			PosFacing posFace = neighbors.poll();
-			BlockPos pos = posFace.blockPos;
-			
-			TileEntity tEntity = world.getTileEntity(pos);
-			if(tEntity != null && !tEntity.isInvalid() && tEntity.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, posFace.facing))
-			{
-				IFluidHandler fluidHandler = tEntity.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, posFace.facing);
-				if(fluidHandler != null)
-					combinations.add(new FluidHandlerTileEntityCombination(tEntity, fluidHandler));
-			}
-			
-			if(world.getBlockState(pos).getBlock() == BlockInitializer.BLOCK_FLUID_PIPE)
-				EnqueueNeighbors(neighbors, completed, pos);
+			if(sideEntity instanceof TileEntityPipe)
+				((TileEntityPipe)sideEntity).fetch(list, side.getOpposite(), ConfigHandler.pipeSystemMaxRange);
+			else if(sideEntity.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side))
+				list.add(sideEntity.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side.getOpposite()));
 		}
+	}
+	
+	private void drainInput()
+	{
+		if(inputMachines.size() == 0)
+			return;
 		
-		Collections.shuffle(combinations);
-		
-		if(combinations.size() > 0)
+		int totalDrainAmount = ConfigHandler.fluidControllerUpdateRate * transportSpeed;
+		double drainPartition = split(totalDrainAmount, inputMachines.size());
+		for(IFluidHandler fluidHandler : inputMachines)
 		{
-			int totalDrainAmount = ConfigHandler.fluidControllerUpdateRate * transportSpeed;
-			double drainPartitionDouble = split(totalDrainAmount, combinations.size());
-			for(int i = 0; i < combinations.size(); i++)
+			int drainAmount = (int)drainPartition;
+			if(drainAmount <= 0)
+				break;
+			
+			FluidStack fluidStack = fluidHandler.drain(drainAmount, false);
+			if(fluidStack != null && fluidStack.amount > 0)
 			{
-				int drainAmount = (int)drainPartitionDouble;
-				if(drainAmount <= 0)
-					break;
-				
-				IFluidHandler fluidHandler = combinations.get(i).fluidHandler;
-				FluidStack fluidStack = fluidHandler.drain(drainAmount, false);
-				if(fluidStack != null && fluidStack.amount > 0)
+				int fillAmount = multiFluidTank.fill(fluidStack, true);
+				if(fillAmount > 0)
 				{
-					int fillAmount = multiFluidTank.fill(fluidStack, true);
-					if(fillAmount > 0)
-					{
-						fluidHandler.drain(fillAmount, true);
-						combinations.get(i).tileEntity.markDirty();
-						totalDrainAmount -= fillAmount;
-						break;
-					}
+					fluidHandler.drain(fillAmount, true);
+					totalDrainAmount -= fillAmount;
 				}
 			}
 		}
 	}
 	
-	private void GetOutput() 
+	private void fillOutput()
 	{
-		Queue<PosFacing> neighbors = new LinkedList<PosFacing>();
-		List<FluidHandlerTileEntityCombination> combinations = new ArrayList<FluidHandlerTileEntityCombination>();
-		List<BlockPos> completed = new ArrayList<BlockPos>();
-		completed.add(pos);
+		if(outputMachines.size() == 0)
+			return;
 		
-		EnumFacing blockFacing = world.getBlockState(pos).getValue(BlockValve.FACING);
-		Enqueue(neighbors, completed, pos.add(blockFacing.getDirectionVec()), blockFacing.getOpposite());
-		
-		while(neighbors.size() > 0)
+		int totalFillAmount = ConfigHandler.fluidControllerUpdateRate * transportSpeed;
+		double fillPartition = split(totalFillAmount, outputMachines.size());
+		for(IFluidHandler fluidHandler : outputMachines)
 		{
-			PosFacing posFace = neighbors.poll();
-			BlockPos pos = posFace.blockPos;
+			int fillAmount = (int)fillPartition;
+			if(fillAmount <= 0)
+				break;
 			
-			TileEntity tEntity = world.getTileEntity(pos);
-			if(tEntity != null && !tEntity.isInvalid() && tEntity.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, posFace.facing))
-			{
-				IFluidHandler fluidHandler = tEntity.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, posFace.facing);
-				if(fluidHandler != null)
-					combinations.add(new FluidHandlerTileEntityCombination(tEntity, fluidHandler));
-			}
-			
-			if(world.getBlockState(pos).getBlock() == BlockInitializer.BLOCK_FLUID_PIPE)
-				EnqueueNeighbors(neighbors, completed, pos);
-		}
-		
-		Collections.shuffle(combinations);
-		
-		if(combinations.size() > 0)
-		{
-			int totalDrainAmount = ConfigHandler.fluidControllerUpdateRate * transportSpeed;
-			double drainPartitionDouble = split(totalDrainAmount, combinations.size());
-			for(int i = 0; i < combinations.size(); i++)
-			{
-				int drainAmount = (int)drainPartitionDouble;
-				if(drainAmount <= 0)
-					break;
-				
-				IFluidHandler fluidHandler = combinations.get(i).fluidHandler;
-				totalDrainAmount -= FillOutput(combinations.get(i).tileEntity, drainAmount, fluidHandler);
-			}
+			totalFillAmount -= fillFluidHandler(fluidHandler, fillAmount);
 		}
 	}
 	
-	private int FillOutput(TileEntity tileEntity, int drainAmount, IFluidHandler fluidHandler)
+	private int fillFluidHandler(IFluidHandler fluidHandler, int amount)
 	{
-		for(int j = 0; j < multiFluidTank.size(); j++)
+		for(int i = 0; i < multiFluidTank.size(); i++)
 		{
-			FluidStack fluidStack = multiFluidTank.drain(drainAmount, j, false);
+			FluidStack fluidStack = multiFluidTank.drain(amount, i, false);
 			if(fluidStack != null && fluidStack.amount > 0)
 			{
 				int fillAmount = fluidHandler.fill(fluidStack, true);
 				
 				if(fillAmount > 0)
 				{
-					multiFluidTank.drain(fillAmount, j, true);
-					tileEntity.markDirty();
+					multiFluidTank.drain(fillAmount, i, true);
 					return fillAmount;
 				}
 			}
@@ -292,32 +258,6 @@ public class TileEntityValve extends SyncedTileEntity implements ICapabilityProv
 			result++;
 		}
 		return result;
-	}
-	
-	private void EnqueueNeighbors(Queue<PosFacing> neighbors, List<BlockPos> completed, BlockPos pos)
-	{
-		Enqueue(neighbors, completed, pos.north(), EnumFacing.SOUTH);
-		Enqueue(neighbors, completed, pos.south(), EnumFacing.NORTH);
-		Enqueue(neighbors, completed, pos.east(), EnumFacing.WEST);
-		Enqueue(neighbors, completed, pos.west(), EnumFacing.EAST);
-		Enqueue(neighbors, completed, pos.up(), EnumFacing.DOWN);
-		Enqueue(neighbors, completed, pos.down(), EnumFacing.UP);
-	}
-	
-	private void Enqueue(Queue<PosFacing> neighbors, List<BlockPos> completed, BlockPos pos, EnumFacing facing)
-	{
-		if(!completed.contains(pos))
-		{
-			if(world.getBlockState(pos).getBlock() != BlockInitializer.BLOCK_FLUID_PIPE)
-			{
-				TileEntity tEntity = world.getTileEntity(pos);
-				if(tEntity == null || tEntity.isInvalid() || !tEntity.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, facing))
-					return;
-			}
-			
-			neighbors.offer(new PosFacing(pos, facing));
-			completed.add(pos);
-		}
 	}
 	
 	@Override
@@ -345,18 +285,5 @@ public class TileEntityValve extends SyncedTileEntity implements ICapabilityProv
 			}
 		}
 		return super.getCapability(capability, facing);
-	}
-	
-	protected static class FluidHandlerTileEntityCombination
-	{
-		public IFluidHandler fluidHandler;
-		public TileEntity tileEntity;
-		
-		public FluidHandlerTileEntityCombination() {}
-		public FluidHandlerTileEntityCombination(TileEntity tileEntity, IFluidHandler fluidHandler)
-		{
-			this.fluidHandler = fluidHandler;
-			this.tileEntity = tileEntity;
-		}
 	}
 }
