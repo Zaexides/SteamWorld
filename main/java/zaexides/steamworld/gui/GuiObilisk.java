@@ -2,11 +2,16 @@ package zaexides.steamworld.gui;
 
 import java.io.IOException;
 
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 import zaexides.steamworld.ModInfo;
+import zaexides.steamworld.te.TileEntityObilisk;
 import zaexides.steamworld.utility.AnciteScriptHandler;
 
 public class GuiObilisk extends GuiScreen
@@ -21,9 +26,15 @@ public class GuiObilisk extends GuiScreen
 	
 	private String text;
 	
-	public GuiObilisk(String text) 
+	public GuiObilisk(BlockPos pos, World world) 
 	{
-		this.text = text;
+		IBlockState blockState = world.getBlockState(pos);
+		
+		pos = pos.down(blockState.getBlock().getMetaFromState(blockState));
+		TileEntity tileEntity = world.getTileEntity(pos);
+		
+		if(tileEntity != null && tileEntity instanceof TileEntityObilisk)
+			this.text = ((TileEntityObilisk)tileEntity).getText();
 	}
 	
 	@Override

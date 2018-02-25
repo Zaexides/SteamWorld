@@ -38,7 +38,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import zaexides.steamworld.SteamWorld;
-import zaexides.steamworld.gui.GuiObilisk;
+import zaexides.steamworld.gui.GuiHandler;
 import zaexides.steamworld.te.TileEntityObilisk;
 import zaexides.steamworld.te.TileEntityValve;
 
@@ -156,7 +156,7 @@ public class BlockObilisk extends SteamWorldBlock implements ITileEntityProvider
 		if(tileEntity != null && tileEntity instanceof TileEntityObilisk)
 		{
 			if(worldIn.isRemote && ((TileEntityObilisk)tileEntity).textId != -1)
-				Minecraft.getMinecraft().displayGuiScreen(new GuiObilisk(((TileEntityObilisk)tileEntity).getText()));
+				playerIn.openGui(SteamWorld.singleton, GuiHandler.OBILISK, worldIn, pos.getX(), pos.getY(), pos.getZ());
 			return true;
 		}
 		return false;
