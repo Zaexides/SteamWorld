@@ -62,7 +62,6 @@ public class WorldGenCrypt implements IWorldGenerator
 		int local_y = MIN_HEIGHT + random.nextInt(deltaHeight);
 		int local_z = z * 16 + random.nextInt(8) + 4;
 		BlockPos pos = new BlockPos(local_x, local_y, local_z);
-		SteamWorld.logger.log(Level.INFO, "Generating.." + pos);
 		
 		Biome biome = world.getBiome(pos);
 		if(biome == Biomes.OCEAN || biome == Biomes.DEEP_OCEAN)

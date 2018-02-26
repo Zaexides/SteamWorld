@@ -33,9 +33,7 @@ public class TileEntityLauncher extends SyncedTileEntity implements ICapabilityP
 	}
 	
 	public void ChangeForce(float hitY, EntityPlayer player)
-	{
-		SteamWorld.logger.log(Level.INFO, "Force: " + force + ", Max: " + MAX_FORCE + ", hitY: " + hitY);
-		
+	{		
 		if(hitY > 0.5f && force < MAX_FORCE)
 		{
 			force++;
