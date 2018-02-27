@@ -13,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -22,6 +23,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import scala.collection.generic.BitOperations.Int;
 import scala.reflect.internal.Trees.New;
 import scala.tools.nsc.doc.model.Public;
+import zaexides.steamworld.integration.tc.TCMaterials;
 import zaexides.steamworld.proxy.CommonProxy;
 
 @Mod(
@@ -55,6 +57,16 @@ public class SteamWorld
     {
     	logger = event.getModLog();
     	proxy.PreInit(event);
+    	
+    	try
+    	{
+	    	if(Loader.isModLoaded("tconstruct"))
+	    		TCMaterials.registerMaterials();
+    	}
+    	catch(Exception exception)
+    	{
+    		SteamWorld.logger.log(Level.ERROR, "Ah, uhm, yeah, mod compatibility with Tinkers' kinda failed here. Send me this, will ya? " + exception.toString());
+    	}
     }
     
     @Mod.EventHandler

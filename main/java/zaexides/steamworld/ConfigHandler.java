@@ -35,6 +35,10 @@ public class ConfigHandler
 	public static int energyFromFluid = 5;
 	public static int energyToFluid = 5;
 	public static int maxConversionsPerTick = 30;
+	
+	private static final String CATEGORY_TINKERS = "tinkers_integration";
+	public static boolean tcSteaite = true;
+	public static boolean tcAncite = true;
 		
 	public static void ReadConfig()
 	{
@@ -46,6 +50,7 @@ public class ConfigHandler
 			InitWorldgen(config);
 			InitFarmerSettings(config);
 			InitEnergySettings(config);
+			InitTinkersIntegrationSettings(config);
 		}
 		catch(Exception e)
 		{
@@ -93,5 +98,12 @@ public class ConfigHandler
 		energyFromFluid = config.getInt("energy_from_fluid", CATEGORY_ENERGY, energyFromFluid, 1, Integer.MAX_VALUE, "The amount of RF you get from \"fluid_to_energy\" \"fluid\". Should be the same as \"energy_to_fluid\", but can be changed for rebalancing.");
 		energyToFluid = config.getInt("energy_to_fluid", CATEGORY_ENERGY, energyToFluid, 1, Integer.MAX_VALUE, "The amount of RF you need to get \"fluid_from_energy\" \"fluid\". Should be the same as \"energy_from_fluid\", but can be changed for rebalancing.");
 		maxConversionsPerTick = config.getInt("max_conversions_per_tick", CATEGORY_ENERGY, maxConversionsPerTick, 1, Integer.MAX_VALUE, "The maximum amount of conversions that can be made per tick. i.e. if 1 RF translates to 80 Steam and this is set to 10, you can get up to 800 steam for 10 RF per tick.");
+	}
+	
+	private static void InitTinkersIntegrationSettings(Configuration config)
+	{
+		config.addCustomCategoryComment(CATEGORY_TINKERS, "Tinkers' Construct integration");
+		tcSteaite = config.getBoolean("material_steaite", CATEGORY_TINKERS, tcSteaite, "Allow Steaite TC material.");
+		tcAncite = config.getBoolean("material_ancite", CATEGORY_TINKERS, tcAncite, "Allow Ancite TC material.");
 	}
 }
