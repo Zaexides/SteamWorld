@@ -24,7 +24,14 @@ import scala.reflect.internal.Trees.New;
 import scala.tools.nsc.doc.model.Public;
 import zaexides.steamworld.proxy.CommonProxy;
 
-@Mod(modid = ModInfo.MODID, name = ModInfo.MODNAME, version = ModInfo.VERSION, useMetadata = true, updateJSON = "https://zaexides.net/steamworld/update.json")
+@Mod(
+		modid = ModInfo.MODID,
+		name = ModInfo.MODNAME,
+		version = ModInfo.VERSION,
+		useMetadata = true,
+		updateJSON = "https://zaexides.net/steamworld/update.json",
+		dependencies = "required-after:forge@[14.23.2.2611,);"
+		)
 public class SteamWorld
 {
     public static Logger logger;
@@ -36,6 +43,8 @@ public class SteamWorld
     @Mod.Instance(ModInfo.MODID)
     public static SteamWorld singleton;
     
+    public static MiscEventHandler eventHandler = new MiscEventHandler();
+    
     static
     {
     	FluidRegistry.enableUniversalBucket();
@@ -44,16 +53,13 @@ public class SteamWorld
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
-    	proxy.PreInit(event);
     	logger = event.getModLog();
-    	RegistryHandler.RegisterFluids();
-    	RegistryHandler.RegisterTileEntities();
+    	proxy.PreInit(event);
     }
     
     @Mod.EventHandler
     public void init(FMLInitializationEvent event)
     {
-    	RegistryHandler.MiscRegister();
     	proxy.Init();
     }
     

@@ -16,14 +16,14 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
-import zaexides.steamworld.BlockInitializer;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
+import zaexides.steamworld.blocks.BlockInitializer;
 import zaexides.steamworld.blocks.BlockSteam;
 import zaexides.steamworld.gui.GuiHandler;
 import zaexides.steamworld.models.BakedModelLoader;
-import zaexides.steamworld.utility.IItemModeledObject;
-import zaexides.steamworld.utility.IModeledObject;
+import zaexides.steamworld.utility.interfaces.IItemModeledObject;
+import zaexides.steamworld.utility.interfaces.IModeledObject;
 
 public class ClientProxy extends CommonProxy
 {
@@ -71,6 +71,7 @@ public class ClientProxy extends CommonProxy
 	{
 		super.PreInit(e);
 		ModelLoaderRegistry.registerLoader(new BakedModelLoader());
+		OBJLoader.INSTANCE.addDomain(ModInfo.MODID);
 	}
 	
 	@Override

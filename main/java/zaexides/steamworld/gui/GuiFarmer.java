@@ -20,8 +20,8 @@ import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.containers.ContainerFarmer;
 import zaexides.steamworld.te.TileEntityLumber;
 import zaexides.steamworld.te.TileEntityMachine;
-import zaexides.steamworld.utility.IGuiContainerUtil;
 import zaexides.steamworld.utility.SWGuiUtil;
+import zaexides.steamworld.utility.interfaces.IGuiContainerUtil;
 
 public class GuiFarmer extends GuiContainer implements IGuiContainerUtil
 {

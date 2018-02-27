@@ -20,14 +20,13 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 import scala.tools.nsc.transform.patmat.ScalaLogic.TreesAndTypesDomain.Var;
-import zaexides.steamworld.BlockInitializer;
-import zaexides.steamworld.ItemInitializer;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.item.ItemBlockVariant;
-import zaexides.steamworld.utility.IMetaName;
-import zaexides.steamworld.utility.IModeledObject;
-import zaexides.steamworld.utility.IOreDictionaryRegisterable;
+import zaexides.steamworld.items.ItemInitializer;
+import zaexides.steamworld.utility.interfaces.IMetaName;
+import zaexides.steamworld.utility.interfaces.IModeledObject;
+import zaexides.steamworld.utility.interfaces.IOreDictionaryRegisterable;
 
 public class BlockDecorative extends Block implements IMetaName, IModeledObject
 {
@@ -107,7 +106,8 @@ public class BlockDecorative extends Block implements IMetaName, IModeledObject
 	
 	public static enum EnumType implements IStringSerializable
 	{
-		ENDRITCH_BLOCK(0, "block_endritch");
+		ENDRITCH_BLOCK(0, "block_endritch"),
+		PRESERVATION_COBBLE(1, "block_preservation_cobble");
 		
 		private static final BlockDecorative.EnumType[] META_LOOKUP = new BlockDecorative.EnumType[values().length];
 		private final int meta;

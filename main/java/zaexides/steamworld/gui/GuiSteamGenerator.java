@@ -11,8 +11,8 @@ import scala.collection.generic.BitOperations.Int;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.containers.ContainerSteamGenerator;
 import zaexides.steamworld.te.TileEntitySteamGenerator;
-import zaexides.steamworld.utility.IGuiContainerUtil;
 import zaexides.steamworld.utility.SWGuiUtil;
+import zaexides.steamworld.utility.interfaces.IGuiContainerUtil;
 
 public class GuiSteamGenerator extends GuiContainer implements IGuiContainerUtil
 {

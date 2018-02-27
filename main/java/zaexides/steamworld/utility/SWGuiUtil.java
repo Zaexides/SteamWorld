@@ -16,6 +16,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.client.renderer.texture.TextureUtil;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.renderer.vertex.VertexBuffer;
 import net.minecraft.init.SoundEvents;
@@ -29,6 +30,7 @@ import net.minecraftforge.fml.client.config.GuiUtils;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.network.PacketHandler;
 import zaexides.steamworld.network.messages.MessageGuiButton;
+import zaexides.steamworld.utility.interfaces.IGuiContainerUtil;
 
 public class SWGuiUtil
 {
@@ -43,6 +45,13 @@ public class SWGuiUtil
 			int drawnHeight = (int)((float)h * percentage);
 			int drawnY = (int) ((float)h * (1 - percentage));
 			
+			int col = tank.getFluid().getFluid().getColor();
+			float a = ((col >> 24) & 255) / 255.0f;
+			float r = ((col >> 16) & 255) / 255.0f;
+			float g = ((col >> 8) & 255) / 255.0f;
+			float b = (col & 255) / 255.0f;
+			
+			GlStateManager.color(r, g, b, a);
 			guiContainer.drawModalRectWithCustomSizedTexture(
 					x + guiContainer.getGuiLeft(),
 					y + guiContainer.getGuiTop() + drawnY,
@@ -50,6 +59,7 @@ public class SWGuiUtil
 					w,drawnHeight + 1,
 					16,16
 					);
+			GlStateManager.color(1, 1, 1, 1);
 		}
 	}
 	
@@ -86,12 +96,20 @@ public class SWGuiUtil
 		}
 	}
 	
-	public static void HandleButton(BlockPos position, byte id, int mouseX, int mouseY, int x, int y, int w, int h)
+	public static boolean HandleButton(BlockPos position, byte id, int mouseX, int mouseY, int x, int y, int w, int h)
+	{
+		return HandleButton(position, id, mouseX, mouseY, x, y, w, h, true);
+	}
+	
+	public static boolean HandleButton(BlockPos position, byte id, int mouseX, int mouseY, int x, int y, int w, int h, boolean sendMessage)
 	{
 		if(mouseX >= x && mouseX < x+w && mouseY >= y && mouseY < y+h)
 		{
-			PacketHandler.wrapper.sendToServer(new MessageGuiButton(position, id));
+			if(sendMessage)
+				PacketHandler.wrapper.sendToServer(new MessageGuiButton(position, id));
 			Minecraft.getMinecraft().getSoundHandler().playSound(PositionedSoundRecord.getMasterRecord(SoundEvents.UI_BUTTON_CLICK, 1.0F));
+			return true;
 		}
+		return false;
 	}
 }

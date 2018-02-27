@@ -8,6 +8,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -15,16 +16,17 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import zaexides.steamworld.BlockInitializer;
 import zaexides.steamworld.ConfigHandler;
-import zaexides.steamworld.ItemInitializer;
+import zaexides.steamworld.MiscEventHandler;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.RegistryHandler;
 import zaexides.steamworld.SteamWorld;
+import zaexides.steamworld.blocks.BlockInitializer;
 import zaexides.steamworld.gui.GuiHandler;
+import zaexides.steamworld.integration.tc.TinkersMelting;
 import zaexides.steamworld.items.ItemDust;
+import zaexides.steamworld.items.ItemInitializer;
 import zaexides.steamworld.items.SWItemNugget;
-import zaexides.steamworld.items.SWItemVariant;
 import zaexides.steamworld.network.PacketHandler;
 import zaexides.steamworld.recipe.handling.DustRecipeHandler;
 import zaexides.steamworld.recipe.handling.OreDictionaryScanner;
@@ -48,11 +50,10 @@ public class CommonProxy
 	public void Init()
 	{
 		NetworkRegistry.INSTANCE.registerGuiHandler(SteamWorld.singleton, new GuiHandler());
+		MinecraftForge.EVENT_BUS.register(SteamWorld.eventHandler);
 		
-		DustRecipeHandler.RegisterRecipe(new ItemStack(Blocks.REDSTONE_ORE), new ItemStack(Items.REDSTONE, 5));
-		DustRecipeHandler.RegisterRecipe(new ItemStack(Blocks.DIAMOND_ORE), new ItemStack(ItemInitializer.ITEM_NUGGET, 10, SWItemNugget.EnumVarietyMaterial.DIAMOND.getMeta()));
-		DustRecipeHandler.RegisterRecipe(new ItemStack(Blocks.EMERALD_ORE), new ItemStack(ItemInitializer.ITEM_NUGGET, 10, SWItemNugget.EnumVarietyMaterial.EMERALD.getMeta()));
-		DustRecipeHandler.RegisterRecipe(new ItemStack(Blocks.COAL_ORE), new ItemStack(Items.COAL, 5));
+		RegistryHandler.RegisterWorldGen();
+		RegistryHandler.RegisterMiscRecipes();
 	}
 	
 	public void PreInit(FMLPreInitializationEvent e)
@@ -62,6 +63,11 @@ public class CommonProxy
 		ConfigHandler.ReadConfig();
 		
 		PacketHandler.RegisterMessages("SteamWorld_NetChan");
+		
+    	RegistryHandler.RegisterFluids();
+    	RegistryHandler.RegisterTileEntities();
+    	
+    	TinkersMelting.integrate();
 	}
 	
 	public void PostInit()

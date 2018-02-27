@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "variant=teleporter": { "model": "steamworld:machine_teleporter" },
+        "variant=launcher": { "model": "steamworld:trap_launcher" }
+    }
+}

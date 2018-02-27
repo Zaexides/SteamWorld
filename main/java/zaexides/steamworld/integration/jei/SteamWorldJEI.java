@@ -11,6 +11,7 @@ import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
 import mezz.jei.api.ISubtypeRegistry;
 import mezz.jei.api.JEIPlugin;
+import mezz.jei.api.ingredients.IModIngredientRegistration;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import mezz.jei.api.recipe.VanillaRecipeCategoryUid;
 import mezz.jei.api.recipe.transfer.IRecipeTransferRegistry;
@@ -18,8 +19,7 @@ import net.minecraft.client.gui.inventory.GuiFurnace;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import scala.reflect.internal.Trees.New;
-import zaexides.steamworld.BlockInitializer;
-import zaexides.steamworld.ItemInitializer;
+import zaexides.steamworld.blocks.BlockInitializer;
 import zaexides.steamworld.containers.ContainerAssembler;
 import zaexides.steamworld.containers.ContainerSteamFurnace;
 import zaexides.steamworld.containers.ContainerSteamGrinder;
@@ -31,9 +31,11 @@ import zaexides.steamworld.integration.jei.assembler.RecipeWrapperAssembler;
 import zaexides.steamworld.integration.jei.grinder.RecipeCategoryGrinder;
 import zaexides.steamworld.integration.jei.grinder.RecipeWrapperGrinder;
 import zaexides.steamworld.items.ItemDust;
+import zaexides.steamworld.items.ItemInitializer;
 import zaexides.steamworld.recipe.handling.AssemblyRecipe;
 import zaexides.steamworld.recipe.handling.AssemblyRecipeHandler;
 import zaexides.steamworld.recipe.handling.DustRecipeHandler;
+import zaexides.steamworld.recipe.handling.DustRecipe;
 
 @JEIPlugin
 public class SteamWorldJEI implements IModPlugin
@@ -53,8 +55,8 @@ public class SteamWorldJEI implements IModPlugin
 		IRecipeTransferRegistry recipeTransferRegistry = registry.getRecipeTransferRegistry();
 		
 		//Grinder Registering
-		registry.handleRecipes(ItemStack.class, RecipeWrapperGrinder::new, RecipeCategoryGrinder.UID);
-		registry.addRecipes(DustRecipeHandler.inputs, RecipeCategoryGrinder.UID);
+		registry.handleRecipes(DustRecipe.class, RecipeWrapperGrinder::new, RecipeCategoryGrinder.UID);
+		registry.addRecipes(DustRecipeHandler.RECIPES, RecipeCategoryGrinder.UID);
 		registry.addRecipeClickArea(GuiSteamGrinder.class, 80, 31, 24, 24, RecipeCategoryGrinder.UID);
 		registry.addRecipeCatalyst(new ItemStack(BlockInitializer.GRINDER_STEAITE), RecipeCategoryGrinder.UID);
 		registry.addRecipeCatalyst(new ItemStack(BlockInitializer.GRINDER_ANCITE), RecipeCategoryGrinder.UID);

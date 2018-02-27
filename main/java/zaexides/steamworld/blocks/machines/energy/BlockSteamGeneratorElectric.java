@@ -34,9 +34,9 @@ import net.minecraftforge.items.IItemHandler;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.SteamWorldBlock;
 import zaexides.steamworld.blocks.machines.BlockMachine;
+import zaexides.steamworld.blocks.machines.IWrenchable;
 import zaexides.steamworld.gui.GuiHandler;
 import zaexides.steamworld.te.energy.TileEntitySteamGeneratorElectric;
-import zaexides.steamworld.utility.IWrenchable;
 
 public class BlockSteamGeneratorElectric extends SteamWorldBlock implements ITileEntityProvider, IWrenchable
 {

@@ -17,17 +17,17 @@ import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 import scala.tools.nsc.transform.patmat.ScalaLogic.TreesAndTypesDomain.Var;
-import zaexides.steamworld.BlockInitializer;
-import zaexides.steamworld.ItemInitializer;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.item.ItemBlockVariant;
-import zaexides.steamworld.utility.IMetaName;
-import zaexides.steamworld.utility.IModeledObject;
-import zaexides.steamworld.utility.IOreDictionaryRegisterable;
+import zaexides.steamworld.items.ItemInitializer;
+import zaexides.steamworld.utility.interfaces.IMetaName;
+import zaexides.steamworld.utility.interfaces.IModeledObject;
+import zaexides.steamworld.utility.interfaces.IOreDictionaryRegisterable;
 
 public class BlockAncite extends Block implements IMetaName, IModeledObject, IOreDictionaryRegisterable
 {
@@ -111,12 +111,19 @@ public class BlockAncite extends Block implements IMetaName, IModeledObject, IOr
 		}
 	}
 	
+	@Override
+	public boolean isBeaconBase(IBlockAccess worldObj, BlockPos pos, BlockPos beacon) 
+	{
+		return worldObj.getBlockState(pos).equals(getStateFromMeta(EnumType.BLOCK.getMeta()));
+	}
+	
 	public static enum EnumType implements IStringSerializable
 	{
 		BRICKS(0, "brick"),
 		TILES(1, "floor"),
 		PLATES(2, "plate"),
-		BLOCK(3, "block");
+		BLOCK(3, "block"),
+		BIG_BRICKS(4, "bigbricks");
 		
 		private static final BlockAncite.EnumType[] META_LOOKUP = new BlockAncite.EnumType[values().length];
 		private final int meta;

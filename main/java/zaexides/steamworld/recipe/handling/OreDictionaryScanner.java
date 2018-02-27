@@ -1,6 +1,5 @@
 package zaexides.steamworld.recipe.handling;
 
-
 import java.util.List;
 
 import org.apache.logging.log4j.Level;
@@ -8,6 +7,7 @@ import org.apache.logging.log4j.Level;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import zaexides.steamworld.SteamWorld;
+import zaexides.steamworld.recipe.handling.DustRecipe;
 
 public class OreDictionaryScanner 
 {
@@ -25,18 +25,23 @@ public class OreDictionaryScanner
 	{
 		if(oreName.contains("dust"))
 		{
-			String materialName = oreName.substring(4);
-			List<ItemStack> dusts = OreDictionary.getOres(oreName);
-			List<ItemStack> ingots = OreDictionary.getOres("ingot" + materialName);
-			List<ItemStack> ores = OreDictionary.getOres("ore" + materialName);
+			List<ItemStack> dustStacks = OreDictionary.getOres(oreName);
+			if(dustStacks.size() == 0)
+				return;
 			
-			for(ItemStack d : dusts)
+			String materialName = oreName.substring(4);
+			ItemStack dust = dustStacks.get(0);
+			
+			if(OreDictionary.doesOreNameExist("ingot" + materialName))
+				DustRecipeHandler.RegisterRecipe("ingot" + materialName, dust);
+			if(OreDictionary.doesOreNameExist("ore" + materialName))
 			{
-				for(ItemStack i : ingots)
-					DustRecipeHandler.RegisterRecipe(i, d);
-				for(ItemStack o : ores)
-					DustRecipeHandler.RegisterRecipe(o, new ItemStack(d.getItem(), 2, d.getMetadata()));
+				DustRecipe dustRecipe = DustRecipeHandler.RegisterRecipe("ore" + materialName, new ItemStack(dust.getItem(), 2, dust.getMetadata()));
+				if(dustRecipe != null)
+					dustRecipe.setAffectedByLevel(true);
 			}
+			if(OreDictionary.doesOreNameExist("block" + materialName))
+				DustRecipeHandler.RegisterRecipe("block" + materialName, new ItemStack(dust.getItem(), 9, dust.getMetadata()));
 		}
 	}
 }

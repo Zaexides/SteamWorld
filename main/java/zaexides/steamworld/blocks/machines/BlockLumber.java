@@ -43,9 +43,15 @@ public class BlockLumber extends BlockMachine implements ITileEntityProvider
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) 
 	{
-		TileEntityLumber swFurnace = new TileEntityLumber();
-		swFurnace.SetStats(amount);
-		return swFurnace;
+		TileEntityLumber lumber = new TileEntityLumber();
+		setMachineStats(lumber);
+		return lumber;
+	}
+	
+	@Override
+	public void setMachineStats(TileEntity tileEntity)
+	{
+		((TileEntityLumber)tileEntity).SetStats(amount);
 	}
 	
 	@Override

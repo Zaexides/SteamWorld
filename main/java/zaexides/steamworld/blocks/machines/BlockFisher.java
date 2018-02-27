@@ -43,9 +43,15 @@ public class BlockFisher extends BlockMachine implements ITileEntityProvider
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) 
 	{
-		TileEntityFisher swFurnace = new TileEntityFisher();
-		swFurnace.SetStats(efficiency);
-		return swFurnace;
+		TileEntityFisher fisher = new TileEntityFisher();
+		setMachineStats(fisher);
+		return fisher;
+	}
+	
+	@Override
+	public void setMachineStats(TileEntity tileEntity)
+	{
+		((TileEntityFisher)tileEntity).SetStats(efficiency);
 	}
 	
 	@Override

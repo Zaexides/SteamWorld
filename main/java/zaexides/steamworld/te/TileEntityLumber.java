@@ -185,7 +185,6 @@ public class TileEntityLumber extends TileEntityMachine implements ITickable
 				
 				if(replantQueue.size() > 0 && !dropStack.isEmpty() && dropStack.getItem() instanceof ItemBlock)
 				{
-					SteamWorld.logger.log(Level.INFO, "Stack is a block item");
 					ItemBlock blockItem = (ItemBlock) dropStack.getItem();
 					if(blockItem.getBlock() instanceof BlockSapling)
 					{
@@ -193,7 +192,6 @@ public class TileEntityLumber extends TileEntityMachine implements ITickable
 						BlockSapling sapling = (BlockSapling) blockItem.getBlock();
 						IBlockState blockState2 = sapling.getStateFromMeta(dropStack.getMetadata());
 						
-						SteamWorld.logger.log(Level.INFO, "pos? " + (setPos == null) + " block? " + (sapling == null) + " state? " + (blockState2 == null));
 						
 						world.setBlockState(setPos, 
 								blockState2, 

@@ -13,8 +13,8 @@ import scala.collection.generic.BitOperations.Int;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.containers.ContainerSteamFurnace;
 import zaexides.steamworld.te.TileEntitySWFurnace;
-import zaexides.steamworld.utility.IGuiContainerUtil;
 import zaexides.steamworld.utility.SWGuiUtil;
+import zaexides.steamworld.utility.interfaces.IGuiContainerUtil;
 
 public class GuiSteamFurnace extends GuiContainer implements IGuiContainerUtil
 {

@@ -1,0 +1,42 @@
+{
+    "forge_marker": 1,
+    "defaults":
+    {
+        "custom": { "flip-v": true },
+        "textures":
+        {
+            "#phong2SG": "steamworld:blocks/obilisk/obilisk_top"
+        }
+    },
+    "variants":
+    {
+        "normal": [{}],
+        "part":
+        {
+            "0":
+            {
+                "model": "steamworld:obilisk_bottom.obj",
+                "textures":
+                {
+                    "#initialShadingGroup": "steamworld:blocks/obilisk/obilisk_side_bottom"
+                }
+            },
+            "1":
+            {
+                "model": "steamworld:obilisk_center.obj",
+                "textures":
+                {
+                    "#initialShadingGroup": "steamworld:blocks/obilisk/obilisk_side_center"
+                }
+            },
+            "2":
+            {
+                "model": "steamworld:obilisk_top.obj",
+                "textures":
+                {
+                    "#initialShadingGroup": "steamworld:blocks/obilisk/obilisk_side_top"
+                }
+            }
+        }
+    }
+}

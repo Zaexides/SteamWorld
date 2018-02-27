@@ -75,7 +75,7 @@ public class ContainerSteamGrinder extends SWContainer
             }
             else //Player > Own
             {
-            	if (DustRecipeHandler.GetResult(itemstack1) != ItemStack.EMPTY)
+            	if (DustRecipeHandler.GetRecipe(itemstack1) != null)
                 {
                     if (!this.mergeItemStack(itemstack1, 0, 1, false))
                     {

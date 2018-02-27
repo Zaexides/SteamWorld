@@ -1,0 +1,4 @@
+newmtl initialShadingGroup
+Kd 1.00 1.00 1.00
+newmtl phong2SG
+Kd 1.00 1.00 1.00

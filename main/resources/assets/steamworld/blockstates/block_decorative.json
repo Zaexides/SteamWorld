@@ -1,5 +1,6 @@
 {
     "variants": {
-        "variant=block_endritch": { "model": "steamworld:block_endritch" }
+        "variant=block_endritch": { "model": "steamworld:block_endritch" },
+        "variant=block_preservation_cobble": { "model": "steamworld:block_preservation_cobble" }
     }
 }

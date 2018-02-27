@@ -13,8 +13,8 @@ import scala.collection.generic.BitOperations.Int;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.containers.ContainerFisher;
 import zaexides.steamworld.te.TileEntityFisher;
-import zaexides.steamworld.utility.IGuiContainerUtil;
 import zaexides.steamworld.utility.SWGuiUtil;
+import zaexides.steamworld.utility.interfaces.IGuiContainerUtil;
 
 public class GuiFisher extends GuiContainer implements IGuiContainerUtil
 {

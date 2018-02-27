@@ -19,6 +19,7 @@ import zaexides.steamworld.blocks.machines.BlockGrinder;
 import zaexides.steamworld.blocks.machines.BlockSWFurnace;
 import zaexides.steamworld.fluids.FluidSteam;
 import zaexides.steamworld.recipe.handling.DustRecipeHandler;
+import zaexides.steamworld.recipe.handling.DustRecipe;
 import zaexides.steamworld.utility.capability.ItemStackHandlerInput;
 import zaexides.steamworld.utility.capability.ItemStackHandlerOutput;
 import zaexides.steamworld.utility.capability.ItemStackInputOutputHandler;
@@ -92,9 +93,10 @@ public class TileEntityGrinder extends TileEntityMachine implements ITickable
 	@Override
 	public boolean Execute()
 	{
-		ItemStack itemStack = DustRecipeHandler.GetResult(inputStack.getStackInSlot(0));
-		if(itemStack != ItemStack.EMPTY)
+		DustRecipe recipe = DustRecipeHandler.GetRecipe(inputStack.getStackInSlot(0));
+		if(recipe != null)
 		{
+			ItemStack itemStack = recipe.getOutput();
 			ItemStack targetStack = outputStack.getStackInSlot(0);
 			
 			if(amount == 0)
@@ -102,7 +104,7 @@ public class TileEntityGrinder extends TileEntityMachine implements ITickable
 			
 			int count = itemStack.getCount();
 			
-			if(count > 1)
+			if(recipe.affectedByLevel())
 				count += amount-1;
 			
 			if(targetStack.getItem() == Items.AIR)

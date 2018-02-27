@@ -3,6 +3,7 @@ package zaexides.steamworld;
 import org.omg.PortableServer.ServantActivator;
 
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -24,10 +25,15 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import zaexides.steamworld.blocks.BlockAncite;
+import zaexides.steamworld.blocks.BlockInitializer;
 import zaexides.steamworld.blocks.BlockSteam;
+import zaexides.steamworld.fluids.FluidPreservation;
 import zaexides.steamworld.fluids.FluidSteam;
-import zaexides.steamworld.items.SWItemVariant;
+import zaexides.steamworld.items.ItemDust;
+import zaexides.steamworld.items.ItemInitializer;
+import zaexides.steamworld.items.SWItemNugget;
 import zaexides.steamworld.recipe.handling.AssemblyRecipeHandler;
+import zaexides.steamworld.recipe.handling.DustRecipeHandler;
 import zaexides.steamworld.te.TileEntityAssembler;
 import zaexides.steamworld.te.TileEntityDrain;
 import zaexides.steamworld.te.TileEntityExperienceMachine;
@@ -38,16 +44,19 @@ import zaexides.steamworld.te.TileEntityFisher;
 import zaexides.steamworld.te.TileEntityGrinder;
 import zaexides.steamworld.te.TileEntityLumber;
 import zaexides.steamworld.te.TileEntityNetherAccelerator;
+import zaexides.steamworld.te.TileEntityObilisk;
+import zaexides.steamworld.te.TileEntityPipe;
 import zaexides.steamworld.te.TileEntitySWFurnace;
 import zaexides.steamworld.te.TileEntitySteamGenerator;
 import zaexides.steamworld.te.TileEntitySteamGeneratorNether;
 import zaexides.steamworld.te.TileEntityValve;
 import zaexides.steamworld.te.energy.TileEntityDynamo;
 import zaexides.steamworld.te.energy.TileEntitySteamGeneratorElectric;
-import zaexides.steamworld.utility.IModeledObject;
-import zaexides.steamworld.utility.IOreDictionaryRegisterable;
-import zaexides.steamworld.worldgen.DwarvenOutpostGenerator;
-import zaexides.steamworld.worldgen.DwarvenStructureGenerator;
+import zaexides.steamworld.te.generic_machine.TileEntityLauncher;
+import zaexides.steamworld.te.generic_machine.TileEntityTeleporter;
+import zaexides.steamworld.utility.interfaces.IModeledObject;
+import zaexides.steamworld.utility.interfaces.IOreDictionaryRegisterable;
+import zaexides.steamworld.worldgen.WorldGenCrypt;
 import zaexides.steamworld.worldgen.WorldGenerationOres;
 
 @EventBusSubscriber
@@ -97,28 +106,43 @@ public class RegistryHandler
 		}
 	}
 	
-	public static void MiscRegister()
+	public static void RegisterWorldGen()
 	{
 		GameRegistry.registerWorldGenerator(new WorldGenerationOres(), 0);
-		GameRegistry.registerWorldGenerator(new DwarvenStructureGenerator(), 5);
-		GameRegistry.registerWorldGenerator(new DwarvenOutpostGenerator(), 1);
-		
+		GameRegistry.registerWorldGenerator(new WorldGenCrypt(), 1000);
+	}
+	
+	public static void RegisterMiscRecipes()
+	{
 		RegisterSmeltingRecipes();
 		AssemblyRecipeHandler.RegisterRecipes();
+		RegisterGrinderRecipes();
 	}
 	
 	public static void RegisterSmeltingRecipes()
 	{
 		GameRegistry.addSmelting(BlockInitializer.ORE_STEAITE, new ItemStack(ItemInitializer.INGOT_STEAITE), 1.2f);
 		
-		GameRegistry.addSmelting(new ItemStack(ItemInitializer.METAL_DUST, 1, SWItemVariant.EnumVarietyMaterial.IRON.getMeta()), new ItemStack(Items.IRON_INGOT), FurnaceRecipes.instance().getSmeltingExperience(new ItemStack(Items.IRON_INGOT)));
-		GameRegistry.addSmelting(new ItemStack(ItemInitializer.METAL_DUST, 1, SWItemVariant.EnumVarietyMaterial.GOLD.getMeta()), new ItemStack(Items.GOLD_INGOT), FurnaceRecipes.instance().getSmeltingExperience(new ItemStack(Items.GOLD_INGOT)));
-		GameRegistry.addSmelting(new ItemStack(ItemInitializer.METAL_DUST, 1, SWItemVariant.EnumVarietyMaterial.STEAITE.getMeta()), new ItemStack(ItemInitializer.INGOT_STEAITE), FurnaceRecipes.instance().getSmeltingExperience(new ItemStack(ItemInitializer.INGOT_STEAITE)));
-		GameRegistry.addSmelting(new ItemStack(ItemInitializer.METAL_DUST, 1, SWItemVariant.EnumVarietyMaterial.ANCITE.getMeta()), new ItemStack(ItemInitializer.INGOT_ANCITE), 1.5f);
+		GameRegistry.addSmelting(new ItemStack(ItemInitializer.METAL_DUST, 1, ItemDust.EnumVarietyMaterial.IRON.getMeta()), new ItemStack(Items.IRON_INGOT), FurnaceRecipes.instance().getSmeltingExperience(new ItemStack(Items.IRON_INGOT)));
+		GameRegistry.addSmelting(new ItemStack(ItemInitializer.METAL_DUST, 1, ItemDust.EnumVarietyMaterial.GOLD.getMeta()), new ItemStack(Items.GOLD_INGOT), FurnaceRecipes.instance().getSmeltingExperience(new ItemStack(Items.GOLD_INGOT)));
+		GameRegistry.addSmelting(new ItemStack(ItemInitializer.METAL_DUST, 1, ItemDust.EnumVarietyMaterial.STEAITE.getMeta()), new ItemStack(ItemInitializer.INGOT_STEAITE), FurnaceRecipes.instance().getSmeltingExperience(new ItemStack(ItemInitializer.INGOT_STEAITE)));
+		GameRegistry.addSmelting(new ItemStack(ItemInitializer.METAL_DUST, 1, ItemDust.EnumVarietyMaterial.ANCITE.getMeta()), new ItemStack(ItemInitializer.INGOT_ANCITE), 1.5f);
+	}
+	
+	public static void RegisterGrinderRecipes()
+	{
+		DustRecipeHandler.RegisterRecipe("oreRedstone", new ItemStack(Items.REDSTONE, 3), true);
+		DustRecipeHandler.RegisterRecipe("oreDiamond", new ItemStack(ItemInitializer.ITEM_NUGGET, 10, SWItemNugget.EnumVarietyMaterial.DIAMOND.getMeta()), true);
+		DustRecipeHandler.RegisterRecipe("oreEmerald", new ItemStack(ItemInitializer.ITEM_NUGGET, 10, SWItemNugget.EnumVarietyMaterial.EMERALD.getMeta()), true);
+		DustRecipeHandler.RegisterRecipe("oreCoal", new ItemStack(Items.COAL, 3), true);
+		DustRecipeHandler.RegisterRecipe("oreLapis", new ItemStack(Items.DYE, 3, 4), true);
+		DustRecipeHandler.RegisterRecipe("oreQuartz", new ItemStack(Items.QUARTZ, 3), true);
+		DustRecipeHandler.RegisterRecipe("blockPrismarine", new ItemStack(Items.PRISMARINE_CRYSTALS, 4), false);
 	}
 	
 	public static void RegisterTileEntities()
 	{
+		GameRegistry.registerTileEntity(TileEntityPipe.class, ModInfo.MODID + "_Pipe");
 		GameRegistry.registerTileEntity(TileEntitySteamGenerator.class, ModInfo.MODID + "_SteamGenerator");
 		GameRegistry.registerTileEntity(TileEntityValve.class, ModInfo.MODID + "_Valve");
 		GameRegistry.registerTileEntity(TileEntityDrain.class, ModInfo.MODID + "_Drain");
@@ -133,6 +157,9 @@ public class RegistryHandler
 		GameRegistry.registerTileEntity(TileEntityAssembler.class, ModInfo.MODID + "_Assembler");
 		GameRegistry.registerTileEntity(TileEntityNetherAccelerator.class, ModInfo.MODID + "_NetherAccelerator");
 		GameRegistry.registerTileEntity(TileEntityExperienceMachine.class, ModInfo.MODID + "_ExperienceMachine");
+		GameRegistry.registerTileEntity(TileEntityTeleporter.class, ModInfo.MODID + "_Teleporter");
+		GameRegistry.registerTileEntity(TileEntityLauncher.class, ModInfo.MODID + "_LaunchTrap");
+		GameRegistry.registerTileEntity(TileEntityObilisk.class, ModInfo.MODID + "_Obilisk");
 	
 		GameRegistry.registerTileEntity(TileEntityDynamo.class, ModInfo.MODID + "_Dynamo");
 		GameRegistry.registerTileEntity(TileEntitySteamGeneratorElectric.class, ModInfo.MODID + "_ElectricGenerator");
@@ -141,5 +168,6 @@ public class RegistryHandler
 	public static void RegisterFluids()
 	{
 		FluidSteam.fluidSteam = new FluidSteam();
+		FluidPreservation.fluidPreservation = new FluidPreservation();
 	}
 }

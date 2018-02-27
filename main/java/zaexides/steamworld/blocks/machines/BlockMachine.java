@@ -14,19 +14,23 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import zaexides.steamworld.blocks.SteamWorldBlock;
+import zaexides.steamworld.items.ItemUpgrade.EnumUpgradeType;
 import zaexides.steamworld.te.TileEntitySteamGenerator;
-import zaexides.steamworld.utility.IWrenchable;
 
-public class BlockMachine extends SteamWorldBlock implements IWrenchable
+public class BlockMachine extends SteamWorldBlock implements IWrenchable, IUpgradeable
 {
 	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 	public static final PropertyBool ACTIVE = PropertyBool.create("active");
 	protected boolean keepInventory;
+	
+	protected BlockMachine upgradeBlock;
+	protected byte currentTier = 0;
 	
 	public BlockMachine(String name, Material material, float hardness)
 	{
@@ -101,5 +105,49 @@ public class BlockMachine extends SteamWorldBlock implements IWrenchable
 			return EnumActionResult.SUCCESS;
 		}
 		return EnumActionResult.FAIL;
+	}
+	
+	public BlockMachine SetUpgradeData(BlockMachine blockMachine, byte currentTier)
+	{
+		this.upgradeBlock = blockMachine;
+		this.currentTier = currentTier;
+		return this;
+	}
+	
+	public void setMachineStats(TileEntity tileEntity) {}
+
+	@Override
+	public EnumActionResult OnUpgradeItemUse(EnumUpgradeType upgradeType, World world, BlockPos pos, ItemStack itemStack, EntityPlayer player) 
+	{
+		if(upgradeBlock == null)
+			return EnumActionResult.FAIL;
+		
+		EnumUpgradeType upgradeRequired = EnumUpgradeType.byMetadata(currentTier);
+		
+		if(upgradeType == upgradeRequired)
+		{
+			TileEntity originalTileEntity = world.getTileEntity(pos);
+			keepInventory = true;
+			world.setBlockState(pos, upgradeBlock.getStateFromMeta(this.getMetaFromState(world.getBlockState(pos))));
+			if(originalTileEntity != null)
+			{
+				originalTileEntity.validate();
+				world.setTileEntity(pos, originalTileEntity);
+				upgradeBlock.setMachineStats(originalTileEntity);
+			}
+			keepInventory = false;
+			
+			itemStack.shrink(1);
+			return EnumActionResult.SUCCESS;
+		}
+		else
+		{
+			if(!world.isRemote)
+			{
+				TextComponentTranslation componentTranslation = new TextComponentTranslation("message.steamworld.upgrade_fail");
+				player.sendMessage(componentTranslation);
+			}
+			return EnumActionResult.FAIL;
+		}
 	}
 }

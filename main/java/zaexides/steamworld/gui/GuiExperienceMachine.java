@@ -13,8 +13,8 @@ import scala.collection.generic.BitOperations.Int;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.containers.ContainerSimple;
 import zaexides.steamworld.te.TileEntityExperienceMachine;
-import zaexides.steamworld.utility.IGuiContainerUtil;
 import zaexides.steamworld.utility.SWGuiUtil;
+import zaexides.steamworld.utility.interfaces.IGuiContainerUtil;
 
 public class GuiExperienceMachine extends GuiContainer implements IGuiContainerUtil
 {

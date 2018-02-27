@@ -23,8 +23,8 @@ import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.containers.ContainerFertilizer;
 import zaexides.steamworld.te.TileEntityFertilizer;
-import zaexides.steamworld.utility.IGuiContainerUtil;
 import zaexides.steamworld.utility.SWGuiUtil;
+import zaexides.steamworld.utility.interfaces.IGuiContainerUtil;
 
 public class GuiFertilizer extends GuiContainer implements IGuiContainerUtil
 {

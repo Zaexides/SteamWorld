@@ -17,14 +17,12 @@ public class ConfigHandler
 	public static int lumberArea = 5;
 	public static int fertilizerArea = 5;
 	public static int fluidControllerUpdateRate = 1;
+	public static int pipeSystemMaxRange = 50;
 	
 	private static final String CATEGORY_WORLDGEN = "worldgen";
 	public static boolean generateSteaiteOre = true;
 	public static boolean generateDwarvenStructure = true;
 	public static boolean generateDwarvenOutpost = true;
-	
-	private static final String CATEGORY_GRINDER = "grinder";
-	public static List<String> grinderBlacklist = new ArrayList<String>();
 	
 	private static final String CATEGORY_FARMER = "farmer";
 	public static List<String> farmerDropBlacklist = new ArrayList<String>();
@@ -46,7 +44,6 @@ public class ConfigHandler
 			config.load();
 			InitGeneral(config);
 			InitWorldgen(config);
-			InitGrinderSettings(config);
 			InitFarmerSettings(config);
 			InitEnergySettings(config);
 		}
@@ -69,6 +66,7 @@ public class ConfigHandler
 		lumberArea = config.getInt("lumber_area", CATEGORY_GENERAL, lumberArea, 1, Integer.MAX_VALUE, "Area radius the lumber will check in. e.g. entering \"5\" will make it check up to 5 blocks in a cube away (so an 11x11x11 area).");
 		fertilizerArea = config.getInt("fertilizer_area", CATEGORY_GENERAL, fertilizerArea, 1, Integer.MAX_VALUE, "Area radius the fertilizer will check in. e.g. entering \"5\" will make it check up to 5 blocks in a cube away (so an 11x11x11 area).");
 		fluidControllerUpdateRate = config.getInt("fluid_controller_update_rate", CATEGORY_GENERAL, fluidControllerUpdateRate, 1, 5, "Update rate of the Fluid Controller. If it's set to 5, it'll update every 5 ticks. It'll scale the amount of fluid transported to the update rate. This can be increased to decrease lag.");
+		pipeSystemMaxRange = config.getInt("pipe_syste_max_range", CATEGORY_GENERAL, pipeSystemMaxRange, 1, Integer.MAX_VALUE, "Maximum reach of a pipe system.");
 	}
 	
 	private static void InitWorldgen(Configuration config)
@@ -77,12 +75,6 @@ public class ConfigHandler
 		generateSteaiteOre = config.getBoolean("generate_steaite", CATEGORY_WORLDGEN, generateSteaiteOre, "Generate Steaite ore in the world?");
 		generateDwarvenStructure = config.getBoolean("generate_ancite_dungeon", CATEGORY_WORLDGEN, generateDwarvenStructure, "Generate the Ancite dungeons in the world?");
 		generateDwarvenOutpost = config.getBoolean("generate_ancite_outpost", CATEGORY_WORLDGEN, generateDwarvenOutpost, "Generate the Ancite outposts in the world?");
-	}
-	
-	private static void InitGrinderSettings(Configuration config)
-	{
-		config.addCustomCategoryComment(CATEGORY_GRINDER, "Grinder settings");
-		grinderBlacklist = Arrays.asList(config.getStringList("blacklist", CATEGORY_GRINDER, grinderBlacklist.toArray(new String[0]), "Disallow these grinder recipes to be created. e.g.: Steaite Dust would be \"steamworld:dust<2>\" and Iron Ingot would be \"minecraft:iron_ingot<0>\", look at the logs during startup. Also, don't use quotation (\") marks."));
 	}
 	
 	private static void InitFarmerSettings(Configuration config)

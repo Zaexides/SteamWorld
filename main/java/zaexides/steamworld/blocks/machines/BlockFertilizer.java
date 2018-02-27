@@ -43,9 +43,15 @@ public class BlockFertilizer extends BlockMachine implements ITileEntityProvider
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) 
 	{
-		TileEntityFertilizer swFurnace = new TileEntityFertilizer();
-		swFurnace.SetStats(efficiency);
-		return swFurnace;
+		TileEntityFertilizer fertilizer = new TileEntityFertilizer();
+		setMachineStats(fertilizer);
+		return fertilizer;
+	}
+	
+	@Override
+	public void setMachineStats(TileEntity tileEntity) 
+	{
+		((TileEntityFertilizer)tileEntity).SetStats(efficiency);
 	}
 	
 	@Override

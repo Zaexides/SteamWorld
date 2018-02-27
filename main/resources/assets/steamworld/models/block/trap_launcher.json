@@ -1,0 +1,8 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "up": "steamworld:blocks/launcher_top",
+        "down": "steamworld:blocks/block_ancite",
+        "all": "steamworld:blocks/launcher_side"
+    }
+}

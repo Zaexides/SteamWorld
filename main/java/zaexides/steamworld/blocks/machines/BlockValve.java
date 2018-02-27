@@ -21,7 +21,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import zaexides.steamworld.blocks.SteamWorldBlock;
 import zaexides.steamworld.te.TileEntityValve;
-import zaexides.steamworld.utility.IWrenchable;
 
 public class BlockValve extends SteamWorldBlock implements ITileEntityProvider, IWrenchable
 {

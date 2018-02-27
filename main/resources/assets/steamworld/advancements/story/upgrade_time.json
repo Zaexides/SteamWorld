@@ -1,0 +1,30 @@
+{
+	"parent": "steamworld:story/treasure",
+	
+	"display":
+	{
+	    "icon": { "item": "steamworld:upgrade", "data": 0 },
+	    "title": { "translate": "advancement.steamworld.upgrade_time.title" },
+	    "description": { "translate": "advancement.steamworld.upgrade_time.desc" }
+	},
+	
+	"criteria":
+	{
+	   "crafted_upgrade":
+	   {
+	       "trigger": "minecraft:inventory_changed",
+	       "conditions":
+	       {
+	           "items": 
+	           [
+	               { "item": "steamworld:upgrade", "data": 0 }
+	           ]
+	       }
+	   }
+	},
+	
+	"requirements":
+	[
+	   ["crafted_upgrade"]
+	]
+}

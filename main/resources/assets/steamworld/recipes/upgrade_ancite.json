@@ -1,0 +1,28 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "asa",
+        "asa"
+    ],
+    
+    "key":
+    {
+        "s":
+        {
+            "item": "steamworld:ingot_steaite"
+        },
+        "a":
+        {
+            "item": "steamworld:ingot_ancite"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:upgrade",
+        "data": 0,
+        "count": 1
+    }
+}

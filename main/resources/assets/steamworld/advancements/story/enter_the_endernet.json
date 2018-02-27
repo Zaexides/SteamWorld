@@ -1,0 +1,30 @@
+{
+	"parent": "steamworld:story/otherworldly_shard",
+	
+	"display":
+	{
+	    "icon": { "item": "steamworld:generic_machine", "data": 0 },
+	    "title": { "translate": "advancement.steamworld.enter_the_endernet.title" },
+	    "description": { "translate": "advancement.steamworld.enter_the_endernet.desc" }
+	},
+	
+	"criteria":
+	{
+	   "crafted_teleporter":
+	   {
+	       "trigger": "minecraft:inventory_changed",
+	       "conditions":
+	       {
+	           "items": 
+	           [
+	               { "item": "steamworld:generic_machine", "data": 0 }
+	           ]
+	       }
+	   }
+	},
+	
+	"requirements":
+	[
+	   ["crafted_teleporter"]
+	]
+}
