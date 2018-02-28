@@ -162,13 +162,9 @@ public class BlockObilisk extends SteamWorldBlock implements ITileEntityProvider
 		return false;
 	}
 	
-	public boolean canGenerateOn(Block block)
+	public boolean canGenerateOn(Block block, World world, BlockPos pos)
 	{
-		return !(block instanceof BlockLeaves) &&
-			   !(block instanceof BlockLiquid) &&
-			   !(block instanceof BlockLog) &&
-			   !(block instanceof IPlantable) &&
-			   !(block instanceof BlockSnow) &&
+		return !(block.isReplaceable(world, pos)) &&
 			   block != Blocks.AIR;
 	}
 
