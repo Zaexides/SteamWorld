@@ -44,7 +44,7 @@ public class TemplateProcessorCrypt implements ITemplateProcessor
 				
 				int y = 250;
 				BlockPos obiliskPos = new BlockPos(pos.getX(), y, pos.getZ());
-				while(y > 0 && !BlockInitializer.OBILISK.canGenerateOn(worldIn.getBlockState(obiliskPos).getBlock()))
+				while(y > 0 && !BlockInitializer.OBILISK.canGenerateOn(worldIn.getBlockState(obiliskPos).getBlock(), worldIn, obiliskPos))
 				{
 					y--;
 					obiliskPos = new BlockPos(pos.getX(), y, pos.getZ());
