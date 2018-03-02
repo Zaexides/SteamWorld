@@ -41,6 +41,11 @@ public class TileEntityTeleporter extends SyncedTileEntity implements ICapabilit
 	
 	public SteamWorldSteamTank steamTank = new SteamWorldSteamTank(Fluid.BUCKET_VOLUME * 4, this);
 	
+	public TileEntityTeleporter() 
+	{
+		steamTank.allowDirtyMarking = true;
+	}
+	
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) 
 	{
