@@ -28,6 +28,7 @@ import zaexides.steamworld.proxy.CommonProxy;
 		modid = ModInfo.MODID,
 		name = ModInfo.MODNAME,
 		version = ModInfo.VERSION,
+		acceptedMinecraftVersions = ModInfo.MC_VERSION,
 		useMetadata = true,
 		updateJSON = "https://zaexides.net/steamworld/update.json",
 		dependencies = "required-after:forge@[14.23.2.2611,);"
