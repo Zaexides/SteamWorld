@@ -155,3 +155,6 @@ jei.steamworld.assembler.description=The Steam Assembler is used to assemble (or
 jei.steamworld.experience_machine.description=The Experience Machine does what it says on the tin: It takes in steam and uses it to create experience.\nUpgrades increase the efficiency.
 jei.steamworld.accelerator.description=The Nether Accelerator speeds up nearby Nether Steam Generators slightly, but at a cost...
 jei.steamworld.energy.description=The Dynamo and Electric Steam Generator allow Steam to be converted to Redstone Flux and back respectively.
+
+material.steaite.name=Steaite
+material.ancite.name=Ancite

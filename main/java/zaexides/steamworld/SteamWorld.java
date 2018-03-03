@@ -58,16 +58,6 @@ public class SteamWorld
     {
     	logger = event.getModLog();
     	proxy.PreInit(event);
-    	
-    	try
-    	{
-	    	if(Loader.isModLoaded("tconstruct"))
-	    		TCMaterials.registerMaterials();
-    	}
-    	catch(Exception exception)
-    	{
-    		SteamWorld.logger.log(Level.ERROR, "Ah, uhm, yeah, mod compatibility with Tinkers' kinda failed here. Send me this, will ya? " + exception.toString());
-    	}
     }
     
     @Mod.EventHandler
