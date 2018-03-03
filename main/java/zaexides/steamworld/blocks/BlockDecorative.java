@@ -22,13 +22,14 @@ import net.minecraftforge.oredict.OreDictionary;
 import scala.tools.nsc.transform.patmat.ScalaLogic.TreesAndTypesDomain.Var;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
+import zaexides.steamworld.blocks.BlockAncite.EnumType;
 import zaexides.steamworld.blocks.item.ItemBlockVariant;
 import zaexides.steamworld.items.ItemInitializer;
 import zaexides.steamworld.utility.interfaces.IMetaName;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
 import zaexides.steamworld.utility.interfaces.IOreDictionaryRegisterable;
 
-public class BlockDecorative extends Block implements IMetaName, IModeledObject
+public class BlockDecorative extends Block implements IMetaName, IModeledObject, IOreDictionaryRegisterable
 {
 	public static final PropertyEnum<BlockDecorative.EnumType> VARIANT = PropertyEnum.<BlockDecorative.EnumType>create("variant", BlockDecorative.EnumType.class);
 	
@@ -102,6 +103,12 @@ public class BlockDecorative extends Block implements IMetaName, IModeledObject
 		{
 			SteamWorld.proxy.RegisterItemRenderers(Item.getItemFromBlock(this), i, "inventory", BlockDecorative.EnumType.values()[i].getName());
 		}
+	}
+	
+	@Override
+	public void RegisterOreInDictionary() 
+	{
+		OreDictionary.registerOre("blockPreservation", new ItemStack(this, 1, getMetaFromState(getDefaultState().withProperty(VARIANT, EnumType.ENDRITCH_BLOCK))));
 	}
 	
 	public static enum EnumType implements IStringSerializable

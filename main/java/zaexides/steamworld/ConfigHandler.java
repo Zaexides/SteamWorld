@@ -39,6 +39,7 @@ public class ConfigHandler
 	private static final String CATEGORY_TINKERS = "tinkers_integration";
 	public static boolean tcSteaite = true;
 	public static boolean tcAncite = true;
+	public static boolean tcPreservation = true;
 		
 	public static void ReadConfig()
 	{
@@ -105,5 +106,6 @@ public class ConfigHandler
 		config.addCustomCategoryComment(CATEGORY_TINKERS, "Tinkers' Construct integration");
 		tcSteaite = config.getBoolean("material_steaite", CATEGORY_TINKERS, tcSteaite, "Allow Steaite TC material.");
 		tcAncite = config.getBoolean("material_ancite", CATEGORY_TINKERS, tcAncite, "Allow Ancite TC material.");
+		tcPreservation = config.getBoolean("material_preservation", CATEGORY_TINKERS, tcPreservation, "Allow Preservation Rock TC material.");
 	}
 }

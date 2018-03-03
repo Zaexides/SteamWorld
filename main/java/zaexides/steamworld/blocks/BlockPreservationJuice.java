@@ -64,6 +64,11 @@ public class BlockPreservationJuice extends BlockFluidClassic implements IModele
 	@Override
 	public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) 
 	{
+		ApplyEffect(entityIn);
+	}
+	
+	public static void ApplyEffect(Entity entityIn)
+	{
 		if(entityIn instanceof EntityLivingBase)
 		{
 			EntityLivingBase entityLiving = (EntityLivingBase)entityIn;

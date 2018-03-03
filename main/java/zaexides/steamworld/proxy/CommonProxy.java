@@ -83,6 +83,18 @@ public class CommonProxy
 		
 		RegistryHandler.RegisterWorldGen();
 		RegistryHandler.RegisterMiscRecipes();
+		
+		if(Loader.isModLoaded("tconstruct"))
+    	{
+	    	try
+	    	{
+	    		TCMaterials.Init();
+	    	}
+	    	catch(Exception exception)
+	    	{
+	    		SteamWorld.logger.log(Level.ERROR, "Ah, uhm, yeah, mod compatibility with Tinkers' kinda failed here at init. Send me this together with your forge logs, will ya? " + exception.toString());
+	    	}
+    	}
 	}
 	
 	public void PostInit()

@@ -1,5 +1,11 @@
+######################
+# Creative Tab Names #
+######################
 itemGroup.steamworld=SteamWorld
 
+###############
+# Block Names #
+###############
 tile.steamworld.ore_steaite.name=Steaite Ore
 tile.steamworld.block_steaite.name=Steaite Block
 tile.steamworld.block_steaite_gold.name=Gold-Framed Steaite
@@ -52,6 +58,9 @@ tile.steamworld.generic_machine_teleporter.name=Endritch Teleporter
 tile.steamworld.generic_machine_launcher.name=Steam Launcher
 tile.steamworld.generic_machine_error.name=A Future Machine!
 
+##############
+# Item Names #
+##############
 item.steamworld.ingot_steaite.name=Steaite Ingot
 item.steamworld.ingot_ancite.name=Ancite Ingot
 item.steamworld.machine_base.name=Machine Base
@@ -70,6 +79,9 @@ item.steamworld.treasure.name=Treasure Box
 item.steamworld.upgrade_ancite.name=MKII Upgrade
 item.steamworld.upgrade_endritch.name=MKIII Upgrade
 
+#######################
+# Container Name Text #
+#######################
 container.steamworld.steam_generator=Steam Generator
 container.steamworld.steam_furnace=Steam Furnace
 container.steamworld.steam_grinder=Steam Grinder
@@ -82,6 +94,9 @@ container.steamworld.experience_machine=Experience Machine
 container.steamworld.energy.dynamo=Steam Dynamo
 container.steamworld.teleporter=Teleporter
 
+################
+# General Text #
+################
 text.steamworld.on=On
 text.steamworld.off=Off
 text.steamworld.cropmode=Crop-Only Mode
@@ -90,14 +105,21 @@ text.steamworld.teleporter.pass=Net ID
 text.steamworld.teleporter.upload=Upload
 text.steamworld.teleporter.showhide_nomatch=Show/Hide from different Network IDs
 
+###############
+# Fluid Names #
+###############
 fluid.steam=Steam
 fluid.empty=Empty
 fluid.preservationLiquid=Preservation Liquid
 fluid.ancite=Molten Ancite
 fluid.steaite=Molten Steaite
 
+######
 energy.name=Energy
 
+################
+# Advancements #
+################
 advancement.steamworld.root.title=SteamWorld
 advancement.steamworld.root.desc=Everything SteamWorld related.
 advancement.steamworld.machine_base.title=The Core
@@ -127,6 +149,9 @@ advancement.steamworld.upgrade_from_another_world.desc=Create a MKIII Upgrade in
 advancement.steamworld.enter_the_endernet.title=Enter the EnderNet
 advancement.steamworld.enter_the_endernet.desc=Combine an Ender Pearl, a Block of Endritch and a Nugget of Emerald, and what do you get? An interdimensional teleporter.
 
+############
+# Messages #
+############
 message.steamworld.rs_ignore=Redstone is ignored.
 message.steamworld.rs_normal=Only active when receiving redstone.
 message.steamworld.rs_inverted=Only active when not receiving redstone.
@@ -134,12 +159,20 @@ message.steamworld.upgrade_fail=This upgrade won't work on this machine...
 message.steamworld.launcher.force_increase=Launcher's force increased to %s.
 message.steamworld.launcher.force_decrease=Launcher's force decreased to %s.
 
+############
+# JEI Text #
+############
+
+# JEI tab names
 jei.steamworld.grinder=SteamWorld Grinder
 jei.steamworld.assembler=SteamWorld Assembler
+
+# JEI general text
 jei.steamworld.time=%d minutes %d seconds
 jei.steamworld.time_tier_info=On Tier 1
 jei.steamworld.grinder_info=+1 starting from Tier 2
 
+# JEI descriptions
 jei.steamworld.grinder.description=The Steam Grinder is capable of grinding ores and ingots down to their dust counterparts.\nUpgrades increase the production.
 jei.steamworld.furnace.description=The Steam Furnace works just like a regular furnace, but uses the power of steam instead.\nUpgrades increase the efficiency.
 jei.steamworld.fisher.description=The Fisher automatically catches fish, underwater treasure and... Sunken junk. It does need to be adjacent to water in order to work.\nUpgrades increase the efficiency.
@@ -156,5 +189,15 @@ jei.steamworld.experience_machine.description=The Experience Machine does what i
 jei.steamworld.accelerator.description=The Nether Accelerator speeds up nearby Nether Steam Generators slightly, but at a cost...
 jei.steamworld.energy.description=The Dynamo and Electric Steam Generator allow Steam to be converted to Redstone Flux and back respectively.
 
+#############################
+# Tinkers' Integration Text #
+#############################
+
+# TC Material names
 material.steaite.name=Steaite
 material.ancite.name=Ancite
+material.preservation.name=Preservation
+
+# TC Modifier names
+modifier.selective.name=Selective
+modifier.selective.desc=§oGood and Evil§r\nWill heal anything that isn't a monster. On higher levels, it'll act like the hit entity has bathed in Preservation Juice.
