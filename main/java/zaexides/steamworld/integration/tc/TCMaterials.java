@@ -89,9 +89,9 @@ public class TCMaterials
 			preservationMaterial.addTrait(TRAIT_SELECTIVE_2, MaterialTypes.HEAD);
 			
 			TinkerRegistry.addMaterialStats(preservationMaterial,
-					new HeadMaterialStats(20, 4.2f, 1.5f, HarvestLevels.DIAMOND),
-					new HandleMaterialStats(1.1f, -100),
-					new ExtraMaterialStats(30),
+					new HeadMaterialStats(15, 4.2f, 1.5f, HarvestLevels.DIAMOND),
+					new HandleMaterialStats(1.1f, -110),
+					new ExtraMaterialStats(25),
 					new BowMaterialStats(3.5f, 0.45f, -2)
 					);
 			

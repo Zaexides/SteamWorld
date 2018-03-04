@@ -196,8 +196,8 @@ jei.steamworld.energy.description=The Dynamo and Electric Steam Generator allow 
 # TC Material names
 material.steaite.name=Steaite
 material.ancite.name=Ancite
-material.preservation.name=Preservation
+material.preservation.name=Preserv. Rock
 
 # TC Modifier names
 modifier.selective.name=Selective
-modifier.selective.desc=§oGood and Evil§r\nWill heal anything that isn't a monster. On higher levels, it'll act like the hit entity has bathed in Preservation Juice.
+modifier.selective.desc=§oOnly the good may survive!§r\nWill heal anything that isn't a monster. On higher levels, it'll act like the hit creature has bathed in Preservation Juice.
