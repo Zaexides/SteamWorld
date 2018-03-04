@@ -16,6 +16,7 @@ import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.BiomeManager.BiomeEntry;
 import net.minecraftforge.common.BiomeManager.BiomeType;
+import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -56,8 +57,9 @@ import zaexides.steamworld.te.generic_machine.TileEntityLauncher;
 import zaexides.steamworld.te.generic_machine.TileEntityTeleporter;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
 import zaexides.steamworld.utility.interfaces.IOreDictionaryRegisterable;
-import zaexides.steamworld.worldgen.WorldGenCrypt;
-import zaexides.steamworld.worldgen.WorldGenerationOres;
+import zaexides.steamworld.worldgen.dimension.DimensionTypeSteamWorld;
+import zaexides.steamworld.worldgen.structure.WorldGenCrypt;
+import zaexides.steamworld.worldgen.structure.WorldGenerationOres;
 
 @EventBusSubscriber
 public class RegistryHandler 
@@ -110,6 +112,8 @@ public class RegistryHandler
 	{
 		GameRegistry.registerWorldGenerator(new WorldGenerationOres(), 0);
 		GameRegistry.registerWorldGenerator(new WorldGenCrypt(), 1000);
+		
+		DimensionManager.registerDimension(ConfigHandler.dimensionId, DimensionTypeSteamWorld.STEAMWORLD);;
 	}
 	
 	public static void RegisterMiscRecipes()

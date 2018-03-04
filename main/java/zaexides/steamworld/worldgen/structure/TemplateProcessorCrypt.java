@@ -1,4 +1,4 @@
-package zaexides.steamworld.worldgen;
+package zaexides.steamworld.worldgen.structure;
 
 import java.util.Random;
 import java.util.UUID;

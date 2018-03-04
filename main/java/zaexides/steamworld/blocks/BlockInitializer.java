@@ -92,6 +92,8 @@ public class BlockInitializer
 	public static final BlockValve BLOCK_VALVE_ENDRITCH = new BlockValve("block_fluid_controller_endritch", SWMaterials.ENDRITCH, 4.5f, (int)(Fluid.BUCKET_VOLUME * 8.5), 8000);
 	public static final BlockDrain BLOCK_DRAIN = new BlockDrain();
 	public static final BlockFaucet BLOCK_FAUCET = new BlockFaucet();
+	
+	public static final BlockSWPortal BLOCK_SW_PORTAL = new BlockSWPortal();
 		
 	public static final BlockDynamo BLOCK_DYNAMO = new BlockDynamo("block_dynamo", 3.5f);
 	public static final BlockSteamGeneratorElectric BLOCK_STEAM_GENERATOR_ELECTRIC = new BlockSteamGeneratorElectric("generator_electric", 3.5f);

@@ -110,9 +110,9 @@ public class TileEntityTeleporter extends SyncedTileEntity implements ICapabilit
 					if(teleporterData.dimension != currentDimension)
 					{
 						if(entity instanceof EntityPlayer)
-							world.getMinecraftServer().getPlayerList().transferPlayerToDimension((EntityPlayerMP)entity, teleporterData.dimension, new SteamWorldTeleporter((WorldServer)world, teleporterData.position));
+							world.getMinecraftServer().getPlayerList().transferPlayerToDimension((EntityPlayerMP)entity, teleporterData.dimension, new SteamWorldTeleporter((WorldServer)world, teleporterData.position.add(0.5, 1.5, 0.5)));
 						else
-							world.getMinecraftServer().getPlayerList().transferEntityToWorld(entity, currentDimension, (WorldServer)world, (WorldServer)targetWorld, new SteamWorldTeleporter((WorldServer)world, teleporterData.position));
+							world.getMinecraftServer().getPlayerList().transferEntityToWorld(entity, currentDimension, (WorldServer)world, (WorldServer)targetWorld, new SteamWorldTeleporter((WorldServer)world, teleporterData.position.add(0.5, 1.5, 0.5)));
 					}
 					((EntityLivingBase)entity).setPositionAndUpdate(otherTileEntity.getPos().getX() + 0.5d, otherTileEntity.getPos().getY() + 1.5d, otherTileEntity.getPos().getZ() + 0.5d);
 					

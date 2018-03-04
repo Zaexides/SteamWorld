@@ -81,8 +81,8 @@ public class CommonProxy
 		NetworkRegistry.INSTANCE.registerGuiHandler(SteamWorld.singleton, new GuiHandler());
 		MinecraftForge.EVENT_BUS.register(SteamWorld.eventHandler);
 		
-		RegistryHandler.RegisterWorldGen();
 		RegistryHandler.RegisterMiscRecipes();
+		RegistryHandler.RegisterWorldGen();
 		
 		if(Loader.isModLoaded("tconstruct"))
     	{
