@@ -42,37 +42,20 @@ public class SteamWorldChunkGenerator implements IChunkGenerator
 	public Chunk generateChunk(int x, int z) 
 	{
 		ChunkPrimer chunkPrimer = new ChunkPrimer();
-		fetchBiomes(x, z);
+		biomes = world.getBiomeProvider().getBiomesForGeneration(biomes, x * 4 - 2, z * 4 - 2, 10, 10);
 		terrainGenerator.biomes = biomes;
 		
 		terrainGenerator.generate(x, z, chunkPrimer);
 		
-		caveGenerator.generate(world, x, z, chunkPrimer);
-		ravineGenerator.generate(world, x, z, chunkPrimer);
-		
+		biomes = world.getBiomeProvider().getBiomesForGeneration(biomes, x * 16, z * 16, 16, 16);
+		terrainGenerator.replaceBiomeBlocks(x, z, chunkPrimer, this, biomes);
+	
 		Chunk chunk = new Chunk(world, chunkPrimer, x, z);
 		byte[] biomeArray = chunk.getBiomeArray();
-		for(int i = 0; (i < biomeArray.length && i < biomes.length); i++)
+		for(int i = 0; i < biomeArray.length; ++i)
 			biomeArray[i] = (byte) Biome.getIdForBiome(biomes[i]);
 		chunk.generateSkylightMap();
 		return chunk;
-	}
-	
-	private void fetchBiomes(int x, int z)
-	{
-		Biome[] defaultBiomes = null;
-		defaultBiomes = world.getBiomeProvider().getBiomesForGeneration(defaultBiomes, x * 4 - 2, z * 4 - 2, 10, 10);
-		Biome[] additionalBiomes = new Biome[]
-				{
-						Biomes.DESERT, Biomes.JUNGLE
-				};
-		biomes = new Biome[defaultBiomes.length + additionalBiomes.length];
-		
-		int i = 0;
-		for(int j = 0; j < defaultBiomes.length; j++, i++)
-			biomes[i] = defaultBiomes[j];
-		for(int j = 0; j < additionalBiomes.length; j++, i++)
-			biomes[i] = additionalBiomes[j];
 	}
 
 	@Override

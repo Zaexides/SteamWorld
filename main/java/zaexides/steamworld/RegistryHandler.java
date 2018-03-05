@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeProvider;
 import net.minecraft.world.biome.Biome.BiomeProperties;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.client.event.ModelRegistryEvent;
@@ -113,7 +114,7 @@ public class RegistryHandler
 		GameRegistry.registerWorldGenerator(new WorldGenerationOres(), 0);
 		GameRegistry.registerWorldGenerator(new WorldGenCrypt(), 1000);
 		
-		DimensionManager.registerDimension(ConfigHandler.dimensionId, DimensionTypeSteamWorld.STEAMWORLD);;
+		DimensionManager.registerDimension(ConfigHandler.dimensionId, DimensionTypeSteamWorld.STEAMWORLD);
 	}
 	
 	public static void RegisterMiscRecipes()
