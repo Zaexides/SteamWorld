@@ -15,9 +15,12 @@ import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import zaexides.steamworld.SteamWorld;
+import zaexides.steamworld.blocks.BlockInitializer;
 
 public abstract class BiomeSteamWorld extends Biome
 {
+	protected float bottomErosion = 0.33f;
+	
 	public BiomeSteamWorld(BiomeProperties properties) 
 	{
 		super(properties);
@@ -63,24 +66,42 @@ public abstract class BiomeSteamWorld extends Biome
 		int primerX = x & 15;
 		int primerZ = z & 15;
 		
+		boolean eroded = false;
+		boolean canErode = false;
+		
 		for(int y = 255; y >= 0; y--)
 		{
-			IBlockState blockState = chunkPrimerIn.getBlockState(primerX, y, primerZ);
-			
-			if(blockState.getMaterial() == Material.AIR)
-				topLayerHeight = -1;
-			else if(blockState.getBlock() == Blocks.STONE)
+			if(!eroded)
 			{
-				if(topLayerHeight == -1)
-				{
-					topLayerHeight = y;
-				}
+				if(canErode && rand.nextFloat() < bottomErosion)
+					eroded = true;
 				
-				if(y == topLayerHeight)
-					chunkPrimerIn.setBlockState(primerX, y, primerZ, topBlock);
-				else if(y >= topLayerHeight - 3)
-					chunkPrimerIn.setBlockState(primerX, y, primerZ, fillerBlock);
+				IBlockState blockState = chunkPrimerIn.getBlockState(primerX, y, primerZ);
+				
+				if(blockState.getMaterial() == Material.AIR)
+					topLayerHeight = -1;
+				else if(blockState.getBlock() == BlockInitializer.BLOCK_DECORATIVE)
+				{
+					if(topLayerHeight == -1)
+					{
+						topLayerHeight = y;
+					}
+					
+					if(y == topLayerHeight)
+						chunkPrimerIn.setBlockState(primerX, y, primerZ, topBlock);
+					else if(y >= topLayerHeight - 3)
+						chunkPrimerIn.setBlockState(primerX, y, primerZ, fillerBlock);
+					else if(!canErode)
+						canErode = true;
+				}
 			}
+			else
+				chunkPrimerIn.setBlockState(primerX, y, primerZ, AIR);
 		}
+	}
+	
+	public int getCenter()
+	{
+		return 64;
 	}
 }

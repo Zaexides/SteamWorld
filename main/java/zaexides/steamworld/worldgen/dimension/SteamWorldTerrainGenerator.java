@@ -211,24 +211,9 @@ public class SteamWorldTerrainGenerator
                             	double d17 = d15 += d16;
                             	int bx = x4 * 4 + x;
                         		int bz = z4 * 4 + z;
-                            	int center = height - (1 + rand.nextInt(20));
-                            	if(center < 70)
-                            		center = 70;
-
-                                if(height > center)
-                                {	
-	                            	for (int inv = 1; inv > -2; inv -= 2)
-	                            	{
-	                            		int dy = 0;
-	                            		if(inv == -1)
-	                            			dy = 1;
-	                            		
-	                            		int by = (height - center) * inv + center + dy;
-	                            		
-		                                if (d17 > 0.0D && by > 0 && (inv > 0 || (primer.getBlockState(bx, by + 1, bz).getBlock() != Blocks.AIR && rand.nextDouble() > 0.1)))
-		                                    primer.setBlockState(bx, by, bz, STONE);
-	                            	}
-                                }
+                        		
+                                if (d17 > 0.0D)
+                                    primer.setBlockState(bx, height, bz, STONE);
                         	}
 
                             d10 += d12;
@@ -248,15 +233,15 @@ public class SteamWorldTerrainGenerator
 	public void replaceBiomeBlocks(int x, int z, ChunkPrimer primer, IChunkGenerator generator, Biome[] biomes) 
 	{
         if (!net.minecraftforge.event.ForgeEventFactory.onReplaceBiomeBlocks(generator, x, z, primer, this.world)) return;
-        this.depthBuffer = this.surfaceNoise.getRegion(this.depthBuffer, (x * 16), (z * 16), 16, 16, 0.0625D, 0.0625D, 1.0D);
+        this.depthBuffer = this.surfaceNoise.getRegion(this.depthBuffer, (double)(x * 16), (double)(z * 16), 16, 16, 0.0625D, 0.0625D, 1.0D);
 
         for (int i = 0; i < 16; ++i) 
         {
             for (int j = 0; j < 16; ++j) 
             {
-                Biome biome = biomes[j + i * 16];
+                Biome biome = biomes[i + j * 16];
                 if(biome instanceof BiomeSteamWorld)
-                	((BiomeSteamWorld)biome).generateBiomeTerrainSteamWorld(world, rand, primer, x * 16 + i, z * 16 + j, this.depthBuffer[j + i * 16]);
+                	((BiomeSteamWorld)biome).generateBiomeTerrainSteamWorld(world, rand, primer, x * 16 + i, z * 16 + j, this.depthBuffer[i + j * 16]);
             }
         }
     }

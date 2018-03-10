@@ -28,6 +28,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import zaexides.steamworld.blocks.BlockAncite;
+import zaexides.steamworld.blocks.BlockDecorative;
 import zaexides.steamworld.blocks.BlockInitializer;
 import zaexides.steamworld.blocks.BlockSteam;
 import zaexides.steamworld.fluids.FluidPreservation;
@@ -133,6 +134,7 @@ public class RegistryHandler
 		GameRegistry.addSmelting(new ItemStack(ItemInitializer.METAL_DUST, 1, ItemDust.EnumVarietyMaterial.GOLD.getMeta()), new ItemStack(Items.GOLD_INGOT), FurnaceRecipes.instance().getSmeltingExperience(new ItemStack(Items.GOLD_INGOT)));
 		GameRegistry.addSmelting(new ItemStack(ItemInitializer.METAL_DUST, 1, ItemDust.EnumVarietyMaterial.STEAITE.getMeta()), new ItemStack(ItemInitializer.INGOT_STEAITE), FurnaceRecipes.instance().getSmeltingExperience(new ItemStack(ItemInitializer.INGOT_STEAITE)));
 		GameRegistry.addSmelting(new ItemStack(ItemInitializer.METAL_DUST, 1, ItemDust.EnumVarietyMaterial.ANCITE.getMeta()), new ItemStack(ItemInitializer.INGOT_ANCITE), 1.5f);
+		GameRegistry.addSmelting(new ItemStack(BlockInitializer.BLOCK_DECORATIVE, 1, BlockDecorative.EnumType.SKY_COBBLE.getMeta()), new ItemStack(BlockInitializer.BLOCK_DECORATIVE, 1, BlockDecorative.EnumType.SKY_STONE.getMeta()), FurnaceRecipes.instance().getSmeltingExperience(new ItemStack(Blocks.COBBLESTONE)));
 	}
 	
 	public static void RegisterGrinderRecipes()

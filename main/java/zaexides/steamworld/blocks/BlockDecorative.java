@@ -1,5 +1,7 @@
 package zaexides.steamworld.blocks;
 
+import java.util.Random;
+
 import com.google.common.util.concurrent.Service.State;
 
 import net.minecraft.block.Block;
@@ -9,6 +11,7 @@ import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -17,6 +20,8 @@ import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.world.Explosion;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 import scala.tools.nsc.transform.patmat.ScalaLogic.TreesAndTypesDomain.Var;
@@ -38,14 +43,31 @@ public class BlockDecorative extends Block implements IMetaName, IModeledObject,
 		super(Material.ROCK);
 		setUnlocalizedName(ModInfo.MODID + "." + name);
 		setRegistryName(name);
-		setHarvestLevel("pickaxe", 3);
-		setHardness(3f);
+		setHarvestLevels();
 		setCreativeTab(SteamWorld.CREATIVETAB);
 		
 		setDefaultState(blockState.getBaseState().withProperty(VARIANT, BlockDecorative.EnumType.ENDRITCH_BLOCK));
 		
 		BlockInitializer.BLOCKS.add(this);
 		ItemInitializer.ITEMS.add(new ItemBlockVariant(this).setRegistryName(this.getRegistryName()));
+	}
+	
+	private void setHarvestLevels()
+	{
+		for(EnumType enumType : EnumType.values())
+			setHarvestLevel("pickaxe", enumType.harvestLevel, getStateFromMeta(enumType.getMeta()));
+	}
+	
+	@Override
+	public float getBlockHardness(IBlockState blockState, World worldIn, BlockPos pos) 
+	{
+		return EnumType.byMetadata(getMetaFromState(blockState)).hardness;
+	}
+	
+	@Override
+	public float getExplosionResistance(World world, BlockPos pos, Entity exploder, Explosion explosion) 
+	{
+		return getBlockHardness(world.getBlockState(pos), world, pos);
 	}
 	
 	@Override
@@ -113,22 +135,41 @@ public class BlockDecorative extends Block implements IMetaName, IModeledObject,
 		OreDictionary.registerOre("cobblestone", new ItemStack(this, 1, getMetaFromState(getDefaultState().withProperty(VARIANT, EnumType.SKY_COBBLE))));
 	}
 	
+	@Override
+	public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state,
+			int fortune) 
+	{
+		if(state.getValue(VARIANT) == EnumType.SKY_STONE)
+			drops.add(new ItemStack(this, 1, EnumType.SKY_COBBLE.getMeta()));
+		else
+			super.getDrops(drops, world, pos, state, fortune);
+	}
+	
 	public static enum EnumType implements IStringSerializable
 	{
-		ENDRITCH_BLOCK(0, "block_endritch"),
-		PRESERVATION_COBBLE(1, "block_preservation_cobble"),
-		SKY_STONE(2, "sky_stone"),
-		SKY_COBBLE(3, "sky_cobble");
+		ENDRITCH_BLOCK(0, "block_endritch", 3f, 3),
+		PRESERVATION_COBBLE(1, "block_preservation_cobble", 2.5f, 1),
+		SKY_STONE(2, "sky_stone", 1f, 1),
+		SKY_COBBLE(3, "sky_cobble", 1f, 1);
 		
 		private static final BlockDecorative.EnumType[] META_LOOKUP = new BlockDecorative.EnumType[values().length];
 		private final int meta;
 		private final String name, unlocalizedName;
+		private int harvestLevel = 0;
+		private final float hardness;
 		
-		private EnumType(int meta, String name)
+		private EnumType(int meta, String name, float hardness)
 		{
 			this.name = name;
 			this.unlocalizedName = name;
 			this.meta = meta;
+			this.hardness = hardness;
+		}
+		
+		private EnumType(int meta, String name, float hardness, int harvestLevel)
+		{
+			this(meta, name, hardness);
+			this.harvestLevel = harvestLevel;
 		}
 		
 		@Override

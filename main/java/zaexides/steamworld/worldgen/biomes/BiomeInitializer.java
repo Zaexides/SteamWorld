@@ -20,11 +20,13 @@ import zaexides.steamworld.worldgen.dimension.SteamWorldBiomeProvider;
 public class BiomeInitializer 
 {
 	public static final BiomeForgottenSky FORGOTTEN_SKY = new BiomeForgottenSky("Forgotten Sky");
+	public static final BiomeNatureIsland NATURE_ISLAND = new BiomeNatureIsland("Nature Island");
 	
 	@SubscribeEvent
 	public static void registerBiomes(RegistryEvent.Register<Biome> event)
 	{
 		registerBiome(FORGOTTEN_SKY, "Forgotten Sky", 50, Type.VOID, Type.COLD);
+		registerBiome(NATURE_ISLAND, "Nature Island", 30, Type.PLAINS, Type.LUSH);
 	}
 	
 	private static Biome registerBiome(Biome biome, String name, int weight, Type... types)

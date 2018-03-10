@@ -2,7 +2,13 @@
     "variants": {
         "variant=block_endritch": { "model": "steamworld:block_endritch" },
         "variant=block_preservation_cobble": { "model": "steamworld:block_preservation_cobble" },
-        "variant=sky_stone": { "model": "steamworld:block_sky_stone" },
+        "variant=sky_stone": 
+        [
+            {"model": "steamworld:block_sky_stone"},
+            {"model": "steamworld:block_sky_stone", "x":180, "z":180},
+            {"model": "steamworld:block_sky_stone", "y":180},
+            {"model": "steamworld:block_sky_stone", "y":180, "x":180, "z":180}
+        ],
         "variant=sky_cobble": { "model": "steamworld:block_sky_cobble" }
     }
 }
