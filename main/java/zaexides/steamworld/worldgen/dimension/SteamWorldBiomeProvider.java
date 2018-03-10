@@ -21,18 +21,13 @@ import net.minecraft.world.gen.layer.IntCache;
 public class SteamWorldBiomeProvider extends BiomeProvider
 {
 	public static List<Biome> biomes = new ArrayList<Biome>();
+	public static List<Integer> biomeWeights = new ArrayList<Integer>();
 	private GenLayer biomeLayer;
 	private GenLayer biomeIndexLayer;
 	private BiomeCache biomeCache;
 	
 	public SteamWorldBiomeProvider(long seed, WorldType worldType) 
 	{
-		biomes.add(Biomes.FOREST);
-		biomes.add(Biomes.DESERT);
-		biomes.add(Biomes.EXTREME_HILLS);
-		biomes.add(Biomes.MESA);
-		biomes.add(Biomes.RIVER);
-		
 		GenLayer[] agenlayer = getGenLayers(seed);
 		agenlayer = getModdedBiomeGenerators(worldType, seed, agenlayer);
 		biomeLayer = agenlayer[0];

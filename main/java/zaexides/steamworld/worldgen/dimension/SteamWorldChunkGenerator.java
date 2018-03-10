@@ -7,6 +7,7 @@ import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Biomes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldEntitySpawner;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeDesert;
 import net.minecraft.world.biome.Biome.SpawnListEntry;
@@ -25,17 +26,12 @@ public class SteamWorldChunkGenerator implements IChunkGenerator
 	private Random rand;
 	private Biome[] biomes;
 	private SteamWorldTerrainGenerator terrainGenerator;
-	
-	private MapGenBase caveGenerator = new MapGenCaves();
-	private MapGenBase ravineGenerator = new MapGenRavine();
-	
+		
 	public SteamWorldChunkGenerator(World world) 
 	{
 		this.world = world;
 		this.rand = new Random(world.getSeed() - 725);
 		terrainGenerator = new SteamWorldTerrainGenerator(world, rand);
-		caveGenerator = TerrainGen.getModdedMapGen(caveGenerator, EventType.CAVE);
-		ravineGenerator = TerrainGen.getModdedMapGen(ravineGenerator, EventType.RAVINE);
 	}
 	
 	@Override
@@ -61,6 +57,13 @@ public class SteamWorldChunkGenerator implements IChunkGenerator
 	@Override
 	public void populate(int x, int z) 
 	{
+		int i = x * 16;
+		int j = z * 16;
+		
+		BlockPos pos = new BlockPos(i, 0, j);
+		Biome biome = world.getBiome(pos.add(16, 0, 16));
+		biome.decorate(world, rand, pos);
+		WorldEntitySpawner.performWorldGenSpawning(world, biome, i + 8, j + 8, 16, 16, rand);
 	}
 
 	@Override

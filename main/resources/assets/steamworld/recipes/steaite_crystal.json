@@ -1,5 +1,5 @@
 {
-    "type": "minecraft:crafting_shaped",
+    "type": "forge:ore_shaped",
     
     "pattern":
     [
@@ -12,15 +12,18 @@
     {
         "d":
         {
-            "item": "minecraft:diamond"
+            "type": "forge:ore_dict",
+            "ore": "gemDiamond"
         },
         "s":
         {
-            "item": "steamworld:ingot_steaite"
+            "type": "forge:ore_dict",
+            "ore": "ingotSteaite"
         },
         "r":
         {
-            "item": "minecraft:redstone"
+            "type": "forge:ore_dict",
+            "ore": "dustRedstone"
         }
     },
     

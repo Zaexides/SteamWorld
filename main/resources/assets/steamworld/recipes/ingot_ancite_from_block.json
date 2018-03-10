@@ -1,5 +1,5 @@
 {
-    "type": "minecraft:crafting_shaped",
+    "type": "forge:ore_shaped",
     
     "pattern":
     [
@@ -10,8 +10,8 @@
     {
         "S":
         {
-            "item": "steamworld:block_ancite",
-            "data": 3
+            "type": "forge:ore_dict",
+            "ore": "blockAncite"
         }
     },
     

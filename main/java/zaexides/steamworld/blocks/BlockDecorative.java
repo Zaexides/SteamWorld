@@ -108,13 +108,17 @@ public class BlockDecorative extends Block implements IMetaName, IModeledObject,
 	@Override
 	public void RegisterOreInDictionary() 
 	{
-		OreDictionary.registerOre("blockPreservation", new ItemStack(this, 1, getMetaFromState(getDefaultState().withProperty(VARIANT, EnumType.ENDRITCH_BLOCK))));
+		OreDictionary.registerOre("blockPreservation", new ItemStack(this, 1, getMetaFromState(getDefaultState().withProperty(VARIANT, EnumType.PRESERVATION_COBBLE))));
+		OreDictionary.registerOre("stone", new ItemStack(this, 1, getMetaFromState(getDefaultState().withProperty(VARIANT, EnumType.SKY_STONE))));
+		OreDictionary.registerOre("cobblestone", new ItemStack(this, 1, getMetaFromState(getDefaultState().withProperty(VARIANT, EnumType.SKY_COBBLE))));
 	}
 	
 	public static enum EnumType implements IStringSerializable
 	{
 		ENDRITCH_BLOCK(0, "block_endritch"),
-		PRESERVATION_COBBLE(1, "block_preservation_cobble");
+		PRESERVATION_COBBLE(1, "block_preservation_cobble"),
+		SKY_STONE(2, "sky_stone"),
+		SKY_COBBLE(3, "sky_cobble");
 		
 		private static final BlockDecorative.EnumType[] META_LOOKUP = new BlockDecorative.EnumType[values().length];
 		private final int meta;

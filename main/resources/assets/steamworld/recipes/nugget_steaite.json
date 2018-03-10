@@ -3,7 +3,8 @@
     "ingredients":
     [
         {
-            "item": "steamworld:ingot_steaite"
+            "type": "forge:ore_dict",
+            "ore": "ingotSteaite"
         }
     ],
     "result":

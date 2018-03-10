@@ -1,5 +1,5 @@
 {
-    "type": "minecraft:crafting_shaped",
+    "type": "forge:ore_shaped",
     
     "pattern":
     [
@@ -12,8 +12,8 @@
     {
         "n":
         {
-            "item": "steamworld:nugget",
-            "data": 3
+            "type": "forge:ore_dict",
+            "ore": "nuggetEmerald"
         }
     },
     

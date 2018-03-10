@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Level;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
@@ -19,6 +20,7 @@ import net.minecraftforge.event.terraingen.InitNoiseGensEvent.ContextOverworld;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.BlockDecorative;
 import zaexides.steamworld.blocks.BlockInitializer;
+import zaexides.steamworld.worldgen.biomes.BiomeSteamWorld;
 
 public class SteamWorldTerrainGenerator 
 {
@@ -37,6 +39,8 @@ public class SteamWorldTerrainGenerator
     
     private final double[] heightMap;
     private final float[] biomeWeights;
+    
+    private final IBlockState STONE = BlockInitializer.BLOCK_DECORATIVE.getStateFromMeta(BlockDecorative.EnumType.SKY_STONE.getMeta());
 	
 	public SteamWorldTerrainGenerator(World world, Random random) 
 	{
@@ -162,8 +166,6 @@ public class SteamWorldTerrainGenerator
 	public void generate(int chunkX, int chunkZ, ChunkPrimer primer)
 	{
 		generateHeightMap(chunkX * 4, chunkZ * 4);
-		IBlockState stoneState = BlockInitializer.BLOCK_DECORATIVE.getStateFromMeta(BlockDecorative.EnumType.PRESERVATION_COBBLE.getMeta());
-		int center = 75;
 		
         for (int x4 = 0; x4 < 4; ++x4) 
         {
@@ -198,35 +200,39 @@ public class SteamWorldTerrainGenerator
                         double d13 = (d4 - d2) * d9;
                         int height = (height32 * 8) + h;
                         
-                        if(height > center)
-                        {	
-	                        for (int x = 0; x < 4; ++x) 
-	                        {
-	                            double d14 = 0.25D;
-	                            double d16 = (d11 - d10) * d14;
-	                            double d15 = d10 - d16;
-	
-	                            for (int z = 0; z < 4; ++z) 
-	                            {
-	                            	double d17 = d15 += d16;
+                        for (int x = 0; x < 4; ++x) 
+                        {
+                            double d14 = 0.25D;
+                            double d16 = (d11 - d10) * d14;
+                            double d15 = d10 - d16;
+
+                            for (int z = 0; z < 4; ++z) 
+                            {
+                            	double d17 = d15 += d16;
+                            	int bx = x4 * 4 + x;
+                        		int bz = z4 * 4 + z;
+                            	int center = height - (1 + rand.nextInt(20));
+                            	if(center < 70)
+                            		center = 70;
+
+                                if(height > center)
+                                {	
 	                            	for (int inv = 1; inv > -2; inv -= 2)
 	                            	{
 	                            		int dy = 0;
 	                            		if(inv == -1)
 	                            			dy = 1;
 	                            		
-	                            		int bx = x4 * 4 + x;
-	                            		int bz = z4 * 4 + z;
-	                            		int by = (height32 * 8 + h - center) * inv + center + dy;
+	                            		int by = (height - center) * inv + center + dy;
 	                            		
-		                                if (d17 > 0.0D && (inv > 0 || (primer.getBlockState(bx, by + 1, bz).getBlock() != Blocks.AIR && rand.nextDouble() > 0.1)))
-		                                    primer.setBlockState(bx, by, bz, stoneState);
+		                                if (d17 > 0.0D && by > 0 && (inv > 0 || (primer.getBlockState(bx, by + 1, bz).getBlock() != Blocks.AIR && rand.nextDouble() > 0.1)))
+		                                    primer.setBlockState(bx, by, bz, STONE);
 	                            	}
-                            	}
-	
-	                            d10 += d12;
-	                            d11 += d13;
-	                        }
+                                }
+                        	}
+
+                            d10 += d12;
+                            d11 += d13;
                         }
 
                         d1 += d5;
@@ -249,7 +255,8 @@ public class SteamWorldTerrainGenerator
             for (int j = 0; j < 16; ++j) 
             {
                 Biome biome = biomes[j + i * 16];
-                biome.genTerrainBlocks(world, rand, primer, x * 16 + i, z * 16 + j, this.depthBuffer[j + i * 16]);
+                if(biome instanceof BiomeSteamWorld)
+                	((BiomeSteamWorld)biome).generateBiomeTerrainSteamWorld(world, rand, primer, x * 16 + i, z * 16 + j, this.depthBuffer[j + i * 16]);
             }
         }
     }

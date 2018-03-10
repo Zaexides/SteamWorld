@@ -1,5 +1,5 @@
 {
-    "type": "minecraft:crafting_shaped",
+    "type": "forge:ore_shaped",
     
     "pattern":
     [
@@ -11,12 +11,13 @@
     {
         "s":
         {
-            "item": "steamworld:ingot_steaite"
+            "type": "forge:ore_dict",
+            "ore": "ingotSteaite"
         },
         "a":
         {
-            "item": "steamworld:nugget",
-            "data": 1
+            "type": "forge:ore_dict",
+            "ore": "nuggetAncite"
         }
     },
     

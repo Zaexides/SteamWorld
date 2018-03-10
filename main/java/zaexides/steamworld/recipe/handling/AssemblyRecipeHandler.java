@@ -61,17 +61,20 @@ public class AssemblyRecipeHandler
 		final RecipeInputItemStack ENDER_PEARL_INPUT = new RecipeInputItemStack(new ItemStack(Items.ENDER_PEARL));
 		final RecipeInputItemStack ENDER_EYE_INPUT = new RecipeInputItemStack(new ItemStack(Items.ENDER_EYE));
 		final RecipeInputItemStack ENDRITCH_BLOCK_INPUT = new RecipeInputItemStack(new ItemStack(BlockInitializer.BLOCK_DECORATIVE, 1, BlockDecorative.EnumType.ENDRITCH_BLOCK.getMeta()));
+		final RecipeInputItemStack CHORUS_FRUIT = new RecipeInputItemStack(new ItemStack(Items.CHORUS_FRUIT));
+		final RecipeInputOreDic COAL_BLOCK = new RecipeInputOreDic("blockCoal");
+		final RecipeInputOreDic NUGGET_ANCITE = new RecipeInputOreDic("nuggetAncite");
 		
 		AssemblyRecipe recipeDiamond = new AssemblyRecipe(new ItemStack(Items.DIAMOND), 3000,
-				new ItemStack(Blocks.COAL_BLOCK),new ItemStack(Blocks.COAL_BLOCK),
-				new ItemStack(Blocks.COAL_BLOCK),new ItemStack(Blocks.COAL_BLOCK),
-				new ItemStack(Blocks.COAL_BLOCK),new ItemStack(Blocks.COAL_BLOCK)
+				COAL_BLOCK,COAL_BLOCK,
+				COAL_BLOCK,COAL_BLOCK,
+				COAL_BLOCK,COAL_BLOCK
 				);
 		
 		AssemblyRecipe recipeEndritch = new AssemblyRecipe(new ItemStack(ItemInitializer.SHARD_ENDRITCH), 500,
-				new ItemStack(Items.ENDER_PEARL), new ItemStack(ItemInitializer.ITEM_NUGGET, 1, SWItemNugget.EnumVarietyMaterial.ANCITE.getMeta()),
-				new ItemStack(Items.CHORUS_FRUIT), new ItemStack(Items.ENDER_PEARL),
-				new ItemStack(ItemInitializer.ITEM_NUGGET, 1, SWItemNugget.EnumVarietyMaterial.ANCITE.getMeta()), new ItemStack(Items.CHORUS_FRUIT)
+				ENDER_PEARL_INPUT,NUGGET_ANCITE,
+				CHORUS_FRUIT, ENDER_PEARL_INPUT,
+				NUGGET_ANCITE,CHORUS_FRUIT
 				);
 		
 		AssemblyRecipe recipeEndritchValve = new AssemblyRecipe(new ItemStack(BlockInitializer.BLOCK_VALVE_ENDRITCH), 600,
@@ -93,12 +96,12 @@ public class AssemblyRecipeHandler
 				);
 		
 		AssemblyRecipe recipeEndritchUpgrade = new AssemblyRecipe(new ItemStack(ItemInitializer.UPGRADE, 1, ItemUpgrade.EnumUpgradeType.ENDRITCH.getMeta()), 600,
-				new ItemStack(BlockInitializer.BLOCK_DECORATIVE, 1, BlockDecorative.EnumType.ENDRITCH_BLOCK.getMeta()),
-				new ItemStack(Items.ENDER_EYE),
-				new ItemStack(ItemInitializer.ITEM_NUGGET, 1, SWItemNugget.EnumVarietyMaterial.ANCITE.getMeta()),
-				new ItemStack(BlockInitializer.BLOCK_DECORATIVE, 1, BlockDecorative.EnumType.ENDRITCH_BLOCK.getMeta()),
-				new ItemStack(Items.ENDER_EYE),
-				new ItemStack(ItemInitializer.ITEM_NUGGET, 1, SWItemNugget.EnumVarietyMaterial.ANCITE.getMeta())
+				ENDRITCH_BLOCK_INPUT,
+				ENDER_EYE_INPUT,
+				NUGGET_ANCITE,
+				ENDRITCH_BLOCK_INPUT,
+				ENDER_EYE_INPUT,
+				NUGGET_ANCITE
 				);
 		
 		AssemblyRecipe recipeTeleporter = new AssemblyRecipe(new ItemStack(BlockInitializer.MACHINE_VARIANT, 1, BlockMachineVariant.EnumType.TELEPORTER.getMeta()), 800,
@@ -111,12 +114,12 @@ public class AssemblyRecipeHandler
 				);
 		
 		AssemblyRecipe recipeAncite = new AssemblyRecipe(new ItemStack(ItemInitializer.INGOT_ANCITE), 1500,
-				new ItemStack(Blocks.DIAMOND_BLOCK),
-				new ItemStack(Blocks.LAPIS_BLOCK),
-				ItemStack.EMPTY,
-				new ItemStack(Items.REDSTONE),
-				new ItemStack(Items.REDSTONE),
-				ItemStack.EMPTY
+				new RecipeInputOreDic("blockDiamond"),
+				new RecipeInputOreDic("blockLapis"),
+				EMPTY_INPUT,
+				new RecipeInputOreDic("dustRedstone"),
+				new RecipeInputOreDic("dustRedstone"),
+				EMPTY_INPUT
 				);
 	}
 }

@@ -20,8 +20,8 @@ public class WorldGenerationOres implements IWorldGenerator
 	private WorldGenerator ore_steaite;
 	
 	private static final int ORE_VEIN_SIZE = 5;
-	private static final int GENERATION_CHANCE = 20;
-	private static final int MIN_HEIGHT = 5, MAX_HEIGHT = 20;
+	private static final int STEAITE_GENERATION_CHANCE = 20, STEAITE_GENERATION_CHANCE_SWDIM = 35;
+	private static final int STEAITE_MIN_HEIGHT = 5, STEAITE_MAX_HEIGHT = 20, STEAITE_MAX_HEIGH_SWDIM = 80;
 	
 	public WorldGenerationOres()
 	{
@@ -31,12 +31,16 @@ public class WorldGenerationOres implements IWorldGenerator
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) 
 	{
-		switch(world.provider.getDimension())
+		int dim = world.provider.getDimension();
+		if(dim == 0)
 		{
-			case 0:
 			if(ConfigHandler.generateSteaiteOre)
-				GenerateOre(ore_steaite, world, random, chunkX, chunkZ, GENERATION_CHANCE, MIN_HEIGHT, MAX_HEIGHT);
-			break;
+				GenerateOre(ore_steaite, world, random, chunkX, chunkZ, STEAITE_GENERATION_CHANCE, STEAITE_MIN_HEIGHT, STEAITE_MAX_HEIGHT);
+		}
+		else if(dim == ConfigHandler.dimensionId)
+		{
+			if(ConfigHandler.generateSteaiteOre)
+				GenerateOre(ore_steaite, world, random, chunkX, chunkZ, STEAITE_GENERATION_CHANCE_SWDIM, STEAITE_MIN_HEIGHT, STEAITE_MAX_HEIGH_SWDIM);
 		}
 	}
 	

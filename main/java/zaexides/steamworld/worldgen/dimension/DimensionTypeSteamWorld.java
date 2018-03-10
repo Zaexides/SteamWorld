@@ -82,4 +82,10 @@ public class DimensionTypeSteamWorld extends WorldProviderSurface
 	{
 		return super.getStarBrightness(par1) * 0.8f;
 	}
+	
+	@Override
+	public float getCloudHeight() 
+	{
+		return 5.24f;
+	}
 }

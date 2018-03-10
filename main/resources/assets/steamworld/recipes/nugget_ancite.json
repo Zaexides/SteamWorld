@@ -3,7 +3,8 @@
     "ingredients":
     [
         {
-            "item": "steamworld:ingot_ancite"
+            "type": "forge:ore_dict",
+            "ore": "ingotAncite"
         }
     ],
     "result":

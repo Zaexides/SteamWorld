@@ -20,7 +20,10 @@ public class GenLayerSteamWorldBiomes extends GenLayer
 			for(int x = 0; x < areaWidth; x++)
 			{
 				initChunkSeed(areaX + x, areaZ + z);
-				ints[x + z * areaWidth] = Biome.getIdForBiome(SteamWorldBiomeProvider.biomes.get(nextInt(SteamWorldBiomeProvider.biomes.size())));
+				
+				int id = SteamWorldBiomeProvider.biomeWeights.get(nextInt(SteamWorldBiomeProvider.biomeWeights.size()));
+				Biome biome = SteamWorldBiomeProvider.biomes.get(id);
+				ints[x + z * areaWidth] = Biome.getIdForBiome(biome);
 			}
 		}
 		return ints;

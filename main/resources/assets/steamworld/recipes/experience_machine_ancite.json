@@ -1,5 +1,5 @@
 {
-    "type": "minecraft:crafting_shaped",
+    "type": "forge:ore_shaped",
     
     "pattern":
     [
@@ -12,12 +12,13 @@
     {
         "g":
         {
-            "item": "minecraft:gold_block"
+            "type": "forge:ore_dict",
+            "ore": "blockGold"
         },
         "e":
         {
-            "item": "steamworld:nugget",
-            "data": 3
+            "type": "forge:ore_dict",
+            "ore": "nuggetEmerald"
         },
         "m":
         {
@@ -25,7 +26,8 @@
         },
         "a":
         {
-            "item": "steamworld:ingot_ancite"
+            "type": "forge:ore_dict",
+            "ore": "ingotAncite"
         }
     },
     
