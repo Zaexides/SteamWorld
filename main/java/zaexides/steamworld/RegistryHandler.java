@@ -31,6 +31,7 @@ import zaexides.steamworld.blocks.BlockAncite;
 import zaexides.steamworld.blocks.BlockDecorative;
 import zaexides.steamworld.blocks.BlockInitializer;
 import zaexides.steamworld.blocks.BlockSteam;
+import zaexides.steamworld.blocks.SteamWorldBlockOre;
 import zaexides.steamworld.fluids.FluidPreservation;
 import zaexides.steamworld.fluids.FluidSteam;
 import zaexides.steamworld.items.ItemDust;
@@ -128,7 +129,7 @@ public class RegistryHandler
 	
 	public static void RegisterSmeltingRecipes()
 	{
-		GameRegistry.addSmelting(BlockInitializer.ORE_STEAITE, new ItemStack(ItemInitializer.INGOT_STEAITE), 1.2f);
+		GameRegistry.addSmelting(new ItemStack(BlockInitializer.ORE, 1, SteamWorldBlockOre.EnumType.OVERWORLD_STEAITE.getMeta()), new ItemStack(ItemInitializer.INGOT_STEAITE), 1.2f);
 		
 		GameRegistry.addSmelting(new ItemStack(ItemInitializer.METAL_DUST, 1, ItemDust.EnumVarietyMaterial.IRON.getMeta()), new ItemStack(Items.IRON_INGOT), FurnaceRecipes.instance().getSmeltingExperience(new ItemStack(Items.IRON_INGOT)));
 		GameRegistry.addSmelting(new ItemStack(ItemInitializer.METAL_DUST, 1, ItemDust.EnumVarietyMaterial.GOLD.getMeta()), new ItemStack(Items.GOLD_INGOT), FurnaceRecipes.instance().getSmeltingExperience(new ItemStack(Items.GOLD_INGOT)));

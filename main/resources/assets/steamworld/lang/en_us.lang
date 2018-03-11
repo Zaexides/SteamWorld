@@ -6,57 +6,94 @@ itemGroup.steamworld=SteamWorld
 ###############
 # Block Names #
 ###############
-tile.steamworld.ore_steaite.name=Steaite Ore
-tile.steamworld.block_steaite.name=Steaite Block
-tile.steamworld.block_steaite_gold.name=Gold-Framed Steaite
-tile.steamworld.lamp_endritch.name=Endritch Lamp
+
+# Legacy Blocks
+tile.steamworld.ore_steaite.name=Steaite Ore (Legacy)
+tile.steamworld.block_steaite.name=Steaite Block (Legacy)
+
+# Ancite Blocks (and also steaite block)
 tile.steamworld.block_ancite_brick.name=Ancite Bricks
 tile.steamworld.block_ancite_floor.name=Ancite Tiles
 tile.steamworld.block_ancite_plate.name=Ancite Plates
 tile.steamworld.block_ancite_block.name=Ancite Block
 tile.steamworld.block_ancite_bigbricks.name=Ancite Big Bricks
+tile.steamworld.block_ancite_steaite_block.name=Steaite Block
 tile.steamworld.block_ancite_error.name=A Future Block, perhaps.
+
+# Decorative Block
 tile.steamworld.block_decorative_block_endritch.name=Endritch Block
 tile.steamworld.block_decorative_block_preservation_cobble.name=Preservation Cobblestone
+tile.steamworld.block_decorative_sky_stone.name=Sky Stone
+tile.steamworld.block_decorative_sky_cobble.name=Sky Cobblestone
 tile.steamworld.block_decorative_error.name=A Future Block, perhaps.
-tile.steamworld.nether_accelerator.name=Nether Accelerator
+
+# Ores
+tile.steamworld.ore_steaite_ow.name=Steaite Ore
+
+# Generators
 tile.steamworld.generator_steaite.name=Steam Generator MKI
 tile.steamworld.generator_ancite.name=Steam Generator MKII
 tile.steamworld.generator_endritch.name=Steam Generator MKIII
 tile.steamworld.generator_nether.name=Nether Steam Generator
-tile.steamworld.block_obilisk.name=Ancite Crypt Marker
-tile.steamworld.block_pipe.name=Pipe
-tile.steamworld.block_dynamo.name=Steam Dynamo
 tile.steamworld.generator_electric.name=Electric Steam Generator
-tile.steamworld.block_fluid_controller.name=Fluid Controller MKI
-tile.steamworld.block_fluid_controller_endritch.name=Fluid Controller MKII
-tile.steamworld.block_drain.name=Fluid Drain
-tile.steamworld.block_faucet.name=Fluid Faucet
+
+# Furnace
 tile.steamworld.furnace_steaite.name=Steam Furnace MKI
 tile.steamworld.furnace_ancite.name=Steam Furnace MKII
 tile.steamworld.furnace_endritch.name=Steam Furnace MKIII
+
+# Grinder
 tile.steamworld.grinder_steaite.name=Steam Grinder MKI
 tile.steamworld.grinder_ancite.name=Steam Grinder MKII
 tile.steamworld.grinder_endritch.name=Steam Grinder MKIII
+
+# Fisher
 tile.steamworld.fisher_steaite.name=Fisher MKI
 tile.steamworld.fisher_ancite.name=Fisher MKII
 tile.steamworld.fisher_endritch.name=Fisher MKIII
+
+# Farmer
 tile.steamworld.farmer_steaite.name=Farmer MKI
 tile.steamworld.farmer_ancite.name=Farmer MKII
 tile.steamworld.farmer_endritch.name=Farmer MKIII
+
+# Lumberjack
 tile.steamworld.lumber_steaite.name=Lumberjack MKI
 tile.steamworld.lumber_ancite.name=Lumberjack MKII
 tile.steamworld.lumber_endritch.name=Lumberjack MKIII
+
+# Fertilizer
 tile.steamworld.fertilizer_steaite.name=Fertilizer MKI
 tile.steamworld.fertilizer_ancite.name=Fertilizer MKII
 tile.steamworld.fertilizer_endritch.name=Fertilizer MKIII
+
+# Assembler
 tile.steamworld.assembler_ancite.name=Steam Assembler MKI
 tile.steamworld.assembler_endritch.name=Steam Assembler MKII
+
+# Experience Machine
 tile.steamworld.experience_machine_ancite.name=Experience Machine MKI
 tile.steamworld.experience_machine_endritch.name=Experience Machine MKII
+
+# Generic Machines
 tile.steamworld.generic_machine_teleporter.name=Endritch Teleporter
 tile.steamworld.generic_machine_launcher.name=Steam Launcher
 tile.steamworld.generic_machine_error.name=A Future Machine!
+
+# Fluid Controller
+tile.steamworld.block_fluid_controller.name=Fluid Controller MKI
+tile.steamworld.block_fluid_controller_endritch.name=Fluid Controller MKII
+
+# Misc
+tile.steamworld.block_steaite_gold.name=Gold-Framed Steaite
+tile.steamworld.lamp_endritch.name=Endritch Lamp
+tile.steamworld.nether_accelerator.name=Nether Accelerator
+tile.steamworld.block_obilisk.name=Ancite Crypt Marker
+tile.steamworld.block_pipe.name=Pipe
+tile.steamworld.block_dynamo.name=Steam Dynamo
+tile.steamworld.block_drain.name=Fluid Drain
+tile.steamworld.block_faucet.name=Fluid Faucet
+tile.steamworld.portal.name=Portal
 
 ##############
 # Item Names #

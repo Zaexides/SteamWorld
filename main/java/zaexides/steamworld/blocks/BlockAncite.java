@@ -35,7 +35,7 @@ public class BlockAncite extends Block implements IMetaName, IModeledObject, IOr
 	
 	public BlockAncite(String name)
 	{
-		super(Material.ROCK);
+		super(Material.IRON);
 		setUnlocalizedName(ModInfo.MODID + "." + name);
 		setRegistryName(name);
 		setHarvestLevel("pickaxe", 3);
@@ -52,6 +52,7 @@ public class BlockAncite extends Block implements IMetaName, IModeledObject, IOr
 	public void RegisterOreInDictionary() 
 	{
 		OreDictionary.registerOre("blockAncite", new ItemStack(this, 1, getMetaFromState(getDefaultState().withProperty(VARIANT, EnumType.BLOCK))));
+		OreDictionary.registerOre("blockSteaite", new ItemStack(this, 1, EnumType.STEAITE.getMeta()));
 	}
 	
 	@Override
@@ -123,7 +124,8 @@ public class BlockAncite extends Block implements IMetaName, IModeledObject, IOr
 		TILES(1, "floor"),
 		PLATES(2, "plate"),
 		BLOCK(3, "block"),
-		BIG_BRICKS(4, "bigbricks");
+		BIG_BRICKS(4, "bigbricks"),
+		STEAITE(5, "steaite_block");
 		
 		private static final BlockAncite.EnumType[] META_LOOKUP = new BlockAncite.EnumType[values().length];
 		private final int meta;

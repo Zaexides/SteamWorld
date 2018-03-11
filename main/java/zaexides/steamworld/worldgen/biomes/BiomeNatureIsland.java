@@ -14,5 +14,9 @@ public class BiomeNatureIsland extends BiomeSteamWorld
 	public BiomeNatureIsland(String name) 
 	{
 		super(new BiomeProperties(name).setBaseHeight(0.75f).setHeightVariation(0.07f).setTemperature(0.7f).setRainfall(0.35f));
+		
+		decorator.flowersPerChunk = 16;
+		decorator.treesPerChunk = 3;
+		decorator.extraTreeChance = 0.3f;
 	}
 }

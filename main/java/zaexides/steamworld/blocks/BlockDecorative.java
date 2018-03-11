@@ -2,6 +2,7 @@ package zaexides.steamworld.blocks;
 
 import java.util.Random;
 
+import com.google.common.base.Predicate;
 import com.google.common.util.concurrent.Service.State;
 
 import net.minecraft.block.Block;

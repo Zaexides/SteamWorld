@@ -25,7 +25,7 @@ public class WorldGenerationOres implements IWorldGenerator
 	
 	public WorldGenerationOres()
 	{
-		ore_steaite = new WorldGenMinable(BlockInitializer.ORE_STEAITE.getDefaultState(), ORE_VEIN_SIZE);
+		ore_steaite = new WorldGenMinable(BlockInitializer.ORE.getDefaultState(), ORE_VEIN_SIZE);
 	}
 
 	@Override

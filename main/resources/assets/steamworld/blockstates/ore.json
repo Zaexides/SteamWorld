@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "variant=steaite_ow": { "model": "steamworld:ore_steaite" }
+    }
+}

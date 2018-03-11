@@ -19,7 +19,8 @@ import zaexides.steamworld.blocks.BlockInitializer;
 
 public abstract class BiomeSteamWorld extends Biome
 {
-	protected float bottomErosion = 0.33f;
+	protected float erosionOverrideChance = 0.05f;
+	protected int erosionStartHeight = 63;
 	
 	public BiomeSteamWorld(BiomeProperties properties) 
 	{
@@ -34,11 +35,11 @@ public abstract class BiomeSteamWorld extends Biome
         double humidity = (double)MathHelper.clamp(getRainfall(), 0.0f, 1.0f);
         humidity *= temperature;
         
-        int r = getFloatTemperature(pos) >= 10.0 ? 200 : 0;
+        int r = getFloatTemperature(pos) >= 10.0 ? 200 : 20;
         int g = (int)((1.0 - humidity) * 255.0);
         int b = (int)((1.0 - temperature) * 255.0);
         
-        if(r > 0)
+        if(r >20)
         {
         	b -= r;
         	g -= r;
@@ -73,7 +74,7 @@ public abstract class BiomeSteamWorld extends Biome
 		{
 			if(!eroded)
 			{
-				if(canErode && rand.nextFloat() < bottomErosion)
+				if(canErode && (rand.nextFloat() < erosionOverrideChance || y <= rand.nextInt(erosionStartHeight)))
 					eroded = true;
 				
 				IBlockState blockState = chunkPrimerIn.getBlockState(primerX, y, primerZ);
@@ -98,10 +99,5 @@ public abstract class BiomeSteamWorld extends Biome
 			else
 				chunkPrimerIn.setBlockState(primerX, y, primerZ, AIR);
 		}
-	}
-	
-	public int getCenter()
-	{
-		return 64;
 	}
 }
