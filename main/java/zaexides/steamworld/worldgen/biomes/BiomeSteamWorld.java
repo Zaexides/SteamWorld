@@ -21,6 +21,7 @@ public abstract class BiomeSteamWorld extends Biome
 {
 	protected float erosionOverrideChance = 0.05f;
 	protected int erosionStartHeight = 63;
+	protected int riseAmount = 0;
 	
 	public BiomeSteamWorld(BiomeProperties properties) 
 	{
@@ -94,10 +95,43 @@ public abstract class BiomeSteamWorld extends Biome
 						chunkPrimerIn.setBlockState(primerX, y, primerZ, fillerBlock);
 					else if(!canErode)
 						canErode = true;
+					
+					replaceBiomeBlock(worldIn, rand, chunkPrimerIn, primerX, y, primerZ, noiseVal);
 				}
 			}
 			else
 				chunkPrimerIn.setBlockState(primerX, y, primerZ, AIR);
+		}
+		
+		raise(worldIn, rand, chunkPrimerIn, primerX, primerZ, noiseVal);
+	}
+	
+	protected void replaceBiomeBlock(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int primerX, int primerY, int primerZ, double noiseVal)
+	{
+		
+	}
+	
+	protected void raise(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int primerX, int primerZ, double noiseVal)
+	{
+		if(riseAmount > 0)
+		{
+			for(int y = 255; y >= 0; y--)
+			{
+				IBlockState blockState = chunkPrimerIn.getBlockState(primerX, y, primerZ);
+				chunkPrimerIn.setBlockState(primerX, y, primerZ, Blocks.AIR.getDefaultState());
+				if((y + riseAmount) <= 255)
+					chunkPrimerIn.setBlockState(primerX, y + riseAmount, primerZ, blockState);
+			}
+		}
+		else if(riseAmount < 0)
+		{
+			for(int y = 0; y <= 255; y++)
+			{
+				IBlockState blockState = chunkPrimerIn.getBlockState(primerX, y, primerZ);
+				chunkPrimerIn.setBlockState(primerX, y, primerZ, Blocks.AIR.getDefaultState());
+				if((y + riseAmount) >= 0)
+					chunkPrimerIn.setBlockState(primerX, y + riseAmount, primerZ, blockState);
+			}
 		}
 	}
 }

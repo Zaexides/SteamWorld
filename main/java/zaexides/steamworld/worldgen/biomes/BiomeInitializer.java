@@ -21,12 +21,14 @@ public class BiomeInitializer
 {
 	public static final BiomeForgottenSky FORGOTTEN_SKY = new BiomeForgottenSky("Forgotten Sky");
 	public static final BiomeNatureIsland NATURE_ISLAND = new BiomeNatureIsland("Nature Island");
+	public static final BiomeBlazingWithers BLAZING_WITHERS = new BiomeBlazingWithers("Blazing Withers");
 	
 	@SubscribeEvent
 	public static void registerBiomes(RegistryEvent.Register<Biome> event)
 	{
-		registerBiome(FORGOTTEN_SKY, "Forgotten Sky", 50, Type.VOID, Type.COLD);
-		registerBiome(NATURE_ISLAND, "Nature Island", 30, Type.PLAINS, Type.LUSH);
+		registerBiome(FORGOTTEN_SKY, "Forgotten Sky", 2000, Type.VOID, Type.COLD);
+		registerBiome(NATURE_ISLAND, "Nature Island", 700, Type.PLAINS, Type.LUSH);
+		registerBiome(BLAZING_WITHERS, "Blazing Withers", 50, Type.HOT, Type.DEAD, Type.NETHER, Type.DRY);
 	}
 	
 	private static Biome registerBiome(Biome biome, String name, int weight, Type... types)

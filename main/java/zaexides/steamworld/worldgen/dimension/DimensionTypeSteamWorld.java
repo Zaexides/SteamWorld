@@ -44,6 +44,12 @@ public class DimensionTypeSteamWorld extends WorldProviderSurface
 	}
 	
 	@Override
+	public double getHorizon() 
+	{
+		return -224;
+	}
+	
+	@Override
 	@SideOnly(Side.CLIENT)
 	public Vec3d getSkyColor(Entity cameraEntity, float partialTicks) 
 	{
@@ -86,6 +92,12 @@ public class DimensionTypeSteamWorld extends WorldProviderSurface
 	@Override
 	public float getCloudHeight() 
 	{
-		return 5.24f;
+		return -55.24f;
+	}
+	
+	@Override
+	public double getVoidFogYFactor() 
+	{
+		return 2.5;
 	}
 }
