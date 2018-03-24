@@ -37,7 +37,7 @@ public class BlockSWPortal extends SteamWorldBlock
 		
 		int lastDimension = entityIn.getEntityWorld().provider.getDimension();
 		int targetDimension = ConfigHandler.dimensionId;
-		BlockPos spawnPos = new BlockPos(pos.getX() * POSITION_MULTIPLIER, pos.getY(), pos.getZ() * POSITION_MULTIPLIER);;
+		BlockPos spawnPos = new BlockPos(16, 80, 16);
 		
 		if(lastDimension == targetDimension)
 		{

@@ -19,7 +19,8 @@
     
     "result":
     {
-        "item": "steamworld:block_steaite",
+        "item": "steamworld:block_ancite",
+        "data": 5,
         "count": 1
     }
 }

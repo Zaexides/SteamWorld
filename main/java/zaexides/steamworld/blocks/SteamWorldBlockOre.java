@@ -1,5 +1,7 @@
 package zaexides.steamworld.blocks;
 
+import java.util.Random;
+
 import org.apache.logging.log4j.Level;
 
 import net.minecraft.block.Block;
@@ -11,7 +13,9 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.NonNullList;
@@ -67,7 +71,7 @@ public class SteamWorldBlockOre extends Block implements IMetaName, IModeledObje
 	@Override
 	public int damageDropped(IBlockState state) 
 	{
-		return ((EnumType)state.getValue(VARIANT)).getMeta();
+		return getItemDropped(state, null, 0) instanceof ItemBlock ? ((EnumType)state.getValue(VARIANT)).getMeta() : 0;
 	}
 	
 	@Override
@@ -128,15 +132,50 @@ public class SteamWorldBlockOre extends Block implements IMetaName, IModeledObje
 		}
 	}
 	
+	@Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) 
+	{
+		if(getMetaFromState(state) == EnumType.SKY_COAL.getMeta())
+			return Items.COAL;
+		else if(getMetaFromState(state) == EnumType.SKY_DIAMOND.getMeta())
+			return Items.DIAMOND;
+		else
+			return super.getItemDropped(state, rand, fortune);
+	}
+	
+	@Override
+	public int quantityDropped(IBlockState state, int fortune, Random random)
+	{
+		if(fortune > 0 && EnumType.byMetadata(getMetaFromState(state)).multiDrop)
+		{
+			int i = random.nextInt(fortune + 2) - 1;
+
+            if (i < 0)
+            {
+                i = 0;
+            }
+
+            return this.quantityDropped(random) * (i + 1);
+		}
+		else
+			return super.quantityDropped(state, fortune, random);
+	}
+	
 	public static enum EnumType implements IStringSerializable
 	{
-		OVERWORLD_STEAITE(0, "steaite_ow", "oreSteaite", 2.5f, 3);
+		OVERWORLD_STEAITE(0, "steaite_ow", "oreSteaite", 2.5f, 3),
+		SKY_STEAITE(1, "steaite_sky", "oreSteaite", 3.0f, 3),
+		SKY_COAL(2, "coal_sky", "oreCoal", 3.5f, 0, true),
+		SKY_IRON(3, "iron_sky", "oreIron", 3.5f, 1),
+		SKY_GOLD(4, "gold_sky", "oreGold", 3.5f, 2),
+		SKY_DIAMOND(5, "diamond_sky", "oreDiamond", 3.5f, 2, true);
 		
 		private static final EnumType[] META_LOOKUP = new EnumType[values().length];
 		private final int meta;
 		private final String name, unlocalizedName, oreName;
 		private int harvestLevel = 0;
 		private final float hardness;
+		private boolean multiDrop = false;
 		
 		private EnumType(int meta, String name, String oreName, float hardness)
 		{
@@ -151,6 +190,12 @@ public class SteamWorldBlockOre extends Block implements IMetaName, IModeledObje
 		{
 			this(meta, name, oreName, hardness);
 			this.harvestLevel = harvestLevel;
+		}
+		
+		private EnumType(int meta, String name, String oreName, float hardness, int harvestLevel, boolean multiDrop)
+		{
+			this(meta, name, oreName, hardness, harvestLevel);
+			this.multiDrop = multiDrop;
 		}
 		
 		@Override

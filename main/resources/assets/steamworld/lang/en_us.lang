@@ -29,6 +29,11 @@ tile.steamworld.block_decorative_error.name=A Future Block, perhaps.
 
 # Ores
 tile.steamworld.ore_steaite_ow.name=Steaite Ore
+tile.steamworld.ore_steaite_sky.name=Steaite Sky Ore
+tile.steamworld.ore_coal_sky.name=Coal Sky Ore
+tile.steamworld.ore_iron_sky.name=Iron Sky Ore
+tile.steamworld.ore_gold_sky.name=Gold Sky Ore
+tile.steamworld.ore_diamond_sky.name=Diamond Sky Ore
 
 # Generators
 tile.steamworld.generator_steaite.name=Steam Generator MKI

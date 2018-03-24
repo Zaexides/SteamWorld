@@ -1,5 +1,10 @@
 {
     "variants": {
-        "variant=steaite_ow": { "model": "steamworld:ore_steaite" }
+        "variant=steaite_ow": { "model": "steamworld:ore_steaite" },
+        "variant=steaite_sky": { "model": "steamworld:ore_steaite_sky" },
+        "variant=coal_sky": { "model": "steamworld:ore_coal_sky" },
+        "variant=iron_sky": { "model": "steamworld:ore_iron_sky" },
+        "variant=gold_sky": { "model": "steamworld:ore_gold_sky" },
+        "variant=diamond_sky": { "model": "steamworld:ore_diamond_sky" }
     }
 }

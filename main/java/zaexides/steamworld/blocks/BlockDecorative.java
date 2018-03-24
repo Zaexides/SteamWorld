@@ -150,8 +150,9 @@ public class BlockDecorative extends Block implements IMetaName, IModeledObject,
 	{
 		ENDRITCH_BLOCK(0, "block_endritch", 3f, 3),
 		PRESERVATION_COBBLE(1, "block_preservation_cobble", 2.5f, 1),
-		SKY_STONE(2, "sky_stone", 1f, 1),
-		SKY_COBBLE(3, "sky_cobble", 1f, 1);
+		SKY_STONE(2, "sky_stone", 2f, 1),
+		SKY_COBBLE(3, "sky_cobble", 2.5f, 1),
+		SKY_BRICKS(4, "sky_bricks", 3.0f, 1);
 		
 		private static final BlockDecorative.EnumType[] META_LOOKUP = new BlockDecorative.EnumType[values().length];
 		private final int meta;

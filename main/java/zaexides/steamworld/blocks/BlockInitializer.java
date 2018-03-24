@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockStairs;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import scala.AnyValCompanion;
@@ -40,6 +41,8 @@ public class BlockInitializer
 	
 	public static final BlockAncite BLOCK_ANCITE = new BlockAncite("block_ancite");
 	public static final BlockDecorative BLOCK_DECORATIVE = new BlockDecorative("block_decorative");
+	
+	public static final BlockSWStairs STAIRS_SKY_BRICKS = new BlockSWStairs("stairs_sky_bricks", BLOCK_DECORATIVE.getStateFromMeta(BlockDecorative.EnumType.SKY_BRICKS.getMeta()));
 	
 	public static final BlockObilisk OBILISK = new BlockObilisk("block_obilisk", Material.ROCK, 5f);
 	
