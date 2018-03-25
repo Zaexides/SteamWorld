@@ -76,4 +76,11 @@ public class BiomeBlazingWithers extends BiomeSteamWorld
 		else
 			chunkPrimerIn.setBlockState(primerX, primerY, primerZ, Blocks.AIR.getDefaultState());
 	}
+	
+	@Override
+	public float getSpawningChance()
+	{
+		// TODO Auto-generated method stub
+		return 0.02f;
+	}
 }

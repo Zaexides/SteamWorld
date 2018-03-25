@@ -49,6 +49,7 @@ public class BlockCrystal extends Block implements IMetaName, IModeledObject
 		setHarvestLevels();
 		setCreativeTab(SteamWorld.CREATIVETAB);
 		setSoundType(SoundType.GLASS);
+		setLightLevel(0.05f);
 		
 		setDefaultState(blockState.getBaseState().withProperty(VARIANT, BlockCrystal.EnumType.GRAVITY_CRYSTAL));
 		

@@ -18,5 +18,6 @@ public class BiomeNatureIsland extends BiomeSteamWorld
 		decorator.flowersPerChunk = 16;
 		decorator.treesPerChunk = 3;
 		decorator.extraTreeChance = 0.3f;
+		decorator.reedsPerChunk = 3;
 	}
 }

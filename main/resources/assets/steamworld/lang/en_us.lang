@@ -28,6 +28,9 @@ tile.steamworld.block_decorative_sky_cobble.name=Sky Cobblestone
 tile.steamworld.block_decorative_sky_bricks.name=Sky Bricks
 tile.steamworld.block_decorative_error.name=A Future Block, perhaps.
 
+# Crystal Block
+tile.steamworld.block_crystal_gravity.name=Gravitiliite Crystal
+
 # Ores
 tile.steamworld.ore_steaite_ow.name=Steaite Ore
 tile.steamworld.ore_steaite_sky.name=Steaite Sky Ore
@@ -35,6 +38,7 @@ tile.steamworld.ore_coal_sky.name=Coal Sky Ore
 tile.steamworld.ore_iron_sky.name=Iron Sky Ore
 tile.steamworld.ore_gold_sky.name=Gold Sky Ore
 tile.steamworld.ore_diamond_sky.name=Diamond Sky Ore
+tile.steamworld.ore_ancite_sky.name=Ancite Sky Ore
 
 # Generators
 tile.steamworld.generator_steaite.name=Steam Generator MKI

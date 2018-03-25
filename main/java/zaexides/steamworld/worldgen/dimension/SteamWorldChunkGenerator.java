@@ -5,6 +5,7 @@ import java.util.Random;
 
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Biomes;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldEntitySpawner;
@@ -17,7 +18,10 @@ import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.MapGenBase;
 import net.minecraft.world.gen.MapGenCaves;
 import net.minecraft.world.gen.MapGenRavine;
+import net.minecraft.world.gen.feature.WorldGenLakes;
 import net.minecraftforge.event.terraingen.InitMapGenEvent.EventType;
+import zaexides.steamworld.init.BlockInitializer;
+import zaexides.steamworld.worldgen.mapgen.MapGenSWCaves;
 import net.minecraftforge.event.terraingen.TerrainGen;
 
 public class SteamWorldChunkGenerator implements IChunkGenerator
@@ -26,12 +30,15 @@ public class SteamWorldChunkGenerator implements IChunkGenerator
 	private Random rand;
 	private Biome[] biomes;
 	private SteamWorldTerrainGenerator terrainGenerator;
+	
+	private MapGenBase caveGenerator = new MapGenSWCaves();
 		
 	public SteamWorldChunkGenerator(World world) 
 	{
 		this.world = world;
 		this.rand = new Random(world.getSeed() - 725);
 		terrainGenerator = new SteamWorldTerrainGenerator(world, rand);
+		caveGenerator = TerrainGen.getModdedMapGen(caveGenerator, EventType.CAVE);
 	}
 	
 	@Override
@@ -45,6 +52,8 @@ public class SteamWorldChunkGenerator implements IChunkGenerator
 		
 		biomes = world.getBiomeProvider().getBiomesForGeneration(biomes, x * 16, z * 16, 16, 16);
 		terrainGenerator.replaceBiomeBlocks(x, z, chunkPrimer, this, biomes);
+		
+		caveGenerator.generate(world, x, z, chunkPrimer);
 	
 		Chunk chunk = new Chunk(world, chunkPrimer, x, z);
 		byte[] biomeArray = chunk.getBiomeArray();
@@ -62,6 +71,31 @@ public class SteamWorldChunkGenerator implements IChunkGenerator
 		
 		BlockPos pos = new BlockPos(i, 0, j);
 		Biome biome = world.getBiome(pos.add(16, 0, 16));
+		
+		if (biome.getTemperature() < 1.5f && rand.nextInt(100) <= (biome.getRainfall() * 25) && net.minecraftforge.event.terraingen.TerrainGen.populate(this, this.world, this.rand, x, z, false, net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.LAKE))
+        {
+            int i1 = this.rand.nextInt(16) + 8;
+            int j1 = this.rand.nextInt(256);
+            int k1 = this.rand.nextInt(16) + 8;
+            (new WorldGenLakes(Blocks.WATER)).generate(this.world, this.rand, pos.add(i1, j1, k1));
+        }
+		
+		if (rand.nextInt(300) == 0 && net.minecraftforge.event.terraingen.TerrainGen.populate(this, this.world, this.rand, x, z, false, net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.LAKE))
+        {
+            int i1 = this.rand.nextInt(16) + 8;
+            int j1 = this.rand.nextInt(256);
+            int k1 = this.rand.nextInt(16) + 8;
+            (new WorldGenLakes(BlockInitializer.BLOCK_PRESERVATION_JUICE)).generate(this.world, this.rand, pos.add(i1, j1, k1));
+        }
+		
+		if (((biome.getTemperature() >= 10.0f && rand.nextInt(10) == 0) || rand.nextInt(500) == 0) && net.minecraftforge.event.terraingen.TerrainGen.populate(this, this.world, this.rand, x, z, false, net.minecraftforge.event.terraingen.PopulateChunkEvent.Populate.EventType.LAKE))
+        {
+            int i1 = this.rand.nextInt(16) + 8;
+            int j1 = this.rand.nextInt(256);
+            int k1 = this.rand.nextInt(16) + 8;
+            (new WorldGenLakes(Blocks.LAVA)).generate(this.world, this.rand, pos.add(i1, j1, k1));
+        }
+		
 		biome.decorate(world, rand, pos);
 		WorldEntitySpawner.performWorldGenSpawning(world, biome, i + 8, j + 8, 16, 16, rand);
 	}
