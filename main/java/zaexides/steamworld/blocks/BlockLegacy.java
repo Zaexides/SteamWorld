@@ -14,7 +14,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import zaexides.steamworld.blocks.item.ItemBlockLegacy;
 import zaexides.steamworld.blocks.item.ItemBlockVariant;
-import zaexides.steamworld.items.ItemInitializer;
+import zaexides.steamworld.init.ItemInitializer;
 
 public class BlockLegacy extends SteamWorldBlock
 {

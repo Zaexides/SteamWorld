@@ -18,8 +18,8 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 import scala.sys.process.processInternal;
 import zaexides.steamworld.ConfigHandler;
 import zaexides.steamworld.blocks.BlockDecorative;
-import zaexides.steamworld.blocks.BlockInitializer;
 import zaexides.steamworld.blocks.SteamWorldBlockOre;
+import zaexides.steamworld.init.BlockInitializer;
 
 public class WorldGenerationOres implements IWorldGenerator
 {

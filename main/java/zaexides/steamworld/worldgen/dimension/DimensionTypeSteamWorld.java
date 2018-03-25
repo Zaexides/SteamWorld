@@ -2,6 +2,7 @@ package zaexides.steamworld.worldgen.dimension;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Biomes;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.WorldProvider;
@@ -99,5 +100,11 @@ public class DimensionTypeSteamWorld extends WorldProviderSurface
 	public double getVoidFogYFactor() 
 	{
 		return 2.5;
+	}
+	
+	@Override
+	public BlockPos getSpawnPoint() 
+	{
+		return new BlockPos(16, 87, 16);
 	}
 }

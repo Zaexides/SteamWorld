@@ -1,4 +1,4 @@
-package zaexides.steamworld.blocks;
+package zaexides.steamworld.init;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,6 +9,19 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import scala.AnyValCompanion;
 import scala.reflect.internal.Trees.New;
+import zaexides.steamworld.blocks.BlockAncite;
+import zaexides.steamworld.blocks.BlockCrystal;
+import zaexides.steamworld.blocks.BlockDecorative;
+import zaexides.steamworld.blocks.BlockFluidPipe;
+import zaexides.steamworld.blocks.BlockLegacy;
+import zaexides.steamworld.blocks.BlockObilisk;
+import zaexides.steamworld.blocks.BlockPreservationJuice;
+import zaexides.steamworld.blocks.BlockSWPortal;
+import zaexides.steamworld.blocks.BlockSWStairs;
+import zaexides.steamworld.blocks.BlockSteam;
+import zaexides.steamworld.blocks.SteamWorldBlock;
+import zaexides.steamworld.blocks.SteamWorldBlockOre;
+import zaexides.steamworld.blocks.BlockDecorative.EnumType;
 import zaexides.steamworld.blocks.machines.BlockAssembler;
 import zaexides.steamworld.blocks.machines.BlockDrain;
 import zaexides.steamworld.blocks.machines.BlockExperienceMachine;
@@ -41,6 +54,7 @@ public class BlockInitializer
 	
 	public static final BlockAncite BLOCK_ANCITE = new BlockAncite("block_ancite");
 	public static final BlockDecorative BLOCK_DECORATIVE = new BlockDecorative("block_decorative");
+	public static final BlockCrystal BLOCK_CRYSTAL = new BlockCrystal("block_crystal");
 	
 	public static final BlockSWStairs STAIRS_SKY_BRICKS = new BlockSWStairs("stairs_sky_bricks", BLOCK_DECORATIVE.getStateFromMeta(BlockDecorative.EnumType.SKY_BRICKS.getMeta()));
 	
@@ -96,6 +110,7 @@ public class BlockInitializer
 	public static final BlockFaucet BLOCK_FAUCET = new BlockFaucet();
 	
 	public static final BlockSWPortal BLOCK_SW_PORTAL = new BlockSWPortal();
+	public static final Block BLOCK_SW_PORTAL_FRAME = new SteamWorldBlock("block_portal_frame", Material.ROCK, -1.0f).setResistance(Float.MAX_VALUE).setLightLevel(1.0f);
 		
 	public static final BlockDynamo BLOCK_DYNAMO = new BlockDynamo("block_dynamo", 3.5f);
 	public static final BlockSteamGeneratorElectric BLOCK_STEAM_GENERATOR_ELECTRIC = new BlockSteamGeneratorElectric("generator_electric", 3.5f);

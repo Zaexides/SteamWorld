@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "variant=gravity": { "model": "steamworld:block_crystal_gravity" }
+    }
+}

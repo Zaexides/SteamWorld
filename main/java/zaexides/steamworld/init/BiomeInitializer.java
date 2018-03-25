@@ -1,4 +1,4 @@
-package zaexides.steamworld.worldgen.biomes;
+package zaexides.steamworld.init;
 
 import org.apache.logging.log4j.Level;
 
@@ -14,6 +14,9 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
+import zaexides.steamworld.worldgen.biomes.BiomeBlazingWithers;
+import zaexides.steamworld.worldgen.biomes.BiomeForgottenSky;
+import zaexides.steamworld.worldgen.biomes.BiomeNatureIsland;
 import zaexides.steamworld.worldgen.dimension.SteamWorldBiomeProvider;
 
 @Mod.EventBusSubscriber(modid = ModInfo.MODID)

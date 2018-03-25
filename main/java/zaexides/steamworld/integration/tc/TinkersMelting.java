@@ -14,8 +14,8 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
-import zaexides.steamworld.blocks.BlockInitializer;
 import zaexides.steamworld.fluids.tc.FluidTinkersIntegration;
+import zaexides.steamworld.init.BlockInitializer;
 
 public class TinkersMelting 
 {

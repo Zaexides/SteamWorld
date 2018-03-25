@@ -22,8 +22,8 @@ import net.minecraft.world.gen.structure.template.Template.BlockInfo;
 import zaexides.steamworld.LootTableInitializer;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
-import zaexides.steamworld.blocks.BlockInitializer;
 import zaexides.steamworld.blocks.BlockObilisk;
+import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.te.TileEntityObilisk;
 
 public class TemplateProcessorCrypt implements ITemplateProcessor

@@ -1,4 +1,4 @@
-package zaexides.steamworld.items;
+package zaexides.steamworld.init;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,14 @@ import java.util.List;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import scala.reflect.internal.Trees.New;
+import zaexides.steamworld.items.ItemCrystal;
+import zaexides.steamworld.items.ItemDust;
+import zaexides.steamworld.items.ItemTreasure;
+import zaexides.steamworld.items.ItemUpgrade;
+import zaexides.steamworld.items.ItemWrench;
+import zaexides.steamworld.items.SWItemIngot;
+import zaexides.steamworld.items.SWItemNugget;
+import zaexides.steamworld.items.SteamWorldItem;
 
 public class ItemInitializer 
 {

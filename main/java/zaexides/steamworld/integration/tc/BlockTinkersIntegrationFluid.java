@@ -4,7 +4,7 @@ import net.minecraft.block.material.Material;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
 import zaexides.steamworld.SteamWorld;
-import zaexides.steamworld.blocks.BlockInitializer;
+import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
 
 public class BlockTinkersIntegrationFluid extends BlockFluidClassic implements IModeledObject

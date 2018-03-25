@@ -29,13 +29,13 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import zaexides.steamworld.blocks.BlockAncite;
 import zaexides.steamworld.blocks.BlockDecorative;
-import zaexides.steamworld.blocks.BlockInitializer;
 import zaexides.steamworld.blocks.BlockSteam;
 import zaexides.steamworld.blocks.SteamWorldBlockOre;
 import zaexides.steamworld.fluids.FluidPreservation;
 import zaexides.steamworld.fluids.FluidSteam;
+import zaexides.steamworld.init.BlockInitializer;
+import zaexides.steamworld.init.ItemInitializer;
 import zaexides.steamworld.items.ItemDust;
-import zaexides.steamworld.items.ItemInitializer;
 import zaexides.steamworld.items.SWItemNugget;
 import zaexides.steamworld.recipe.handling.AssemblyRecipeHandler;
 import zaexides.steamworld.recipe.handling.DustRecipeHandler;
@@ -63,6 +63,7 @@ import zaexides.steamworld.utility.interfaces.IModeledObject;
 import zaexides.steamworld.utility.interfaces.IOreDictionaryRegisterable;
 import zaexides.steamworld.worldgen.dimension.DimensionTypeSteamWorld;
 import zaexides.steamworld.worldgen.structure.WorldGenCrypt;
+import zaexides.steamworld.worldgen.structure.WorldGenPortalBuilding;
 import zaexides.steamworld.worldgen.structure.WorldGenerationOres;
 
 @EventBusSubscriber
@@ -116,6 +117,7 @@ public class RegistryHandler
 	{
 		GameRegistry.registerWorldGenerator(new WorldGenerationOres(), 0);
 		GameRegistry.registerWorldGenerator(new WorldGenCrypt(), 1000);
+		GameRegistry.registerWorldGenerator(new WorldGenPortalBuilding(), 0);
 		
 		DimensionManager.registerDimension(ConfigHandler.dimensionId, DimensionTypeSteamWorld.STEAMWORLD);
 	}

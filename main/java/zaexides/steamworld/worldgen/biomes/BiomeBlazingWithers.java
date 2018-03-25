@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import zaexides.steamworld.blocks.BlockInitializer;
+import zaexides.steamworld.init.BlockInitializer;
 
 public class BiomeBlazingWithers extends BiomeSteamWorld
 {

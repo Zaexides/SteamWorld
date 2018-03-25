@@ -20,10 +20,10 @@ import slimeknights.tconstruct.tools.TinkerTraits;
 import zaexides.steamworld.ConfigHandler;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.BlockDecorative.EnumType;
+import zaexides.steamworld.init.BlockInitializer;
+import zaexides.steamworld.init.ItemInitializer;
 import zaexides.steamworld.integration.tc.traits.TraitSelective;
 import zaexides.steamworld.blocks.BlockDecorative;
-import zaexides.steamworld.blocks.BlockInitializer;
-import zaexides.steamworld.items.ItemInitializer;
 import zaexides.steamworld.items.SWItemNugget.EnumVarietyMaterial;
 
 public class TCMaterials 

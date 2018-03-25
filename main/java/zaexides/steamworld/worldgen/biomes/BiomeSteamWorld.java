@@ -15,7 +15,7 @@ import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import zaexides.steamworld.SteamWorld;
-import zaexides.steamworld.blocks.BlockInitializer;
+import zaexides.steamworld.init.BlockInitializer;
 
 public abstract class BiomeSteamWorld extends Biome
 {

@@ -30,7 +30,7 @@ import zaexides.steamworld.blocks.machines.BlockFisher;
 import zaexides.steamworld.blocks.machines.BlockGrinder;
 import zaexides.steamworld.blocks.machines.BlockSWFurnace;
 import zaexides.steamworld.fluids.FluidSteam;
-import zaexides.steamworld.items.ItemInitializer;
+import zaexides.steamworld.init.ItemInitializer;
 import zaexides.steamworld.recipe.handling.AssemblyRecipe;
 import zaexides.steamworld.recipe.handling.AssemblyRecipeHandler;
 import zaexides.steamworld.recipe.handling.DustRecipeHandler;

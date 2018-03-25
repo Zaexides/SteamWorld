@@ -25,6 +25,7 @@ tile.steamworld.block_decorative_block_endritch.name=Endritch Block
 tile.steamworld.block_decorative_block_preservation_cobble.name=Preservation Cobblestone
 tile.steamworld.block_decorative_sky_stone.name=Sky Stone
 tile.steamworld.block_decorative_sky_cobble.name=Sky Cobblestone
+tile.steamworld.block_decorative_sky_bricks.name=Sky Bricks
 tile.steamworld.block_decorative_error.name=A Future Block, perhaps.
 
 # Ores
@@ -99,6 +100,8 @@ tile.steamworld.block_dynamo.name=Steam Dynamo
 tile.steamworld.block_drain.name=Fluid Drain
 tile.steamworld.block_faucet.name=Fluid Faucet
 tile.steamworld.portal.name=Portal
+tile.steamworld.stairs_sky_bricks.name=Sky Brick Stairs
+tile.steamworld.block_portal_frame.name=Portal Frame
 
 ##############
 # Item Names #

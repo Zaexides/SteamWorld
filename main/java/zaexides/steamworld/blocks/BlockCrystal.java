@@ -6,6 +6,7 @@ import com.google.common.base.Predicate;
 import com.google.common.util.concurrent.Service.State;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
@@ -36,19 +37,20 @@ import zaexides.steamworld.utility.interfaces.IMetaName;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
 import zaexides.steamworld.utility.interfaces.IOreDictionaryRegisterable;
 
-public class BlockDecorative extends Block implements IMetaName, IModeledObject, IOreDictionaryRegisterable
+public class BlockCrystal extends Block implements IMetaName, IModeledObject
 {
-	public static final PropertyEnum<BlockDecorative.EnumType> VARIANT = PropertyEnum.<BlockDecorative.EnumType>create("variant", BlockDecorative.EnumType.class);
+	public static final PropertyEnum<BlockCrystal.EnumType> VARIANT = PropertyEnum.<BlockCrystal.EnumType>create("variant", BlockCrystal.EnumType.class);
 	
-	public BlockDecorative(String name)
+	public BlockCrystal(String name)
 	{
-		super(Material.ROCK);
+		super(Material.GLASS);
 		setUnlocalizedName(ModInfo.MODID + "." + name);
 		setRegistryName(name);
 		setHarvestLevels();
 		setCreativeTab(SteamWorld.CREATIVETAB);
+		setSoundType(SoundType.GLASS);
 		
-		setDefaultState(blockState.getBaseState().withProperty(VARIANT, BlockDecorative.EnumType.ENDRITCH_BLOCK));
+		setDefaultState(blockState.getBaseState().withProperty(VARIANT, BlockCrystal.EnumType.GRAVITY_CRYSTAL));
 		
 		BlockInitializer.BLOCKS.add(this);
 		ItemInitializer.ITEMS.add(new ItemBlockVariant(this).setRegistryName(this.getRegistryName()));
@@ -75,13 +77,13 @@ public class BlockDecorative extends Block implements IMetaName, IModeledObject,
 	@Override
 	public int damageDropped(IBlockState state) 
 	{
-		return ((BlockDecorative.EnumType)state.getValue(VARIANT)).getMeta();
+		return ((BlockCrystal.EnumType)state.getValue(VARIANT)).getMeta();
 	}
 	
 	@Override
 	public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items)
 	{
-		for(BlockDecorative.EnumType block$enumtype : BlockDecorative.EnumType.values())
+		for(BlockCrystal.EnumType block$enumtype : BlockCrystal.EnumType.values())
 		{
 			items.add(new ItemStack(this, 1, block$enumtype.getMeta()));
 		}
@@ -90,13 +92,13 @@ public class BlockDecorative extends Block implements IMetaName, IModeledObject,
 	@Override
 	public IBlockState getStateFromMeta(int meta) 
 	{
-		return this.getDefaultState().withProperty(VARIANT, BlockDecorative.EnumType.byMetadata(meta));
+		return this.getDefaultState().withProperty(VARIANT, BlockCrystal.EnumType.byMetadata(meta));
 	}
 	
 	@Override
 	public int getMetaFromState(IBlockState state) 
 	{
-		return ((BlockDecorative.EnumType)state.getValue(VARIANT)).getMeta();
+		return ((BlockCrystal.EnumType)state.getValue(VARIANT)).getMeta();
 	}
 	
 	@Override
@@ -115,47 +117,25 @@ public class BlockDecorative extends Block implements IMetaName, IModeledObject,
 	public String getSpecialName(ItemStack stack) 
 	{
 		int id = stack.getItemDamage();
-		if(id >= BlockDecorative.EnumType.values().length)
+		if(id >= BlockCrystal.EnumType.values().length)
 			return "error";
-		return BlockDecorative.EnumType.values()[stack.getItemDamage()].getName();
+		return BlockCrystal.EnumType.values()[stack.getItemDamage()].getName();
 	}
 	
 	@Override
 	public void RegisterModels()
 	{
-		for(int i = 0; i < BlockDecorative.EnumType.values().length; i++)
+		for(int i = 0; i < BlockCrystal.EnumType.values().length; i++)
 		{
-			SteamWorld.proxy.RegisterItemRenderers(Item.getItemFromBlock(this), i, "inventory", BlockDecorative.EnumType.values()[i].getName());
+			SteamWorld.proxy.RegisterItemRenderers(Item.getItemFromBlock(this), i, "inventory", "block_crystal_" + BlockCrystal.EnumType.values()[i].getName());
 		}
-	}
-	
-	@Override
-	public void RegisterOreInDictionary() 
-	{
-		OreDictionary.registerOre("blockPreservation", new ItemStack(this, 1, getMetaFromState(getDefaultState().withProperty(VARIANT, EnumType.PRESERVATION_COBBLE))));
-		OreDictionary.registerOre("stone", new ItemStack(this, 1, getMetaFromState(getDefaultState().withProperty(VARIANT, EnumType.SKY_STONE))));
-		OreDictionary.registerOre("cobblestone", new ItemStack(this, 1, getMetaFromState(getDefaultState().withProperty(VARIANT, EnumType.SKY_COBBLE))));
-	}
-	
-	@Override
-	public void getDrops(NonNullList<ItemStack> drops, IBlockAccess world, BlockPos pos, IBlockState state,
-			int fortune) 
-	{
-		if(state.getValue(VARIANT) == EnumType.SKY_STONE)
-			drops.add(new ItemStack(this, 1, EnumType.SKY_COBBLE.getMeta()));
-		else
-			super.getDrops(drops, world, pos, state, fortune);
 	}
 	
 	public static enum EnumType implements IStringSerializable
 	{
-		ENDRITCH_BLOCK(0, "block_endritch", 3f, 3),
-		PRESERVATION_COBBLE(1, "block_preservation_cobble", 2.5f, 1),
-		SKY_STONE(2, "sky_stone", 2f, 1),
-		SKY_COBBLE(3, "sky_cobble", 2.5f, 1),
-		SKY_BRICKS(4, "sky_bricks", 3.0f, 1);
+		GRAVITY_CRYSTAL(0, "gravity", 1.2f, 4);
 		
-		private static final BlockDecorative.EnumType[] META_LOOKUP = new BlockDecorative.EnumType[values().length];
+		private static final BlockCrystal.EnumType[] META_LOOKUP = new BlockCrystal.EnumType[values().length];
 		private final int meta;
 		private final String name, unlocalizedName;
 		private int harvestLevel = 0;
@@ -197,14 +177,14 @@ public class BlockDecorative extends Block implements IMetaName, IModeledObject,
 			return this.name;
 		}
 		
-		public static BlockDecorative.EnumType byMetadata(int meta)
+		public static BlockCrystal.EnumType byMetadata(int meta)
 		{
 			return META_LOOKUP[meta % values().length];
 		}
 		
 		static
 		{
-			for(BlockDecorative.EnumType ancite$enumtype : values())
+			for(BlockCrystal.EnumType ancite$enumtype : values())
 			{
 				META_LOOKUP[ancite$enumtype.getMeta()] = ancite$enumtype;
 			}

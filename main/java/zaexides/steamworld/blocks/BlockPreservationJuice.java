@@ -40,7 +40,8 @@ import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.fluids.FluidPreservation;
 import zaexides.steamworld.fluids.FluidSteam;
-import zaexides.steamworld.items.ItemInitializer;
+import zaexides.steamworld.init.BlockInitializer;
+import zaexides.steamworld.init.ItemInitializer;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
 
 public class BlockPreservationJuice extends BlockFluidClassic implements IModeledObject

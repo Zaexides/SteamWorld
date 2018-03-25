@@ -1,0 +1,15 @@
+{
+    "variants": {
+        "normal": 
+        [
+            { "model": "steamworld:block_portal_frame" },
+            { "model": "steamworld:block_portal_frame", "x":180 },
+            { "model": "steamworld:block_portal_frame", "z":180 },
+            { "model": "steamworld:block_portal_frame", "z":180 },
+            { "model": "steamworld:block_portal_frame", "x":180, "y":180 },
+            { "model": "steamworld:block_portal_frame", "x":180, "z":180 },
+            { "model": "steamworld:block_portal_frame", "y":180, "z":180 },
+            { "model": "steamworld:block_portal_frame", "y":180, "z":180, "x":180 }
+        ]
+    }
+}

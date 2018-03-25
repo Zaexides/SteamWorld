@@ -9,7 +9,7 @@ import org.apache.logging.log4j.Level;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import zaexides.steamworld.SteamWorld;
-import zaexides.steamworld.blocks.BlockInitializer;
+import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.recipe.handling.utility.IRecipeInput;
 import zaexides.steamworld.recipe.handling.utility.RecipeInputItemStack;
 

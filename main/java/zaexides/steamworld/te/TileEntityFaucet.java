@@ -27,8 +27,8 @@ import net.minecraftforge.fluids.IFluidBlock;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import zaexides.steamworld.ConfigHandler;
 import zaexides.steamworld.SteamWorld;
-import zaexides.steamworld.blocks.BlockInitializer;
 import zaexides.steamworld.blocks.machines.BlockDrain;
+import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.utility.PosFacing;
 import zaexides.steamworld.utility.capability.SteamWorldFluidTank;
 

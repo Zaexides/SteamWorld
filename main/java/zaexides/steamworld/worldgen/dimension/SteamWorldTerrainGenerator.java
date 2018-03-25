@@ -19,7 +19,7 @@ import net.minecraftforge.event.terraingen.InitNoiseGensEvent.ContextEnd;
 import net.minecraftforge.event.terraingen.InitNoiseGensEvent.ContextOverworld;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.BlockDecorative;
-import zaexides.steamworld.blocks.BlockInitializer;
+import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.worldgen.biomes.BiomeSteamWorld;
 
 public class SteamWorldTerrainGenerator 

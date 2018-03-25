@@ -14,7 +14,8 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.common.property.IUnlistedProperty;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
-import zaexides.steamworld.items.ItemInitializer;
+import zaexides.steamworld.init.BlockInitializer;
+import zaexides.steamworld.init.ItemInitializer;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
 
 public class SteamWorldBlock extends Block implements IModeledObject

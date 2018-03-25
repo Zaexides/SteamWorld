@@ -16,7 +16,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import zaexides.steamworld.SteamWorld;
-import zaexides.steamworld.items.ItemInitializer;
+import zaexides.steamworld.init.ItemInitializer;
 import zaexides.steamworld.recipe.handling.DustRecipeHandler;
 import zaexides.steamworld.te.TileEntityAssembler;
 import zaexides.steamworld.utility.capability.ItemStackHandlerSteamWorld;

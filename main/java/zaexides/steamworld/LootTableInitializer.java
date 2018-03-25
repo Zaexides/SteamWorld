@@ -11,7 +11,7 @@ import net.minecraft.world.storage.loot.functions.LootFunction;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import zaexides.steamworld.items.ItemInitializer;
+import zaexides.steamworld.init.ItemInitializer;
 
 public class LootTableInitializer 
 {

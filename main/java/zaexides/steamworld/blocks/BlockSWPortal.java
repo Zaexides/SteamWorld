@@ -26,7 +26,8 @@ public class BlockSWPortal extends SteamWorldBlock
 	
 	public BlockSWPortal()
 	{
-		super("portal", Material.PORTAL, 100);
+		super("portal", Material.PORTAL, -1.0f);
+		setResistance(Float.MAX_VALUE);
 	}
 	
 	@Override
@@ -37,19 +38,23 @@ public class BlockSWPortal extends SteamWorldBlock
 		
 		int lastDimension = entityIn.getEntityWorld().provider.getDimension();
 		int targetDimension = ConfigHandler.dimensionId;
-		BlockPos spawnPos = new BlockPos(16, 80, 16);
 		
-		if(lastDimension == targetDimension)
-		{
+		if(targetDimension == lastDimension)
 			targetDimension = 0;
-			spawnPos = new BlockPos(pos.getX() * REVERSED_POSITION_MULTIPLIER, pos.getY(), pos.getZ() * REVERSED_POSITION_MULTIPLIER);
-		}
+		
 		World targetWorld = worldIn.getMinecraftServer().getWorld(targetDimension);
+		BlockPos spawnPos = targetWorld.getSpawnPoint();
 		
 		if(entityIn instanceof EntityPlayer)
 			worldIn.getMinecraftServer().getPlayerList().transferPlayerToDimension((EntityPlayerMP)entityIn, targetDimension, new SteamWorldTeleporter((WorldServer)targetWorld, spawnPos, true));
 		else
 			worldIn.getMinecraftServer().getPlayerList().transferEntityToWorld(entityIn, lastDimension, (WorldServer)worldIn, (WorldServer)targetWorld, new SteamWorldTeleporter((WorldServer)targetWorld, spawnPos, true));
+	}
+	
+	@Override
+	public boolean canEntityDestroy(IBlockState state, IBlockAccess world, BlockPos pos, Entity entity) 
+	{
+		return false;
 	}
 	
 	@Override

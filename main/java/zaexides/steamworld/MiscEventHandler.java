@@ -16,7 +16,7 @@ import net.minecraftforge.event.entity.item.ItemEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
-import zaexides.steamworld.items.ItemInitializer;
+import zaexides.steamworld.init.ItemInitializer;
 import zaexides.steamworld.items.ItemTreasure;
 
 public class MiscEventHandler 
