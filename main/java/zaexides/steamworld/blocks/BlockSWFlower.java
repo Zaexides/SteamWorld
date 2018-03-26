@@ -1,20 +1,30 @@
 package zaexides.steamworld.blocks;
 
+import org.apache.logging.log4j.Level;
+
 import com.google.common.util.concurrent.Service.State;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockBush;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
@@ -30,42 +40,33 @@ import zaexides.steamworld.utility.interfaces.IMetaName;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
 import zaexides.steamworld.utility.interfaces.IOreDictionaryRegisterable;
 
-public class BlockAncite extends Block implements IMetaName, IModeledObject, IOreDictionaryRegisterable
+public class BlockSWFlower extends BlockBush implements IMetaName, IModeledObject
 {
-	public static final PropertyEnum<BlockAncite.EnumType> VARIANT = PropertyEnum.<BlockAncite.EnumType>create("variant", BlockAncite.EnumType.class);
+	public static final PropertyEnum<BlockSWFlower.EnumType> VARIANT = PropertyEnum.<BlockSWFlower.EnumType>create("variant", BlockSWFlower.EnumType.class);
 	
-	public BlockAncite(String name)
+	public BlockSWFlower(String name)
 	{
-		super(Material.IRON);
 		setUnlocalizedName(ModInfo.MODID + "." + name);
 		setRegistryName(name);
-		setHarvestLevel("pickaxe", 3);
-		setHardness(4.2f);
 		setCreativeTab(SteamWorld.CREATIVETAB);
+		setSoundType(SoundType.PLANT);
 		
-		setDefaultState(blockState.getBaseState().withProperty(VARIANT, BlockAncite.EnumType.BRICKS));
+		setDefaultState(blockState.getBaseState().withProperty(VARIANT, BlockSWFlower.EnumType.WITHER));
 		
 		BlockInitializer.BLOCKS.add(this);
 		ItemInitializer.ITEMS.add(new ItemBlockVariant(this).setRegistryName(this.getRegistryName()));
 	}
 	
 	@Override
-	public void RegisterOreInDictionary() 
-	{
-		OreDictionary.registerOre("blockAncite", new ItemStack(this, 1, getMetaFromState(getDefaultState().withProperty(VARIANT, EnumType.BLOCK))));
-		OreDictionary.registerOre("blockSteaite", new ItemStack(this, 1, EnumType.STEAITE.getMeta()));
-	}
-	
-	@Override
 	public int damageDropped(IBlockState state) 
 	{
-		return ((BlockAncite.EnumType)state.getValue(VARIANT)).getMeta();
+		return ((BlockSWFlower.EnumType)state.getValue(VARIANT)).getMeta();
 	}
 	
 	@Override
 	public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items)
 	{
-		for(BlockAncite.EnumType block$enumtype : BlockAncite.EnumType.values())
+		for(BlockSWFlower.EnumType block$enumtype : BlockSWFlower.EnumType.values())
 		{
 			items.add(new ItemStack(this, 1, block$enumtype.getMeta()));
 		}
@@ -74,13 +75,13 @@ public class BlockAncite extends Block implements IMetaName, IModeledObject, IOr
 	@Override
 	public IBlockState getStateFromMeta(int meta) 
 	{
-		return this.getDefaultState().withProperty(VARIANT, BlockAncite.EnumType.byMetadata(meta));
+		return this.getDefaultState().withProperty(VARIANT, BlockSWFlower.EnumType.byMetadata(meta));
 	}
 	
 	@Override
 	public int getMetaFromState(IBlockState state) 
 	{
-		return ((BlockAncite.EnumType)state.getValue(VARIANT)).getMeta();
+		return ((BlockSWFlower.EnumType)state.getValue(VARIANT)).getMeta();
 	}
 	
 	@Override
@@ -99,38 +100,38 @@ public class BlockAncite extends Block implements IMetaName, IModeledObject, IOr
 	public String getSpecialName(ItemStack stack) 
 	{
 		int id = stack.getItemDamage();
-		if(id >= BlockAncite.EnumType.values().length)
+		if(id >= BlockSWFlower.EnumType.values().length)
 			return "error";
-		return BlockAncite.EnumType.values()[stack.getItemDamage()].getName();
+		return BlockSWFlower.EnumType.values()[stack.getItemDamage()].getName();
 	}
 	
 	@Override
 	public void RegisterModels()
 	{
-		for(int i = 0; i < BlockAncite.EnumType.values().length; i++)
+		for(int i = 0; i < BlockSWFlower.EnumType.values().length; i++)
 		{
-			SteamWorld.proxy.RegisterItemRenderers(Item.getItemFromBlock(this), i, "inventory", "block_ancite_" + BlockAncite.EnumType.values()[i].getName());
+			SteamWorld.proxy.RegisterItemRenderers(Item.getItemFromBlock(this), i, "inventory", "flower_" + BlockSWFlower.EnumType.values()[i].getName());
 		}
 	}
 	
 	@Override
-	public boolean isBeaconBase(IBlockAccess worldObj, BlockPos pos, BlockPos beacon) 
+	public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) 
 	{
-		return 
-				worldObj.getBlockState(pos).equals(getStateFromMeta(EnumType.BLOCK.getMeta())) ||
-				worldObj.getBlockState(pos).equals(getStateFromMeta(EnumType.STEAITE.getMeta()));
+		if(getMetaFromState(state) == EnumType.WITHER.getMeta())
+		{
+			if(entityIn instanceof EntityLivingBase)
+			{
+				PotionEffect witherEffect = new PotionEffect(MobEffects.WITHER, 120, 0);
+				((EntityLivingBase)entityIn).addPotionEffect(witherEffect);
+			}
+		}
 	}
 	
 	public static enum EnumType implements IStringSerializable
 	{
-		BRICKS(0, "brick"),
-		TILES(1, "floor"),
-		PLATES(2, "plate"),
-		BLOCK(3, "block"),
-		BIG_BRICKS(4, "bigbricks"),
-		STEAITE(5, "steaite_block");
+		WITHER(0, "wither");
 		
-		private static final BlockAncite.EnumType[] META_LOOKUP = new BlockAncite.EnumType[values().length];
+		private static final BlockSWFlower.EnumType[] META_LOOKUP = new BlockSWFlower.EnumType[values().length];
 		private final int meta;
 		private final String name, unlocalizedName;
 		
@@ -163,14 +164,14 @@ public class BlockAncite extends Block implements IMetaName, IModeledObject, IOr
 			return this.name;
 		}
 		
-		public static BlockAncite.EnumType byMetadata(int meta)
+		public static BlockSWFlower.EnumType byMetadata(int meta)
 		{
 			return META_LOOKUP[meta % values().length];
 		}
 		
 		static
 		{
-			for(BlockAncite.EnumType ancite$enumtype : values())
+			for(BlockSWFlower.EnumType ancite$enumtype : values())
 			{
 				META_LOOKUP[ancite$enumtype.getMeta()] = ancite$enumtype;
 			}

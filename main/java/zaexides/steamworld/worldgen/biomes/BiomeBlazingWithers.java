@@ -7,14 +7,18 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.monster.EntityWitherSkeleton;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import zaexides.steamworld.blocks.BlockSWFlower;
 import zaexides.steamworld.init.BlockInitializer;
 
 public class BiomeBlazingWithers extends BiomeSteamWorld
 {
+	private IBlockState witherWeedState;
+	
 	public BiomeBlazingWithers(String name) 
 	{
 		super(new BiomeProperties(name).setBaseHeight(0.65f).setHeightVariation(0.11f).setTemperature(12f).setRainfall(0f).setRainDisabled());
@@ -35,6 +39,9 @@ public class BiomeBlazingWithers extends BiomeSteamWorld
 		
 		spawnableMonsterList.add(new SpawnListEntry(EntityBlaze.class, 80, 1, 3));
 		spawnableMonsterList.add(new SpawnListEntry(EntityWitherSkeleton.class, 20, 1, 2));
+		
+		witherWeedState = BlockInitializer.BLOCK_FLOWER.getStateFromMeta(BlockSWFlower.EnumType.WITHER.getMeta());
+		addFlower(witherWeedState, 40);
 		
 		riseAmount = -30;
 	}
@@ -60,6 +67,17 @@ public class BiomeBlazingWithers extends BiomeSteamWorld
 	}
 	
 	@Override
+	protected void onTopBlockGen(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int primerX, int primerY,
+			int primerZ, double noiseVal) 
+	{
+		if((noiseVal > 0.97 && rand.nextInt(20) == 0) || rand.nextInt(100) == 0)
+		{
+			if(chunkPrimerIn.getBlockState(primerX, primerY, primerZ).getBlock() == Blocks.GRASS)
+				chunkPrimerIn.setBlockState(primerX, primerY + 1, primerZ, witherWeedState);
+		}
+	}
+	
+	@Override
 	protected void replaceBiomeBlock(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int primerX, int primerY,
 			int primerZ, double noiseVal) 
 	{
@@ -80,7 +98,6 @@ public class BiomeBlazingWithers extends BiomeSteamWorld
 	@Override
 	public float getSpawningChance()
 	{
-		// TODO Auto-generated method stub
 		return 0.02f;
 	}
 }

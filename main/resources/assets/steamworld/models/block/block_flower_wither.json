@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "steamworld:blocks/world/wither_weed"
+    }
+}

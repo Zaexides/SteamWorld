@@ -90,7 +90,10 @@ public abstract class BiomeSteamWorld extends Biome
 					}
 					
 					if(y == topLayerHeight)
+					{
 						chunkPrimerIn.setBlockState(primerX, y, primerZ, topBlock);
+						onTopBlockGen(worldIn, rand, chunkPrimerIn, primerX, y, primerZ, noiseVal);
+					}
 					else if(y >= topLayerHeight - 3)
 						chunkPrimerIn.setBlockState(primerX, y, primerZ, fillerBlock);
 					else if(!canErode)
@@ -107,6 +110,11 @@ public abstract class BiomeSteamWorld extends Biome
 	}
 	
 	protected void replaceBiomeBlock(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int primerX, int primerY, int primerZ, double noiseVal)
+	{
+		
+	}
+	
+	protected void onTopBlockGen(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int primerX, int primerY, int primerZ, double noiseVal)
 	{
 		
 	}

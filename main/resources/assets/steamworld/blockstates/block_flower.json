@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "variant=wither": { "model": "steamworld:block_flower_wither" }
+    }
+}

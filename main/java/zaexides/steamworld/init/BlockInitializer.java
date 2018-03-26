@@ -16,6 +16,7 @@ import zaexides.steamworld.blocks.BlockFluidPipe;
 import zaexides.steamworld.blocks.BlockLegacy;
 import zaexides.steamworld.blocks.BlockObilisk;
 import zaexides.steamworld.blocks.BlockPreservationJuice;
+import zaexides.steamworld.blocks.BlockSWFlower;
 import zaexides.steamworld.blocks.BlockSWPortal;
 import zaexides.steamworld.blocks.BlockSWStairs;
 import zaexides.steamworld.blocks.BlockSteam;
@@ -55,6 +56,7 @@ public class BlockInitializer
 	public static final BlockAncite BLOCK_ANCITE = new BlockAncite("block_ancite");
 	public static final BlockDecorative BLOCK_DECORATIVE = new BlockDecorative("block_decorative");
 	public static final BlockCrystal BLOCK_CRYSTAL = new BlockCrystal("block_crystal");
+	public static final BlockSWFlower BLOCK_FLOWER = new BlockSWFlower("block_flower");
 	
 	public static final BlockSWStairs STAIRS_SKY_BRICKS = new BlockSWStairs("stairs_sky_bricks", BLOCK_DECORATIVE.getStateFromMeta(BlockDecorative.EnumType.SKY_BRICKS.getMeta()));
 	
