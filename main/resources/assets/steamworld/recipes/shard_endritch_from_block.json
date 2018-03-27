@@ -17,7 +17,8 @@
     
     "result":
     {
-        "item": "steamworld:shard_endritch",
+        "item": "steamworld:ingot",
+        "data": 2,
         "count": 4
     }
 }

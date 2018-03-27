@@ -31,6 +31,9 @@ tile.steamworld.block_decorative_error.name=A Future Block, perhaps.
 # Crystal Block
 tile.steamworld.block_crystal_gravity.name=Gravitiliite Crystal
 
+# Plants
+tile.steamworld.block_flower_wither.name=Witherweed
+
 # Ores
 tile.steamworld.ore_steaite_ow.name=Steaite Ore
 tile.steamworld.ore_steaite_sky.name=Steaite Sky Ore
@@ -39,6 +42,7 @@ tile.steamworld.ore_iron_sky.name=Iron Sky Ore
 tile.steamworld.ore_gold_sky.name=Gold Sky Ore
 tile.steamworld.ore_diamond_sky.name=Diamond Sky Ore
 tile.steamworld.ore_ancite_sky.name=Ancite Sky Ore
+tile.steamworld.ore_galite_sky.name=Galite Sky Ore
 
 # Generators
 tile.steamworld.generator_steaite.name=Steam Generator MKI
@@ -110,23 +114,38 @@ tile.steamworld.block_portal_frame.name=Portal Frame
 ##############
 # Item Names #
 ##############
+
+# Ingots
 item.steamworld.ingot_steaite.name=Steaite Ingot
+item.steamworld.ingot_steaite.legacy.name=Steaite Ingot (Legacy)
 item.steamworld.ingot_ancite.name=Ancite Ingot
-item.steamworld.machine_base.name=Machine Base
+item.steamworld.ingot_ancite.legacy.name=Ancite Ingot (Legacy)
+item.steamworld.ingot_endritch.name=Endritch Shard
+item.steamworld.shard_endritch.legacy.name=Endritch Shard (Legacy)
+item.steamworld.ingot_galite.name=Galite Ingot
+
+# Dusts
 item.steamworld.dust_iron.name=Iron Dust
 item.steamworld.dust_gold.name=Gold Dust
 item.steamworld.dust_steaite.name=Steaite Dust
 item.steamworld.dust_ancite.name=Ancite Dust
-item.steamworld.steaite_crystal.name=Steaite Crystal
+item.steamworld.dust_galite.name=Galite Dust
+
+# Nuggets
 item.steamworld.nugget_steaite.name=Steaite Nugget
 item.steamworld.nugget_ancite.name=Ancite Nugget
 item.steamworld.nugget_diamond.name=Diamond Nugget
 item.steamworld.nugget_emerald.name=Emerald Nugget
-item.steamworld.shard_endritch.name=Endritch Shard
-item.steamworld.wrench.name=Steaite Wrench
-item.steamworld.treasure.name=Treasure Box
+
+# Upgrades
 item.steamworld.upgrade_ancite.name=MKII Upgrade
 item.steamworld.upgrade_endritch.name=MKIII Upgrade
+
+# Misc
+item.steamworld.machine_base.name=Machine Base
+item.steamworld.steaite_crystal.name=Steaite Crystal
+item.steamworld.wrench.name=Steaite Wrench
+item.steamworld.treasure.name=Treasure Box
 
 #######################
 # Container Name Text #
@@ -197,6 +216,8 @@ advancement.steamworld.upgrade_from_another_world.title=Upgrade from Another Wor
 advancement.steamworld.upgrade_from_another_world.desc=Create a MKIII Upgrade in the Assembler, using Endritch Blocks, Ender Eyes and Ancite Nuggets. This'll allow you to make your machines even more powerful!
 advancement.steamworld.enter_the_endernet.title=Enter the EnderNet
 advancement.steamworld.enter_the_endernet.desc=Combine an Ender Pearl, a Block of Endritch and a Nugget of Emerald, and what do you get? An interdimensional teleporter.
+advancement.steamworld.a_whole_new_world.title=It's a whole new world!
+advancement.steamworld.a_whole_new_world.desc=Enter the Sky of Old.
 
 ############
 # Messages #

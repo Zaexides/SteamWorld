@@ -19,7 +19,7 @@
     
     "result":
     {
-        "item": "steamworld:ingot_steaite",
+        "item": "steamworld:ingot", "data": 0,
         "count": 1
     }
 }

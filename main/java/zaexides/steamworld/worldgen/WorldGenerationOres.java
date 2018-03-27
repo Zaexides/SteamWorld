@@ -24,7 +24,7 @@ import zaexides.steamworld.init.BlockInitializer;
 public class WorldGenerationOres implements IWorldGenerator
 {
 	private WorldGenerator ore_steaite, sky_ore_steaite, sky_ore_coal, sky_ore_iron, sky_ore_gold,
-		sky_ore_diamond, sky_ore_ancite;
+		sky_ore_diamond, sky_ore_ancite, sky_ore_galite;
 	
 	private WorldGenerator crystal;
 	
@@ -56,6 +56,10 @@ public class WorldGenerationOres implements IWorldGenerator
 	private static final int CRYSTAL_GENERATION_CHANCE = 8;
 	private static final int CRYSTAL_MIN_HEIGHT = 1, CRYSTAL_MAX_HEIGHT = 255;
 	
+	private static final int GALITE_ORE_VEIN_SIZE = 5;
+	private static final int GALITE_GENERATION_CHANCE = 9;
+	private static final int GALITE_MIN_HEIGHT = 40, GALITE_MAX_HEIGHT = 85;
+	
 	public WorldGenerationOres()
 	{
 		ore_steaite = new WorldGenMinable(BlockInitializer.ORE.getStateFromMeta(SteamWorldBlockOre.EnumType.OVERWORLD_STEAITE.getMeta()), STEAITE_ORE_VEIN_SIZE);
@@ -66,6 +70,7 @@ public class WorldGenerationOres implements IWorldGenerator
 		sky_ore_diamond = new WorldGenMinable(BlockInitializer.ORE.getStateFromMeta(SteamWorldBlockOre.EnumType.SKY_DIAMOND.getMeta()), DIAMOND_ORE_VEIN_SIZE, new SkyStonePredicate());
 		sky_ore_ancite = new WorldGenMinable(BlockInitializer.ORE.getStateFromMeta(SteamWorldBlockOre.EnumType.SKY_ANCITE.getMeta()), ANCITE_ORE_VEIN_SIZE, new SkyStonePredicate());
 		crystal = new WorldGenMinable(BlockInitializer.BLOCK_CRYSTAL.getDefaultState(), CRYSTAL_VEIN_SIZE, new SkyStonePredicate());
+		sky_ore_galite = new WorldGenMinable(BlockInitializer.ORE.getStateFromMeta(SteamWorldBlockOre.EnumType.SKY_GALITE.getMeta()), GALITE_ORE_VEIN_SIZE, new SkyStonePredicate());
 	}
 
 	@Override
@@ -87,6 +92,7 @@ public class WorldGenerationOres implements IWorldGenerator
 			GenerateOre(sky_ore_diamond, world, random, chunkX, chunkZ, DIAMOND_GENERATION_CHANCE, DIAMOND_MIN_HEIGHT, DIAMOND_MAX_HEIGHT);
 			GenerateOre(sky_ore_ancite, world, random, chunkX, chunkZ, ANCITE_GENERATION_CHANCE, ANCITE_MIN_HEIGHT, ANCITE_MAX_HEIGHT);
 			GenerateOre(crystal, world, random, chunkX, chunkZ, CRYSTAL_GENERATION_CHANCE, CRYSTAL_MIN_HEIGHT, CRYSTAL_MAX_HEIGHT);
+			GenerateOre(sky_ore_galite, world, random, chunkX, chunkZ, GALITE_GENERATION_CHANCE, GALITE_MIN_HEIGHT, GALITE_MAX_HEIGHT);
 		}
 	}
 	

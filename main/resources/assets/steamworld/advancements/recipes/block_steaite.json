@@ -17,7 +17,7 @@
       "conditions": {
         "items": [
           {
-            "item": "steamworld:ingot_steaite"
+            "item": "steamworld:ingot", "data": 0
           }
         ]
       }

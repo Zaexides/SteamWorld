@@ -22,6 +22,8 @@ public abstract class BiomeSteamWorld extends Biome
 	protected float erosionOverrideChance = 0.05f;
 	protected int erosionStartHeight = 63;
 	protected int riseAmount = 0;
+	protected boolean generateWater = false;
+	protected int waterStartHeight = 63;
 	
 	public BiomeSteamWorld(BiomeProperties properties) 
 	{

@@ -52,8 +52,9 @@ public class BlockAncite extends Block implements IMetaName, IModeledObject, IOr
 	@Override
 	public void RegisterOreInDictionary() 
 	{
-		OreDictionary.registerOre("blockAncite", new ItemStack(this, 1, getMetaFromState(getDefaultState().withProperty(VARIANT, EnumType.BLOCK))));
+		OreDictionary.registerOre("blockAncite", new ItemStack(this, 1, EnumType.BLOCK.getMeta()));
 		OreDictionary.registerOre("blockSteaite", new ItemStack(this, 1, EnumType.STEAITE.getMeta()));
+		OreDictionary.registerOre("blockGalite", new ItemStack(this, 1, EnumType.GALITE.getMeta()));
 	}
 	
 	@Override
@@ -118,7 +119,8 @@ public class BlockAncite extends Block implements IMetaName, IModeledObject, IOr
 	{
 		return 
 				worldObj.getBlockState(pos).equals(getStateFromMeta(EnumType.BLOCK.getMeta())) ||
-				worldObj.getBlockState(pos).equals(getStateFromMeta(EnumType.STEAITE.getMeta()));
+				worldObj.getBlockState(pos).equals(getStateFromMeta(EnumType.STEAITE.getMeta())) ||
+				worldObj.getBlockState(pos).equals(getStateFromMeta(EnumType.GALITE.getMeta()));
 	}
 	
 	public static enum EnumType implements IStringSerializable
@@ -128,7 +130,8 @@ public class BlockAncite extends Block implements IMetaName, IModeledObject, IOr
 		PLATES(2, "plate"),
 		BLOCK(3, "block"),
 		BIG_BRICKS(4, "bigbricks"),
-		STEAITE(5, "steaite_block");
+		STEAITE(5, "steaite_block"),
+		GALITE(6, "galite_block");
 		
 		private static final BlockAncite.EnumType[] META_LOOKUP = new BlockAncite.EnumType[values().length];
 		private final int meta;

@@ -12,7 +12,8 @@
     {
         "s":
         {
-            "item": "steamworld:shard_endritch"
+            "type": "forge:ore_dict",
+            "ore": "ingotEndritch"
         },
         "g":
         {

@@ -20,6 +20,7 @@ import zaexides.steamworld.worldgen.biomes.BiomeForestIsland;
 import zaexides.steamworld.worldgen.biomes.BiomeForgottenSky;
 import zaexides.steamworld.worldgen.biomes.BiomeHighlandIsland;
 import zaexides.steamworld.worldgen.biomes.BiomeNatureIsland;
+import zaexides.steamworld.worldgen.biomes.BiomeWetlands;
 import zaexides.steamworld.worldgen.dimension.SteamWorldBiomeProvider;
 
 @Mod.EventBusSubscriber(modid = ModInfo.MODID)
@@ -30,6 +31,7 @@ public class BiomeInitializer
 	public static final BiomeHighlandIsland HIGHLAND_ISLAND = new BiomeHighlandIsland(false, new BiomeProperties("Highland Island").setTemperature(0.5f));
 	public static final BiomeHighlandIsland HIGHLAND_ISLAND_SNOW = new BiomeHighlandIsland(true, new BiomeProperties("Snow Highland Island").setSnowEnabled().setTemperature(0.0f));
 	public static final BiomeForestIsland FOREST_ISLAND = new BiomeForestIsland("Forest Island");
+	public static final BiomeWetlands WETLANDS = new BiomeWetlands("Floating Wetlands");
 	
 	public static final BiomeBlazingWithers BLAZING_WITHERS = new BiomeBlazingWithers("Blazing Withers");
 	
@@ -41,6 +43,7 @@ public class BiomeInitializer
 		registerBiome(HIGHLAND_ISLAND, "Highland Island", 400, Type.COLD, Type.HILLS);
 		registerBiome(HIGHLAND_ISLAND_SNOW, "Snow Highland Island", 80, Type.COLD, Type.HILLS, Type.SNOWY);
 		registerBiome(FOREST_ISLAND, "Forest Island", 600, Type.FOREST, Type.LUSH, Type.DENSE);
+		registerBiome(WETLANDS, "Floating Wetlands", 300, Type.WET, Type.SWAMP);
 		
 		registerBiome(BLAZING_WITHERS, "Blazing Withers", 10, Type.HOT, Type.DEAD, Type.NETHER, Type.DRY);
 	}

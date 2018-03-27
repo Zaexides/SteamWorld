@@ -17,6 +17,7 @@ import zaexides.steamworld.blocks.machines.BlockMachineVariant;
 import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.init.ItemInitializer;
 import zaexides.steamworld.items.ItemUpgrade;
+import zaexides.steamworld.items.SWItemIngot;
 import zaexides.steamworld.items.SWItemNugget;
 import zaexides.steamworld.recipe.handling.utility.IRecipeInput;
 import zaexides.steamworld.recipe.handling.utility.RecipeInputItemStack;
@@ -71,7 +72,7 @@ public class AssemblyRecipeHandler
 				COAL_BLOCK,COAL_BLOCK
 				);
 		
-		AssemblyRecipe recipeEndritch = new AssemblyRecipe(new ItemStack(ItemInitializer.SHARD_ENDRITCH), 500,
+		AssemblyRecipe recipeEndritch = new AssemblyRecipe(new ItemStack(ItemInitializer.INGOT, 1, SWItemIngot.EnumVarietyMaterial.ENDRITCH.getMeta()), 500,
 				ENDER_PEARL_INPUT,NUGGET_ANCITE,
 				CHORUS_FRUIT, ENDER_PEARL_INPUT,
 				NUGGET_ANCITE,CHORUS_FRUIT
@@ -113,7 +114,7 @@ public class AssemblyRecipeHandler
 				EMPTY_INPUT
 				);
 		
-		AssemblyRecipe recipeAncite = new AssemblyRecipe(new ItemStack(ItemInitializer.INGOT_ANCITE), 1500,
+		AssemblyRecipe recipeAncite = new AssemblyRecipe(new ItemStack(ItemInitializer.INGOT, 1, SWItemIngot.EnumVarietyMaterial.ANCITE.getMeta()), 1500,
 				new RecipeInputOreDic("blockDiamond"),
 				new RecipeInputOreDic("blockLapis"),
 				EMPTY_INPUT,

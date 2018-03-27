@@ -6,6 +6,7 @@
         "variant=iron_sky": { "model": "steamworld:ore_iron_sky" },
         "variant=gold_sky": { "model": "steamworld:ore_gold_sky" },
         "variant=diamond_sky": { "model": "steamworld:ore_diamond_sky" },
-        "variant=ancite_sky": { "model": "steamworld:ore_ancite_sky" }
+        "variant=ancite_sky": { "model": "steamworld:ore_ancite_sky" },
+        "variant=galite_sky": { "model": "steamworld:ore_galite_sky" }
     }
 }

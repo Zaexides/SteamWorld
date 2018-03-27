@@ -17,7 +17,7 @@
     
     "result":
     {
-        "item": "steamworld:ingot_ancite",
+        "item": "steamworld:ingot", "data": 1,
         "count": 9
     }
 }

@@ -1,0 +1,28 @@
+{
+	"parent": "steamworld:story/upgrade_from_another_world",
+	
+	"display":
+	{
+	    "icon": { "item": "steamworld:block_portal_frame" },
+	    "title": { "translate": "advancement.steamworld.a_whole_new_world.title" },
+	    "description": { "translate": "advancement.steamworld.a_whole_new_world.desc" },
+	    "frame": "challenge"
+	},
+	
+	"criteria":
+	{
+	   "entered_steamworld":
+	   {
+	       "trigger": "minecraft:changed_dimension",
+	       "conditions":
+	       {
+	           "to": "sky_of_old"
+	       }
+	   }
+	},
+	
+	"requirements":
+	[
+	   ["entered_steamworld"]
+	]
+}

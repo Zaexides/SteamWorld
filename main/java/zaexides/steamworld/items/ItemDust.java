@@ -71,7 +71,8 @@ public class ItemDust extends SteamWorldItem implements IOreDictionaryRegisterab
 		IRON(0, "iron", "Iron"),
 		GOLD(1, "gold", "Gold"),
 		STEAITE(2, "steaite", "Steaite"),
-		ANCITE(3, "ancite", "Ancite");
+		ANCITE(3, "ancite", "Ancite"),
+		GALITE(4, "galite", "Galite");
 		
 		private final int meta;
 		private final String name, oreName;

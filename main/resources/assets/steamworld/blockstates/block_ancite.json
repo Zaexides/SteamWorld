@@ -5,6 +5,7 @@
         "variant=plate": { "model": "steamworld:block_ancite_plate" },
         "variant=block": { "model": "steamworld:block_ancite_block" },
         "variant=bigbricks": { "model": "steamworld:block_ancite_bigbricks" },
-        "variant=steaite_block": { "model": "steamworld:block_steaite" }
+        "variant=steaite_block": { "model": "steamworld:block_steaite" },
+        "variant=galite_block": { "model": "steamworld:block_galite" }
     }
 }

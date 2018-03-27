@@ -17,7 +17,7 @@
       "conditions": {
         "items": [
           {
-            "item": "steamworld:ingot_ancite"
+            "item": "steamworld:ingot", "data": 1
           },
           {
             "item": "minecraft:netherbrick"

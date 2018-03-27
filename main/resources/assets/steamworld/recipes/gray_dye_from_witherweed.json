@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients":
+    [
+        {
+            "item": "steamworld:block_flower",
+            "data": 0
+        }
+    ],
+    "result":
+    {
+        "item": "minecraft:dye",
+        "data": 8,
+        "count": 1
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients":
+    [
+        {
+            "type": "forge:ore_dict",
+            "ore": "ingotGalite"
+        }
+    ],
+    "result":
+    {
+        "item": "steamworld:nugget",
+        "data": 4,
+        "count": 9
+    }
+}

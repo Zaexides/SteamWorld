@@ -17,7 +17,7 @@ import zaexides.steamworld.ModInfo;
 
 public class DimensionTypeSteamWorld extends WorldProviderSurface
 {
-	public static final DimensionType STEAMWORLD = DimensionType.register("SteamWorld", "_" + ModInfo.MODID, ConfigHandler.dimensionId, DimensionTypeSteamWorld.class, false);
+	public static final DimensionType STEAMWORLD = DimensionType.register("sky_of_old", "_" + ModInfo.MODID, ConfigHandler.dimensionId, DimensionTypeSteamWorld.class, false);
 	
 	@Override
 	public DimensionType getDimensionType() 

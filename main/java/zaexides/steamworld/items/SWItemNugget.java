@@ -73,7 +73,8 @@ public class SWItemNugget extends SteamWorldItem implements IModeledObject, IOre
 		STEAITE(0, "steaite", "Steaite"),
 		ANCITE(1, "ancite", "Ancite"),
 		DIAMOND(2, "diamond", "Diamond"),
-		EMERALD(3, "emerald", "Emerald");
+		EMERALD(3, "emerald", "Emerald"),
+		GALITE(4, "galite", "Galite");
 		
 		private final int meta;
 		private final String name, oreName;

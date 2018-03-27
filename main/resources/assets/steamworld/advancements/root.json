@@ -1,7 +1,7 @@
 {
     "display":
     {
-        "icon": { "item": "steamworld:ingot_steaite" },
+        "icon": { "item": "steamworld:ingot", "data": 0 },
         "title": { "translate": "advancement.steamworld.root.title" },
         "description": { "translate": "advancement.steamworld.root.desc" },
         "background": "steamworld:textures/gui/advancements_bg.png",
@@ -17,7 +17,7 @@
             {
                 "items":
                 [
-                    { "item": "steamworld:ore_steaite" }
+                    { "item": "steamworld:ore", "data": 0 }
                 ]
             }
         },

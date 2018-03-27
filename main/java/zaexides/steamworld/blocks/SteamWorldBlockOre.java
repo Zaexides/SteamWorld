@@ -170,7 +170,8 @@ public class SteamWorldBlockOre extends Block implements IMetaName, IModeledObje
 		SKY_IRON(3, "iron_sky", "oreIron", 3.5f, 1),
 		SKY_GOLD(4, "gold_sky", "oreGold", 3.5f, 2),
 		SKY_DIAMOND(5, "diamond_sky", "oreDiamond", 3.5f, 2, true),
-		SKY_ANCITE(6, "ancite_sky", "oreAncite", 5.0f, 3);
+		SKY_ANCITE(6, "ancite_sky", "oreAncite", 5.0f, 3),
+		SKY_GALITE(7, "galite_sky", "oreGalite", 4.5f, 3);
 		
 		private static final EnumType[] META_LOOKUP = new EnumType[values().length];
 		private final int meta;
