@@ -13,6 +13,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
@@ -55,6 +57,7 @@ public class BlockAncite extends Block implements IMetaName, IModeledObject, IOr
 		OreDictionary.registerOre("blockAncite", new ItemStack(this, 1, EnumType.BLOCK.getMeta()));
 		OreDictionary.registerOre("blockSteaite", new ItemStack(this, 1, EnumType.STEAITE.getMeta()));
 		OreDictionary.registerOre("blockGalite", new ItemStack(this, 1, EnumType.GALITE.getMeta()));
+		OreDictionary.registerOre("blockTerrite", new ItemStack(this, 1, EnumType.TERRITE.getMeta()));
 	}
 	
 	@Override
@@ -120,7 +123,39 @@ public class BlockAncite extends Block implements IMetaName, IModeledObject, IOr
 		return 
 				worldObj.getBlockState(pos).equals(getStateFromMeta(EnumType.BLOCK.getMeta())) ||
 				worldObj.getBlockState(pos).equals(getStateFromMeta(EnumType.STEAITE.getMeta())) ||
-				worldObj.getBlockState(pos).equals(getStateFromMeta(EnumType.GALITE.getMeta()));
+				worldObj.getBlockState(pos).equals(getStateFromMeta(EnumType.GALITE.getMeta())) ||
+				worldObj.getBlockState(pos).equals(getStateFromMeta(EnumType.TERRITE.getMeta()));
+	}
+	
+	@Override
+	public boolean canRenderInLayer(IBlockState state, BlockRenderLayer layer) 
+	{
+		if(getMetaFromState(state) == EnumType.TERRITE.getMeta())
+			return layer == BlockRenderLayer.TRANSLUCENT;
+		
+		return super.canRenderInLayer(state, layer);
+	}
+	
+	@Override
+	public boolean isOpaqueCube(IBlockState state) 
+	{
+		if(getMetaFromState(state) == EnumType.TERRITE.getMeta())
+			return false;
+		
+		return super.isOpaqueCube(state);
+	}
+	
+	@Override
+	public boolean shouldSideBeRendered(IBlockState blockState, IBlockAccess blockAccess, BlockPos pos,
+			EnumFacing side) 
+	{
+		if(isOpaqueCube(blockState))
+			return super.shouldSideBeRendered(blockState, blockAccess, pos, side);
+		else
+		{
+			IBlockState sidedBlockState = blockAccess.getBlockState(pos.offset(side));
+			return blockState != sidedBlockState;
+		}
 	}
 	
 	public static enum EnumType implements IStringSerializable
@@ -131,7 +166,8 @@ public class BlockAncite extends Block implements IMetaName, IModeledObject, IOr
 		BLOCK(3, "block"),
 		BIG_BRICKS(4, "bigbricks"),
 		STEAITE(5, "steaite_block"),
-		GALITE(6, "galite_block");
+		GALITE(6, "galite_block"),
+		TERRITE(7, "territe_block");
 		
 		private static final BlockAncite.EnumType[] META_LOOKUP = new BlockAncite.EnumType[values().length];
 		private final int meta;

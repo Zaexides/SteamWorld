@@ -51,6 +51,12 @@ public class DimensionTypeSteamWorld extends WorldProviderSurface
 	}
 	
 	@Override
+	public float calculateCelestialAngle(long worldTime, float partialTicks) 
+	{
+		return super.calculateCelestialAngle(worldTime, partialTicks) * 0.667f;
+	}
+	
+	@Override
 	@SideOnly(Side.CLIENT)
 	public Vec3d getSkyColor(Entity cameraEntity, float partialTicks) 
 	{
@@ -106,5 +112,11 @@ public class DimensionTypeSteamWorld extends WorldProviderSurface
 	public BlockPos getSpawnPoint() 
 	{
 		return new BlockPos(16, 87, 16);
+	}
+	
+	@Override
+	public boolean canDropChunk(int x, int z) 
+	{
+		return !(x == 0 && z == 0);
 	}
 }

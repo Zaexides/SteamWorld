@@ -29,8 +29,7 @@ public class SWItemIngot extends SteamWorldItem implements IModeledObject, IOreD
 	{
 		for(EnumVarietyMaterial item$material : EnumVarietyMaterial.values())
 		{
-			String oreName = name;
-			oreName = oreName + item$material.getOreName();
+			String oreName = item$material.getOreDicName();
 			OreDictionary.registerOre(oreName, new ItemStack(this, 1, item$material.getMeta()));
 		}
 	}
@@ -73,17 +72,25 @@ public class SWItemIngot extends SteamWorldItem implements IModeledObject, IOreD
 		STEAITE(0, "steaite", "Steaite"),
 		ANCITE(1, "ancite", "Ancite"),
 		ENDRITCH(2, "endritch", "Endritch"),
-		GALITE(3, "galite", "Galite");
+		GALITE(3, "galite", "Galite"),
+		TERRITE(4, "territe", "Territe", "gem");
 		
 		private final int meta;
 		private final String name, oreName;
 		private static final EnumVarietyMaterial[] META_LOOKUP = new EnumVarietyMaterial[values().length];
+		private String oredicPrefix = "ingot";
 		
 		private EnumVarietyMaterial(int meta, String name, String oreName)
 		{
 			this.meta = meta;
 			this.name = name;
 			this.oreName = oreName;
+		}
+		
+		private EnumVarietyMaterial(int meta, String name, String oreName, String orePrefix)
+		{
+			this(meta, name, oreName);
+			this.oredicPrefix = orePrefix;
 		}
 		
 		public int getMeta()
@@ -100,6 +107,11 @@ public class SWItemIngot extends SteamWorldItem implements IModeledObject, IOreD
 		public String getOreName()
 		{
 			return oreName;
+		}
+		
+		public String getOreDicName()
+		{
+			return oredicPrefix + oreName;
 		}
 		
 		public static EnumVarietyMaterial byMetadata(int meta)

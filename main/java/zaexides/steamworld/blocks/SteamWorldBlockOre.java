@@ -29,6 +29,7 @@ import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.item.ItemBlockVariant;
 import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.init.ItemInitializer;
+import zaexides.steamworld.items.SWItemIngot;
 import zaexides.steamworld.utility.interfaces.IMetaName;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
 import zaexides.steamworld.utility.interfaces.IOreDictionaryRegisterable;
@@ -72,7 +73,14 @@ public class SteamWorldBlockOre extends Block implements IMetaName, IModeledObje
 	@Override
 	public int damageDropped(IBlockState state) 
 	{
-		return getItemDropped(state, null, 0) instanceof ItemBlock ? ((EnumType)state.getValue(VARIANT)).getMeta() : 0;
+		if(getItemDropped(state, null, 0) instanceof ItemBlock)
+			return ((EnumType)state.getValue(VARIANT)).getMeta();
+		
+		EnumType type = EnumType.byMetadata(getMetaFromState(state));
+		if(type == EnumType.SKY_TERRITE)
+			return SWItemIngot.EnumVarietyMaterial.TERRITE.getMeta();
+		
+		return 0;
 	}
 	
 	@Override
@@ -136,10 +144,14 @@ public class SteamWorldBlockOre extends Block implements IMetaName, IModeledObje
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) 
 	{
-		if(getMetaFromState(state) == EnumType.SKY_COAL.getMeta())
+		int meta = getMetaFromState(state);
+		
+		if(meta == EnumType.SKY_COAL.getMeta())
 			return Items.COAL;
-		else if(getMetaFromState(state) == EnumType.SKY_DIAMOND.getMeta())
+		else if(meta == EnumType.SKY_DIAMOND.getMeta())
 			return Items.DIAMOND;
+		else if(meta == EnumType.SKY_TERRITE.getMeta())
+			return ItemInitializer.INGOT;
 		else
 			return super.getItemDropped(state, rand, fortune);
 	}
@@ -171,7 +183,8 @@ public class SteamWorldBlockOre extends Block implements IMetaName, IModeledObje
 		SKY_GOLD(4, "gold_sky", "oreGold", 3.5f, 2),
 		SKY_DIAMOND(5, "diamond_sky", "oreDiamond", 3.5f, 2, true),
 		SKY_ANCITE(6, "ancite_sky", "oreAncite", 5.0f, 3),
-		SKY_GALITE(7, "galite_sky", "oreGalite", 4.5f, 3);
+		SKY_GALITE(7, "galite_sky", "oreGalite", 4.5f, 3),
+		SKY_TERRITE(8, "territe_sky", "oreTerrite", 7.0f, 4, true);
 		
 		private static final EnumType[] META_LOOKUP = new EnumType[values().length];
 		private final int meta;
