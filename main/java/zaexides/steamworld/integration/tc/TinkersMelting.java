@@ -66,6 +66,7 @@ public class TinkersMelting
 	{
 		//Guess we'll do this manually, then.
 		new MeltingRecipe(new RecipeMatch.Oredict("gemTerrite", 1, 18), territeFluid).register();
+		new MeltingRecipe(new RecipeMatch.Oredict("dustTerrite", 1, 18), territeFluid).register();
 		new MeltingRecipe(new RecipeMatch.Oredict("oreTerrite", 1, 37), territeFluid).register();
 		new MeltingRecipe(new RecipeMatch.Oredict("blockTerrite", 1, 162), territeFluid).register();
 		TinkerRegistry.registerBasinCasting(new CastingRecipe(new ItemStack(BlockInitializer.BLOCK_ANCITE, 1, BlockAncite.EnumType.TERRITE.getMeta()), territeFluid, 162, 30));

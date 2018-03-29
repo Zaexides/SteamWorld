@@ -1,0 +1,23 @@
+{
+    "type": "forge:ore_shaped",
+    
+    "pattern":
+    [
+        "S"
+    ],
+    
+    "key":
+    {
+        "S":
+        {
+            "type": "forge:ore_dict",
+            "ore": "blockTerrite"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:ingot", "data": 4,
+        "count": 9
+    }
+}

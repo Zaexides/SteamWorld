@@ -159,6 +159,7 @@ public class RegistryHandler
 		DustRecipeHandler.RegisterRecipe("oreLapis", new ItemStack(Items.DYE, 3, 4), true);
 		DustRecipeHandler.RegisterRecipe("oreQuartz", new ItemStack(Items.QUARTZ, 3), true);
 		DustRecipeHandler.RegisterRecipe("blockPrismarine", new ItemStack(Items.PRISMARINE_CRYSTALS, 4), false);
+		DustRecipeHandler.RegisterRecipe("gemTerrite", new ItemStack(ItemInitializer.METAL_DUST, 1, ItemDust.EnumVarietyMaterial.TERRITE.getMeta()), false);
 	}
 	
 	public static void RegisterTileEntities()
