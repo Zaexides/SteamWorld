@@ -31,6 +31,7 @@ public class TCMaterials
 	public static Material steaiteMaterial;
 	public static Material anciteMaterial;
 	public static Material preservationMaterial;
+	public static Material galiteMaterial;
 	
 	public static final AbstractTrait TRAIT_SELECTIVE = new TraitSelective(1);
 	public static final AbstractTrait TRAIT_SELECTIVE_2 = new TraitSelective(2);
@@ -38,6 +39,7 @@ public class TCMaterials
 	public static void registerMaterials()
 	{
 		SteamWorld.logger.log(Level.INFO, "Tinkers' Construct found, adding SteamWorld Materials, for as far as allowed...");
+		SteamWorld.logger.log(Level.INFO, "No, I'm not overriding anything. Not directly, anyway.");
 		int matCount = 0;
 		
 		if(ConfigHandler.tcSteaite)
@@ -96,6 +98,23 @@ public class TCMaterials
 					);
 			
 			TinkerRegistry.integrate(preservationMaterial).preInit();
+			matCount++;
+		}
+		
+		if(ConfigHandler.tcGalite)
+		{
+			galiteMaterial = new Material("galite", 0x65F7C9);
+			
+			TinkerRegistry.addMaterialStats(galiteMaterial,
+					new HeadMaterialStats(1000, 8.0f, 6.0f, HarvestLevels.COBALT),
+					new HandleMaterialStats(0.3f, 250),
+					new ExtraMaterialStats(50),
+					new BowMaterialStats(1.5f, 3.6f, 1.2f)
+					);
+			
+			galiteMaterial.setFluid(FluidRegistry.getFluid("galite"));
+			TinkerRegistry.integrate(galiteMaterial).preInit();
+			galiteMaterial.setCraftable(false);
 			matCount++;
 		}
 		

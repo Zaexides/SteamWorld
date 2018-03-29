@@ -11,13 +11,15 @@ itemGroup.steamworld=SteamWorld
 tile.steamworld.ore_steaite.name=Steaite Ore (Legacy)
 tile.steamworld.block_steaite.name=Steaite Block (Legacy)
 
-# Ancite Blocks (and also steaite block)
+# Ancite Blocks (and also metal blocks)
 tile.steamworld.block_ancite_brick.name=Ancite Bricks
 tile.steamworld.block_ancite_floor.name=Ancite Tiles
 tile.steamworld.block_ancite_plate.name=Ancite Plates
 tile.steamworld.block_ancite_block.name=Ancite Block
 tile.steamworld.block_ancite_bigbricks.name=Ancite Big Bricks
-tile.steamworld.block_ancite_steaite_block.name=Steaite Block
+tile.steamworld.block_ancite_steaite_block.name=Block of Steaite
+tile.steamworld.block_ancite_galite_block.name=Block of Galite
+tile.steamworld.block_ancite_territe_block.name=Territe Gemblock
 tile.steamworld.block_ancite_error.name=A Future Block, perhaps.
 
 # Decorative Block
@@ -43,6 +45,7 @@ tile.steamworld.ore_gold_sky.name=Gold Sky Ore
 tile.steamworld.ore_diamond_sky.name=Diamond Sky Ore
 tile.steamworld.ore_ancite_sky.name=Ancite Sky Ore
 tile.steamworld.ore_galite_sky.name=Galite Sky Ore
+tile.steamworld.ore_territe_sky.name=Territe Sky Ore
 
 # Generators
 tile.steamworld.generator_steaite.name=Steam Generator MKI
@@ -123,6 +126,7 @@ item.steamworld.ingot_ancite.legacy.name=Ancite Ingot (Legacy)
 item.steamworld.ingot_endritch.name=Endritch Shard
 item.steamworld.shard_endritch.legacy.name=Endritch Shard (Legacy)
 item.steamworld.ingot_galite.name=Galite Ingot
+item.steamworld.ingot_territe.name=Territe Gem
 
 # Dusts
 item.steamworld.dust_iron.name=Iron Dust
@@ -130,16 +134,25 @@ item.steamworld.dust_gold.name=Gold Dust
 item.steamworld.dust_steaite.name=Steaite Dust
 item.steamworld.dust_ancite.name=Ancite Dust
 item.steamworld.dust_galite.name=Galite Dust
+item.steamworld.dust_territe.name=Territe Dust
 
 # Nuggets
 item.steamworld.nugget_steaite.name=Steaite Nugget
 item.steamworld.nugget_ancite.name=Ancite Nugget
 item.steamworld.nugget_diamond.name=Diamond Nugget
 item.steamworld.nugget_emerald.name=Emerald Nugget
+item.steamworld.nugget_galite.name=Galite Nugget
 
 # Upgrades
 item.steamworld.upgrade_ancite.name=MKII Upgrade
 item.steamworld.upgrade_endritch.name=MKIII Upgrade
+
+# Tools
+item.steamworld.pickaxe_galite.name=Galite Pickaxe
+item.steamworld.axe_galite.name=Galite Axe
+item.steamworld.hoe_galite.name=Galite Hoe
+item.steamworld.shovel_galite.name=Galite Shovel
+item.steamworld.sword_galite.name=Galite Sword
 
 # Misc
 item.steamworld.machine_base.name=Machine Base
@@ -181,6 +194,8 @@ fluid.empty=Empty
 fluid.preservationLiquid=Preservation Liquid
 fluid.ancite=Molten Ancite
 fluid.steaite=Molten Steaite
+fluid.galite=Molten Galite
+fluid.territe=Molten Territe
 
 ######
 energy.name=Energy
@@ -267,6 +282,7 @@ jei.steamworld.energy.description=The Dynamo and Electric Steam Generator allow 
 material.steaite.name=Steaite
 material.ancite.name=Ancite
 material.preservation.name=Preserv. Rock
+material.galite.name=Galite
 
 # TC Modifier names
 modifier.selective.name=Selective

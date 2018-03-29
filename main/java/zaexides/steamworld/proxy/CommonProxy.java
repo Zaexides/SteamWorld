@@ -103,5 +103,17 @@ public class CommonProxy
 			configuration.save();
 		
 		OreDictionaryScanner.ScanOreDictionary();
+		
+		if(Loader.isModLoaded("tconstruct"))
+    	{
+			try
+	    	{
+	    		TinkersMelting.postInit();
+	    	}
+	    	catch(Exception exception)
+	    	{
+	    		SteamWorld.logger.log(Level.ERROR, "Ah, uhm, yeah, mod compatibility with Tinkers' kinda failed here at post-init. Send me this together with your forge logs, will ya? " + exception.toString());
+	    	}
+    	}
 	}
 }
