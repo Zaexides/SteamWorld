@@ -66,6 +66,12 @@ public class ItemDust extends SteamWorldItem implements IOreDictionaryRegisterab
 		}
 	}
 	
+	@Override
+	public boolean hasEffect(ItemStack stack) 
+	{
+		return super.hasEffect(stack) || stack.getMetadata() == EnumVarietyMaterial.ESSEN.getMeta();
+	}
+	
 	public static enum EnumVarietyMaterial implements IStringSerializable
 	{
 		IRON(0, "iron", "Iron"),
@@ -73,7 +79,8 @@ public class ItemDust extends SteamWorldItem implements IOreDictionaryRegisterab
 		STEAITE(2, "steaite", "Steaite"),
 		ANCITE(3, "ancite", "Ancite"),
 		GALITE(4, "galite", "Galite"),
-		TERRITE(5, "territe", "Territe");
+		TERRITE(5, "territe", "Territe"),
+		ESSEN(6, "essen", "Essen");
 		
 		private final int meta;
 		private final String name, oreName;

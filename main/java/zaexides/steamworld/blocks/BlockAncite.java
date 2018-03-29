@@ -32,6 +32,7 @@ import zaexides.steamworld.utility.interfaces.IMetaName;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
 import zaexides.steamworld.utility.interfaces.IOreDictionaryRegisterable;
 
+//Oh, and just casually any metal block
 public class BlockAncite extends Block implements IMetaName, IModeledObject, IOreDictionaryRegisterable
 {
 	public static final PropertyEnum<BlockAncite.EnumType> VARIANT = PropertyEnum.<BlockAncite.EnumType>create("variant", BlockAncite.EnumType.class);
@@ -58,6 +59,7 @@ public class BlockAncite extends Block implements IMetaName, IModeledObject, IOr
 		OreDictionary.registerOre("blockSteaite", new ItemStack(this, 1, EnumType.STEAITE.getMeta()));
 		OreDictionary.registerOre("blockGalite", new ItemStack(this, 1, EnumType.GALITE.getMeta()));
 		OreDictionary.registerOre("blockTerrite", new ItemStack(this, 1, EnumType.TERRITE.getMeta()));
+		OreDictionary.registerOre("blockEssen", new ItemStack(this, 1, EnumType.ESSEN.getMeta()));
 	}
 	
 	@Override
@@ -124,7 +126,8 @@ public class BlockAncite extends Block implements IMetaName, IModeledObject, IOr
 				worldObj.getBlockState(pos).equals(getStateFromMeta(EnumType.BLOCK.getMeta())) ||
 				worldObj.getBlockState(pos).equals(getStateFromMeta(EnumType.STEAITE.getMeta())) ||
 				worldObj.getBlockState(pos).equals(getStateFromMeta(EnumType.GALITE.getMeta())) ||
-				worldObj.getBlockState(pos).equals(getStateFromMeta(EnumType.TERRITE.getMeta()));
+				worldObj.getBlockState(pos).equals(getStateFromMeta(EnumType.TERRITE.getMeta())) ||
+				worldObj.getBlockState(pos).equals(getStateFromMeta(EnumType.ESSEN.getMeta()));
 	}
 	
 	@Override
@@ -167,7 +170,8 @@ public class BlockAncite extends Block implements IMetaName, IModeledObject, IOr
 		BIG_BRICKS(4, "bigbricks"),
 		STEAITE(5, "steaite_block"),
 		GALITE(6, "galite_block"),
-		TERRITE(7, "territe_block");
+		TERRITE(7, "territe_block"),
+		ESSEN(8, "essen_block");
 		
 		private static final BlockAncite.EnumType[] META_LOOKUP = new BlockAncite.EnumType[values().length];
 		private final int meta;

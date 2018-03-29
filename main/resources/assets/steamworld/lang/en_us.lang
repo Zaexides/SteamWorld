@@ -20,6 +20,7 @@ tile.steamworld.block_ancite_bigbricks.name=Ancite Big Bricks
 tile.steamworld.block_ancite_steaite_block.name=Block of Steaite
 tile.steamworld.block_ancite_galite_block.name=Block of Galite
 tile.steamworld.block_ancite_territe_block.name=Territe Gemblock
+tile.steamworld.block_ancite_essen_block.name=Block of Essen
 tile.steamworld.block_ancite_error.name=A Future Block, perhaps.
 
 # Decorative Block
@@ -127,6 +128,7 @@ item.steamworld.ingot_endritch.name=Endritch Shard
 item.steamworld.shard_endritch.legacy.name=Endritch Shard (Legacy)
 item.steamworld.ingot_galite.name=Galite Ingot
 item.steamworld.ingot_territe.name=Territe Gem
+item.steamworld.ingot_essen.name=Essen Ingot
 
 # Dusts
 item.steamworld.dust_iron.name=Iron Dust
@@ -135,6 +137,7 @@ item.steamworld.dust_steaite.name=Steaite Dust
 item.steamworld.dust_ancite.name=Ancite Dust
 item.steamworld.dust_galite.name=Galite Dust
 item.steamworld.dust_territe.name=Territe Dust
+item.steamworld.dust_essen.name=Essen Dust
 
 # Nuggets
 item.steamworld.nugget_steaite.name=Steaite Nugget
@@ -196,6 +199,7 @@ fluid.ancite=Molten Ancite
 fluid.steaite=Molten Steaite
 fluid.galite=Molten Galite
 fluid.territe=Molten Territe
+fluid.essen=Essen Alloy
 
 ######
 energy.name=Energy
@@ -283,6 +287,10 @@ material.steaite.name=Steaite
 material.ancite.name=Ancite
 material.preservation.name=Preserv. Rock
 material.galite.name=Galite
+material.essen.name=Essen
+
+# TC UI stuff
+ui.mininglevel.whatever=Whatever Essen can harvest.
 
 # TC Modifier names
 modifier.selective.name=Selective

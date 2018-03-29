@@ -8,6 +8,7 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Optional;
 import scala.reflect.macros.internal.macroImpl;
 import slimeknights.tconstruct.library.TinkerRegistry;
+import slimeknights.tconstruct.library.Util;
 import slimeknights.tconstruct.library.materials.BowMaterialStats;
 import slimeknights.tconstruct.library.materials.ExtraMaterialStats;
 import slimeknights.tconstruct.library.materials.HandleMaterialStats;
@@ -32,9 +33,12 @@ public class TCMaterials
 	public static Material anciteMaterial;
 	public static Material preservationMaterial;
 	public static Material galiteMaterial;
+	public static Material essenMaterial;
 	
 	public static final AbstractTrait TRAIT_SELECTIVE = new TraitSelective(1);
 	public static final AbstractTrait TRAIT_SELECTIVE_2 = new TraitSelective(2);
+	
+	public static final int HARVEST_LEVEL_COBALT_PLUS_ONE = HarvestLevels.COBALT + 1;
 	
 	public static void registerMaterials()
 	{
@@ -105,6 +109,8 @@ public class TCMaterials
 		{
 			galiteMaterial = new Material("galite", 0x65F7C9);
 			
+			//TODO: add traits
+			
 			TinkerRegistry.addMaterialStats(galiteMaterial,
 					new HeadMaterialStats(1000, 8.0f, 6.0f, HarvestLevels.COBALT),
 					new HandleMaterialStats(0.3f, 250),
@@ -116,6 +122,31 @@ public class TCMaterials
 			TinkerRegistry.integrate(galiteMaterial).preInit();
 			galiteMaterial.setCraftable(false);
 			matCount++;
+		}
+		
+		if(ConfigHandler.tcEssen)
+		{
+			essenMaterial = new Material("essen", 0x078596);
+			
+			if(!HarvestLevels.harvestLevelNames.containsKey(HARVEST_LEVEL_COBALT_PLUS_ONE))
+				HarvestLevels.harvestLevelNames.put(HARVEST_LEVEL_COBALT_PLUS_ONE, Util.translate("ui.mininglevel.whatever"));
+			
+			//TODO: add traits
+			
+			//TODO: Set material traits
+			TinkerRegistry.addMaterialStats(essenMaterial,
+					new HeadMaterialStats(1000, 8.0f, 6.0f, HARVEST_LEVEL_COBALT_PLUS_ONE),
+					new HandleMaterialStats(0.3f, 250),
+					new ExtraMaterialStats(50),
+					new BowMaterialStats(1.5f, 3.6f, 1.2f)
+					);
+			
+			essenMaterial.setFluid(FluidRegistry.getFluid("essen"));
+			TinkerRegistry.integrate(essenMaterial).preInit();
+			essenMaterial.setCraftable(false);
+			matCount++;
+			
+			//TODO: Give better TC part texture :Y
 		}
 		
 		SteamWorld.logger.log(Level.INFO, "Done adding {} materials to Tinkers' Construct.", matCount);

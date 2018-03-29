@@ -1,0 +1,29 @@
+{
+    "type": "forge:ore_shaped",
+    
+    "pattern":
+    [
+        "gg ",
+        "gs ",
+        " s "
+    ],
+    
+    "key":
+    {
+        "g":
+        {
+            "type": "forge:ore_dict",
+            "ore": "ingotGalite"
+        },
+        "s":
+        {
+            "item": "minecraft:stick"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:axe_galite",
+        "count": 1
+    }
+}

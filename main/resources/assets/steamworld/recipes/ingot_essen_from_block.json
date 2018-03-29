@@ -1,0 +1,23 @@
+{
+    "type": "forge:ore_shaped",
+    
+    "pattern":
+    [
+        "S"
+    ],
+    
+    "key":
+    {
+        "S":
+        {
+            "type": "forge:ore_dict",
+            "ore": "blockEssen"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:ingot", "data": 5,
+        "count": 9
+    }
+}

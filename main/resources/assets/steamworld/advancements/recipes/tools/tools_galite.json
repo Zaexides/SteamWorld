@@ -1,0 +1,29 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "steamworld:pickaxe_galite",
+      "steamworld:axe_galite",
+      "steamworld:sword_galite",
+      "steamworld:shovel_galite",
+      "steamworld:hoe_galite"
+    ]
+  },
+  "criteria": {
+    "has_galite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "steamworld:ingot", "data": 3
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_galite"
+    ]
+  ]
+}

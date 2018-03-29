@@ -1,0 +1,31 @@
+{
+    "type": "forge:ore_shaped",
+    
+    "pattern":
+    [
+        "ttt",
+        "tgt",
+        "ttt"
+    ],
+    
+    "key":
+    {
+        "t":
+        {
+            "type": "forge:ore_dict",
+            "ore": "dustTerrite"
+        },
+        "g":
+        {
+            "type": "forge:ore_dict",
+            "ore": "dustGalite"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:dust",
+        "data": 6,
+        "count": 1
+    }
+}

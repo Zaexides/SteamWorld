@@ -67,13 +67,20 @@ public class SWItemIngot extends SteamWorldItem implements IModeledObject, IOreD
 		}
 	}
 	
+	@Override
+	public boolean hasEffect(ItemStack stack) 
+	{
+		return super.hasEffect(stack) || stack.getMetadata() == EnumVarietyMaterial.ESSEN.getMeta();
+	}
+	
 	public static enum EnumVarietyMaterial implements IStringSerializable
 	{
 		STEAITE(0, "steaite", "Steaite"),
 		ANCITE(1, "ancite", "Ancite"),
 		ENDRITCH(2, "endritch", "Endritch"),
 		GALITE(3, "galite", "Galite"),
-		TERRITE(4, "territe", "Territe", "gem");
+		TERRITE(4, "territe", "Territe", "gem"),
+		ESSEN(5, "essen", "Essen");
 		
 		private final int meta;
 		private final String name, oreName;

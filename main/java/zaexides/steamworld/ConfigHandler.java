@@ -42,6 +42,7 @@ public class ConfigHandler
 	public static boolean tcAncite = true;
 	public static boolean tcPreservation = true;
 	public static boolean tcGalite = true;
+	public static boolean tcEssen = true;
 		
 	public static void ReadConfig()
 	{
@@ -111,5 +112,6 @@ public class ConfigHandler
 		tcAncite = config.getBoolean("material_ancite", CATEGORY_TINKERS, tcAncite, "Allow Ancite TC material.");
 		tcPreservation = config.getBoolean("material_preservation", CATEGORY_TINKERS, tcPreservation, "Allow Preservation Rock TC material.");
 		tcGalite = config.getBoolean("material_galite", CATEGORY_TINKERS, tcGalite, "Allow Galite TC material.");
+		tcEssen = config.getBoolean("material_essen", CATEGORY_TINKERS, tcEssen, "Allow Essen TC material.");
 	}
 }
