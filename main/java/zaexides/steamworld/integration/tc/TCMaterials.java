@@ -15,6 +15,7 @@ import slimeknights.tconstruct.library.materials.HandleMaterialStats;
 import slimeknights.tconstruct.library.materials.HeadMaterialStats;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.materials.MaterialTypes;
+import slimeknights.tconstruct.library.traits.AbstractProjectileTrait;
 import slimeknights.tconstruct.library.traits.AbstractTrait;
 import slimeknights.tconstruct.library.utils.HarvestLevels;
 import slimeknights.tconstruct.tools.TinkerTraits;
@@ -23,6 +24,7 @@ import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.BlockDecorative.EnumType;
 import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.init.ItemInitializer;
+import zaexides.steamworld.integration.tc.traits.ProjectileTraitAntiGravity;
 import zaexides.steamworld.integration.tc.traits.TraitSelective;
 import zaexides.steamworld.blocks.BlockDecorative;
 import zaexides.steamworld.items.SWItemNugget.EnumVarietyMaterial;
@@ -37,6 +39,7 @@ public class TCMaterials
 	
 	public static final AbstractTrait TRAIT_SELECTIVE = new TraitSelective(1);
 	public static final AbstractTrait TRAIT_SELECTIVE_2 = new TraitSelective(2);
+	public static final AbstractProjectileTrait TRAIT_ANTIGRAV = new ProjectileTraitAntiGravity();
 	
 	public static final int HARVEST_LEVEL_COBALT_PLUS_ONE = HarvestLevels.COBALT + 1;
 	
@@ -109,13 +112,13 @@ public class TCMaterials
 		{
 			galiteMaterial = new Material("galite", 0x65F7C9);
 			
-			//TODO: add traits
+			galiteMaterial.addTrait(TRAIT_ANTIGRAV, MaterialTypes.PROJECTILE);
 			
 			TinkerRegistry.addMaterialStats(galiteMaterial,
-					new HeadMaterialStats(1000, 8.0f, 6.0f, HarvestLevels.COBALT),
+					new HeadMaterialStats(1000, 8.0f, 5.0f, HarvestLevels.COBALT),
 					new HandleMaterialStats(0.3f, 250),
 					new ExtraMaterialStats(50),
-					new BowMaterialStats(1.5f, 3.6f, 1.2f)
+					new BowMaterialStats(0.4f, 3.6f, 1.2f)
 					);
 			
 			galiteMaterial.setFluid(FluidRegistry.getFluid("galite"));
@@ -129,16 +132,15 @@ public class TCMaterials
 			essenMaterial = new Material("essen", 0x078596);
 			
 			if(!HarvestLevels.harvestLevelNames.containsKey(HARVEST_LEVEL_COBALT_PLUS_ONE))
-				HarvestLevels.harvestLevelNames.put(HARVEST_LEVEL_COBALT_PLUS_ONE, Util.translate("ui.mininglevel.whatever"));
+				HarvestLevels.harvestLevelNames.put(HARVEST_LEVEL_COBALT_PLUS_ONE, essenMaterial.getTextColor() + Util.translate("ui.mininglevel.essen"));
 			
 			//TODO: add traits
 			
-			//TODO: Set material traits
 			TinkerRegistry.addMaterialStats(essenMaterial,
-					new HeadMaterialStats(1000, 8.0f, 6.0f, HARVEST_LEVEL_COBALT_PLUS_ONE),
-					new HandleMaterialStats(0.3f, 250),
-					new ExtraMaterialStats(50),
-					new BowMaterialStats(1.5f, 3.6f, 1.2f)
+					new HeadMaterialStats(1272, 12.3f, 0.2f, HARVEST_LEVEL_COBALT_PLUS_ONE),
+					new HandleMaterialStats(1.1f, -300),
+					new ExtraMaterialStats(20),
+					new BowMaterialStats(1.1f, 0.2f, 0.2f)
 					);
 			
 			essenMaterial.setFluid(FluidRegistry.getFluid("essen"));

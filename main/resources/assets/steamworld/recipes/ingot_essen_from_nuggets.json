@@ -1,0 +1,25 @@
+{
+    "type": "forge:ore_shaped",
+    
+    "pattern":
+    [
+        "nnn",
+        "nnn",
+        "nnn"
+    ],
+    
+    "key":
+    {
+        "n":
+        {
+            "type": "forge:ore_dict",
+            "ore": "nuggetEssen"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:ingot", "data": 5,
+        "count": 1
+    }
+}

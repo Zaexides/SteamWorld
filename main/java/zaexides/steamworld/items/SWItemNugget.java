@@ -9,6 +9,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraftforge.oredict.OreDictionary;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.BlockAncite;
+import zaexides.steamworld.items.SWItemIngot.EnumVarietyMaterial;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
 import zaexides.steamworld.utility.interfaces.IOreDictionaryRegisterable;
 
@@ -68,13 +69,20 @@ public class SWItemNugget extends SteamWorldItem implements IModeledObject, IOre
 		}
 	}
 	
+	@Override
+	public boolean hasEffect(ItemStack stack) 
+	{
+		return super.hasEffect(stack) || stack.getMetadata() == EnumVarietyMaterial.ESSEN.getMeta();
+	}
+	
 	public static enum EnumVarietyMaterial implements IStringSerializable
 	{
 		STEAITE(0, "steaite", "Steaite"),
 		ANCITE(1, "ancite", "Ancite"),
 		DIAMOND(2, "diamond", "Diamond"),
 		EMERALD(3, "emerald", "Emerald"),
-		GALITE(4, "galite", "Galite");
+		GALITE(4, "galite", "Galite"),
+		ESSEN(5, "essen", "Essen");
 		
 		private final int meta;
 		private final String name, oreName;

@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients":
+    [
+        {
+            "type": "forge:ore_dict",
+            "ore": "ingotEssen"
+        }
+    ],
+    "result":
+    {
+        "item": "steamworld:nugget",
+        "data": 5,
+        "count": 9
+    }
+}
