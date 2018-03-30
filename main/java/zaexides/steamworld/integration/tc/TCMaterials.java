@@ -113,6 +113,7 @@ public class TCMaterials
 			galiteMaterial = new Material("galite", 0x65F7C9);
 			
 			galiteMaterial.addTrait(TRAIT_ANTIGRAV, MaterialTypes.PROJECTILE);
+			galiteMaterial.addTrait(TinkerTraits.lightweight);
 			
 			TinkerRegistry.addMaterialStats(galiteMaterial,
 					new HeadMaterialStats(1000, 8.0f, 5.0f, HarvestLevels.COBALT),
