@@ -30,6 +30,7 @@ import zaexides.steamworld.blocks.machines.BlockFisher;
 import zaexides.steamworld.blocks.machines.BlockGrinder;
 import zaexides.steamworld.blocks.machines.BlockSWFurnace;
 import zaexides.steamworld.fluids.FluidSteam;
+import zaexides.steamworld.items.ItemCrystal;
 import zaexides.steamworld.items.ItemInitializer;
 import zaexides.steamworld.recipe.handling.AssemblyRecipe;
 import zaexides.steamworld.recipe.handling.AssemblyRecipeHandler;
@@ -192,14 +193,11 @@ public class TileEntityAssembler extends TileEntityMachine implements ITickable
 				}
 				
 				ItemStack crystalStack = inputStack.getStackInSlot(6).copy();
-				int damage = crystalStack.getItemDamage();
-				if(damage >= crystalStack.getMaxDamage()-1)
+				ItemCrystal.damageCrystal(crystalStack, world.rand);
+				if(crystalStack.getItemDamage() >= crystalStack.getMaxDamage() -1)
 					inputStack.setStackInSlot(CRYSTAL_SLOT, ItemStack.EMPTY);
 				else
-				{
-					crystalStack.setItemDamage(damage + 1);
 					inputStack.setStackInSlot(CRYSTAL_SLOT, crystalStack);
-				}
 				
 				progression = 0;
 			}
