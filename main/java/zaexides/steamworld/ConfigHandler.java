@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.apache.logging.log4j.Level;
 
+import com.typesafe.config.Config;
+
 import net.minecraftforge.common.config.Configuration;
 import zaexides.steamworld.proxy.CommonProxy;
 
@@ -26,6 +28,7 @@ public class ConfigHandler
 	
 	private static final String CATEGORY_FARMER = "farmer";
 	public static List<String> farmerDropBlacklist = new ArrayList<String>();
+	public static List<String> farmerModBlacklist = new ArrayList<String>() { { add("mysticalagriculture"); } };
 	public static int farmerArea = 5;
 	public static boolean farmerAllowSeedDropUpgrade = true;
 	
@@ -82,6 +85,7 @@ public class ConfigHandler
 		config.addCustomCategoryComment(CATEGORY_FARMER, "Farmer settings");
 		farmerArea = config.getInt("farmer_area", CATEGORY_FARMER, farmerArea, 1, Integer.MAX_VALUE, "Area radius the farmer will check in. e.g. entering \"5\" will make it check up to 5 blocks in a cube away (so an 11x11x11 area).");
 		farmerDropBlacklist = Arrays.asList(config.getStringList("farmer_drop_blacklist", CATEGORY_FARMER, farmerDropBlacklist.toArray(new String[0]), "Blacklist for crop drops in the farmer. Enter registry names (e.g. \"minecraft:wheat\") to disable the farmer from harvesting these as drops."));
+		farmerModBlacklist = Arrays.asList(config.getStringList("farmer_mod_blacklist", CATEGORY_FARMER, farmerModBlacklist.toArray(new String[0]), "Blacklist for mods in the farmer. Enter the registry domain name (e.g. in \"minecraft:wheat\" it'd be \"minecraft\"). This will completely ignore any crops from this mod."));
 		farmerAllowSeedDropUpgrade = config.getBoolean("farmer_upgrade_affect_seeds", CATEGORY_FARMER, farmerAllowSeedDropUpgrade, "Do the farmer upgrades also increase seed yield?");
 	}
 	
