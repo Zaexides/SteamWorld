@@ -133,6 +133,10 @@ public class TileEntityFarmer extends TileEntityMachine implements ITickable
 	private boolean harvestBlock(BlockPos pos)
 	{
 		IBlockState blockState = world.getBlockState(pos);
+		
+		if(ConfigHandler.farmerModBlacklist.contains(blockState.getBlock().getRegistryName().getResourceDomain()))
+			return true;
+		
 		if(blockState.getBlock() instanceof BlockCrops)
 		{
 			BlockCrops crop = (BlockCrops) blockState.getBlock();
