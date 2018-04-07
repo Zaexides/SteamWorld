@@ -160,6 +160,8 @@ public class TileEntityValve extends SyncedTileEntity implements ICapabilityProv
 		
 		if(enabled)
 		{
+			outputMachines.clear();
+			inputMachines.clear();
 			getInputOutput();
 			drainInput();
 			fillOutput();
@@ -181,7 +183,7 @@ public class TileEntityValve extends SyncedTileEntity implements ICapabilityProv
 		if(sideEntity != null)
 		{
 			if(sideEntity instanceof TileEntityPipe)
-				((TileEntityPipe)sideEntity).fetch(list, side.getOpposite(), ConfigHandler.pipeSystemMaxRange);
+				((TileEntityPipe)sideEntity).fetch(list, new ArrayList<BlockPos>(), side.getOpposite(), ConfigHandler.pipeSystemMaxRange);
 			else if(sideEntity.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side))
 				list.add(sideEntity.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side.getOpposite()));
 		}

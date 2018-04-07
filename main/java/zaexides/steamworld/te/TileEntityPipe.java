@@ -16,10 +16,11 @@ import zaexides.steamworld.SteamWorld;
 
 public class TileEntityPipe extends TileEntity
 {
-	public void fetch(List<IFluidHandler> machineList, EnumFacing from, int distanceLeft)
+	public void fetch(List<IFluidHandler> machineList, List<BlockPos> passedPositions, EnumFacing from, int distanceLeft)
 	{
-		if(distanceLeft <= 0)
+		if(distanceLeft <= 0 || passedPositions.contains(pos))
 			return;
+		passedPositions.add(pos);
 		
 		for(EnumFacing to : EnumFacing.VALUES)
 		{
@@ -30,9 +31,13 @@ public class TileEntityPipe extends TileEntity
 				if(nextEntity != null)
 				{
 					if(nextEntity instanceof TileEntityPipe)
-						((TileEntityPipe)nextEntity).fetch(machineList, to.getOpposite(), distanceLeft - 1);
+						((TileEntityPipe)nextEntity).fetch(machineList, passedPositions, to.getOpposite(), distanceLeft - 1);
 					else if(nextEntity.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, to))
-						machineList.add(nextEntity.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, to.getOpposite()));
+					{
+						IFluidHandler fluidHandler = nextEntity.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, to.getOpposite());
+						if(!machineList.contains(fluidHandler))
+							machineList.add(fluidHandler);
+					}
 				}
 			}
 		}
