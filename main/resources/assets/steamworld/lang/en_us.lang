@@ -1,3 +1,5 @@
+#PARSE_ESCAPES
+
 ######################
 # Creative Tab Names #
 ######################
@@ -145,6 +147,7 @@ item.steamworld.nugget_ancite.name=Ancite Nugget
 item.steamworld.nugget_diamond.name=Diamond Nugget
 item.steamworld.nugget_emerald.name=Emerald Nugget
 item.steamworld.nugget_galite.name=Galite Nugget
+item.steamworld.nugget_essen.name=Essen Nugget
 
 # Upgrades
 item.steamworld.upgrade_ancite.name=MKII Upgrade
@@ -160,8 +163,25 @@ item.steamworld.sword_galite.name=Galite Sword
 # Misc
 item.steamworld.machine_base.name=Machine Base
 item.steamworld.steaite_crystal.name=Steaite Crystal
+item.steamworld.territe_crystal.name=Territe Crystal
 item.steamworld.wrench.name=Steaite Wrench
 item.steamworld.treasure.name=Treasure Box
+item.steamworld.galite_jet.name=Galite Jet Orb
+
+#####################
+# Item Tooltip Text #
+#####################
+
+# Treasure
+item.steamworld.treasure_fish.tooltip=Rare chance of fishing up.
+item.steamworld.treasure_crypt.tooltip=Found abundantly in Ancite Crypts.
+item.steamworld.treasure_end.tooltip=Occasionally found in the End Cities.
+
+# Misc
+item.steamworld.wrench.tooltip=Easily Remove/Rotate SteamWorld machines.
+item.steamworld.upgrade.tooltip=Shift Right-Click me on a machine.
+item.steamworld.galite_jet.tooltip[0]=Gives you some extra height!
+item.steamworld.galite_jet.tooltip[1]=But probably won't save you from falling.
 
 #######################
 # Container Name Text #

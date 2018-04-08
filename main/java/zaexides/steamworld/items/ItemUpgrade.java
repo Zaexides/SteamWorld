@@ -38,7 +38,7 @@ public class ItemUpgrade extends SteamWorldItem implements IModeledObject
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) 
 	{
-		tooltip.add("Shift Right-Click me on a machine");
+		tooltip.add(I18n.format("item.steamworld.upgrade.tooltip"));
 	}
 	
 	@Override

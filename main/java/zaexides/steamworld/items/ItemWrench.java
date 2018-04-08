@@ -3,6 +3,7 @@ package zaexides.steamworld.items;
 import java.util.List;
 
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -24,7 +25,7 @@ public class ItemWrench extends SteamWorldItem
 	@Override
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) 
 	{
-		tooltip.add("Easily Remove/Rotate SteamWorld machines.");
+		tooltip.add(I18n.format("item.steamworld.wrench.tooltip"));
 	}
 	
 	@Override

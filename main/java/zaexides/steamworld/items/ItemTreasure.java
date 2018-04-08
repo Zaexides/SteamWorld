@@ -5,6 +5,7 @@ import java.util.Random;
 
 import org.apache.logging.log4j.Level;
 
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -56,8 +57,9 @@ public class ItemTreasure extends SteamWorldItem implements IModeledObject
 	{
 		int meta = stack.getMetadata();
 		String tooltipText = EnumTreasure.byMetadata(meta).getTooltip();
+		tooltipText = "item.steamworld.treasure_" + tooltipText + ".tooltip";
 		if(tooltipText != null && tooltipText != "")
-			tooltip.add(tooltipText);
+			tooltip.add(I18n.format(tooltipText));
 	}
 	
 	@Override
@@ -96,9 +98,9 @@ public class ItemTreasure extends SteamWorldItem implements IModeledObject
 	
 	public static enum EnumTreasure implements IStringSerializable
 	{
-		FISH(0, "fish", LootTableInitializer.TREASURE_BOX_FISHING, "Rare chance of fishing up."),
-		DUNGEON(1, "dungeon", LootTableInitializer.TREASURE_BOX_DUNGEON, "Found abundantly in Ancite Crypts."),
-		END(2, "end", LootTableInitializer.TREASURE_BOX_END, "Occasionally found in the End Cities.");
+		FISH(0, "fish", LootTableInitializer.TREASURE_BOX_FISHING, "fish"),
+		DUNGEON(1, "dungeon", LootTableInitializer.TREASURE_BOX_DUNGEON, "crypt"),
+		END(2, "end", LootTableInitializer.TREASURE_BOX_END, "end");
 		
 		private final int meta;
 		private final String name;

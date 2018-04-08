@@ -8,6 +8,7 @@ import net.minecraft.item.Item;
 import scala.reflect.internal.Trees.New;
 import zaexides.steamworld.items.ItemCrystal;
 import zaexides.steamworld.items.ItemDust;
+import zaexides.steamworld.items.ItemGaliteJet;
 import zaexides.steamworld.items.ItemTreasure;
 import zaexides.steamworld.items.ItemUpgrade;
 import zaexides.steamworld.items.ItemWrench;
@@ -30,9 +31,13 @@ public class ItemInitializer
 	public static final SWItemIngotLegacy INGOT_ANCITE = new SWItemIngotLegacy("ingot_ancite", "ingotAncite", SWItemIngot.EnumVarietyMaterial.ANCITE);
 	public static final SWItemIngotLegacy SHARD_ENDRITCH = new SWItemIngotLegacy("shard_endritch", "ingotEndritch", SWItemIngot.EnumVarietyMaterial.ENDRITCH);
 	public static final SteamWorldItem MACHINE_BASE = new SteamWorldItem("machine_base");
+	
 	public static final SteamWorldItem STEAITE_CRYSTAL = new ItemCrystal("steaite_crystal", 16);
+	public static final SteamWorldItem TERRITE_CRYSTAL = new ItemCrystal("territe_crystal", 64);
 	
 	public static final SteamWorldItem TREASURE = new ItemTreasure("treasure");
+	
+	public static final ItemGaliteJet GALITE_JET = new ItemGaliteJet("galite_jet");
 	
 	public static final ItemWrench WRENCH = new ItemWrench("wrench");
 	

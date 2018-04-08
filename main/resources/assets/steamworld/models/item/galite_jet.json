@@ -1,0 +1,14 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "steamworld:items/galite_jet"
+    },
+    "overrides": [
+        {
+            "predicate": {
+                "steamworld:active": 1
+            },
+            "model": "steamworld:item/galite_jet_active"
+        }
+    ]
+}
