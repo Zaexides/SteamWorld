@@ -42,17 +42,18 @@ import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.fluids.FluidPreservation;
 import zaexides.steamworld.fluids.FluidSteam;
+import zaexides.steamworld.fluids.FluidWithering;
 import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.init.ItemInitializer;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
 
-public class BlockPreservationJuice extends BlockFluidClassic implements IModeledObject
+public class BlockWitheringJuice extends BlockFluidClassic implements IModeledObject
 {
-	public BlockPreservationJuice() 
+	public BlockWitheringJuice() 
 	{
-		super(FluidPreservation.fluidPreservation, Material.WATER);
-		setRegistryName("preservationLiquid");
-		setUnlocalizedName(ModInfo.MODID + ".preservationLiquid");
+		super(FluidWithering.fluidWithering, Material.WATER);
+		setRegistryName("witheringLiquid");
+		setUnlocalizedName(ModInfo.MODID + ".witheringLiquid");
 		setCreativeTab(SteamWorld.CREATIVETAB);
 		
 		BlockInitializer.BLOCKS.add(this);
@@ -61,7 +62,7 @@ public class BlockPreservationJuice extends BlockFluidClassic implements IModele
 	@Override
 	public void RegisterModels() 
 	{
-		SteamWorld.proxy.RegisterCustomMeshFluid(this, "preservationLiquid");
+		SteamWorld.proxy.RegisterCustomMeshFluid(this, "witheringLiquid");
 	}
 	
 	@Override
@@ -76,7 +77,7 @@ public class BlockPreservationJuice extends BlockFluidClassic implements IModele
 		{
 			EntityLivingBase entityLiving = (EntityLivingBase)entityIn;
 			
-			if(entityLiving instanceof EntityMob)
+			if(!(entityLiving instanceof EntityMob))
 			{
 				PotionEffect witherEffect = new PotionEffect(MobEffects.WITHER, 100, 1);
 				PotionEffect nauseaEffect = new PotionEffect(MobEffects.NAUSEA, 100, 0);
@@ -131,14 +132,14 @@ public class BlockPreservationJuice extends BlockFluidClassic implements IModele
 					{
 						world.createExplosion(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 1, true);
 					}
-					else if(blockState.getBlock() instanceof BlockWitheringJuice)
+					else if(blockState.getBlock() instanceof BlockPreservationJuice)
 					{
 						targetBlockState = Blocks.COBBLESTONE.getDefaultState();
 						world.playSound(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.5f, 1);
 					}
 					else
 					{
-						targetBlockState = BlockInitializer.BLOCK_DECORATIVE.getStateFromMeta(BlockDecorative.EnumType.PRESERVATION_COBBLE.getMeta());
+						targetBlockState = BlockInitializer.BLOCK_DECORATIVE.getStateFromMeta(BlockDecorative.EnumType.WITHERING_COBBLE.getMeta());
 						world.playSound(null, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.5f, 1);
 					}
 					world.setBlockState(pos, targetBlockState);
@@ -159,7 +160,7 @@ public class BlockPreservationJuice extends BlockFluidClassic implements IModele
 	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) 
 	{
 		if(rand.nextDouble() <= 0.005)
-			worldIn.playSound(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, SoundEvents.BLOCK_NOTE_CHIME, SoundCategory.BLOCKS, rand.nextFloat() * 0.5f, rand.nextFloat() * 1.5f - 0.5f, false);
+			worldIn.playSound(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, SoundEvents.ENTITY_WITHER_AMBIENT, SoundCategory.BLOCKS, rand.nextFloat() * 0.5f, rand.nextFloat() * 1.5f - 0.5f, false);
 		
 		if(rand.nextDouble() > 0.1)
 			return;
@@ -168,24 +169,21 @@ public class BlockPreservationJuice extends BlockFluidClassic implements IModele
 		double yPos = pos.getY() + rand.nextDouble();
 		double zPos = pos.getZ() + rand.nextDouble();
 		
-		worldIn.spawnParticle(EnumParticleTypes.END_ROD, xPos, yPos, zPos, 0, rand.nextDouble() * 0.1, 0);
+		worldIn.spawnParticle(EnumParticleTypes.SMOKE_LARGE, xPos, yPos, zPos, 0, rand.nextDouble() * 0.1, 0);
 	}
 	
 	@Override
 	public float[] getBeaconColorMultiplier(IBlockState state, World world, BlockPos pos, BlockPos beaconPos) 
 	{
-		final float[] colMain = new float[] { 0.8f, 1.0f, 0.557f};
-		final float[] colAlt1 = new float[] { 0.988f, 0.718f, 0.698f};
-		final float[] colAlt2 = new float[] { 0.89f, 0.718f, 0.98f};
+		final float[] colMain = new float[] { 0.141f, 0.07f, 0.16f};
+		final float[] colAlt = new float[] { 0.05f, 0.019f, 0.062f};
 		
-		final float chance = 0.0234f;
+		final float chance = 0.5f;
 		float randVal = world.rand.nextFloat();
 		
 		if(randVal <= chance)
-			return colAlt1;
-		else if((randVal - chance) <= chance)
-			return colAlt2;
-		else
 			return colMain;
+		else
+			return colAlt;
 	}
 }

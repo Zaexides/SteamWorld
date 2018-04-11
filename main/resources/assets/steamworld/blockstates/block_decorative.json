@@ -10,6 +10,7 @@
             {"model": "steamworld:block_sky_stone", "y":180, "x":180, "z":180}
         ],
         "variant=sky_cobble": { "model": "steamworld:block_sky_cobble" },
-        "variant=sky_bricks": { "model": "steamworld:block_sky_bricks" }
+        "variant=sky_bricks": { "model": "steamworld:block_sky_bricks" },
+        "variant=block_withering_cobble": { "model": "steamworld:block_withering_cobble" }
     }
 }

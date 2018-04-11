@@ -36,6 +36,7 @@ import zaexides.steamworld.blocks.BlockSteam;
 import zaexides.steamworld.blocks.SteamWorldBlockOre;
 import zaexides.steamworld.fluids.FluidPreservation;
 import zaexides.steamworld.fluids.FluidSteam;
+import zaexides.steamworld.fluids.FluidWithering;
 import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.init.ItemInitializer;
 import zaexides.steamworld.integration.tc.TCMaterials;
@@ -197,6 +198,7 @@ public class RegistryHandler
 	{
 		FluidSteam.fluidSteam = new FluidSteam();
 		FluidPreservation.fluidPreservation = new FluidPreservation();
+		FluidWithering.fluidWithering = new FluidWithering();
 	}
 	
 	@SubscribeEvent

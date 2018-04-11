@@ -1,5 +1,7 @@
 package zaexides.steamworld.blocks.machines;
 
+import java.util.Random;
+
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
@@ -12,9 +14,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 import zaexides.steamworld.blocks.SteamWorldBlock;
 import zaexides.steamworld.te.TileEntityDrain;
 import zaexides.steamworld.te.TileEntityFaucet;
@@ -77,5 +83,29 @@ public class BlockFaucet extends SteamWorldBlock implements ITileEntityProvider,
 			world.setTileEntity(pos, tileEntity);
 		}
 		return EnumActionResult.SUCCESS;
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand)
+	{
+		EnumFacing facing = stateIn.getValue(FACING);
+		BlockPos frontPos = pos.add(facing.getDirectionVec());
+		
+		if(worldIn.getBlockState(frontPos).getMaterial() == Material.WATER)
+		{
+			for(int i = 0; i < rand.nextInt(5); i++)
+			{
+				double xPos = frontPos.getX() + rand.nextDouble() * 0.25 + 0.5;
+				double yPos = frontPos.getY() + rand.nextDouble() * 0.25 + 0.5;
+				double zPos = frontPos.getZ() + rand.nextDouble() * 0.25 + 0.5;
+				
+				double xVel = facing.getDirectionVec().getX() * (rand.nextDouble() + 1);
+				double yVel = facing.getDirectionVec().getY() * (rand.nextDouble() + 1);
+				double zVel = facing.getDirectionVec().getZ() * (rand.nextDouble() + 1);
+				
+				worldIn.spawnParticle(EnumParticleTypes.WATER_BUBBLE, xPos, yPos, zPos, xVel, yVel, zVel);
+			}
+		}
 	}
 }

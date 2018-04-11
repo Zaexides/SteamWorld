@@ -1,5 +1,7 @@
 package zaexides.steamworld.blocks;
 
+import java.util.Random;
+
 import org.apache.logging.log4j.Level;
 
 import com.google.common.util.concurrent.Service.State;
@@ -123,6 +125,27 @@ public class BlockSWFlower extends BlockBush implements IMetaName, IModeledObjec
 			{
 				PotionEffect witherEffect = new PotionEffect(MobEffects.WITHER, 120, 0);
 				((EntityLivingBase)entityIn).addPotionEffect(witherEffect);
+			}
+		}
+	}
+	
+	@Override
+	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) 
+	{
+		super.updateTick(worldIn, pos, state, rand);
+				
+		if(getMetaFromState(state) == EnumType.WITHER.getMeta())
+		{
+			for(int i = 0; i < 8; i++)
+			{
+				BlockPos checkingPos = pos.add(rand.nextInt(5)-2, rand.nextInt(3)-1, rand.nextInt(5)-2);
+				
+				IBlockState checkingState = worldIn.getBlockState(checkingPos);
+				if(checkingState.getBlock() instanceof BlockPreservationJuice)
+				{
+					IBlockState witherBlockState = BlockInitializer.BLOCK_WITHERING_JUICE.getStateFromMeta(BlockInitializer.BLOCK_PRESERVATION_JUICE.getMetaFromState(checkingState));
+					worldIn.setBlockState(checkingPos, witherBlockState);
+				}
 			}
 		}
 	}

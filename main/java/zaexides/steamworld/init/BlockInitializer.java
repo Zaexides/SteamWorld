@@ -20,6 +20,7 @@ import zaexides.steamworld.blocks.BlockSWFlower;
 import zaexides.steamworld.blocks.BlockSWPortal;
 import zaexides.steamworld.blocks.BlockSWStairs;
 import zaexides.steamworld.blocks.BlockSteam;
+import zaexides.steamworld.blocks.BlockWitheringJuice;
 import zaexides.steamworld.blocks.SteamWorldBlock;
 import zaexides.steamworld.blocks.SteamWorldBlockOre;
 import zaexides.steamworld.blocks.BlockDecorative.EnumType;
@@ -104,6 +105,7 @@ public class BlockInitializer
 	
 	public static final BlockSteam BLOCK_STEAM = new BlockSteam();
 	public static final BlockPreservationJuice BLOCK_PRESERVATION_JUICE = new BlockPreservationJuice();
+	public static final BlockWitheringJuice BLOCK_WITHERING_JUICE = new BlockWitheringJuice();
 	
 	public static final BlockFluidPipe BLOCK_FLUID_PIPE = new BlockFluidPipe();
 	public static final BlockValve BLOCK_VALVE = new BlockValve("block_fluid_controller", Material.IRON, 2.5f, (int)(Fluid.BUCKET_VOLUME * 0.8), 800);
