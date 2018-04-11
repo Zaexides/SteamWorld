@@ -9,6 +9,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeProvider;
@@ -20,9 +21,11 @@ import net.minecraftforge.common.BiomeManager.BiomeEntry;
 import net.minecraftforge.common.BiomeManager.BiomeType;
 import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidRegistry.FluidRegisterEvent;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -35,6 +38,8 @@ import zaexides.steamworld.fluids.FluidPreservation;
 import zaexides.steamworld.fluids.FluidSteam;
 import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.init.ItemInitializer;
+import zaexides.steamworld.integration.tc.TCMaterials;
+import zaexides.steamworld.integration.tc.TinkersMelting;
 import zaexides.steamworld.items.ItemDust;
 import zaexides.steamworld.items.SWItemIngot;
 import zaexides.steamworld.items.SWItemNugget;
@@ -192,5 +197,21 @@ public class RegistryHandler
 	{
 		FluidSteam.fluidSteam = new FluidSteam();
 		FluidPreservation.fluidPreservation = new FluidPreservation();
+	}
+	
+	@SubscribeEvent
+	public static void RecipeRegisterEvent(RegistryEvent.Register<IRecipe> event)
+	{
+		if(Loader.isModLoaded("tconstruct"))
+    	{
+	    	try
+	    	{
+	    		TCMaterials.RegisterToolForgeRecipes(event);
+	    	}
+	    	catch(Exception exception)
+	    	{
+	    		SteamWorld.logger.log(Level.ERROR, "Ah, uhm, yeah, mod compatibility with Tinkers' kinda failed here at recipe register. Send me this together with your forge logs, will ya? " + exception.toString());
+	    	}
+    	}
 	}
 }

@@ -317,3 +317,5 @@ modifier.selective.name=Selective
 modifier.selective.desc=§oOnly the good may survive!§r\nWill heal anything that isn't a monster. On higher levels, it'll act like the hit creature has bathed in Preservation Juice.
 modifier.antigrav.name=Anti-Gravity
 modifier.antigrav.desc=§oWoaaaah!§r\nAny projectile shot will fall upwards instead.
+modifier.dual_nature.name=Dual Nature
+modifier.dual_nature.desc=§oKill high, dig low§r\nThis tool's damage output will increase the higher you are, but the mining speed will increase the lower you are!

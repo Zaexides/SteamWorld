@@ -1,12 +1,19 @@
 package zaexides.steamworld.integration.tc;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.logging.log4j.Level;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.util.IStringSerializable;
+import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Optional;
 import scala.reflect.macros.internal.macroImpl;
+import slimeknights.tconstruct.library.MaterialIntegration;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.Util;
 import slimeknights.tconstruct.library.materials.BowMaterialStats;
@@ -25,6 +32,7 @@ import zaexides.steamworld.blocks.BlockDecorative.EnumType;
 import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.init.ItemInitializer;
 import zaexides.steamworld.integration.tc.traits.ProjectileTraitAntiGravity;
+import zaexides.steamworld.integration.tc.traits.TraitDualNature;
 import zaexides.steamworld.integration.tc.traits.TraitSelective;
 import zaexides.steamworld.blocks.BlockDecorative;
 import zaexides.steamworld.items.SWItemNugget.EnumVarietyMaterial;
@@ -37,9 +45,12 @@ public class TCMaterials
 	public static Material galiteMaterial;
 	public static Material essenMaterial;
 	
+	private static MaterialIntegration[] integrations;
+	
 	public static final AbstractTrait TRAIT_SELECTIVE = new TraitSelective(1);
 	public static final AbstractTrait TRAIT_SELECTIVE_2 = new TraitSelective(2);
 	public static final AbstractProjectileTrait TRAIT_ANTIGRAV = new ProjectileTraitAntiGravity();
+	public static final AbstractTrait TRAIT_DUAL_NATUTE = new TraitDualNature();
 	
 	public static final int HARVEST_LEVEL_COBALT_PLUS_ONE = HarvestLevels.COBALT + 1;
 	
@@ -48,6 +59,7 @@ public class TCMaterials
 		SteamWorld.logger.log(Level.INFO, "Tinkers' Construct found, adding SteamWorld Materials, for as far as allowed...");
 		SteamWorld.logger.log(Level.INFO, "No, I'm not overriding anything. Not directly, anyway.");
 		int matCount = 0;
+		List<MaterialIntegration> integrationList = new ArrayList<MaterialIntegration>();
 		
 		if(ConfigHandler.tcSteaite)
 		{
@@ -63,7 +75,10 @@ public class TCMaterials
 					);
 			
 			steaiteMaterial.setFluid(FluidRegistry.getFluid("steaite"));
-			TinkerRegistry.integrate(steaiteMaterial).preInit();
+			MaterialIntegration integration = TinkerRegistry.integrate(steaiteMaterial).toolforge();
+			integration.oreSuffix = "Steaite";
+			integration.preInit();
+			integrationList.add(integration);
 			steaiteMaterial.setCraftable(false);
 			matCount++;
 		}
@@ -84,7 +99,10 @@ public class TCMaterials
 					);
 			
 			anciteMaterial.setFluid(FluidRegistry.getFluid("ancite"));
-			TinkerRegistry.integrate(anciteMaterial).preInit();
+			MaterialIntegration integration = TinkerRegistry.integrate(anciteMaterial).toolforge();
+			integration.oreSuffix = "Ancite";
+			integration.preInit();
+			integrationList.add(integration);
 			anciteMaterial.setCraftable(false);
 			matCount++;
 		}
@@ -123,7 +141,10 @@ public class TCMaterials
 					);
 			
 			galiteMaterial.setFluid(FluidRegistry.getFluid("galite"));
-			TinkerRegistry.integrate(galiteMaterial).preInit();
+			MaterialIntegration integration = TinkerRegistry.integrate(galiteMaterial).toolforge();
+			integration.oreSuffix = "Galite";
+			integration.preInit();
+			integrationList.add(integration);
 			galiteMaterial.setCraftable(false);
 			matCount++;
 		}
@@ -135,23 +156,25 @@ public class TCMaterials
 			if(!HarvestLevels.harvestLevelNames.containsKey(HARVEST_LEVEL_COBALT_PLUS_ONE))
 				HarvestLevels.harvestLevelNames.put(HARVEST_LEVEL_COBALT_PLUS_ONE, essenMaterial.getTextColor() + Util.translate("ui.mininglevel.essen"));
 			
-			//TODO: add traits
+			essenMaterial.addTrait(TRAIT_DUAL_NATUTE);
 			
 			TinkerRegistry.addMaterialStats(essenMaterial,
-					new HeadMaterialStats(1272, 12.3f, 0.2f, HARVEST_LEVEL_COBALT_PLUS_ONE),
+					new HeadMaterialStats(926, 6.5f, 2.5f, HARVEST_LEVEL_COBALT_PLUS_ONE),
 					new HandleMaterialStats(1.1f, -300),
 					new ExtraMaterialStats(20),
-					new BowMaterialStats(1.1f, 0.2f, 0.2f)
+					new BowMaterialStats(1.1f, 0.6f, 0.7f)
 					);
 			
 			essenMaterial.setFluid(FluidRegistry.getFluid("essen"));
-			TinkerRegistry.integrate(essenMaterial).preInit();
+			MaterialIntegration integration = TinkerRegistry.integrate(essenMaterial).toolforge();
+			integration.oreSuffix = "Essen";
+			integration.preInit();
+			integrationList.add(integration);
 			essenMaterial.setCraftable(false);
 			matCount++;
-			
-			//TODO: Give better TC part texture :Y
 		}
 		
+		integrations = integrationList.toArray(new MaterialIntegration[integrationList.size()]);
 		SteamWorld.logger.log(Level.INFO, "Done adding {} materials to Tinkers' Construct.", matCount);
 	}
 	
@@ -166,5 +189,16 @@ public class TCMaterials
 		ItemStack preservationRock = new ItemStack(BlockInitializer.BLOCK_DECORATIVE, 1, BlockDecorative.EnumType.PRESERVATION_COBBLE.getMeta());
 		preservationMaterial.addItem(preservationRock, 1, Material.VALUE_Ingot);
 		preservationMaterial.setRepresentativeItem(preservationRock);
+	}
+	
+	public static void RegisterToolForgeRecipes(Register<IRecipe> event)
+	{
+		if(integrations != null && integrations.length > 0)
+		{
+			for(MaterialIntegration integration : integrations)
+			{
+				integration.registerToolForgeRecipe(event.getRegistry());
+			}
+		}
 	}
 }
