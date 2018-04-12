@@ -72,6 +72,7 @@ import zaexides.steamworld.worldgen.WorldGenerationOres;
 import zaexides.steamworld.worldgen.dimension.DimensionTypeSteamWorld;
 import zaexides.steamworld.worldgen.structure.WorldGenCrypt;
 import zaexides.steamworld.worldgen.structure.WorldGenPortalBuilding;
+import zaexides.steamworld.worldgen.structure.WorldGenWitherLab;
 
 @EventBusSubscriber
 public class RegistryHandler 
@@ -125,6 +126,7 @@ public class RegistryHandler
 		GameRegistry.registerWorldGenerator(new WorldGenerationOres(), 0);
 		GameRegistry.registerWorldGenerator(new WorldGenCrypt(), 1000);
 		GameRegistry.registerWorldGenerator(new WorldGenPortalBuilding(), 0);
+		GameRegistry.registerWorldGenerator(new WorldGenWitherLab(), 1000);
 		
 		DimensionManager.registerDimension(ConfigHandler.dimensionId, DimensionTypeSteamWorld.STEAMWORLD);
 	}

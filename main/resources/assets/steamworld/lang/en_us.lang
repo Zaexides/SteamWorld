@@ -31,6 +31,7 @@ tile.steamworld.block_decorative_block_preservation_cobble.name=Preservation Cob
 tile.steamworld.block_decorative_sky_stone.name=Sky Stone
 tile.steamworld.block_decorative_sky_cobble.name=Sky Cobblestone
 tile.steamworld.block_decorative_sky_bricks.name=Sky Bricks
+tile.steamworld.block_decorative_block_withering_cobble.name=Wither Cobblestone
 tile.steamworld.block_decorative_error.name=A Future Block, perhaps.
 
 # Crystal Block
@@ -176,6 +177,7 @@ item.steamworld.galite_jet.name=Galite Jet Orb
 item.steamworld.treasure_fish.tooltip=Rare chance of fishing up.
 item.steamworld.treasure_crypt.tooltip=Found abundantly in Ancite Crypts.
 item.steamworld.treasure_end.tooltip=Occasionally found in the End Cities.
+item.steamworld.treasure_wither_lab.tooltip=Found in Wither Labs.
 
 # Misc
 item.steamworld.wrench.tooltip=Easily Remove/Rotate SteamWorld machines.
@@ -215,6 +217,7 @@ text.steamworld.teleporter.showhide_nomatch=Show/Hide from different Network IDs
 fluid.steam=Steam
 fluid.empty=Empty
 fluid.preservationLiquid=Preservation Liquid
+fluid.witheringLiquid=Wither Liquid
 fluid.ancite=Molten Ancite
 fluid.steaite=Molten Steaite
 fluid.galite=Molten Galite

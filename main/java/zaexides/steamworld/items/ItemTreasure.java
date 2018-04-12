@@ -100,7 +100,8 @@ public class ItemTreasure extends SteamWorldItem implements IModeledObject
 	{
 		FISH(0, "fish", LootTableInitializer.TREASURE_BOX_FISHING, "fish"),
 		DUNGEON(1, "dungeon", LootTableInitializer.TREASURE_BOX_DUNGEON, "crypt"),
-		END(2, "end", LootTableInitializer.TREASURE_BOX_END, "end");
+		END(2, "end", LootTableInitializer.TREASURE_BOX_END, "end"),
+		WITHER_LAB(3, "wither_lab", LootTableInitializer.TREASURE_BOX_WITHER_LAB, "wither_lab");
 		
 		private final int meta;
 		private final String name;

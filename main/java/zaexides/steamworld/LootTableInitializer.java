@@ -16,9 +16,11 @@ import zaexides.steamworld.init.ItemInitializer;
 public class LootTableInitializer 
 {
 	public static final ResourceLocation ANCITE_CRYPT = register("chests/ancite_crypt");
+	public static final ResourceLocation WITHER_LAB = register("chests/wither_lab");
 	public static final ResourceLocation TREASURE_BOX_FISHING = register("treasure_box/fishing");
 	public static final ResourceLocation TREASURE_BOX_DUNGEON = register("treasure_box/dungeon");
 	public static final ResourceLocation TREASURE_BOX_END = register("treasure_box/end");
+	public static final ResourceLocation TREASURE_BOX_WITHER_LAB = register("treasure_box/wither_lab");
 	
 	public static final ResourceLocation LEGACY_STRUCTURE = register("chests/dwarven_structure");
 	public static final ResourceLocation LEGACY_STRUCTURE_CORE = register("chests/dwarven_structure_core");

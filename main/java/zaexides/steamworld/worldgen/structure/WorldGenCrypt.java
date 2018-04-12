@@ -47,7 +47,7 @@ public class WorldGenCrypt implements IWorldGenerator
 		if(!biome.getEnableSnow())
 			generateChance *= CHANCE_MODIFIER_IN_SNOW;
 		
-		if(world.provider.getDimension() == 0 && random.nextFloat() <= CHANCE_PER_CHUNK)
+		if(world.provider.getDimension() == 0 && random.nextFloat() <= generateChance)
 		{
 			GenerateStructure(world, random, chunkX, chunkZ);
 			if(biome == Biomes.EXTREME_HILLS)
