@@ -44,6 +44,12 @@ public class BlockSWPortal extends SteamWorldBlock
 		
 		World targetWorld = worldIn.getMinecraftServer().getWorld(targetDimension);
 		BlockPos spawnPos = targetWorld.getSpawnPoint();
+		if(entityIn instanceof EntityPlayer)
+		{
+			BlockPos bedPos = ((EntityPlayer)entityIn).getBedLocation(targetDimension);
+			if(bedPos != null)
+				spawnPos = bedPos;
+		}
 		
 		if(entityIn instanceof EntityPlayer)
 			worldIn.getMinecraftServer().getPlayerList().transferPlayerToDimension((EntityPlayerMP)entityIn, targetDimension, new SteamWorldTeleporter((WorldServer)targetWorld, spawnPos, true));

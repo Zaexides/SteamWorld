@@ -11,6 +11,14 @@
         ],
         "variant=sky_cobble": { "model": "steamworld:block_sky_cobble" },
         "variant=sky_bricks": { "model": "steamworld:block_sky_bricks" },
-        "variant=block_withering_cobble": { "model": "steamworld:block_withering_cobble" }
+        "variant=block_withering_cobble": { "model": "steamworld:block_withering_cobble" },
+        "variant=sky_chiseled_stone": { "model": "steamworld:block_sky_chiseled_stone" },
+        "variant=sky_pillar":
+        [
+            {"model": "steamworld:sky_pillar/0"},
+            {"model": "steamworld:sky_pillar/1"},
+            {"model": "steamworld:sky_pillar/2"},
+            {"model": "steamworld:sky_pillar/3"}
+        ]
     }
 }

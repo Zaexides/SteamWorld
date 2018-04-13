@@ -1,0 +1,26 @@
+{
+    "type": "forge:ore_shaped",
+    
+    "pattern":
+    [
+        " b ",
+        "b b",
+        " b "
+    ],
+    
+    "key":
+    {
+        "s":
+        {
+            "item": "steamworld:block_decorative",
+            "data": 4
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:block_decorative",
+        "data": 6,
+        "count": 4
+    }
+}

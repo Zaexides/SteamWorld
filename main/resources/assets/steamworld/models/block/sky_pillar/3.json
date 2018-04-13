@@ -1,0 +1,6 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "steamworld:blocks/sky_pillar/sky_pillar_3"
+    }
+}
