@@ -17,6 +17,9 @@ public class LootTableInitializer
 {
 	public static final ResourceLocation ANCITE_CRYPT = register("chests/ancite_crypt");
 	public static final ResourceLocation WITHER_LAB = register("chests/wither_lab");
+	
+	public static final ResourceLocation TOWER_FOOD = register("chests/tower_food");
+	
 	public static final ResourceLocation TREASURE_BOX_FISHING = register("treasure_box/fishing");
 	public static final ResourceLocation TREASURE_BOX_DUNGEON = register("treasure_box/dungeon");
 	public static final ResourceLocation TREASURE_BOX_END = register("treasure_box/end");

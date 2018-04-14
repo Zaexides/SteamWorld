@@ -22,6 +22,7 @@ import net.minecraft.world.gen.feature.WorldGenLakes;
 import net.minecraftforge.event.terraingen.InitMapGenEvent.EventType;
 import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.worldgen.mapgen.MapGenSWCaves;
+import zaexides.steamworld.worldgen.structure.tower.WorldGenTower;
 import net.minecraftforge.event.terraingen.TerrainGen;
 
 public class SteamWorldChunkGenerator implements IChunkGenerator

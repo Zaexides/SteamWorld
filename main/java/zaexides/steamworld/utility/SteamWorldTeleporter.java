@@ -34,14 +34,12 @@ public class SteamWorldTeleporter extends Teleporter
 		entityIn.motionY = 0;
 		entityIn.motionZ = 0;
 		BlockPos pos = blockPos;
-		SteamWorld.logger.log(Level.INFO, "Checking at " + pos);
 		
 		if(safeMode)
 		{
 			int attempts = 0;
 			while(world.getBlockState(pos).getBlock() != Blocks.AIR || world.getBlockState(pos.down()).getBlock() != Blocks.AIR || world.getBlockState(pos.down(2)).getBlock() == Blocks.AIR)
 			{
-				SteamWorld.logger.log(Level.INFO, "Checking at " + pos);
 				pos = pos.add(0, 1, 0);
 				if(pos.getY() >= world.getActualHeight())
 					pos = new BlockPos(pos.getX(), 3, pos.getZ());
