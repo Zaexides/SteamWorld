@@ -19,7 +19,7 @@ import zaexides.steamworld.ModInfo;
 
 public class WorldGenTower implements IWorldGenerator
 {
-	private static final float CHANCE_PER_CHUNK = 0.01f;//0.00021f;
+	private static final float CHANCE_PER_CHUNK = 0.00021f;
 	private static final int MIN_HEIGHT = 50, MAX_HEIGHT = 150;
 	
 	private static final ResourceLocation BASE_TEMPLATE_LOCATION = new ResourceLocation(ModInfo.MODID, "tower/sw_tower_base");
@@ -37,8 +37,8 @@ public class WorldGenTower implements IWorldGenerator
 			{
 					new TemplateProcessorTowerFarm(),
 					new TemplateProcessorTowerFood(),
-					null,
-					null
+					new TemplateProcessorTowerLibrary(),
+					new TemplateProcessorTowerResidence()
 			};
 		
 	@Override
@@ -50,7 +50,8 @@ public class WorldGenTower implements IWorldGenerator
 		
 		if(world.provider.getDimension() == ConfigHandler.dimensionId && random.nextFloat() <= CHANCE_PER_CHUNK)
 		{
-			GenerateStructure(world, random, chunkX, chunkZ);
+			if(chunkX != 0 || chunkZ != 0)
+				GenerateStructure(world, random, chunkX, chunkZ);
 		}
 	}
 	
@@ -76,8 +77,6 @@ public class WorldGenTower implements IWorldGenerator
 			pos = GenerateTowerPart(world, random, pos);
 		
 		PlacePart(TOP_TEMPLATE_LOCATION, null, world, random, pos);
-		
-		//TODO something that updates the lighting in here.
 	}
 
 	private BlockPos GenerateTowerPart(World world, Random random, BlockPos pos)

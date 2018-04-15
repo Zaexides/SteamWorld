@@ -1,6 +1,7 @@
 package zaexides.steamworld.worldgen.dimension;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Biomes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
@@ -34,7 +35,7 @@ public class DimensionTypeSteamWorld extends WorldProviderSurface
 	@Override
 	protected void init() 
 	{
-		super.init();
+		hasSkyLight = true;
 		biomeProvider = new SteamWorldBiomeProvider(getSeed(), world.getWorldInfo().getTerrainType());
 	}
 	
@@ -48,12 +49,6 @@ public class DimensionTypeSteamWorld extends WorldProviderSurface
 	public double getHorizon() 
 	{
 		return -224;
-	}
-	
-	@Override
-	public float calculateCelestialAngle(long worldTime, float partialTicks) 
-	{
-		return super.calculateCelestialAngle(worldTime, partialTicks) * 0.667f;
 	}
 	
 	@Override
@@ -118,5 +113,12 @@ public class DimensionTypeSteamWorld extends WorldProviderSurface
 	public boolean canDropChunk(int x, int z) 
 	{
 		return !(x == 0 && z == 0);
+	}
+	
+	@Override
+	public void onPlayerAdded(EntityPlayerMP player) 
+	{
+		if(player.chunkCoordX == 0 && player.chunkCoordZ == 0)
+			player.setPosition(getSpawnPoint().getX(), getSpawnPoint().getY(), getSpawnPoint().getZ());
 	}
 }
