@@ -47,6 +47,8 @@ public class GuiHandler implements IGuiHandler
 	public static final int GENERATOR_ELECTRIC = 101;
 	
 	public static final int OBILISK = 200;
+	
+	public static final int MANUAL_STEAITE = 300;
 
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
@@ -75,8 +77,6 @@ public class GuiHandler implements IGuiHandler
 		case DYNAMO:
 		case GENERATOR_ELECTRIC:
 			return new ContainerSimple(player, player.inventory, world.getTileEntity(new BlockPos(x,y,z)));
-		case OBILISK:
-			return null;
 		}
 		
 		return null;
@@ -113,6 +113,8 @@ public class GuiHandler implements IGuiHandler
 			return new GuiSteamGeneratorElectric(player, player.inventory, (TileEntitySteamGeneratorElectric) world.getTileEntity(new BlockPos(x,y,z)));
 		case OBILISK:
 			return new GuiObilisk(new BlockPos(x,y,z), world);
+		case MANUAL_STEAITE:
+			return new GuiManual();
 		}
 		
 		return null;

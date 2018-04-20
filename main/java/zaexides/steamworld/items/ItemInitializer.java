@@ -24,4 +24,6 @@ public class ItemInitializer
 	public static final ItemDust METAL_DUST = new ItemDust("dust");
 	public static final SWItemNugget ITEM_NUGGET = new SWItemNugget("nugget");
 	public static final ItemUpgrade UPGRADE = new ItemUpgrade("upgrade");
+	
+	public static final ItemBookManual BOOK_MANUAL = new ItemBookManual("manual");
 }

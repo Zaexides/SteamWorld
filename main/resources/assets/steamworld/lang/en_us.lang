@@ -1,3 +1,4 @@
+#PARSE_ESCAPES
 itemGroup.steamworld=SteamWorld
 
 tile.steamworld.ore_steaite.name=Steaite Ore
@@ -155,3 +156,6 @@ jei.steamworld.assembler.description=The Steam Assembler is used to assemble (or
 jei.steamworld.experience_machine.description=The Experience Machine does what it says on the tin: It takes in steam and uses it to create experience.\nUpgrades increase the efficiency.
 jei.steamworld.accelerator.description=The Nether Accelerator speeds up nearby Nether Steam Generators slightly, but at a cost...
 jei.steamworld.energy.description=The Dynamo and Electric Steam Generator allow Steam to be converted to Redstone Flux and back respectively.
+
+text.manual.page[0].left=Hello world!\nThis is the table of contents.
+text.manual.page[0].right=And this is on the other side of the book, on what's supposedly page 0, but hey, this is coding, not real-life logic.
