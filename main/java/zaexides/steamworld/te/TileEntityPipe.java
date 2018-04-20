@@ -32,7 +32,7 @@ public class TileEntityPipe extends TileEntity
 				{
 					if(nextEntity instanceof TileEntityPipe)
 						((TileEntityPipe)nextEntity).fetch(machineList, passedPositions, to.getOpposite(), distanceLeft - 1);
-					else if(nextEntity.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, to))
+					else if(nextEntity.hasCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, to.getOpposite()))
 					{
 						IFluidHandler fluidHandler = nextEntity.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, to.getOpposite());
 						if(!machineList.contains(fluidHandler))
