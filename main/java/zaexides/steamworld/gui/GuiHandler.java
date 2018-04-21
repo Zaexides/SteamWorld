@@ -1,9 +1,11 @@
 package zaexides.steamworld.gui;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
+import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.containers.ContainerAssembler;
 import zaexides.steamworld.containers.ContainerFarmer;
 import zaexides.steamworld.containers.ContainerFertilizer;
@@ -49,6 +51,8 @@ public class GuiHandler implements IGuiHandler
 	public static final int OBILISK = 200;
 	
 	public static final int MANUAL_STEAITE = 300;
+	public static final int MANUAL_ANCITE = 301;
+	public static final int MANUAL_ENDRITCH = 302;
 
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
@@ -114,7 +118,11 @@ public class GuiHandler implements IGuiHandler
 		case OBILISK:
 			return new GuiObilisk(new BlockPos(x,y,z), world);
 		case MANUAL_STEAITE:
-			return new GuiManual();
+			return new GuiManual(8, new ResourceLocation(ModInfo.MODID, "textures/gui/manual_steaite.png"));
+		case MANUAL_ANCITE:
+			return new GuiManual(11, new ResourceLocation(ModInfo.MODID, "textures/gui/manual_ancite.png"));
+		case MANUAL_ENDRITCH:
+			return new GuiManual(14, new ResourceLocation(ModInfo.MODID, "textures/gui/manual_endritch.png"));
 		}
 		
 		return null;

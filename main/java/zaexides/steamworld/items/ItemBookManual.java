@@ -53,24 +53,38 @@ public class ItemBookManual extends SteamWorldItem implements IModeledObject
 	}
 	
 	@Override
+	public String getUnlocalizedName(ItemStack stack) 
+	{
+		int metadata = stack.getMetadata();
+		EnumBook material = EnumBook.byMetadata(metadata);
+		return super.getUnlocalizedName() + "_" + material.getName();
+	}
+	
+	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
 	{
-		playerIn.openGui(SteamWorld.singleton, GuiHandler.MANUAL_STEAITE, worldIn, (int)playerIn.posX, (int)playerIn.posY, (int)playerIn.posZ);
-		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, playerIn.getHeldItem(handIn));
+		ItemStack itemStack = playerIn.getHeldItem(handIn);
+		
+		playerIn.openGui(SteamWorld.singleton, EnumBook.byMetadata(itemStack.getMetadata()).gui, worldIn, (int)playerIn.posX, (int)playerIn.posY, (int)playerIn.posZ);
+		return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemStack);
 	}
 	
 	public static enum EnumBook implements IStringSerializable
 	{
-		STEAITE_MANUAL(0, "steaite");
+		STEAITE_MANUAL(0, "steaite", GuiHandler.MANUAL_STEAITE),
+		ANCITE_MANUAL(1, "ancite", GuiHandler.MANUAL_ANCITE),
+		ENDRITCH_MANUAL(2, "endritch", GuiHandler.MANUAL_ENDRITCH);
 		
 		private final int meta;
 		private final String name;
+		private final int gui;
 		private static final EnumBook[] META_LOOKUP = new EnumBook[values().length];
 		
-		private EnumBook(int meta, String name)
+		private EnumBook(int meta, String name, int gui)
 		{
 			this.meta = meta;
 			this.name = name;
+			this.gui = gui;
 		}
 		
 		public int getMeta()
