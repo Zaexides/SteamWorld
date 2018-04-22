@@ -25,6 +25,7 @@ public class ItemBookManual extends SteamWorldItem implements IModeledObject
 		this.name = name;
 		setMaxDamage(0);
 		setMaxStackSize(1);
+		setHasSubtypes(true);
 	}
 	
 	@Override

@@ -12,12 +12,12 @@
         "recipe": "steamworld:manual_ancite"
       }
     },
-    "has_steaite": {
+    "has_ancite": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "steamworld:ingot_steaite"
+            "item": "steamworld:ingot_ancite"
           }
         ]
       }
@@ -26,7 +26,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_steaite"
+      "has_ancite"
     ]
   ]
 }
