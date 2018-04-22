@@ -12,12 +12,12 @@
         "recipe": "steamworld:manual_endritch"
       }
     },
-    "has_steaite": {
+    "has_endritch": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "steamworld:ingot_steaite"
+            "item": "steamworld:shard_endritch"
           }
         ]
       }
@@ -26,7 +26,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_steaite"
+      "has_endritch"
     ]
   ]
 }
