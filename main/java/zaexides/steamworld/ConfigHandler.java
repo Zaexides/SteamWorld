@@ -20,6 +20,7 @@ public class ConfigHandler
 	public static int fertilizerArea = 5;
 	public static int fluidControllerUpdateRate = 1;
 	public static int pipeSystemMaxRange = 50;
+	public static boolean spawnWithManual = true;
 	
 	private static final String CATEGORY_WORLDGEN = "worldgen";
 	public static boolean generateSteaiteOre = true;
@@ -70,6 +71,7 @@ public class ConfigHandler
 		fertilizerArea = config.getInt("fertilizer_area", CATEGORY_GENERAL, fertilizerArea, 1, Integer.MAX_VALUE, "Area radius the fertilizer will check in. e.g. entering \"5\" will make it check up to 5 blocks in a cube away (so an 11x11x11 area).");
 		fluidControllerUpdateRate = config.getInt("fluid_controller_update_rate", CATEGORY_GENERAL, fluidControllerUpdateRate, 1, 5, "Update rate of the Fluid Controller. If it's set to 5, it'll update every 5 ticks. It'll scale the amount of fluid transported to the update rate. This can be increased to decrease lag.");
 		pipeSystemMaxRange = config.getInt("pipe_syste_max_range", CATEGORY_GENERAL, pipeSystemMaxRange, 1, Integer.MAX_VALUE, "Maximum reach of a pipe system.");
+		spawnWithManual = config.getBoolean("spawn_with_manual", CATEGORY_GENERAL, spawnWithManual, "Whether or not new player spawn with manuals.");
 	}
 	
 	private static void InitWorldgen(Configuration config)

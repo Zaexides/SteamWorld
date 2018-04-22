@@ -71,8 +71,8 @@ item.steamworld.treasure.name=Treasure Box
 item.steamworld.upgrade_ancite.name=MKII Upgrade
 item.steamworld.upgrade_endritch.name=MKIII Upgrade
 item.steamworld.manual_steaite.name=SteamWorld Manual MKI
-item.steamworld.manual_steaite.name=SteamWorld Manual MKII
-item.steamworld.manual_steaite.name=SteamWorld Manual MKIII
+item.steamworld.manual_ancite.name=SteamWorld Manual MKII
+item.steamworld.manual_endritch.name=SteamWorld Manual MKIII
 
 container.steamworld.steam_generator=Steam Generator
 container.steamworld.steam_furnace=Steam Furnace

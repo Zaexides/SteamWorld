@@ -2,6 +2,9 @@ package zaexides.steamworld;
 
 import org.apache.logging.log4j.Level;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.storage.loot.LootEntry;
@@ -14,12 +17,16 @@ import net.minecraft.world.storage.loot.functions.SetMetadata;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
+import net.minecraftforge.items.ItemHandlerHelper;
 import zaexides.steamworld.items.ItemInitializer;
 import zaexides.steamworld.items.ItemTreasure;
 
 public class MiscEventHandler 
 {
+	private final String MANUAL_TAG = "sw_manual_got";
+	
 	@SubscribeEvent
 	public void onLootTablesLoaded(LootTableLoadEvent loadEvent)
 	{
@@ -37,6 +44,24 @@ public class MiscEventHandler
 		{
 			LootEntry lootEntry = new LootEntryItem(ItemInitializer.TREASURE, 10, 0, new LootFunction[] { new SetMetadata(new LootCondition[0], new RandomValueRange(END_TREASURE_METADATA)) }, new LootCondition[0], "steamworld_treasure");
 			loadEvent.getTable().getPool("main").addEntry(lootEntry);
+		}
+	}
+	
+	@SubscribeEvent
+	public void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent loggedInEvent)
+	{
+		if(ConfigHandler.spawnWithManual)
+		{
+			NBTTagCompound tagCompound = loggedInEvent.player.getEntityData();
+			if(!tagCompound.hasKey(EntityPlayer.PERSISTED_NBT_TAG))
+				tagCompound.setTag(EntityPlayer.PERSISTED_NBT_TAG, new NBTTagCompound());
+			NBTTagCompound persistingData = tagCompound.getCompoundTag(EntityPlayer.PERSISTED_NBT_TAG);
+			
+			if(!persistingData.getBoolean(MANUAL_TAG))
+			{
+				ItemHandlerHelper.giveItemToPlayer(loggedInEvent.player, new ItemStack(ItemInitializer.BOOK_MANUAL));
+				persistingData.setBoolean(MANUAL_TAG, true);
+			}
 		}
 	}
 }
