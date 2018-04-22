@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients":
+    [
+        {
+            "item": "steamworld:manual",
+            "data": 1
+        },
+        {
+            "item": "steamworld:shard_endritch"
+        }
+    ],
+    "result":
+    {
+        "item": "steamworld:manual",
+        "data": 2,
+        "count": 1
+    }
+}

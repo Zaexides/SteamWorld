@@ -6,6 +6,7 @@ import java.util.List;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import scala.reflect.internal.Trees.New;
+import zaexides.steamworld.items.ItemBookManual;
 import zaexides.steamworld.items.ItemCrystal;
 import zaexides.steamworld.items.ItemDust;
 import zaexides.steamworld.items.ItemGaliteJet;
@@ -45,6 +46,8 @@ public class ItemInitializer
 	public static final ItemDust METAL_DUST = new ItemDust("dust");
 	public static final SWItemNugget ITEM_NUGGET = new SWItemNugget("nugget");
 	public static final ItemUpgrade UPGRADE = new ItemUpgrade("upgrade");
+	
+	public static final ItemBookManual BOOK_MANUAL = new ItemBookManual("manual");
 	
 	
 	/* ==Tools== */

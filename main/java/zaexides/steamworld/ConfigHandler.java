@@ -21,6 +21,7 @@ public class ConfigHandler
 	public static int fluidControllerUpdateRate = 1;
 	public static int pipeSystemMaxRange = 50;
 	public static int dimensionId = 38620;
+	public static boolean spawnWithManual = true;
 	
 	private static final String CATEGORY_WORLDGEN = "worldgen";
 	public static boolean generateSteaiteOre = true;
@@ -80,6 +81,7 @@ public class ConfigHandler
 		fluidControllerUpdateRate = config.getInt("fluid_controller_update_rate", CATEGORY_GENERAL, fluidControllerUpdateRate, 1, 5, "Update rate of the Fluid Controller. If it's set to 5, it'll update every 5 ticks. It'll scale the amount of fluid transported to the update rate. This can be increased to decrease lag.");
 		pipeSystemMaxRange = config.getInt("pipe_syste_max_range", CATEGORY_GENERAL, pipeSystemMaxRange, 1, Integer.MAX_VALUE, "Maximum reach of a pipe system.");
 		dimensionId = config.getInt("dimension_id", CATEGORY_GENERAL, dimensionId, Integer.MIN_VALUE, Integer.MAX_VALUE, "The ID that the SteamWorld dimension will use.");
+		spawnWithManual = config.getBoolean("spawn_with_manual", CATEGORY_GENERAL, spawnWithManual, "Whether or not new player spawn with manuals.");
 	}
 	
 	private static void InitWorldgen(Configuration config)

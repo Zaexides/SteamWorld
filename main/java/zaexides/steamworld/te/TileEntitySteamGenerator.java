@@ -161,7 +161,7 @@ public class TileEntitySteamGenerator extends SyncedTileEntity implements ICapab
 		if(world.isRemote || isInvalid())
 			return;
 		
-		if(burnTime <= 0 && fluidIn.FluidAmount(FluidRegistry.WATER) > 0 && fluidOut.FluidAmount(FluidSteam.fluidSteam) < (fluidOut.getCapacity()))
+		if(burnTime <= 0 && fluidIn.FluidAmount(FluidRegistry.WATER) > 0 && fluidOut.getFluidAmount() < (fluidOut.getCapacity()))
 			SetBurnTime();
 		
 		if(burnTime > 0)

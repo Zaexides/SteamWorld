@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients":
+    [
+        {
+            "item": "steamworld:manual",
+            "data": 0
+        },
+        {
+            "item": "steamworld:ingot_ancite"
+        }
+    ],
+    "result":
+    {
+        "item": "steamworld:manual",
+        "data": 1,
+        "count": 1
+    }
+}
