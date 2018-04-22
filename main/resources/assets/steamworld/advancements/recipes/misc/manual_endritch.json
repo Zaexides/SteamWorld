@@ -2,22 +2,23 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "steamworld:manual_steaite"
+      "steamworld:manual_endritch"
     ]
   },
   "criteria": {
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "steamworld:manual_steaite"
+        "recipe": "steamworld:manual_endritch"
       }
     },
-    "has_steaite": {
+    "has_endritch": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "steamworld:ingot_steaite"
+            "item": "steamworld:ingot",
+            "data": 2
           }
         ]
       }
@@ -26,7 +27,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_steaite"
+      "has_endritch"
     ]
   ]
 }
