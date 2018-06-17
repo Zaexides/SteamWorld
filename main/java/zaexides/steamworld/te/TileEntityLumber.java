@@ -16,8 +16,6 @@ import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockLog;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.audio.Sound;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryHelper;
@@ -153,7 +151,7 @@ public class TileEntityLumber extends TileEntityMachine implements ITickable
 				
 				dropStack.grow(dropStack.getCount() * (production - 1));
 				
-				ItemStack stack = ItemHandlerHelper.insertItemStacked(outputStack, dropStack, false);
+				ItemStack stack = outputStack.insertItemStacked(dropStack, false);
 				
 				if(!stack.isEmpty())
 					success = false;
@@ -200,7 +198,7 @@ public class TileEntityLumber extends TileEntityMachine implements ITickable
 					}
 				}
 				
-				ItemStack stack = ItemHandlerHelper.insertItemStacked(outputStack, dropStack, false);
+				ItemStack stack = outputStack.insertItemStacked(dropStack, false);
 				
 				if(!stack.isEmpty())
 					success = false;

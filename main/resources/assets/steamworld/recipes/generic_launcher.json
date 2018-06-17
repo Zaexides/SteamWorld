@@ -1,0 +1,39 @@
+{
+    "type": "forge:ore_shaped",
+    
+    "pattern":
+    [
+        "ipi",
+        "ibi",
+        "iri"
+    ],
+    
+    "key":
+    {
+        "i":
+        {
+            "type": "forge:ore_dict",
+            "ore": "ingotAncite"
+        },
+        "p":
+        {
+            "item": "minecraft:stone_pressure_plate"
+        },
+        "b":
+        {
+            "item": "minecraft:bucket"
+        },
+        "r":
+        {
+            "type": "forge:ore_dict",
+            "ore": "dustRedstone"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:generic_machine",
+        "data": 1,
+        "count": 1
+    }
+}

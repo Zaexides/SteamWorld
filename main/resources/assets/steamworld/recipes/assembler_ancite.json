@@ -1,5 +1,5 @@
 {
-    "type": "minecraft:crafting_shaped",
+    "type": "forge:ore_shaped",
     
     "pattern":
     [
@@ -12,11 +12,13 @@
     {
         "i":
         {
-            "item": "minecraft:iron_block"
+            "type": "forge:ore_dict",
+            "ore": "blockIron"
         },
         "d":
         {
-            "item": "minecraft:diamond"
+            "type": "forge:ore_dict",
+            "ore": "gemDiamond"
         },
         "c":
         {
@@ -28,7 +30,8 @@
         },
         "a":
         {
-            "item": "steamworld:ingot", "data": 1
+            "type": "forge:ore_dict",
+            "ore": "ingotAncite"
         }
     },
     
