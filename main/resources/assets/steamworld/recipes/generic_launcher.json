@@ -3,22 +3,25 @@
     
     "pattern":
     [
-        "sds",
-        "drd",
-        "sds"
+        "ipi",
+        "ibi",
+        "iri"
     ],
     
     "key":
     {
-        "d":
+        "i":
         {
             "type": "forge:ore_dict",
-            "ore": "gemDiamond"
+            "ore": "ingotAncite"
         },
-        "s":
+        "p":
         {
-            "type": "forge:ore_dict",
-            "ore": "ingotSteaite"
+            "item": "minecraft:stone_pressure_plate"
+        },
+        "b":
+        {
+            "item": "minecraft:bucket"
         },
         "r":
         {
@@ -29,7 +32,8 @@
     
     "result":
     {
-        "item": "steamworld:steaite_crystal",
+        "item": "steamworld:generic_machine",
+        "data": 1,
         "count": 1
     }
 }
