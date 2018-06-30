@@ -44,7 +44,7 @@ public class BlockDynamo extends SteamWorldBlock implements ITileEntityProvider,
 	
 	public BlockDynamo(String name, float hardness) 
 	{
-		super(name, Material.IRON, hardness);
+		super(name, Material.IRON, hardness, SteamWorld.CREATIVETAB_UTILITY);
 	}
 
 	@Override

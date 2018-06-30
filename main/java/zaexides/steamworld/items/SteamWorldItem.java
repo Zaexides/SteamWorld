@@ -10,17 +10,28 @@ import zaexides.steamworld.utility.interfaces.IModeledObject;
 
 public class SteamWorldItem extends Item implements IModeledObject
 {
-	public SteamWorldItem(String name) 
+	public SteamWorldItem(String name)
 	{
 		super();
 		Construct(name);
 	}
 	
+	public SteamWorldItem(String name, CreativeTabs creativeTabs) 
+	{
+		super();
+		Construct(name, creativeTabs);
+	}
+	
 	private void Construct(String name)
+	{
+		Construct(name, SteamWorld.CREATIVETAB_ITEMS);
+	}
+	
+	private void Construct(String name, CreativeTabs creativeTabs)
 	{
 		setUnlocalizedName(ModInfo.MODID + "." + name);
 		setRegistryName(name);
-		setCreativeTab(SteamWorld.CREATIVETAB);
+		setCreativeTab(creativeTabs);
 		
 		ItemInitializer.ITEMS.add(this);
 	}

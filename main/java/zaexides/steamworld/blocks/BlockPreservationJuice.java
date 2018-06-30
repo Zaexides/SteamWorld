@@ -53,7 +53,7 @@ public class BlockPreservationJuice extends BlockFluidClassic implements IModele
 		super(FluidPreservation.fluidPreservation, Material.WATER);
 		setRegistryName("preservationLiquid");
 		setUnlocalizedName(ModInfo.MODID + ".preservationLiquid");
-		setCreativeTab(SteamWorld.CREATIVETAB);
+		setCreativeTab(SteamWorld.CREATIVETAB_BLOCKS);
 		
 		BlockInitializer.BLOCKS.add(this);
 	}

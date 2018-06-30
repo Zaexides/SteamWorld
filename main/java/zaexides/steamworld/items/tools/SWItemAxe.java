@@ -13,7 +13,7 @@ public class SWItemAxe extends ItemAxe implements IModeledObject
 		super(material, damage, speed);
 		setUnlocalizedName(ModInfo.MODID + "." + name);
 		setRegistryName(name);
-		setCreativeTab(SteamWorld.CREATIVETAB);
+		setCreativeTab(SteamWorld.CREATIVETAB_UTILITY);
 		
 		ItemInitializer.ITEMS.add(this);
 	}

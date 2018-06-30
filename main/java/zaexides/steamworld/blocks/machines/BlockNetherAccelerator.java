@@ -11,6 +11,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.SteamWorldBlock;
 import zaexides.steamworld.init.ItemInitializer;
 import zaexides.steamworld.te.TileEntityNetherAccelerator;
@@ -19,7 +20,7 @@ public class BlockNetherAccelerator extends SteamWorldBlock implements ITileEnti
 {
 	public BlockNetherAccelerator(String name, Material material, float hardness) 
 	{
-		super(name, material, hardness);
+		super(name, material, hardness, SteamWorld.CREATIVETAB_UTILITY);
 	}
 
 	@Override

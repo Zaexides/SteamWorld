@@ -44,7 +44,7 @@ public class BlockAncite extends Block implements IMetaName, IModeledObject, IOr
 		setRegistryName(name);
 		setHarvestLevel("pickaxe", 3);
 		setHardness(4.2f);
-		setCreativeTab(SteamWorld.CREATIVETAB);
+		setCreativeTab(SteamWorld.CREATIVETAB_BLOCKS);
 		
 		setDefaultState(blockState.getBaseState().withProperty(VARIANT, BlockAncite.EnumType.BRICKS));
 		

@@ -17,7 +17,7 @@ public class BlockSWStairs extends BlockStairs implements IModeledObject
 		super(modelState);
 		setUnlocalizedName(ModInfo.MODID + "." + name);
 		setRegistryName(name);
-		setCreativeTab(SteamWorld.CREATIVETAB);
+		setCreativeTab(SteamWorld.CREATIVETAB_BLOCKS);
 		
 		BlockInitializer.BLOCKS.add(this);
 		AddItemBlock(64);

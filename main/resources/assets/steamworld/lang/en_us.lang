@@ -3,7 +3,9 @@
 ######################
 # Creative Tab Names #
 ######################
-itemGroup.steamworld=SteamWorld
+itemGroup.steamworld_items=SteamWorld Items
+itemGroup.steamworld_utility=SteamWorld Machines & Tools
+itemGroup.steamworld_blocks=SteamWorld Blocks
 
 ###############
 # Block Names #

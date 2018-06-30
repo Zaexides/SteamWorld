@@ -33,7 +33,7 @@ public class BlockSteam extends BlockFluidFinite implements IModeledObject
 		super(FluidSteam.fluidSteam, new MaterialLiquid(MapColor.WHITE_STAINED_HARDENED_CLAY));
 		setRegistryName("steam");
 		setUnlocalizedName(ModInfo.MODID + ".steam");
-		setCreativeTab(SteamWorld.CREATIVETAB);
+		setCreativeTab(SteamWorld.CREATIVETAB_BLOCKS);
 		
 		BlockInitializer.BLOCKS.add(this);
 	}

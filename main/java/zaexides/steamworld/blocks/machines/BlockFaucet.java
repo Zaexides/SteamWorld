@@ -21,6 +21,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.SteamWorldBlock;
 import zaexides.steamworld.te.TileEntityDrain;
 import zaexides.steamworld.te.TileEntityFaucet;
@@ -31,7 +32,7 @@ public class BlockFaucet extends SteamWorldBlock implements ITileEntityProvider,
 	
 	public BlockFaucet() 
 	{
-		super("block_faucet", Material.IRON, 2.5f);
+		super("block_faucet", Material.IRON, 2.5f, SteamWorld.CREATIVETAB_UTILITY);
 		setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 	}
 	

@@ -21,6 +21,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.SteamWorldBlock;
 import zaexides.steamworld.te.TileEntityDrain;
 
@@ -30,7 +31,7 @@ public class BlockDrain extends SteamWorldBlock implements ITileEntityProvider, 
 	
 	public BlockDrain() 
 	{
-		super("block_drain", Material.IRON, 2.5f);
+		super("block_drain", Material.IRON, 2.5f, SteamWorld.CREATIVETAB_UTILITY);
 		setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 	}
 	

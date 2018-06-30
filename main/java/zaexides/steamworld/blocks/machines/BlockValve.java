@@ -19,6 +19,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.SteamWorldBlock;
 import zaexides.steamworld.te.TileEntityValve;
 
@@ -31,7 +32,7 @@ public class BlockValve extends SteamWorldBlock implements ITileEntityProvider, 
 
 	public BlockValve(String name, Material material, float hardness, int capacity, int speed)
 	{
-		super(name, material, hardness);
+		super(name, material, hardness, SteamWorld.CREATIVETAB_UTILITY);
 		setDefaultState(blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 		
 		this.capacity = capacity;

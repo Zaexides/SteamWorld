@@ -28,6 +28,12 @@ public class SteamWorldBlock extends Block implements IModeledObject
 		Construct(name, hardness, hardness * 5, 64);
 	}
 	
+	public SteamWorldBlock(String name, Material material, float hardness, CreativeTabs creativeTabs)
+	{
+		super(material);
+		Construct(name, hardness, hardness * 5, 64, creativeTabs);
+	}
+	
 	public SteamWorldBlock(String name, Material material, float hardness, float resistance)
 	{
 		super(material);
@@ -40,11 +46,22 @@ public class SteamWorldBlock extends Block implements IModeledObject
 		Construct(name, hardness, resistance, maxStackSize);
 	}
 	
+	public SteamWorldBlock(String name, Material material, float hardness, float resistance, int maxStackSize, CreativeTabs creativeTabs)
+	{
+		super(material);
+		Construct(name, hardness, resistance, maxStackSize, creativeTabs);
+	}
+	
 	private void Construct(String name, float hardness, float resistance, int maxStackSize)
+	{
+		Construct(name, hardness, resistance, maxStackSize, SteamWorld.CREATIVETAB_BLOCKS);
+	}
+	
+	private void Construct(String name, float hardness, float resistance, int maxStackSize, CreativeTabs creativeTabs)
 	{
 		setUnlocalizedName(ModInfo.MODID + "." + name);
 		setRegistryName(name);
-		setCreativeTab(SteamWorld.CREATIVETAB);
+		setCreativeTab(creativeTabs);
 		setHardness(hardness);
 		setResistance(resistance);
 		

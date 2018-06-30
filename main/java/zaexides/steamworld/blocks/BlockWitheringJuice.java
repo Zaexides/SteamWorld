@@ -54,7 +54,7 @@ public class BlockWitheringJuice extends BlockFluidClassic implements IModeledOb
 		super(FluidWithering.fluidWithering, Material.WATER);
 		setRegistryName("witheringLiquid");
 		setUnlocalizedName(ModInfo.MODID + ".witheringLiquid");
-		setCreativeTab(SteamWorld.CREATIVETAB);
+		setCreativeTab(SteamWorld.CREATIVETAB_BLOCKS);
 		
 		BlockInitializer.BLOCKS.add(this);
 	}

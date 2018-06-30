@@ -19,6 +19,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
+import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.SteamWorldBlock;
 import zaexides.steamworld.items.ItemUpgrade.EnumUpgradeType;
 import zaexides.steamworld.te.TileEntitySteamGenerator;
@@ -34,12 +35,12 @@ public class BlockMachine extends SteamWorldBlock implements IWrenchable, IUpgra
 	
 	public BlockMachine(String name, Material material, float hardness)
 	{
-		super(name, material, hardness);
+		super(name, material, hardness, hardness * 5, 64, SteamWorld.CREATIVETAB_UTILITY);
 	}
 	
 	public BlockMachine(String name, Material material, float hardness, float resistance)
 	{
-		super(name, material, hardness, resistance);
+		super(name, material, hardness, resistance, 64, SteamWorld.CREATIVETAB_UTILITY);
 	}
 	
 	@Override

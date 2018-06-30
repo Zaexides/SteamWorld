@@ -47,7 +47,7 @@ public class BlockCrystal extends Block implements IMetaName, IModeledObject
 		setUnlocalizedName(ModInfo.MODID + "." + name);
 		setRegistryName(name);
 		setHarvestLevels();
-		setCreativeTab(SteamWorld.CREATIVETAB);
+		setCreativeTab(SteamWorld.CREATIVETAB_BLOCKS);
 		setSoundType(SoundType.GLASS);
 		setLightLevel(0.05f);
 		

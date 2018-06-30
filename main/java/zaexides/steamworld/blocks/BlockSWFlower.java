@@ -50,7 +50,7 @@ public class BlockSWFlower extends BlockBush implements IMetaName, IModeledObjec
 	{
 		setUnlocalizedName(ModInfo.MODID + "." + name);
 		setRegistryName(name);
-		setCreativeTab(SteamWorld.CREATIVETAB);
+		setCreativeTab(SteamWorld.CREATIVETAB_BLOCKS);
 		setSoundType(SoundType.PLANT);
 		
 		setDefaultState(blockState.getBaseState().withProperty(VARIANT, BlockSWFlower.EnumType.WITHER));

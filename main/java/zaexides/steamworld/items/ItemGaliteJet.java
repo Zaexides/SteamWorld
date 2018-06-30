@@ -25,7 +25,7 @@ public class ItemGaliteJet extends SteamWorldItem
 {
 	public ItemGaliteJet(String name) 
 	{
-		super(name);
+		super(name, SteamWorld.CREATIVETAB_UTILITY);
 		maxStackSize = 1;
 		
 		addPropertyOverride(new ResourceLocation(ModInfo.MODID, "active"), new IItemPropertyGetter() 

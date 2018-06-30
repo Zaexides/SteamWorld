@@ -13,7 +13,7 @@ public class SWItemShovel extends ItemSpade implements IModeledObject
 		super(material);
 		setUnlocalizedName(ModInfo.MODID + "." + name);
 		setRegistryName(name);
-		setCreativeTab(SteamWorld.CREATIVETAB);
+		setCreativeTab(SteamWorld.CREATIVETAB_UTILITY);
 		
 		ItemInitializer.ITEMS.add(this);
 	}

@@ -44,7 +44,7 @@ public class BlockSteamGeneratorElectric extends SteamWorldBlock implements ITil
 	
 	public BlockSteamGeneratorElectric(String name, float hardness) 
 	{
-		super(name, Material.IRON, hardness);
+		super(name, Material.IRON, hardness, SteamWorld.CREATIVETAB_UTILITY);
 	}
 
 	@Override

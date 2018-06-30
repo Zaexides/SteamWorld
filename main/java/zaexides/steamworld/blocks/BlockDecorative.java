@@ -46,7 +46,7 @@ public class BlockDecorative extends Block implements IMetaName, IModeledObject,
 		setUnlocalizedName(ModInfo.MODID + "." + name);
 		setRegistryName(name);
 		setHarvestLevels();
-		setCreativeTab(SteamWorld.CREATIVETAB);
+		setCreativeTab(SteamWorld.CREATIVETAB_BLOCKS);
 		
 		setDefaultState(blockState.getBaseState().withProperty(VARIANT, BlockDecorative.EnumType.ENDRITCH_BLOCK));
 		

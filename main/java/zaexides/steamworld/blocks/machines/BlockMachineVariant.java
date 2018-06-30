@@ -59,7 +59,7 @@ public class BlockMachineVariant extends Block implements IMetaName, IModeledObj
 		setUnlocalizedName(ModInfo.MODID + "." + name);
 		setRegistryName(name);
 		setHardness(hardness);
-		setCreativeTab(SteamWorld.CREATIVETAB);
+		setCreativeTab(SteamWorld.CREATIVETAB_UTILITY);
 		
 		setDefaultState(blockState.getBaseState().withProperty(VARIANT, BlockMachineVariant.EnumType.TELEPORTER));
 		

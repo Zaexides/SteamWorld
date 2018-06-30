@@ -44,7 +44,7 @@ public class SteamWorldBlockOre extends Block implements IMetaName, IModeledObje
 		setUnlocalizedName(ModInfo.MODID + "." + name);
 		setRegistryName(name);
 		setHarvestLevels();
-		setCreativeTab(SteamWorld.CREATIVETAB);
+		setCreativeTab(SteamWorld.CREATIVETAB_BLOCKS);
 		
 		setDefaultState(blockState.getBaseState().withProperty(VARIANT, EnumType.OVERWORLD_STEAITE));
 		

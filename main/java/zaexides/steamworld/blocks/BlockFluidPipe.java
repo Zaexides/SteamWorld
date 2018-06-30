@@ -67,7 +67,7 @@ public class BlockFluidPipe extends Block implements IItemModeledObject, IModele
 		super(Material.IRON);
 		setUnlocalizedName(ModInfo.MODID + ".block_pipe");
 		setRegistryName("block_pipe");
-		setCreativeTab(SteamWorld.CREATIVETAB);
+		setCreativeTab(SteamWorld.CREATIVETAB_UTILITY);
 		setHardness(2.0f);
 		
 		BlockInitializer.BLOCKS.add(this);

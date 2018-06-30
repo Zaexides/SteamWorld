@@ -29,7 +29,7 @@ public class ItemUpgrade extends SteamWorldItem implements IModeledObject
 	
 	public ItemUpgrade(String name) 
 	{
-		super(name);
+		super(name, SteamWorld.CREATIVETAB_UTILITY);
 		this.name = name;
 		setMaxDamage(0);
 		setHasSubtypes(true);

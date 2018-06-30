@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.common.MinecraftForge;
@@ -23,6 +24,8 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import scala.collection.generic.BitOperations.Int;
 import scala.reflect.internal.Trees.New;
 import scala.tools.nsc.doc.model.Public;
+import zaexides.steamworld.init.BlockInitializer;
+import zaexides.steamworld.init.ItemInitializer;
 import zaexides.steamworld.integration.tc.TCMaterials;
 import zaexides.steamworld.proxy.CommonProxy;
 
@@ -38,7 +41,9 @@ import zaexides.steamworld.proxy.CommonProxy;
 public class SteamWorld
 {
     public static Logger logger;
-    public static final CreativeTabs CREATIVETAB = new CreativeTab("steamworld");
+    public static final CreativeTabs CREATIVETAB_ITEMS = new CreativeTab("steamworld_items", 0);
+    public static final CreativeTabs CREATIVETAB_UTILITY = new CreativeTab("steamworld_utility", 1);
+    public static final CreativeTabs CREATIVETAB_BLOCKS = new CreativeTab("steamworld_blocks", 2);
     
     @SidedProxy(clientSide = ModInfo.CLIENT_PROXY, serverSide = ModInfo.COMMON_PROXY)
     public static CommonProxy proxy;
