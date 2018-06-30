@@ -44,6 +44,8 @@ public class TileEntitySteamGeneratorNether extends SyncedTileEntity implements 
 				@Override
 				public boolean canFillFluidType(net.minecraftforge.fluids.FluidStack fluid)
 				{
+					if(fluid == null)
+						return false;
 					return fluid.getFluid() == FluidRegistry.WATER;
 				};
 			};

@@ -13,6 +13,8 @@ public class SteamWorldSteamTank extends SteamWorldFluidTank
 	@Override
 	public boolean canFillFluidType(net.minecraftforge.fluids.FluidStack fluid) 
 	{
+		if(fluid == null)
+			return false;
 		return FluidRegistry.getFluidName(fluid).endsWith("steam");
 	}
 }

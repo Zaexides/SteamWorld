@@ -16,6 +16,7 @@ import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import zaexides.steamworld.ConfigHandler;
 import zaexides.steamworld.te.SyncedTileEntity;
 import zaexides.steamworld.utility.capability.SteamWorldFluidTank;
+import zaexides.steamworld.utility.capability.SteamWorldSteamTank;
 
 public class TileEntityDynamo extends SyncedTileEntity implements ITickable, ICapabilityProvider
 {
@@ -23,14 +24,7 @@ public class TileEntityDynamo extends SyncedTileEntity implements ITickable, ICa
 	{
 		public boolean canReceive() {return false;};
 	};
-	public SteamWorldFluidTank steamTank = new SteamWorldFluidTank(Fluid.BUCKET_VOLUME * 4, this)
-	{
-		@Override
-		public boolean canFillFluidType(net.minecraftforge.fluids.FluidStack fluid) 
-		{
-			return FluidRegistry.getFluidName(fluid).endsWith("steam");
-		};
-	};
+	public SteamWorldSteamTank steamTank = new SteamWorldSteamTank(Fluid.BUCKET_VOLUME * 4, this);
 	
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) 

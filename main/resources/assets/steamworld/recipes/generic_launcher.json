@@ -5,7 +5,7 @@
     [
         "ipi",
         "ibi",
-        "iri"
+        "idi"
     ],
     
     "key":
@@ -23,10 +23,9 @@
         {
             "item": "minecraft:bucket"
         },
-        "r":
+        "d":
         {
-            "type": "forge:ore_dict",
-            "ore": "dustRedstone"
+            "item": "minecraft:dispenser"
         }
     },
     
