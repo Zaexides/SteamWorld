@@ -5,7 +5,7 @@
     [
         "ifi",
         "imi",
-        "bnb"
+        "bMb"
     ],
     
     "key":
@@ -27,9 +27,9 @@
             "type": "forge:ore_dict",
             "ore": "blockAncite"
         },
-        "n":
+        "M":
         {
-            "item": "minecraft:netherrack"
+            "item": "minecraft:magma"
         }
     },
     
