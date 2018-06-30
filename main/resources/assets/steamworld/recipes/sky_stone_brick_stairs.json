@@ -3,23 +3,23 @@
     
     "pattern":
     [
-        "ss",
-        "ss"
+        "b  ",
+        "bb ",
+        "bbb"
     ],
     
     "key":
     {
-        "s":
+        "b":
         {
             "item": "steamworld:block_decorative",
-            "data": 2
+            "data": 4
         }
     },
     
     "result":
     {
-        "item": "steamworld:block_decorative",
-        "data": 4,
+        "item": "steamworld:stairs_sky_bricks",
         "count": 4
     }
 }

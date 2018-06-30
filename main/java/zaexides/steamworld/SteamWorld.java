@@ -42,8 +42,8 @@ public class SteamWorld
 {
     public static Logger logger;
     public static final CreativeTabs CREATIVETAB_ITEMS = new CreativeTab("steamworld_items", 0);
-    public static final CreativeTabs CREATIVETAB_UTILITY = new CreativeTab("steamworld_utility", 1);
     public static final CreativeTabs CREATIVETAB_BLOCKS = new CreativeTab("steamworld_blocks", 2);
+    public static final CreativeTabs CREATIVETAB_UTILITY = new CreativeTab("steamworld_utility", 1);
     
     @SidedProxy(clientSide = ModInfo.CLIENT_PROXY, serverSide = ModInfo.COMMON_PROXY)
     public static CommonProxy proxy;
