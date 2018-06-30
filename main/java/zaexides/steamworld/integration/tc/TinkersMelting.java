@@ -53,7 +53,7 @@ public class TinkersMelting
 		territeFluid = addTinkerFluid("Territe", 0xBADD52F9, STONE_STILL_TEXTURE, STONE_FLOW_TEXTURE).setTemperature(877).setViscosity(9246).setDensity(4254).setLuminosity(0);
 		essenFluid = addTinkerFluid("Essen", 0xFF4D2FB0).setTemperature(929).setViscosity(6883).setDensity(7017).setLuminosity(5);
 		
-		addTinkerAlloy(new FluidStack(galiteFluid, 1), new FluidStack(territeFluid, 1), new FluidStack(essenFluid, 1)); //Don't ask how this works. Just don't.
+		addTinkerAlloy(new FluidStack(galiteFluid, 1), new FluidStack(territeFluid, 1), new FluidStack(essenFluid, 2));
 	}
 	
 	private static Fluid addTinkerFluid(String oreName, int fluidColor)
