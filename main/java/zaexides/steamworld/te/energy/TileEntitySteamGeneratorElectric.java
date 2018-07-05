@@ -129,7 +129,7 @@ public class TileEntitySteamGeneratorElectric extends SyncedTileEntity implement
 	
 	private boolean MakeSteam(int amount)
 	{
-		if(fluidIn.FluidAmount(FluidRegistry.WATER) >= amount)
+		if(fluidIn.FluidAmount(FluidRegistry.WATER) >= amount && fluidOut.getFluidAmount() < fluidOut.getCapacity())
 		{
 			fluidIn.allowDirtyMarking = false;
 			
