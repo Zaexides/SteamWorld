@@ -37,88 +37,20 @@ import zaexides.steamworld.fluids.FluidSteam;
 import zaexides.steamworld.utility.capability.FluidInputOutput;
 import zaexides.steamworld.utility.capability.SteamWorldFluidTank;
 
-public class TileEntitySteamGeneratorNether extends SyncedTileEntity implements ICapabilityProvider, ITickable
+public class TileEntitySteamGeneratorNether extends TileEntityBaseGenerator implements ICapabilityProvider, ITickable
 {
-	public SteamWorldFluidTank fluidIn = new SteamWorldFluidTank(Fluid.BUCKET_VOLUME * 4, this)
-			{
-				@Override
-				public boolean canFillFluidType(net.minecraftforge.fluids.FluidStack fluid)
-				{
-					if(fluid == null)
-						return false;
-					return fluid.getFluid() == FluidRegistry.WATER;
-				};
-			};
-	public SteamWorldFluidTank fluidOut = new SteamWorldFluidTank(Fluid.BUCKET_VOLUME * 4, this)
-			{
-				@Override
-				public boolean canFillFluidType(FluidStack fluid) { return false; };
-			};
-			
-	public FluidInputOutput fluidInOut = new FluidInputOutput(fluidIn, fluidOut);
-			
 	public boolean active = false;
 	private boolean remoteActive = false;
 	
 	private int updateTimer = 0;
 	private final int UPDATE_TIMER_MAX = 10;
-			
-	public TileEntitySteamGeneratorNether() 
-	{
-		fluidIn.setTileEntity(this);
-		fluidIn.allowDirtyMarking = true;
-		fluidOut.setTileEntity(this);
-	}
-	
-	@Override
-	public void readFromNBT(NBTTagCompound compound) 
-	{
-		super.readFromNBT(compound);
-		
-		if(compound.hasKey("fluidIn"))
-		{
-			fluidIn.readFromNBT((NBTTagCompound) compound.getTag("fluidIn"));
-		}
-		
-		if(compound.hasKey("fluidOut"))
-		{
-			fluidOut.readFromNBT((NBTTagCompound) compound.getTag("fluidOut"));
-		}
-	}
-	
-	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound compound) 
-	{
-		NBTTagCompound fluidInTag = new NBTTagCompound();
-		fluidIn.writeToNBT(fluidInTag);
-		compound.setTag("fluidIn", fluidInTag);
-		
-		NBTTagCompound fluidOutTag = new NBTTagCompound();
-		fluidOut.writeToNBT(fluidOutTag);
-		compound.setTag("fluidOut", fluidOutTag);
-		
-		return super.writeToNBT(compound);
-	}
-	
-	@Override
-	public boolean hasCapability(Capability<?> capability, EnumFacing facing)
-	{
-		if(capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
-			return true;
-		return super.hasCapability(capability, facing);
-	}
-	
-	@Override
-	public <T> T getCapability(Capability<T> capability, EnumFacing facing) 
-	{
-		if(capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
-			return CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY.cast(fluidInOut);
-		return super.getCapability(capability, facing);
-	}
 
 	@Override
 	public void update() 
 	{
+		if(efficiency != 2)
+			efficiency = 2;
+		
 		if(world.isRemote || isInvalid())
 			return;
 		
@@ -145,23 +77,6 @@ public class TileEntitySteamGeneratorNether extends SyncedTileEntity implements 
 			}
 			markDirty();
 			updateTimer = 0;
-		}
-	}
-	
-	private void MakeSteam()
-	{
-		if(fluidIn.FluidAmount(FluidRegistry.WATER) > 0)
-		{
-			fluidIn.allowDirtyMarking = false;
-			
-			int drainAmount = fluidIn.drain(2, false).amount;
-			
-			FluidStack fluidStack = new FluidStack(FluidSteam.fluidSteam, drainAmount);
-			int fillAmount = fluidOut.fillInternal(fluidStack, true);
-			
-			fluidIn.drain(fillAmount, true);
-			
-			fluidIn.allowDirtyMarking = true;
 		}
 	}
 }
