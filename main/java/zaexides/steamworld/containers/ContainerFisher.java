@@ -64,7 +64,7 @@ public class ContainerFisher extends SWContainer
 
             if (index < ownSlotCount) //Own > Player
             {
-                if (!this.mergeItemStack(itemstack1, playerSlotCount, playerSlotCountToolbar, true))
+                if (!this.mergeItemStack(itemstack1, ownSlotCount, playerSlotCountToolbar, true))
                 {
                     return ItemStack.EMPTY;
                 }
