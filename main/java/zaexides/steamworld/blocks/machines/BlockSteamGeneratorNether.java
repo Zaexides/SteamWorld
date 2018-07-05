@@ -39,6 +39,7 @@ import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.SteamWorldBlock;
 import zaexides.steamworld.fluids.FluidSteam;
 import zaexides.steamworld.gui.GuiHandler;
+import zaexides.steamworld.te.TileEntitySteamGenerator;
 import zaexides.steamworld.te.TileEntitySteamGeneratorNether;
 import zaexides.steamworld.te.TileEntityValve;
 
@@ -103,5 +104,11 @@ public class BlockSteamGeneratorNether extends BlockMachine implements ITileEnti
 	{
 		TileEntity tEntity = new TileEntitySteamGeneratorNether();
 		return tEntity;
+	}
+	
+	@Override
+	public void setMachineStats(TileEntity tileEntity) 
+	{
+		((TileEntitySteamGenerator)tileEntity).SetStats(4000, 2);
 	}
 }

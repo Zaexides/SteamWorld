@@ -155,8 +155,10 @@ item.steamworld.nugget_galite.name=Galite Nugget
 item.steamworld.nugget_essen.name=Essen Nugget
 
 # Upgrades
-item.steamworld.upgrade_ancite.name=MKII Upgrade
-item.steamworld.upgrade_endritch.name=MKIII Upgrade
+item.steamworld.upgrade_ancite.name=Ancite Upgrade
+item.steamworld.upgrade_endritch.name=Endritch Upgrade
+
+# Manuals
 item.steamworld.manual_steaite.name=SteamWorld Manual MKI
 item.steamworld.manual_ancite.name=SteamWorld Manual MKII
 item.steamworld.manual_endritch.name=SteamWorld Manual MKIII

@@ -17,48 +17,18 @@ import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import zaexides.steamworld.ConfigHandler;
 import zaexides.steamworld.fluids.FluidSteam;
 import zaexides.steamworld.te.SyncedTileEntity;
+import zaexides.steamworld.te.TileEntityBaseGenerator;
 import zaexides.steamworld.utility.capability.FluidInputOutput;
 import zaexides.steamworld.utility.capability.SteamWorldFluidTank;
 
-public class TileEntitySteamGeneratorElectric extends SyncedTileEntity implements ITickable, ICapabilityProvider
+public class TileEntitySteamGeneratorElectric extends TileEntityBaseGenerator implements ITickable, ICapabilityProvider
 {
 	public SWEnergyStorage energy = new SWEnergyStorage(20000);
-	public SteamWorldFluidTank fluidOut = new SteamWorldFluidTank(Fluid.BUCKET_VOLUME * 4, this)
-	{
-		@Override
-		public boolean canFillFluidType(FluidStack fluid) {return false;};
-	};
-	public SteamWorldFluidTank fluidIn = new SteamWorldFluidTank(Fluid.BUCKET_VOLUME * 4, this)
-	{
-		@Override
-		public boolean canFillFluidType(net.minecraftforge.fluids.FluidStack fluid)
-		{
-			if(fluid == null)
-				return false;
-			return fluid.getFluid() == FluidRegistry.WATER;
-		};
-	};
-	
-	public TileEntitySteamGeneratorElectric() 
-	{
-		fluidIn.allowDirtyMarking = true;
-	}
-	
-	public FluidInputOutput fluidInOut = new FluidInputOutput(fluidIn, fluidOut);
 	
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) 
 	{
 		compound.setInteger("energy", energy.getEnergyStored());
-		
-		NBTTagCompound fluidInTag = new NBTTagCompound();
-		fluidIn.writeToNBT(fluidInTag);
-		compound.setTag("fluidIn", fluidInTag);
-		
-		NBTTagCompound fluidOutTag = new NBTTagCompound();
-		fluidOut.writeToNBT(fluidOutTag);
-		compound.setTag("fluidOut", fluidOutTag);
-		
 		return super.writeToNBT(compound);
 	}
 	
@@ -67,22 +37,11 @@ public class TileEntitySteamGeneratorElectric extends SyncedTileEntity implement
 	{
 		super.readFromNBT(compound);
 		energy.setEnergy(compound.getInteger("energy"));
-		if(compound.hasKey("fluidIn"))
-		{
-			fluidIn.readFromNBT((NBTTagCompound) compound.getTag("fluidIn"));
-		}
-		
-		if(compound.hasKey("fluidOut"))
-		{
-			fluidOut.readFromNBT((NBTTagCompound) compound.getTag("fluidOut"));
-		}
 	}
 	
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) 
 	{
-		if(capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
-			return true;
 		if(capability == CapabilityEnergy.ENERGY)
 			return true;
 		return super.hasCapability(capability, facing);
@@ -91,8 +50,6 @@ public class TileEntitySteamGeneratorElectric extends SyncedTileEntity implement
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) 
 	{
-		if(capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY)
-			return CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY.cast(fluidInOut);
 		if(capability == CapabilityEnergy.ENERGY)
 			return CapabilityEnergy.ENERGY.cast(energy);
 		return super.getCapability(capability, facing);
@@ -125,23 +82,5 @@ public class TileEntitySteamGeneratorElectric extends SyncedTileEntity implement
 		}
 		
 		markDirty();
-	}
-	
-	private boolean MakeSteam(int amount)
-	{
-		if(fluidIn.FluidAmount(FluidRegistry.WATER) >= amount)
-		{
-			fluidIn.allowDirtyMarking = false;
-			
-			int drainAmount = fluidIn.drain(amount, false).amount;
-			
-			FluidStack fluidStack = new FluidStack(FluidSteam.fluidSteam, drainAmount);
-			int fillAmount = fluidOut.fillInternal(fluidStack, true);
-			fluidIn.drain(fillAmount, true);
-			
-			fluidIn.allowDirtyMarking = true;
-			return drainAmount > 0;
-		}
-		return false;
 	}
 }
