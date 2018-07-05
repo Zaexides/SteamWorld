@@ -13,7 +13,6 @@ import zaexides.steamworld.containers.ContainerFisher;
 import zaexides.steamworld.containers.ContainerSimple;
 import zaexides.steamworld.containers.ContainerSteamFurnace;
 import zaexides.steamworld.containers.ContainerSteamGenerator;
-import zaexides.steamworld.containers.ContainerSteamGeneratorNether;
 import zaexides.steamworld.containers.ContainerSteamGrinder;
 import zaexides.steamworld.gui.energy.GuiDynamo;
 import zaexides.steamworld.gui.energy.GuiSteamGeneratorElectric;
@@ -62,7 +61,7 @@ public class GuiHandler implements IGuiHandler
 		case STEAM_GENERATOR:
 			return new ContainerSteamGenerator(player.inventory, (TileEntitySteamGenerator) world.getTileEntity(new BlockPos(x,y,z)));
 		case STEAM_GENERATOR_NETHER:
-			return new ContainerSteamGeneratorNether(player.inventory, (TileEntitySteamGeneratorNether) world.getTileEntity(new BlockPos(x,y,z)));
+			return new ContainerSimple(player, player.inventory, world.getTileEntity(new BlockPos(x,y,z)));
 		case STEAM_FURNACE:
 			return new ContainerSteamFurnace(player, player.inventory, (TileEntitySWFurnace) world.getTileEntity(new BlockPos(x,y,z)));
 		case STEAM_GRINDER:
@@ -94,7 +93,7 @@ public class GuiHandler implements IGuiHandler
 		case STEAM_GENERATOR:
 			return new GuiSteamGenerator(player.inventory, (TileEntitySteamGenerator) world.getTileEntity(new BlockPos(x,y,z)));
 		case STEAM_GENERATOR_NETHER:
-			return new GuiSteamGeneratorNether(player.inventory, (TileEntitySteamGeneratorNether) world.getTileEntity(new BlockPos(x,y,z)));
+			return new GuiSteamGeneratorNether(player, player.inventory, (TileEntitySteamGeneratorNether) world.getTileEntity(new BlockPos(x,y,z)));
 		case STEAM_FURNACE:
 			return new GuiSteamFurnace(player, player.inventory, (TileEntitySWFurnace) world.getTileEntity(new BlockPos(x,y,z)));
 		case STEAM_GRINDER:

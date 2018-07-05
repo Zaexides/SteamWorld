@@ -3,13 +3,14 @@ package zaexides.steamworld.gui;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.client.config.GuiUtils;
 import scala.collection.generic.BitOperations.Int;
 import zaexides.steamworld.ModInfo;
-import zaexides.steamworld.containers.ContainerSteamGeneratorNether;
+import zaexides.steamworld.containers.ContainerSimple;
 import zaexides.steamworld.te.TileEntitySteamGeneratorNether;
 import zaexides.steamworld.utility.SWGuiUtil;
 import zaexides.steamworld.utility.interfaces.IGuiContainerUtil;
@@ -19,9 +20,9 @@ public class GuiSteamGeneratorNether extends GuiContainer implements IGuiContain
 	private TileEntitySteamGeneratorNether tileEntity;
 	private IInventory playerInv;
 	
-	public GuiSteamGeneratorNether(IInventory playerInv, TileEntitySteamGeneratorNether tileEntity) 
+	public GuiSteamGeneratorNether(EntityPlayer player, IInventory playerInv, TileEntitySteamGeneratorNether tileEntity) 
 	{
-		super(new ContainerSteamGeneratorNether(playerInv, tileEntity));
+		super(new ContainerSimple(player, playerInv, tileEntity));
 		
 		xSize = 176;
 		ySize = 165;

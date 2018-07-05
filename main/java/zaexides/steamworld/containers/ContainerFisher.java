@@ -48,61 +48,7 @@ public class ContainerFisher extends SWContainer
 	}
 	
 	@Override
-	public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
-    {
-		ItemStack itemstack = ItemStack.EMPTY;
-        Slot slot = this.inventorySlots.get(index);
-        
-        int ownSlotCount = handlerOut.getSlots();
-        int playerSlotCountToolbar = ownSlotCount + playerIn.inventory.mainInventory.size();
-        int playerSlotCount = playerSlotCountToolbar - 9;
-
-        if (slot != null && slot.getHasStack())
-        {
-            ItemStack itemstack1 = slot.getStack();
-            itemstack = itemstack1.copy();
-
-            if (index < ownSlotCount) //Own > Player
-            {
-                if (!this.mergeItemStack(itemstack1, ownSlotCount, playerSlotCountToolbar, true))
-                {
-                    return ItemStack.EMPTY;
-                }
-
-                slot.onSlotChange(itemstack1, itemstack);
-            }
-            else //Player > Own
-            {
-            	if (index >= ownSlotCount && index < playerSlotCount)
-                {
-                    if (!this.mergeItemStack(itemstack1, playerSlotCount, playerSlotCountToolbar, false))
-                    {
-                        return ItemStack.EMPTY;
-                    }
-                }
-                else if (index >= playerSlotCount && index < playerSlotCountToolbar && !this.mergeItemStack(itemstack1, ownSlotCount, playerSlotCount, false))
-                {
-                    return ItemStack.EMPTY;
-                }
-            }
-
-            if (itemstack1.isEmpty())
-            {
-                slot.putStack(ItemStack.EMPTY);
-            }
-            else
-            {
-                slot.onSlotChanged();
-            }
-
-            if (itemstack1.getCount() == itemstack.getCount())
-            {
-                return ItemStack.EMPTY;
-            }
-
-            slot.onTake(playerIn, itemstack1);
-        }
-
-        return itemstack;
-    }
+	public int GetOwnSlots() {
+		return handlerOut.getSlots();
+	}
 }
