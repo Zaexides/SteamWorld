@@ -28,6 +28,11 @@
             {
                 "textures": { "front": "steamworld:blocks/machines/machine_generator_nether_active" }
             }
+        },
+        "high_tier":
+        {
+            "false": {},
+            "true": {}
         }
     }
 }

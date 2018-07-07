@@ -150,7 +150,7 @@ public class RegistryHandler
 		GameRegistry.addSmelting(new ItemStack(ItemInitializer.METAL_DUST, 1, ItemDust.EnumVarietyMaterial.ANCITE.getMeta()), new ItemStack(ItemInitializer.INGOT, 1, SWItemIngot.EnumVarietyMaterial.ANCITE.getMeta()), 1.5f);
 		GameRegistry.addSmelting(new ItemStack(BlockInitializer.BLOCK_DECORATIVE, 1, BlockDecorative.EnumType.SKY_COBBLE.getMeta()), new ItemStack(BlockInitializer.BLOCK_DECORATIVE, 1, BlockDecorative.EnumType.SKY_STONE.getMeta()), FurnaceRecipes.instance().getSmeltingExperience(new ItemStack(Blocks.COBBLESTONE)));
 		GameRegistry.addSmelting(new ItemStack(ItemInitializer.METAL_DUST, 1, ItemDust.EnumVarietyMaterial.GALITE.getMeta()), new ItemStack(ItemInitializer.INGOT, 1, SWItemIngot.EnumVarietyMaterial.GALITE.getMeta()), 2.0f);
-		GameRegistry.addSmelting(new ItemStack(ItemInitializer.METAL_DUST, 2, ItemDust.EnumVarietyMaterial.ESSEN.getMeta()), new ItemStack(ItemInitializer.INGOT, 1, SWItemIngot.EnumVarietyMaterial.ESSEN.getMeta()), 0.1f);
+		GameRegistry.addSmelting(new ItemStack(ItemInitializer.METAL_DUST, 1, ItemDust.EnumVarietyMaterial.ESSEN.getMeta()), new ItemStack(ItemInitializer.INGOT, 1, SWItemIngot.EnumVarietyMaterial.ESSEN.getMeta()), 0.1f);
 	
 		GameRegistry.addSmelting(new ItemStack(BlockInitializer.ORE, 1, SteamWorldBlockOre.EnumType.SKY_COAL.getMeta()), new ItemStack(Items.COAL), FurnaceRecipes.instance().getSmeltingExperience(new ItemStack(Items.COAL)));
 		GameRegistry.addSmelting(new ItemStack(BlockInitializer.ORE, 1, SteamWorldBlockOre.EnumType.SKY_IRON.getMeta()), new ItemStack(Items.IRON_INGOT), FurnaceRecipes.instance().getSmeltingExperience(new ItemStack(Items.IRON_INGOT)));

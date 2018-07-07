@@ -1,0 +1,36 @@
+{
+    "type": "forge:ore_shaped",
+    
+    "pattern":
+    [
+        "nrn",
+        "nin",
+        "nin"
+    ],
+    
+    "key":
+    {
+        "i":
+        {
+            "type": "forge:ore_dict",
+            "ore": "ingotEssen"
+        },
+        "n":
+        {
+            "type": "forge:ore_dict",
+            "ore": "nuggetEssen"
+        },
+        "r":
+        {
+            "type": "forge:ore_dict",
+            "ore": "dustRedstone"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:generic_material",
+        "data": 1,
+        "count": 5
+    }
+}

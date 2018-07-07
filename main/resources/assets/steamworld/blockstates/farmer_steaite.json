@@ -28,6 +28,11 @@
             {
                 "textures": { "front": "steamworld:blocks/machines/machine_farmer_on" }
             }
+        },
+        "high_tier":
+        {
+            "false": {},
+            "true": {}
         }
     }
 }

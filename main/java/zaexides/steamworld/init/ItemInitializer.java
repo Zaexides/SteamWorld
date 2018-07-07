@@ -10,6 +10,7 @@ import zaexides.steamworld.items.ItemBookManual;
 import zaexides.steamworld.items.ItemCrystal;
 import zaexides.steamworld.items.ItemDust;
 import zaexides.steamworld.items.ItemGaliteJet;
+import zaexides.steamworld.items.ItemMaterial;
 import zaexides.steamworld.items.ItemTreasure;
 import zaexides.steamworld.items.ItemUpgrade;
 import zaexides.steamworld.items.ItemWrench;
@@ -46,6 +47,7 @@ public class ItemInitializer
 	public static final ItemDust METAL_DUST = new ItemDust("dust");
 	public static final SWItemNugget ITEM_NUGGET = new SWItemNugget("nugget");
 	public static final ItemUpgrade UPGRADE = new ItemUpgrade("upgrade");
+	public static final ItemMaterial GENERIC_MATERIAL = new ItemMaterial("generic_material");
 	
 	public static final ItemBookManual BOOK_MANUAL = new ItemBookManual("manual");
 	

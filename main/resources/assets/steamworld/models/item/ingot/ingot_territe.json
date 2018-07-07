@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "steamworld:items/gem_territe"
+        "layer0": "steamworld:items/ingot/gem_territe"
     }
 }

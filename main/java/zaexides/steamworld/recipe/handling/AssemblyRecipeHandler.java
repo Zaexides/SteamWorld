@@ -16,6 +16,7 @@ import zaexides.steamworld.blocks.BlockDecorative;
 import zaexides.steamworld.blocks.machines.BlockMachineVariant;
 import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.init.ItemInitializer;
+import zaexides.steamworld.items.ItemMaterial;
 import zaexides.steamworld.items.ItemUpgrade;
 import zaexides.steamworld.items.SWItemIngot;
 import zaexides.steamworld.items.SWItemNugget;
@@ -63,8 +64,10 @@ public class AssemblyRecipeHandler
 		final RecipeInputItemStack ENDER_EYE_INPUT = new RecipeInputItemStack(new ItemStack(Items.ENDER_EYE));
 		final RecipeInputItemStack ENDRITCH_BLOCK_INPUT = new RecipeInputItemStack(new ItemStack(BlockInitializer.BLOCK_DECORATIVE, 1, BlockDecorative.EnumType.ENDRITCH_BLOCK.getMeta()));
 		final RecipeInputItemStack CHORUS_FRUIT = new RecipeInputItemStack(new ItemStack(Items.CHORUS_FRUIT));
+		final RecipeInputItemStack ADVANCED_MACHINE_PARTS = new RecipeInputItemStack(new ItemStack(ItemInitializer.GENERIC_MATERIAL, 1, ItemMaterial.EnumVarietyMaterial.ADVANCED_MACHINE_PARTS.getMeta()));
 		final RecipeInputOreDic COAL_BLOCK = new RecipeInputOreDic("blockCoal");
 		final RecipeInputOreDic NUGGET_ANCITE = new RecipeInputOreDic("nuggetAncite");
+		final RecipeInputOreDic PLATE_ESSEN = new RecipeInputOreDic("plateEssen");
 		
 		AssemblyRecipe recipeDiamond = new AssemblyRecipe(new ItemStack(Items.DIAMOND), 3000,
 				COAL_BLOCK,COAL_BLOCK,
@@ -121,6 +124,15 @@ public class AssemblyRecipeHandler
 				new RecipeInputOreDic("dustRedstone"),
 				new RecipeInputOreDic("dustRedstone"),
 				EMPTY_INPUT
+				);
+		
+		AssemblyRecipe recipeEssenUpgrade = new AssemblyRecipe(new ItemStack(ItemInitializer.UPGRADE, 1, ItemUpgrade.EnumUpgradeType.ESSEN.getMeta()), 1200,
+				PLATE_ESSEN,
+				ADVANCED_MACHINE_PARTS,
+				PLATE_ESSEN,
+				PLATE_ESSEN,
+				ADVANCED_MACHINE_PARTS,
+				PLATE_ESSEN
 				);
 	}
 }

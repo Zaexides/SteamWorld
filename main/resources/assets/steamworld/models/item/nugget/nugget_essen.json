@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "steamworld:items/nugget_essen"
+        "layer0": "steamworld:items/nugget/nugget_essen"
     }
 }

@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "steamworld:items/nugget_diamond"
+        "layer0": "steamworld:items/nugget/nugget_diamond"
     }
 }

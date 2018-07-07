@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "steamworld:items/ingot_essen"
+        "layer0": "steamworld:items/ingot/ingot_essen"
     }
 }

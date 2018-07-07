@@ -28,6 +28,11 @@
             {
                 "textures": { "front": "steamworld:blocks/machines/endritch/experience_on" }
             }
+        },
+        "high_tier":
+        {
+            "false": {},
+            "true": {}
         }
     }
 }

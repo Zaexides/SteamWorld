@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "steamworld:items/dust_steaite"
+        "layer0": "steamworld:items/dust/dust_steaite"
     }
 }

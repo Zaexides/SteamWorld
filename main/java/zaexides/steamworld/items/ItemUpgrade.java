@@ -92,7 +92,8 @@ public class ItemUpgrade extends SteamWorldItem implements IModeledObject
 	public static enum EnumUpgradeType implements IStringSerializable
 	{
 		ANCITE(0, "ancite"),
-		ENDRITCH(1, "endritch");
+		ENDRITCH(1, "endritch"),
+		ESSEN(2, "essen");
 		
 		private final int meta;
 		private final String name;

@@ -28,6 +28,7 @@ public class BlockMachine extends SteamWorldBlock implements IWrenchable, IUpgra
 {
 	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 	public static final PropertyBool ACTIVE = PropertyBool.create("active");
+	public static final PropertyBool HIGH_TIER = PropertyBool.create("high_tier");
 	protected boolean keepInventory;
 	
 	protected BlockMachine upgradeBlock;
@@ -55,7 +56,8 @@ public class BlockMachine extends SteamWorldBlock implements IWrenchable, IUpgra
 	{
 		return state
 				.withProperty(FACING, state.getValue(FACING))
-				.withProperty(ACTIVE, state.getValue(ACTIVE));
+				.withProperty(ACTIVE, state.getValue(ACTIVE))
+				.withProperty(HIGH_TIER, state.getValue(HIGH_TIER));
 	}
 	
 	@Override
@@ -63,19 +65,20 @@ public class BlockMachine extends SteamWorldBlock implements IWrenchable, IUpgra
 	{
 		return getDefaultState()
 				.withProperty(FACING, EnumFacing.getFront((meta & 3) + 2))
-				.withProperty(ACTIVE, (meta & 8) == 8);
+				.withProperty(ACTIVE, (meta & 8) == 8)
+				.withProperty(HIGH_TIER, (meta & 4) == 4);
 	}
 	
 	@Override
 	public int getMetaFromState(IBlockState state)
 	{
-		return state.getValue(FACING).getIndex()-2 + (state.getValue(ACTIVE) ? 8 : 0);
+		return state.getValue(FACING).getIndex()-2 + (state.getValue(ACTIVE) ? 8 : 0) + (state.getValue(HIGH_TIER) ? 4 : 0);
 	}
 	
 	@Override
 	protected BlockStateContainer createBlockState() 
 	{
-		return new BlockStateContainer(this, FACING, ACTIVE);
+		return new BlockStateContainer(this, FACING, ACTIVE, HIGH_TIER);
 	}
 	
 	public void UpdateState(World world, BlockPos pos, boolean active) 
@@ -85,7 +88,7 @@ public class BlockMachine extends SteamWorldBlock implements IWrenchable, IUpgra
 		IBlockState blockState = world.getBlockState(pos);
 		TileEntity tileEntity = world.getTileEntity(pos);
 		
-		world.setBlockState(pos, blockState.withProperty(FACING, blockState.getValue(FACING)).withProperty(ACTIVE, active));
+		world.setBlockState(pos, blockState.withProperty(FACING, blockState.getValue(FACING)).withProperty(ACTIVE, active).withProperty(HIGH_TIER, blockState.getValue(HIGH_TIER)));
 		
 		if (tileEntity != null)
         {

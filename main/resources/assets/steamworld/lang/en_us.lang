@@ -157,6 +157,7 @@ item.steamworld.nugget_essen.name=Essen Nugget
 # Upgrades
 item.steamworld.upgrade_ancite.name=Ancite Upgrade
 item.steamworld.upgrade_endritch.name=Endritch Upgrade
+item.steamworld.upgrade_essen.name=Essen Upgrade
 
 # Manuals
 item.steamworld.manual_steaite.name=SteamWorld Manual MKI
@@ -177,6 +178,8 @@ item.steamworld.territe_crystal.name=Territe Crystal
 item.steamworld.wrench.name=Steaite Wrench
 item.steamworld.treasure.name=Treasure Box
 item.steamworld.galite_jet.name=Galite Jet Orb
+item.steamworld.generic_material_plate_essen.name=Essen Plate
+item.steamworld.generic_material_advanced_machine_parts.name=Advanced Machine Parts
 
 #####################
 # Item Tooltip Text #
