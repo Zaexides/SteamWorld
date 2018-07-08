@@ -27,7 +27,8 @@
         },
         "m":
         {
-            "item": "steamworld:generator_steaite"
+            "item": "steamworld:generator_steaite",
+            "data": 0
         },
         "I":
         {

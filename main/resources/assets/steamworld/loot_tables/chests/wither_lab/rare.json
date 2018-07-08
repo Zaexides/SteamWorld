@@ -1,0 +1,29 @@
+{
+    "pools": 
+    [
+        {
+            "name": "wl_rare",
+            "rolls": 1,
+            "entries":
+            [
+                {
+                    "type": "item",
+                    "name": "minecraft:book",
+                    "weight": 50,
+                    "functions": [
+                        {
+                            "function": "enchant_with_levels",
+                            "levels": { "min": 1, "max": 5 },
+                            "treasure": true
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:air",
+                    "weight": 50
+                }
+            ]
+        }
+    ]
+}

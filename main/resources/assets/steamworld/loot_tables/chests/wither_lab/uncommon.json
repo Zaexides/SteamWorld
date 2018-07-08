@@ -1,0 +1,40 @@
+{
+    "pools": 
+    [
+        {
+            "name": "wl_uncommon",
+            "rolls": 1,
+            "entries":
+            [
+                {
+                    "type": "item",
+                    "name": "minecraft:bone",
+                    "weight": 20,
+                    "functions":
+                    [
+                        {
+                            "function": "minecraft:set_count",
+                            "count":
+                            {
+                                "min": 3,
+                                "max": 7
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "steamworld:block_flower",
+                    "weight": 80,
+                    "functions":
+                    [
+                        {
+                            "function": "minecraft:set_data",
+                            "data": 0
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

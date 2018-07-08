@@ -4,6 +4,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
+import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.init.ItemInitializer;
 import zaexides.steamworld.utility.interfaces.IOreDictionaryRegisterable;
 

@@ -36,6 +36,7 @@
     "result":
     {
         "item": "steamworld:generator_nether",
-        "count": 1
+        "count": 1,
+        "data": 0
     }
 }

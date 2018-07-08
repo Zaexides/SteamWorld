@@ -1,0 +1,52 @@
+{
+    "pools": 
+    [
+        {
+            "name": "ac_common",
+            "rolls": 1,
+            "entries":
+            [
+                {
+                    "type": "item",
+                    "name": "minecraft:iron_ingot",
+                    "weight": 35,
+                    "functions":
+                    [
+                        {
+                            "function": "set_count",
+                            "count": { "min": 1, "max": 4 }
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "steamworld:ingot",
+                    "weight": 55,
+                    "functions":
+                    [
+                        {
+                            "function": "set_count",
+                            "count": { "min": 1, "max": 3 }
+                        },
+                        {
+                            "function": "minecraft:set_data",
+                            "data": 0
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:bone",
+                    "weight": 5,
+                    "functions":
+                    [
+                        {
+                            "function": "set_count",
+                            "count": { "min": 1, "max": 4 }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

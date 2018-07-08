@@ -2,18 +2,14 @@
     "pools": 
     [
         {
-            "name": "wither_lab",
-            "rolls": 
-            {
-                "min": 3,
-                "max": 11
-            },
-            "entries": 
+            "name": "wl_common",
+            "rolls": 1,
+            "entries":
             [
                 {
                     "type": "item",
                     "name": "minecraft:bone",
-                    "weight": 10,
+                    "weight": 60,
                     "functions":
                     [
                         {
@@ -21,20 +17,8 @@
                             "count":
                             {
                                 "min": 1,
-                                "max": 4
+                                "max": 5
                             }
-                        }
-                    ]
-                },
-                {
-                    "type": "item",
-                    "name": "steamworld:treasure",
-                    "weight": 40,
-                    "functions":
-                    [
-                        {
-                            "function": "minecraft:set_data",
-                            "data": 3
                         }
                     ]
                 },
@@ -61,39 +45,18 @@
                     "functions":
                     [
                         {
+                            "function": "minecraft:set_count",
+                            "count":
+                            {
+                                "min": 1,
+                                "max": 3
+                            }
+                        },
+                        {
                             "function": "minecraft:set_data",
                             "data": 0
                         }
                     ]
-                }
-            ]
-        },
-        {
-            "name": "wither_lab_rare",
-            "rolls":
-            {
-                "min": 1,
-                "max": 2
-            },
-            "entries": 
-            [
-            
-                {
-                    "type": "item",
-                    "name": "minecraft:book",
-                    "weight": 10,
-                    "functions": [
-                        {
-                            "function": "enchant_with_levels",
-                            "levels": 30,
-                            "treasure": true
-                        }
-                    ]
-                },
-                {
-                    "type": "item",
-                    "name": "minecraft:air",
-                    "weight": 90
                 }
             ]
         }

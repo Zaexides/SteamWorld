@@ -9,7 +9,7 @@
                 {
                     "type": "item",
                     "name": "steamworld:ingot",
-                    "weight": 50,
+                    "weight": 95,
                     "functions": 
                     [
                         {
@@ -22,27 +22,7 @@
                         },
                         {
                             "function": "minecraft:set_data",
-                            "data": 0
-                        }
-                    ]
-                },
-                {
-                    "type": "item",
-                    "name": "steamworld:ingot",
-                    "weight": 45,
-                    "functions": 
-                    [
-                        {
-                            "function": "minecraft:set_count",
-                            "count": 
-                            {
-                                "min": 2,
-                                "max": 5
-                            }
-                        },
-                        {
-                            "function": "minecraft:set_data",
-                            "data": 1
+                            "data": { "min": 0, "max": 1 }
                         }
                     ]
                 },
