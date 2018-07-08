@@ -44,12 +44,12 @@ public class BlockGrinder extends BlockMachine implements ITileEntityProvider
 	public TileEntity createNewTileEntity(World worldIn, int meta) 
 	{
 		TileEntityGrinder grinder = new TileEntityGrinder();
-		setMachineStats(grinder);
+		setMachineStats(grinder, IsHighTier(meta));
 		return grinder;
 	}
 	
 	@Override
-	public void setMachineStats(TileEntity tileEntity) 
+	public void setMachineStats(TileEntity tileEntity, boolean highTier) 
 	{
 		((TileEntityGrinder)tileEntity).SetStats(amount);
 	}

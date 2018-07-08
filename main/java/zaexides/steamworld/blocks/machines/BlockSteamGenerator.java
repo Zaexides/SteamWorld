@@ -10,18 +10,22 @@ import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.IBlockAccess;
@@ -34,6 +38,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import scala.languageFeature.postfixOps;
 import zaexides.steamworld.SteamWorld;
+import zaexides.steamworld.blocks.BlockDecorative;
 import zaexides.steamworld.blocks.SteamWorldBlock;
 import zaexides.steamworld.fluids.FluidSteam;
 import zaexides.steamworld.gui.GuiHandler;
@@ -42,13 +47,15 @@ import zaexides.steamworld.te.TileEntityValve;
 
 public class BlockSteamGenerator extends BlockMachine implements ITileEntityProvider
 {
-	public int speed = 4, capacity = 4;
+	public int speed = 4, capacity = 4, speedHT = 24, capacityHT = 48;
 	
-	public BlockSteamGenerator(String name, Material material, float hardness, int speed, int capacity)
+	public BlockSteamGenerator(String name, Material material, float hardness, int speed, int capacity, float hardnessHT, int speedHT, int capacityHT)
 	{
-		super(name, material, hardness);
+		super(name, material, hardness, hardnessHT);
 		this.speed = speed;
 		this.capacity = capacity;
+		this.speedHT = speedHT;
+		this.capacityHT = capacityHT;
 	}
 	
 	@Override
@@ -103,14 +110,17 @@ public class BlockSteamGenerator extends BlockMachine implements ITileEntityProv
 	public TileEntity createNewTileEntity(World worldIn, int meta)
 	{
 		TileEntity tEntity = new TileEntitySteamGenerator();
-		setMachineStats(tEntity);
+		setMachineStats(tEntity, IsHighTier(meta));
 		return tEntity;
 	}
 	
 	@Override
-	public void setMachineStats(TileEntity tileEntity) 
+	public void setMachineStats(TileEntity tileEntity, boolean highTier) 
 	{
-		((TileEntitySteamGenerator)tileEntity).SetStats(capacity, speed);
+		((TileEntitySteamGenerator)tileEntity).SetStats(
+				highTier ? capacityHT : capacity,
+				highTier ? speedHT : speed
+				);
 	}
 	
 	@Override

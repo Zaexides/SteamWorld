@@ -66,10 +66,10 @@ public class SteamWorldBlock extends Block implements IModeledObject
 		setResistance(resistance);
 		
 		BlockInitializer.BLOCKS.add(this);
-		AddItemBlock(maxStackSize);
+		AddBlockItem(maxStackSize);
 	}
 	
-	public void AddItemBlock(int maxStackSize) 
+	protected void AddBlockItem(int maxStackSize) 
 	{
 		ItemInitializer.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()).setMaxStackSize(maxStackSize));
 	}

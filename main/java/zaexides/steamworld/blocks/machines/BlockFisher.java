@@ -44,12 +44,12 @@ public class BlockFisher extends BlockMachine implements ITileEntityProvider
 	public TileEntity createNewTileEntity(World worldIn, int meta) 
 	{
 		TileEntityFisher fisher = new TileEntityFisher();
-		setMachineStats(fisher);
+		setMachineStats(fisher, IsHighTier(meta));
 		return fisher;
 	}
 	
 	@Override
-	public void setMachineStats(TileEntity tileEntity)
+	public void setMachineStats(TileEntity tileEntity, boolean highTier)
 	{
 		((TileEntityFisher)tileEntity).SetStats(efficiency);
 	}

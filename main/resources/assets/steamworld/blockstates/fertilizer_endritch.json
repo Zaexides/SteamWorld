@@ -3,7 +3,7 @@
     "forge_marker": 1,
     "defaults":
     {
-        "model": "steamworld:machine_endritch_noin",
+        "model": "steamworld:machines/machine_endritch",
         "textures": { "front": "steamworld:blocks/machines/endritch/fertilizer_off" }
     },
 

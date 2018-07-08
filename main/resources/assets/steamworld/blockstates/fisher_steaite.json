@@ -3,7 +3,7 @@
     "forge_marker": 1,
     "defaults":
     {
-        "model": "steamworld:machine_steaite_noin",
+        "model": "steamworld:machines/machine_steaite",
         "textures": { "front": "steamworld:blocks/machines/machine_fisher_off" }
     },
 

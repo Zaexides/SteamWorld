@@ -44,12 +44,12 @@ public class BlockSWFurnace extends BlockMachine implements ITileEntityProvider
 	public TileEntity createNewTileEntity(World worldIn, int meta) 
 	{
 		TileEntitySWFurnace swFurnace = new TileEntitySWFurnace();
-		setMachineStats(swFurnace);
+		setMachineStats(swFurnace, IsHighTier(meta));
 		return swFurnace;
 	}
 	
 	@Override
-	public void setMachineStats(TileEntity tileEntity) 
+	public void setMachineStats(TileEntity tileEntity, boolean highTier) 
 	{
 		((TileEntitySWFurnace)tileEntity).SetStats(speed);
 	}

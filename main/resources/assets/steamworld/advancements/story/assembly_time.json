@@ -17,7 +17,7 @@
 	       {
 	           "items": 
 	           [
-	               { "item": "steamworld:assembler_ancite" }
+	               { "item": "steamworld:assembler_ancite", "data": 0 }
 	           ]
 	       }
 	   }

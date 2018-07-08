@@ -8,7 +8,7 @@
             [
                 {
                     "type": "item",
-                    "name": "steamworld:ingot_steaite",
+                    "name": "steamworld:ingot",
                     "weight": 50,
                     "functions": 
                     [
@@ -19,12 +19,16 @@
                                 "min": 2,
                                 "max": 5
                             }
+                        },
+                        {
+                            "function": "minecraft:set_data",
+                            "data": 0
                         }
                     ]
                 },
                 {
                     "type": "item",
-                    "name": "steamworld:ingot_ancite",
+                    "name": "steamworld:ingot",
                     "weight": 45,
                     "functions": 
                     [
@@ -35,6 +39,10 @@
                                 "min": 2,
                                 "max": 5
                             }
+                        },
+                        {
+                            "function": "minecraft:set_data",
+                            "data": 1
                         }
                     ]
                 },

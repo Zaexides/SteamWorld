@@ -44,12 +44,12 @@ public class BlockFarmer extends BlockMachine implements ITileEntityProvider
 	public TileEntity createNewTileEntity(World worldIn, int meta) 
 	{
 		TileEntityFarmer farmer = new TileEntityFarmer();
-		setMachineStats(farmer);
+		setMachineStats(farmer, IsHighTier(meta));
 		return farmer;
 	}
 	
 	@Override
-	public void setMachineStats(TileEntity tileEntity)
+	public void setMachineStats(TileEntity tileEntity, boolean highTier)
 	{
 		((TileEntityFarmer)tileEntity).SetStats(amount);
 	}

@@ -6,14 +6,19 @@ import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -21,11 +26,17 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.SteamWorldBlock;
+import zaexides.steamworld.blocks.item.ItemBlockMachine;
+import zaexides.steamworld.init.ItemInitializer;
 import zaexides.steamworld.items.ItemUpgrade.EnumUpgradeType;
 import zaexides.steamworld.te.TileEntitySteamGenerator;
 
 public class BlockMachine extends SteamWorldBlock implements IWrenchable, IUpgradeable
 {
+	public static final byte HIGH_TIER_UPGRADE_TIER = 2;
+	public static final byte HIGH_TIER_OFFSET = 3;
+	public static final byte UPGRADE_MAX = 3;
+	
 	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 	public static final PropertyBool ACTIVE = PropertyBool.create("active");
 	public static final PropertyBool HIGH_TIER = PropertyBool.create("high_tier");
@@ -34,14 +45,26 @@ public class BlockMachine extends SteamWorldBlock implements IWrenchable, IUpgra
 	protected BlockMachine upgradeBlock;
 	protected byte currentTier = 0;
 	
+	protected float hardness, hardnessHT;
+	
 	public BlockMachine(String name, Material material, float hardness)
 	{
 		super(name, material, hardness, hardness * 5, 64, SteamWorld.CREATIVETAB_UTILITY);
+		this.hardness = hardness;
+		this.hardnessHT = hardness;
 	}
 	
-	public BlockMachine(String name, Material material, float hardness, float resistance)
+	public BlockMachine(String name, Material material, float hardness, float hardnessHT)
 	{
-		super(name, material, hardness, resistance, 64, SteamWorld.CREATIVETAB_UTILITY);
+		super(name, material, hardness, hardness * 5, 64, SteamWorld.CREATIVETAB_UTILITY);
+		this.hardness = hardness;
+		this.hardnessHT = hardnessHT;
+	}
+	
+	@Override
+	protected void AddBlockItem(int maxStackSize) 
+	{
+		ItemInitializer.ITEMS.add(new ItemBlockMachine(this).setRegistryName(this.getRegistryName()).setMaxStackSize(maxStackSize));
 	}
 	
 	@Override
@@ -49,6 +72,36 @@ public class BlockMachine extends SteamWorldBlock implements IWrenchable, IUpgra
 			ItemStack stack) 
 	{
 		worldIn.setBlockState(pos, state.withProperty(FACING, placer.getHorizontalFacing().getOpposite()), 2);
+	}
+	
+	@Override
+	public float getBlockHardness(IBlockState blockState, World worldIn, BlockPos pos) 
+	{
+		if(blockState.getValue(HIGH_TIER))
+			return hardnessHT;
+		else
+			return hardness;
+	}
+	
+	@Override
+	public int damageDropped(IBlockState state) 
+	{
+		return state.getValue(HIGH_TIER) ? 4 : 0;
+	}
+	
+	@Override
+	public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items)
+	{
+		items.add(new ItemStack(this, 1, 0));
+		if((currentTier + HIGH_TIER_OFFSET) <= UPGRADE_MAX)
+			items.add(new ItemStack(this, 1, 4));
+	}
+	
+	@Override
+	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos,
+			EntityPlayer player) 
+	{
+		return new ItemStack(Item.getItemFromBlock(this), 1, state.getValue(HIGH_TIER) ? 4 : 0);
 	}
 	
 	@Override
@@ -115,10 +168,11 @@ public class BlockMachine extends SteamWorldBlock implements IWrenchable, IUpgra
 	{
 		this.upgradeBlock = blockMachine;
 		this.currentTier = currentTier;
+		
 		return this;
 	}
 	
-	public void setMachineStats(TileEntity tileEntity) {}
+	public void setMachineStats(TileEntity tileEntity, boolean highTier) {}
 
 	@Override
 	public EnumActionResult OnUpgradeItemUse(EnumUpgradeType upgradeType, World world, BlockPos pos, ItemStack itemStack, EntityPlayer player) 
@@ -126,18 +180,22 @@ public class BlockMachine extends SteamWorldBlock implements IWrenchable, IUpgra
 		if(upgradeBlock == null)
 			return EnumActionResult.FAIL;
 		
+		byte currentTier = this.currentTier;
+		if(world.getBlockState(pos).getValue(HIGH_TIER))
+			currentTier += HIGH_TIER_OFFSET;
+		
 		EnumUpgradeType upgradeRequired = EnumUpgradeType.byMetadata(currentTier);
 		
-		if(upgradeType == upgradeRequired)
+		if(upgradeType == upgradeRequired && currentTier <= UPGRADE_MAX)
 		{
 			TileEntity originalTileEntity = world.getTileEntity(pos);
 			keepInventory = true;
-			world.setBlockState(pos, upgradeBlock.getStateFromMeta(this.getMetaFromState(world.getBlockState(pos))));
+			world.setBlockState(pos, upgradeBlock.getStateFromMeta(this.getMetaFromState(world.getBlockState(pos))).withProperty(HIGH_TIER, currentTier >= HIGH_TIER_UPGRADE_TIER));
 			if(originalTileEntity != null)
 			{
 				originalTileEntity.validate();
 				world.setTileEntity(pos, originalTileEntity);
-				upgradeBlock.setMachineStats(originalTileEntity);
+				upgradeBlock.setMachineStats(originalTileEntity, currentTier >= HIGH_TIER_UPGRADE_TIER);
 			}
 			keepInventory = false;
 			
@@ -153,5 +211,10 @@ public class BlockMachine extends SteamWorldBlock implements IWrenchable, IUpgra
 			}
 			return EnumActionResult.FAIL;
 		}
+	}
+	
+	protected boolean IsHighTier(int meta)
+	{
+		return (meta & 4) == 4;
 	}
 }

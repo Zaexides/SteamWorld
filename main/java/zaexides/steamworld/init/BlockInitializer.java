@@ -65,9 +65,9 @@ public class BlockInitializer
 	
 	public static final BlockNetherAccelerator BLOCK_NETHER_ACCELERATOR = new BlockNetherAccelerator("nether_accelerator", SWMaterials.ENDRITCH, 5.0f);
 	
-	public static final BlockMachine GENERATOR_ENDRITCH = new BlockSteamGenerator("generator_endritch", SWMaterials.ENDRITCH, 5.5f, 16, 32);
-	public static final BlockMachine GENERATOR_ANCITE = new BlockSteamGenerator("generator_ancite", Material.IRON, 4.5f, 8, 16).SetUpgradeData(GENERATOR_ENDRITCH, (byte)1);
-	public static final BlockMachine GENERATOR_STEAITE = new BlockSteamGenerator("generator_steaite", Material.IRON, 3.5f, 4, 4).SetUpgradeData(GENERATOR_ANCITE, (byte)0);
+	public static final BlockMachine GENERATOR_ENDRITCH = new BlockSteamGenerator("generator_endritch", SWMaterials.ENDRITCH, 5.5f, 16, 32, 0.0f, 0, 0);
+	public static final BlockMachine GENERATOR_ANCITE = new BlockSteamGenerator("generator_ancite", Material.IRON, 4.5f, 8, 16, 0.0f, 0, 0).SetUpgradeData(GENERATOR_ENDRITCH, (byte)1);
+	public static final BlockMachine GENERATOR_STEAITE = new BlockSteamGenerator("generator_steaite", Material.IRON, 3.5f, 4, 4, 6.5f, 24, 48).SetUpgradeData(GENERATOR_ANCITE, (byte)0);
 	
 	public static final BlockSteamGeneratorNether GENERATOR_NETHER = new BlockSteamGeneratorNether("generator_nether", Material.ROCK, 4.0f);
 	
@@ -118,6 +118,11 @@ public class BlockInitializer
 		
 	public static final BlockDynamo BLOCK_DYNAMO = new BlockDynamo("block_dynamo", 3.5f);
 	public static final BlockSteamGeneratorElectric BLOCK_STEAM_GENERATOR_ELECTRIC = new BlockSteamGeneratorElectric("generator_electric", 3.5f);
+	
+	static
+	{
+		GENERATOR_ENDRITCH.SetUpgradeData(GENERATOR_STEAITE, (byte)2);
+	}
 
 	//Legacy stuff, to be removed in 0.5.X
 	public static final BlockLegacy BLOCK_STEAITE_LEGACY = new BlockLegacy("block_steaite", Material.IRON, 3f, BLOCK_ANCITE, 5);

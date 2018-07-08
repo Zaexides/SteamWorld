@@ -44,12 +44,12 @@ public class BlockFertilizer extends BlockMachine implements ITileEntityProvider
 	public TileEntity createNewTileEntity(World worldIn, int meta) 
 	{
 		TileEntityFertilizer fertilizer = new TileEntityFertilizer();
-		setMachineStats(fertilizer);
+		setMachineStats(fertilizer, IsHighTier(meta));
 		return fertilizer;
 	}
 	
 	@Override
-	public void setMachineStats(TileEntity tileEntity) 
+	public void setMachineStats(TileEntity tileEntity, boolean highTier) 
 	{
 		((TileEntityFertilizer)tileEntity).SetStats(efficiency);
 	}

@@ -44,12 +44,12 @@ public class BlockExperienceMachine extends BlockMachine implements ITileEntityP
 	public TileEntity createNewTileEntity(World worldIn, int meta) 
 	{
 		TileEntityExperienceMachine experienceMachine = new TileEntityExperienceMachine();
-		setMachineStats(experienceMachine);
+		setMachineStats(experienceMachine, IsHighTier(meta));
 		return experienceMachine;
 	}
 	
 	@Override
-	public void setMachineStats(TileEntity tileEntity) 
+	public void setMachineStats(TileEntity tileEntity, boolean highTier) 
 	{
 		((TileEntityExperienceMachine)tileEntity).SetStats(efficiency);
 	}

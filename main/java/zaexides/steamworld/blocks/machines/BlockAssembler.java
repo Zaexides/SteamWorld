@@ -44,12 +44,12 @@ public class BlockAssembler extends BlockMachine implements ITileEntityProvider
 	public TileEntity createNewTileEntity(World worldIn, int meta) 
 	{
 		TileEntityAssembler assembler = new TileEntityAssembler();
-		setMachineStats(assembler);
+		setMachineStats(assembler, IsHighTier(meta));
 		return assembler;
 	}
 	
 	@Override
-	public void setMachineStats(TileEntity tileEntity) 
+	public void setMachineStats(TileEntity tileEntity, boolean highTier) 
 	{
 		((TileEntityAssembler)tileEntity).SetStats(efficiency);
 	}

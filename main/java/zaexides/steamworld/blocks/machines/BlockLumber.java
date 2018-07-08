@@ -44,12 +44,12 @@ public class BlockLumber extends BlockMachine implements ITileEntityProvider
 	public TileEntity createNewTileEntity(World worldIn, int meta) 
 	{
 		TileEntityLumber lumber = new TileEntityLumber();
-		setMachineStats(lumber);
+		setMachineStats(lumber, IsHighTier(meta));
 		return lumber;
 	}
 	
 	@Override
-	public void setMachineStats(TileEntity tileEntity)
+	public void setMachineStats(TileEntity tileEntity, boolean highTier)
 	{
 		((TileEntityLumber)tileEntity).SetStats(amount);
 	}

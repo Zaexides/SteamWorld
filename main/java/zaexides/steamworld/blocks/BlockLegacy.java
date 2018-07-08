@@ -30,7 +30,7 @@ public class BlockLegacy extends SteamWorldBlock
 	}
 	
 	@Override
-	public void AddItemBlock(int maxStackSize) 
+	public void AddBlockItem(int maxStackSize) 
 	{
 		ItemInitializer.ITEMS.add(new ItemBlockLegacy(this).setRegistryName(this.getRegistryName()));
 	}

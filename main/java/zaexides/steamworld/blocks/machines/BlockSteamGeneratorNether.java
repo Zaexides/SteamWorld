@@ -107,7 +107,7 @@ public class BlockSteamGeneratorNether extends BlockMachine implements ITileEnti
 	}
 	
 	@Override
-	public void setMachineStats(TileEntity tileEntity) 
+	public void setMachineStats(TileEntity tileEntity, boolean highTier) 
 	{
 		((TileEntitySteamGenerator)tileEntity).SetStats(4000, 2);
 	}

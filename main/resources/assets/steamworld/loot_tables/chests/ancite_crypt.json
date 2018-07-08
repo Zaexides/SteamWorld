@@ -12,7 +12,7 @@
             [
                 {
                     "type": "item",
-                    "name": "steamworld:ingot_steaite",
+                    "name": "steamworld:ingot",
                     "weight": 35,
                     "functions": 
                     [
@@ -23,6 +23,10 @@
                                 "min": 1,
                                 "max": 3
                             }
+                        },
+                        {
+                            "function": "minecraft:set_data",
+                            "data": 0
                         }
                     ]
                 },
@@ -67,6 +71,10 @@
                                 "min": 2,
                                 "max": 5
                             }
+                        },
+                        {
+                            "function": "minecraft:set_data",
+                            "data": 1
                         }
                     ]
                 },
@@ -81,11 +89,6 @@
                             "data": 3
                         }
                     ]
-                },
-                {
-                    "type": "item",
-                    "name": "steamworld:block_steaite",
-                    "weight": 5
                 }
             ]
         }
