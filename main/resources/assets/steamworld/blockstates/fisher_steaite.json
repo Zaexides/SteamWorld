@@ -4,7 +4,7 @@
     "defaults":
     {
         "model": "steamworld:machines/machine_steaite",
-        "textures": { "front": "steamworld:blocks/machines/machine_fisher_off" }
+        "textures": { "front": "steamworld:blocks/machines/steaite/machine_fisher_off" }
     },
 
     "variants": 
@@ -22,11 +22,11 @@
         {
             "false":
             {
-                "textures": { "front": "steamworld:blocks/machines/machine_fisher_off" }
+                "textures": { "front": "steamworld:blocks/machines/steaite/machine_fisher_off" }
             },
             "true":
             {
-                "textures": { "front": "steamworld:blocks/machines/machine_fisher_on" }
+                "textures": { "front": "steamworld:blocks/machines/steaite/machine_fisher_on" }
             }
         },
         "high_tier":

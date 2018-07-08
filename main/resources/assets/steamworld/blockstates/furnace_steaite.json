@@ -4,7 +4,7 @@
     "defaults":
     {
         "model": "steamworld:machines/machine_steaite",
-        "textures": { "front": "steamworld:blocks/machines/machine_furnace_off" }
+        "textures": { "front": "steamworld:blocks/machines/steaite/machine_furnace_off" }
     },
 
     "variants": 
@@ -22,11 +22,19 @@
         {
             "false":
             {
-                "textures": { "front": "steamworld:blocks/machines/machine_furnace_off" }
+                "textures": 
+                { 
+                    "front": "steamworld:blocks/machines/steaite/machine_furnace_off",
+                    "htfront": "steamworld:blocks/machines/essen/machine_furnace_essen"
+                }
             },
             "true":
             {
-                "textures": { "front": "steamworld:blocks/machines/machine_furnace_on" }
+                "textures": 
+                { 
+                    "front": "steamworld:blocks/machines/steaite/machine_furnace_on",
+                    "htfront": "steamworld:blocks/machines/essen/machine_furnace_essen_active"
+                }
             }
         },
         "high_tier":
@@ -34,7 +42,7 @@
             "false": {},
             "true":
             {
-                
+                "model": "steamworld:machines/machine_essen"
             }
         }
     }

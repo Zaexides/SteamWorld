@@ -4,7 +4,7 @@
     "defaults":
     {
         "model": "steamworld:machines/machine_ancite",
-        "textures": { "front": "steamworld:blocks/machines/machine_generator_ancite" }
+        "textures": { "front": "steamworld:blocks/machines/ancite/machine_generator_ancite" }
     },
 
     "variants": 
@@ -22,11 +22,11 @@
         {
             "false":
             {
-                "textures": { "front": "steamworld:blocks/machines/machine_generator_ancite" }
+                "textures": { "front": "steamworld:blocks/machines/ancite/machine_generator_ancite" }
             },
             "true":
             {
-                "textures": { "front": "steamworld:blocks/machines/machine_generator_ancite_active" }
+                "textures": { "front": "steamworld:blocks/machines/ancite/machine_generator_ancite_active" }
             }
         },
         "high_tier":

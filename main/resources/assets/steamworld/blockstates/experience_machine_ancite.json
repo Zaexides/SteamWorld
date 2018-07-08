@@ -4,7 +4,7 @@
     "defaults":
     {
         "model": "steamworld:machines/machine_ancite",
-        "textures": { "front": "steamworld:blocks/machines/machine_experience_ancite_off" }
+        "textures": { "front": "steamworld:blocks/machines/ancite/machine_experience_ancite_off" }
     },
 
     "variants": 
@@ -22,11 +22,11 @@
         {
             "false":
             {
-                "textures": { "front": "steamworld:blocks/machines/machine_experience_ancite_off" }
+                "textures": { "front": "steamworld:blocks/machines/ancite/machine_experience_ancite_off" }
             },
             "true":
             {
-                "textures": { "front": "steamworld:blocks/machines/machine_experience_ancite_on" }
+                "textures": { "front": "steamworld:blocks/machines/ancite/machine_experience_ancite_on" }
             }
         },
         "high_tier":

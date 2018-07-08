@@ -1,12 +1,12 @@
 {
     "parent": "block/cube",
     "textures": {
-        "particle": "steamworld:blocks/machines/machine_side_steaite",
+        "particle": "steamworld:blocks/machines/steaite/machine_side_steaite",
         "down": "steamworld:blocks/block_steaite",
         "up": "steamworld:blocks/machines/machine_rock",
         "north": "#front",
-        "west": "steamworld:blocks/machines/machine_side_steaite",
-        "east": "steamworld:blocks/machines/machine_side_steaite",
-        "south": "steamworld:blocks/machines/machine_side_steaite"
+        "west": "steamworld:blocks/machines/steaite/machine_side_steaite",
+        "east": "steamworld:blocks/machines/steaite/machine_side_steaite",
+        "south": "steamworld:blocks/machines/steaite/machine_side_steaite"
     }
 }

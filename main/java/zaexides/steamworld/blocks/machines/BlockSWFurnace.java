@@ -32,12 +32,13 @@ import zaexides.steamworld.te.TileEntitySWFurnace;
 
 public class BlockSWFurnace extends BlockMachine implements ITileEntityProvider
 {
-	public int speed = 1;
+	public int speed = 1, speedHT = 4;
 	
-	public BlockSWFurnace(String name, float hardness, int speed) 
+	public BlockSWFurnace(String name, float hardness, int speed, int speedHT) 
 	{
 		super(name, Material.IRON, hardness);
 		this.speed = speed;
+		this.speedHT = speedHT;
 	}
 
 	@Override
@@ -51,7 +52,7 @@ public class BlockSWFurnace extends BlockMachine implements ITileEntityProvider
 	@Override
 	public void setMachineStats(TileEntity tileEntity, boolean highTier) 
 	{
-		((TileEntitySWFurnace)tileEntity).SetStats(speed);
+		((TileEntitySWFurnace)tileEntity).SetStats(highTier ? speedHT : speed);
 	}
 	
 	@SideOnly(Side.CLIENT)

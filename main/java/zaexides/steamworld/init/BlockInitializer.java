@@ -78,9 +78,9 @@ public class BlockInitializer
 	public static final BlockMachine FERTILIZER_ANCITE = new BlockFertilizer("fertilizer_ancite", 4.5f, 2).SetUpgradeData(FERTILIZER_ENDRITCH, (byte)1);
 	public static final BlockMachine FERTILIZER_STEAITE = new BlockFertilizer("fertilizer_steaite", 3.5f, 1).SetUpgradeData(FERTILIZER_ANCITE, (byte)0);
 	
-	public static final BlockMachine FURNACE_ENDRITCH = new BlockSWFurnace("furnace_endritch", 5.5f, 3);
-	public static final BlockMachine FURNACE_ANCITE = new BlockSWFurnace("furnace_ancite", 4.5f, 2).SetUpgradeData(FURNACE_ENDRITCH, (byte)1);
-	public static final BlockMachine FURNACE_STEAITE = new BlockSWFurnace("furnace_steaite", 3.5f, 1).SetUpgradeData(FURNACE_ANCITE, (byte)0);
+	public static final BlockMachine FURNACE_ENDRITCH = new BlockSWFurnace("furnace_endritch", 5.5f, 3, 0);
+	public static final BlockMachine FURNACE_ANCITE = new BlockSWFurnace("furnace_ancite", 4.5f, 2, 0).SetUpgradeData(FURNACE_ENDRITCH, (byte)1);
+	public static final BlockMachine FURNACE_STEAITE = new BlockSWFurnace("furnace_steaite", 3.5f, 1, 4).SetUpgradeData(FURNACE_ANCITE, (byte)0);
 	
 	public static final BlockMachine ASSEMBLER_ENDRITCH = new BlockAssembler("assembler_endritch", 5.5f, 2);
 	public static final BlockMachine ASSEMBLER_ANCITE = new BlockAssembler("assembler_ancite", 4.5f, 1).SetUpgradeData(ASSEMBLER_ENDRITCH, (byte)1);
@@ -122,6 +122,7 @@ public class BlockInitializer
 	static
 	{
 		GENERATOR_ENDRITCH.SetUpgradeData(GENERATOR_STEAITE, (byte)2);
+		FURNACE_ENDRITCH.SetUpgradeData(FURNACE_STEAITE, (byte)2);
 	}
 
 	//Legacy stuff, to be removed in 0.5.X

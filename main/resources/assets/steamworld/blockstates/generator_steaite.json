@@ -4,7 +4,7 @@
     "defaults":
     {
         "model": "steamworld:machines/machine_steaite",
-        "textures": { "front": "steamworld:blocks/machines/machine_generator_steaite" }
+        "textures": { "front": "steamworld:blocks/machines/steaite/machine_generator_steaite" }
     },
 
     "variants": 
@@ -22,11 +22,19 @@
         {
             "false":
             {
-                "textures": { "front": "steamworld:blocks/machines/machine_generator_steaite" }
+                "textures": 
+                { 
+                    "front": "steamworld:blocks/machines/steaite/machine_generator_steaite",
+                    "htfront": "steamworld:blocks/machines/essen/machine_generator_essen"
+                }
             },
             "true":
             {
-                "textures": { "front": "steamworld:blocks/machines/machine_generator_steaite_active" }
+                "textures": 
+                { 
+                    "front": "steamworld:blocks/machines/steaite/machine_generator_steaite_active",
+                    "htfront": "steamworld:blocks/machines/essen/machine_generator_essen_active"
+                }
             }
         },
         "high_tier":
