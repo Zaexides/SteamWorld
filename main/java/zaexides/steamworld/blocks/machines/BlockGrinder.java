@@ -32,12 +32,13 @@ import zaexides.steamworld.te.TileEntityGrinder;
 
 public class BlockGrinder extends BlockMachine implements ITileEntityProvider
 {
-	public int amount = 1;
+	public int amount = 1, amountHT = 4;
 	
-	public BlockGrinder(String name, float hardness, int amount) 
+	public BlockGrinder(String name, float hardness, int amount, int amountHT) 
 	{
 		super(name, Material.IRON, hardness);
 		this.amount = amount;
+		this.amountHT = amountHT;
 	}
 
 	@Override
@@ -51,7 +52,7 @@ public class BlockGrinder extends BlockMachine implements ITileEntityProvider
 	@Override
 	public void setMachineStats(TileEntity tileEntity, boolean highTier) 
 	{
-		((TileEntityGrinder)tileEntity).SetStats(amount);
+		((TileEntityGrinder)tileEntity).SetStats(highTier ? amountHT : amount);
 	}
 	
 	@Override

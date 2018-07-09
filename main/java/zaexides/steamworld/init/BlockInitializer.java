@@ -85,9 +85,9 @@ public class BlockInitializer
 	public static final BlockMachine ASSEMBLER_ENDRITCH = new BlockAssembler("assembler_endritch", 5.5f, 2);
 	public static final BlockMachine ASSEMBLER_ANCITE = new BlockAssembler("assembler_ancite", 4.5f, 1).SetUpgradeData(ASSEMBLER_ENDRITCH, (byte)1);
 
-	public static final BlockMachine GRINDER_ENDRITCH = new BlockGrinder("grinder_endritch", 5.5f, 3);
-	public static final BlockMachine GRINDER_ANCITE = new BlockGrinder("grinder_ancite", 4.5f, 2).SetUpgradeData(GRINDER_ENDRITCH, (byte)1);
-	public static final BlockMachine GRINDER_STEAITE = new BlockGrinder("grinder_steaite", 3.5f, 1).SetUpgradeData(GRINDER_ANCITE, (byte)0);
+	public static final BlockMachine GRINDER_ENDRITCH = new BlockGrinder("grinder_endritch", 5.5f, 3, 0);
+	public static final BlockMachine GRINDER_ANCITE = new BlockGrinder("grinder_ancite", 4.5f, 2, 0).SetUpgradeData(GRINDER_ENDRITCH, (byte)1);
+	public static final BlockMachine GRINDER_STEAITE = new BlockGrinder("grinder_steaite", 3.5f, 1, 4).SetUpgradeData(GRINDER_ANCITE, (byte)0);
 	
 	public static final BlockMachine FISHER_ENDRITCH = new BlockFisher("fisher_endritch", 5.5f, 3);
 	public static final BlockMachine FISHER_ANCITE = new BlockFisher("fisher_ancite", 4.5f, 2).SetUpgradeData(FISHER_ENDRITCH, (byte)1);
@@ -123,6 +123,7 @@ public class BlockInitializer
 	{
 		GENERATOR_ENDRITCH.SetUpgradeData(GENERATOR_STEAITE, (byte)2);
 		FURNACE_ENDRITCH.SetUpgradeData(FURNACE_STEAITE, (byte)2);
+		GRINDER_ENDRITCH.SetUpgradeData(GENERATOR_STEAITE, (byte)2);
 	}
 
 	//Legacy stuff, to be removed in 0.5.X
