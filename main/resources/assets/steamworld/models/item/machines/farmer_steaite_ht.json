@@ -1,0 +1,11 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "down": "steamworld:blocks/machines/essen/machine_bottom_essen",
+        "up": "steamworld:blocks/machines/essen/machine_top_essen",
+        "north": "steamworld:blocks/machines/essen/machine_farmer_essen",
+        "west": "steamworld:blocks/machines/essen/machine_side_essen",
+        "east": "steamworld:blocks/machines/essen/machine_side_essen",
+        "south": "steamworld:blocks/machines/essen/machine_side_essen"
+    }
+}

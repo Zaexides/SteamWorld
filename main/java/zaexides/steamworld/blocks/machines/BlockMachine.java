@@ -17,6 +17,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -59,6 +60,14 @@ public class BlockMachine extends SteamWorldBlock implements IWrenchable, IUpgra
 		super(name, material, hardness, hardness * 5, 64, SteamWorld.CREATIVETAB_UTILITY);
 		this.hardness = hardness;
 		this.hardnessHT = hardnessHT;
+	}
+	
+	@Override
+	public void RegisterModels() 
+	{
+		SteamWorld.proxy.RegisterItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
+		if((currentTier + highTierOffset) <= UPGRADE_MAX)
+			SteamWorld.proxy.RegisterItemRenderers(Item.getItemFromBlock(this), 4, "inventory", "machines/" + getRegistryName().getResourcePath() + "_ht");
 	}
 	
 	@Override

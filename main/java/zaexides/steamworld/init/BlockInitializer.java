@@ -131,6 +131,8 @@ public class BlockInitializer
 		
 		ASSEMBLER_ENDRITCH.SetUpgradeData(ASSEMBLER_ANCITE, (byte)2, (byte)2);
 		EXPERIENCE_MACHINE_ENDRITCH.SetUpgradeData(EXPERIENCE_MACHINE_ANCITE, (byte)2, (byte)2);
+		
+		GENERATOR_NETHER.SetUpgradeData(GENERATOR_NETHER, (byte)1, (byte)3);
 	}
 
 	//Legacy stuff, to be removed in 0.5.X

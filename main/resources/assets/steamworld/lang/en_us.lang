@@ -59,6 +59,7 @@ tile.steamworld.ore_territe_sky.name=Territe Sky Ore
 tile.steamworld.generator_steaite.name=Steam Generator MKI
 tile.steamworld.generator_ancite.name=Steam Generator MKII
 tile.steamworld.generator_endritch.name=Steam Generator MKIII
+tile.steamworld.generator_steaite_ht.name=Steam Generator MKIV
 tile.steamworld.generator_nether.name=Nether Steam Generator
 tile.steamworld.generator_electric.name=Electric Steam Generator
 
@@ -66,39 +67,47 @@ tile.steamworld.generator_electric.name=Electric Steam Generator
 tile.steamworld.furnace_steaite.name=Steam Furnace MKI
 tile.steamworld.furnace_ancite.name=Steam Furnace MKII
 tile.steamworld.furnace_endritch.name=Steam Furnace MKIII
+tile.steamworld.furnace_steaite_ht.name=Steam Furnace MKIV
 
 # Grinder
 tile.steamworld.grinder_steaite.name=Steam Grinder MKI
 tile.steamworld.grinder_ancite.name=Steam Grinder MKII
 tile.steamworld.grinder_endritch.name=Steam Grinder MKIII
+tile.steamworld.grinder_steaite_ht.name=Steam Grinder MKIV
 
 # Fisher
 tile.steamworld.fisher_steaite.name=Fisher MKI
 tile.steamworld.fisher_ancite.name=Fisher MKII
 tile.steamworld.fisher_endritch.name=Fisher MKIII
+tile.steamworld.fisher_steaite_ht.name=Fisher MKIV
 
 # Farmer
 tile.steamworld.farmer_steaite.name=Farmer MKI
 tile.steamworld.farmer_ancite.name=Farmer MKII
 tile.steamworld.farmer_endritch.name=Farmer MKIII
+tile.steamworld.farmer_steaite_ht.name=Farmer MKIV
 
 # Lumberjack
 tile.steamworld.lumber_steaite.name=Lumberjack MKI
 tile.steamworld.lumber_ancite.name=Lumberjack MKII
 tile.steamworld.lumber_endritch.name=Lumberjack MKIII
+tile.steamworld.lumber_steaite_ht.name=Lumberjack MKIV
 
 # Fertilizer
 tile.steamworld.fertilizer_steaite.name=Fertilizer MKI
 tile.steamworld.fertilizer_ancite.name=Fertilizer MKII
 tile.steamworld.fertilizer_endritch.name=Fertilizer MKIII
+tile.steamworld.fertilizer_steaite_ht.name=Fertilizer MKIV
 
 # Assembler
 tile.steamworld.assembler_ancite.name=Steam Assembler MKI
 tile.steamworld.assembler_endritch.name=Steam Assembler MKII
+tile.steamworld.assembler_ancite_ht.name=Steam Assembler MKIII
 
 # Experience Machine
 tile.steamworld.experience_machine_ancite.name=Experience Machine MKI
 tile.steamworld.experience_machine_endritch.name=Experience Machine MKII
+tile.steamworld.experience_machine_ancite_ht.name=Experience Machine MKIII
 
 # Generic Machines
 tile.steamworld.generic_machine_teleporter.name=Endritch Teleporter
