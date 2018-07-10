@@ -25,6 +25,7 @@ public class LootTableInitializer
 	public static final ResourceLocation TREASURE_BOX_FISHING = register("treasure_box/fishing");
 	public static final ResourceLocation TREASURE_BOX_DUNGEON = register("treasure_box/dungeon");
 	public static final ResourceLocation TREASURE_BOX_END = register("treasure_box/end");
+	public static final ResourceLocation TREASURE_BOX_BIRTHDAY = register("treasure_box/bday");
 	public static final ResourceLocation TREASURE_BOX_WITHER_LAB = register("treasure_box/wither_lab");
 			
 	private static ResourceLocation register(String location)

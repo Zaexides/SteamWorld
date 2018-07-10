@@ -149,8 +149,6 @@ public class TileEntityLumber extends TileEntityMachine implements ITickable
 			{
 				ItemStack dropStack = logDrops.get(i);
 				
-				dropStack.grow(dropStack.getCount() * (production - 1));
-				
 				ItemStack stack = outputStack.insertItemStacked(dropStack, false);
 				
 				if(!stack.isEmpty())
@@ -171,42 +169,48 @@ public class TileEntityLumber extends TileEntityMachine implements ITickable
 		
 		if(blockState.getBlock() instanceof BlockLeaves)
 		{
-			BlockLeaves leaves = (BlockLeaves) blockState.getBlock();
-			NonNullList<ItemStack> leavesDrops = NonNullList.create();
-			leaves.getDrops(leavesDrops, world, pos, blockState, production);
-			
-			for(int i = 0; i < leavesDrops.size(); i++)
+			if(blockState.getValue(BlockLeaves.DECAYABLE))
 			{
-				ItemStack dropStack = leavesDrops.get(i);
+				BlockLeaves leaves = (BlockLeaves) blockState.getBlock();
+				NonNullList<ItemStack> leavesDrops = NonNullList.create();
+				leaves.getDrops(leavesDrops, world, pos, blockState, production);
 				
-				dropStack.grow(dropStack.getCount() * (production - 1));
+				if(world.rand.nextInt(10) == 0)
+					leavesDrops.add(new ItemStack(Items.STICK, world.rand.nextInt(production - 1) + 1));
 				
-				if(replantQueue.size() > 0 && !dropStack.isEmpty() && dropStack.getItem() instanceof ItemBlock)
+				for(int i = 0; i < leavesDrops.size(); i++)
 				{
-					ItemBlock blockItem = (ItemBlock) dropStack.getItem();
-					if(blockItem.getBlock() instanceof BlockSapling)
+					ItemStack dropStack = leavesDrops.get(i);
+					
+					dropStack.grow(dropStack.getCount() * (production - 1));
+					
+					if(replantQueue.size() > 0 && !dropStack.isEmpty() && dropStack.getItem() instanceof ItemBlock)
 					{
-						BlockPos setPos = replantQueue.poll();
-						BlockSapling sapling = (BlockSapling) blockItem.getBlock();
-						IBlockState blockState2 = sapling.getStateFromMeta(dropStack.getMetadata());
-						
-						
-						world.setBlockState(setPos, 
-								blockState2, 
-								3);
-						dropStack.shrink(1);
+						ItemBlock blockItem = (ItemBlock) dropStack.getItem();
+						if(blockItem.getBlock() instanceof BlockSapling)
+						{
+							BlockPos setPos = replantQueue.poll();
+							BlockSapling sapling = (BlockSapling) blockItem.getBlock();
+							IBlockState blockState2 = sapling.getStateFromMeta(dropStack.getMetadata());
+							
+							
+							world.setBlockState(setPos, 
+									blockState2, 
+									3);
+							dropStack.shrink(1);
+						}
 					}
+					
+					ItemStack stack = outputStack.insertItemStacked(dropStack, false);
+					
+					if(!stack.isEmpty())
+						success = false;
+					InventoryHelper.spawnItemStack(world, pos.getX() + 0.5f, pos.getY() + 1.5f, pos.getZ() + 0.5f, stack);
 				}
 				
-				ItemStack stack = outputStack.insertItemStacked(dropStack, false);
-				
-				if(!stack.isEmpty())
-					success = false;
-				InventoryHelper.spawnItemStack(world, pos.getX() + 0.5f, pos.getY() + 1.5f, pos.getZ() + 0.5f, stack);
+				steamTank.drain(BASE_COST_PER_LEAVES, true);
+				world.destroyBlock(pos, false);
 			}
-			
-			steamTank.drain(BASE_COST_PER_LEAVES, true);
-			world.destroyBlock(pos, false);
 		}
 		return success;
 	}

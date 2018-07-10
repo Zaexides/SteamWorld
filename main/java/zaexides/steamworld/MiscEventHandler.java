@@ -1,5 +1,7 @@
 package zaexides.steamworld;
 
+import java.time.LocalDate;
+
 import org.apache.logging.log4j.Level;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -34,6 +36,7 @@ import zaexides.steamworld.items.ItemTreasure;
 public class MiscEventHandler 
 {
 	private final String MANUAL_TAG = "sw_manual_got";
+	private final String BDAY_TAG = "sw_bday_year";
 	
 	@SubscribeEvent
 	public void onLootTablesLoaded(LootTableLoadEvent loadEvent)
@@ -58,6 +61,12 @@ public class MiscEventHandler
 	@SubscribeEvent
 	public void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent loggedInEvent)
 	{
+		GiveManualOnSpawn(loggedInEvent);
+		GiveBdayTreasureOnSpawn(loggedInEvent);
+	}
+	
+	private void GiveManualOnSpawn(PlayerEvent.PlayerLoggedInEvent loggedInEvent)
+	{
 		if(ConfigHandler.spawnWithManual)
 		{
 			NBTTagCompound tagCompound = loggedInEvent.player.getEntityData();
@@ -69,6 +78,25 @@ public class MiscEventHandler
 			{
 				ItemHandlerHelper.giveItemToPlayer(loggedInEvent.player, new ItemStack(ItemInitializer.BOOK_MANUAL));
 				persistingData.setBoolean(MANUAL_TAG, true);
+			}
+		}
+	}
+	
+	private void GiveBdayTreasureOnSpawn(PlayerEvent.PlayerLoggedInEvent loggedInEvent)
+	{
+		LocalDate localDate = LocalDate.now();
+		
+		if(localDate.getDayOfMonth() == 14 && localDate.getMonthValue() == 7)
+		{
+			NBTTagCompound tagCompound = loggedInEvent.player.getEntityData();
+			if(!tagCompound.hasKey(EntityPlayer.PERSISTED_NBT_TAG))
+				tagCompound.setTag(EntityPlayer.PERSISTED_NBT_TAG, new NBTTagCompound());
+			NBTTagCompound persistingData = tagCompound.getCompoundTag(EntityPlayer.PERSISTED_NBT_TAG);
+			
+			if(!persistingData.hasKey(BDAY_TAG) || persistingData.getInteger(BDAY_TAG) != localDate.getYear())
+			{
+				ItemHandlerHelper.giveItemToPlayer(loggedInEvent.player, new ItemStack(ItemInitializer.TREASURE, 1, ItemTreasure.EnumTreasure.BIRTHDAY.getMeta()));
+				persistingData.setInteger(BDAY_TAG, localDate.getYear());
 			}
 		}
 	}

@@ -1,0 +1,29 @@
+{
+    "pools": 
+    [
+        {
+            "name": "main",
+            "rolls": 3,
+            "entries": 
+            [
+                {
+                    "type": "item",
+                    "name": "steamworld:block_ancite",
+                    "weight": 50,
+                    "functions": 
+                    [
+                        {
+                            "function": "minecraft:set_data",
+                            "data": 3
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "name": "minecraft:diamond",
+                    "weight": 50
+                }
+            ]
+        }
+    ]
+}

@@ -189,6 +189,7 @@ item.steamworld.generic_material_advanced_machine_parts.name=Advanced Machine Pa
 item.steamworld.treasure_fish.tooltip=Rare chance of fishing up.
 item.steamworld.treasure_crypt.tooltip=Found abundantly in Ancite Crypts.
 item.steamworld.treasure_end.tooltip=Occasionally found in the End Cities.
+item.steamworld.treasure_bday.tooltip=Found on specific dates.
 item.steamworld.treasure_wither_lab.tooltip=Found in Wither Labs.
 
 # Misc
