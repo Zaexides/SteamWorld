@@ -3,7 +3,7 @@
     
     "pattern":
     [
-        "nrn",
+        "drd",
         "nin",
         "nin"
     ],
@@ -24,6 +24,11 @@
         {
             "type": "forge:ore_dict",
             "ore": "dustRedstone"
+        },
+        "d":
+        {
+            "type": "forge:ore_dict",
+            "ore": "gemDiamond"
         }
     },
     

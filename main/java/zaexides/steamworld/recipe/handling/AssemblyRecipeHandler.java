@@ -68,6 +68,8 @@ public class AssemblyRecipeHandler
 		final RecipeInputOreDic COAL_BLOCK = new RecipeInputOreDic("blockCoal");
 		final RecipeInputOreDic NUGGET_ANCITE = new RecipeInputOreDic("nuggetAncite");
 		final RecipeInputOreDic PLATE_ESSEN = new RecipeInputOreDic("plateEssen");
+		final RecipeInputOreDic DIAMOND = new RecipeInputOreDic("gemDiamond");
+		final RecipeInputOreDic PLATE_DIAMOND = new RecipeInputOreDic("plateDiamond");
 		
 		AssemblyRecipe recipeDiamond = new AssemblyRecipe(new ItemStack(Items.DIAMOND), 3000,
 				COAL_BLOCK,COAL_BLOCK,
@@ -126,13 +128,40 @@ public class AssemblyRecipeHandler
 				EMPTY_INPUT
 				);
 		
+		AssemblyRecipe recipeDiamondPlate = new AssemblyRecipe(new ItemStack(ItemInitializer.GENERIC_MATERIAL, 1, ItemMaterial.EnumVarietyMaterial.DIAMOND_PLATE.getMeta()), 100,
+				PLATE_ESSEN,
+				DIAMOND,
+				EMPTY_INPUT,
+				EMPTY_INPUT,
+				EMPTY_INPUT,
+				EMPTY_INPUT
+				);
+		
+		AssemblyRecipe recipeDiamondPlateDouble = new AssemblyRecipe(new ItemStack(ItemInitializer.GENERIC_MATERIAL, 2, ItemMaterial.EnumVarietyMaterial.DIAMOND_PLATE.getMeta()), 100,
+				PLATE_ESSEN,
+				DIAMOND,
+				PLATE_ESSEN,
+				DIAMOND,
+				EMPTY_INPUT,
+				EMPTY_INPUT
+				);
+		
+		AssemblyRecipe recipeDiamondPlateTriple = new AssemblyRecipe(new ItemStack(ItemInitializer.GENERIC_MATERIAL, 3, ItemMaterial.EnumVarietyMaterial.DIAMOND_PLATE.getMeta()), 100,
+				PLATE_ESSEN,
+				DIAMOND,
+				PLATE_ESSEN,
+				DIAMOND,
+				PLATE_ESSEN,
+				DIAMOND
+				);
+		
 		AssemblyRecipe recipeEssenUpgrade = new AssemblyRecipe(new ItemStack(ItemInitializer.UPGRADE, 1, ItemUpgrade.EnumUpgradeType.ESSEN.getMeta()), 1200,
 				PLATE_ESSEN,
 				ADVANCED_MACHINE_PARTS,
 				PLATE_ESSEN,
-				PLATE_ESSEN,
+				PLATE_DIAMOND,
 				ADVANCED_MACHINE_PARTS,
-				PLATE_ESSEN
+				PLATE_DIAMOND
 				);
 	}
 }

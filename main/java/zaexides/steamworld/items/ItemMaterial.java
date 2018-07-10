@@ -27,10 +27,11 @@ public class ItemMaterial extends SteamWorldItem implements IOreDictionaryRegist
 	{
 		for(EnumVarietyMaterial item$material : EnumVarietyMaterial.values())
 		{
-			String oreName = item$material.getOreName();
-			if(oreName != "")
+			String[] oreNames = item$material.getOreNames();
+			if(oreNames != null)
 			{
-				OreDictionary.registerOre(oreName, new ItemStack(this, 1, item$material.getMeta()));
+				for(String oreName : oreNames)
+					OreDictionary.registerOre(oreName, new ItemStack(this, 1, item$material.getMeta()));
 			}
 		}
 	}
@@ -70,18 +71,20 @@ public class ItemMaterial extends SteamWorldItem implements IOreDictionaryRegist
 	
 	public static enum EnumVarietyMaterial implements IStringSerializable
 	{
-		ESSEN_PLATE(0, "plate_essen", "plateEssen"),
-		ADVANCED_MACHINE_PARTS(1, "advanced_machine_parts", "");
+		ESSEN_PLATE(0, "plate_essen", "plateEssen", "compressedEssen"),
+		ADVANCED_MACHINE_PARTS(1, "advanced_machine_parts"),
+		DIAMOND_PLATE(2, "plate_diamond", "plateDiamond", "compressedDiamond");
 		
 		private final int meta;
-		private final String name, oreName;
+		private final String name;
+		private final String[] oreNames;
 		private static final EnumVarietyMaterial[] META_LOOKUP = new EnumVarietyMaterial[values().length];
 		
-		private EnumVarietyMaterial(int meta, String name, String oreName)
+		private EnumVarietyMaterial(int meta, String name, String... oreNames)
 		{
 			this.meta = meta;
 			this.name = name;
-			this.oreName = oreName;
+			this.oreNames = oreNames;
 		}
 		
 		public int getMeta()
@@ -95,9 +98,9 @@ public class ItemMaterial extends SteamWorldItem implements IOreDictionaryRegist
 			return this.name;
 		}
 		
-		public String getOreName()
+		public String[] getOreNames()
 		{
-			return oreName;
+			return oreNames;
 		}
 		
 		public static EnumVarietyMaterial byMetadata(int meta)

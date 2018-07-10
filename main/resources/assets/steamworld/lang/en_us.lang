@@ -189,6 +189,7 @@ item.steamworld.treasure.name=Treasure Box
 item.steamworld.galite_jet.name=Galite Jet Orb
 item.steamworld.generic_material_plate_essen.name=Essen Plate
 item.steamworld.generic_material_advanced_machine_parts.name=Advanced Machine Parts
+item.steamworld.generic_material_plate_diamond.name=Diamond Plate
 
 #####################
 # Item Tooltip Text #
