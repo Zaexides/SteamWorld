@@ -22,17 +22,28 @@
         {
             "false":
             {
-                "textures": { "front": "steamworld:blocks/machines/steaite/machine_fertilizer_off" }
+                "textures": 
+                {
+                    "front": "steamworld:blocks/machines/steaite/machine_fertilizer_off",
+                    "htfront": "steamworld:blocks/machines/essen/machine_fertilizer_essen"
+                }
             },
             "true":
             {
-                "textures": { "front": "steamworld:blocks/machines/steaite/machine_fertilizer_on" }
+                "textures":
+                {
+                    "front": "steamworld:blocks/machines/steaite/machine_fertilizer_on",
+                    "htfront": "steamworld:blocks/machines/essen/machine_fertilizer_essen_active"
+                }
             }
         },
         "high_tier":
         {
             "false": {},
-            "true": {}
+            "true":
+            {
+                "model": "steamworld:machines/machine_essen"
+            }
         }
     }
 }

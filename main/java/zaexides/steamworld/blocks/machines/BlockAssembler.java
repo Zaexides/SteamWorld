@@ -32,12 +32,13 @@ import zaexides.steamworld.te.TileEntityAssembler;
 
 public class BlockAssembler extends BlockMachine implements ITileEntityProvider
 {
-	public int efficiency = 1;
+	public int efficiency = 1, efficiencyHT = 3;
 	
-	public BlockAssembler(String name, float hardness, int efficiency) 
+	public BlockAssembler(String name, float hardness, int efficiency, int efficiencyHT) 
 	{
 		super(name, Material.IRON, hardness);
 		this.efficiency = efficiency;
+		this.efficiencyHT = efficiencyHT;
 	}
 
 	@Override
@@ -51,7 +52,7 @@ public class BlockAssembler extends BlockMachine implements ITileEntityProvider
 	@Override
 	public void setMachineStats(TileEntity tileEntity, boolean highTier) 
 	{
-		((TileEntityAssembler)tileEntity).SetStats(efficiency);
+		((TileEntityAssembler)tileEntity).SetStats(highTier ? efficiencyHT : efficiency);
 	}
 	
 	@Override

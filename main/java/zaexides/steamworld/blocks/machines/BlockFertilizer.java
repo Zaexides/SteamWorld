@@ -32,12 +32,13 @@ import zaexides.steamworld.te.TileEntityFertilizer;
 
 public class BlockFertilizer extends BlockMachine implements ITileEntityProvider
 {
-	public int efficiency = 1;
+	public int efficiency = 1, efficiencyHT = 4;
 	
-	public BlockFertilizer(String name, float hardness, int efficiency) 
+	public BlockFertilizer(String name, float hardness, int efficiency, int efficiencyHT) 
 	{
 		super(name, Material.IRON, hardness);
 		this.efficiency = efficiency;
+		this.efficiencyHT = efficiencyHT;
 	}
 
 	@Override
@@ -51,7 +52,7 @@ public class BlockFertilizer extends BlockMachine implements ITileEntityProvider
 	@Override
 	public void setMachineStats(TileEntity tileEntity, boolean highTier) 
 	{
-		((TileEntityFertilizer)tileEntity).SetStats(efficiency);
+		((TileEntityFertilizer)tileEntity).SetStats(highTier ? efficiencyHT : efficiency);
 	}
 	
 	@Override

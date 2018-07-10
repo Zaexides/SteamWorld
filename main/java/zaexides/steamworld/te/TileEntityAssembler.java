@@ -48,12 +48,12 @@ public class TileEntityAssembler extends TileEntityMachine implements ITickable
 		@Override
 		public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) 
 		{
-			if(stack.getItem() == ItemInitializer.STEAITE_CRYSTAL)
+			if(stack.getItem() instanceof ItemCrystal)
 				slot = CRYSTAL_SLOT;
 			
 			if(slot == CRYSTAL_SLOT)
 			{
-				if(stack.getItem() == ItemInitializer.STEAITE_CRYSTAL)
+				if(stack.getItem() instanceof ItemCrystal)
 					return super.insertItem(slot, stack, simulate);
 				else
 					return stack;
@@ -168,7 +168,7 @@ public class TileEntityAssembler extends TileEntityMachine implements ITickable
 		else
 			outputStack.setStackInSlot(0, ItemStack.EMPTY);
 		
-		if(output != null && output != ItemStack.EMPTY && inputStack.getStackInSlot(6).getItem() == ItemInitializer.STEAITE_CRYSTAL)
+		if(output != null && output != ItemStack.EMPTY && inputStack.getStackInSlot(6).getItem() instanceof ItemCrystal)
 		{
 			SetActive(true);
 			

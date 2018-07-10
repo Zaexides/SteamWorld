@@ -32,12 +32,13 @@ import zaexides.steamworld.te.TileEntityFarmer;
 
 public class BlockFarmer extends BlockMachine implements ITileEntityProvider
 {
-	public int amount = 1;
+	public int amount = 1, amountHT = 4;
 	
-	public BlockFarmer(String name, float hardness, int amount) 
+	public BlockFarmer(String name, float hardness, int amount, int amountHT) 
 	{
 		super(name, Material.IRON, hardness);
 		this.amount = amount;
+		this.amountHT = amountHT;
 	}
 
 	@Override
@@ -51,7 +52,7 @@ public class BlockFarmer extends BlockMachine implements ITileEntityProvider
 	@Override
 	public void setMachineStats(TileEntity tileEntity, boolean highTier)
 	{
-		((TileEntityFarmer)tileEntity).SetStats(amount);
+		((TileEntityFarmer)tileEntity).SetStats(highTier ? amountHT : amount);
 	}
 	
 	@Override

@@ -22,17 +22,28 @@
         {
             "false":
             {
-                "textures": { "front": "steamworld:blocks/machines/ancite/machine_assembler_off" }
+                "textures":
+                {
+                    "front": "steamworld:blocks/machines/ancite/machine_assembler_off",
+                    "htfront": "steamworld:blocks/machines/essen/machine_assembler_essen"
+                }
             },
             "true":
             {
-                "textures": { "front": "steamworld:blocks/machines/ancite/machine_assembler_on" }
+                "textures":
+                {
+                    "front": "steamworld:blocks/machines/ancite/machine_assembler_on",
+                    "htfront": "steamworld:blocks/machines/essen/machine_assembler_essen_active"
+                }
             }
         },
         "high_tier":
         {
             "false": {},
-            "true": {}
+            "true": 
+            {
+                "model": "steamworld:machines/machine_essen"
+            }
         }
     }
 }

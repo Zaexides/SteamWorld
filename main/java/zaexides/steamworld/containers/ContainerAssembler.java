@@ -17,6 +17,7 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.init.ItemInitializer;
+import zaexides.steamworld.items.ItemCrystal;
 import zaexides.steamworld.recipe.handling.DustRecipeHandler;
 import zaexides.steamworld.te.TileEntityAssembler;
 import zaexides.steamworld.utility.capability.ItemStackHandlerSteamWorld;
@@ -46,7 +47,7 @@ public class ContainerAssembler extends SWContainer
 			@Override
 			public boolean isItemValid(ItemStack stack) 
 			{
-				return stack.getItem() == ItemInitializer.STEAITE_CRYSTAL;
+				return stack.getItem() instanceof ItemCrystal;
 			}
 		});
 		for(int y = 0; y < 3; y++)

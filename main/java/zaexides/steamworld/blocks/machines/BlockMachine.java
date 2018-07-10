@@ -34,7 +34,7 @@ import zaexides.steamworld.te.TileEntitySteamGenerator;
 public class BlockMachine extends SteamWorldBlock implements IWrenchable, IUpgradeable
 {
 	public static final byte HIGH_TIER_UPGRADE_TIER = 2;
-	public static final byte HIGH_TIER_OFFSET = 3;
+	public byte highTierOffset = 3;
 	public static final byte UPGRADE_MAX = 3;
 	
 	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
@@ -93,7 +93,7 @@ public class BlockMachine extends SteamWorldBlock implements IWrenchable, IUpgra
 	public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items)
 	{
 		items.add(new ItemStack(this, 1, 0));
-		if((currentTier + HIGH_TIER_OFFSET) <= UPGRADE_MAX)
+		if((currentTier + highTierOffset) <= UPGRADE_MAX)
 			items.add(new ItemStack(this, 1, 4));
 	}
 	
@@ -166,8 +166,14 @@ public class BlockMachine extends SteamWorldBlock implements IWrenchable, IUpgra
 	
 	public BlockMachine SetUpgradeData(BlockMachine blockMachine, byte currentTier)
 	{
+		return SetUpgradeData(blockMachine, currentTier, (byte)3);
+	}
+	
+	public BlockMachine SetUpgradeData(BlockMachine blockMachine, byte currentTier, byte highTierOffset)
+	{
 		this.upgradeBlock = blockMachine;
 		this.currentTier = currentTier;
+		this.highTierOffset = highTierOffset;
 		
 		return this;
 	}
@@ -182,7 +188,7 @@ public class BlockMachine extends SteamWorldBlock implements IWrenchable, IUpgra
 		
 		byte currentTier = this.currentTier;
 		if(world.getBlockState(pos).getValue(HIGH_TIER))
-			currentTier += HIGH_TIER_OFFSET;
+			currentTier += highTierOffset;
 		
 		EnumUpgradeType upgradeRequired = EnumUpgradeType.byMetadata(currentTier);
 		
