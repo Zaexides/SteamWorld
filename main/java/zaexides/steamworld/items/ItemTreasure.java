@@ -65,7 +65,7 @@ public class ItemTreasure extends SteamWorldItem implements IModeledObject
 	{
 		for(EnumTreasure item$material : EnumTreasure.values())
 		{
-			if(isInCreativeTab(tab))
+			if(isInCreativeTab(tab) && item$material.getMeta() != 3)
 				items.add(new ItemStack(this, 1, item$material.getMeta()));
 		}
 	}
@@ -98,7 +98,8 @@ public class ItemTreasure extends SteamWorldItem implements IModeledObject
 	{
 		FISH(0, "fish", LootTableInitializer.TREASURE_BOX_FISHING, "Rare chance of fishing up."),
 		DUNGEON(1, "dungeon", LootTableInitializer.TREASURE_BOX_DUNGEON, "Found abundantly in Ancite Crypts."),
-		END(2, "end", LootTableInitializer.TREASURE_BOX_END, "Occasionally found in the End Cities.");
+		END(2, "end", LootTableInitializer.TREASURE_BOX_END, "Occasionally found in the End Cities."),
+		BIRTHDAY(3, "bday", LootTableInitializer.TREASURE_BOX_BIRTHDAY, "Found on specific dates.");
 		
 		private final int meta;
 		private final String name;
