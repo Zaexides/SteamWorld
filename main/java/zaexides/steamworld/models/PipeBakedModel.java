@@ -24,7 +24,7 @@ import zaexides.steamworld.blocks.BlockFluidPipe;
 
 public class PipeBakedModel implements IBakedModel
 {
-	public static final ModelResourceLocation BAKED_MODEL = new ModelResourceLocation(ModInfo.MODID + ":pipe");
+	public static final ModelResourceLocation BAKED_MODEL = new ModelResourceLocation(ModInfo.MODID + ":block_pipe");
 	
 	private TextureAtlasSprite sprite;
 	private VertexFormat format;
@@ -82,12 +82,17 @@ public class PipeBakedModel implements IBakedModel
         }
 
         IExtendedBlockState extendedBlockState = (IExtendedBlockState) state;
-        Boolean north = extendedBlockState.getValue(BlockFluidPipe.NORTH);
-        Boolean south = extendedBlockState.getValue(BlockFluidPipe.SOUTH);
-        Boolean west = extendedBlockState.getValue(BlockFluidPipe.WEST);
-        Boolean east = extendedBlockState.getValue(BlockFluidPipe.EAST);
-        Boolean up = extendedBlockState.getValue(BlockFluidPipe.UP);
-        Boolean down = extendedBlockState.getValue(BlockFluidPipe.DOWN);
+        Boolean north = false, south = false, west = false, east = false, up = false, down = false;
+        
+        if(extendedBlockState != null)
+        {
+        	north = extendedBlockState.getValue(BlockFluidPipe.NORTH);
+            south = extendedBlockState.getValue(BlockFluidPipe.SOUTH);
+            west = extendedBlockState.getValue(BlockFluidPipe.WEST);
+            east = extendedBlockState.getValue(BlockFluidPipe.EAST);
+            up = extendedBlockState.getValue(BlockFluidPipe.UP);
+            down = extendedBlockState.getValue(BlockFluidPipe.DOWN);
+        }
         List<BakedQuad> quads = new ArrayList<>();
         double o = .32;
 
