@@ -22,7 +22,7 @@ public class RecipeInputOreDic implements IRecipeInput
 	@Override
 	public boolean isEmpty() 
 	{
-		return false;
+		return !OreDictionary.doesOreNameExist(oreDicName);
 	}
 
 	@Override

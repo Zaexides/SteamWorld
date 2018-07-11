@@ -41,6 +41,9 @@ public class DustRecipeHandler
 	
 	public static DustRecipe RegisterRecipe(IRecipeInput input, ItemStack output, boolean forced)
 	{
+		if(input.isEmpty())
+			return null;
+		
 		if(isBlackListed(input) && !forced)
 		{
 			SteamWorld.logger.log(Level.INFO, "Skipped SteamWorld Grinder recipe for " + input.toString() + " as it was blacklisted.");

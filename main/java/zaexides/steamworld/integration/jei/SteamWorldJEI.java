@@ -61,6 +61,7 @@ public class SteamWorldJEI implements IModPlugin
 		registry.addRecipeCatalyst(new ItemStack(BlockInitializer.GRINDER_STEAITE), RecipeCategoryGrinder.UID);
 		registry.addRecipeCatalyst(new ItemStack(BlockInitializer.GRINDER_ANCITE), RecipeCategoryGrinder.UID);
 		registry.addRecipeCatalyst(new ItemStack(BlockInitializer.GRINDER_ENDRITCH), RecipeCategoryGrinder.UID);
+		registry.addRecipeCatalyst(new ItemStack(BlockInitializer.GRINDER_STEAITE, 1, 4), RecipeCategoryGrinder.UID);
 		recipeTransferRegistry.addRecipeTransferHandler(ContainerSteamGrinder.class, RecipeCategoryGrinder.UID, 0, 1, 2, 36);
 		
 		//Furnace Registering
@@ -69,6 +70,7 @@ public class SteamWorldJEI implements IModPlugin
 		registry.addRecipeCatalyst(new ItemStack(BlockInitializer.FURNACE_STEAITE), VanillaRecipeCategoryUid.SMELTING);
 		registry.addRecipeCatalyst(new ItemStack(BlockInitializer.FURNACE_ANCITE), VanillaRecipeCategoryUid.SMELTING);
 		registry.addRecipeCatalyst(new ItemStack(BlockInitializer.FURNACE_ENDRITCH), VanillaRecipeCategoryUid.SMELTING);
+		registry.addRecipeCatalyst(new ItemStack(BlockInitializer.FURNACE_STEAITE, 1, 4), VanillaRecipeCategoryUid.SMELTING);
 		
 		//Assembly Registering
 		registry.handleRecipes(AssemblyRecipe.class, RecipeWrapperAssembler::new, RecipeCategoryAssembler.UID);
@@ -76,43 +78,51 @@ public class SteamWorldJEI implements IModPlugin
 		registry.addRecipeClickArea(GuiAssembler.class, 3, 3, 170, 16, RecipeCategoryAssembler.UID);
 		registry.addRecipeCatalyst(new ItemStack(BlockInitializer.ASSEMBLER_ANCITE), RecipeCategoryAssembler.UID);
 		registry.addRecipeCatalyst(new ItemStack(BlockInitializer.ASSEMBLER_ENDRITCH), RecipeCategoryAssembler.UID);
+		registry.addRecipeCatalyst(new ItemStack(BlockInitializer.ASSEMBLER_ANCITE, 1, 4), RecipeCategoryAssembler.UID);
 		recipeTransferRegistry.addRecipeTransferHandler(ContainerAssembler.class, RecipeCategoryAssembler.UID, 0, 7, 8, 36);
 		
 		//Descriptions
 		registry.addIngredientInfo(Arrays.asList(
 				new ItemStack(BlockInitializer.GENERATOR_STEAITE),
 				new ItemStack(BlockInitializer.GENERATOR_ANCITE),
-				new ItemStack(BlockInitializer.GENERATOR_ENDRITCH)
+				new ItemStack(BlockInitializer.GENERATOR_ENDRITCH),
+				new ItemStack(BlockInitializer.GENERATOR_STEAITE, 1, 4)
 				), ItemStack.class, "jei.steamworld.generator.description");
 		registry.addIngredientInfo(Arrays.asList(
 				new ItemStack(BlockInitializer.GRINDER_STEAITE),
 				new ItemStack(BlockInitializer.GRINDER_ANCITE),
-				new ItemStack(BlockInitializer.GRINDER_ENDRITCH)
+				new ItemStack(BlockInitializer.GRINDER_ENDRITCH),
+				new ItemStack(BlockInitializer.GRINDER_STEAITE, 1, 4)
 				), ItemStack.class, "jei.steamworld.grinder.description");
 		registry.addIngredientInfo(Arrays.asList(
 				new ItemStack(BlockInitializer.FURNACE_STEAITE),
 				new ItemStack(BlockInitializer.FURNACE_ANCITE),
-				new ItemStack(BlockInitializer.FURNACE_ENDRITCH)
+				new ItemStack(BlockInitializer.FURNACE_ENDRITCH),
+				new ItemStack(BlockInitializer.FURNACE_STEAITE, 1, 4)
 				), ItemStack.class, "jei.steamworld.furnace.description");
 		registry.addIngredientInfo(Arrays.asList(
 				new ItemStack(BlockInitializer.FISHER_STEAITE),
 				new ItemStack(BlockInitializer.FISHER_ANCITE),
-				new ItemStack(BlockInitializer.FISHER_ENDRITCH)
+				new ItemStack(BlockInitializer.FISHER_ENDRITCH),
+				new ItemStack(BlockInitializer.FISHER_STEAITE, 1, 4)
 				), ItemStack.class, "jei.steamworld.fisher.description");
 		registry.addIngredientInfo(Arrays.asList(
 				new ItemStack(BlockInitializer.FARMER_STEAITE),
 				new ItemStack(BlockInitializer.FARMER_ANCITE),
-				new ItemStack(BlockInitializer.FARMER_ENDRITCH)
+				new ItemStack(BlockInitializer.FARMER_ENDRITCH),
+				new ItemStack(BlockInitializer.FARMER_STEAITE, 1, 4)
 				), ItemStack.class, "jei.steamworld.farmer.description");
 		registry.addIngredientInfo(Arrays.asList(
 				new ItemStack(BlockInitializer.LUMBER_STEAITE),
 				new ItemStack(BlockInitializer.LUMBER_ANCITE),
-				new ItemStack(BlockInitializer.LUMBER_ENDRITCH)
+				new ItemStack(BlockInitializer.LUMBER_ENDRITCH),
+				new ItemStack(BlockInitializer.LUMBER_STEAITE, 1, 4)
 				), ItemStack.class, "jei.steamworld.lumber.description");
 		registry.addIngredientInfo(Arrays.asList(
 				new ItemStack(BlockInitializer.FERTILIZER_STEAITE),
 				new ItemStack(BlockInitializer.FERTILIZER_ANCITE),
-				new ItemStack(BlockInitializer.FERTILIZER_ENDRITCH)
+				new ItemStack(BlockInitializer.FERTILIZER_ENDRITCH),
+				new ItemStack(BlockInitializer.FERTILIZER_STEAITE, 1, 4)
 				), ItemStack.class, "jei.steamworld.fertilizer.description");
 		registry.addIngredientInfo(Arrays.asList(
 				new ItemStack(BlockInitializer.BLOCK_VALVE),
@@ -120,11 +130,13 @@ public class SteamWorldJEI implements IModPlugin
 				), ItemStack.class, "jei.steamworld.fluid_controller.description");
 		registry.addIngredientInfo(Arrays.asList(
 				new ItemStack(BlockInitializer.EXPERIENCE_MACHINE_ANCITE),
-				new ItemStack(BlockInitializer.EXPERIENCE_MACHINE_ENDRITCH)
+				new ItemStack(BlockInitializer.EXPERIENCE_MACHINE_ENDRITCH),
+				new ItemStack(BlockInitializer.EXPERIENCE_MACHINE_ANCITE, 1, 4)
 				), ItemStack.class, "jei.steamworld.experience_machine.description");
 		registry.addIngredientInfo(Arrays.asList(
 				new ItemStack(BlockInitializer.ASSEMBLER_ANCITE),
-				new ItemStack(BlockInitializer.ASSEMBLER_ENDRITCH)
+				new ItemStack(BlockInitializer.ASSEMBLER_ENDRITCH),
+				new ItemStack(BlockInitializer.ASSEMBLER_ANCITE, 1, 4)
 				), ItemStack.class, "jei.steamworld.assembler.description");
 		registry.addIngredientInfo(new ItemStack(BlockInitializer.GENERATOR_NETHER), 
 				ItemStack.class, "jei.steamworld.generator_nether.description");
