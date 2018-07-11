@@ -13,6 +13,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -24,6 +25,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.property.ExtendedBlockState;
 import net.minecraftforge.common.property.IExtendedBlockState;
@@ -37,10 +39,9 @@ import zaexides.steamworld.items.ItemInitializer;
 import zaexides.steamworld.models.PipeBakedModel;
 import zaexides.steamworld.te.TileEntityPipe;
 import zaexides.steamworld.utility.UnlistedPropertyCanConnect;
-import zaexides.steamworld.utility.interfaces.IItemModeledObject;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
 
-public class BlockFluidPipe extends Block implements IItemModeledObject, IModeledObject, ITileEntityProvider
+public class BlockFluidPipe extends Block implements IModeledObject, ITileEntityProvider
 {
 	public static final UnlistedPropertyCanConnect NORTH = new UnlistedPropertyCanConnect("north");
 	public static final UnlistedPropertyCanConnect SOUTH = new UnlistedPropertyCanConnect("south");
@@ -75,17 +76,12 @@ public class BlockFluidPipe extends Block implements IItemModeledObject, IModele
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void RegisterItemModels()
-	{
-		Item itemBlock = Item.REGISTRY.getObject(new ResourceLocation(ModInfo.MODID, "block_pipe"));
-		ModelResourceLocation modelResourceLocation = new ModelResourceLocation(getRegistryName(), "inventory");
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(itemBlock, 0, modelResourceLocation);
-	}
-
-	@SideOnly(Side.CLIENT)
-	@Override
 	public void RegisterModels() 
 	{
+		SteamWorld.proxy.RegisterItemRenderers(Item.getItemFromBlock(this), 0,
+				"inventory",
+				"item_block_pipe"
+				);
 		StateMapperBase ignoreState = new StateMapperBase() 
 		{
 			@Override
@@ -94,6 +90,7 @@ public class BlockFluidPipe extends Block implements IItemModeledObject, IModele
 				return PipeBakedModel.BAKED_MODEL;
 			}
 		};
+		ModelLoader.setCustomStateMapper(this, ignoreState);
 	}
 	
 	@Override

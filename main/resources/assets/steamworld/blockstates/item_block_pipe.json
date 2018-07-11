@@ -1,0 +1,12 @@
+{
+    "forge_marker": 1,
+    "defaults": 
+    {
+        "model": "steamworld:pipe"
+    },
+    "variants":
+    {
+        "normal" : [{}],
+        "inventory": [{}]
+    }
+}

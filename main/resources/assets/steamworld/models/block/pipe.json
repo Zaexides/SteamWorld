@@ -1,5 +1,8 @@
 {
-    "parent": "steamworld:block/block_pipe",
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "steamworld:blocks/pipe"
+    },
     "display":
     {
         "gui": {

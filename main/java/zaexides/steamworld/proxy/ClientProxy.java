@@ -22,7 +22,6 @@ import zaexides.steamworld.blocks.BlockInitializer;
 import zaexides.steamworld.blocks.BlockSteam;
 import zaexides.steamworld.gui.GuiHandler;
 import zaexides.steamworld.models.BakedModelLoader;
-import zaexides.steamworld.utility.interfaces.IItemModeledObject;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
 
 public class ClientProxy extends CommonProxy
@@ -78,10 +77,5 @@ public class ClientProxy extends CommonProxy
 	public void PostInit() 
 	{
 		super.PostInit();
-		for(Block block : BlockInitializer.BLOCKS)
-		{
-			if(block instanceof IItemModeledObject)
-				((IItemModeledObject)block).RegisterItemModels();
-		}
 	}
 }
