@@ -35,9 +35,6 @@ public class WorldGenCrypt implements IWorldGenerator
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator,
 			IChunkProvider chunkProvider) 
 	{
-		if(!ConfigHandler.generateDwarvenStructure)
-			return;
-		
 		float generateChance = CHANCE_PER_CHUNK;
 		Biome biome = world.getBiome(new BlockPos(chunkX, 22, chunkZ));
 		if(biome.getBaseHeight() >= 1.0f)

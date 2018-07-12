@@ -10,6 +10,7 @@ import com.typesafe.config.Config;
 
 import net.minecraftforge.common.config.Configuration;
 import zaexides.steamworld.proxy.CommonProxy;
+import zaexides.steamworld.recipe.handling.MinerRecipeHandler;
 
 public class ConfigHandler
 {
@@ -34,6 +35,24 @@ public class ConfigHandler
 	public static int farmerArea = 5;
 	public static boolean farmerAllowSeedDropUpgrade = true;
 	
+	private static final String CATEGORY_MINER = "miner";
+	private static final String[] minerDefaults = new String[]
+			{
+					"od:oreCoal@0",
+					"od:oreQuartz@0",
+					"od:oreIron@1",
+					"od:oreLapis@1",
+					"od:oreGold@2",
+					"od:oreDiamond@2",
+					"od:oreRedstone@2",
+					"od:oreEmerald@2",
+					"minecraft:obsidian@3",
+					"od:oreSteaite@3",
+					"od:oreAncite@3",
+					"od:oreGalite@3",
+					"od:oreTerrite@4",
+			};
+	
 	private static final String CATEGORY_ENERGY = "energy";
 	public static int fluidFromEnergy = 1;
 	public static int fluidToEnergy = 1;
@@ -57,6 +76,7 @@ public class ConfigHandler
 			InitGeneral(config);
 			InitWorldgen(config);
 			InitFarmerSettings(config);
+			InitMinerSettings(config);
 			InitEnergySettings(config);
 			InitTinkersIntegrationSettings(config);
 		}
@@ -87,9 +107,8 @@ public class ConfigHandler
 	private static void InitWorldgen(Configuration config)
 	{
 		config.addCustomCategoryComment(CATEGORY_WORLDGEN, "World generation settings");
-		generateSteaiteOre = config.getBoolean("generate_steaite", CATEGORY_WORLDGEN, generateSteaiteOre, "Generate Steaite ore in the world?");
+		generateSteaiteOre = config.getBoolean("generate_steaite", CATEGORY_WORLDGEN, generateSteaiteOre, "Generate Steaite ore in the overworld?");
 		generateDwarvenStructure = config.getBoolean("generate_ancite_dungeon", CATEGORY_WORLDGEN, generateDwarvenStructure, "Generate the Ancite dungeons in the world?");
-		generateDwarvenOutpost = config.getBoolean("generate_ancite_outpost", CATEGORY_WORLDGEN, generateDwarvenOutpost, "Generate the Ancite outposts in the world?");
 	}
 	
 	private static void InitFarmerSettings(Configuration config)
@@ -99,6 +118,12 @@ public class ConfigHandler
 		farmerDropBlacklist = Arrays.asList(config.getStringList("farmer_drop_blacklist", CATEGORY_FARMER, farmerDropBlacklist.toArray(new String[0]), "Blacklist for crop drops in the farmer. Enter registry names (e.g. \"minecraft:wheat\") to disable the farmer from harvesting these as drops."));
 		farmerModBlacklist = Arrays.asList(config.getStringList("farmer_mod_blacklist", CATEGORY_FARMER, farmerModBlacklist.toArray(new String[0]), "Blacklist for mods in the farmer. Enter the registry domain name (e.g. in \"minecraft:wheat\" it'd be \"minecraft\"). This will completely ignore any crops from this mod."));
 		farmerAllowSeedDropUpgrade = config.getBoolean("farmer_upgrade_affect_seeds", CATEGORY_FARMER, farmerAllowSeedDropUpgrade, "Do the farmer upgrades also increase seed yield?");
+	}
+	
+	private static void InitMinerSettings(Configuration config)
+	{
+		config.addCustomCategoryComment(CATEGORY_MINER, "Miner settings");
+		MinerRecipeHandler.configMinerRecipeStrings = config.getStringList("miner_ores", CATEGORY_MINER, minerDefaults, "Array of ores the miner will mine by tier. Format: moddomain:blockname@tier OR od:oreDicName@tier");
 	}
 	
 	private static void InitEnergySettings(Configuration config)

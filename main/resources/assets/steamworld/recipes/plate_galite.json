@@ -4,17 +4,17 @@
     [
         {
             "type": "forge:ore_dict",
-            "ore": "ingotEssen"
+            "ore": "ingotGalite"
         },
         {
             "type": "forge:ore_dict",
-            "ore": "ingotEssen"
+            "ore": "ingotGalite"
         }
     ],
     "result":
     {
         "item": "steamworld:generic_material",
-        "data": 0,
+        "data": 3,
         "count": 2
     }
 }

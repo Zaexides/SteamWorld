@@ -33,6 +33,7 @@ import zaexides.steamworld.items.ItemDust;
 import zaexides.steamworld.items.SWItemNugget;
 import zaexides.steamworld.network.PacketHandler;
 import zaexides.steamworld.recipe.handling.DustRecipeHandler;
+import zaexides.steamworld.recipe.handling.MinerRecipeHandler;
 import zaexides.steamworld.recipe.handling.OreDictionaryScanner;
 
 public class CommonProxy 
@@ -103,6 +104,7 @@ public class CommonProxy
 			configuration.save();
 		
 		OreDictionaryScanner.ScanOreDictionary();
+		MinerRecipeHandler.RegisterConfigRecipes();
 		
 		if(Loader.isModLoaded("tconstruct"))
     	{

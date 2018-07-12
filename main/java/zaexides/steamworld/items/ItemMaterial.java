@@ -73,7 +73,8 @@ public class ItemMaterial extends SteamWorldItem implements IOreDictionaryRegist
 	{
 		ESSEN_PLATE(0, "plate_essen", "plateEssen", "compressedEssen"),
 		ADVANCED_MACHINE_PARTS(1, "advanced_machine_parts"),
-		DIAMOND_PLATE(2, "plate_diamond", "plateDiamond", "compressedDiamond");
+		DIAMOND_PLATE(2, "plate_diamond", "plateDiamond", "compressedDiamond"),
+		GALITE_PLATE(3, "plate_galite", "plateGalite", "compressedGalite");
 		
 		private final int meta;
 		private final String name;

@@ -168,6 +168,14 @@ item.steamworld.upgrade_ancite.name=Ancite Upgrade
 item.steamworld.upgrade_endritch.name=Endritch Upgrade
 item.steamworld.upgrade_essen.name=Essen Upgrade
 
+# Drills
+item.steamworld.gold_drill.name=Gold Drill
+item.steamworld.wood_drill.name=Wooden Drill
+item.steamworld.stone_drill.name=Stone Drill
+item.steamworld.iron_drill.name=Iron Drill
+item.steamworld.diamond_drill.name=Diamond Drill
+item.steamworld.galite_drill.name=Galite Drill
+
 # Manuals
 item.steamworld.manual_steaite.name=SteamWorld Manual MKI
 item.steamworld.manual_ancite.name=SteamWorld Manual MKII
@@ -190,6 +198,7 @@ item.steamworld.galite_jet.name=Galite Jet Orb
 item.steamworld.generic_material_plate_essen.name=Essen Plate
 item.steamworld.generic_material_advanced_machine_parts.name=Advanced Machine Parts
 item.steamworld.generic_material_plate_diamond.name=Diamond Plate
+item.steamworld.generic_material_plate_galite.name=Galite Plate
 
 #####################
 # Item Tooltip Text #
