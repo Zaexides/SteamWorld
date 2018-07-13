@@ -45,6 +45,7 @@ public class BlockMachine extends SteamWorldBlock implements IWrenchable, IUpgra
 	
 	protected BlockMachine upgradeBlock;
 	protected byte currentTier = 0;
+	protected boolean canUpgrade = false;
 	
 	protected float hardness, hardnessHT;
 	
@@ -52,7 +53,7 @@ public class BlockMachine extends SteamWorldBlock implements IWrenchable, IUpgra
 	{
 		super(name, material, hardness, hardness * 5, 64, SteamWorld.CREATIVETAB_UTILITY);
 		this.hardness = hardness;
-		this.hardnessHT = hardness;
+		this.hardnessHT = hardness + 3;
 	}
 	
 	public BlockMachine(String name, Material material, float hardness, float hardnessHT)
@@ -66,7 +67,7 @@ public class BlockMachine extends SteamWorldBlock implements IWrenchable, IUpgra
 	public void RegisterModels() 
 	{
 		SteamWorld.proxy.RegisterItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
-		if((currentTier + highTierOffset) <= UPGRADE_MAX)
+		if((currentTier + highTierOffset) <= UPGRADE_MAX && canUpgrade)
 			SteamWorld.proxy.RegisterItemRenderers(Item.getItemFromBlock(this), 4, "inventory", "machines/" + getRegistryName().getResourcePath() + "_ht");
 	}
 	
@@ -102,7 +103,7 @@ public class BlockMachine extends SteamWorldBlock implements IWrenchable, IUpgra
 	public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items)
 	{
 		items.add(new ItemStack(this, 1, 0));
-		if((currentTier + highTierOffset) <= UPGRADE_MAX)
+		if((currentTier + highTierOffset) <= UPGRADE_MAX && canUpgrade)
 			items.add(new ItemStack(this, 1, 4));
 	}
 	
@@ -184,6 +185,8 @@ public class BlockMachine extends SteamWorldBlock implements IWrenchable, IUpgra
 		this.currentTier = currentTier;
 		this.highTierOffset = highTierOffset;
 		
+		canUpgrade = true;
+		
 		return this;
 	}
 	
@@ -192,7 +195,7 @@ public class BlockMachine extends SteamWorldBlock implements IWrenchable, IUpgra
 	@Override
 	public EnumActionResult OnUpgradeItemUse(EnumUpgradeType upgradeType, World world, BlockPos pos, ItemStack itemStack, EntityPlayer player) 
 	{
-		if(upgradeBlock == null)
+		if(upgradeBlock == null || !canUpgrade)
 			return EnumActionResult.FAIL;
 		
 		byte currentTier = this.currentTier;

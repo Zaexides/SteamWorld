@@ -72,6 +72,9 @@ public class AssemblyRecipeHandler
 		final RecipeInputOreDic INGOT_ESSEN = new RecipeInputOreDic("ingotEssen");
 		final RecipeInputOreDic DIAMOND = new RecipeInputOreDic("gemDiamond");
 		final RecipeInputOreDic PLATE_DIAMOND = new RecipeInputOreDic("plateDiamond");
+		final RecipeInputOreDic INGOT_IRON = new RecipeInputOreDic("ingotIron");
+		final RecipeInputOreDic INGOT_GOLD = new RecipeInputOreDic("ingotGold");
+		final RecipeInputOreDic PLATE_IRON = new RecipeInputOreDic("plateIron");
 		
 		AssemblyRecipe recipeDiamond = new AssemblyRecipe(new ItemStack(Items.DIAMOND), 3000,
 				COAL_BLOCK,COAL_BLOCK,
@@ -128,6 +131,51 @@ public class AssemblyRecipeHandler
 				new RecipeInputOreDic("dustRedstone"),
 				new RecipeInputOreDic("dustRedstone"),
 				EMPTY_INPUT
+				);
+		
+		AssemblyRecipe recipeIronPlate = new AssemblyRecipe(new ItemStack(ItemInitializer.GENERIC_MATERIAL, 1, ItemMaterial.EnumVarietyMaterial.IRON_PLATE.getMeta()), 50,
+				INGOT_IRON,
+				INGOT_IRON,
+				INGOT_IRON,
+				EMPTY_INPUT,
+				EMPTY_INPUT,
+				EMPTY_INPUT
+				);
+		
+		AssemblyRecipe recipeIronPlateDouble = new AssemblyRecipe(new ItemStack(ItemInitializer.GENERIC_MATERIAL, 2, ItemMaterial.EnumVarietyMaterial.IRON_PLATE.getMeta()), 50,
+				INGOT_IRON,
+				INGOT_IRON,
+				INGOT_IRON,
+				INGOT_IRON,
+				INGOT_IRON,
+				INGOT_IRON
+				);
+		
+		AssemblyRecipe recipeGoldPlate = new AssemblyRecipe(new ItemStack(ItemInitializer.GENERIC_MATERIAL, 1, ItemMaterial.EnumVarietyMaterial.GOLD_PLATE.getMeta()), 100,
+				PLATE_IRON,
+				INGOT_GOLD,
+				EMPTY_INPUT,
+				EMPTY_INPUT,
+				EMPTY_INPUT,
+				EMPTY_INPUT
+				);
+		
+		AssemblyRecipe recipeGoldPlateDouble = new AssemblyRecipe(new ItemStack(ItemInitializer.GENERIC_MATERIAL, 2, ItemMaterial.EnumVarietyMaterial.GOLD_PLATE.getMeta()), 100,
+				PLATE_IRON,
+				INGOT_GOLD,
+				PLATE_IRON,
+				INGOT_GOLD,
+				EMPTY_INPUT,
+				EMPTY_INPUT
+				);
+		
+		AssemblyRecipe recipeGoldPlateTriple = new AssemblyRecipe(new ItemStack(ItemInitializer.GENERIC_MATERIAL, 3, ItemMaterial.EnumVarietyMaterial.GOLD_PLATE.getMeta()), 100,
+				PLATE_IRON,
+				INGOT_GOLD,
+				PLATE_IRON,
+				INGOT_GOLD,
+				PLATE_IRON,
+				INGOT_GOLD
 				);
 		
 		AssemblyRecipe recipeEssenPlate = new AssemblyRecipe(new ItemStack(ItemInitializer.GENERIC_MATERIAL, 1, ItemMaterial.EnumVarietyMaterial.ESSEN_PLATE.getMeta()), 100,

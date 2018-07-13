@@ -36,6 +36,11 @@ public class ItemDrillHead extends SteamWorldItem implements IOreDictionaryRegis
 		SteamWorld.proxy.RegisterItemRenderers(this, 0, "inventory", "drill/" + getRegistryName().getResourcePath());
 	}
 	
+	public byte getTier()
+	{
+		return tier;
+	}
+	
 	public static void Damage(ItemStack stack, Random random) //Custom calculation because minecraft what?
 	{
 		if(stack.isItemEnchanted())
@@ -46,11 +51,6 @@ public class ItemDrillHead extends SteamWorldItem implements IOreDictionaryRegis
 		}
 		else
 			stack.setItemDamage(stack.getItemDamage() + 1);
-	}
-	
-	public ItemStack GetRandomOre(Random random)
-	{
-		return ItemStack.EMPTY;
 	}
 
 	@Override

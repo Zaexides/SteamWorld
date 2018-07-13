@@ -35,6 +35,7 @@ import zaexides.steamworld.blocks.machines.BlockGrinder;
 import zaexides.steamworld.blocks.machines.BlockLumber;
 import zaexides.steamworld.blocks.machines.BlockMachine;
 import zaexides.steamworld.blocks.machines.BlockMachineVariant;
+import zaexides.steamworld.blocks.machines.BlockMiner;
 import zaexides.steamworld.blocks.machines.BlockNetherAccelerator;
 import zaexides.steamworld.blocks.machines.BlockSWFurnace;
 import zaexides.steamworld.blocks.machines.BlockSteamGenerator;
@@ -100,6 +101,8 @@ public class BlockInitializer
 	public static final BlockMachine LUMBER_ENDRITCH = new BlockLumber("lumber_endritch", 5.5f, 3, 6);
 	public static final BlockMachine LUMBER_ANCITE = new BlockLumber("lumber_ancite", 4.5f, 2, 5).SetUpgradeData(LUMBER_ENDRITCH, (byte)1);
 	public static final BlockMachine LUMBER_STEAITE = new BlockLumber("lumber_steaite", 3.5f, 1, 4).SetUpgradeData(LUMBER_ANCITE, (byte)0);
+	
+	public static final BlockMachine MINER_ESSEN = new BlockMiner("miner_essen", 6.5f, 1, 3, (byte)3, (byte)5);
 	
 	public static final BlockMachineVariant MACHINE_VARIANT = new BlockMachineVariant("generic_machine", 4.5f);
 	

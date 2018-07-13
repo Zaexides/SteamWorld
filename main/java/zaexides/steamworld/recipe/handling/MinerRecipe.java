@@ -13,4 +13,14 @@ public class MinerRecipe
 		this.tier = tier;
 		this.output = output;
 	}
+	
+	public byte getTier()
+	{
+		return tier;
+	}
+	
+	public IRecipeInput getOutput()
+	{
+		return output;
+	}
 }

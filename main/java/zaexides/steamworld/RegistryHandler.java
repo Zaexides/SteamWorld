@@ -55,6 +55,7 @@ import zaexides.steamworld.te.TileEntityFertilizer;
 import zaexides.steamworld.te.TileEntityFisher;
 import zaexides.steamworld.te.TileEntityGrinder;
 import zaexides.steamworld.te.TileEntityLumber;
+import zaexides.steamworld.te.TileEntityMiner;
 import zaexides.steamworld.te.TileEntityNetherAccelerator;
 import zaexides.steamworld.te.TileEntityObilisk;
 import zaexides.steamworld.te.TileEntityPipe;
@@ -188,6 +189,7 @@ public class RegistryHandler
 		GameRegistry.registerTileEntity(TileEntityLumber.class, ModInfo.MODID + "_Lumber");
 		GameRegistry.registerTileEntity(TileEntityFertilizer.class, ModInfo.MODID + "_Fertilizer");
 		GameRegistry.registerTileEntity(TileEntityAssembler.class, ModInfo.MODID + "_Assembler");
+		GameRegistry.registerTileEntity(TileEntityMiner.class, ModInfo.MODID + "_Miner");
 		GameRegistry.registerTileEntity(TileEntityNetherAccelerator.class, ModInfo.MODID + "_NetherAccelerator");
 		GameRegistry.registerTileEntity(TileEntityExperienceMachine.class, ModInfo.MODID + "_ExperienceMachine");
 		GameRegistry.registerTileEntity(TileEntityTeleporter.class, ModInfo.MODID + "_Teleporter");

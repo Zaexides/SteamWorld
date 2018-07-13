@@ -2,6 +2,7 @@ package zaexides.steamworld.recipe.handling;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import org.apache.logging.log4j.Level;
 
@@ -9,6 +10,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
+import net.minecraftforge.oredict.OreDictionary;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.recipe.handling.utility.IRecipeInput;
 import zaexides.steamworld.recipe.handling.utility.RecipeInputItemStack;
@@ -21,9 +23,28 @@ public class MinerRecipeHandler
 	
 	public static MinerRecipe RegisterRecipe(byte drillTier, IRecipeInput output)
 	{
+		if(output.isEmpty())
+			return null;
 		MinerRecipe recipe = new MinerRecipe(drillTier, output);
 		recipes.add(recipe);
 		return recipe;
+	}
+	
+	public static ItemStack GetRandomResult(Random random, byte tier)
+	{
+		MinerRecipe[] tieredRecipes = recipes.stream().filter(rec -> (rec.getTier() == tier)).toArray(MinerRecipe[]::new);
+		IRecipeInput output = tieredRecipes[random.nextInt(tieredRecipes.length)].getOutput();
+		
+		if(output instanceof RecipeInputOreDic)
+		{
+			return OreDictionary.getOres(((RecipeInputOreDic)output).oreDicName).get(0);
+		}
+		else if(output instanceof RecipeInputItemStack)
+		{
+			return ((RecipeInputItemStack)output).itemStack;
+		}
+		
+		return null;
 	}
 	
 	public static void RegisterConfigRecipes()
