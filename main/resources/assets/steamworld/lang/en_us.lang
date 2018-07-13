@@ -110,7 +110,7 @@ tile.steamworld.experience_machine_endritch.name=Experience Machine MKII
 tile.steamworld.experience_machine_ancite_ht.name=Experience Machine MKIII
 
 # Miner
-tile.steamworld.miner_essen.name=Miner MKI
+tile.steamworld.miner_essen.name=Ender Miner MKI
 
 # Generic Machines
 tile.steamworld.generic_machine_teleporter.name=Endritch Teleporter
@@ -204,6 +204,7 @@ item.steamworld.generic_material_plate_diamond.name=Diamond Plate
 item.steamworld.generic_material_plate_galite.name=Galite Plate
 item.steamworld.generic_material_plate_iron.name=Iron Plate
 item.steamworld.generic_material_plate_gold.name=Gold Plate
+item.steamworld.generic_material_ender_core.name=Ender Core
 
 #####################
 # Item Tooltip Text #

@@ -39,7 +39,7 @@ public class ItemInitializer
 	public static final SteamWorldItem STEAITE_CRYSTAL = new ItemCrystal("steaite_crystal", 16);
 	public static final SteamWorldItem TERRITE_CRYSTAL = new ItemCrystal("territe_crystal", 64);
 	
-	public static final SteamWorldItem WOOD_DRILL = new ItemDrillHead("wood_drill", ToolMaterial.WOOD, "drillWood");
+	public static final SteamWorldItem WOOD_DRILL = new ItemDrillHead("wood_drill", ToolMaterial.WOOD, "drillWood").SetBurnTime(1000);
 	public static final SteamWorldItem STONE_DRILL = new ItemDrillHead("stone_drill", ToolMaterial.STONE, "drillStone");
 	public static final SteamWorldItem IRON_DRILL = new ItemDrillHead("iron_drill", ToolMaterial.IRON, "drillIron");
 	public static final SteamWorldItem DIAMOND_DRILL = new ItemDrillHead("diamond_drill", ToolMaterial.DIAMOND, "drillDiamond");

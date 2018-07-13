@@ -32,7 +32,7 @@ public class MinerRecipeHandler
 	
 	public static ItemStack GetRandomResult(Random random, byte tier)
 	{
-		MinerRecipe[] tieredRecipes = recipes.stream().filter(rec -> (rec.getTier() == tier)).toArray(MinerRecipe[]::new);
+		MinerRecipe[] tieredRecipes = recipes.stream().filter(rec -> (rec.getTier() <= tier)).toArray(MinerRecipe[]::new);
 		IRecipeInput output = tieredRecipes[random.nextInt(tieredRecipes.length)].getOutput();
 		
 		if(output instanceof RecipeInputOreDic)

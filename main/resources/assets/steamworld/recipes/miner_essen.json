@@ -1,0 +1,39 @@
+{
+    "type": "forge:ore_shaped",
+    
+    "pattern":
+    [
+        "eEe",
+        "eme",
+        "ede"
+    ],
+    
+    "key":
+    {
+        "m":
+        {
+            "item": "steamworld:machine_base"
+        },
+        "d":
+        {
+            "item": "steamworld:diamond_drill"
+        },
+        "e":
+        {
+            "type": "forge:ore_dict",
+            "ore": "plateEssen"
+        },
+        "E":
+        {
+            "type": "forge:ore_dict",
+            "ore": "enderCore"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:miner_essen",
+        "count": 1,
+        "data": 0
+    }
+}

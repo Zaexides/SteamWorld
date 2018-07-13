@@ -42,7 +42,7 @@ public class GuiMiner extends GuiContainer implements IGuiContainerUtil
 		mc.getTextureManager().bindTexture(new ResourceLocation(ModInfo.MODID, "textures/gui/machine/gui_miner.png"));
 		this.drawTexturedModalRect(guiLeft, guiTop, 0, 0, xSize, ySize);
 		
-		float progression = (float) ((TileEntityMachine)tileEntity).progression / (float) tileEntity.TIME_PER_ORE;
+		float progression = tileEntity.progression / (float) tileEntity.TIME_PER_ORE;
 		float xOff = 25 * progression;
 				
 		drawTexturedModalRect(guiLeft + 75, guiTop + 35, 176, 0, (int)xOff, 18);

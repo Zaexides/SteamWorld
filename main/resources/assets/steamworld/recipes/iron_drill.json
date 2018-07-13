@@ -1,0 +1,33 @@
+{
+    "type": "forge:ore_shaped",
+    
+    "pattern":
+    [
+        " p ",
+        "pPp",
+        "pdp"
+    ],
+    
+    "key":
+    {
+        "p":
+        {
+            "type": "forge:ore_dict",
+            "ore": "plateIron"
+        },
+        "d":
+        {
+            "item": "steamworld:stone_drill"
+        },
+        "P":
+        {
+            "item": "minecraft:iron_pickaxe"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:iron_drill",
+        "count": 1
+    }
+}

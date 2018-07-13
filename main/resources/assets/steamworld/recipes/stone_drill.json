@@ -1,0 +1,33 @@
+{
+    "type": "forge:ore_shaped",
+    
+    "pattern":
+    [
+        " s ",
+        "sPs",
+        "sds"
+    ],
+    
+    "key":
+    {
+        "s":
+        {
+            "type": "forge:ore_dict",
+            "ore": "stone"
+        },
+        "d":
+        {
+            "item": "steamworld:wood_drill"
+        },
+        "P":
+        {
+            "item": "minecraft:stone_pickaxe"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:stone_drill",
+        "count": 1
+    }
+}

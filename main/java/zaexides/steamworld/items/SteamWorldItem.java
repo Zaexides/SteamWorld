@@ -3,6 +3,7 @@ package zaexides.steamworld.items;
 import akka.Main;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.init.ItemInitializer;
@@ -10,6 +11,8 @@ import zaexides.steamworld.utility.interfaces.IModeledObject;
 
 public class SteamWorldItem extends Item implements IModeledObject
 {
+	protected int burnTime = -1;
+	
 	public SteamWorldItem(String name)
 	{
 		super();
@@ -42,4 +45,15 @@ public class SteamWorldItem extends Item implements IModeledObject
 		SteamWorld.proxy.RegisterItemRenderer(this, 0, "inventory");
 	}
 	
+	public SteamWorldItem SetBurnTime(int burnTime)
+	{
+		this.burnTime = burnTime;
+		return this;
+	}
+	
+	@Override
+	public int getItemBurnTime(ItemStack itemStack) 
+	{
+		return burnTime;
+	}
 }

@@ -1,0 +1,39 @@
+{
+    "type": "forge:ore_shaped",
+    
+    "pattern":
+    [
+        "eri",
+        "rEr",
+        "ire"
+    ],
+    
+    "key":
+    {
+        "e":
+        {
+            "type": "forge:ore_dict",
+            "ore": "ingotEssen"
+        },
+        "i":
+        {
+            "type": "forge:ore_dict",
+            "ore": "plateIron"
+        },
+        "r":
+        {
+            "type": "forge:ore_dict",
+            "ore": "dustRedstone"
+        },
+        "E":
+        {
+            "item": "minecraft:ender_pearl"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:generic_material", "data": 6,
+        "count": 1
+    }
+}

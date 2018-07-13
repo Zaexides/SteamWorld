@@ -1,0 +1,33 @@
+{
+    "type": "forge:ore_shaped",
+    
+    "pattern":
+    [
+        " s ",
+        "sPs",
+        "sps"
+    ],
+    
+    "key":
+    {
+        "s":
+        {
+            "item": "minecraft:stick"
+        },
+        "p":
+        {
+            "type": "forge:ore_dict",
+            "ore": "plankWood"
+        },
+        "P":
+        {
+            "item": "minecraft:wooden_pickaxe"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:wood_drill",
+        "count": 1
+    }
+}

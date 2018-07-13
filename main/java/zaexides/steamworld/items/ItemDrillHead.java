@@ -15,19 +15,23 @@ public class ItemDrillHead extends SteamWorldItem implements IOreDictionaryRegis
 {
 	private final byte tier;
 	private final String oreDicName;
+	public final float speedModifier;
+	
+	public static final float EFFICIENCY_BASE_DECREASE = 1.4f;
 	
 	public ItemDrillHead(String name, ToolMaterial toolMaterial, String oreDicName)
 	{
-		this(name, toolMaterial.getMaxUses(), (byte)toolMaterial.getHarvestLevel(), oreDicName);
+		this(name, toolMaterial.getMaxUses(), (byte)toolMaterial.getHarvestLevel(), oreDicName, toolMaterial.getEfficiencyOnProperMaterial() - EFFICIENCY_BASE_DECREASE);
 	}
 	
-	public ItemDrillHead(String name, int uses, byte tier, String oreDicName) 
+	public ItemDrillHead(String name, int uses, byte tier, String oreDicName, float speedModifier) 
 	{
 		super(name);
 		setMaxDamage(uses);
 		setMaxStackSize(1);
 		this.tier = tier;
 		this.oreDicName = oreDicName;
+		this.speedModifier = speedModifier;
 	}
 	
 	@Override

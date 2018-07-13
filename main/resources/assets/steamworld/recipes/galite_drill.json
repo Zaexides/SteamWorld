@@ -1,0 +1,33 @@
+{
+    "type": "forge:ore_shaped",
+    
+    "pattern":
+    [
+        " p ",
+        "pPp",
+        "pdp"
+    ],
+    
+    "key":
+    {
+        "p":
+        {
+            "type": "forge:ore_dict",
+            "ore": "plateGalite"
+        },
+        "d":
+        {
+            "item": "steamworld:diamond_drill"
+        },
+        "P":
+        {
+            "item": "steamworld:pickaxe_galite"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:galite_drill",
+        "count": 1
+    }
+}

@@ -69,6 +69,8 @@ public class TileEntityMiner extends TileEntityMachine implements ITickable
 	
 	private static final int BASE_COST_PER_TICK = 5;
 	public static final int TIME_PER_ORE = 1200;
+	
+	public float progression;
 			
 	public void SetStats(int efficiency, byte maxTier)
 	{
@@ -103,7 +105,7 @@ public class TileEntityMiner extends TileEntityMachine implements ITickable
 		steamTank.writeToNBT(compound);
 		compound.setTag("items_out", outputStack.serializeNBT());
 		
-		compound.setInteger("progress", progression);
+		compound.setFloat("progress", progression);
 		compound.setInteger("efficiency", speed);
 		compound.setByte("max_tier", maxTier);
 		
@@ -118,7 +120,7 @@ public class TileEntityMiner extends TileEntityMachine implements ITickable
 		if(compound.hasKey("items_out"))
 			outputStack.deserializeNBT((NBTTagCompound) compound.getTag("items_out"));
 		
-		progression = compound.getInteger("progress");
+		progression = compound.getFloat("progress");
 		speed = compound.getInteger("efficiency");
 		maxTier = compound.getByte("max_tier");
 	}
@@ -127,18 +129,24 @@ public class TileEntityMiner extends TileEntityMachine implements ITickable
 	public boolean Execute()
 	{
 		if(steamTank.getFluidAmount() < (BASE_COST_PER_TICK * speed))
+		{
+			progression--;
+			if(progression < 0)
+				progression = 0;
 			return false;
+		}
 		
 		ItemStack drillStack = inputStack.getStackInSlot(0).copy();
 		if(outputStack.getStackInSlot(0).getCount() == 0 && drillStack.getCount() != 0)
 		{
-			SetActive(true);
-			progression += speed;
-			steamTank.drain(BASE_COST_PER_TICK * speed, true);
+			ItemDrillHead drillHead = ((ItemDrillHead)drillStack.getItem());
 			
+			SetActive(true);
+			progression += speed * drillHead.speedModifier;//TODO check if stuff works. Also add drill recipes.
+			steamTank.drain(BASE_COST_PER_TICK * speed, true);
+						
 			if(progression >= TIME_PER_ORE)
 			{
-				ItemDrillHead drillHead = ((ItemDrillHead)drillStack.getItem());
 				byte drillTier = drillHead.getTier();
 				
 				outputStack.setStackInSlot(0, MinerRecipeHandler.GetRandomResult(world.rand, drillTier).copy());
@@ -154,6 +162,9 @@ public class TileEntityMiner extends TileEntityMachine implements ITickable
 			return true;
 		}
 		
+		progression--;
+		if(progression < 0)
+			progression = 0;
 		return false;
 	}
 }
