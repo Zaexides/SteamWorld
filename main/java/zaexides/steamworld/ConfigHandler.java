@@ -42,6 +42,8 @@ public class ConfigHandler
 					"od:oreQuartz@0",
 					"od:oreIron@1",
 					"od:oreLapis@1",
+					"od:oreCopper@1",
+					"od:oreTin@1",
 					"od:oreGold@2",
 					"od:oreDiamond@2",
 					"od:oreRedstone@2",
@@ -50,6 +52,8 @@ public class ConfigHandler
 					"od:oreSteaite@3",
 					"od:oreAncite@3",
 					"od:oreGalite@3",
+					"od:oreCobalt@4",
+					"od:oreArdite@4",
 					"od:oreTerrite@4",
 			};
 	

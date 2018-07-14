@@ -317,6 +317,7 @@ message.steamworld.launcher.force_decrease=Launcher's force decreased to %s.
 # JEI tab names
 jei.steamworld.grinder=SteamWorld Grinder
 jei.steamworld.assembler=SteamWorld Assembler
+jei.steamworld.miner=SteamWorld Ender Miner
 
 # JEI general text
 jei.steamworld.time=%d minutes %d seconds
@@ -337,6 +338,7 @@ jei.steamworld.faucet.description=The Faucet puts fluids out of the fluid system
 jei.steamworld.fluid_controller.description=The Fluid Controller pumps liquids from a pipe-system on one side to one on the other. It has a small buffer and can be controlled with redstone, of which the behaviour can be changed by right-clicking it.\nUpgrades increase the efficiency and buffer size.
 jei.steamworld.assembler.description=The Steam Assembler is used to assemble (or otherwise called "craft") various high-grade items that are not possible to craft by hand.
 jei.steamworld.experience_machine.description=The Experience Machine does what it says on the tin: It takes in steam and uses it to create experience.\nUpgrades increase the efficiency.
+jei.steamworld.miner.description=The Ender Miner mines ores and blocks from a semi-existant plane on the EnderNet. Let's not sweat the details about this, though.\nUpgrades increase the efficiency and max drill tier.\nThe Miner can not use a drill of the same tier or higher.
 jei.steamworld.accelerator.description=The Nether Accelerator speeds up nearby Nether Steam Generators slightly, but at a cost...
 jei.steamworld.energy.description=The Dynamo and Electric Steam Generator allow Steam to be converted to Redstone Flux and back respectively.
 

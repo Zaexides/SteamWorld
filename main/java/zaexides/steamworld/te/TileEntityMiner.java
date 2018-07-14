@@ -142,7 +142,7 @@ public class TileEntityMiner extends TileEntityMachine implements ITickable
 			ItemDrillHead drillHead = ((ItemDrillHead)drillStack.getItem());
 			
 			SetActive(true);
-			progression += speed * drillHead.speedModifier;//TODO check if stuff works. Also add drill recipes.
+			progression += speed * drillHead.getEfficiencyModifier(drillStack);
 			steamTank.drain(BASE_COST_PER_TICK * speed, true);
 						
 			if(progression >= TIME_PER_ORE)

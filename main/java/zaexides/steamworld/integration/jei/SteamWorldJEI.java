@@ -20,9 +20,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import scala.reflect.internal.Trees.New;
 import zaexides.steamworld.containers.ContainerAssembler;
+import zaexides.steamworld.containers.ContainerMiner;
 import zaexides.steamworld.containers.ContainerSteamFurnace;
 import zaexides.steamworld.containers.ContainerSteamGrinder;
 import zaexides.steamworld.gui.GuiAssembler;
+import zaexides.steamworld.gui.GuiMiner;
 import zaexides.steamworld.gui.GuiSteamFurnace;
 import zaexides.steamworld.gui.GuiSteamGrinder;
 import zaexides.steamworld.init.BlockInitializer;
@@ -31,10 +33,14 @@ import zaexides.steamworld.integration.jei.assembler.RecipeCategoryAssembler;
 import zaexides.steamworld.integration.jei.assembler.RecipeWrapperAssembler;
 import zaexides.steamworld.integration.jei.grinder.RecipeCategoryGrinder;
 import zaexides.steamworld.integration.jei.grinder.RecipeWrapperGrinder;
+import zaexides.steamworld.integration.jei.miner.RecipeCategoryMiner;
+import zaexides.steamworld.integration.jei.miner.RecipeWrapperMiner;
 import zaexides.steamworld.items.ItemDust;
 import zaexides.steamworld.recipe.handling.AssemblyRecipe;
 import zaexides.steamworld.recipe.handling.AssemblyRecipeHandler;
 import zaexides.steamworld.recipe.handling.DustRecipeHandler;
+import zaexides.steamworld.recipe.handling.MinerRecipe;
+import zaexides.steamworld.recipe.handling.MinerRecipeHandler;
 import zaexides.steamworld.recipe.handling.DustRecipe;
 
 @JEIPlugin
@@ -45,7 +51,8 @@ public class SteamWorldJEI implements IModPlugin
 	{
 		registry.addRecipeCategories(
 				new RecipeCategoryGrinder(registry.getJeiHelpers().getGuiHelper()),
-				new RecipeCategoryAssembler(registry.getJeiHelpers().getGuiHelper())
+				new RecipeCategoryAssembler(registry.getJeiHelpers().getGuiHelper()),
+				new RecipeCategoryMiner(registry.getJeiHelpers().getGuiHelper())
 				);
 	}
 	
@@ -80,6 +87,13 @@ public class SteamWorldJEI implements IModPlugin
 		registry.addRecipeCatalyst(new ItemStack(BlockInitializer.ASSEMBLER_ENDRITCH), RecipeCategoryAssembler.UID);
 		registry.addRecipeCatalyst(new ItemStack(BlockInitializer.ASSEMBLER_ANCITE, 1, 4), RecipeCategoryAssembler.UID);
 		recipeTransferRegistry.addRecipeTransferHandler(ContainerAssembler.class, RecipeCategoryAssembler.UID, 0, 7, 8, 36);
+		
+		//Miner Registering
+		registry.handleRecipes(MinerRecipe.class, RecipeWrapperMiner::new, RecipeCategoryMiner.UID);
+		registry.addRecipes(MinerRecipeHandler.recipes, RecipeCategoryMiner.UID);
+		registry.addRecipeClickArea(GuiMiner.class, 74, 34, 27, 20, RecipeCategoryMiner.UID);
+		registry.addRecipeCatalyst(new ItemStack(BlockInitializer.MINER_ESSEN), RecipeCategoryMiner.UID);
+		recipeTransferRegistry.addRecipeTransferHandler(ContainerMiner.class, RecipeCategoryMiner.UID, 0, 1, 2, 36);
 		
 		//Descriptions
 		registry.addIngredientInfo(Arrays.asList(
@@ -138,6 +152,9 @@ public class SteamWorldJEI implements IModPlugin
 				new ItemStack(BlockInitializer.ASSEMBLER_ENDRITCH),
 				new ItemStack(BlockInitializer.ASSEMBLER_ANCITE, 1, 4)
 				), ItemStack.class, "jei.steamworld.assembler.description");
+		registry.addIngredientInfo(Arrays.asList(
+				new ItemStack(BlockInitializer.MINER_ESSEN)
+				), ItemStack.class, "jei.steamworld.miner.description");
 		registry.addIngredientInfo(new ItemStack(BlockInitializer.GENERATOR_NETHER), 
 				ItemStack.class, "jei.steamworld.generator_nether.description");
 		registry.addIngredientInfo(new ItemStack(BlockInitializer.BLOCK_DRAIN), 
