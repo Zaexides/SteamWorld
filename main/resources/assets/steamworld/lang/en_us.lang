@@ -133,6 +133,7 @@ tile.steamworld.block_faucet.name=Fluid Faucet
 tile.steamworld.portal.name=Portal
 tile.steamworld.stairs_sky_bricks.name=Sky Brick Stairs
 tile.steamworld.block_portal_frame.name=Portal Frame
+tile.steamworld.filter_tank.name=Filterable Tank
 
 ##############
 # Item Names #
@@ -222,6 +223,8 @@ item.steamworld.wrench.tooltip=Easily Remove/Rotate SteamWorld machines.
 item.steamworld.upgrade.tooltip=Shift Right-Click me on a machine.
 item.steamworld.galite_jet.tooltip[0]=Gives you some extra height!
 item.steamworld.galite_jet.tooltip[1]=But probably won't save you from falling.
+item.steamworld.filter_tank.tooltip[0]=Right-Click the bottom with a bucket to set the filter.
+item.steamworld.filter_tank.tooltip[1]=An empty bucket will remove the filter.
 
 #######################
 # Container Name Text #
@@ -309,6 +312,8 @@ message.steamworld.rs_inverted=Only active when not receiving redstone.
 message.steamworld.upgrade_fail=This upgrade won't work on this machine...
 message.steamworld.launcher.force_increase=Launcher's force increased to %s.
 message.steamworld.launcher.force_decrease=Launcher's force decreased to %s.
+message.steamworld.filter_tank.set_fluid=Filter Tank set to accept %s only.
+message.steamworld.filter_tank.any_fluid=Filter Tank set to accept anything.
 
 ############
 # JEI Text #

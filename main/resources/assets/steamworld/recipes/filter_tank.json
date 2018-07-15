@@ -1,0 +1,37 @@
+{
+    "type": "forge:ore_shaped",
+    
+    "pattern":
+    [
+        "gmg",
+        "ibi"
+    ],
+    
+    "key":
+    {
+        "i":
+        {
+            "type": "forge:ore_dict",
+            "ore": "ingotSteaite"
+        },
+        "g":
+        {
+            "item": "minecraft:glass_pane"
+        },
+        "m":
+        {
+            "item": "steamworld:machine_base"
+        },
+        "b":
+        {
+            "item": "minecraft:bucket"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:filter_tank",
+        "count": 1,
+        "data": 0
+    }
+}

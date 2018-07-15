@@ -20,6 +20,7 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -28,6 +29,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import scala.tools.nsc.transform.patmat.ScalaLogic.TreesAndTypesDomain.Var;
 import zaexides.steamworld.ModInfo;
@@ -36,10 +38,12 @@ import zaexides.steamworld.blocks.item.ItemBlockVariant;
 import zaexides.steamworld.gui.GuiHandler;
 import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.init.ItemInitializer;
+import zaexides.steamworld.models.FilteredTankModel;
 import zaexides.steamworld.network.PacketHandler;
 import zaexides.steamworld.network.messages.MessageGetTeleporterData;
 import zaexides.steamworld.savedata.world.TeleporterData;
 import zaexides.steamworld.savedata.world.TeleporterSaveData;
+import zaexides.steamworld.te.TileEntityFilterTank;
 import zaexides.steamworld.te.TileEntityFisher;
 import zaexides.steamworld.te.generic_machine.TileEntityLauncher;
 import zaexides.steamworld.te.generic_machine.TileEntityTeleporter;
@@ -118,7 +122,7 @@ public class BlockMachineVariant extends Block implements IMetaName, IModeledObj
 	@Override
 	public void RegisterModels()
 	{
-		for(int i = 0; i < BlockMachineVariant.EnumType.values().length; i++)
+		for(int i = 0; i < EnumType.values().length; i++)
 		{
 			SteamWorld.proxy.RegisterItemRenderers(Item.getItemFromBlock(this), i, "inventory", "generic_machine_" + BlockMachineVariant.EnumType.values()[i].getName());
 		}

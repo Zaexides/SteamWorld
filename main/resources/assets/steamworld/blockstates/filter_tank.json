@@ -1,0 +1,12 @@
+{
+    "forge_marker": 1,
+    "defaults":
+    {
+        "model": "steamworld:filter_tank"
+    },
+    "variants": 
+    {
+        "normal": [{}],
+        "inventory": [{}]
+    }
+}

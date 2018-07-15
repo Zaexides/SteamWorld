@@ -30,6 +30,7 @@ import zaexides.steamworld.blocks.machines.BlockExperienceMachine;
 import zaexides.steamworld.blocks.machines.BlockFarmer;
 import zaexides.steamworld.blocks.machines.BlockFaucet;
 import zaexides.steamworld.blocks.machines.BlockFertilizer;
+import zaexides.steamworld.blocks.machines.BlockFilterTank;
 import zaexides.steamworld.blocks.machines.BlockFisher;
 import zaexides.steamworld.blocks.machines.BlockGrinder;
 import zaexides.steamworld.blocks.machines.BlockLumber;
@@ -115,6 +116,7 @@ public class BlockInitializer
 	public static final BlockValve BLOCK_VALVE_ENDRITCH = new BlockValve("block_fluid_controller_endritch", SWMaterials.ENDRITCH, 4.5f, (int)(Fluid.BUCKET_VOLUME * 8.5), 8000);
 	public static final BlockDrain BLOCK_DRAIN = new BlockDrain();
 	public static final BlockFaucet BLOCK_FAUCET = new BlockFaucet();
+	public static final BlockFilterTank FILTER_TANK = new BlockFilterTank("filter_tank", 4.5f);
 	
 	public static final BlockSWPortal BLOCK_SW_PORTAL = new BlockSWPortal();
 	public static final Block BLOCK_SW_PORTAL_FRAME = new SteamWorldBlock("block_portal_frame", Material.ROCK, -1.0f).setResistance(Float.MAX_VALUE).setLightLevel(1.0f);

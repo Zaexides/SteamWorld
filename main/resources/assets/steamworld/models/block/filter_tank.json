@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "steamworld:blocks/machines/filter_tank",
+        "down": "steamworld:blocks/machines/machine_rock",
+        "up": "steamworld:blocks/machines/machine_rock",
+        "north": "steamworld:blocks/machines/filter_tank",
+        "west": "steamworld:blocks/machines/filter_tank",
+        "east": "steamworld:blocks/machines/filter_tank",
+        "south": "steamworld:blocks/machines/filter_tank"
+    }
+}
