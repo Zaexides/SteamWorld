@@ -9,7 +9,7 @@ import net.minecraft.item.Item.ToolMaterial;
 import scala.reflect.internal.Trees.New;
 import zaexides.steamworld.items.ItemBookManual;
 import zaexides.steamworld.items.ItemCrystal;
-import zaexides.steamworld.items.ItemDrillHead;
+import zaexides.steamworld.items.ItemMinerMachineTool;
 import zaexides.steamworld.items.ItemDust;
 import zaexides.steamworld.items.ItemGaliteJet;
 import zaexides.steamworld.items.ItemMaterial;
@@ -39,13 +39,20 @@ public class ItemInitializer
 	public static final SteamWorldItem STEAITE_CRYSTAL = new ItemCrystal("steaite_crystal", 16);
 	public static final SteamWorldItem TERRITE_CRYSTAL = new ItemCrystal("territe_crystal", 64);
 	
-	public static final SteamWorldItem WOOD_DRILL = new ItemDrillHead("wood_drill", ToolMaterial.WOOD, "drillWood").SetBurnTime(1000);
-	public static final SteamWorldItem STONE_DRILL = new ItemDrillHead("stone_drill", ToolMaterial.STONE, "drillStone");
-	public static final SteamWorldItem IRON_DRILL = new ItemDrillHead("iron_drill", ToolMaterial.IRON, "drillIron");
-	public static final SteamWorldItem DIAMOND_DRILL = new ItemDrillHead("diamond_drill", ToolMaterial.DIAMOND, "drillDiamond");
-	public static final SteamWorldItem GOLD_DRILL = new ItemDrillHead("gold_drill", ToolMaterial.GOLD, "drillGold");
-	public static final SteamWorldItem GALITE_DRILL = new ItemDrillHead("galite_drill", SteamWorldToolMaterial.GALITE, "drillGalite");
+	public static final SteamWorldItem WOOD_DRILL = new ItemMinerMachineTool("wood_drill", ToolMaterial.WOOD, "drillWood").SetBurnTime(1000);
+	public static final SteamWorldItem STONE_DRILL = new ItemMinerMachineTool("stone_drill", ToolMaterial.STONE, "drillStone");
+	public static final SteamWorldItem IRON_DRILL = new ItemMinerMachineTool("iron_drill", ToolMaterial.IRON, "drillIron");
+	public static final SteamWorldItem DIAMOND_DRILL = new ItemMinerMachineTool("diamond_drill", ToolMaterial.DIAMOND, "drillDiamond");
+	public static final SteamWorldItem GOLD_DRILL = new ItemMinerMachineTool("gold_drill", ToolMaterial.GOLD, "drillGold");
+	public static final SteamWorldItem GALITE_DRILL = new ItemMinerMachineTool("galite_drill", SteamWorldToolMaterial.GALITE, "drillGalite");
 	//public static final SteamWorldItem ESSEN_DRILL = new ItemDrillHead("essen_drill", SteamWorldToolMaterial.ESSEN, "drillEssen");
+	
+	public static final SteamWorldItem WOOD_PUMP = new ItemMinerMachineTool("wood_pump", ToolMaterial.WOOD, "pumpWood").SetIsPump(true).SetBurnTime(1000);
+	public static final SteamWorldItem STONE_PUMP = new ItemMinerMachineTool("stone_pump", ToolMaterial.STONE, "pumpStone").SetIsPump(true);
+	public static final SteamWorldItem IRON_PUMP = new ItemMinerMachineTool("iron_pump", ToolMaterial.IRON, "pumpIron").SetIsPump(true);
+	public static final SteamWorldItem DIAMOND_PUMP = new ItemMinerMachineTool("diamond_pump", ToolMaterial.DIAMOND, "pumpDiamond").SetIsPump(true);
+	public static final SteamWorldItem GOLD_PUMP = new ItemMinerMachineTool("gold_pump", ToolMaterial.GOLD, "pumpGold").SetIsPump(true);
+	public static final SteamWorldItem GALITE_PUMP = new ItemMinerMachineTool("galite_pump", SteamWorldToolMaterial.GALITE, "pumpGalite").SetIsPump(true);
 	
 	public static final SteamWorldItem TREASURE = new ItemTreasure("treasure");
 	

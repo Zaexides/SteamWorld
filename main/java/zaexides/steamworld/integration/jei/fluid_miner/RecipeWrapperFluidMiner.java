@@ -1,4 +1,4 @@
-package zaexides.steamworld.integration.jei.miner;
+package zaexides.steamworld.integration.jei.fluid_miner;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,22 +14,23 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.items.ItemMinerMachineTool;
 import zaexides.steamworld.recipe.handling.DustRecipeHandler;
-import zaexides.steamworld.recipe.handling.MinerRecipe;
+import zaexides.steamworld.recipe.handling.FluidMinerRecipe;
 import zaexides.steamworld.recipe.handling.DustRecipe;
 import zaexides.steamworld.recipe.handling.utility.IRecipeInput;
 import zaexides.steamworld.recipe.handling.utility.RecipeInputItemStack;
 import zaexides.steamworld.recipe.handling.utility.RecipeInputOreDic;
 
-public class RecipeWrapperMiner implements IRecipeWrapper
+public class RecipeWrapperFluidMiner implements IRecipeWrapper
 {
 	private final List<List<ItemStack>> inputs;
-	private final ItemStack output;
+	private final FluidStack output;
 	
-	public RecipeWrapperMiner(MinerRecipe recipe) 
+	public RecipeWrapperFluidMiner(FluidMinerRecipe recipe) 
 	{
 		inputs = new ArrayList<List<ItemStack>>();
 		
@@ -39,32 +40,19 @@ public class RecipeWrapperMiner implements IRecipeWrapper
 		List<ItemStack> drillStackList = new ArrayList<ItemStack>();
 		for(ItemMinerMachineTool dh : drillHeads)
 		{
-			if(!dh.isPump)
+			if(dh.isPump)
 				drillStackList.add(new ItemStack(dh));
 		}
 		inputs.add(drillStackList);
 		
-		IRecipeInput recipeOutput = recipe.getOutput();
-		if(recipeOutput instanceof RecipeInputItemStack)
-		{
-			List<ItemStack> soleItemStackList = new ArrayList<ItemStack>();
-			soleItemStackList.add(((RecipeInputItemStack) recipeOutput).itemStack);
-			output = ((RecipeInputItemStack)recipeOutput).itemStack;
-		}
-		else if(recipeOutput instanceof RecipeInputOreDic)
-		{
-			String oreDicName = ((RecipeInputOreDic) recipeOutput).oreDicName;
-			ItemStack itemStack = OreDictionary.getOres(oreDicName).get(0);
-			output = itemStack;
-		}
-		else
-			output = ItemStack.EMPTY;
+		FluidStack recipeOutput = recipe.getOutput();
+		output = recipeOutput;
 	}
 
 	@Override
 	public void getIngredients(IIngredients ingredients)
 	{
 		ingredients.setInputLists(ItemStack.class, inputs);
-		ingredients.setOutput(ItemStack.class, output);
+		ingredients.setOutput(FluidStack.class, output);
 	}
 }

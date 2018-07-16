@@ -10,6 +10,7 @@ import zaexides.steamworld.containers.ContainerAssembler;
 import zaexides.steamworld.containers.ContainerFarmer;
 import zaexides.steamworld.containers.ContainerFertilizer;
 import zaexides.steamworld.containers.ContainerFisher;
+import zaexides.steamworld.containers.ContainerFluidMiner;
 import zaexides.steamworld.containers.ContainerMiner;
 import zaexides.steamworld.containers.ContainerSimple;
 import zaexides.steamworld.containers.ContainerSteamFurnace;
@@ -22,6 +23,7 @@ import zaexides.steamworld.te.TileEntityExperienceMachine;
 import zaexides.steamworld.te.TileEntityFarmer;
 import zaexides.steamworld.te.TileEntityFertilizer;
 import zaexides.steamworld.te.TileEntityFisher;
+import zaexides.steamworld.te.TileEntityFluidMiner;
 import zaexides.steamworld.te.TileEntityGrinder;
 import zaexides.steamworld.te.TileEntityMachine;
 import zaexides.steamworld.te.TileEntityMiner;
@@ -46,6 +48,7 @@ public class GuiHandler implements IGuiHandler
 	public static final int EXPERIENCE_MACHINE = 8;
 	public static final int TELEPORTER = 9;
 	public static final int MINER = 10;
+	public static final int FLUID_MINER = 11;
 	
 	public static final int DYNAMO = 100;
 	public static final int GENERATOR_ELECTRIC = 101;
@@ -81,6 +84,8 @@ public class GuiHandler implements IGuiHandler
 			return new ContainerSimple(player, player.inventory, world.getTileEntity(new BlockPos(x,y,z)), 116);
 		case MINER:
 			return new ContainerMiner(player, player.inventory, (TileEntityMiner) world.getTileEntity(new BlockPos(x, y, z)));
+		case FLUID_MINER:
+			return new ContainerFluidMiner(player, player.inventory, (TileEntityFluidMiner) world.getTileEntity(new BlockPos(x, y, z)));
 		case EXPERIENCE_MACHINE:
 		case DYNAMO:
 		case GENERATOR_ELECTRIC:
@@ -117,6 +122,8 @@ public class GuiHandler implements IGuiHandler
 			return new GuiTeleporter(player, player.inventory, (TileEntityTeleporter) world.getTileEntity(new BlockPos(x,y,z)));
 		case MINER:
 			return new GuiMiner(player, player.inventory, (TileEntityMiner) world.getTileEntity(new BlockPos(x, y, z)));
+		case FLUID_MINER:
+			return new GuiFluidMiner(player, player.inventory, (TileEntityFluidMiner) world.getTileEntity(new BlockPos(x, y, z)));
 		case DYNAMO:
 			return new GuiDynamo(player, player.inventory, (TileEntityDynamo) world.getTileEntity(new BlockPos(x,y,z)));
 		case GENERATOR_ELECTRIC:

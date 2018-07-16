@@ -17,20 +17,18 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.items.ItemMinerMachineTool;
-import zaexides.steamworld.te.TileEntityMiner;
+import zaexides.steamworld.te.TileEntityFluidMiner;
 import zaexides.steamworld.utility.capability.ItemStackHandlerSteamWorld;
 
-public class ContainerMiner extends SWContainer
+public class ContainerFluidMiner extends SWContainer
 {
-	private TileEntityMiner tileEntity;
-	private ItemStackHandlerSteamWorld handlerOut;
+	private TileEntityFluidMiner tileEntity;
 	private ItemStackHandlerSteamWorld handlerIn;
 	private EntityPlayer player;
 	
-	public ContainerMiner(EntityPlayer player, IInventory playerInv, TileEntityMiner tileEntity) 
+	public ContainerFluidMiner(EntityPlayer player, IInventory playerInv, TileEntityFluidMiner tileEntity) 
 	{
 		this.tileEntity = tileEntity;
-		this.handlerOut = tileEntity.outputStack;
 		this.handlerIn = tileEntity.inputStack;
 		this.player = player;
 		
@@ -40,21 +38,13 @@ public class ContainerMiner extends SWContainer
 	
 	private void AddOwnSlots()
 	{
-		addSlotToContainer(new SlotItemHandlerSteamWork(handlerOut, 0, 110, 35)
-				{
-					@Override
-					public boolean isItemValid(ItemStack stack) {
-						return false;
-					}
-				});
-		
 		addSlotToContainer(new SlotItemHandlerSteamWork(handlerIn, 0, 54, 36)
 				{
 					@Override
 					public boolean isItemValid(ItemStack stack) {
 						Item item = stack.getItem();
 						
-						if(item instanceof ItemMinerMachineTool && !((ItemMinerMachineTool) item).isPump)
+						if(item instanceof ItemMinerMachineTool && ((ItemMinerMachineTool) item).isPump)
 						{
 							return ((ItemMinerMachineTool)item).getTier() <= tileEntity.maxTier;
 						}
@@ -66,6 +56,6 @@ public class ContainerMiner extends SWContainer
 	
 	@Override
 	public int GetOwnSlots() {
-		return handlerOut.getSlots() + handlerIn.getSlots();
+		return handlerIn.getSlots();
 	}
 }

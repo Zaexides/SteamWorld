@@ -15,7 +15,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.utility.interfaces.IOreDictionaryRegisterable;
 
-public class ItemDrillHead extends SteamWorldItem implements IOreDictionaryRegisterable
+public class ItemMinerMachineTool extends SteamWorldItem implements IOreDictionaryRegisterable
 {
 	private final byte tier;
 	private final String oreDicName;
@@ -24,14 +24,16 @@ public class ItemDrillHead extends SteamWorldItem implements IOreDictionaryRegis
 	
 	public static final float EFFICIENCY_BASE_DECREASE = 1.4f;
 	
-	public static List<ItemDrillHead> drillHeads = new ArrayList<ItemDrillHead>(); //Used for JEI stuffs
+	public boolean isPump = false;
 	
-	public ItemDrillHead(String name, ToolMaterial toolMaterial, String oreDicName)
+	public static List<ItemMinerMachineTool> drillHeads = new ArrayList<ItemMinerMachineTool>(); //Used for JEI stuffs
+	
+	public ItemMinerMachineTool(String name, ToolMaterial toolMaterial, String oreDicName)
 	{
 		this(name, toolMaterial.getMaxUses(), (byte)toolMaterial.getHarvestLevel(), oreDicName, toolMaterial.getEfficiencyOnProperMaterial() - EFFICIENCY_BASE_DECREASE, toolMaterial.getEnchantability());
 	}
 	
-	public ItemDrillHead(String name, int uses, byte tier, String oreDicName, float speedModifier, int enchantability) 
+	public ItemMinerMachineTool(String name, int uses, byte tier, String oreDicName, float speedModifier, int enchantability) 
 	{
 		super(name);
 		setMaxDamage(uses);
@@ -43,10 +45,17 @@ public class ItemDrillHead extends SteamWorldItem implements IOreDictionaryRegis
 		drillHeads.add(this);
 	}
 	
+	public ItemMinerMachineTool SetIsPump(boolean isPump)
+	{
+		this.isPump = isPump;
+		return this;
+	}
+	
 	@Override
 	public void RegisterModels() 
 	{
-		SteamWorld.proxy.RegisterItemRenderers(this, 0, "inventory", "drill/" + getRegistryName().getResourcePath());
+		String subFolder = isPump ? "pump/" : "drill/";
+		SteamWorld.proxy.RegisterItemRenderers(this, 0, "inventory", subFolder + getRegistryName().getResourcePath());
 	}
 	
 	public byte getTier()

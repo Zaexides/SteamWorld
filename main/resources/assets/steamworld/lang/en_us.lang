@@ -112,6 +112,9 @@ tile.steamworld.experience_machine_ancite_ht.name=Experience Machine MKIII
 # Miner
 tile.steamworld.miner_essen.name=Ender Miner MKI
 
+# Fluid Miner
+tile.steamworld.fluid_miner_essen.name=Ender Pump MKI
+
 # Generic Machines
 tile.steamworld.generic_machine_teleporter.name=Endritch Teleporter
 tile.steamworld.generic_machine_launcher.name=Steam Launcher
@@ -180,6 +183,14 @@ item.steamworld.iron_drill.name=Iron Drill
 item.steamworld.diamond_drill.name=Diamond Drill
 item.steamworld.galite_drill.name=Galite Drill
 
+# Pump Extensions
+item.steamworld.gold_pump.name=Gold Pump Extension
+item.steamworld.wood_pump.name=Wooden Pump Extension
+item.steamworld.stone_pump.name=Stone Pump Extension
+item.steamworld.iron_pump.name=Iron Pump Extension
+item.steamworld.diamond_pump.name=Diamond Pump Extension
+item.steamworld.galite_pump.name=Galite Pump Extension
+
 # Manuals
 item.steamworld.manual_steaite.name=SteamWorld Manual MKI
 item.steamworld.manual_ancite.name=SteamWorld Manual MKII
@@ -240,7 +251,8 @@ container.steamworld.assembler=Assembler
 container.steamworld.experience_machine=Experience Machine
 container.steamworld.energy.dynamo=Steam Dynamo
 container.steamworld.teleporter=Teleporter
-container.steamworld.miner=Miner
+container.steamworld.miner=Ender Miner
+container.steamworld.fluid_miner=Ender Pump
 
 ################
 # General Text #
@@ -323,6 +335,7 @@ message.steamworld.filter_tank.any_fluid=Filter Tank set to accept anything.
 jei.steamworld.grinder=SteamWorld Grinder
 jei.steamworld.assembler=SteamWorld Assembler
 jei.steamworld.miner=SteamWorld Ender Miner
+jei.steamworld.fluid_miner=SteamWorld Ender Pump
 
 # JEI general text
 jei.steamworld.time=%d minutes %d seconds

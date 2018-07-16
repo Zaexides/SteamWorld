@@ -32,6 +32,7 @@ import zaexides.steamworld.blocks.machines.BlockFaucet;
 import zaexides.steamworld.blocks.machines.BlockFertilizer;
 import zaexides.steamworld.blocks.machines.BlockFilterTank;
 import zaexides.steamworld.blocks.machines.BlockFisher;
+import zaexides.steamworld.blocks.machines.BlockFluidMiner;
 import zaexides.steamworld.blocks.machines.BlockGrinder;
 import zaexides.steamworld.blocks.machines.BlockLumber;
 import zaexides.steamworld.blocks.machines.BlockMachine;
@@ -104,6 +105,8 @@ public class BlockInitializer
 	public static final BlockMachine LUMBER_STEAITE = new BlockLumber("lumber_steaite", 3.5f, 1, 4).SetUpgradeData(LUMBER_ANCITE, (byte)0);
 	
 	public static final BlockMachine MINER_ESSEN = new BlockMiner("miner_essen", 6.5f, 1, 3, (byte)4, (byte)6);
+	
+	public static final BlockMachine FLUID_MINER_ESSEN = new BlockFluidMiner("fluid_miner_essen", 6.5f, 1, 3, (byte)4, (byte)6);
 	
 	public static final BlockMachineVariant MACHINE_VARIANT = new BlockMachineVariant("generic_machine", 4.5f);
 	

@@ -1,0 +1,49 @@
+
+{
+    "forge_marker": 1,
+    "defaults":
+    {
+        "model": "steamworld:machines/machine_essen_lt",
+        "textures": { "front": "steamworld:blocks/machines/essen/machine_fluid_miner_essen" }
+    },
+
+    "variants": 
+    {
+        "normal": [{}],
+        "inventory": [{}],
+        "facing":
+        {
+            "north": { },
+            "south": { "y": 180 },
+            "west":  { "y": 270 },
+            "east":  { "y": 90 }
+        },
+        "active":
+        {
+            "false":
+            {
+                "textures": 
+                { 
+                    "front": "steamworld:blocks/machines/essen/machine_fluid_miner_essen",
+                    "htfront": "steamworld:blocks/machines/essen/machine_fluid_miner_essen"
+                }
+            },
+            "true":
+            {
+                "textures": 
+                { 
+                    "front": "steamworld:blocks/machines/essen/machine_fluid_miner_essen_active",
+                    "htfront": "steamworld:blocks/machines/essen/machine_fluid_miner_essen_active"
+                }
+            }
+        },
+        "high_tier":
+        {
+            "false": {},
+            "true":
+            {
+                "model": "steamworld:machines/machine_essen"
+            }
+        }
+    }
+}

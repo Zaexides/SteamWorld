@@ -10,6 +10,7 @@ import com.typesafe.config.Config;
 
 import net.minecraftforge.common.config.Configuration;
 import zaexides.steamworld.proxy.CommonProxy;
+import zaexides.steamworld.recipe.handling.FluidMinerRecipeHandler;
 import zaexides.steamworld.recipe.handling.MinerRecipeHandler;
 
 public class ConfigHandler
@@ -55,6 +56,34 @@ public class ConfigHandler
 					"od:oreCobalt@4",
 					"od:oreArdite@4",
 					"od:oreTerrite@4",
+			};
+	private static final String[] fluidMinerDefaults = new String[]
+			{
+					"water@0@1000",
+					"dirt@0@1000",
+					"milk@0@10",
+					"steam@1@100",
+					"clay@1@200",
+					"glass@1@1000",
+					"blood@1@10",
+					"preservationLiquid@1@200",
+					"witheringLiquid@1@100",
+					"lava@2@200",
+					"stone@2@1000",
+					"iron@2@144",
+					"gold@2@144",
+					"blueslime@2@500",
+					"purpleslime@2@100",
+					"emerald@3@333",
+					"obsidian@3@250",
+					"steaite@3@144",
+					"ancite@3@144",
+					"galite@4@144",
+					"cobalt@4@144",
+					"ardite@4@144",
+					"territe@4@18",
+					//"manyullyn@5@144",
+					//"essen@5@144",
 			};
 	
 	private static final String CATEGORY_ENERGY = "energy";
@@ -128,6 +157,7 @@ public class ConfigHandler
 	{
 		config.addCustomCategoryComment(CATEGORY_MINER, "Miner settings");
 		MinerRecipeHandler.configMinerRecipeStrings = config.getStringList("miner_ores", CATEGORY_MINER, minerDefaults, "Array of ores the miner will mine by tier. Format: moddomain:blockname@tier OR od:oreDicName@tier");
+		FluidMinerRecipeHandler.configMinerRecipeStrings = config.getStringList("miner_fluids", CATEGORY_MINER, fluidMinerDefaults, "Array of fluids and amounts the fluid miner will mine by tier. Amount can be at max 1000. Format: fluid@tier@amount");
 	}
 	
 	private static void InitEnergySettings(Configuration config)

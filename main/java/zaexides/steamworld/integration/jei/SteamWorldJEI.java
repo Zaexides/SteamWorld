@@ -20,10 +20,12 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import scala.reflect.internal.Trees.New;
 import zaexides.steamworld.containers.ContainerAssembler;
+import zaexides.steamworld.containers.ContainerFluidMiner;
 import zaexides.steamworld.containers.ContainerMiner;
 import zaexides.steamworld.containers.ContainerSteamFurnace;
 import zaexides.steamworld.containers.ContainerSteamGrinder;
 import zaexides.steamworld.gui.GuiAssembler;
+import zaexides.steamworld.gui.GuiFluidMiner;
 import zaexides.steamworld.gui.GuiMiner;
 import zaexides.steamworld.gui.GuiSteamFurnace;
 import zaexides.steamworld.gui.GuiSteamGrinder;
@@ -31,6 +33,8 @@ import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.init.ItemInitializer;
 import zaexides.steamworld.integration.jei.assembler.RecipeCategoryAssembler;
 import zaexides.steamworld.integration.jei.assembler.RecipeWrapperAssembler;
+import zaexides.steamworld.integration.jei.fluid_miner.RecipeCategoryFluidMiner;
+import zaexides.steamworld.integration.jei.fluid_miner.RecipeWrapperFluidMiner;
 import zaexides.steamworld.integration.jei.grinder.RecipeCategoryGrinder;
 import zaexides.steamworld.integration.jei.grinder.RecipeWrapperGrinder;
 import zaexides.steamworld.integration.jei.miner.RecipeCategoryMiner;
@@ -39,6 +43,8 @@ import zaexides.steamworld.items.ItemDust;
 import zaexides.steamworld.recipe.handling.AssemblyRecipe;
 import zaexides.steamworld.recipe.handling.AssemblyRecipeHandler;
 import zaexides.steamworld.recipe.handling.DustRecipeHandler;
+import zaexides.steamworld.recipe.handling.FluidMinerRecipe;
+import zaexides.steamworld.recipe.handling.FluidMinerRecipeHandler;
 import zaexides.steamworld.recipe.handling.MinerRecipe;
 import zaexides.steamworld.recipe.handling.MinerRecipeHandler;
 import zaexides.steamworld.recipe.handling.DustRecipe;
@@ -52,7 +58,8 @@ public class SteamWorldJEI implements IModPlugin
 		registry.addRecipeCategories(
 				new RecipeCategoryGrinder(registry.getJeiHelpers().getGuiHelper()),
 				new RecipeCategoryAssembler(registry.getJeiHelpers().getGuiHelper()),
-				new RecipeCategoryMiner(registry.getJeiHelpers().getGuiHelper())
+				new RecipeCategoryMiner(registry.getJeiHelpers().getGuiHelper()),
+				new RecipeCategoryFluidMiner(registry.getJeiHelpers().getGuiHelper())
 				);
 	}
 	
@@ -93,7 +100,14 @@ public class SteamWorldJEI implements IModPlugin
 		registry.addRecipes(MinerRecipeHandler.recipes, RecipeCategoryMiner.UID);
 		registry.addRecipeClickArea(GuiMiner.class, 74, 34, 27, 20, RecipeCategoryMiner.UID);
 		registry.addRecipeCatalyst(new ItemStack(BlockInitializer.MINER_ESSEN), RecipeCategoryMiner.UID);
-		recipeTransferRegistry.addRecipeTransferHandler(ContainerMiner.class, RecipeCategoryMiner.UID, 0, 1, 2, 36);
+		recipeTransferRegistry.addRecipeTransferHandler(ContainerMiner.class, RecipeCategoryMiner.UID, 1, 1, 2, 36);
+		
+		//Fluid Miner Registering
+		registry.handleRecipes(FluidMinerRecipe.class, RecipeWrapperFluidMiner::new, RecipeCategoryFluidMiner.UID);
+		registry.addRecipes(FluidMinerRecipeHandler.recipes, RecipeCategoryFluidMiner.UID);
+		registry.addRecipeClickArea(GuiFluidMiner.class, 74, 34, 27, 20, RecipeCategoryFluidMiner.UID);
+		registry.addRecipeCatalyst(new ItemStack(BlockInitializer.FLUID_MINER_ESSEN), RecipeCategoryFluidMiner.UID);
+		recipeTransferRegistry.addRecipeTransferHandler(ContainerFluidMiner.class, RecipeCategoryFluidMiner.UID, 0, 1, 1, 36);
 		
 		//Descriptions
 		registry.addIngredientInfo(Arrays.asList(
