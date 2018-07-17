@@ -1,0 +1,34 @@
+{
+    "type": "forge:ore_shaped",
+    
+    "pattern":
+    [
+        " P ",
+        "PBP",
+        "PpP"
+    ],
+    
+    "key":
+    {
+        "P":
+        {
+            "type": "forge:ore_dict",
+            "ore": "plateIron"
+        },
+        "p":
+        {
+            "item": "steamworld:stone_pump"
+        },
+        "B":
+        {
+            "type": "forge:ore_dict",
+            "ore": "blockIron"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:iron_pump",
+        "count": 1
+    }
+}

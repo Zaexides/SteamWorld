@@ -1,0 +1,33 @@
+{
+    "type": "forge:ore_shaped",
+    
+    "pattern":
+    [
+        " s ",
+        "sBs",
+        "sps"
+    ],
+    
+    "key":
+    {
+        "s":
+        {
+            "item": "minecraft:stick"
+        },
+        "p":
+        {
+            "type": "forge:ore_dict",
+            "ore": "plankWood"
+        },
+        "B":
+        {
+            "item": "minecraft:bucket"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:wood_pump",
+        "count": 1
+    }
+}

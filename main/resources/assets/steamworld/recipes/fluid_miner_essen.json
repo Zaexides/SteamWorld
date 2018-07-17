@@ -1,0 +1,39 @@
+{
+    "type": "forge:ore_shaped",
+    
+    "pattern":
+    [
+        "eEe",
+        "eme",
+        "epe"
+    ],
+    
+    "key":
+    {
+        "m":
+        {
+            "item": "steamworld:machine_base"
+        },
+        "p":
+        {
+            "item": "steamworld:diamond_pump"
+        },
+        "e":
+        {
+            "type": "forge:ore_dict",
+            "ore": "plateEssen"
+        },
+        "E":
+        {
+            "type": "forge:ore_dict",
+            "ore": "enderCore"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:fluid_miner_essen",
+        "count": 1,
+        "data": 0
+    }
+}

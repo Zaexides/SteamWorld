@@ -1,0 +1,34 @@
+{
+    "type": "forge:ore_shaped",
+    
+    "pattern":
+    [
+        " p ",
+        "pBp",
+        "pip"
+    ],
+    
+    "key":
+    {
+        "p":
+        {
+            "type": "forge:ore_dict",
+            "ore": "plateGold"
+        },
+        "i":
+        {
+            "type": "forge:ore_dict",
+            "ore": "ingotGold"
+        },
+        "B":
+        {
+            "item": "minecraft:bucket"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:gold_pump",
+        "count": 1
+    }
+}
