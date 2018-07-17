@@ -11,10 +11,12 @@ import net.minecraft.world.WorldProviderSurface;
 import net.minecraft.world.biome.BiomeProvider;
 import net.minecraft.world.biome.BiomeProviderSingle;
 import net.minecraft.world.gen.IChunkGenerator;
+import net.minecraftforge.client.IRenderHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import zaexides.steamworld.ConfigHandler;
 import zaexides.steamworld.ModInfo;
+import zaexides.steamworld.worldgen.dimension.rendering.SkyRendererSkyOfOld;
 
 public class DimensionTypeSteamWorld extends WorldProviderSurface
 {
@@ -46,9 +48,21 @@ public class DimensionTypeSteamWorld extends WorldProviderSurface
 	}
 	
 	@Override
+	public float calculateCelestialAngle(long worldTime, float partialTicks) 
+	{
+		return super.calculateCelestialAngle(6000, 0.0f);
+	}
+	
+	@Override
 	public double getHorizon() 
 	{
 		return -224;
+	}
+	
+	@Override
+	public IRenderHandler getSkyRenderer() 
+	{
+		return SkyRendererSkyOfOld.renderer;
 	}
 	
 	@Override
@@ -85,13 +99,6 @@ public class DimensionTypeSteamWorld extends WorldProviderSurface
 	}
 	
 	@Override
-	@SideOnly(Side.CLIENT)
-	public float getStarBrightness(float par1) 
-	{
-		return super.getStarBrightness(par1) * 0.8f;
-	}
-	
-	@Override
 	public float getCloudHeight() 
 	{
 		return -55.24f;
@@ -112,7 +119,7 @@ public class DimensionTypeSteamWorld extends WorldProviderSurface
 	@Override
 	public boolean canDropChunk(int x, int z) 
 	{
-		return !(x == 0 && z == 0);
+		return !(x >= -1 && x <= 1 && z >= -1 && z <= 1);
 	}
 	
 	@Override

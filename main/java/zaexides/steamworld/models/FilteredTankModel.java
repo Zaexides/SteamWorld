@@ -23,6 +23,7 @@ import scala.deprecated;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.te.TileEntityFilterTank;
+import zaexides.steamworld.utility.RenderingUtil;
 
 public class FilteredTankModel extends TileEntitySpecialRenderer<TileEntityFilterTank>
 {
@@ -39,12 +40,12 @@ public class FilteredTankModel extends TileEntitySpecialRenderer<TileEntityFilte
 		RenderInsides(x, y, z);
 		if(fluidStack != null)
 		{
-			PresetRenderer.SetSprite(fluidStack.getFluid().getStill());
+			RenderingUtil.SetSprite(fluidStack.getFluid().getStill());
 			
 			float height = ((float)fluidStack.amount / (float)te.tank.getCapacity()) * 0.97f + 0.015f;
 			
 			boolean isGas = fluidStack.getFluid().isGaseous();
-			PresetRenderer.DrawCube(new Vec3d(x, y, z), new Vec3d(.015f, isGas ? (1 - height) : .015f, .015f), new Vec3d(.985f, isGas ? 0.985f : height, .985f), fluidStack.getFluid().getColor());
+			RenderingUtil.DrawCube(new Vec3d(x, y, z), new Vec3d(.015f, isGas ? (1 - height) : .015f, .015f), new Vec3d(.985f, isGas ? 0.985f : height, .985f), fluidStack.getFluid().getColor());
 		}
 	}
 	
@@ -57,20 +58,20 @@ public class FilteredTankModel extends TileEntitySpecialRenderer<TileEntityFilte
 		Vec3d min = new Vec3d(.01f, .01f, .01f);
 		Vec3d max = new Vec3d(.99f, .99f, .99f);
 		
-		PresetRenderer.SetSprite(sideTexture);
-		PresetRenderer.PreWork(pos, builder);
-		PresetRenderer.DrawPlanePart(builder, min, max, EnumFacing.NORTH, true);
-		PresetRenderer.DrawPlanePart(builder, min, max, EnumFacing.EAST, true);
-		PresetRenderer.DrawPlanePart(builder, min, max, EnumFacing.WEST, true);
-		PresetRenderer.DrawPlanePart(builder, min, max, EnumFacing.SOUTH, true);
+		RenderingUtil.SetSprite(sideTexture);
+		RenderingUtil.PreWork(pos, builder);
+		RenderingUtil.DrawPlanePart(builder, min, max, EnumFacing.NORTH, true);
+		RenderingUtil.DrawPlanePart(builder, min, max, EnumFacing.EAST, true);
+		RenderingUtil.DrawPlanePart(builder, min, max, EnumFacing.WEST, true);
+		RenderingUtil.DrawPlanePart(builder, min, max, EnumFacing.SOUTH, true);
 		tessellator.draw();
-		PresetRenderer.PostWork();
+		RenderingUtil.PostWork();
 		
-		PresetRenderer.SetSprite(topBottomTexture);
-		PresetRenderer.PreWork(pos, builder);
-		PresetRenderer.DrawPlanePart(builder, min, max, EnumFacing.UP, true);
-		PresetRenderer.DrawPlanePart(builder, min, max, EnumFacing.DOWN, true);
+		RenderingUtil.SetSprite(topBottomTexture);
+		RenderingUtil.PreWork(pos, builder);
+		RenderingUtil.DrawPlanePart(builder, min, max, EnumFacing.UP, true);
+		RenderingUtil.DrawPlanePart(builder, min, max, EnumFacing.DOWN, true);
 		tessellator.draw();
-		PresetRenderer.PostWork();
+		RenderingUtil.PostWork();
 	}
 }
