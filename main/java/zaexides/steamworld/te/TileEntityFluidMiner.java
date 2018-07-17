@@ -12,7 +12,9 @@ import net.minecraft.block.BlockCrops;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.Sound;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Enchantments;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
@@ -182,6 +184,17 @@ public class TileEntityFluidMiner extends TileEntityMachine implements ITickable
 				byte drillTier = drillHead.getTier();
 				
 				FluidStack resultFluid = FluidMinerRecipeHandler.GetRandomResult(world.rand, drillTier);
+				
+				int fortuneLevel = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, drillStack);
+				for(int i = 0; i < fortuneLevel; i++)
+				{
+					if(world.rand.nextInt(5) == 0)
+						resultFluid.amount += 100;
+				}
+				
+				if(resultFluid.amount > 1000)
+					resultFluid.amount = 1000;
+				
 				outputTank.fill(resultFluid, true);
 				
 				ItemMinerMachineTool.Damage(drillStack, world.rand);

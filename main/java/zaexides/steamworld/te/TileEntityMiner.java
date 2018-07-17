@@ -12,7 +12,9 @@ import net.minecraft.block.BlockCrops;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.Sound;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Enchantments;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
@@ -170,7 +172,15 @@ public class TileEntityMiner extends TileEntityMachine implements ITickable
 			{
 				byte drillTier = drillHead.getTier();
 				
-				outputStack.setStackInSlot(0, MinerRecipeHandler.GetRandomResult(world.rand, drillTier).copy());
+				ItemStack output = MinerRecipeHandler.GetRandomResult(world.rand, drillTier).copy();
+				int fortuneLevel = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, drillStack);
+				for(int i = 0; i < fortuneLevel; i++)
+				{
+					if(world.rand.nextInt(5) == 0)
+						output.grow(1);
+				}
+				
+				outputStack.setStackInSlot(0, output);
 				ItemMinerMachineTool.Damage(drillStack, world.rand);
 				
 				if(drillStack.getItemDamage() >= drillStack.getMaxDamage() - 1)

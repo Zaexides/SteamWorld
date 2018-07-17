@@ -84,7 +84,7 @@ public class ItemMinerMachineTool extends SteamWorldItem implements IOreDictiona
 	@Override
 	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) 
 	{
-		if(enchantment.equals(Enchantments.EFFICIENCY))
+		if(enchantment.equals(Enchantments.EFFICIENCY) || enchantment.equals(Enchantments.FORTUNE))
 			return true;
 		return super.canApplyAtEnchantingTable(stack, enchantment);
 	}
