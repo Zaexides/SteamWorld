@@ -11,7 +11,9 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome.SpawnListEntry;
 import net.minecraft.world.chunk.ChunkPrimer;
+import zaexides.steamworld.entity.EntitySkyFish;
 import zaexides.steamworld.init.BlockInitializer;
 
 public class BiomeNatureIsland extends BiomeSteamWorld
@@ -24,6 +26,8 @@ public class BiomeNatureIsland extends BiomeSteamWorld
 		decorator.treesPerChunk = 3;
 		decorator.extraTreeChance = 0.3f;
 		decorator.reedsPerChunk = 3;
+		
+		spawnableCreatureList.add(new SpawnListEntry(EntitySkyFish.class, 10, 5, 8));
 	}
 	
 	@Override

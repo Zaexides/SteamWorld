@@ -28,8 +28,8 @@ import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.SteamWorldBlock;
 import zaexides.steamworld.blocks.item.ItemBlockMachine;
+import zaexides.steamworld.client.rendering.tile.FilteredTankModel;
 import zaexides.steamworld.init.ItemInitializer;
-import zaexides.steamworld.models.FilteredTankModel;
 import zaexides.steamworld.te.TileEntityFilterTank;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
 

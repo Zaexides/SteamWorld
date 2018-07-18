@@ -26,6 +26,7 @@ import zaexides.steamworld.RegistryHandler;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.gui.GuiHandler;
 import zaexides.steamworld.init.BlockInitializer;
+import zaexides.steamworld.init.EntityInitializer;
 import zaexides.steamworld.init.ItemInitializer;
 import zaexides.steamworld.integration.tc.TCMaterials;
 import zaexides.steamworld.integration.tc.TinkersMelting;

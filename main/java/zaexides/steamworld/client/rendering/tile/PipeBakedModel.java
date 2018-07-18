@@ -1,4 +1,4 @@
-package zaexides.steamworld.models;
+package zaexides.steamworld.client.rendering.tile;
 
 import java.util.ArrayList;
 import java.util.Collections;

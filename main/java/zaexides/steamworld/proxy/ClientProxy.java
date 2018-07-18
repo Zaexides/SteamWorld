@@ -19,9 +19,10 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.BlockSteam;
+import zaexides.steamworld.client.rendering.entity.RenderingHandler;
+import zaexides.steamworld.client.rendering.tile.BakedModelLoader;
 import zaexides.steamworld.gui.GuiHandler;
 import zaexides.steamworld.init.BlockInitializer;
-import zaexides.steamworld.models.BakedModelLoader;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
 
 public class ClientProxy extends CommonProxy
@@ -71,6 +72,7 @@ public class ClientProxy extends CommonProxy
 		super.PreInit(e);
 		ModelLoaderRegistry.registerLoader(new BakedModelLoader());
 		OBJLoader.INSTANCE.addDomain(ModInfo.MODID);
+		RenderingHandler.RegisterHandlers();
 	}
 	
 	@Override

@@ -237,6 +237,12 @@ item.steamworld.galite_jet.tooltip[1]=But probably won't save you from falling.
 item.steamworld.filter_tank.tooltip[0]=Right-Click the bottom with a bucket to set the filter.
 item.steamworld.filter_tank.tooltip[1]=An empty bucket will remove the filter.
 
+################
+# Entity Names #
+################
+
+entity.steamworld.skyfish.name=Flying Fish
+
 #######################
 # Container Name Text #
 #######################
