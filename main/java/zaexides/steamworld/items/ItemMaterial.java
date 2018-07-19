@@ -69,6 +69,12 @@ public class ItemMaterial extends SteamWorldItem implements IOreDictionaryRegist
 		}
 	}
 	
+	@Override
+	public int getItemBurnTime(ItemStack itemStack) 
+	{
+		return EnumVarietyMaterial.getBurnTimeFromMeta(itemStack.getMetadata());
+	}
+	
 	public static enum EnumVarietyMaterial implements IStringSerializable
 	{
 		ESSEN_PLATE(0, "plate_essen", "plateEssen", "compressedEssen"),
@@ -77,18 +83,27 @@ public class ItemMaterial extends SteamWorldItem implements IOreDictionaryRegist
 		GALITE_PLATE(3, "plate_galite", "plateGalite", "compressedGalite"),
 		IRON_PLATE(4, "plate_iron", "plateIron", "compressedIron"),
 		GOLD_PLATE(5, "plate_gold", "plateGold", "compressedGold"),
-		ENDER_CORE(6, "ender_core", "enderCore");
+		ENDER_CORE(6, "ender_core", "enderCore"),
+		BIOMATTER(7, "biomatter", 400, "itemBiomass", "itemBiomatter");
 		
 		private final int meta;
 		private final String name;
 		private final String[] oreNames;
 		private static final EnumVarietyMaterial[] META_LOOKUP = new EnumVarietyMaterial[values().length];
 		
+		private final int burnTime;
+		
 		private EnumVarietyMaterial(int meta, String name, String... oreNames)
+		{
+			this(meta, name, -1, oreNames);
+		}
+		
+		private EnumVarietyMaterial(int meta, String name, int burnTime, String... oreNames)
 		{
 			this.meta = meta;
 			this.name = name;
 			this.oreNames = oreNames;
+			this.burnTime = burnTime;
 		}
 		
 		public int getMeta()
@@ -105,6 +120,11 @@ public class ItemMaterial extends SteamWorldItem implements IOreDictionaryRegist
 		public String[] getOreNames()
 		{
 			return oreNames;
+		}
+		
+		public static int getBurnTimeFromMeta(int meta)
+		{
+			return META_LOOKUP[meta % values().length].burnTime;
 		}
 		
 		public static EnumVarietyMaterial byMetadata(int meta)

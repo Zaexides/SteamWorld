@@ -42,6 +42,7 @@ import zaexides.steamworld.init.ItemInitializer;
 import zaexides.steamworld.integration.tc.TCMaterials;
 import zaexides.steamworld.integration.tc.TinkersMelting;
 import zaexides.steamworld.items.ItemDust;
+import zaexides.steamworld.items.ItemMaterial;
 import zaexides.steamworld.items.SWItemIngot;
 import zaexides.steamworld.items.SWItemNugget;
 import zaexides.steamworld.recipe.handling.AssemblyRecipeHandler;
@@ -162,6 +163,8 @@ public class RegistryHandler
 		GameRegistry.addSmelting(new ItemStack(BlockInitializer.ORE, 1, SteamWorldBlockOre.EnumType.SKY_STEAITE.getMeta()), new ItemStack(ItemInitializer.INGOT, 1, SWItemIngot.EnumVarietyMaterial.STEAITE.getMeta()), 1.2f);
 		GameRegistry.addSmelting(new ItemStack(BlockInitializer.ORE, 1, SteamWorldBlockOre.EnumType.SKY_ANCITE.getMeta()), new ItemStack(ItemInitializer.INGOT, 1, SWItemIngot.EnumVarietyMaterial.ANCITE.getMeta()), 1.5f);
 		GameRegistry.addSmelting(new ItemStack(BlockInitializer.ORE, 1, SteamWorldBlockOre.EnumType.SKY_GALITE.getMeta()), new ItemStack(ItemInitializer.INGOT, 1, SWItemIngot.EnumVarietyMaterial.GALITE.getMeta()), 2.0f);
+	
+		GameRegistry.addSmelting(new ItemStack(ItemInitializer.GENERIC_MATERIAL, 1, ItemMaterial.EnumVarietyMaterial.BIOMATTER.getMeta()), new ItemStack(Items.COAL, 1, 1), FurnaceRecipes.instance().getSmeltingExperience(new ItemStack(Items.COAL, 1, 1)));
 	}
 	
 	public static void RegisterGrinderRecipes()

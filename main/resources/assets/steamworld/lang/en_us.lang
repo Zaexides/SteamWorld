@@ -217,6 +217,7 @@ item.steamworld.generic_material_plate_galite.name=Galite Plate
 item.steamworld.generic_material_plate_iron.name=Iron Plate
 item.steamworld.generic_material_plate_gold.name=Gold Plate
 item.steamworld.generic_material_ender_core.name=Ender Core
+item.steamworld.generic_material_biomatter.name=Biomass
 
 #####################
 # Item Tooltip Text #

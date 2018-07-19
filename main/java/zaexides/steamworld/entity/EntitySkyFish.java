@@ -2,6 +2,10 @@ package zaexides.steamworld.entity;
 
 import org.apache.logging.log4j.Level;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockLeaves;
+import net.minecraft.block.BlockLog;
+import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.MoverType;
@@ -20,7 +24,13 @@ import net.minecraft.entity.passive.EntityFlying;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.datasync.DataParameter;
+import net.minecraft.network.datasync.DataSerializers;
+import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.pathfinding.PathNavigate;
 import net.minecraft.pathfinding.PathNavigateFlying;
 import net.minecraft.util.DamageSource;
@@ -29,9 +39,18 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import zaexides.steamworld.SteamWorld;
+import zaexides.steamworld.entity.ai.EntityAIBreakNearbyBlock;
+import zaexides.steamworld.entity.interfaces.IEntityBreakBlockCallback;
+import zaexides.steamworld.init.ItemInitializer;
+import zaexides.steamworld.items.ItemMaterial;
 
-public class EntitySkyFish extends EntityAnimal implements EntityFlying
+public class EntitySkyFish extends EntityAnimal implements EntityFlying, IEntityBreakBlockCallback
 {
+	private byte woodEaten, leavesEaten;
+	
+	private static final byte LEAVES_POOP_THRESHOLD = 20;
+	private static final byte WOOD_POOP_THRESHOLD = 32;
+	
 	public EntitySkyFish(World worldIn) 
 	{
 		super(worldIn);
@@ -46,12 +65,15 @@ public class EntitySkyFish extends EntityAnimal implements EntityFlying
 		this.tasks.addTask(0, new EntityAISwimming(this));
 		this.tasks.addTask(1, new EntityAIMate(this, 1.0));
 		this.tasks.addTask(2, new EntityAIPanic(this, 3.0));
-		this.tasks.addTask(3, new EntityAIWanderAvoidWaterFlying(this, 1.0));
-		this.tasks.addTask(4, new EntityAIFollowParent(this, 1.25));
-		this.tasks.addTask(5, new EntityAIWatchClosest(this, EntityPlayer.class, 3.0F));
-        this.tasks.addTask(6, new EntityAILookIdle(this));
-        
-        //TODO: Make them eat trees, poop out charcoal or something.
+		this.tasks.addTask(3, new EntityAIBreakNearbyBlock(this, 60, Blocks.LOG, 2));
+		this.tasks.addTask(3, new EntityAIBreakNearbyBlock(this, 60, Blocks.LOG2, 2));
+		this.tasks.addTask(3, new EntityAIBreakNearbyBlock(this, 40, Blocks.PLANKS, 2));
+		this.tasks.addTask(3, new EntityAIBreakNearbyBlock(this, 20, Blocks.LEAVES, 2));
+		this.tasks.addTask(3, new EntityAIBreakNearbyBlock(this, 20, Blocks.LEAVES2, 2));
+		this.tasks.addTask(4, new EntityAIWanderAvoidWaterFlying(this, 1.0));
+		this.tasks.addTask(5, new EntityAIFollowParent(this, 1.25));
+		this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 3.0F));
+        this.tasks.addTask(7, new EntityAILookIdle(this));
 	}
 	
 	@Override
@@ -180,6 +202,51 @@ public class EntitySkyFish extends EntityAnimal implements EntityFlying
 	@Override
 	public boolean isBreedingItem(ItemStack stack) 
 	{
-		return stack.getItem() == Items.FISH;
+		return stack.getItem() == Items.STICK;
+	}
+	
+	@Override
+	public void writeEntityToNBT(NBTTagCompound compound) 
+	{
+		super.writeEntityToNBT(compound);
+		compound.setByte("WoodEaten", woodEaten);
+		compound.setByte("LeavesEaten", leavesEaten);
+	}
+	
+	@Override
+	public void readEntityFromNBT(NBTTagCompound compound) 
+	{
+		super.readEntityFromNBT(compound);
+		if(compound.hasKey("WoodEaten"))
+			woodEaten = compound.getByte("WoodEaten");
+		if(compound.hasKey("LeavesEaten"))
+			leavesEaten = compound.getByte("LeavesEaten");
+	}
+
+	@Override
+	public void OnBlockBroken(Block block, BlockPos blockPos) 
+	{
+		if(block instanceof BlockLog)
+			woodEaten += 4;
+		else if(block instanceof BlockPlanks)
+			woodEaten += 1;
+		
+		if(woodEaten >= WOOD_POOP_THRESHOLD)
+		{
+			this.playSound(SoundEvents.ENTITY_CHICKEN_EGG, 1.0F, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F + 1.0F);
+			this.entityDropItem(new ItemStack(Items.COAL, 1, 1), 0);
+			woodEaten -= WOOD_POOP_THRESHOLD;
+		}
+		
+		if(block instanceof BlockLeaves)
+		{
+			leavesEaten++;
+			if(leavesEaten >= LEAVES_POOP_THRESHOLD)
+			{
+				this.playSound(SoundEvents.ENTITY_CHICKEN_EGG, 1.0F, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F + 1.0F);
+				this.entityDropItem(new ItemStack(ItemInitializer.GENERIC_MATERIAL, 1, ItemMaterial.EnumVarietyMaterial.BIOMATTER.getMeta()), 0);
+				leavesEaten -= LEAVES_POOP_THRESHOLD;
+			}
+		}
 	}
 }
