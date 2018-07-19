@@ -16,6 +16,7 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
+import zaexides.steamworld.entity.EntityAnemone;
 import zaexides.steamworld.entity.EntitySkyFish;
 
 @Mod.EventBusSubscriber(modid = ModInfo.MODID)
@@ -28,6 +29,7 @@ public class EntityInitializer
 	{
 		IForgeRegistry<EntityEntry> reg = event.getRegistry();
 		RegisterEntity(reg, "skyfish", EntitySkyFish.class, EntitySkyFish::new, 80, 3, 0x6D7FE8, 0xEDEDD5);
+		RegisterEntity(reg, "anemone", EntityAnemone.class, EntityAnemone::new, 20, 3, 0x493FB5, 0xFF00DC);
 	}
 	
 	private static <T extends Entity> void RegisterEntity(IForgeRegistry<EntityEntry> registry, String entityName, Class<T> entity, Function<World, T> factory, int range, int updateFrequency, int primaryColor, int secondaryColor)
