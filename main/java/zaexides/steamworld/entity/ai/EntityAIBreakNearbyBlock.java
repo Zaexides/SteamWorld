@@ -36,8 +36,11 @@ public class EntityAIBreakNearbyBlock extends EntityAIBase
 	@Override
 	public boolean shouldExecute() 
 	{
+		boolean canEat = true;
+		if(entity instanceof IEntityBreakBlockCallback)
+			canEat = ((IEntityBreakBlockCallback)entity).CanBreakBlocks();
 		CalculateNearestBlockOfType();
-		return nearestPos != null;
+		return nearestPos != null && canEat;
 	}
 	
 	private void CalculateNearestBlockOfType()
