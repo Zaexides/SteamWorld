@@ -241,8 +241,9 @@ item.steamworld.filter_tank.tooltip[1]=An empty bucket will remove the filter.
 ################
 # Entity Names #
 ################
-
 entity.steamworld.skyfish.name=Flying Fish
+entity.steamworld.anemone.name=Anemone
+entity.steamworld.anemone_stinger.name=Anemone Stinger
 
 #######################
 # Container Name Text #

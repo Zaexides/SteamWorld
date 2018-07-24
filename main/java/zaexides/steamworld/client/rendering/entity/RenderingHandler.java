@@ -9,6 +9,7 @@ import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import zaexides.steamworld.entity.EntityAnemone;
+import zaexides.steamworld.entity.EntityAnemoneStinger;
 import zaexides.steamworld.entity.EntitySkyFish;
 
 public class RenderingHandler
@@ -16,7 +17,8 @@ public class RenderingHandler
 	@SideOnly(Side.CLIENT)
 	public static void RegisterHandlers()
 	{
-		RenderingRegistry.registerEntityRenderingHandler(EntitySkyFish.class, m -> new EntityRendererSkyFish(m));
-		RenderingRegistry.registerEntityRenderingHandler(EntityAnemone.class, m -> new EntityRendererAnemone(m));
+		RenderingRegistry.registerEntityRenderingHandler(EntitySkyFish.class, EntityRendererSkyFish::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityAnemone.class, EntityRendererAnemone::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityAnemoneStinger.class, EntityRendererAnemoneStinger::new);
 	}
 }
