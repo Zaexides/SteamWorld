@@ -41,10 +41,10 @@ public class EntityAnemone extends EntityMob implements IRangedAttackMob
 	@Override
 	protected void initEntityAI() 
 	{
-		this.tasks.addTask(4, new EntityAIAttackRanged(this, 0.0, 15, 6.0f));
-		this.targetTasks.addTask(0, new EntityAIHurtByTarget(this, false, new Class[0]));
-		this.targetTasks.addTask(1, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
-		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntitySkyFish.class, true));
+		this.tasks.addTask(0, new EntityAIAttackRanged(this, 0.0, 15, 6.0f));
+		this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, false, new Class[0]));
+		this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
+		this.targetTasks.addTask(3, new EntityAINearestAttackableTarget(this, EntitySkyFish.class, true));
 	}
 	
 	@Override
@@ -86,7 +86,11 @@ public class EntityAnemone extends EntityMob implements IRangedAttackMob
 		if(dy < 8)
 			dy = 8;
 		
-		stinger.setThrowableHeading(dx * .2, dy, dz * .2, 1.2f, (float)(14 - this.world.getDifficulty().getDifficultyId() * 4));
+		double xz_multiplier = 0.2d;
+		if(isInWater())
+			xz_multiplier = 2.0d;
+		
+		stinger.setThrowableHeading(dx * xz_multiplier, dy, dz * xz_multiplier, 1.2f, (float)(14 - this.world.getDifficulty().getDifficultyId() * 4));
 		this.playSound(SoundEvents.ENTITY_ARROW_SHOOT, 1.0f, 2.0f);
 		this.world.spawnEntity(stinger);
 	}
@@ -101,5 +105,11 @@ public class EntityAnemone extends EntityMob implements IRangedAttackMob
 		if(potioneffectIn.getPotion().equals(MobEffects.POISON))
 			return false;
 		return super.isPotionApplicable(potioneffectIn);
+	}
+	
+	@Override
+	public boolean canBreatheUnderwater() 
+	{
+		return true;
 	}
 }
