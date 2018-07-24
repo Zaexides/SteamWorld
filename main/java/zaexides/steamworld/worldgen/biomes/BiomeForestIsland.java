@@ -2,6 +2,10 @@ package zaexides.steamworld.worldgen.biomes;
 
 import java.util.Random;
 
+import net.minecraft.block.BlockLeaves;
+import net.minecraft.block.BlockNewLeaf;
+import net.minecraft.block.BlockNewLog;
+import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.BlockFlower.EnumFlowerType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -12,12 +16,15 @@ import net.minecraft.world.biome.Biome.SpawnListEntry;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraft.world.gen.feature.WorldGenCanopyTree;
+import net.minecraft.world.gen.feature.WorldGenTrees;
 import zaexides.steamworld.entity.EntitySkyFish;
 import zaexides.steamworld.init.BlockInitializer;
 
 public class BiomeForestIsland extends BiomeSteamWorld
 {
-	public static final WorldGenCanopyTree DARK_OAK_TREE = new WorldGenCanopyTree(false);
+	private static final WorldGenCanopyTree DARK_OAK_TREE = new WorldGenCanopyTree(false);
+	private static final IBlockState LOG = Blocks.LOG2.getDefaultState().withProperty(BlockNewLog.VARIANT, BlockPlanks.EnumType.DARK_OAK);
+	private static final IBlockState LEAVES = Blocks.LEAVES2.getDefaultState().withProperty(BlockNewLeaf.VARIANT, BlockPlanks.EnumType.DARK_OAK).withProperty(BlockLeaves.CHECK_DECAY, Boolean.valueOf(false));
 	
 	public BiomeForestIsland(String name) 
 	{
@@ -38,7 +45,13 @@ public class BiomeForestIsland extends BiomeSteamWorld
 	@Override
 	public WorldGenAbstractTree getRandomTreeFeature(Random rand) 
 	{
-		return rand.nextInt(3) > 0 ? super.getRandomTreeFeature(rand) : DARK_OAK_TREE;
+		int randVal = rand.nextInt(10);
+		if(randVal < 1)
+			return DARK_OAK_TREE;
+		else if(randVal < 4)
+			return new WorldGenTrees(false, 3 + rand.nextInt(5), LOG, LEAVES, true);
+		else
+			return super.getRandomTreeFeature(rand);
 	}
 	
 	@Override
