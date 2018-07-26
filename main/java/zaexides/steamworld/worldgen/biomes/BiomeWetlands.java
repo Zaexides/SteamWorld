@@ -10,11 +10,13 @@ import net.minecraft.entity.monster.EntityWitch;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome.SpawnListEntry;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraft.world.gen.feature.WorldGenLakes;
 import net.minecraft.world.gen.feature.WorldGenVines;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import zaexides.steamworld.entity.EntityAnemone;
 import zaexides.steamworld.init.BlockInitializer;
 
 public class BiomeWetlands extends BiomeSteamWorld
@@ -36,6 +38,8 @@ public class BiomeWetlands extends BiomeSteamWorld
 		spawnableMonsterList.add(new SpawnListEntry(EntityCreeper.class, 20, 1, 3));
 		spawnableMonsterList.add(new SpawnListEntry(EntitySlime.class, 5, 2, 5));
 		spawnableMonsterList.add(new SpawnListEntry(EntityWitch.class, 10, 1, 1));
+		spawnableCreatureList.add(new SpawnListEntry(EntityAnemone.class, 5, 2, 3));
+		spawnableMonsterList.add(new SpawnListEntry(EntityAnemone.class, 5, 2, 3));
 	}
 	
 	@Override

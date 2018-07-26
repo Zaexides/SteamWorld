@@ -17,6 +17,7 @@ import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraft.world.gen.feature.WorldGenCanopyTree;
 import net.minecraft.world.gen.feature.WorldGenTrees;
+import zaexides.steamworld.entity.EntityAnemone;
 import zaexides.steamworld.entity.EntitySkyFish;
 import zaexides.steamworld.init.BlockInitializer;
 
@@ -38,6 +39,8 @@ public class BiomeForestIsland extends BiomeSteamWorld
 		decorator.reedsPerChunk = 1;
 		
 		spawnableCreatureList.add(new SpawnListEntry(EntitySkyFish.class, 10, 5, 8));
+		spawnableCreatureList.add(new SpawnListEntry(EntityAnemone.class, 5, 2, 3));
+		spawnableMonsterList.add(new SpawnListEntry(EntityAnemone.class, 5, 2, 3));
 		
 		riseAmount = -5;
 	}

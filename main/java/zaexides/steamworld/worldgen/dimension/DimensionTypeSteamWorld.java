@@ -1,5 +1,7 @@
 package zaexides.steamworld.worldgen.dimension;
 
+import org.apache.logging.log4j.Level;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Biomes;
@@ -16,7 +18,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import zaexides.steamworld.ConfigHandler;
 import zaexides.steamworld.ModInfo;
-import zaexides.steamworld.worldgen.dimension.rendering.SkyRendererSkyOfOld;
+import zaexides.steamworld.SteamWorld;
+import zaexides.steamworld.client.rendering.world.SkyRendererSkyOfOld;
 
 public class DimensionTypeSteamWorld extends WorldProviderSurface
 {
@@ -50,7 +53,7 @@ public class DimensionTypeSteamWorld extends WorldProviderSurface
 	@Override
 	public float calculateCelestialAngle(long worldTime, float partialTicks) 
 	{
-		return super.calculateCelestialAngle(6000, 0.0f);
+		return super.calculateCelestialAngle(3000, 0.0f);
 	}
 	
 	@Override
@@ -92,13 +95,6 @@ public class DimensionTypeSteamWorld extends WorldProviderSurface
 	}
 	
 	@Override
-	@SideOnly(Side.CLIENT)
-	public float getSunBrightness(float par1) 
-	{
-		return super.getSunBrightness(par1) * 0.9f;
-	}
-	
-	@Override
 	public float getCloudHeight() 
 	{
 		return -55.24f;
@@ -114,6 +110,42 @@ public class DimensionTypeSteamWorld extends WorldProviderSurface
 	public BlockPos getSpawnPoint() 
 	{
 		return new BlockPos(16, 87, 16);
+	}
+	
+	@Override
+	public BlockPos getRandomizedSpawnPoint()
+	{
+		return getSpawnPoint();
+	}
+	
+	@Override
+	public float getSunBrightnessFactor(float par1) 
+	{
+		long time = world.getWorldTime() % 24000;
+		long timeDifference;
+		
+		if(time > 12000)
+			timeDifference = 24000 - time;
+		else
+			timeDifference = time;
+		
+		float factor = (timeDifference - 100.0f) / 400.0f;
+		
+		if(factor < 0)
+			factor = 0;
+		else if(factor > 1)
+			factor = 1;
+		
+		SteamWorld.logger.log(Level.INFO, factor);
+		return factor;
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public float getSunBrightness(float par1) 
+	{
+		SteamWorld.logger.log(Level.INFO, world.getWorldTime());
+		return getSunBrightnessFactor(par1);
 	}
 	
 	@Override

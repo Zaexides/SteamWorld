@@ -1,4 +1,4 @@
-package zaexides.steamworld.worldgen.dimension.rendering;
+package zaexides.steamworld.client.rendering.world;
 
 import org.apache.logging.log4j.Level;
 import org.lwjgl.opengl.GL11;
@@ -31,6 +31,9 @@ public class SkyRendererSkyOfOld extends IRenderHandler
 	private static final ResourceLocation coreTexture = new ResourceLocation(ModInfo.MODID, "textures/environment/core.png");
 	private static final ResourceLocation pipeTexture = new ResourceLocation(ModInfo.MODID, "textures/environment/pipes.png");
 	private static final ResourceLocation sunTexture = new ResourceLocation("minecraft", "textures/environment/sun.png");	
+	private static final ResourceLocation moonTexture = new ResourceLocation(ModInfo.MODID, "textures/environment/soo_moon.png");
+	
+	private static final float TIME_TO_DEGREES = (1.0f / 24000.0f) * 360.0f;
 	
 	@Override
 	public void render(float partialTicks, WorldClient world, Minecraft mc) 
@@ -43,16 +46,17 @@ public class SkyRendererSkyOfOld extends IRenderHandler
 		GlStateManager.depthMask(false);
 		
 		RenderingUtil.PreWork(new Vec3d(0, -140, 0), builder);
-		RenderCore(textureManager, builder, mc.getSystemTime());
+		RenderCore(textureManager, builder, world.getWorldTime());
 		tessellator.draw();
 		RenderingUtil.PostWork();
 		
 		RenderingUtil.PreWork(new Vec3d(0, -140, 0), builder);
-		RenderCorePipes(textureManager, builder, mc.getSystemTime());
+		RenderCorePipes(textureManager, builder, world.getWorldTime());
 		tessellator.draw();
 		RenderingUtil.PostWork();
 		
 		RenderSun(tessellator, builder, partialTicks, world, textureManager);
+		RenderMoon(tessellator, builder, partialTicks, world, textureManager);
 		
 		GlStateManager.depthMask(true);
 		GlStateManager.enableFog();
@@ -102,13 +106,52 @@ public class SkyRendererSkyOfOld extends IRenderHandler
 		builder.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);
 		
 		float rainAlpha = 1.0f - world.getRainStrength(partialTicks);
-		GlStateManager.color(1.0f, 1.0f, 1.0f, rainAlpha);
+		float brightness = world.getSunBrightness(partialTicks);
+		GlStateManager.color(1.0f, 1.0f, 1.0f, rainAlpha * brightness);
 		textureManager.bindTexture(sunTexture);
 		
 		builder.pos(-80, 300, 80).tex(0, 1).endVertex();
 		builder.pos(-80, 300, -80).tex(0, 0).endVertex();
 		builder.pos(80, 300, -80).tex(1, 0).endVertex();
 		builder.pos(80, 300, 80).tex(1, 1).endVertex();
+		
+		GlStateManager.rotate(45, 1.0f, 0.0f, 0.0f);
+		tessellator.draw();
+		
+		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
+		RenderHelper.enableGUIStandardItemLighting();
+		GlStateManager.disableBlend();
+		GlStateManager.popMatrix();
+	}
+	
+	private void RenderMoon(Tessellator tessellator, BufferBuilder builder, float partialTicks, World world, TextureManager textureManager)
+	{
+		GlStateManager.pushMatrix();
+		RenderHelper.disableStandardItemLighting();
+		GlStateManager.enableBlend();
+		GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+		
+		if(Minecraft.isAmbientOcclusionEnabled())
+			GL11.glShadeModel(GL11.GL_SMOOTH);
+		else
+			GL11.glShadeModel(GL11.GL_FLAT);
+		
+		builder.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);
+		
+		float rainAlpha = 1.0f - world.getRainStrength(partialTicks);
+		float brightness = 1.0f - world.getSunBrightness(partialTicks) + 0.55f;
+		if(brightness > 1.0f)
+			brightness = 1.0f;
+		GlStateManager.color(1.0f, 1.0f, 1.0f, rainAlpha * brightness);
+		textureManager.bindTexture(moonTexture);
+		
+		builder.pos(-70, 290, 70).tex(0, 1).endVertex();
+		builder.pos(-70, 290, -70).tex(0, 0).endVertex();
+		builder.pos(70, 290, -70).tex(1, 0).endVertex();
+		builder.pos(70, 290, 70).tex(1, 1).endVertex();
+		
+		GlStateManager.rotate(45, 1.0f, 0.0f, 0.0f);
+		GlStateManager.rotate(world.getWorldTime() * TIME_TO_DEGREES, 0.0f, 0.0f, 1.0f);
 		tessellator.draw();
 		
 		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
