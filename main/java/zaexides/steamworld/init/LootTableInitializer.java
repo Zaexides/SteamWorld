@@ -1,4 +1,4 @@
-package zaexides.steamworld;
+package zaexides.steamworld.init;
 
 import org.apache.logging.log4j.Level;
 
@@ -11,7 +11,7 @@ import net.minecraft.world.storage.loot.functions.LootFunction;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import zaexides.steamworld.init.ItemInitializer;
+import zaexides.steamworld.ModInfo;
 
 public class LootTableInitializer 
 {
@@ -28,6 +28,9 @@ public class LootTableInitializer
 	public static final ResourceLocation TREASURE_BOX_BIRTHDAY = register("treasure_box/bday");
 	public static final ResourceLocation TREASURE_BOX_WITHER_LAB = register("treasure_box/wither_lab");
 			
+	public static final ResourceLocation DROPS_SKYFISH = register("entities/skyfish");
+	public static final ResourceLocation DROPS_ANEMONE = register("entities/anemone");
+	
 	private static ResourceLocation register(String location)
 	{
 		return LootTableList.register(new ResourceLocation(ModInfo.MODID, location));

@@ -20,9 +20,11 @@ import net.minecraft.entity.projectile.EntityTippedArrow;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.world.World;
 import zaexides.steamworld.SteamWorld;
+import zaexides.steamworld.init.LootTableInitializer;
 
 public class EntityAnemone extends EntityMob implements IRangedAttackMob
 {		
@@ -111,5 +113,11 @@ public class EntityAnemone extends EntityMob implements IRangedAttackMob
 	public boolean canBreatheUnderwater() 
 	{
 		return true;
+	}
+	
+	@Override
+	protected ResourceLocation getLootTable() 
+	{
+		return LootTableInitializer.DROPS_ANEMONE;
 	}
 }

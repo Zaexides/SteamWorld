@@ -21,8 +21,8 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.storage.loot.LootContext;
 import net.minecraft.world.storage.loot.LootTable;
-import zaexides.steamworld.LootTableInitializer;
 import zaexides.steamworld.SteamWorld;
+import zaexides.steamworld.init.LootTableInitializer;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
 
 public class ItemTreasure extends SteamWorldItem implements IModeledObject

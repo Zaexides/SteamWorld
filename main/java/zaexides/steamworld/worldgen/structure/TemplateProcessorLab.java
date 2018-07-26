@@ -7,7 +7,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.template.ITemplateProcessor;
 import net.minecraft.world.gen.structure.template.Template.BlockInfo;
-import zaexides.steamworld.LootTableInitializer;
+import zaexides.steamworld.init.LootTableInitializer;
 
 public class TemplateProcessorLab implements ITemplateProcessor
 {

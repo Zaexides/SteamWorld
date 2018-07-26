@@ -1,0 +1,32 @@
+{
+    "pools": 
+    [
+        {
+            "name": "main",
+            "rolls": 1,
+            "entries": 
+            [
+                {
+                    "type": "item",
+                    "name": "minecraft:potion",
+                    "weight": 100,
+                    "functions":
+                    [
+                        {
+                            "function": "minecraft:set_nbt",
+                            "tag": "{\"CustomPotionEffects\":{\"Id\":26,\"Amplifier\":0,\"Duration\":30},\"Potion\":\"minecraft:luck\"}"
+                        }
+                    ],
+                    "conditions":
+                    [
+                        {
+                            "condition": "minecraft:random_chance_with_looting",
+                            "chance": 0.0,
+                            "looting_multiplier": 0.2
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

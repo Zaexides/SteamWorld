@@ -36,6 +36,7 @@ import net.minecraft.pathfinding.PathNavigate;
 import net.minecraft.pathfinding.PathNavigateFlying;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -44,6 +45,7 @@ import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.entity.ai.EntityAIBreakNearbyBlock;
 import zaexides.steamworld.entity.interfaces.IEntityBreakBlockCallback;
 import zaexides.steamworld.init.ItemInitializer;
+import zaexides.steamworld.init.LootTableInitializer;
 import zaexides.steamworld.items.ItemMaterial;
 
 public class EntitySkyFish extends EntityAnimal implements EntityFlying, IEntityBreakBlockCallback
@@ -310,5 +312,11 @@ public class EntitySkyFish extends EntityAnimal implements EntityFlying, IEntity
 			hunger = MAX_HUNGER;
 			this.damageEntity(DamageSource.STARVE, 1.0f);
 		}
+	}
+	
+	@Override
+	protected ResourceLocation getLootTable()
+	{
+		return LootTableInitializer.DROPS_SKYFISH;
 	}
 }

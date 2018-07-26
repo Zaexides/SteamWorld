@@ -10,9 +10,9 @@ import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-import zaexides.steamworld.LootTableInitializer;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.gui.GuiHandler;
+import zaexides.steamworld.init.LootTableInitializer;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
 
 public class ItemBookManual extends SteamWorldItem implements IModeledObject

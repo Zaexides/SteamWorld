@@ -30,12 +30,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.template.ITemplateProcessor;
 import net.minecraft.world.gen.structure.template.Template.BlockInfo;
-import zaexides.steamworld.LootTableInitializer;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.BlockObilisk;
 import zaexides.steamworld.blocks.machines.BlockMachine;
 import zaexides.steamworld.init.BlockInitializer;
+import zaexides.steamworld.init.LootTableInitializer;
 import zaexides.steamworld.te.TileEntityObilisk;
 
 public class TemplateProcessorTowerResidence implements ITemplateProcessor, IInitializableProcessor

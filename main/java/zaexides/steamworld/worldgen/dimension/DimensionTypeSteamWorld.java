@@ -136,7 +136,6 @@ public class DimensionTypeSteamWorld extends WorldProviderSurface
 		else if(factor > 1)
 			factor = 1;
 		
-		SteamWorld.logger.log(Level.INFO, factor);
 		return factor;
 	}
 	
@@ -144,7 +143,6 @@ public class DimensionTypeSteamWorld extends WorldProviderSurface
 	@SideOnly(Side.CLIENT)
 	public float getSunBrightness(float par1) 
 	{
-		SteamWorld.logger.log(Level.INFO, world.getWorldTime());
 		return getSunBrightnessFactor(par1);
 	}
 	
