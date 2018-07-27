@@ -10,6 +10,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import zaexides.steamworld.entity.EntityAnemone;
 import zaexides.steamworld.entity.EntityAnemoneStinger;
+import zaexides.steamworld.entity.EntityPropellorShell;
 import zaexides.steamworld.entity.EntitySkyFish;
 
 public class RenderingHandler
@@ -20,5 +21,6 @@ public class RenderingHandler
 		RenderingRegistry.registerEntityRenderingHandler(EntitySkyFish.class, EntityRendererSkyFish::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityAnemone.class, EntityRendererAnemone::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityAnemoneStinger.class, EntityRendererAnemoneStinger::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityPropellorShell.class, EntityRendererPropellorShell::new);
 	}
 }

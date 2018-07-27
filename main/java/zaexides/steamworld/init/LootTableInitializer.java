@@ -34,5 +34,6 @@ public class LootTableInitializer
 	private static ResourceLocation register(String location)
 	{
 		return LootTableList.register(new ResourceLocation(ModInfo.MODID, location));
+		//TODO: Add quality tags to treasure boxes.
 	}
 }

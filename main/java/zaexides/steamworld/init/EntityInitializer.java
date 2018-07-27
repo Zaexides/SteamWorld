@@ -18,6 +18,7 @@ import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.entity.EntityAnemone;
 import zaexides.steamworld.entity.EntityAnemoneStinger;
+import zaexides.steamworld.entity.EntityPropellorShell;
 import zaexides.steamworld.entity.EntitySkyFish;
 
 @Mod.EventBusSubscriber(modid = ModInfo.MODID)
@@ -32,7 +33,8 @@ public class EntityInitializer
 		
 		helper.RegisterEntityLiving("skyfish", EntitySkyFish.class, EntitySkyFish::new, 0x6D7FE8, 0xEDEDD5);
 		helper.RegisterEntityLiving("anemone", EntityAnemone.class, EntityAnemone::new, 0x493FB5, 0xFF00DC);
-	
+		helper.RegisterEntityLiving("propellorshell", EntityPropellorShell.class, EntityPropellorShell::new, 0xABB070, 0x61AE40);
+		
 		helper.RegisterEntityNonLiving("anemone_stinger", EntityAnemoneStinger.class, EntityAnemoneStinger::new);
 	}
 	
