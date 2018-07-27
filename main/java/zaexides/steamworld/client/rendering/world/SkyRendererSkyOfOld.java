@@ -33,7 +33,7 @@ public class SkyRendererSkyOfOld extends IRenderHandler
 	private static final ResourceLocation sunTexture = new ResourceLocation("minecraft", "textures/environment/sun.png");	
 	private static final ResourceLocation moonTexture = new ResourceLocation(ModInfo.MODID, "textures/environment/soo_moon.png");
 	
-	private static final float TIME_TO_DEGREES = (1.0f / 24000.0f) * 360.0f;
+	private static final float TIME_TO_DEGREES = (1.0f / DimensionTypeSteamWorld.DAY_DURATION) * 360.0f;
 	
 	@Override
 	public void render(float partialTicks, WorldClient world, Minecraft mc) 
@@ -106,8 +106,7 @@ public class SkyRendererSkyOfOld extends IRenderHandler
 		builder.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);
 		
 		float rainAlpha = 1.0f - world.getRainStrength(partialTicks);
-		float brightness = world.getSunBrightness(partialTicks);
-		GlStateManager.color(1.0f, 1.0f, 1.0f, rainAlpha * brightness);
+		GlStateManager.color(1.0f, 1.0f, 1.0f, rainAlpha);
 		textureManager.bindTexture(sunTexture);
 		
 		builder.pos(-80, 300, 80).tex(0, 1).endVertex();
@@ -142,13 +141,16 @@ public class SkyRendererSkyOfOld extends IRenderHandler
 		float brightness = 1.0f - world.getSunBrightness(partialTicks) + 0.55f;
 		if(brightness > 1.0f)
 			brightness = 1.0f;
-		GlStateManager.color(1.0f, 1.0f, 1.0f, rainAlpha * brightness);
+		
+		float gbValue = 1.0f - brightness * 0.25f;
+		
+		GlStateManager.color(1.0f, gbValue, gbValue, rainAlpha * brightness);
 		textureManager.bindTexture(moonTexture);
 		
-		builder.pos(-70, 290, 70).tex(0, 1).endVertex();
-		builder.pos(-70, 290, -70).tex(0, 0).endVertex();
-		builder.pos(70, 290, -70).tex(1, 0).endVertex();
-		builder.pos(70, 290, 70).tex(1, 1).endVertex();
+		builder.pos(-90, 290, 90).tex(0, 1).endVertex();
+		builder.pos(-90, 290, -90).tex(0, 0).endVertex();
+		builder.pos(90, 290, -90).tex(1, 0).endVertex();
+		builder.pos(90, 290, 90).tex(1, 1).endVertex();
 		
 		GlStateManager.rotate(45, 1.0f, 0.0f, 0.0f);
 		GlStateManager.rotate(world.getWorldTime() * TIME_TO_DEGREES, 0.0f, 0.0f, 1.0f);

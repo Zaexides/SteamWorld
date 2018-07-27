@@ -25,6 +25,11 @@ public class DimensionTypeSteamWorld extends WorldProviderSurface
 {
 	public static final DimensionType STEAMWORLD = DimensionType.register("sky_of_old", "_" + ModInfo.MODID, ConfigHandler.dimensionId, DimensionTypeSteamWorld.class, false);
 	
+	public static final long DAY_DURATION = 48000;
+	private static final float ECLIPSE_DURATION = 700.0f;
+	private static final float ECLIPSE_MAX_DURATION = 600.0f;
+	private static final float ECLIPSE_DURATION_FACTOR = 1 / ECLIPSE_DURATION;
+	
 	@Override
 	public DimensionType getDimensionType() 
 	{
@@ -121,15 +126,15 @@ public class DimensionTypeSteamWorld extends WorldProviderSurface
 	@Override
 	public float getSunBrightnessFactor(float par1) 
 	{
-		long time = world.getWorldTime() % 24000;
+		long time = world.getWorldTime() % DAY_DURATION;
 		long timeDifference;
 		
-		if(time > 12000)
-			timeDifference = 24000 - time;
+		if(time > (DAY_DURATION * .5))
+			timeDifference = DAY_DURATION - time;
 		else
 			timeDifference = time;
 		
-		float factor = (timeDifference - 100.0f) / 400.0f;
+		float factor = (timeDifference - ECLIPSE_MAX_DURATION) * ECLIPSE_DURATION_FACTOR;
 		
 		if(factor < 0)
 			factor = 0;
