@@ -1,4 +1,4 @@
-package zaexides.steamworld.worldgen.structure;
+package zaexides.steamworld.world.structure;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;

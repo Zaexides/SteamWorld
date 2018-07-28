@@ -1,4 +1,4 @@
-package zaexides.steamworld.worldgen.dimension;
+package zaexides.steamworld.world.dimension;
 
 import java.util.ArrayList;
 import java.util.List;

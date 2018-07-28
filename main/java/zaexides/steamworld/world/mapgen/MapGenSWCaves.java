@@ -1,4 +1,4 @@
-package zaexides.steamworld.worldgen.mapgen;
+package zaexides.steamworld.world.mapgen;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.world.gen.MapGenCaves;

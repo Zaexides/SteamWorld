@@ -1,4 +1,4 @@
-package zaexides.steamworld.worldgen.dimension;
+package zaexides.steamworld.world.dimension;
 
 import org.apache.logging.log4j.Level;
 

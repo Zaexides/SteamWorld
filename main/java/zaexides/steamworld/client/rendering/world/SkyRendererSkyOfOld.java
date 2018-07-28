@@ -22,7 +22,7 @@ import net.minecraftforge.client.IRenderHandler;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.utility.RenderingUtil;
-import zaexides.steamworld.worldgen.dimension.DimensionTypeSteamWorld;
+import zaexides.steamworld.world.dimension.DimensionTypeSteamWorld;
 
 public class SkyRendererSkyOfOld extends IRenderHandler
 {

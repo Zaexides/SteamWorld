@@ -72,12 +72,12 @@ import zaexides.steamworld.te.generic_machine.TileEntityLauncher;
 import zaexides.steamworld.te.generic_machine.TileEntityTeleporter;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
 import zaexides.steamworld.utility.interfaces.IOreDictionaryRegisterable;
-import zaexides.steamworld.worldgen.WorldGenerationOres;
-import zaexides.steamworld.worldgen.dimension.DimensionTypeSteamWorld;
-import zaexides.steamworld.worldgen.structure.WorldGenCrypt;
-import zaexides.steamworld.worldgen.structure.WorldGenPortalBuilding;
-import zaexides.steamworld.worldgen.structure.WorldGenWitherLab;
-import zaexides.steamworld.worldgen.structure.tower.WorldGenTower;
+import zaexides.steamworld.world.WorldGenerationOres;
+import zaexides.steamworld.world.dimension.DimensionTypeSteamWorld;
+import zaexides.steamworld.world.structure.WorldGenCrypt;
+import zaexides.steamworld.world.structure.WorldGenPortalBuilding;
+import zaexides.steamworld.world.structure.WorldGenWitherLab;
+import zaexides.steamworld.world.structure.tower.WorldGenTower;
 
 @EventBusSubscriber
 public class RegistryHandler 

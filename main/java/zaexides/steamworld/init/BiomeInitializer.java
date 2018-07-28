@@ -15,13 +15,13 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
-import zaexides.steamworld.worldgen.biomes.BiomeBlazingWithers;
-import zaexides.steamworld.worldgen.biomes.BiomeForestIsland;
-import zaexides.steamworld.worldgen.biomes.BiomeForgottenSky;
-import zaexides.steamworld.worldgen.biomes.BiomeHighlandIsland;
-import zaexides.steamworld.worldgen.biomes.BiomeNatureIsland;
-import zaexides.steamworld.worldgen.biomes.BiomeWetlands;
-import zaexides.steamworld.worldgen.dimension.SteamWorldBiomeProvider;
+import zaexides.steamworld.world.biomes.BiomeBlazingWithers;
+import zaexides.steamworld.world.biomes.BiomeForestIsland;
+import zaexides.steamworld.world.biomes.BiomeForgottenSky;
+import zaexides.steamworld.world.biomes.BiomeHighlandIsland;
+import zaexides.steamworld.world.biomes.BiomeNatureIsland;
+import zaexides.steamworld.world.biomes.BiomeWetlands;
+import zaexides.steamworld.world.dimension.SteamWorldBiomeProvider;
 
 @Mod.EventBusSubscriber(modid = ModInfo.MODID)
 public class BiomeInitializer 

@@ -1,4 +1,4 @@
-package zaexides.steamworld.worldgen.dimension;
+package zaexides.steamworld.world.dimension;
 
 import java.util.Random;
 
@@ -20,7 +20,7 @@ import net.minecraftforge.event.terraingen.InitNoiseGensEvent.ContextOverworld;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.BlockDecorative;
 import zaexides.steamworld.init.BlockInitializer;
-import zaexides.steamworld.worldgen.biomes.BiomeSteamWorld;
+import zaexides.steamworld.world.biomes.BiomeSteamWorld;
 
 public class SteamWorldTerrainGenerator 
 {

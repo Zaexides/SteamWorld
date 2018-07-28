@@ -1,4 +1,4 @@
-package zaexides.steamworld.worldgen.biomes;
+package zaexides.steamworld.world.biomes;
 
 import java.util.Random;
 

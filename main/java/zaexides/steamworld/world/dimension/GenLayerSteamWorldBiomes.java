@@ -1,4 +1,4 @@
-package zaexides.steamworld.worldgen.dimension;
+package zaexides.steamworld.world.dimension;
 
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.layer.GenLayer;

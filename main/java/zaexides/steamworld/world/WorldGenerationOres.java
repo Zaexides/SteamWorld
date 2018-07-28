@@ -1,4 +1,4 @@
-package zaexides.steamworld.worldgen;
+package zaexides.steamworld.world;
 
 import java.util.Random;
 
