@@ -8,6 +8,8 @@
         "variant=diamond_sky": { "model": "steamworld:ore_diamond_sky" },
         "variant=ancite_sky": { "model": "steamworld:ore_ancite_sky" },
         "variant=galite_sky": { "model": "steamworld:ore_galite_sky" },
-        "variant=territe_sky": { "model": "steamworld:ore_territe_sky" }
+        "variant=territe_sky": { "model": "steamworld:ore_territe_sky" },
+        "variant=gold_crystal": { "model": "steamworld:ore_gold_crystal" },
+        "variant=emerald_crystal": { "model": "steamworld:ore_emerald_crystal" }
     }
 }

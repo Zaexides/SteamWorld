@@ -7,6 +7,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.ChunkPrimer;
+import zaexides.steamworld.entity.EntityPropellorShell;
 import zaexides.steamworld.entity.EntitySkyFish;
 import zaexides.steamworld.init.BlockInitializer;
 
@@ -16,6 +17,7 @@ public class BiomeForgottenSky extends BiomeSteamWorld
 	{
 		super(new BiomeProperties(name).setBaseHeight(0.0f).setHeightVariation(0.0f).setTemperature(0.4f).setRainfall(0.5f));
 		spawnableCreatureList.add(new SpawnListEntry(EntitySkyFish.class, 10, 5, 8));
+		this.spawnableCaveCreatureList.add(new SpawnListEntry(EntityPropellorShell.class, 20, 3, 5));
 	}
 	
 	@Override

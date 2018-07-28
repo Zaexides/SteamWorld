@@ -76,7 +76,8 @@ public class EntityPropellorShell extends EntityFlying implements IMob
 	@Override
 	public boolean getCanSpawnHere()
 	{
-		return super.getCanSpawnHere() && this.world.getDifficulty() != EnumDifficulty.PEACEFUL;
+		BlockPos pos = new BlockPos(this);
+		return world.getBlockState(pos).getMaterial() == Material.AIR && this.world.getDifficulty() != EnumDifficulty.PEACEFUL;
 	}
 	
 	private void SpawnPotion(float xDir, float yDir, float zDir, float velocity)

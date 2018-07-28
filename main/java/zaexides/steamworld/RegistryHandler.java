@@ -75,6 +75,7 @@ import zaexides.steamworld.utility.interfaces.IOreDictionaryRegisterable;
 import zaexides.steamworld.world.WorldGenerationOres;
 import zaexides.steamworld.world.dimension.DimensionTypeSteamWorld;
 import zaexides.steamworld.world.structure.WorldGenCrypt;
+import zaexides.steamworld.world.structure.WorldGenCrystal;
 import zaexides.steamworld.world.structure.WorldGenPortalBuilding;
 import zaexides.steamworld.world.structure.WorldGenWitherLab;
 import zaexides.steamworld.world.structure.tower.WorldGenTower;
@@ -133,6 +134,7 @@ public class RegistryHandler
 		GameRegistry.registerWorldGenerator(new WorldGenPortalBuilding(), 0);
 		GameRegistry.registerWorldGenerator(new WorldGenWitherLab(), 1000);
 		GameRegistry.registerWorldGenerator(new WorldGenTower(), 1000);
+		GameRegistry.registerWorldGenerator(new WorldGenCrystal(), 500);
 		
 		DimensionManager.registerDimension(ConfigHandler.dimensionId, DimensionTypeSteamWorld.STEAMWORLD);
 	}

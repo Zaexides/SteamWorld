@@ -30,6 +30,7 @@ import zaexides.steamworld.blocks.item.ItemBlockVariant;
 import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.init.ItemInitializer;
 import zaexides.steamworld.items.SWItemIngot;
+import zaexides.steamworld.items.SWItemNugget;
 import zaexides.steamworld.utility.interfaces.IMetaName;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
 import zaexides.steamworld.utility.interfaces.IOreDictionaryRegisterable;
@@ -79,6 +80,8 @@ public class SteamWorldBlockOre extends Block implements IMetaName, IModeledObje
 		EnumType type = EnumType.byMetadata(getMetaFromState(state));
 		if(type == EnumType.SKY_TERRITE)
 			return SWItemIngot.EnumVarietyMaterial.TERRITE.getMeta();
+		else if(type == EnumType.CRYSTAL_EMERALD)
+			return SWItemNugget.EnumVarietyMaterial.EMERALD.getMeta();
 		
 		return 0;
 	}
@@ -152,6 +155,10 @@ public class SteamWorldBlockOre extends Block implements IMetaName, IModeledObje
 			return Items.DIAMOND;
 		else if(meta == EnumType.SKY_TERRITE.getMeta())
 			return ItemInitializer.INGOT;
+		else if(meta == EnumType.CRYSTAL_GOLD.getMeta())
+			return Items.GOLD_NUGGET;
+		else if(meta == EnumType.CRYSTAL_EMERALD.getMeta())
+			return ItemInitializer.ITEM_NUGGET;
 		else
 			return super.getItemDropped(state, rand, fortune);
 	}
@@ -184,7 +191,9 @@ public class SteamWorldBlockOre extends Block implements IMetaName, IModeledObje
 		SKY_DIAMOND(5, "diamond_sky", "oreDiamond", 3.5f, 2, true),
 		SKY_ANCITE(6, "ancite_sky", "oreAncite", 5.0f, 3),
 		SKY_GALITE(7, "galite_sky", "oreGalite", 4.5f, 3),
-		SKY_TERRITE(8, "territe_sky", "oreTerrite", 7.0f, 4, true);
+		SKY_TERRITE(8, "territe_sky", "oreTerrite", 7.0f, 4, true),
+		CRYSTAL_GOLD(9, "gold_crystal", "oreGoldNugget", 1.3f, 4, true),
+		CRYSTAL_EMERALD(10, "emerald_crystal", "oreEmeraldNugget", 1.3f, 4, true);
 		
 		private static final EnumType[] META_LOOKUP = new EnumType[values().length];
 		private final int meta;

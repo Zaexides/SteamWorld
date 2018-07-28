@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.function.Function;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntitySpawnPlacementRegistry;
+import net.minecraft.entity.EntityLiving.SpawnPlacementType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraftforge.event.RegistryEvent;
@@ -26,16 +29,22 @@ public class EntityInitializer
 {
 	private static int currentId = 0;
 	
+	public static final ResourceLocation FLYING_FISH = new ResourceLocation(ModInfo.MODID, "skyfish");
+	public static final ResourceLocation ANEMONE = new ResourceLocation(ModInfo.MODID, "anemone");
+	public static final ResourceLocation PROSHELLOR = new ResourceLocation(ModInfo.MODID, "propellorshell");
+	
+	public static final ResourceLocation PROJECTILE_ANEMONE_STINGER = new ResourceLocation(ModInfo.MODID, "anemone_stinger");
+	
 	@SubscribeEvent
 	public static void RegisterEntities(RegistryEvent.Register<EntityEntry> event)
 	{
 		RegisterHelper helper = new RegisterHelper(event.getRegistry());
 		
-		helper.RegisterEntityLiving("skyfish", EntitySkyFish.class, EntitySkyFish::new, 0x6D7FE8, 0xEDEDD5);
-		helper.RegisterEntityLiving("anemone", EntityAnemone.class, EntityAnemone::new, 0x493FB5, 0xFF00DC);
-		helper.RegisterEntityLiving("propellorshell", EntityPropellorShell.class, EntityPropellorShell::new, 0xABB070, 0x61AE40);
+		helper.RegisterEntityLiving(FLYING_FISH, EntitySkyFish.class, EntitySkyFish::new, 0x6D7FE8, 0xEDEDD5).RegisterEntitySpawnPlacement(EntitySkyFish.class, SpawnPlacementType.IN_AIR);
+		helper.RegisterEntityLiving(ANEMONE, EntityAnemone.class, EntityAnemone::new, 0x493FB5, 0xFF00DC);
+		helper.RegisterEntityLiving(PROSHELLOR, EntityPropellorShell.class, EntityPropellorShell::new, 0xABB070, 0x61AE40).RegisterEntitySpawnPlacement(EntityPropellorShell.class, SpawnPlacementType.IN_AIR);
 		
-		helper.RegisterEntityNonLiving("anemone_stinger", EntityAnemoneStinger.class, EntityAnemoneStinger::new);
+		helper.RegisterEntityNonLiving(PROJECTILE_ANEMONE_STINGER, EntityAnemoneStinger.class, EntityAnemoneStinger::new);
 	}
 	
 	private static class RegisterHelper
@@ -47,19 +56,26 @@ public class EntityInitializer
 			this.registry = registry;
 		}
 		
-		final <T extends Entity> void RegisterEntityNonLiving(String entityName, Class<T> entity, Function<World, T> factory)
+		final <T extends Entity> RegisterHelper RegisterEntityNonLiving(ResourceLocation registryName, Class<T> entity, Function<World, T> factory)
 		{
-			RegisterEntity(entityName, entity, factory, 64, 1, false, 0, 0);
+			RegisterEntity(registryName, entity, factory, 64, 1, false, 0, 0);
+			return this;
 		}
 
-		final <T extends Entity> void RegisterEntityLiving(String entityName, Class<T> entity, Function<World, T> factory, int primaryColor, int secondaryColor)
+		final <T extends Entity> RegisterHelper RegisterEntityLiving(ResourceLocation registryName, Class<T> entity, Function<World, T> factory, int primaryColor, int secondaryColor)
 		{
-			RegisterEntity(entityName, entity, factory, 64, 3, true, primaryColor, secondaryColor);
+			RegisterEntity(registryName, entity, factory, 64, 3, true, primaryColor, secondaryColor);
+			return this;
 		}
 		
-		private final <T extends Entity> void RegisterEntity(String entityName, Class<T> entity, Function<World, T> factory, int range, int updateFrequency, boolean velocityUpdates, int primaryColor, int secondaryColor)
+		final <T extends Entity> RegisterHelper RegisterEntitySpawnPlacement(Class<T> entity, EntityLiving.SpawnPlacementType spawnPlacementType)
 		{
-			ResourceLocation registryName = new ResourceLocation(ModInfo.MODID, entityName);
+			EntitySpawnPlacementRegistry.setPlacementType(entity, spawnPlacementType);
+			return this;
+		}
+		
+		private final <T extends Entity> void RegisterEntity(ResourceLocation registryName, Class<T> entity, Function<World, T> factory, int range, int updateFrequency, boolean velocityUpdates, int primaryColor, int secondaryColor)
+		{
 			EntityEntryBuilder<T> entryBuilder = EntityEntryBuilder.<T>create().id(registryName, currentId).name(registryName.toString().replace(':', '.')).entity(entity).tracker(range, updateFrequency, true).factory(factory);
 			
 			if(primaryColor != 0x0 || secondaryColor != 0x0)
