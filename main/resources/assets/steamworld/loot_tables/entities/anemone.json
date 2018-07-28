@@ -20,9 +20,10 @@
                     "conditions":
                     [
                         {
-                            "condition": "minecraft:random_chance_with_looting",
+                            "condition": "steamworld:random_chance_with_looting_and_luck",
                             "chance": 0.0,
-                            "looting_multiplier": 0.2
+                            "looting_multiplier": 0.2,
+                            "luck_multiplier": 0.1
                         }
                     ]
                 }

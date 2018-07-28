@@ -28,6 +28,7 @@ import zaexides.steamworld.gui.GuiHandler;
 import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.init.EntityInitializer;
 import zaexides.steamworld.init.ItemInitializer;
+import zaexides.steamworld.init.LootTableInitializer;
 import zaexides.steamworld.integration.tc.TCMaterials;
 import zaexides.steamworld.integration.tc.TinkersMelting;
 import zaexides.steamworld.items.ItemDust;
@@ -64,6 +65,8 @@ public class CommonProxy
 		
     	RegistryHandler.RegisterFluids();
     	RegistryHandler.RegisterTileEntities();
+    	
+    	LootTableInitializer.registerConditions();
     	
     	if(Loader.isModLoaded("tconstruct"))
     	{

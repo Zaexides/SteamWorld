@@ -38,6 +38,7 @@
                     "type": "item",
                     "name": "steamworld:treasure",
                     "weight": 30,
+                    "quality": 20,
                     "functions":
                     [
                         {
@@ -50,6 +51,7 @@
                     "type": "item",
                     "name": "steamworld:block_ancite",
                     "weight": 10,
+                    "quality": 15,
                     "functions": 
                     [
                         {

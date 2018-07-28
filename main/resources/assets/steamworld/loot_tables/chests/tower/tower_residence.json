@@ -60,6 +60,7 @@
                     "type": "item",
                     "name": "minecraft:gold_ingot",
                     "weight": 7,
+                    "quality": 2,
                     "functions":
                     [
                         {
@@ -75,7 +76,8 @@
                 {
                     "type": "item",
                     "name": "minecraft:elytra",
-                    "weight": 5
+                    "weight": 5,
+                    "quality": 2
                 },
                 {
                     "type": "item",

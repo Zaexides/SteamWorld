@@ -29,12 +29,14 @@
                 {
                     "type": "item",
                     "name": "minecraft:purple_shulker_box",
-                    "weight": 5
+                    "weight": 5,
+                    "quality": 5
                 },
                 {
                     "type": "item",
                     "name": "minecraft:dragon_breath",
-                    "weight": 5
+                    "weight": 5,
+                    "quality": 15
                 },
                 {
                     "type": "item",

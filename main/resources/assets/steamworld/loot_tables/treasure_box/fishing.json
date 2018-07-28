@@ -26,6 +26,7 @@
                     "type": "item",
                     "name": "steamworld:nugget",
                     "weight": 30,
+                    "quality": 10,
                     "functions": 
                     [
                         {

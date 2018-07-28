@@ -30,22 +30,23 @@
                     "type": "item",
                     "name": "steamworld:nugget",
                     "weight": 5,
+                    "quality": 20,
                     "functions": 
                     [
                         {
                             "function": "minecraft:set_count",
                             "count": 
                             {
-                                "min": 0,
-                                "max": 3
+                                "min": 3,
+                                "max": 5
                             }
                         },
                         {
                             "function": "minecraft:set_data",
                             "data":
                             {
-                                "min": 3,
-                                "max": 5
+                                "min": 0,
+                                "max": 3
                             }
                         }
                     ]

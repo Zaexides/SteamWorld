@@ -6,12 +6,13 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.storage.loot.LootEntry;
 import net.minecraft.world.storage.loot.LootEntryItem;
 import net.minecraft.world.storage.loot.LootTableList;
-import net.minecraft.world.storage.loot.conditions.LootCondition;
 import net.minecraft.world.storage.loot.functions.LootFunction;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import zaexides.steamworld.ModInfo;
+import zaexides.steamworld.world.storage.loot.conditions.RandomChanceWithLootingAndLuck;
+import zaexides.steamworld.world.storage.loot.conditions.RandomChanceWithLuck;
 
 public class LootTableInitializer 
 {
@@ -35,5 +36,11 @@ public class LootTableInitializer
 	{
 		return LootTableList.register(new ResourceLocation(ModInfo.MODID, location));
 		//TODO: Add quality tags to treasure boxes.
+	}
+	
+	public static void registerConditions()
+	{
+		RandomChanceWithLootingAndLuck.Register();
+		RandomChanceWithLuck.Register();
 	}
 }

@@ -10,6 +10,7 @@
                     "type": "item",
                     "name": "minecraft:book",
                     "weight": 70,
+                    "quality": 5,
                     "functions": 
                     [
                         {
@@ -19,8 +20,9 @@
                             "conditions":
                             [
                                 {
-                                    "condition": "minecraft:random_chance",
-                                    "chance": 0.14
+                                    "condition": "steamworld:random_chance_with_luck",
+                                    "chance": 0.14,
+                                    "luck_multiplier": 0.11
                                 }
                             ]
                         }

@@ -10,6 +10,7 @@
                     "type": "item",
                     "name": "minecraft:iron_ingot",
                     "weight": 35,
+                    "quality": 5,
                     "functions":
                     [
                         {
@@ -22,6 +23,7 @@
                     "type": "item",
                     "name": "steamworld:ingot",
                     "weight": 55,
+                    "quality": 15,
                     "functions":
                     [
                         {
