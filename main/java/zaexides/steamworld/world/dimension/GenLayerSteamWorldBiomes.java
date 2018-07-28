@@ -1,5 +1,6 @@
 package zaexides.steamworld.world.dimension;
 
+import net.minecraft.util.WeightedRandom;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.IntCache;
@@ -21,8 +22,9 @@ public class GenLayerSteamWorldBiomes extends GenLayer
 			{
 				initChunkSeed(areaX + x, areaZ + z);
 				
-				int id = SteamWorldBiomeProvider.biomeWeights.get(nextInt(SteamWorldBiomeProvider.biomeWeights.size()));
-				Biome biome = SteamWorldBiomeProvider.biomes.get(id);
+				int totalWeight = WeightedRandom.getTotalWeight(SteamWorldBiomeProvider.biomes);
+				int weight = nextInt(totalWeight);
+				Biome biome = WeightedRandom.getRandomItem(SteamWorldBiomeProvider.biomes, weight).biome;
 				ints[x + z * areaWidth] = Biome.getIdForBiome(biome);
 			}
 		}

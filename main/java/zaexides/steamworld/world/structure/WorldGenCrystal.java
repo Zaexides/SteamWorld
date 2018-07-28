@@ -27,7 +27,9 @@ import zaexides.steamworld.init.EntityInitializer;
 
 public class WorldGenCrystal implements IWorldGenerator
 {
-	private static final float CHANCE_PER_CHUNK = 0.1f;
+	private static final float CHANCE_PER_CHUNK = 0.3f;
+	private static final int AMOUNT_PER_CHUNK = 3;
+	private static final float CHANCE_PER_CHUNK_FORGOTTEN_SKY = 0.4f;
 	private static final int MIN_HEIGHT = 20, MAX_HEIGHT = 230;
 	private static final int MIN_SIZE = 2, MAX_SIZE = 4;
 	private static final float SPAWNER_CHANCE = 0.2f;
@@ -52,7 +54,10 @@ public class WorldGenCrystal implements IWorldGenerator
 	{
 		if(world.provider.getDimension() == ConfigHandler.dimensionId && random.nextFloat() <= CHANCE_PER_CHUNK)
 		{
-			GenerateStructure(world, random, chunkX, chunkZ);
+			for(int i = 0; i < AMOUNT_PER_CHUNK; i++)
+			{
+				GenerateStructure(world, random, chunkX, chunkZ);
+			}
 		}
 	}
 	
@@ -64,38 +69,44 @@ public class WorldGenCrystal implements IWorldGenerator
 		int local_z = z * 16 + random.nextInt(8) + 4;
 		BlockPos pos = new BlockPos(local_x, local_y, local_z);
 		
+		float randVal = random.nextFloat();
 		if(world.getBiome(pos).equals(BiomeInitializer.FORGOTTEN_SKY))
 		{
-			int size = random.nextInt(MAX_SIZE - MIN_SIZE) + MIN_SIZE;
-			for(int xOff = -size + 1; xOff < size; xOff++)
+			if(randVal >= CHANCE_PER_CHUNK_FORGOTTEN_SKY)
+				return;
+		}
+		else if(randVal >= CHANCE_PER_CHUNK)
+			return;
+		
+		int size = random.nextInt(MAX_SIZE - MIN_SIZE) + MIN_SIZE;
+		for(int xOff = -size + 1; xOff < size; xOff++)
+		{
+			for(int yOff = -size + 1; yOff < size; yOff++)
 			{
-				for(int yOff = -size + 1; yOff < size; yOff++)
+				for(int zOff = -size + 1; zOff < size; zOff++)
 				{
-					for(int zOff = -size + 1; zOff < size; zOff++)
+					if((Math.abs(xOff) + Math.abs(yOff) + Math.abs(zOff)) < size)
 					{
-						if((Math.abs(xOff) + Math.abs(yOff) + Math.abs(zOff)) < size)
-						{
-							BlockPos specificPos = pos.add(xOff, yOff, zOff);
-							world.setBlockState(specificPos, BLOCK_STATE);
-						}
+						BlockPos specificPos = pos.add(xOff, yOff, zOff);
+						world.setBlockState(specificPos, BLOCK_STATE);
 					}
 				}
 			}
-			
-			float randVal = random.nextFloat();
-			if(randVal < SPAWNER_CHANCE)
-			{
-				world.setBlockState(pos, SPAWNER_STATE);
-				TileEntity tileEntity = world.getTileEntity(pos);
-				if(tileEntity instanceof TileEntityMobSpawner)
-				{
-					((TileEntityMobSpawner) tileEntity).getSpawnerBaseLogic().setEntityId(WeightedRandom.getRandomItem(random, spawnerMobs).type);
-				}
-			}
-			else if(randVal < ORE_GOLD_CHANCE)
-				world.setBlockState(pos, NUGGET_ORE_GOLD_STATE);
-			else if(randVal < ORE_EMERALD_CHANCE)
-				world.setBlockState(pos, NUGGET_ORE_EMERALD_STATE);
 		}
+		
+		randVal = random.nextFloat();
+		if(randVal < SPAWNER_CHANCE)
+		{
+			world.setBlockState(pos, SPAWNER_STATE);
+			TileEntity tileEntity = world.getTileEntity(pos);
+			if(tileEntity instanceof TileEntityMobSpawner)
+			{
+				((TileEntityMobSpawner) tileEntity).getSpawnerBaseLogic().setEntityId(WeightedRandom.getRandomItem(random, spawnerMobs).type);
+			}
+		}
+		else if(randVal < ORE_GOLD_CHANCE)
+			world.setBlockState(pos, NUGGET_ORE_GOLD_STATE);
+		else if(randVal < ORE_EMERALD_CHANCE)
+			world.setBlockState(pos, NUGGET_ORE_EMERALD_STATE);
 	}
 }

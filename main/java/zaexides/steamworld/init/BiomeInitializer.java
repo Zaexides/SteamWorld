@@ -55,9 +55,7 @@ public class BiomeInitializer
 		BiomeDictionary.addTypes(biome, types);
 		
 		int id = SteamWorldBiomeProvider.biomes.size();
-		SteamWorldBiomeProvider.biomes.add(biome);
-		for(int i = 0; i < weight; i++)
-			SteamWorldBiomeProvider.biomeWeights.add(id);
+		SteamWorldBiomeProvider.biomes.add(new BiomeEntry(biome, weight));
 		return biome;
 	}
 }

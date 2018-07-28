@@ -27,9 +27,6 @@ public class BiomeHighlandIsland extends BiomeSteamWorld
 	{
 		super(biomeProperties.setBaseHeight(1.0f).setHeightVariation(0.1f).setRainfall(0.45f));
 		
-		erosionStartHeight = 50;
-		erosionOverrideChance = 0.015f;
-		
 		decorator.flowersPerChunk = 1;
 		decorator.treesPerChunk = 1;
 		decorator.extraTreeChance = 0.25f;

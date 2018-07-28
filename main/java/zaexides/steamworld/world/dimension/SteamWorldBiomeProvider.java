@@ -17,11 +17,11 @@ import net.minecraft.world.gen.layer.GenLayer;
 import net.minecraft.world.gen.layer.GenLayerVoronoiZoom;
 import net.minecraft.world.gen.layer.GenLayerZoom;
 import net.minecraft.world.gen.layer.IntCache;
+import net.minecraftforge.common.BiomeManager.BiomeEntry;
 
 public class SteamWorldBiomeProvider extends BiomeProvider
 {
-	public static List<Biome> biomes = new ArrayList<Biome>();
-	public static List<Integer> biomeWeights = new ArrayList<Integer>();
+	public static List<BiomeEntry> biomes = new ArrayList<BiomeEntry>();
 	private GenLayer biomeLayer;
 	private GenLayer biomeIndexLayer;
 	private BiomeCache biomeCache;

@@ -29,9 +29,6 @@ public class BiomeBlazingWithers extends BiomeSteamWorld
 		decorator.grassPerChunk = 0;
 		decorator.deadBushPerChunk = 1;
 		
-		erosionOverrideChance = 0.11f;
-		erosionStartHeight = 68;
-		
 		spawnableCreatureList.clear();
 		spawnableWaterCreatureList.clear();
 		spawnableCaveCreatureList.clear();

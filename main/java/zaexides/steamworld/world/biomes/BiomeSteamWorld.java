@@ -21,7 +21,7 @@ public abstract class BiomeSteamWorld extends Biome
 {
 	protected float erosionOverrideChance = 0.05f;
 	protected int erosionStartHeight = 63;
-	protected int riseAmount = 0;
+	public int riseAmount = 0;
 	protected boolean generateWater = false;
 	protected int waterStartHeight = 63;
 	
@@ -105,7 +105,12 @@ public abstract class BiomeSteamWorld extends Biome
 				}
 			}
 			else
-				chunkPrimerIn.setBlockState(primerX, y, primerZ, AIR);
+			{
+				if(chunkPrimerIn.getBlockState(primerX, y, primerZ).equals(AIR))
+					canErode = false;
+				else
+					chunkPrimerIn.setBlockState(primerX, y, primerZ, AIR);
+			}
 		}
 		
 		raise(worldIn, rand, chunkPrimerIn, primerX, primerZ, noiseVal);
@@ -128,9 +133,12 @@ public abstract class BiomeSteamWorld extends Biome
 			for(int y = 255; y >= 0; y--)
 			{
 				IBlockState blockState = chunkPrimerIn.getBlockState(primerX, y, primerZ);
-				chunkPrimerIn.setBlockState(primerX, y, primerZ, Blocks.AIR.getDefaultState());
-				if((y + riseAmount) <= 255)
-					chunkPrimerIn.setBlockState(primerX, y + riseAmount, primerZ, blockState);
+				if(!blockState.equals(AIR))
+				{
+					chunkPrimerIn.setBlockState(primerX, y, primerZ, Blocks.AIR.getDefaultState());
+					if((y + riseAmount) <= 255)
+						chunkPrimerIn.setBlockState(primerX, y + riseAmount, primerZ, blockState);
+				}
 			}
 		}
 		else if(riseAmount < 0)
@@ -138,9 +146,12 @@ public abstract class BiomeSteamWorld extends Biome
 			for(int y = 0; y <= 255; y++)
 			{
 				IBlockState blockState = chunkPrimerIn.getBlockState(primerX, y, primerZ);
-				chunkPrimerIn.setBlockState(primerX, y, primerZ, Blocks.AIR.getDefaultState());
-				if((y + riseAmount) >= 0)
-					chunkPrimerIn.setBlockState(primerX, y + riseAmount, primerZ, blockState);
+				if(!blockState.equals(AIR))
+				{
+					chunkPrimerIn.setBlockState(primerX, y, primerZ, Blocks.AIR.getDefaultState());
+					if((y + riseAmount) >= 0)
+						chunkPrimerIn.setBlockState(primerX, y + riseAmount, primerZ, blockState);
+				}
 			}
 		}
 	}
