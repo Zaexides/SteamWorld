@@ -15,13 +15,9 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.IRangedAttackMob;
 import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAIAttackMelee;
-import net.minecraft.entity.ai.EntityAIAttackRanged;
 import net.minecraft.entity.ai.EntityAIBase;
-import net.minecraft.entity.ai.EntityAIHurtByTarget;
-import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
+import net.minecraft.entity.ai.EntityAIFindEntityNearestPlayer;
 import net.minecraft.entity.ai.EntityMoveHelper;
-import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
@@ -62,7 +58,8 @@ public class EntityPropellorShell extends EntityFlying implements IMob
 	@Override
 	protected void initEntityAI() 
 	{
-		this.tasks.addTask(0, new EntityAIRandomFly(this));
+		this.tasks.addTask(0, new EntityAIFly(this));
+		this.targetTasks.addTask(1, new EntityAIFindEntityNearestPlayer(this));
 	}
 	
 	@Override
@@ -82,6 +79,34 @@ public class EntityPropellorShell extends EntityFlying implements IMob
 		return super.getCanSpawnHere() && this.world.getDifficulty() != EnumDifficulty.PEACEFUL;
 	}
 	
+	private void SpawnPotion(float xDir, float yDir, float zDir, float velocity)
+	{
+		ItemStack potionStack = new ItemStack(Items.LINGERING_POTION);
+    	
+    	if(rand.nextInt(10) == 0)
+    	{
+    		final List<PotionEffect> effects = Arrays.asList(new PotionEffect[]
+        			{
+        				new PotionEffect(MobEffects.UNLUCK, 1200, 0)
+        			});
+        	potionStack = PotionUtils.appendEffects(potionStack, effects);
+    	}
+    	else
+    	{
+        	final List<PotionEffect> effects = Arrays.asList(new PotionEffect[]
+        			{
+        				new PotionEffect(MobEffects.NAUSEA, 300, 0),
+        				new PotionEffect(MobEffects.INSTANT_DAMAGE, 1, 0)
+        			});
+        	potionStack = PotionUtils.appendEffects(potionStack, effects);
+    	}
+    	
+    	EntityPotion potion = new EntityPotion(world, this, potionStack);
+    	potion.setThrowableHeading(xDir, yDir, zDir, velocity, 0.1f);
+    	this.playSound(SoundEvents.ENTITY_EGG_THROW, 1.0f, 1.0f);
+    	this.world.spawnEntity(potion);
+	}
+	
 	@Override
 	public void onUpdate()
     {
@@ -94,40 +119,32 @@ public class EntityPropellorShell extends EntityFlying implements IMob
         
         if(!world.isRemote)
         {
-	        if(cooldown <= 0)
+        	EntityLivingBase target = this.getAttackTarget();
+        	
+	        if(cooldown <= 0 && target != null && target.isEntityAlive())
 	        {
-	        	ItemStack potionStack = new ItemStack(Items.LINGERING_POTION);
-	        	
-	        	if(rand.nextInt(10) == 0)
-	        	{
-	        		final List<PotionEffect> effects = Arrays.asList(new PotionEffect[]
-		        			{
-		        				new PotionEffect(MobEffects.UNLUCK, 1200, 0)
-		        			});
-		        	potionStack = PotionUtils.appendEffects(potionStack, effects);
-	        	}
-	        	else
-	        	{
-		        	final List<PotionEffect> effects = Arrays.asList(new PotionEffect[]
-		        			{
-		        				new PotionEffect(MobEffects.NAUSEA, 300, 0),
-		        				new PotionEffect(MobEffects.INSTANT_DAMAGE, 1, 0)
-		        			});
-		        	potionStack = PotionUtils.appendEffects(potionStack, effects);
-	        	}
-	        	
-	        	EntityPotion potion = new EntityPotion(world, this, potionStack);
-	        	potion.setThrowableHeading(0, -1, 0, 1.0f, 0.1f);
-	        	this.playSound(SoundEvents.ENTITY_EGG_THROW, 1.0f, 1.0f);
-	        	this.world.spawnEntity(potion);
+	        	SpawnPotion(0, -1, 0, 1.0f);
 	        	cooldown = COOLDOWN_TIME;
 	        }
-	        else
+	        else if(cooldown > 0)
 	        {
 	        	cooldown--;
 	        }
         }
     }
+	
+	@Override
+	public void onDeath(DamageSource cause) 
+	{
+		if(!this.isDead && !world.isRemote)
+		{
+			SpawnPotion(-1, 1, -1, 0.1f);
+			SpawnPotion(-1, 1, 1, 0.1f);
+			SpawnPotion(1, 1, 1, 0.1f);
+			SpawnPotion(1, 1, -1, 0.1f);
+		}
+		super.onDeath(cause);
+	}
 	
 	@Override
 	public boolean isPotionApplicable(PotionEffect potioneffectIn) 
@@ -178,14 +195,14 @@ public class EntityPropellorShell extends EntityFlying implements IMob
 		}
 	}
 	
-	static class EntityAIRandomFly extends EntityAIBase
+	static class EntityAIFly extends EntityAIBase
 	{
 		private EntityPropellorShell entity;
 		private int cooldown = 0;
 		
 		private final int COOLDOWN_DURATION = 50;
 		
-		public EntityAIRandomFly(EntityPropellorShell entity) 
+		public EntityAIFly(EntityPropellorShell entity) 
 		{
 			this.entity = entity;
 			setMutexBits(1);
@@ -211,10 +228,22 @@ public class EntityPropellorShell extends EntityFlying implements IMob
 		@Override
 		public void startExecuting() 
 		{
+			double next_x, next_y, next_z;
 			Random random = entity.getRNG();
-			double next_x = entity.posX + (random.nextDouble() * 2 - 1) * 8;
-			double next_y = entity.posY + (random.nextDouble() * 2 - 1) * 8;
-			double next_z = entity.posZ + (random.nextDouble() * 2 - 1) * 8;
+			
+			EntityLivingBase target = entity.getAttackTarget();
+			if(target == null || !target.isEntityAlive())
+			{
+				next_x = entity.posX + (random.nextDouble() * 2 - 1) * 8;
+				next_y = entity.posY + (random.nextDouble() * 2 - 1) * 8;
+				next_z = entity.posZ + (random.nextDouble() * 2 - 1) * 8;
+			}
+			else
+			{
+				next_x = target.posX;
+				next_y = target.posY + 3.0;
+				next_z = target.posZ;
+			}
 			
 			BlockPos pos = new BlockPos(next_x, next_y, next_z);
 			IBlockState state = entity.getEntityWorld().getBlockState(pos);
