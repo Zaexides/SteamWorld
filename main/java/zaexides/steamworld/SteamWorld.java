@@ -24,6 +24,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import scala.collection.generic.BitOperations.Int;
 import scala.reflect.internal.Trees.New;
 import scala.tools.nsc.doc.model.Public;
+import zaexides.steamworld.events.MiscEventHandler;
 import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.init.ItemInitializer;
 import zaexides.steamworld.integration.tc.TCMaterials;

@@ -19,14 +19,14 @@ import net.minecraft.world.gen.layer.GenLayerZoom;
 import net.minecraft.world.gen.layer.IntCache;
 import net.minecraftforge.common.BiomeManager.BiomeEntry;
 
-public class SteamWorldBiomeProvider extends BiomeProvider
+public class BiomeProviderSkyOfOld extends BiomeProvider
 {
 	public static List<BiomeEntry> biomes = new ArrayList<BiomeEntry>();
 	private GenLayer biomeLayer;
 	private GenLayer biomeIndexLayer;
 	private BiomeCache biomeCache;
 	
-	public SteamWorldBiomeProvider(long seed, WorldType worldType) 
+	public BiomeProviderSkyOfOld(long seed, WorldType worldType) 
 	{
 		GenLayer[] agenlayer = getGenLayers(seed);
 		agenlayer = getModdedBiomeGenerators(worldType, seed, agenlayer);

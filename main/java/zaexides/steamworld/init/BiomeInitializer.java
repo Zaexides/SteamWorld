@@ -21,7 +21,7 @@ import zaexides.steamworld.world.biomes.BiomeForgottenSky;
 import zaexides.steamworld.world.biomes.BiomeHighlandIsland;
 import zaexides.steamworld.world.biomes.BiomeNatureIsland;
 import zaexides.steamworld.world.biomes.BiomeWetlands;
-import zaexides.steamworld.world.dimension.SteamWorldBiomeProvider;
+import zaexides.steamworld.world.dimension.BiomeProviderSkyOfOld;
 
 @Mod.EventBusSubscriber(modid = ModInfo.MODID)
 public class BiomeInitializer 
@@ -54,8 +54,8 @@ public class BiomeInitializer
 		ForgeRegistries.BIOMES.register(biome);
 		BiomeDictionary.addTypes(biome, types);
 		
-		int id = SteamWorldBiomeProvider.biomes.size();
-		SteamWorldBiomeProvider.biomes.add(new BiomeEntry(biome, weight));
+		int id = BiomeProviderSkyOfOld.biomes.size();
+		BiomeProviderSkyOfOld.biomes.add(new BiomeEntry(biome, weight));
 		return biome;
 	}
 }

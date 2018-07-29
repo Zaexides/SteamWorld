@@ -32,7 +32,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import zaexides.steamworld.entity.ai.FloatingMoveHelper;
-import zaexides.steamworld.world.dimension.DimensionTypeSteamWorld;
+import zaexides.steamworld.world.dimension.WorldProviderSkyOfOld;
 
 public class EntityEclipseStalker extends EntityMob
 {
@@ -128,8 +128,8 @@ public class EntityEclipseStalker extends EntityMob
     	super.onUpdate();
     	
     	boolean isEclipse = false;
-    	if(world.provider instanceof DimensionTypeSteamWorld)
-    		isEclipse = ((DimensionTypeSteamWorld)world.provider).getEclipseFactor() < 0.75f;
+    	if(world.provider instanceof WorldProviderSkyOfOld)
+    		isEclipse = ((WorldProviderSkyOfOld)world.provider).getEclipseFactor() < 0.75f;
     	
     	if(!isEclipse)
     	{
@@ -177,8 +177,8 @@ public class EntityEclipseStalker extends EntityMob
     {
     	boolean isEclipse = false;
     	
-    	if(world.provider instanceof DimensionTypeSteamWorld)
-    		isEclipse = ((DimensionTypeSteamWorld)world.provider).getEclipseFactor() < 0.25f;
+    	if(world.provider instanceof WorldProviderSkyOfOld)
+    		isEclipse = ((WorldProviderSkyOfOld)world.provider).getEclipseFactor() < 0.25f;
     	
     	return super.getCanSpawnHere() && isEclipse;
     }

@@ -22,7 +22,7 @@ import net.minecraftforge.client.IRenderHandler;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.utility.RenderingUtil;
-import zaexides.steamworld.world.dimension.DimensionTypeSteamWorld;
+import zaexides.steamworld.world.dimension.WorldProviderSkyOfOld;
 
 public class SkyRendererSkyOfOld extends IRenderHandler
 {
@@ -33,7 +33,7 @@ public class SkyRendererSkyOfOld extends IRenderHandler
 	private static final ResourceLocation sunTexture = new ResourceLocation("minecraft", "textures/environment/sun.png");	
 	private static final ResourceLocation moonTexture = new ResourceLocation(ModInfo.MODID, "textures/environment/soo_moon.png");
 	
-	private static final float TIME_TO_DEGREES = (1.0f / DimensionTypeSteamWorld.DAY_DURATION) * 360.0f;
+	private static final float TIME_TO_DEGREES = (1.0f / WorldProviderSkyOfOld.DAY_DURATION) * 360.0f;
 	
 	@Override
 	public void render(float partialTicks, WorldClient world, Minecraft mc) 

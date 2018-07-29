@@ -21,9 +21,9 @@ import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.client.rendering.world.SkyRendererSkyOfOld;
 
-public class DimensionTypeSteamWorld extends WorldProviderSurface
+public class WorldProviderSkyOfOld extends WorldProviderSurface
 {
-	public static final DimensionType STEAMWORLD = DimensionType.register("sky_of_old", "_" + ModInfo.MODID, ConfigHandler.dimensionId, DimensionTypeSteamWorld.class, false);
+	public static final DimensionType STEAMWORLD = DimensionType.register("sky_of_old", "_" + ModInfo.MODID, ConfigHandler.dimensionId, WorldProviderSkyOfOld.class, false);
 	
 	public static final long DAY_DURATION = 48000;
 	private static final float ECLIPSE_DURATION = 700.0f;
@@ -46,13 +46,13 @@ public class DimensionTypeSteamWorld extends WorldProviderSurface
 	protected void init() 
 	{
 		hasSkyLight = true;
-		biomeProvider = new SteamWorldBiomeProvider(getSeed(), world.getWorldInfo().getTerrainType());
+		biomeProvider = new BiomeProviderSkyOfOld(getSeed(), world.getWorldInfo().getTerrainType());
 	}
 	
 	@Override
 	public IChunkGenerator createChunkGenerator() 
 	{
-		return new SteamWorldChunkGenerator(world);
+		return new ChunkGeneratorSkyOfOld(world);
 	}
 	
 	@Override

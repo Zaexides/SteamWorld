@@ -247,6 +247,12 @@ entity.steamworld.anemone_stinger.name=Anemone Stinger
 entity.steamworld.propellorshell.name=Proshellor
 entity.steamworld.eclipse_stalker.name=Eclipse Stalker
 
+##################
+# Death Messages #
+##################
+death.attack.sw.coreHeat=%1$s got too close to the core
+death.attack.sw.coreHeat.player=%1$s was thrown into the core by %2$s
+
 #######################
 # Container Name Text #
 #######################

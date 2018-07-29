@@ -20,7 +20,7 @@ import zaexides.steamworld.blocks.BlockDecorative;
 import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.world.biomes.BiomeSteamWorld;
 
-public class SteamWorldTerrainGenerator
+public class TerrainGeneratorSkyOfOld
 {
 	private static final int CHUNK_GEN_SIZE = 2;
 	private static final int CHUNK_XZ_SCALE = 3;
@@ -47,7 +47,7 @@ public class SteamWorldTerrainGenerator
 	private NoiseGeneratorPerlin surfaceNoise;
 	private double[] depthBuffer = new double[256];
 	
-	public SteamWorldTerrainGenerator(World world, Random random) 
+	public TerrainGeneratorSkyOfOld(World world, Random random) 
 	{
 		this.world = world;
 		this.random = random;

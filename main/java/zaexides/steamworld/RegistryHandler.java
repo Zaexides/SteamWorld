@@ -73,7 +73,7 @@ import zaexides.steamworld.te.generic_machine.TileEntityTeleporter;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
 import zaexides.steamworld.utility.interfaces.IOreDictionaryRegisterable;
 import zaexides.steamworld.world.WorldGenerationOres;
-import zaexides.steamworld.world.dimension.DimensionTypeSteamWorld;
+import zaexides.steamworld.world.dimension.WorldProviderSkyOfOld;
 import zaexides.steamworld.world.structure.WorldGenCrypt;
 import zaexides.steamworld.world.structure.WorldGenCrystal;
 import zaexides.steamworld.world.structure.WorldGenPortalBuilding;
@@ -136,7 +136,7 @@ public class RegistryHandler
 		GameRegistry.registerWorldGenerator(new WorldGenTower(), 1000);
 		GameRegistry.registerWorldGenerator(new WorldGenCrystal(), 500);
 		
-		DimensionManager.registerDimension(ConfigHandler.dimensionId, DimensionTypeSteamWorld.STEAMWORLD);
+		DimensionManager.registerDimension(ConfigHandler.dimensionId, WorldProviderSkyOfOld.STEAMWORLD);
 	}
 	
 	public static void RegisterMiscRecipes()

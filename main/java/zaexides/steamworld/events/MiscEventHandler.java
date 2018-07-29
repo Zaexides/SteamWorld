@@ -1,4 +1,4 @@
-package zaexides.steamworld;
+package zaexides.steamworld.events;
 
 import java.time.LocalDate;
 
@@ -24,15 +24,19 @@ import net.minecraftforge.common.ForgeChunkManager.Type;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.entity.item.ItemEvent;
 import net.minecraftforge.event.world.WorldEvent;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
+import zaexides.steamworld.ConfigHandler;
+import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.init.ItemInitializer;
 import net.minecraftforge.items.ItemHandlerHelper;
 
 import zaexides.steamworld.items.ItemTreasure;
 
+@Mod.EventBusSubscriber(modid = ModInfo.MODID)
 public class MiscEventHandler 
 {
 	private final String MANUAL_TAG = "sw_manual_got";

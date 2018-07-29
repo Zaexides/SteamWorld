@@ -22,9 +22,9 @@ public class GenLayerSteamWorldBiomes extends GenLayer
 			{
 				initChunkSeed(areaX + x, areaZ + z);
 				
-				int totalWeight = WeightedRandom.getTotalWeight(SteamWorldBiomeProvider.biomes);
+				int totalWeight = WeightedRandom.getTotalWeight(BiomeProviderSkyOfOld.biomes);
 				int weight = nextInt(totalWeight);
-				Biome biome = WeightedRandom.getRandomItem(SteamWorldBiomeProvider.biomes, weight).biome;
+				Biome biome = WeightedRandom.getRandomItem(BiomeProviderSkyOfOld.biomes, weight).biome;
 				ints[x + z * areaWidth] = Biome.getIdForBiome(biome);
 			}
 		}

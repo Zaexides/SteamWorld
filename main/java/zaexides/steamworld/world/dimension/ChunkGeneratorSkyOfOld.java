@@ -25,20 +25,20 @@ import zaexides.steamworld.world.mapgen.MapGenSWCaves;
 import zaexides.steamworld.world.structure.tower.WorldGenTower;
 import net.minecraftforge.event.terraingen.TerrainGen;
 
-public class SteamWorldChunkGenerator implements IChunkGenerator
+public class ChunkGeneratorSkyOfOld implements IChunkGenerator
 {
 	private final World world;
 	private Random rand;
 	private Biome[] biomes;
-	private SteamWorldTerrainGenerator terrainGenerator;
+	private TerrainGeneratorSkyOfOld terrainGenerator;
 	
 	private MapGenBase caveGenerator = new MapGenSWCaves();
 		
-	public SteamWorldChunkGenerator(World world) 
+	public ChunkGeneratorSkyOfOld(World world) 
 	{
 		this.world = world;
 		this.rand = new Random(world.getSeed() - 725);
-		terrainGenerator = new SteamWorldTerrainGenerator(world, rand);
+		terrainGenerator = new TerrainGeneratorSkyOfOld(world, rand);
 		caveGenerator = TerrainGen.getModdedMapGen(caveGenerator, EventType.CAVE);
 	}
 	
