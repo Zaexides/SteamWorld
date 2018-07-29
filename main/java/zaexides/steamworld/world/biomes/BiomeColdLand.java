@@ -16,14 +16,14 @@ import net.minecraft.world.gen.feature.WorldGenTaiga1;
 import net.minecraft.world.gen.feature.WorldGenTaiga2;
 import zaexides.steamworld.init.BlockInitializer;
 
-public class BiomeHighlandIsland extends BiomeSteamWorld
+public class BiomeColdLand extends BiomeSteamWorld
 {
 	private static final WorldGenTaiga1 PINE_GENERATOR = new WorldGenTaiga1();
     private static final WorldGenTaiga2 SPRUCE_GENERATOR = new WorldGenTaiga2(false);
     
     private boolean snowy;
 	
-	public BiomeHighlandIsland(boolean snowy, BiomeProperties biomeProperties) 
+	public BiomeColdLand(boolean snowy, BiomeProperties biomeProperties) 
 	{
 		super(biomeProperties.setBaseHeight(1.0f).setHeightVariation(0.1f).setRainfall(0.45f));
 		
@@ -32,8 +32,6 @@ public class BiomeHighlandIsland extends BiomeSteamWorld
 		decorator.extraTreeChance = 0.25f;
 		decorator.grassPerChunk = 5;
 		decorator.generateFalls = true;
-		
-		riseAmount = snowy ? 50 : 25;
 		
 		if(snowy)
 		{

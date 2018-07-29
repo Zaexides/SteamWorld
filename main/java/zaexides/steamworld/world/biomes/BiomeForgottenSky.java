@@ -29,7 +29,8 @@ public class BiomeForgottenSky extends BiomeSteamWorld
 		
 		for(int y = 255; y >= 0; y--)
 		{
-			chunkPrimerIn.setBlockState(primerX, y, primerZ, AIR);
+			if(chunkPrimerIn.getBlockState(primerX, y, primerZ).getMaterial() != Material.AIR)
+				chunkPrimerIn.setBlockState(primerX, y, primerZ, AIR);
 		}
 	}
 }

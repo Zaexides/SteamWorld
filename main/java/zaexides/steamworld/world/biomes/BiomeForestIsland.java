@@ -41,8 +41,6 @@ public class BiomeForestIsland extends BiomeSteamWorld
 		spawnableCreatureList.add(new SpawnListEntry(EntitySkyFish.class, 10, 5, 8));
 		spawnableCreatureList.add(new SpawnListEntry(EntityAnemone.class, 5, 2, 3));
 		spawnableMonsterList.add(new SpawnListEntry(EntityAnemone.class, 5, 2, 3));
-		
-		riseAmount = -5;
 	}
 	
 	@Override

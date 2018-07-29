@@ -42,8 +42,6 @@ public class BiomeBlazingWithers extends BiomeSteamWorld
 		
 		witherWeedState = BlockInitializer.BLOCK_FLOWER.getStateFromMeta(BlockSWFlower.EnumType.WITHER.getMeta());
 		addFlower(witherWeedState, 40);
-		
-		riseAmount = -30;
 	}
 	
 	@Override

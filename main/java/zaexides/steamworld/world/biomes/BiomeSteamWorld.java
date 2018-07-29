@@ -20,12 +20,6 @@ import zaexides.steamworld.init.BlockInitializer;
 
 public abstract class BiomeSteamWorld extends Biome
 {
-	protected float erosionOverrideChance = 0.05f;
-	protected int erosionStartHeight = 63;
-	public int riseAmount = 0;
-	protected boolean generateWater = false;
-	protected int waterStartHeight = 63;
-	
 	public BiomeSteamWorld(BiomeProperties properties) 
 	{
 		super(properties);
@@ -72,50 +66,30 @@ public abstract class BiomeSteamWorld extends Biome
 		int primerX = x & 15;
 		int primerZ = z & 15;
 		
-		boolean eroded = false;
-		boolean canErode = false;
-		
 		for(int y = 255; y >= 0; y--)
 		{
-			if(!eroded)
+			IBlockState blockState = chunkPrimerIn.getBlockState(primerX, y, primerZ);
+			
+			if(blockState.getMaterial() == Material.AIR)
+				topLayerHeight = -1;
+			else if(blockState.getBlock() == BlockInitializer.BLOCK_DECORATIVE)
 			{
-				if(canErode && (rand.nextFloat() < erosionOverrideChance || y <= rand.nextInt(erosionStartHeight)))
-					eroded = true;
-				
-				IBlockState blockState = chunkPrimerIn.getBlockState(primerX, y, primerZ);
-				
-				if(blockState.getMaterial() == Material.AIR)
-					topLayerHeight = -1;
-				else if(blockState.getBlock() == BlockInitializer.BLOCK_DECORATIVE)
+				if(topLayerHeight == -1)
 				{
-					if(topLayerHeight == -1)
-					{
-						topLayerHeight = y;
-					}
-					
-					if(y == topLayerHeight)
-					{
-						chunkPrimerIn.setBlockState(primerX, y, primerZ, topBlock);
-						onTopBlockGen(worldIn, rand, chunkPrimerIn, primerX, y, primerZ, noiseVal);
-					}
-					else if(y >= topLayerHeight - 3)
-						chunkPrimerIn.setBlockState(primerX, y, primerZ, fillerBlock);
-					else if(!canErode)
-						canErode = true;
-					
-					replaceBiomeBlock(worldIn, rand, chunkPrimerIn, primerX, y, primerZ, noiseVal);
+					topLayerHeight = y;
 				}
-			}
-			else
-			{
-				if(chunkPrimerIn.getBlockState(primerX, y, primerZ).equals(AIR))
-					canErode = false;
-				else
-					chunkPrimerIn.setBlockState(primerX, y, primerZ, AIR);
+				
+				if(y == topLayerHeight)
+				{
+					chunkPrimerIn.setBlockState(primerX, y, primerZ, topBlock);
+					onTopBlockGen(worldIn, rand, chunkPrimerIn, primerX, y, primerZ, noiseVal);
+				}
+				else if(y >= topLayerHeight - 3)
+					chunkPrimerIn.setBlockState(primerX, y, primerZ, fillerBlock);
+				
+				replaceBiomeBlock(worldIn, rand, chunkPrimerIn, primerX, y, primerZ, noiseVal);
 			}
 		}
-		
-		raise(worldIn, rand, chunkPrimerIn, primerX, primerZ, noiseVal);
 	}
 	
 	protected void replaceBiomeBlock(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int primerX, int primerY, int primerZ, double noiseVal)
@@ -126,35 +100,5 @@ public abstract class BiomeSteamWorld extends Biome
 	protected void onTopBlockGen(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int primerX, int primerY, int primerZ, double noiseVal)
 	{
 		
-	}
-	
-	protected void raise(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int primerX, int primerZ, double noiseVal)
-	{
-		if(riseAmount > 0)
-		{
-			for(int y = 255; y >= 0; y--)
-			{
-				IBlockState blockState = chunkPrimerIn.getBlockState(primerX, y, primerZ);
-				if(!blockState.equals(AIR))
-				{
-					chunkPrimerIn.setBlockState(primerX, y, primerZ, Blocks.AIR.getDefaultState());
-					if((y + riseAmount) <= 255)
-						chunkPrimerIn.setBlockState(primerX, y + riseAmount, primerZ, blockState);
-				}
-			}
-		}
-		else if(riseAmount < 0)
-		{
-			for(int y = 0; y <= 255; y++)
-			{
-				IBlockState blockState = chunkPrimerIn.getBlockState(primerX, y, primerZ);
-				if(!blockState.equals(AIR))
-				{
-					chunkPrimerIn.setBlockState(primerX, y, primerZ, Blocks.AIR.getDefaultState());
-					if((y + riseAmount) >= 0)
-						chunkPrimerIn.setBlockState(primerX, y + riseAmount, primerZ, blockState);
-				}
-			}
-		}
 	}
 }

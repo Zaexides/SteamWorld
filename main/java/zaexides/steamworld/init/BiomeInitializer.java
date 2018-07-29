@@ -18,7 +18,7 @@ import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.world.biomes.BiomeBlazingWithers;
 import zaexides.steamworld.world.biomes.BiomeForestIsland;
 import zaexides.steamworld.world.biomes.BiomeForgottenSky;
-import zaexides.steamworld.world.biomes.BiomeHighlandIsland;
+import zaexides.steamworld.world.biomes.BiomeColdLand;
 import zaexides.steamworld.world.biomes.BiomeNatureIsland;
 import zaexides.steamworld.world.biomes.BiomeWetlands;
 import zaexides.steamworld.world.dimension.BiomeProviderSkyOfOld;
@@ -27,10 +27,10 @@ import zaexides.steamworld.world.dimension.BiomeProviderSkyOfOld;
 public class BiomeInitializer 
 {
 	public static final BiomeForgottenSky FORGOTTEN_SKY = new BiomeForgottenSky("Forgotten Sky");
-	public static final BiomeNatureIsland NATURE_ISLAND = new BiomeNatureIsland("Nature Island");
-	public static final BiomeHighlandIsland HIGHLAND_ISLAND = new BiomeHighlandIsland(false, new BiomeProperties("Highland Island").setTemperature(0.5f));
-	public static final BiomeHighlandIsland HIGHLAND_ISLAND_SNOW = new BiomeHighlandIsland(true, new BiomeProperties("Snow Highland Island").setSnowEnabled().setTemperature(0.0f));
-	public static final BiomeForestIsland FOREST_ISLAND = new BiomeForestIsland("Forest Island");
+	public static final BiomeNatureIsland NATURE_ISLAND = new BiomeNatureIsland("Nature's Sky");
+	public static final BiomeColdLand HIGHLAND_ISLAND = new BiomeColdLand(false, new BiomeProperties("Coldlands").setTemperature(0.5f));
+	public static final BiomeColdLand HIGHLAND_ISLAND_SNOW = new BiomeColdLand(true, new BiomeProperties("Snowy Coldlands").setSnowEnabled().setTemperature(0.0f));
+	public static final BiomeForestIsland FOREST_ISLAND = new BiomeForestIsland("Floating Woods");
 	public static final BiomeWetlands WETLANDS = new BiomeWetlands("Floating Wetlands");
 	
 	public static final BiomeBlazingWithers BLAZING_WITHERS = new BiomeBlazingWithers("Blazing Withers");
