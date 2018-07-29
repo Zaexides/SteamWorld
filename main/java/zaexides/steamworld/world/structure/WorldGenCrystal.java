@@ -27,11 +27,11 @@ import zaexides.steamworld.init.EntityInitializer;
 
 public class WorldGenCrystal implements IWorldGenerator
 {
-	private static final float CHANCE_PER_CHUNK = 0.3f;
+	private static final float CHANCE_PER_CHUNK = 0.2f;
 	private static final int AMOUNT_PER_CHUNK = 3;
-	private static final float CHANCE_PER_CHUNK_FORGOTTEN_SKY = 0.4f;
+	private static final float CHANCE_PER_CHUNK_FORGOTTEN_SKY = 0.3f;
 	private static final int MIN_HEIGHT = 20, MAX_HEIGHT = 230;
-	private static final int MIN_SIZE = 2, MAX_SIZE = 4;
+	private static final int MIN_SIZE = 2, MAX_SIZE = 5;
 	private static final float SPAWNER_CHANCE = 0.2f;
 	private static final float ORE_GOLD_CHANCE = SPAWNER_CHANCE + 0.1f;
 	private static final float ORE_EMERALD_CHANCE = ORE_GOLD_CHANCE + 0.1f;
