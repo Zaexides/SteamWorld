@@ -54,6 +54,8 @@ tile.steamworld.ore_diamond_sky.name=Diamond Sky Ore
 tile.steamworld.ore_ancite_sky.name=Ancite Sky Ore
 tile.steamworld.ore_galite_sky.name=Galite Sky Ore
 tile.steamworld.ore_territe_sky.name=Territe Sky Ore
+tile.steamworld.ore_emerald_crystal.name=Emerald Crystal Ore
+tile.steamworld.ore_gold_crystal.name=Gold Crystal Ore
 
 # Generators
 tile.steamworld.generator_steaite.name=Steam Generator MKI
