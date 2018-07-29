@@ -41,6 +41,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import zaexides.steamworld.SteamWorld;
+import zaexides.steamworld.entity.ai.FloatingMoveHelper;
 import zaexides.steamworld.init.LootTableInitializer;
 
 public class EntityPropellorShell extends EntityFlying implements IMob
@@ -52,7 +53,7 @@ public class EntityPropellorShell extends EntityFlying implements IMob
 	{
 		super(worldIn);
 		setSize(.5f, 0.63f);
-		moveHelper = new EntityPropellorShellMoveHelper(this);
+		moveHelper = new FloatingMoveHelper(this);
 	}
 	
 	@Override
@@ -66,7 +67,7 @@ public class EntityPropellorShell extends EntityFlying implements IMob
 	protected void applyEntityAttributes() 
 	{
 		super.applyEntityAttributes();
-		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.1);
+		this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(3.0);
 		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(5.0);
 		this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(15.0);
 		this.getEntityAttribute(SharedMonsterAttributes.ARMOR_TOUGHNESS).setBaseValue(10.0);
@@ -165,35 +166,6 @@ public class EntityPropellorShell extends EntityFlying implements IMob
 	public float getEyeHeight() 
 	{
 		return 0.05f;
-	}
-	
-	static class EntityPropellorShellMoveHelper extends EntityMoveHelper
-	{
-		public EntityPropellorShellMoveHelper(EntityPropellorShell propellorShell) 
-		{
-			super(propellorShell);
-		}
-		
-		@Override
-		public void onUpdateMoveHelper() 
-		{
-			if(this.action == Action.MOVE_TO)
-			{
-				double dx = this.posX - this.entity.posX;
-				double dy = this.posY - this.entity.posY;
-				double dz = this.posZ - this.entity.posZ;
-				
-				double d3 = (double)MathHelper.sqrt(dx * dx + dy * dy + dz * dz);
-				double speed = this.speed * this.entity.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).getAttributeValue();
-				this.entity.motionX += dx / d3 * speed;
-				this.entity.motionY += dy / d3 * speed;
-				this.entity.motionZ += dz / d3 * speed;
-				
-				
-				if((dx + dy + dz) < 1.2)
-					this.action = Action.WAIT;
-			}
-		}
 	}
 	
 	static class EntityAIFly extends EntityAIBase

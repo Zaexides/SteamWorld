@@ -9,10 +9,12 @@ import net.minecraft.entity.monster.EntityWitherSkeleton;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome.SpawnListEntry;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import zaexides.steamworld.blocks.BlockSWFlower;
+import zaexides.steamworld.entity.EntityEclipseStalker;
 import zaexides.steamworld.init.BlockInitializer;
 
 public class BiomeBlazingWithers extends BiomeSteamWorld
@@ -36,6 +38,7 @@ public class BiomeBlazingWithers extends BiomeSteamWorld
 		
 		spawnableMonsterList.add(new SpawnListEntry(EntityBlaze.class, 80, 1, 3));
 		spawnableMonsterList.add(new SpawnListEntry(EntityWitherSkeleton.class, 20, 1, 2));
+		this.spawnableMonsterList.add(new SpawnListEntry(EntityEclipseStalker.class, 50, 1, 1));
 		
 		witherWeedState = BlockInitializer.BLOCK_FLOWER.getStateFromMeta(BlockSWFlower.EnumType.WITHER.getMeta());
 		addFlower(witherWeedState, 40);

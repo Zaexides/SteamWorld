@@ -15,6 +15,7 @@ import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import zaexides.steamworld.SteamWorld;
+import zaexides.steamworld.entity.EntityEclipseStalker;
 import zaexides.steamworld.init.BlockInitializer;
 
 public abstract class BiomeSteamWorld extends Biome
@@ -28,6 +29,7 @@ public abstract class BiomeSteamWorld extends Biome
 	public BiomeSteamWorld(BiomeProperties properties) 
 	{
 		super(properties);
+		this.spawnableMonsterList.add(new SpawnListEntry(EntityEclipseStalker.class, 50, 1, 1));
 	}
 	
 	@Override

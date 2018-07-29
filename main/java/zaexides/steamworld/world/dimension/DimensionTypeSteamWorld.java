@@ -126,6 +126,11 @@ public class DimensionTypeSteamWorld extends WorldProviderSurface
 	@Override
 	public float getSunBrightnessFactor(float par1) 
 	{
+		return world.getSunBrightnessFactor(par1) * getEclipseFactor();
+	}
+	
+	public float getEclipseFactor()
+	{
 		long time = world.getWorldTime() % DAY_DURATION;
 		long timeDifference;
 		

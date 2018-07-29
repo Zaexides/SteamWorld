@@ -21,6 +21,7 @@ import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.entity.EntityAnemone;
 import zaexides.steamworld.entity.EntityAnemoneStinger;
+import zaexides.steamworld.entity.EntityEclipseStalker;
 import zaexides.steamworld.entity.EntityPropellorShell;
 import zaexides.steamworld.entity.EntitySkyFish;
 
@@ -32,6 +33,7 @@ public class EntityInitializer
 	public static final ResourceLocation FLYING_FISH = new ResourceLocation(ModInfo.MODID, "skyfish");
 	public static final ResourceLocation ANEMONE = new ResourceLocation(ModInfo.MODID, "anemone");
 	public static final ResourceLocation PROSHELLOR = new ResourceLocation(ModInfo.MODID, "propellorshell");
+	public static final ResourceLocation ECLIPSE_STALKER = new ResourceLocation(ModInfo.MODID, "eclipse_stalker");
 	
 	public static final ResourceLocation PROJECTILE_ANEMONE_STINGER = new ResourceLocation(ModInfo.MODID, "anemone_stinger");
 	
@@ -43,6 +45,7 @@ public class EntityInitializer
 		helper.RegisterEntityLiving(FLYING_FISH, EntitySkyFish.class, EntitySkyFish::new, 0x6D7FE8, 0xEDEDD5).RegisterEntitySpawnPlacement(EntitySkyFish.class, SpawnPlacementType.IN_AIR);
 		helper.RegisterEntityLiving(ANEMONE, EntityAnemone.class, EntityAnemone::new, 0x493FB5, 0xFF00DC);
 		helper.RegisterEntityLiving(PROSHELLOR, EntityPropellorShell.class, EntityPropellorShell::new, 0xABB070, 0x61AE40).RegisterEntitySpawnPlacement(EntityPropellorShell.class, SpawnPlacementType.IN_AIR);
+		helper.RegisterEntityLiving(ECLIPSE_STALKER, EntityEclipseStalker.class, EntityEclipseStalker::new, 0x454344, 0xF7CC40).RegisterEntitySpawnPlacement(EntityEclipseStalker.class, SpawnPlacementType.IN_AIR);
 		
 		helper.RegisterEntityNonLiving(PROJECTILE_ANEMONE_STINGER, EntityAnemoneStinger.class, EntityAnemoneStinger::new);
 	}

@@ -245,6 +245,7 @@ entity.steamworld.skyfish.name=Flying Fish
 entity.steamworld.anemone.name=Anemone
 entity.steamworld.anemone_stinger.name=Anemone Stinger
 entity.steamworld.propellorshell.name=Proshellor
+entity.steamworld.eclipse_stalker.name=Eclipse Stalker
 
 #######################
 # Container Name Text #
