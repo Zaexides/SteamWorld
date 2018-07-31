@@ -40,7 +40,7 @@ public class WorldgenInit
 						new WeightedBlock(BlockInitializer.ORE.getStateFromMeta(SteamWorldBlockOre.EnumType.CRYSTAL_EMERALD.getMeta()), 10),
 						new WeightedBlock(Blocks.MOB_SPAWNER.getDefaultState(), 40)
 						),
-				0.1f, 0.2f, 3);
+				0.05f, 0.1f, 3);
 		GameRegistry.registerWorldGenerator(crystalRegular, 500);
 		
 		WorldGenCrystal crystalStar = new WorldGenCrystal(BlockInitializer.BLOCK_CRYSTAL.getStateFromMeta(BlockCrystal.EnumType.STAR_CRYSTAL.getMeta()),
@@ -49,7 +49,7 @@ public class WorldgenInit
 						new WeightedBlock(Blocks.GLOWSTONE.getDefaultState(), 45),
 						new WeightedBlock(Blocks.MOB_SPAWNER.getDefaultState(), 5)
 						),
-				0.0f, 0.05f, 5);
+				0.0f, 0.03f, 5);
 		GameRegistry.registerWorldGenerator(crystalStar, 500);
 		
 		WorldGenCrystal crystalCore = new WorldGenCrystal(BlockInitializer.BLOCK_CRYSTAL.getStateFromMeta(BlockCrystal.EnumType.CORE_CRYSTAL.getMeta()),
@@ -58,7 +58,7 @@ public class WorldgenInit
 						new WeightedBlock(BlockInitializer.ORE.getStateFromMeta(SteamWorldBlockOre.EnumType.CRYSTAL_REDSTONE.getMeta()), 40),
 						new WeightedBlock(Blocks.MOB_SPAWNER.getDefaultState(), 20)
 						),
-				0.01f, 0.05f, 3, 5, 30);
+				0.005f, 0.025f, 3, 5, 30);
 		GameRegistry.registerWorldGenerator(crystalCore, 500);
 	}
 }

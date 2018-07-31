@@ -80,9 +80,9 @@ public class TerrainGeneratorSkyOfOld
 		if(buffer == null)
 			buffer = new double[CHUNK_XZ_SCALE * CHUNK_Y_SCALE * CHUNK_XZ_SCALE];
 		
-		mainPerlin = mainNoise.generateNoiseOctaves(mainPerlin, x * CHUNK_GEN_SIZE, 0, z * CHUNK_GEN_SIZE, CHUNK_XZ_SCALE, CHUNK_Y_SCALE, CHUNK_XZ_SCALE, 800.0, 440.0, 800.0);
-		secondaryPerlin = secondaryNoise.generateNoiseOctaves(secondaryPerlin, x * CHUNK_GEN_SIZE, 0, z * CHUNK_GEN_SIZE, CHUNK_XZ_SCALE, CHUNK_Y_SCALE, CHUNK_XZ_SCALE, 252.0, 252.0, 252.0);
-		tertiaryPerlin = tertiaryNoise.generateNoiseOctaves(tertiaryPerlin, x * CHUNK_GEN_SIZE, 0, z * CHUNK_GEN_SIZE, CHUNK_XZ_SCALE, CHUNK_Y_SCALE, CHUNK_XZ_SCALE, 363.0, 400.0, 363.0);
+		mainPerlin = mainNoise.generateNoiseOctaves(mainPerlin, x * CHUNK_GEN_SIZE, 0, z * CHUNK_GEN_SIZE, CHUNK_XZ_SCALE, CHUNK_Y_SCALE, CHUNK_XZ_SCALE, 800.0, 800.0, 800.0);
+		secondaryPerlin = secondaryNoise.generateNoiseOctaves(secondaryPerlin, x * CHUNK_GEN_SIZE, 0, z * CHUNK_GEN_SIZE, CHUNK_XZ_SCALE, CHUNK_Y_SCALE, CHUNK_XZ_SCALE, 120.6, 65.2, 120.6);
+		tertiaryPerlin = tertiaryNoise.generateNoiseOctaves(tertiaryPerlin, x * CHUNK_GEN_SIZE, 0, z * CHUNK_GEN_SIZE, CHUNK_XZ_SCALE, CHUNK_Y_SCALE, CHUNK_XZ_SCALE, 242.0, 80.0, 242.0);
 		int i = x / 2;
         int j = z / 2;
         

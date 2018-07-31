@@ -27,7 +27,7 @@ public class BiomeNatureIsland extends BiomeSteamWorld
 		decorator.extraTreeChance = 0.3f;
 		decorator.reedsPerChunk = 3;
 		
-		spawnableCreatureList.add(new SpawnListEntry(EntitySkyFish.class, 10, 5, 8));
+		spawnableCreatureList.add(new SpawnListEntry(EntitySkyFish.class, 10, 3, 5));
 	}
 	
 	@Override

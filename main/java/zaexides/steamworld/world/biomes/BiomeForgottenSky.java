@@ -16,13 +16,21 @@ public class BiomeForgottenSky extends BiomeSteamWorld
 	public BiomeForgottenSky(String name) 
 	{
 		super(new BiomeProperties(name).setBaseHeight(0.0f).setHeightVariation(0.0f).setTemperature(0.4f).setRainfall(0.5f));
-		spawnableCreatureList.add(new SpawnListEntry(EntitySkyFish.class, 10, 5, 8));
-		this.spawnableCaveCreatureList.add(new SpawnListEntry(EntityPropellorShell.class, 20, 3, 5));
+		
+		this.spawnableCaveCreatureList.clear();
+		this.spawnableCreatureList.clear();
+		this.spawnableMonsterList.clear();
+		this.spawnableWaterCreatureList.clear();
+		
+		this.spawnableCreatureList.add(new SpawnListEntry(EntitySkyFish.class, 10, 3, 5));
+		this.spawnableMonsterList.add(new SpawnListEntry(EntityPropellorShell.class, 20, 3, 5));
 	}
 	
 	@Override
 	public void generateBiomeTerrainSteamWorld(World worldIn, Random rand, ChunkPrimer chunkPrimerIn, int x, int z, double noiseVal)
 	{
+		if(noiseVal < 0.1)
+			super.generateBiomeTerrainSteamWorld(worldIn, rand, chunkPrimerIn, x, z, noiseVal);
 		int topLayerHeight = -1;
 		int primerX = x & 15;
 		int primerZ = z & 15;
