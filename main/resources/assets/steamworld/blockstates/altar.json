@@ -1,0 +1,18 @@
+
+{
+    "forge_marker": 1,
+    "defaults":
+    {
+        "model": "steamworld:altar",
+        "textures": 
+        {
+            "up": "steamworld:blocks/altar",
+            "other": "steamworld:blocks/block_corite"
+        }
+    },
+    "variants": 
+    {
+        "normal": [{}],
+        "inventory": [{}]
+    }
+}

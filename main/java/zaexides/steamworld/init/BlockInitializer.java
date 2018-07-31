@@ -9,6 +9,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import scala.AnyValCompanion;
 import scala.reflect.internal.Trees.New;
+import zaexides.steamworld.blocks.BlockAltar;
 import zaexides.steamworld.blocks.BlockAncite;
 import zaexides.steamworld.blocks.BlockCrystal;
 import zaexides.steamworld.blocks.BlockDecorative;
@@ -123,7 +124,8 @@ public class BlockInitializer
 	
 	public static final BlockSWPortal BLOCK_SW_PORTAL = new BlockSWPortal();
 	public static final Block BLOCK_SW_PORTAL_FRAME = new SteamWorldBlock("block_portal_frame", Material.ROCK, -1.0f).setResistance(Float.MAX_VALUE).setLightLevel(1.0f);
-		
+	public static final Block ALTAR = new BlockAltar("altar");	
+	
 	public static final BlockDynamo BLOCK_DYNAMO = new BlockDynamo("block_dynamo", 3.5f);
 	public static final BlockSteamGeneratorElectric BLOCK_STEAM_GENERATOR_ELECTRIC = new BlockSteamGeneratorElectric("generator_electric", 3.5f);
 	

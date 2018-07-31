@@ -49,6 +49,7 @@ import zaexides.steamworld.items.SWItemIngot;
 import zaexides.steamworld.items.SWItemNugget;
 import zaexides.steamworld.recipe.handling.AssemblyRecipeHandler;
 import zaexides.steamworld.recipe.handling.DustRecipeHandler;
+import zaexides.steamworld.te.TileEntityAltar;
 import zaexides.steamworld.te.TileEntityAssembler;
 import zaexides.steamworld.te.TileEntityDrain;
 import zaexides.steamworld.te.TileEntityExperienceMachine;
@@ -201,6 +202,7 @@ public class RegistryHandler
 		GameRegistry.registerTileEntity(TileEntityLauncher.class, ModInfo.MODID + "_LaunchTrap");
 		GameRegistry.registerTileEntity(TileEntityFilterTank.class, ModInfo.MODID + "_FilterTank");
 		GameRegistry.registerTileEntity(TileEntityObilisk.class, ModInfo.MODID + "_Obilisk");
+		GameRegistry.registerTileEntity(TileEntityAltar.class, ModInfo.MODID + "_Altar");
 	
 		GameRegistry.registerTileEntity(TileEntityDynamo.class, ModInfo.MODID + "_Dynamo");
 		GameRegistry.registerTileEntity(TileEntitySteamGeneratorElectric.class, ModInfo.MODID + "_ElectricGenerator");
