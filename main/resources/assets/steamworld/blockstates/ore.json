@@ -10,6 +10,7 @@
         "variant=galite_sky": { "model": "steamworld:ore_galite_sky" },
         "variant=territe_sky": { "model": "steamworld:ore_territe_sky" },
         "variant=gold_crystal": { "model": "steamworld:ore_gold_crystal" },
-        "variant=emerald_crystal": { "model": "steamworld:ore_emerald_crystal" }
+        "variant=emerald_crystal": { "model": "steamworld:ore_emerald_crystal" },
+        "variant=redstone_crystal": { "model": "steamworld:ore_redstone_crystal" }
     }
 }

@@ -159,6 +159,8 @@ public class SteamWorldBlockOre extends Block implements IMetaName, IModeledObje
 			return Items.GOLD_NUGGET;
 		else if(meta == EnumType.CRYSTAL_EMERALD.getMeta())
 			return ItemInitializer.ITEM_NUGGET;
+		else if(meta == EnumType.CRYSTAL_REDSTONE.getMeta())
+			return Items.REDSTONE;
 		else
 			return super.getItemDropped(state, rand, fortune);
 	}
@@ -166,7 +168,8 @@ public class SteamWorldBlockOre extends Block implements IMetaName, IModeledObje
 	@Override
 	public int quantityDropped(IBlockState state, int fortune, Random random)
 	{
-		if(fortune > 0 && EnumType.byMetadata(getMetaFromState(state)).multiDrop)
+		EnumType enumType = EnumType.byMetadata(getMetaFromState(state));
+		if(fortune > 0 && enumType.multiDrop)
 		{
 			int i = random.nextInt(fortune + 2) - 1;
 
@@ -175,10 +178,10 @@ public class SteamWorldBlockOre extends Block implements IMetaName, IModeledObje
                 i = 0;
             }
 
-            return this.quantityDropped(random) * (i + 1);
+            return enumType.multiDropAmount + (i + 1);
 		}
 		else
-			return super.quantityDropped(state, fortune, random);
+			return enumType.multiDropAmount;
 	}
 	
 	public static enum EnumType implements IStringSerializable
@@ -193,7 +196,8 @@ public class SteamWorldBlockOre extends Block implements IMetaName, IModeledObje
 		SKY_GALITE(7, "galite_sky", "oreGalite", 4.5f, 3),
 		SKY_TERRITE(8, "territe_sky", "oreTerrite", 7.0f, 4, true),
 		CRYSTAL_GOLD(9, "gold_crystal", "oreGoldNugget", 1.3f, 4, true),
-		CRYSTAL_EMERALD(10, "emerald_crystal", "oreEmeraldNugget", 1.3f, 4, true);
+		CRYSTAL_EMERALD(10, "emerald_crystal", "oreEmeraldNugget", 1.3f, 4, true),
+		CRYSTAL_REDSTONE(11, "redstone_crystal", "oreRedstone", 1.3f, 4, 5);
 		
 		private static final EnumType[] META_LOOKUP = new EnumType[values().length];
 		private final int meta;
@@ -201,6 +205,7 @@ public class SteamWorldBlockOre extends Block implements IMetaName, IModeledObje
 		private int harvestLevel = 0;
 		private final float hardness;
 		private boolean multiDrop = false;
+		private int multiDropAmount = 1;
 		
 		private EnumType(int meta, String name, String oreName, float hardness)
 		{
@@ -221,6 +226,12 @@ public class SteamWorldBlockOre extends Block implements IMetaName, IModeledObje
 		{
 			this(meta, name, oreName, hardness, harvestLevel);
 			this.multiDrop = multiDrop;
+		}
+		
+		private EnumType(int meta, String name, String oreName, float hardness, int harvestLevel, int multiDropAmount)
+		{
+			this(meta, name, oreName, hardness, harvestLevel, true);
+			this.multiDropAmount = multiDropAmount;
 		}
 		
 		@Override

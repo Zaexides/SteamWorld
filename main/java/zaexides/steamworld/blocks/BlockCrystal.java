@@ -18,10 +18,14 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -49,7 +53,9 @@ public class BlockCrystal extends Block implements IMetaName, IModeledObject
 		setHarvestLevels();
 		setCreativeTab(SteamWorld.CREATIVETAB_BLOCKS);
 		setSoundType(SoundType.GLASS);
-		setLightLevel(0.05f);
+		setLightLevel(0.3f);
+		
+		setTickRandomly(true);
 		
 		setDefaultState(blockState.getBaseState().withProperty(VARIANT, BlockCrystal.EnumType.GRAVITY_CRYSTAL));
 		
@@ -97,6 +103,27 @@ public class BlockCrystal extends Block implements IMetaName, IModeledObject
 	}
 	
 	@Override
+	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) 
+	{
+		for(int i = 0; i < rand.nextInt(4) + 1; i++)
+		{
+			EnumFacing facing = EnumFacing.random(rand);
+			double xPos = pos.getX() + 0.5 + rand.nextDouble() * 1.2 - 0.6;
+			double yPos = pos.getY() + 0.5 + rand.nextDouble() * 1.2 - 0.6;
+			double zPos = pos.getZ() + 0.5 + rand.nextDouble() * 1.2 - 0.6;
+			
+			int[] colors = EnumType.byMetadata(getMetaFromState(stateIn)).particleColor;
+			worldIn.spawnParticle(EnumParticleTypes.REDSTONE, xPos, yPos, zPos, colors[0] / 255.0, colors[1] / 255.0, colors[2] / 255.0);
+		}
+	}
+	
+	@Override
+	public BlockRenderLayer getBlockLayer() 
+	{
+		return BlockRenderLayer.TRANSLUCENT;
+	}
+	
+	@Override
 	public int getMetaFromState(IBlockState state) 
 	{
 		return ((BlockCrystal.EnumType)state.getValue(VARIANT)).getMeta();
@@ -134,25 +161,29 @@ public class BlockCrystal extends Block implements IMetaName, IModeledObject
 	
 	public static enum EnumType implements IStringSerializable
 	{
-		GRAVITY_CRYSTAL(0, "gravity", 1.2f, 4);
+		GRAVITY_CRYSTAL(0, "gravity", 1.2f, new int[] {175, 204, 255}, 4),
+		CORE_CRYSTAL(1, "core", 1.2f, new int[] {237, 143, 179}, 4),
+		STAR_CRYSTAL(2, "star", 1.2f, new int[] {255, 242, 187}, 4);
 		
 		private static final BlockCrystal.EnumType[] META_LOOKUP = new BlockCrystal.EnumType[values().length];
 		private final int meta;
 		private final String name, unlocalizedName;
 		private int harvestLevel = 0;
 		private final float hardness;
+		private final int[] particleColor;
 		
-		private EnumType(int meta, String name, float hardness)
+		private EnumType(int meta, String name, float hardness, int[] particleColor)
 		{
 			this.name = name;
 			this.unlocalizedName = name;
 			this.meta = meta;
 			this.hardness = hardness;
+			this.particleColor = particleColor;
 		}
 		
-		private EnumType(int meta, String name, float hardness, int harvestLevel)
+		private EnumType(int meta, String name, float hardness, int[] particleColor, int harvestLevel)
 		{
-			this(meta, name, hardness);
+			this(meta, name, hardness, particleColor);
 			this.harvestLevel = harvestLevel;
 		}
 		

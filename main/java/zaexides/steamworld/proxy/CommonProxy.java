@@ -29,6 +29,7 @@ import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.init.EntityInitializer;
 import zaexides.steamworld.init.ItemInitializer;
 import zaexides.steamworld.init.LootTableInitializer;
+import zaexides.steamworld.init.WorldgenInit;
 import zaexides.steamworld.integration.tc.TCMaterials;
 import zaexides.steamworld.integration.tc.TinkersMelting;
 import zaexides.steamworld.items.ItemDust;
@@ -88,7 +89,7 @@ public class CommonProxy
 		MinecraftForge.EVENT_BUS.register(SteamWorld.eventHandler);
 		
 		RegistryHandler.RegisterMiscRecipes();
-		RegistryHandler.RegisterWorldGen();
+		WorldgenInit.RegisterWorldGen();
 		
 		if(Loader.isModLoaded("tconstruct"))
     	{

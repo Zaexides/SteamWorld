@@ -127,18 +127,6 @@ public class RegistryHandler
 		}
 	}
 	
-	public static void RegisterWorldGen()
-	{
-		GameRegistry.registerWorldGenerator(new WorldGenerationOres(), 0);
-		GameRegistry.registerWorldGenerator(new WorldGenCrypt(), 1000);
-		GameRegistry.registerWorldGenerator(new WorldGenPortalBuilding(), 0);
-		GameRegistry.registerWorldGenerator(new WorldGenWitherLab(), 1000);
-		GameRegistry.registerWorldGenerator(new WorldGenTower(), 1000);
-		GameRegistry.registerWorldGenerator(new WorldGenCrystal(), 500);
-		
-		DimensionManager.registerDimension(ConfigHandler.dimensionId, WorldProviderSkyOfOld.STEAMWORLD);
-	}
-	
 	public static void RegisterMiscRecipes()
 	{
 		RegisterSmeltingRecipes();
