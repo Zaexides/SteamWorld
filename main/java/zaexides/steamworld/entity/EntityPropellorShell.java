@@ -43,6 +43,7 @@ import net.minecraft.world.World;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.entity.ai.FloatingMoveHelper;
 import zaexides.steamworld.init.LootTableInitializer;
+import zaexides.steamworld.init.SoundInitializer;
 
 public class EntityPropellorShell extends EntityFlying implements IMob
 {		
@@ -105,7 +106,7 @@ public class EntityPropellorShell extends EntityFlying implements IMob
     	
     	EntityPotion potion = new EntityPotion(world, this, potionStack);
     	potion.setThrowableHeading(xDir, yDir, zDir, velocity, 0.1f);
-    	this.playSound(SoundEvents.ENTITY_EGG_THROW, 1.0f, 1.0f);
+    	this.playSound(SoundInitializer.PROSHELLOR_DROP, 1.0f, 1.0f);
     	this.world.spawnEntity(potion);
 	}
 	

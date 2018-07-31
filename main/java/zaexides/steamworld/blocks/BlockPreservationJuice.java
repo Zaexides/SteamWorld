@@ -44,6 +44,7 @@ import zaexides.steamworld.fluids.FluidPreservation;
 import zaexides.steamworld.fluids.FluidSteam;
 import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.init.ItemInitializer;
+import zaexides.steamworld.init.SoundInitializer;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
 
 public class BlockPreservationJuice extends BlockFluidClassic implements IModeledObject
@@ -159,7 +160,7 @@ public class BlockPreservationJuice extends BlockFluidClassic implements IModele
 	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) 
 	{
 		if(rand.nextDouble() <= 0.005)
-			worldIn.playSound(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, SoundEvents.BLOCK_NOTE_CHIME, SoundCategory.BLOCKS, rand.nextFloat() * 0.5f, rand.nextFloat() * 1.5f - 0.5f, false);
+			worldIn.playSound(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, SoundInitializer.PRESERVATION_LIQUID_CHIME, SoundCategory.BLOCKS, rand.nextFloat() * 0.5f, rand.nextFloat() * 1.5f - 0.5f, false);
 		
 		if(rand.nextDouble() > 0.1)
 			return;

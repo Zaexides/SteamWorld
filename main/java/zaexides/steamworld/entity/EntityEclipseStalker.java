@@ -32,6 +32,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import zaexides.steamworld.entity.ai.FloatingMoveHelper;
+import zaexides.steamworld.init.SoundInitializer;
 import zaexides.steamworld.world.dimension.WorldProviderSkyOfOld;
 
 public class EntityEclipseStalker extends EntityMob
@@ -149,7 +150,7 @@ public class EntityEclipseStalker extends EntityMob
         					rand.nextDouble() - 0.5
         					);
         		}
-    			this.world.playSound(this.posX, this.posY, this.posZ, SoundEvents.BLOCK_REDSTONE_TORCH_BURNOUT, SoundCategory.HOSTILE, 1.0f, 0.8f, false);
+    			this.world.playSound(this.posX, this.posY, this.posZ, SoundInitializer.ECLIPSE_STALKER_DESPAWN, SoundCategory.HOSTILE, 1.0f, 0.8f, false);
     		}
     	}
     }
@@ -157,19 +158,19 @@ public class EntityEclipseStalker extends EntityMob
     @Override
     protected SoundEvent getAmbientSound()
     {
-        return SoundEvents.ENTITY_BLAZE_AMBIENT;
+        return SoundInitializer.ECLIPSE_STALKER_AMBIENT;
     }
     
     @Override
     protected SoundEvent getHurtSound(DamageSource damageSource)
     {
-        return SoundEvents.ENTITY_BLAZE_HURT;
+        return SoundInitializer.ECLIPSE_STALKER_HURT;
     }
     
     @Override
     protected SoundEvent getDeathSound()
     {
-        return SoundEvents.ENTITY_BLAZE_DEATH;
+        return SoundInitializer.ECLIPSE_STALKER_DEATH;
     }
     
     @Override

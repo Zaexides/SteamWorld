@@ -1,0 +1,99 @@
+
+{
+    "mob.eclipse_stalker.say" :
+    {
+        "sounds":
+        [
+            "minecraft:mob/blaze/breathe1",
+            "minecraft:mob/blaze/breathe2",
+            "minecraft:mob/blaze/breathe3",
+            "minecraft:mob/blaze/breathe4"
+        ],
+        "subtitle": "steamworld.subtitles.entity.eclipse_stalker.ambient"
+    },
+    "mob.eclipse_stalker.death" :
+    {
+        "sounds":
+        [
+            "minecraft:mob/blaze/death"
+        ],
+        "subtitle": "steamworld.subtitles.entity.eclipse_stalker.death"
+    },
+    "mob.eclipse_stalker.hurt" :
+    {
+        "sounds":
+        [
+            "minecraft:mob/blaze/hit1",
+            "minecraft:mob/blaze/hit2",
+            "minecraft:mob/blaze/hit3",
+            "minecraft:mob/blaze/hit4"
+        ],
+        "subtitle": "steamworld.subtitles.entity.eclipse_stalker.hurt"
+    },
+    "mob.eclipse_stalker.disappear" :
+    {
+        "sounds":
+        [
+            "minecraft:random/fizz"
+        ],
+        "subtitle": "steamworld.subtitles.entity.eclipse_stalker.despawn"
+    },
+    
+    "mob.proshellor.drop" :
+    {
+        "sounds":
+        [
+            "minecraft:random/bow"
+        ],
+        "subtitle": "steamworld.subtitles.entity.proshellor.drop"
+    },
+    
+    "mob.skyfish.plop" :
+    {
+        "sounds":
+        [
+            "minecraft:mob/chicken/plop"
+        ],
+        "subtitle": "steamworld.subtitles.entity.skyfish.plop"
+    },
+    
+    "tile.accelerator.teleport" :
+    {
+        "sounds":
+        [
+            "minecraft:mob/endermen/portal",
+            "minecraft:mob/endermen/portal2"
+        ],
+        "subtitle": "steamworld.subtitles.tile.accelerator.teleport"
+    },
+    
+    "tile.launcher.launch" :
+    {
+        "sounds":
+        [
+            "minecraft:random/bow"
+        ],
+        "subtitle": "steamworld.subtitles.tile.launcher.launch"
+    },
+    
+    "tile.preservation_juice.chime" :
+    {
+        "sounds":
+        [
+            "minecraft:note/icechime"
+        ],
+        "subtitle": "steamworld.subtitles.tile.preservation_juice.chime"
+    },
+    
+    "tile.wither_juice.scream" :
+    {
+        "sounds":
+        [
+            "minecraft:mob/wither/idle1",
+            "minecraft:mob/wither/idle2",
+            "minecraft:mob/wither/idle3",
+            "minecraft:mob/wither/idle4"
+        ],
+        "subtitle": "steamworld.subtitles.tile.wither_juice.scream"
+    }
+}

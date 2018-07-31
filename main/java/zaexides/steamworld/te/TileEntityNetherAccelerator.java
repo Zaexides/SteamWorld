@@ -19,6 +19,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 import zaexides.steamworld.SteamWorld;
+import zaexides.steamworld.init.SoundInitializer;
 
 public class TileEntityNetherAccelerator extends TileEntity implements ITickable
 {
@@ -104,7 +105,7 @@ public class TileEntityNetherAccelerator extends TileEntity implements ITickable
 		{
 			world.spawnEntity(entity);
 			entity.spawnExplosionParticle();
-			entity.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1.0F, 1.0F);
+			entity.playSound(SoundInitializer.ACCELERATOR_TELEPORT, 1.0F, 1.0F);
 		}
 		else
 			world.removeEntity(entity);
@@ -137,7 +138,7 @@ public class TileEntityNetherAccelerator extends TileEntity implements ITickable
 					if(entityLiving.attemptTeleport(target_x, target_y, target_z))
 					{
 						success = true;
-						entityLiving.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1.0F, 1.0F);
+						entityLiving.playSound(SoundInitializer.ACCELERATOR_TELEPORT, 1.0F, 1.0F);
 						world.playSound((EntityPlayer)null, original_x, original_y, original_z, SoundEvents.ENTITY_ENDERMEN_TELEPORT, entityLiving.getSoundCategory(), 1.0F, 1.0F);
 						
 						double particle_xOff = (world.rand.nextDouble() - 0.5d) * ((double)entityLiving.width);

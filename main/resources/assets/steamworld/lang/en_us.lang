@@ -40,6 +40,8 @@ tile.steamworld.block_decorative_error.name=A Future Block, perhaps.
 
 # Crystal Block
 tile.steamworld.block_crystal_gravity.name=Gravitiliite Crystal
+tile.steamworld.block_crystal_core.name=Ignisolite Crystal
+tile.steamworld.block_crystal_star.name=Lumestelite Crystal
 
 # Plants
 tile.steamworld.block_flower_wither.name=Witherweed
@@ -56,6 +58,7 @@ tile.steamworld.ore_galite_sky.name=Galite Sky Ore
 tile.steamworld.ore_territe_sky.name=Territe Sky Ore
 tile.steamworld.ore_emerald_crystal.name=Emerald Crystal Ore
 tile.steamworld.ore_gold_crystal.name=Gold Crystal Ore
+tile.steamworld.ore_redstone_crystal.name=Redstone Crystal Ore
 
 # Generators
 tile.steamworld.generator_steaite.name=Steam Generator MKI
@@ -332,6 +335,20 @@ advancement.steamworld.enter_the_endernet.title=Enter the EnderNet
 advancement.steamworld.enter_the_endernet.desc=Combine an Ender Pearl, a Block of Endritch and a Nugget of Emerald, and what do you get? An interdimensional teleporter.
 advancement.steamworld.a_whole_new_world.title=It's a whole new world!
 advancement.steamworld.a_whole_new_world.desc=Enter the Sky of Old.
+
+#########################
+# Sound Event Subtitles #
+#########################
+steamworld.subtitles.entity.eclipse_stalker.ambient=Eclipse Stalker breathes
+steamworld.subtitles.entity.eclipse_stalker.death=Eclipse Stalker dies
+steamworld.subtitles.entity.eclipse_stalker.hurt=Eclipse Stalker hurts
+steamworld.subtitles.entity.eclipse_stalker.despawn=Eclipse Stalker fizzles out of existence
+steamworld.subtitles.entity.proshellor.drop=Proshellor drops a potion
+steamworld.subtitles.entity.skyfish.plop=Flying Fish plops
+steamworld.subtitles.tile.accelerator.teleport=Accelerator teleports something
+steamworld.subtitles.tile.launcher.launch=Launcher launches
+steamworld.subtitles.tile.preservation_juice.chime=Preservation Liquid chimes
+steamworld.subtitles.tile.wither_juice.scream=Wither Liquid screams
 
 ############
 # Messages #

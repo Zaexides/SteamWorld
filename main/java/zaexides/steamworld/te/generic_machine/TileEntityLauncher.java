@@ -15,6 +15,7 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import zaexides.steamworld.SteamWorld;
+import zaexides.steamworld.init.SoundInitializer;
 import zaexides.steamworld.te.SyncedTileEntity;
 import zaexides.steamworld.te.generic_machine.interfaces.IGenericMachineWalkActivate;
 import zaexides.steamworld.utility.capability.SteamWorldSteamTank;
@@ -61,7 +62,7 @@ public class TileEntityLauncher extends SyncedTileEntity implements ICapabilityP
 			entity.addVelocity(0, force * 0.2d, 0);
 			if(world.isRemote)
 				world.spawnParticle(EnumParticleTypes.CLOUD, fx_x, fx_y, fx_z, 0, force * 0.1d, 0);
-			world.playSound((EntityPlayer)null, fx_x, fx_y, fx_z, SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.BLOCKS, 1, 1);
+			world.playSound((EntityPlayer)null, fx_x, fx_y, fx_z, SoundInitializer.LAUNCHER_LAUNCH, SoundCategory.BLOCKS, 1, 1);
 			steamTank.drain(steamRequired, true);
 			markDirty();
 		}

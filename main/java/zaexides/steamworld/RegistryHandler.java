@@ -11,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeProvider;
 import net.minecraft.world.biome.Biome.BiomeProperties;
@@ -39,6 +40,7 @@ import zaexides.steamworld.fluids.FluidSteam;
 import zaexides.steamworld.fluids.FluidWithering;
 import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.init.ItemInitializer;
+import zaexides.steamworld.init.SoundInitializer;
 import zaexides.steamworld.integration.tc.TCMaterials;
 import zaexides.steamworld.integration.tc.TinkersMelting;
 import zaexides.steamworld.items.ItemDust;
@@ -80,7 +82,7 @@ import zaexides.steamworld.world.structure.WorldGenPortalBuilding;
 import zaexides.steamworld.world.structure.WorldGenWitherLab;
 import zaexides.steamworld.world.structure.tower.WorldGenTower;
 
-@EventBusSubscriber
+@EventBusSubscriber(modid = ModInfo.MODID)
 public class RegistryHandler 
 {
 	@SubscribeEvent
@@ -95,6 +97,13 @@ public class RegistryHandler
 		event.getRegistry().registerAll(ItemInitializer.ITEMS.toArray(new Item[0]));
 		
 		RegisterOreDictionaryEntries();
+	}
+	
+	@SubscribeEvent
+	public static void OnSoundRegister(RegistryEvent.Register<SoundEvent> event)
+	{
+		event.getRegistry().registerAll(SoundInitializer.SOUND_EVENTS.toArray(new SoundEvent[0]));
+		SoundInitializer.SOUND_EVENTS.clear();
 	}
 	
 	public static void RegisterOreDictionaryEntries()

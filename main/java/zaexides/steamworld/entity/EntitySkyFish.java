@@ -46,6 +46,7 @@ import zaexides.steamworld.entity.ai.EntityAIBreakNearbyBlock;
 import zaexides.steamworld.entity.interfaces.IEntityBreakBlockCallback;
 import zaexides.steamworld.init.ItemInitializer;
 import zaexides.steamworld.init.LootTableInitializer;
+import zaexides.steamworld.init.SoundInitializer;
 import zaexides.steamworld.items.ItemMaterial;
 
 public class EntitySkyFish extends EntityAnimal implements EntityFlying, IEntityBreakBlockCallback
@@ -263,7 +264,7 @@ public class EntitySkyFish extends EntityAnimal implements EntityFlying, IEntity
 		
 		if(woodEaten >= WOOD_POOP_THRESHOLD)
 		{
-			this.playSound(SoundEvents.ENTITY_CHICKEN_EGG, 1.0F, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F + 1.0F);
+			this.playSound(SoundInitializer.SKYFISH_PLOP, 1.0F, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F + 1.0F);
 			this.entityDropItem(new ItemStack(Items.COAL, 1, 1), 0);
 			woodEaten -= WOOD_POOP_THRESHOLD;
 		}

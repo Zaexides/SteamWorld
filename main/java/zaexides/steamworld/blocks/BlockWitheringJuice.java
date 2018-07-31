@@ -45,6 +45,7 @@ import zaexides.steamworld.fluids.FluidSteam;
 import zaexides.steamworld.fluids.FluidWithering;
 import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.init.ItemInitializer;
+import zaexides.steamworld.init.SoundInitializer;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
 
 public class BlockWitheringJuice extends BlockFluidClassic implements IModeledObject
@@ -160,7 +161,7 @@ public class BlockWitheringJuice extends BlockFluidClassic implements IModeledOb
 	public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) 
 	{
 		if(rand.nextDouble() <= 0.005)
-			worldIn.playSound(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, SoundEvents.ENTITY_WITHER_AMBIENT, SoundCategory.BLOCKS, rand.nextFloat() * 0.5f, rand.nextFloat() * 1.5f - 0.5f, false);
+			worldIn.playSound(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, SoundInitializer.WITHER_LIQUID_SCREAM, SoundCategory.BLOCKS, rand.nextFloat() * 0.5f, rand.nextFloat() * 1.5f - 0.5f, false);
 		
 		if(rand.nextDouble() > 0.1)
 			return;
