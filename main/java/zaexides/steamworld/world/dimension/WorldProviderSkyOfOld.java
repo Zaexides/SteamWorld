@@ -79,10 +79,11 @@ public class WorldProviderSkyOfOld extends WorldProviderSurface
 	{
 		Vec3d skyColor = new Vec3d(1.2, 0.7, 1.0);
 		Vec3d originalColor = super.getSkyColor(cameraEntity, partialTicks);
+		float brightnessFactor = getSunBrightnessFactor(partialTicks) * 0.5f + 0.5f;
 		return new Vec3d(
-				(skyColor.x + originalColor.x) * 0.5,
-				(skyColor.y + originalColor.y) * 0.5, 
-				(skyColor.z + originalColor.z) * 0.5
+				(skyColor.x + originalColor.x) * 0.5 * brightnessFactor,
+				(skyColor.y + originalColor.y) * 0.5 * brightnessFactor, 
+				(skyColor.z + originalColor.z) * 0.5 * (brightnessFactor * 0.5 + 0.5)
 				);
 	}
 	
