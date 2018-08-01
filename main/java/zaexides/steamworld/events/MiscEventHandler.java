@@ -19,10 +19,12 @@ import net.minecraft.world.storage.loot.conditions.LootCondition;
 import net.minecraft.world.storage.loot.functions.LootFunction;
 import net.minecraft.world.storage.loot.functions.SetMetadata;
 import net.minecraftforge.common.ForgeChunkManager;
+import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.ForgeChunkManager.Ticket;
 import net.minecraftforge.common.ForgeChunkManager.Type;
 import net.minecraftforge.event.LootTableLoadEvent;
 import net.minecraftforge.event.entity.item.ItemEvent;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
@@ -35,6 +37,7 @@ import zaexides.steamworld.init.ItemInitializer;
 import net.minecraftforge.items.ItemHandlerHelper;
 
 import zaexides.steamworld.items.ItemTreasure;
+import zaexides.steamworld.utility.interfaces.IBlockBreakInterruptor;
 
 @Mod.EventBusSubscriber(modid = ModInfo.MODID)
 public class MiscEventHandler 
@@ -103,5 +106,12 @@ public class MiscEventHandler
 				persistingData.setInteger(BDAY_TAG, localDate.getYear());
 			}
 		}
+	}
+	
+	@SubscribeEvent
+	public void onBlockBroken(BlockEvent.BreakEvent event)
+	{
+		if(event.getState().getBlock() instanceof IBlockBreakInterruptor && !event.getPlayer().isCreative())
+			event.setCanceled(!((IBlockBreakInterruptor)event.getState().getBlock()).CanBreakBlock(event.getState(), event.getPlayer(), ForgeHooks.canHarvestBlock(event.getState().getBlock(), event.getPlayer(), event.getWorld(), event.getPos())));
 	}
 }

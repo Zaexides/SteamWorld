@@ -9,8 +9,11 @@ import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import scala.AnyValCompanion;
 import scala.reflect.internal.Trees.New;
+import zaexides.steamworld.ModInfo;
+import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.BlockAltar;
 import zaexides.steamworld.blocks.BlockAncite;
+import zaexides.steamworld.blocks.BlockCoriteTorch;
 import zaexides.steamworld.blocks.BlockCrystal;
 import zaexides.steamworld.blocks.BlockDecorative;
 import zaexides.steamworld.blocks.BlockFluidPipe;
@@ -57,6 +60,7 @@ public class BlockInitializer
 	public static final SteamWorldBlockOre ORE = new SteamWorldBlockOre("ore", Material.ROCK);
 	public static final SteamWorldBlock BLOCK_STEAITE_GOLD = new SteamWorldBlock("block_steaite_gold", Material.IRON, 3.2f);
 	public static final Block LAMP_ENDRITCH = new SteamWorldBlock("lamp_endritch", SWMaterials.ENDRITCH, 3.5f).setLightLevel(1.0f);
+	public static final Block TORCH_CORITE = new BlockCoriteTorch("corite_torch");
 	
 	public static final BlockAncite BLOCK_ANCITE = new BlockAncite("block_ancite");
 	public static final BlockDecorative BLOCK_DECORATIVE = new BlockDecorative("block_decorative");

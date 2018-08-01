@@ -28,12 +28,13 @@ import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.item.ItemBlockVariant;
 import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.init.ItemInitializer;
+import zaexides.steamworld.utility.interfaces.IBlockBreakInterruptor;
 import zaexides.steamworld.utility.interfaces.IMetaName;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
 import zaexides.steamworld.utility.interfaces.IOreDictionaryRegisterable;
 
 //Oh, and just casually any metal block
-public class BlockAncite extends Block implements IMetaName, IModeledObject, IOreDictionaryRegisterable
+public class BlockAncite extends Block implements IMetaName, IModeledObject, IOreDictionaryRegisterable, IBlockBreakInterruptor
 {
 	public static final PropertyEnum<BlockAncite.EnumType> VARIANT = PropertyEnum.<BlockAncite.EnumType>create("variant", BlockAncite.EnumType.class);
 	
@@ -60,6 +61,12 @@ public class BlockAncite extends Block implements IMetaName, IModeledObject, IOr
 		OreDictionary.registerOre("blockGalite", new ItemStack(this, 1, EnumType.GALITE.getMeta()));
 		OreDictionary.registerOre("blockTerrite", new ItemStack(this, 1, EnumType.TERRITE.getMeta()));
 		OreDictionary.registerOre("blockEssen", new ItemStack(this, 1, EnumType.ESSEN.getMeta()));
+	}
+	
+	@Override
+	public int getHarvestLevel(IBlockState state) 
+	{
+		return EnumType.byMetadata(getMetaFromState(state)).harvestLevel;
 	}
 	
 	@Override
@@ -127,7 +134,8 @@ public class BlockAncite extends Block implements IMetaName, IModeledObject, IOr
 				worldObj.getBlockState(pos).equals(getStateFromMeta(EnumType.STEAITE.getMeta())) ||
 				worldObj.getBlockState(pos).equals(getStateFromMeta(EnumType.GALITE.getMeta())) ||
 				worldObj.getBlockState(pos).equals(getStateFromMeta(EnumType.TERRITE.getMeta())) ||
-				worldObj.getBlockState(pos).equals(getStateFromMeta(EnumType.ESSEN.getMeta()));
+				worldObj.getBlockState(pos).equals(getStateFromMeta(EnumType.ESSEN.getMeta())) ||
+				worldObj.getBlockState(pos).equals(getStateFromMeta(EnumType.CORITE.getMeta()));
 	}
 	
 	@Override
@@ -161,6 +169,15 @@ public class BlockAncite extends Block implements IMetaName, IModeledObject, IOr
 		}
 	}
 	
+	@Override
+	public boolean CanBreakBlock(IBlockState blockState, EntityPlayer player, boolean isHarvestable) 
+	{
+		if(EnumType.byMetadata(getMetaFromState(blockState)).harvestLevel >= 5)
+			return isHarvestable;
+		else
+			return true;
+	}
+	
 	public static enum EnumType implements IStringSerializable
 	{
 		BRICKS(0, "brick"),
@@ -171,17 +188,25 @@ public class BlockAncite extends Block implements IMetaName, IModeledObject, IOr
 		STEAITE(5, "steaite_block"),
 		GALITE(6, "galite_block"),
 		TERRITE(7, "territe_block"),
-		ESSEN(8, "essen_block");
+		ESSEN(8, "essen_block"),
+		CORITE(9, "corite_block", 5);
 		
 		private static final BlockAncite.EnumType[] META_LOOKUP = new BlockAncite.EnumType[values().length];
 		private final int meta;
 		private final String name, unlocalizedName;
+		private final int harvestLevel;
 		
-		private EnumType(int meta, String name)
+		private EnumType(int meta, String name) 
+		{
+			this(meta, name, 2);
+		}
+		
+		private EnumType(int meta, String name, int harvestLevel)
 		{
 			this.name = name;
 			this.unlocalizedName = name;
 			this.meta = meta;
+			this.harvestLevel = harvestLevel;
 		}
 		
 		@Override

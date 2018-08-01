@@ -19,6 +19,8 @@
             {"model": "steamworld:sky_pillar/1"},
             {"model": "steamworld:sky_pillar/2"},
             {"model": "steamworld:sky_pillar/3"}
-        ]
+        ],
+        "variant=corite_bricks": { "model": "steamworld:block_corite_bricks" },
+        "variant=corite_tiles": { "model": "steamworld:block_corite_tiles" }
     }
 }

@@ -8,6 +8,7 @@
         "variant=steaite_block": { "model": "steamworld:block_steaite" },
         "variant=galite_block": { "model": "steamworld:block_galite" },
         "variant=territe_block": { "model": "steamworld:block_territe" },
-        "variant=essen_block": { "model": "steamworld:block_essen" }
+        "variant=essen_block": { "model": "steamworld:block_essen" },
+        "variant=corite_block": { "model": "steamworld:block_corite" }
     }
 }

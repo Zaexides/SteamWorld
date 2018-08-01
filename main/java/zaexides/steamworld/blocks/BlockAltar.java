@@ -27,9 +27,10 @@ import zaexides.steamworld.blocks.item.ItemBlockVariant;
 import zaexides.steamworld.client.rendering.tile.AltarModel;
 import zaexides.steamworld.init.ItemInitializer;
 import zaexides.steamworld.te.TileEntityAltar;
+import zaexides.steamworld.utility.interfaces.IBlockBreakInterruptor;
 import zaexides.steamworld.utility.interfaces.IMetaName;
 
-public class BlockAltar extends SteamWorldBlock implements ITileEntityProvider, IMetaName
+public class BlockAltar extends SteamWorldBlock implements ITileEntityProvider, IMetaName, IBlockBreakInterruptor
 {
 	public static final PropertyBool DECORATIVE = PropertyBool.create("decorative");
 	
@@ -45,7 +46,7 @@ public class BlockAltar extends SteamWorldBlock implements ITileEntityProvider, 
 		if(blockState.getValue(DECORATIVE))
 			return 0.8f;
 		else
-			return -1.0f;
+			return 15.0f;
 	}
 	
 	@Override
@@ -176,5 +177,14 @@ public class BlockAltar extends SteamWorldBlock implements ITileEntityProvider, 
 			InventoryHelper.spawnItemStack(worldIn, pos.getX() + 0.5f, pos.getY() + 0.5f, pos.getZ() + 0.5f, stack);
 		}
 		super.breakBlock(worldIn, pos, state);
+	}
+
+	@Override
+	public boolean CanBreakBlock(IBlockState blockState, EntityPlayer player, boolean isHarvestable) 
+	{
+		if(blockState.getValue(DECORATIVE))
+			return true;
+		else
+			return isHarvestable;
 	}
 }

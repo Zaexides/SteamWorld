@@ -32,11 +32,12 @@ import zaexides.steamworld.blocks.BlockAncite.EnumType;
 import zaexides.steamworld.blocks.item.ItemBlockVariant;
 import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.init.ItemInitializer;
+import zaexides.steamworld.utility.interfaces.IBlockBreakInterruptor;
 import zaexides.steamworld.utility.interfaces.IMetaName;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
 import zaexides.steamworld.utility.interfaces.IOreDictionaryRegisterable;
 
-public class BlockDecorative extends Block implements IMetaName, IModeledObject, IOreDictionaryRegisterable
+public class BlockDecorative extends Block implements IMetaName, IModeledObject, IOreDictionaryRegisterable, IBlockBreakInterruptor
 {
 	public static final PropertyEnum<BlockDecorative.EnumType> VARIANT = PropertyEnum.<BlockDecorative.EnumType>create("variant", BlockDecorative.EnumType.class);
 	
@@ -147,6 +148,15 @@ public class BlockDecorative extends Block implements IMetaName, IModeledObject,
 			super.getDrops(drops, world, pos, state, fortune);
 	}
 	
+	@Override
+	public boolean CanBreakBlock(IBlockState blockState, EntityPlayer player, boolean isHarvestable) 
+	{
+		if(EnumType.byMetadata(getMetaFromState(blockState)).harvestLevel >= 5)
+			return isHarvestable;
+		else
+			return true;
+	}
+	
 	public static enum EnumType implements IStringSerializable
 	{
 		ENDRITCH_BLOCK(0, "block_endritch", 3f, 3),
@@ -156,7 +166,9 @@ public class BlockDecorative extends Block implements IMetaName, IModeledObject,
 		SKY_BRICKS(4, "sky_bricks", 3.0f, 1),
 		WITHERING_COBBLE(5, "block_withering_cobble", 2.5f, 1),
 		SKY_CHISELED(6, "sky_chiseled_stone", 3.0f, 1),
-		SKY_PILLAR(7, "sky_pillar", 3.1f, 1);
+		SKY_PILLAR(7, "sky_pillar", 3.1f, 1),
+		CORITE_BRICKS(8, "corite_bricks", 10.0f, 5),
+		CORITE_TILES(9, "corite_tiles", 10.0f, 5);
 		
 		private static final BlockDecorative.EnumType[] META_LOOKUP = new BlockDecorative.EnumType[values().length];
 		private final int meta;
