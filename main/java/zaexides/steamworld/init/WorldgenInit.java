@@ -11,6 +11,7 @@ import zaexides.steamworld.blocks.SteamWorldBlockOre;
 import zaexides.steamworld.utility.WeightedBlock;
 import zaexides.steamworld.world.WorldGenerationOres;
 import zaexides.steamworld.world.dimension.WorldProviderSkyOfOld;
+import zaexides.steamworld.world.structure.WorldGenAltar;
 import zaexides.steamworld.world.structure.WorldGenCrypt;
 import zaexides.steamworld.world.structure.WorldGenCrystal;
 import zaexides.steamworld.world.structure.WorldGenPortalBuilding;
@@ -32,6 +33,7 @@ public class WorldgenInit
 		GameRegistry.registerWorldGenerator(new WorldGenPortalBuilding(), 0);
 		GameRegistry.registerWorldGenerator(new WorldGenWitherLab(), 1000);
 		GameRegistry.registerWorldGenerator(new WorldGenTower(), 1000);
+		GameRegistry.registerWorldGenerator(new WorldGenAltar(), 1000);
 		
 		WorldGenCrystal crystalRegular = new WorldGenCrystal(BlockInitializer.BLOCK_CRYSTAL.getDefaultState(),
 				Arrays.asList(

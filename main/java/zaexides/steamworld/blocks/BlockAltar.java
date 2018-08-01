@@ -1,5 +1,7 @@
 package zaexides.steamworld.blocks;
 
+import org.apache.logging.log4j.Level;
+
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
@@ -36,17 +38,27 @@ public class BlockAltar extends SteamWorldBlock implements ITileEntityProvider, 
 	
 	public BlockAltar(String name) 
 	{
-		super(name, Material.ROCK, 1000.0f);
+		super(name, Material.ROCK, 15.0f);
+		setHarvestLevel("pickaxe", 5);
 		setCreativeTab(SteamWorld.CREATIVETAB_BLOCKS);
 	}
 	
 	@Override
 	public float getBlockHardness(IBlockState blockState, World worldIn, BlockPos pos) 
 	{
-		if(blockState.getValue(DECORATIVE))
+		if(getMetaFromState(blockState) == 1)
 			return 0.8f;
 		else
 			return 15.0f;
+	}
+	
+	@Override
+	public int getHarvestLevel(IBlockState state) 
+	{
+		if(getMetaFromState(state) == 1)
+			return 1;
+		else
+			return 5;
 	}
 	
 	@Override
@@ -182,7 +194,7 @@ public class BlockAltar extends SteamWorldBlock implements ITileEntityProvider, 
 	@Override
 	public boolean CanBreakBlock(IBlockState blockState, EntityPlayer player, boolean isHarvestable) 
 	{
-		if(blockState.getValue(DECORATIVE))
+		if(getMetaFromState(blockState) == 1)
 			return true;
 		else
 			return isHarvestable;

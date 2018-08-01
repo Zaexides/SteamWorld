@@ -25,6 +25,7 @@ tile.steamworld.block_ancite_steaite_block.name=Block of Steaite
 tile.steamworld.block_ancite_galite_block.name=Block of Galite
 tile.steamworld.block_ancite_territe_block.name=Territe Gemblock
 tile.steamworld.block_ancite_essen_block.name=Block of Essen
+tile.steamworld.block_ancite_corite_block.name=Block of Corite
 tile.steamworld.block_ancite_error.name=A Future Block, perhaps.
 
 # Decorative Block
@@ -36,6 +37,8 @@ tile.steamworld.block_decorative_sky_bricks.name=Sky Bricks
 tile.steamworld.block_decorative_block_withering_cobble.name=Wither Cobblestone
 tile.steamworld.block_decorative_sky_chiseled_stone.name=Chiseled Sky Stone Bricks
 tile.steamworld.block_decorative_sky_pillar.name=Sky Stone Pillar
+tile.steamworld.block_decorative_corite_bricks.name=Corite Bricks
+tile.steamworld.block_decorative_corite_tiles.name=Corite Tiles
 tile.steamworld.block_decorative_error.name=A Future Block, perhaps.
 
 # Crystal Block
@@ -144,6 +147,7 @@ tile.steamworld.block_portal_frame.name=Portal Frame
 tile.steamworld.filter_tank.name=Filterable Tank
 tile.steamworld.altar_regular.name=Altar
 tile.steamworld.altar_decorative.name=Altar (Decorative)
+tile.steamworld.corite_torch.name=Corite Torch
 
 ##############
 # Item Names #
