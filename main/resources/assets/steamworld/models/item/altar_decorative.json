@@ -1,0 +1,8 @@
+{
+    "parent": "steamworld:block/altar",
+    "textures": 
+    {
+        "up": "minecraft:blocks/quartz_block_top",
+        "other": "minecraft:blocks/quartz_block_side"
+    }
+}

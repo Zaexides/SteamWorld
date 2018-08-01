@@ -142,6 +142,8 @@ tile.steamworld.portal.name=Portal
 tile.steamworld.stairs_sky_bricks.name=Sky Brick Stairs
 tile.steamworld.block_portal_frame.name=Portal Frame
 tile.steamworld.filter_tank.name=Filterable Tank
+tile.steamworld.altar_regular.name=Altar
+tile.steamworld.altar_decorative.name=Altar (Decorative)
 
 ##############
 # Item Names #

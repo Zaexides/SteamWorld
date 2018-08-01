@@ -13,6 +13,18 @@
     "variants": 
     {
         "normal": [{}],
-        "inventory": [{}]
+        "inventory": [{}],
+        "decorative":
+        {
+            "true":
+            {
+                "textures": 
+                {
+                    "up": "minecraft:blocks/quartz_block_top",
+                    "other": "minecraft:blocks/quartz_block_side"
+                }
+            },
+            "false":{}
+        }
     }
 }

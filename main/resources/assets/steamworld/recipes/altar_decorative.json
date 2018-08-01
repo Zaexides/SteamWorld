@@ -1,0 +1,26 @@
+{
+    "type": "forge:ore_shaped",
+    
+    "pattern":
+    [
+        "   ",
+        " q ",
+        "qqq"
+    ],
+    
+    "key":
+    {
+        "q":
+        {
+            "type": "forge:ore_dict",
+            "ore": "blockQuartz"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:altar",
+        "data": 1,
+        "count": 4
+    }
+}

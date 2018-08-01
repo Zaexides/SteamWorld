@@ -2,26 +2,100 @@ package zaexides.steamworld.blocks;
 
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.properties.PropertyBool;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.items.IItemHandler;
 import zaexides.steamworld.SteamWorld;
+import zaexides.steamworld.blocks.item.ItemBlockVariant;
 import zaexides.steamworld.client.rendering.tile.AltarModel;
+import zaexides.steamworld.init.ItemInitializer;
 import zaexides.steamworld.te.TileEntityAltar;
+import zaexides.steamworld.utility.interfaces.IMetaName;
 
-public class BlockAltar extends SteamWorldBlock implements ITileEntityProvider
+public class BlockAltar extends SteamWorldBlock implements ITileEntityProvider, IMetaName
 {
+	public static final PropertyBool DECORATIVE = PropertyBool.create("decorative");
+	
 	public BlockAltar(String name) 
 	{
-		super(name, Material.ANVIL, 1000.0f, SteamWorld.CREATIVETAB_UTILITY);
-		setBlockUnbreakable();
+		super(name, Material.ROCK, 1000.0f);
+		setCreativeTab(SteamWorld.CREATIVETAB_BLOCKS);
+	}
+	
+	@Override
+	public float getBlockHardness(IBlockState blockState, World worldIn, BlockPos pos) 
+	{
+		if(blockState.getValue(DECORATIVE))
+			return 0.8f;
+		else
+			return -1.0f;
+	}
+	
+	@Override
+	protected void AddBlockItem(int maxStackSize) 
+	{
+		ItemInitializer.ITEMS.add(new ItemBlockVariant(this).setRegistryName(this.getRegistryName()));
+	}
+	
+	@Override
+	public int damageDropped(IBlockState state) 
+	{
+		return state.getValue(DECORATIVE) ? 1 : 0;
+	}
+	
+	@Override
+	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos,
+			EntityPlayer player) 
+	{
+		return new ItemStack(Item.getItemFromBlock(this), 1, getMetaFromState(world.getBlockState(pos)));
+	}
+	
+	@Override
+	public void getSubBlocks(CreativeTabs itemIn, NonNullList<ItemStack> items) 
+	{
+		items.add(new ItemStack(this, 1, 0));
+		items.add(new ItemStack(this, 1, 1));
+	}
+	
+	@Override
+	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) 
+	{
+		return state.withProperty(DECORATIVE, state.getValue(DECORATIVE));
+	}
+	
+	@Override
+	public IBlockState getStateFromMeta(int meta) 
+	{
+		return getDefaultState().withProperty(DECORATIVE, meta == 1);
+	}
+	
+	@Override
+	public int getMetaFromState(IBlockState state) 
+	{
+		return state.getValue(DECORATIVE) ? 1 : 0;
+	}
+	
+	@Override
+	protected BlockStateContainer createBlockState() 
+	{
+		return new BlockStateContainer(this, DECORATIVE);
 	}
 	
 	@Override
@@ -45,7 +119,8 @@ public class BlockAltar extends SteamWorldBlock implements ITileEntityProvider
 	@Override
 	public void RegisterModels() 
 	{
-		super.RegisterModels();
+		SteamWorld.proxy.RegisterItemRenderers(Item.getItemFromBlock(this), 0, "inventory", "altar");
+		SteamWorld.proxy.RegisterItemRenderers(Item.getItemFromBlock(this), 1, "inventory", "altar_decorative");
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAltar.class, new AltarModel());
 	}
 	
@@ -63,14 +138,16 @@ public class BlockAltar extends SteamWorldBlock implements ITileEntityProvider
 				//Altar -> Player
 				if(playerIn.inventory.addItemStackToInventory(altarStack.copy()))
 				{
-					playerIn.playSound(SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 1.0f, 1.0f);
+					worldIn.playSound(null, pos.getX() + 0.5, pos.getY() + 1.5, pos.getZ() + 0.5, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, SoundCategory.PLAYERS, 1.0f, 1.0f);
 					((TileEntityAltar)tileEntity).itemStackHandler.setStackInSlot(0, ItemStack.EMPTY);
 				}
 			}
 			else if(handStack != ItemStack.EMPTY && altarStack == ItemStack.EMPTY)
 			{
 				//Player -> Altar
-				((TileEntityAltar)tileEntity).itemStackHandler.setStackInSlot(0, new ItemStack(handStack.getItem(), 1, handStack.getItemDamage()));
+				ItemStack newAlterStack = handStack.copy();
+				newAlterStack.setCount(1);
+				((TileEntityAltar)tileEntity).itemStackHandler.setStackInSlot(0, newAlterStack);
 				ItemStack newHandStack = handStack.copy();
 				newHandStack.shrink(1);
 				if(newHandStack.getCount() <= 0)
@@ -81,5 +158,23 @@ public class BlockAltar extends SteamWorldBlock implements ITileEntityProvider
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public String getSpecialName(ItemStack stack) 
+	{
+		return (stack.getMetadata() == 1) ? "decorative" : "regular";
+	}
+	
+	@Override
+	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) 
+	{
+		IItemHandler itemHandler = ((TileEntityAltar)worldIn.getTileEntity(pos)).itemStackHandler;
+		for(int i = 0; i < itemHandler.getSlots(); i++)
+		{
+			ItemStack stack = itemHandler.getStackInSlot(i);
+			InventoryHelper.spawnItemStack(worldIn, pos.getX() + 0.5f, pos.getY() + 0.5f, pos.getZ() + 0.5f, stack);
+		}
+		super.breakBlock(worldIn, pos, state);
 	}
 }
