@@ -52,7 +52,7 @@ public class TCMaterials
 	public static final AbstractProjectileTrait TRAIT_ANTIGRAV = new ProjectileTraitAntiGravity();
 	public static final AbstractTrait TRAIT_DUAL_NATUTE = new TraitDualNature();
 	
-	public static final int HARVEST_LEVEL_COBALT_PLUS_ONE = HarvestLevels.COBALT + 1;
+	public static final int HARVEST_LEVEL_CORITE = HarvestLevels.COBALT + 1;
 	
 	public static void registerMaterials()
 	{
@@ -153,13 +153,13 @@ public class TCMaterials
 		{
 			essenMaterial = new Material("essen", 0x078596);
 			
-			if(!HarvestLevels.harvestLevelNames.containsKey(HARVEST_LEVEL_COBALT_PLUS_ONE))
-				HarvestLevels.harvestLevelNames.put(HARVEST_LEVEL_COBALT_PLUS_ONE, essenMaterial.getTextColor() + Util.translate("ui.mininglevel.essen"));
+			if(!HarvestLevels.harvestLevelNames.containsKey(HARVEST_LEVEL_CORITE))
+				HarvestLevels.harvestLevelNames.put(HARVEST_LEVEL_CORITE, essenMaterial.getTextColor() + Util.translate("ui.mininglevel.essen"));
 			
 			essenMaterial.addTrait(TRAIT_DUAL_NATUTE);
 			
 			TinkerRegistry.addMaterialStats(essenMaterial,
-					new HeadMaterialStats(926, 6.5f, 2.5f, HARVEST_LEVEL_COBALT_PLUS_ONE),
+					new HeadMaterialStats(926, 6.5f, 2.5f, HARVEST_LEVEL_CORITE),
 					new HandleMaterialStats(1.1f, -300),
 					new ExtraMaterialStats(20),
 					new BowMaterialStats(1.1f, 0.6f, 0.7f)

@@ -413,7 +413,7 @@ material.galite.name=Galite
 material.essen.name=Essen
 
 # TC UI stuff
-ui.mininglevel.essen=Essen
+ui.mininglevel.essen=Corite
 
 # TC Modifier names
 modifier.selective.name=Selective
