@@ -8,6 +8,7 @@ import net.minecraftforge.fml.client.registry.IRenderFactory;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import zaexides.steamworld.entity.EntityAnciteGolem;
 import zaexides.steamworld.entity.EntityAnemone;
 import zaexides.steamworld.entity.EntityAnemoneStinger;
 import zaexides.steamworld.entity.EntityEclipseStalker;
@@ -24,5 +25,6 @@ public class RenderingHandler
 		RenderingRegistry.registerEntityRenderingHandler(EntityAnemoneStinger.class, EntityRendererAnemoneStinger::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityPropellorShell.class, EntityRendererPropellorShell::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityEclipseStalker.class, EntityRendererEclipseStalker::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityAnciteGolem.class, EntityRendererAnciteGolem::new);
 	}
 }
