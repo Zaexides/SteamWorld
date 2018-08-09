@@ -20,9 +20,10 @@ public class LayerAnciteGolemEyes<T extends EntityAnciteGolem> implements LayerR
 	public void doRenderLayer(T entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks,
 			float ageInTicks, float netHeadYaw, float headPitch, float scale) 
 	{
+		if(entitylivingbaseIn.getAwakeningStep() < 0.9f)
+			return;
 		this.anciteGolemRender.bindTexture(GOLEM_EYES);
 		GlStateManager.enableBlend();
-		GlStateManager.enableAlpha();
 		GlStateManager.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE);
 
         if (entitylivingbaseIn.isInvisible())
@@ -33,8 +34,6 @@ public class LayerAnciteGolemEyes<T extends EntityAnciteGolem> implements LayerR
         {
             GlStateManager.depthMask(true);
         }
-		
-		GlStateManager.color(1, 1, 1, entitylivingbaseIn.awakeningStep);
 		this.anciteGolemRender.getMainModel().render(entitylivingbaseIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
 		
 		GlStateManager.disableBlend();

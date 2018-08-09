@@ -72,7 +72,7 @@ public class ModelAnciteGolem extends ModelBase {
     public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,
     		float headPitch, float scaleFactor, Entity entityIn) 
     {
-    	setDefaultRotationAndPosition(((EntityAnciteGolem)entityIn).awakeningStep);
+    	setDefaultRotationAndPosition(((EntityAnciteGolem)entityIn).getAwakeningStep());
     }
     
     private void setDefaultRotationAndPosition(float awakeningPercentage)
