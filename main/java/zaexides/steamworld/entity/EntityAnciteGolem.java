@@ -5,7 +5,10 @@ import java.util.List;
 import org.apache.logging.log4j.Level;
 
 import com.google.common.base.Predicate;
+import com.google.common.collect.Lists;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockAnvil;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -27,6 +30,7 @@ import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityTippedArrow;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -39,15 +43,19 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.init.LootTableInitializer;
+import zaexides.steamworld.utility.SWDamageSource;
 
 public class EntityAnciteGolem extends EntityGolem implements IMob
 {		
 	protected static final DataParameter<Float> AWAKENING = EntityDataManager.<Float>createKey(EntityAnciteGolem.class, DataSerializers.FLOAT);
 	
 	private static final AxisAlignedBB PLAYER_CHECK_AREA = new AxisAlignedBB(-4, -4, -4, 4, 4, 4);
+	private static final int FALL_MAX_HURT_DAMAGE = 40;
+    private static final float FALL_HURT_BASE_DAMAGE = 2.0F;
 	
 	public EntityAnciteGolem(World worldIn) 
 	{
@@ -76,14 +84,12 @@ public class EntityAnciteGolem extends EntityGolem implements IMob
 	@Override
 	protected void initEntityAI() 
 	{
-		float awakeningStep = getAwakeningStep();
-		
 		this.tasks.addTask(0, new EntityAIAttackMelee(this, 0.4, true)
 				{
 					@Override
 					public boolean shouldExecute() 
 					{
-						return super.shouldExecute() && awakeningStep < 0.9f;
+						return super.shouldExecute() && getAwakeningStep() > 0.9f;
 					}
 				});
 		this.tasks.addTask(1, new EntityAIWanderAvoidWater(this, 0.4, 0.0f)
@@ -91,13 +97,13 @@ public class EntityAnciteGolem extends EntityGolem implements IMob
 			@Override
 			public boolean shouldExecute() 
 			{
-				return super.shouldExecute() && awakeningStep < 0.9f;
+				return super.shouldExecute() && getAwakeningStep() > 0.9f;
 			}
 			
 			@Override
 			public boolean shouldContinueExecuting() 
 			{
-				return super.shouldContinueExecuting() && awakeningStep < 0.9f;
+				return super.shouldContinueExecuting() && getAwakeningStep() > 0.9f;
 			}
 		});
 		this.tasks.addTask(2, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0f)
@@ -105,7 +111,7 @@ public class EntityAnciteGolem extends EntityGolem implements IMob
 			@Override
 			public boolean shouldExecute() 
 			{
-				return super.shouldExecute() && awakeningStep < 0.9f;
+				return super.shouldExecute() && getAwakeningStep() > 0.9f;
 			}
 		});
 		this.tasks.addTask(3, new EntityAILookIdle(this)
@@ -113,7 +119,7 @@ public class EntityAnciteGolem extends EntityGolem implements IMob
 			@Override
 			public boolean shouldExecute() 
 			{
-				return super.shouldExecute() && awakeningStep < 0.9f;
+				return super.shouldExecute() && getAwakeningStep() > 0.9f;
 			}
 		});
 		
@@ -135,7 +141,7 @@ public class EntityAnciteGolem extends EntityGolem implements IMob
 		if(!world.isRemote)
 		{
 			float awakeningStep = getAwakeningStep();
-			if(getAttackTarget() == null || !getAttackTarget().isEntityAlive())
+			if(getAttackTarget() == null || !getAttackTarget().isEntityAlive() || world.getDifficulty() == EnumDifficulty.PEACEFUL)
 			{
 				if(awakeningStep > 0.0f)
 					setAwakeningStep(awakeningStep - 0.05f);
@@ -150,6 +156,23 @@ public class EntityAnciteGolem extends EntityGolem implements IMob
 					setAwakeningStep(1.0f);;
 			}
 		}
+	}
+	
+	@Override
+	public void fall(float distance, float damageMultiplier) 
+	{
+        int i = MathHelper.ceil(distance - 1.0F);
+
+        if (i > 0)
+        {
+            List<Entity> list = Lists.newArrayList(this.world.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox()));
+            DamageSource damagesource = SWDamageSource.GOLEM_FALL;
+
+            for (Entity entity : list)
+            {
+                entity.attackEntityFrom(damagesource, (float)Math.min(MathHelper.floor((float)i * FALL_HURT_BASE_DAMAGE), FALL_MAX_HURT_DAMAGE));
+            }
+        }
 	}
 	
 	public float getAwakeningStep()

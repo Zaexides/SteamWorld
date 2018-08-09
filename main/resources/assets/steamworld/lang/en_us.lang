@@ -263,6 +263,7 @@ entity.steamworld.eclipse_stalker.name=Eclipse Stalker
 ##################
 death.attack.sw.coreHeat=%1$s got too close to the core
 death.attack.sw.coreHeat.player=%1$s was thrown into the core by %2$s
+death.attack.sw.golemFall=%1$s was squished by a falling golem
 
 #######################
 # Container Name Text #
