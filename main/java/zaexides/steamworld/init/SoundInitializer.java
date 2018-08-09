@@ -30,6 +30,11 @@ public class SoundInitializer
 	
 	public static final SoundEvent SKYFISH_PLOP = addSound("mob.skyfish.plop");
 	
+	public static final SoundEvent ANCITE_GOLEM_HURT = addSound("mob.ancite_golem.hurt");
+	public static final SoundEvent ANCITE_GOLEM_FALL = addSound("mob.ancite_golem.fall");
+	public static final SoundEvent ANCITE_GOLEM_DEATH = addSound("mob.ancite_golem.death");
+	public static final SoundEvent ANCITE_GOLEM_STEP = addSound("mob.ancite_golem.step");
+	
 	private static SoundEvent addSound(String name)
 	{
 		ResourceLocation resourceLocation = new ResourceLocation(ModInfo.MODID, name);

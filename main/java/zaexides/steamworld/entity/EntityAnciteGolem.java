@@ -41,12 +41,16 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.init.LootTableInitializer;
+import zaexides.steamworld.init.SoundInitializer;
 import zaexides.steamworld.utility.SWDamageSource;
 
 public class EntityAnciteGolem extends EntityGolem implements IMob
@@ -61,6 +65,36 @@ public class EntityAnciteGolem extends EntityGolem implements IMob
 	{
 		super(worldIn);
 		setSize(1.0f, 1.0f);
+	}
+	
+	@Override
+	public SoundCategory getSoundCategory() 
+	{
+		return SoundCategory.HOSTILE;
+	}
+	
+	@Override
+	protected SoundEvent getHurtSound(DamageSource p_184601_1_) 
+	{
+		return SoundInitializer.ANCITE_GOLEM_HURT;
+	}
+	
+	@Override
+	protected SoundEvent getDeathSound() 
+	{
+		return SoundInitializer.ANCITE_GOLEM_DEATH;
+	}
+	
+	@Override
+	protected SoundEvent getFallSound(int heightIn) 
+	{
+		return SoundInitializer.ANCITE_GOLEM_FALL;
+	}
+	
+	@Override
+	protected void playStepSound(BlockPos pos, Block blockIn) 
+	{
+		this.playSound(SoundInitializer.ANCITE_GOLEM_STEP, 1.0F, 1.0F);
 	}
 	
 	@Override
@@ -171,6 +205,12 @@ public class EntityAnciteGolem extends EntityGolem implements IMob
             for (Entity entity : list)
             {
                 entity.attackEntityFrom(damagesource, (float)Math.min(MathHelper.floor((float)i * FALL_HURT_BASE_DAMAGE), FALL_MAX_HURT_DAMAGE));
+            }
+            
+            this.playSound(getFallSound((int)distance), Math.min(i * 0.1f, 1.0f), 0.75f);
+            if(i > 3)
+            {
+            	world.createExplosion(this, posX, posY, posZ, Math.min((i - 3) * 0.5f, 8), true);
             }
         }
 	}

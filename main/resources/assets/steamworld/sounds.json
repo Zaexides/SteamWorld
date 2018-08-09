@@ -57,6 +57,48 @@
         "subtitle": "steamworld.subtitles.entity.skyfish.plop"
     },
     
+    "mob.ancite_golem.hurt" :
+    {
+        "sounds":
+        [
+            "mob/irongolem/hit1",
+            "mob/irongolem/hit2",
+            "mob/irongolem/hit3",
+            "mob/irongolem/hit4"
+        ],
+        "subtitle": "steamworld.subtitles.entity.ancite_golem.hurt"
+    },
+    "mob.ancite_golem.fall" :
+    {
+        "sounds":
+        [
+            "mob/irongolem/hit1",
+            "mob/irongolem/hit2",
+            "mob/irongolem/hit3",
+            "mob/irongolem/hit4"
+        ],
+        "subtitle": "steamworld.subtitles.entity.ancite_golem.fall"
+    },
+    "mob.ancite_golem.death" :
+    {
+        "sounds":
+        [
+            "mob/irongolem/death"
+        ],
+        "subtitle": "steamworld.subtitles.entity.ancite_golem.death"
+    },
+    "mob.ancite_golem.step" :
+    {
+        "sounds":
+        [
+            "mob/irongolem/walk1",
+            "mob/irongolem/walk2",
+            "mob/irongolem/walk3",
+            "mob/irongolem/walk4"
+        ],
+        "subtitle": "steamworld.subtitles.entity.ancite_golem.footsteps"
+    },
+    
     "tile.accelerator.teleport" :
     {
         "sounds":
