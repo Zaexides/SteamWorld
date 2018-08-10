@@ -24,7 +24,7 @@ public class EntityAnemoneStinger extends EntityTippedArrow
 	{
 		super.arrowHit(living);
 		
-		if(shootingEntity.isEntityAlive())
+		if(shootingEntity != null && shootingEntity.isEntityAlive())
 		{
 			double dx = shootingEntity.posX - living.posX;
 			double dy = (shootingEntity.posY - living.posY) + 2;

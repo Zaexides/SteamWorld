@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.logging.log4j.Level;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -20,11 +21,15 @@ import net.minecraft.entity.projectile.EntityTippedArrow;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.init.LootTableInitializer;
+import zaexides.steamworld.init.SoundInitializer;
 
 public class EntityAnemone extends EntityMob implements IRangedAttackMob
 {		
@@ -38,6 +43,23 @@ public class EntityAnemone extends EntityMob implements IRangedAttackMob
 	public float getEyeHeight() 
 	{
 		return 1.0f;
+	}
+	
+	@Override
+	protected SoundEvent getHurtSound(DamageSource p_184601_1_) 
+	{
+		return SoundInitializer.ANEMONE_HURT;
+	}
+	
+	@Override
+	protected SoundEvent getDeathSound() 
+	{
+		return SoundInitializer.ANEMONE_DEATH;
+	}
+	
+	@Override
+	protected void playStepSound(BlockPos pos, Block blockIn) 
+	{
 	}
 	
 	@Override
@@ -93,7 +115,7 @@ public class EntityAnemone extends EntityMob implements IRangedAttackMob
 			xz_multiplier = 2.0d;
 		
 		stinger.setThrowableHeading(dx * xz_multiplier, dy, dz * xz_multiplier, 1.2f, (float)(14 - this.world.getDifficulty().getDifficultyId() * 4));
-		this.playSound(SoundEvents.ENTITY_ARROW_SHOOT, 1.0f, 2.0f);
+		this.playSound(SoundInitializer.ANEMONE_SHOOT, 1.0f, 2.0f);
 		this.world.spawnEntity(stinger);
 	}
 

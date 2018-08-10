@@ -130,7 +130,13 @@ public class EntityAnciteGolem extends EntityGolem implements IMob, IRangedAttac
 			@Override
 			public boolean shouldExecute() 
 			{
-				return super.shouldExecute() && getAwakeningStep() > 0.9f && getAmmo() > 0;
+				return super.shouldExecute() && getAwakeningStep() > 0.9f && getAmmo() > -EMPTY_SHOT_TIME;
+			}
+			
+			@Override
+			public boolean shouldContinueExecuting() 
+			{
+				return super.shouldContinueExecuting() && getAwakeningStep() > 0.9f;
 			}
 		});
 		this.tasks.addTask(1, new EntityAIAttackMelee(this, 0.4, true)
@@ -139,6 +145,12 @@ public class EntityAnciteGolem extends EntityGolem implements IMob, IRangedAttac
 					public boolean shouldExecute() 
 					{
 						return super.shouldExecute() && getAwakeningStep() > 0.9f;
+					}
+					
+					@Override
+					public boolean shouldContinueExecuting() 
+					{
+						return super.shouldContinueExecuting() && getAwakeningStep() > 0.9f;
 					}
 				});
 		this.tasks.addTask(2, new EntityAIWanderAvoidWater(this, 0.4, 0.0f)
@@ -205,7 +217,7 @@ public class EntityAnciteGolem extends EntityGolem implements IMob, IRangedAttac
 					setAwakeningStep(1.0f);;
 			}
 			
-			if(ammo <= 0)
+			if(ammo <= -EMPTY_SHOT_TIME)
 			{
 				reloadTimer--;
 				if(reloadTimer <= 0)
@@ -331,17 +343,23 @@ public class EntityAnciteGolem extends EntityGolem implements IMob, IRangedAttac
 	@Override
 	public void attackEntityWithRangedAttack(EntityLivingBase target, float distanceFactor) 
 	{
-		EntityTippedArrow arrow = new EntityTippedArrow(world, this);
-		arrow.setEnchantmentEffectsFromEntity(this, distanceFactor);
-		double dx = target.posX - posX;
-		double dy = target.posY - posY;
-		double dz = target.posZ - posZ;
-		arrow.setThrowableHeading(dx, dy, dz, 2.3f, (5 - world.getDifficulty().getDifficultyId()) * 3.0f);
-		this.playSound(SoundEvents.ENTITY_ARROW_SHOOT, 1.0f, 0.9f + rand.nextFloat() * 0.2f);
-		world.spawnEntity(arrow);
+		if(ammo > 0)
+		{
+			EntityTippedArrow arrow = new EntityTippedArrow(world, this);
+			arrow.setEnchantmentEffectsFromEntity(this, distanceFactor);
+			double dx = target.posX - posX;
+			double dy = target.posY - posY;
+			double dz = target.posZ - posZ;
+			arrow.setThrowableHeading(dx, dy, dz, 2.3f, (5 - world.getDifficulty().getDifficultyId()) * 3.0f);
+			this.playSound(SoundInitializer.ANCITE_GOLEM_SHOOT, 1.0f, 0.9f + rand.nextFloat() * 0.2f);
+			world.spawnEntity(arrow);
+		}
+		else
+			this.playSound(SoundInitializer.ANCITE_GOLEM_OUT_OF_AMMO, 0.5f, 0.9f + rand.nextFloat() * 0.2f);
+		
 		ammo--;
 		
-		if(ammo <= 0)
+		if(ammo <= -EMPTY_SHOT_TIME)
 			reloadTimer = RELOAD_TIME;
 	}
 

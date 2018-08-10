@@ -346,16 +346,34 @@ advancement.steamworld.a_whole_new_world.desc=Enter the Sky of Old.
 #########################
 # Sound Event Subtitles #
 #########################
+
+### Entities ###
+# Eclipse Stalker
 steamworld.subtitles.entity.eclipse_stalker.ambient=Eclipse Stalker breathes
 steamworld.subtitles.entity.eclipse_stalker.death=Eclipse Stalker dies
 steamworld.subtitles.entity.eclipse_stalker.hurt=Eclipse Stalker hurts
 steamworld.subtitles.entity.eclipse_stalker.despawn=Eclipse Stalker fizzles out of existence
+
+# Proshellor
 steamworld.subtitles.entity.proshellor.drop=Proshellor drops a potion
+
+# Flying Fish
 steamworld.subtitles.entity.skyfish.plop=Flying Fish plops
+
+# Ancite Golem
 steamworld.subtitles.entity.ancite_golem.hurt=Ancite Golem hurts
 steamworld.subtitles.entity.ancite_golem.fall=Ancite Golem lands
 steamworld.subtitles.entity.ancite_golem.death=Ancite Golem dies
 steamworld.subtitles.entity.ancite_golem.footsteps=Heavy footsteps
+steamworld.subtitles.entity.ancite_golem.shoot=Ancite Golem shoots
+steamworld.subtitles.entity.ancite_golem.fail=Ancite Golem clicks
+
+# Anemone
+steamworld.subtitles.entity.anemone.shoot=Anemone shoots
+steamworld.subtitles.entity.anemone.hurt=Anemone hurts
+steamworld.subtitles.entity.anemone.death=Anemone dies
+
+### Tiles ###
 steamworld.subtitles.tile.accelerator.teleport=Accelerator teleports something
 steamworld.subtitles.tile.launcher.launch=Launcher launches
 steamworld.subtitles.tile.preservation_juice.chime=Preservation Liquid chimes

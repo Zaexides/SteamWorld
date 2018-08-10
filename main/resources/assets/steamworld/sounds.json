@@ -98,6 +98,54 @@
         ],
         "subtitle": "steamworld.subtitles.entity.ancite_golem.footsteps"
     },
+    "mob.ancite_golem.shoot" :
+    {
+        "sounds":
+        [
+            "random/bow"
+        ],
+        "subtitle": "steamworld.subtitles.entity.ancite_golem.shoot"
+    },
+    "mob.ancite_golem.fail" :
+    {
+        "sounds":
+        [
+            "random/click"
+        ],
+        "subtitle": "steamworld.subtitles.entity.ancite_golem.fail"
+    },
+    
+    "mob.anemone.shoot" :
+    {
+        "sounds":
+        [
+            "random/bow"
+        ],
+        "subtitle": "steamworld.subtitles.entity.anemone.shoot"
+    },
+    "mob.anemone.hurt" :
+    {
+        "sounds":
+        [
+            "mob/slime/small1",
+            "mob/slime/small2",
+            "mob/slime/small3",
+            "mob/slime/small4",
+            "mob/slime/small5"
+        ],
+        "subtitle": "steamworld.subtitles.entity.anemone.hurt"
+    },
+    "mob.anemone.death" :
+    {
+        "sounds":
+        [
+            "mob/slime/big1",
+            "mob/slime/big2",
+            "mob/slime/big3",
+            "mob/slime/big4"
+        ],
+        "subtitle": "steamworld.subtitles.entity.anemone.death"
+    },
     
     "tile.accelerator.teleport" :
     {

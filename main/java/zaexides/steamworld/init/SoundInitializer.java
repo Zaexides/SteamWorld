@@ -34,6 +34,12 @@ public class SoundInitializer
 	public static final SoundEvent ANCITE_GOLEM_FALL = addSound("mob.ancite_golem.fall");
 	public static final SoundEvent ANCITE_GOLEM_DEATH = addSound("mob.ancite_golem.death");
 	public static final SoundEvent ANCITE_GOLEM_STEP = addSound("mob.ancite_golem.step");
+	public static final SoundEvent ANCITE_GOLEM_SHOOT = addSound("mob.ancite_golem.shoot");
+	public static final SoundEvent ANCITE_GOLEM_OUT_OF_AMMO = addSound("mob.ancite_golem.fail");
+	
+	public static final SoundEvent ANEMONE_SHOOT = addSound("mob.anemone.shoot");
+	public static final SoundEvent ANEMONE_HURT = addSound("mob.anemone.hurt");
+	public static final SoundEvent ANEMONE_DEATH = addSound("mob.anemone.death");
 	
 	private static SoundEvent addSound(String name)
 	{
