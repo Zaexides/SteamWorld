@@ -72,7 +72,16 @@ public class ModelAnciteGolem extends ModelBase {
     public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,
     		float headPitch, float scaleFactor, Entity entityIn) 
     {
-    	setDefaultRotationAndPosition(((EntityAnciteGolem)entityIn).getAwakeningStep());
+    	float awakeningStep = ((EntityAnciteGolem)entityIn).getAwakeningStep();
+    	setDefaultRotationAndPosition(awakeningStep);
+    	
+    	legRight.rotateAngleX = lerp(legRight.rotateAngleX, (float)Math.sin(limbSwing * 0.5) * limbSwingAmount, awakeningStep);
+    	legLeft.rotateAngleX = lerp(legLeft.rotateAngleX, -legRight.rotateAngleX, awakeningStep);
+    	armRight.rotateAngleX = lerp(armRight.rotateAngleX, legLeft.rotateAngleX * 0.2f, awakeningStep);
+    	armLeft.rotateAngleX = lerp(armLeft.rotateAngleX, legRight.rotateAngleX * 0.2f - 1.5f, awakeningStep);
+    	
+    	head.rotateAngleY = lerp(head.rotateAngleY, netHeadYaw * 0.01745f, awakeningStep);
+    	head.rotateAngleX = lerp(head.rotateAngleX, headPitch * 0.01745f, awakeningStep);
     }
     
     private void setDefaultRotationAndPosition(float awakeningPercentage)
