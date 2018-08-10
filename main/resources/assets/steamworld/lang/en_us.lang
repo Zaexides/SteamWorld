@@ -257,6 +257,8 @@ entity.steamworld.anemone.name=Anemone
 entity.steamworld.anemone_stinger.name=Anemone Stinger
 entity.steamworld.propellorshell.name=Proshellor
 entity.steamworld.eclipse_stalker.name=Eclipse Stalker
+entity.steamworld.ancite_golem.name=Ancite Golem
+entity.steamworld.villangler=Villangler
 
 ##################
 # Death Messages #
