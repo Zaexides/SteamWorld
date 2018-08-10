@@ -75,27 +75,32 @@ public class ModelAnciteGolem extends ModelBase {
     	float awakeningStep = ((EntityAnciteGolem)entityIn).getAwakeningStep();
     	setDefaultRotationAndPosition(awakeningStep);
     	
-    	legRight.rotateAngleX = lerp(legRight.rotateAngleX, (float)Math.sin(limbSwing * 0.5) * limbSwingAmount, awakeningStep);
-    	legLeft.rotateAngleX = lerp(legLeft.rotateAngleX, -legRight.rotateAngleX, awakeningStep);
-    	armRight.rotateAngleX = lerp(armRight.rotateAngleX, legLeft.rotateAngleX * 0.2f, awakeningStep);
-    	armLeft.rotateAngleX = lerp(armLeft.rotateAngleX, legRight.rotateAngleX * 0.2f - 1.5f, awakeningStep);
+    	this.legRight.rotateAngleX = lerp(this.legRight.rotateAngleX, (float)Math.sin(limbSwing * 0.5) * limbSwingAmount, awakeningStep);
+    	this.legLeft.rotateAngleX = lerp(this.legLeft.rotateAngleX, -this.legRight.rotateAngleX, awakeningStep);
+    	this.armRight.rotateAngleX = lerp(this.armRight.rotateAngleX, this.legLeft.rotateAngleX * 0.2f, awakeningStep);
+    	this.armLeft.rotateAngleX = lerp(this.armLeft.rotateAngleX, this.legRight.rotateAngleX * 0.2f - 1.5f, awakeningStep);
     	
-    	head.rotateAngleY = lerp(head.rotateAngleY, netHeadYaw * 0.01745f, awakeningStep);
-    	head.rotateAngleX = lerp(head.rotateAngleX, headPitch * 0.01745f, awakeningStep);
+    	this.head.rotateAngleY = lerp(this.head.rotateAngleY, netHeadYaw * 0.01745f, awakeningStep);
+    	this.head.rotateAngleX = lerp(this.head.rotateAngleX, headPitch * 0.01745f, awakeningStep);
     }
     
     private void setDefaultRotationAndPosition(float awakeningPercentage)
     {
     	final float HALF_CIRCLE = (float)Math.PI;
     	
-    	topBody.rotateAngleX = lerp(0, -HALF_CIRCLE, 1-awakeningPercentage);
-    	armLeft.rotateAngleX = armRight.rotateAngleX = lerp(0, HALF_CIRCLE, 1-awakeningPercentage);
-    	armLeft.rotationPointY = armRight.rotationPointY = lerp(-4, -1, 1-awakeningPercentage);
-    	legRight.rotationPointX = lerp(0, -4, 1-awakeningPercentage);
-    	legLeft.rotationPointX = lerp(0, 4, 1-awakeningPercentage);
-    	legRight.rotationPointY = legLeft.rotationPointY = lerp(2.5f, -0.5f, 1-awakeningPercentage);
-    	head.rotationPointY = lerp(-5, 0, 1-awakeningPercentage);
-    	body.rotationPointY = lerp(13.5f, 16.5f, 1-awakeningPercentage);
+    	this.topBody.rotateAngleX = lerp(0, -HALF_CIRCLE, 1-awakeningPercentage);
+    	this.armLeft.rotateAngleX = this.armRight.rotateAngleX = lerp(0, HALF_CIRCLE, 1-awakeningPercentage);
+    	this.armLeft.rotationPointY = this.armRight.rotationPointY = lerp(-4, -1, 1-awakeningPercentage);
+    	this.legRight.rotationPointX = lerp(0, -4, 1-awakeningPercentage);
+    	this.legLeft.rotationPointX = lerp(0, 4, 1-awakeningPercentage);
+    	this.legRight.rotationPointY = this.legLeft.rotationPointY = lerp(2.5f, -0.5f, 1-awakeningPercentage);
+    	this.head.rotationPointY = lerp(-5, 0, 1-awakeningPercentage);
+    	this.body.rotationPointY = lerp(13.5f, 16.5f, 1-awakeningPercentage);
+    	
+    	this.legRight.rotateAngleX = 0;
+    	this.legLeft.rotateAngleX = 0;
+    	this.head.rotateAngleY = 0;
+    	this.head.rotateAngleX = 0;
     }
     
     private float lerp(float a, float b, float t)

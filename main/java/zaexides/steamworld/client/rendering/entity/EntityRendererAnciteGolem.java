@@ -11,7 +11,7 @@ import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.entity.EntityAnciteGolem;
 
-public class EntityRendererAnciteGolem<T extends EntityAnciteGolem> extends RenderLiving<T>
+public class EntityRendererAnciteGolem extends RenderLiving<EntityAnciteGolem>
 {
 	private static final ResourceLocation texture = new ResourceLocation(ModInfo.MODID, "textures/entity/ancite_golem.png");
 	
@@ -22,13 +22,13 @@ public class EntityRendererAnciteGolem<T extends EntityAnciteGolem> extends Rend
 	}
 
 	@Override
-	protected ResourceLocation getEntityTexture(T entity) 
+	protected ResourceLocation getEntityTexture(EntityAnciteGolem entity) 
 	{
 		return texture;
 	}
 	
 	@Override
-	protected void applyRotations(T entityLiving, float p_77043_2_, float rotationYaw, float partialTicks) 
+	protected void applyRotations(EntityAnciteGolem entityLiving, float p_77043_2_, float rotationYaw, float partialTicks) 
 	{
 		super.applyRotations(entityLiving, p_77043_2_, rotationYaw, partialTicks);
 	}

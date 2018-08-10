@@ -6,7 +6,7 @@ import net.minecraft.util.ResourceLocation;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.entity.EntityAnciteGolem;
 
-public class LayerAnciteGolemEyes<T extends EntityAnciteGolem> implements LayerRenderer<T>
+public class LayerAnciteGolemEyes implements LayerRenderer<EntityAnciteGolem>
 {
     private static final ResourceLocation GOLEM_EYES = new ResourceLocation(ModInfo.MODID, "textures/entity/ancite_golem_eyes.png");
 	private final EntityRendererAnciteGolem anciteGolemRender;
@@ -17,7 +17,7 @@ public class LayerAnciteGolemEyes<T extends EntityAnciteGolem> implements LayerR
 	}
     
 	@Override
-	public void doRenderLayer(T entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks,
+	public void doRenderLayer(EntityAnciteGolem entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks,
 			float ageInTicks, float netHeadYaw, float headPitch, float scale) 
 	{
 		if(entitylivingbaseIn.getAwakeningStep() < 0.9f)

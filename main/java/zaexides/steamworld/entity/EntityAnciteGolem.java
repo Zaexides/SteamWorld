@@ -53,13 +53,20 @@ import zaexides.steamworld.init.LootTableInitializer;
 import zaexides.steamworld.init.SoundInitializer;
 import zaexides.steamworld.utility.SWDamageSource;
 
-public class EntityAnciteGolem extends EntityGolem implements IMob
+public class EntityAnciteGolem extends EntityGolem implements IMob, IRangedAttackMob
 {		
 	protected static final DataParameter<Float> AWAKENING = EntityDataManager.<Float>createKey(EntityAnciteGolem.class, DataSerializers.FLOAT);
 	
 	private static final AxisAlignedBB PLAYER_CHECK_AREA = new AxisAlignedBB(-4, -4, -4, 4, 4, 4);
 	private static final int FALL_MAX_HURT_DAMAGE = 40;
     private static final float FALL_HURT_BASE_DAMAGE = 2.0F;
+    
+    private static final int DEFAULT_AMMO = 30;
+    private static final int RELOAD_TIME = 200;
+    private static final int EMPTY_SHOT_TIME = 10;
+    private static final int TICKS_PER_SHOT = 2;
+    private byte ammo = DEFAULT_AMMO;
+    private int reloadTimer = 0;
 	
 	public EntityAnciteGolem(World worldIn) 
 	{
@@ -118,7 +125,15 @@ public class EntityAnciteGolem extends EntityGolem implements IMob
 	@Override
 	protected void initEntityAI() 
 	{
-		this.tasks.addTask(0, new EntityAIAttackMelee(this, 0.4, true)
+		this.tasks.addTask(0, new EntityAIAttackRanged(this, 0.4, TICKS_PER_SHOT, 64.0f)
+		{
+			@Override
+			public boolean shouldExecute() 
+			{
+				return super.shouldExecute() && getAwakeningStep() > 0.9f && getAmmo() > 0;
+			}
+		});
+		this.tasks.addTask(1, new EntityAIAttackMelee(this, 0.4, true)
 				{
 					@Override
 					public boolean shouldExecute() 
@@ -126,7 +141,7 @@ public class EntityAnciteGolem extends EntityGolem implements IMob
 						return super.shouldExecute() && getAwakeningStep() > 0.9f;
 					}
 				});
-		this.tasks.addTask(1, new EntityAIWanderAvoidWater(this, 0.4, 0.0f)
+		this.tasks.addTask(2, new EntityAIWanderAvoidWater(this, 0.4, 0.0f)
 		{
 			@Override
 			public boolean shouldExecute() 
@@ -140,7 +155,7 @@ public class EntityAnciteGolem extends EntityGolem implements IMob
 				return super.shouldContinueExecuting() && getAwakeningStep() > 0.9f;
 			}
 		});
-		this.tasks.addTask(2, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0f)
+		this.tasks.addTask(3, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0f)
 		{
 			@Override
 			public boolean shouldExecute() 
@@ -148,7 +163,7 @@ public class EntityAnciteGolem extends EntityGolem implements IMob
 				return super.shouldExecute() && getAwakeningStep() > 0.9f;
 			}
 		});
-		this.tasks.addTask(3, new EntityAILookIdle(this)
+		this.tasks.addTask(4, new EntityAILookIdle(this)
 		{
 			@Override
 			public boolean shouldExecute() 
@@ -189,6 +204,13 @@ public class EntityAnciteGolem extends EntityGolem implements IMob
 				if(awakeningStep > 1.0f)
 					setAwakeningStep(1.0f);;
 			}
+			
+			if(ammo <= 0)
+			{
+				reloadTimer--;
+				if(reloadTimer <= 0)
+					ammo = DEFAULT_AMMO;
+			}
 		}
 	}
 	
@@ -213,6 +235,11 @@ public class EntityAnciteGolem extends EntityGolem implements IMob
             	world.createExplosion(this, posX, posY, posZ, Math.min((i - 3) * 0.5f, 8), true);
             }
         }
+	}
+	
+	public int getAmmo()
+	{
+		return ammo;
 	}
 	
 	public float getAwakeningStep()
@@ -285,6 +312,8 @@ public class EntityAnciteGolem extends EntityGolem implements IMob
 	{
 		super.writeEntityToNBT(compound);
 		compound.setFloat("awakening", getAwakeningStep());
+		compound.setByte("ammo", ammo);
+		compound.setInteger("reloading", reloadTimer);
 	}
 	
 	@Override
@@ -293,5 +322,31 @@ public class EntityAnciteGolem extends EntityGolem implements IMob
 		super.readEntityFromNBT(compound);
 		if(compound.hasKey("awakening"))
 			setAwakeningStep(compound.getFloat("awakening"));
+		if(compound.hasKey("ammo"))
+			ammo = compound.getByte("ammo");
+		if(compound.hasKey("reloading"))
+			reloadTimer = compound.getInteger("reloading");
+	}
+
+	@Override
+	public void attackEntityWithRangedAttack(EntityLivingBase target, float distanceFactor) 
+	{
+		EntityTippedArrow arrow = new EntityTippedArrow(world, this);
+		arrow.setEnchantmentEffectsFromEntity(this, distanceFactor);
+		double dx = target.posX - posX;
+		double dy = target.posY - posY;
+		double dz = target.posZ - posZ;
+		arrow.setThrowableHeading(dx, dy, dz, 2.3f, (5 - world.getDifficulty().getDifficultyId()) * 3.0f);
+		this.playSound(SoundEvents.ENTITY_ARROW_SHOOT, 1.0f, 0.9f + rand.nextFloat() * 0.2f);
+		world.spawnEntity(arrow);
+		ammo--;
+		
+		if(ammo <= 0)
+			reloadTimer = RELOAD_TIME;
+	}
+
+	@Override
+	public void setSwingingArms(boolean swingingArms) 
+	{
 	}
 }
