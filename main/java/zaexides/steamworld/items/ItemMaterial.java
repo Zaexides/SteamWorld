@@ -84,7 +84,9 @@ public class ItemMaterial extends SteamWorldItem implements IOreDictionaryRegist
 		IRON_PLATE(4, "plate_iron", "plateIron", "compressedIron"),
 		GOLD_PLATE(5, "plate_gold", "plateGold", "compressedGold"),
 		ENDER_CORE(6, "ender_core", "enderCore"),
-		BIOMATTER(7, "biomatter", 400, "itemBiomass", "itemBiomatter");
+		BIOMATTER(7, "biomatter", 400, "itemBiomass", "itemBiomatter"),
+		CURRENCY_LOW(8, "poor_coin"),
+		CURRENCY_HIGH(9, "rich_coin");
 		
 		private final int meta;
 		private final String name;

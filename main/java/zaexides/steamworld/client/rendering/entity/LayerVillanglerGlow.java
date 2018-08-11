@@ -6,7 +6,7 @@ import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.util.ResourceLocation;
 import zaexides.steamworld.ModInfo;
-import zaexides.steamworld.entity.EntityVillangler;
+import zaexides.steamworld.entity.villangler.EntityVillangler;
 
 public class LayerVillanglerGlow implements LayerRenderer<EntityVillangler>
 {

@@ -85,10 +85,10 @@ public class ModelVillangler extends ModelBase {
     public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,
     		float headPitch, float scaleFactor, Entity entityIn) 
     {
-    	float swingCos = (float)Math.cos(limbSwing * limbSwingAmount * 0.1 + Math.PI * 0.5f) * 0.1f;
-    	this.legRight.offsetZ = (float)Math.sin(limbSwing * limbSwingAmount * 0.1) * 0.25f;
+    	float swingCos = (float)Math.cos(ageInTicks * 0.5 + Math.PI * 0.5) * 0.16f * limbSwingAmount;
+    	this.legRight.rotateAngleX = (float)Math.sin(ageInTicks * -0.5) * 0.4f * limbSwingAmount;
     	this.legRight.offsetY = (float)Math.min(swingCos, 0.0f);
-    	this.legLeft.offsetZ = -this.legRight.offsetZ;
+    	this.legLeft.rotateAngleX = -this.legRight.rotateAngleX;
     	this.legLeft.offsetY = (float)Math.min(-swingCos, 0.0f);
     	
     	this.head.rotateAngleY = netHeadYaw * 0.017453292f;

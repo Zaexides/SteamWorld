@@ -9,11 +9,12 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
-import zaexides.steamworld.entity.EntityVillangler;
+import zaexides.steamworld.entity.villangler.EntityVillangler;
 
 public class EntityRendererVillangler extends RenderLiving<EntityVillangler>
 {
-	private static final ResourceLocation texture = new ResourceLocation(ModInfo.MODID, "textures/entity/villangler.png");
+	private static final ResourceLocation textureDefault = new ResourceLocation(ModInfo.MODID, "textures/entity/villangler.png");
+	private static final ResourceLocation textureEconomist = new ResourceLocation(ModInfo.MODID, "textures/entity/villangler_economist.png");
 	
 	public EntityRendererVillangler(RenderManager rendermanagerIn) 
 	{
@@ -24,7 +25,13 @@ public class EntityRendererVillangler extends RenderLiving<EntityVillangler>
 	@Override
 	protected ResourceLocation getEntityTexture(EntityVillangler entity) 
 	{
-		return texture;
+		switch(entity.getVariant())
+		{
+		case ECONOMIST:
+			return textureEconomist;
+		default:
+			return textureDefault;
+		}
 	}
 	
 	@Override

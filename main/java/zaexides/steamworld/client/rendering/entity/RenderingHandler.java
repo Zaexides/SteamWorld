@@ -14,7 +14,7 @@ import zaexides.steamworld.entity.EntityAnemoneStinger;
 import zaexides.steamworld.entity.EntityEclipseStalker;
 import zaexides.steamworld.entity.EntityPropellorShell;
 import zaexides.steamworld.entity.EntitySkyFish;
-import zaexides.steamworld.entity.EntityVillangler;
+import zaexides.steamworld.entity.villangler.EntityVillangler;
 
 public class RenderingHandler
 {
