@@ -2,7 +2,9 @@ package zaexides.steamworld.client.rendering.entity;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityAgeable;
 
 /**
  * SkyFish - Zae
@@ -48,10 +50,18 @@ public class ModelSkyFish extends ModelBase {
     }
 
     @Override
-    public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) { 
-        
-    	float scale = isChild ? CHILD_SCALE : 1.0f;
-    	this.Body.render(f5 * scale);
+    public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) 
+    { 
+    	if(((EntityAgeable)entity).isChild())
+    	{
+    		GlStateManager.pushMatrix();
+    		GlStateManager.scale(0.5, 0.5, 0.5);
+    		GlStateManager.translate(0, 24.0 * f5, 0);
+    		this.Body.render(f5);
+    		GlStateManager.popMatrix();
+    	}
+    	else
+    		this.Body.render(f5);
     }
     
     @Override

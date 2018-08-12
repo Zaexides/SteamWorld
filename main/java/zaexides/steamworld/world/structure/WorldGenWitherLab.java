@@ -49,6 +49,7 @@ public class WorldGenWitherLab implements IWorldGenerator
 		PlacementSettings placementSettings = new PlacementSettings().setRotation(rotation);
 		Template template = world.getSaveHandler().getStructureTemplateManager().getTemplate(world.getMinecraftServer(), LAB_TEMPLATE_LOCATION);
 		
+		LAB_TEMPLATE_PROCESSOR.Reset();
 		template.addBlocksToWorld(world, pos, placementSettings);
 		template.addBlocksToWorld(world, pos, LAB_TEMPLATE_PROCESSOR, placementSettings, 2);
 	}

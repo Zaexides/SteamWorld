@@ -15,6 +15,8 @@ public class EntityRendererVillangler extends RenderLiving<EntityVillangler>
 {
 	private static final ResourceLocation textureDefault = new ResourceLocation(ModInfo.MODID, "textures/entity/villangler.png");
 	private static final ResourceLocation textureEconomist = new ResourceLocation(ModInfo.MODID, "textures/entity/villangler_economist.png");
+	private static final ResourceLocation textureLibrarian = new ResourceLocation(ModInfo.MODID, "textures/entity/villangler_librarian.png");
+	private static final ResourceLocation textureScientist = new ResourceLocation(ModInfo.MODID, "textures/entity/villangler_scientist.png");
 	
 	public EntityRendererVillangler(RenderManager rendermanagerIn) 
 	{
@@ -29,6 +31,10 @@ public class EntityRendererVillangler extends RenderLiving<EntityVillangler>
 		{
 		case ECONOMIST:
 			return textureEconomist;
+		case LIBRARIAN:
+			return textureLibrarian;
+		case SCIENTIST:
+			return textureScientist;
 		default:
 			return textureDefault;
 		}

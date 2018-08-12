@@ -9,7 +9,6 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import zaexides.steamworld.ModInfo;
 
-@Mod.EventBusSubscriber(modid = ModInfo.MODID)
 public class SoundInitializer 
 {
 	public final static List<SoundEvent> SOUND_EVENTS = new ArrayList<SoundEvent>();

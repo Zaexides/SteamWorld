@@ -12,6 +12,7 @@ import net.minecraft.block.BlockChest;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockRotatedPillar;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.init.Blocks;
@@ -28,12 +29,19 @@ import net.minecraft.world.gen.structure.template.Template.BlockInfo;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.BlockObilisk;
+import zaexides.steamworld.entity.villangler.EntityVillangler;
+import zaexides.steamworld.entity.villangler.EntityVillangler.VillanglerVariant;
 import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.init.LootTableInitializer;
 import zaexides.steamworld.te.TileEntityObilisk;
+import zaexides.steamworld.utility.interfaces.IResettable;
 
-public class TemplateProcessorTowerLibrary implements ITemplateProcessor
+public class TemplateProcessorTowerLibrary implements ITemplateProcessor, IResettable
 {	
+	private static final float LIBRARIAN_CHANCE = 0.03f;
+	private static final int MAX_LIBRARIANS = 3;
+	private int currentLibrarianCount = 0;
+	
 	@Override
 	public BlockInfo processBlock(World worldIn, BlockPos pos, BlockInfo blockInfoIn) 
 	{
@@ -53,6 +61,22 @@ public class TemplateProcessorTowerLibrary implements ITemplateProcessor
 			}
 		}
 		
+		if(blockInfoIn.blockState.getMaterial() == Material.AIR && !worldIn.canSeeSky(pos))
+		{
+			if(currentLibrarianCount < MAX_LIBRARIANS && worldIn.rand.nextFloat() < LIBRARIAN_CHANCE)
+			{
+				EntityVillangler villangler = new EntityVillangler(worldIn, VillanglerVariant.LIBRARIAN);
+				villangler.setPositionAndRotation(pos.getX(), pos.getY(), pos.getZ(), 0, 0);
+				if(villangler.isNotColliding())
+				{
+					worldIn.spawnEntity(villangler);
+					currentLibrarianCount++;
+				}
+				else
+					worldIn.removeEntity(villangler);
+			}
+		}
+		
 		return blockInfoIn;
 	}
 	
@@ -64,5 +88,11 @@ public class TemplateProcessorTowerLibrary implements ITemplateProcessor
 				return EnumFacing.VALUES[i];
 		}
 		return EnumFacing.EAST;
+	}
+
+	@Override
+	public void Reset() 
+	{
+		currentLibrarianCount = 0;
 	}
 }

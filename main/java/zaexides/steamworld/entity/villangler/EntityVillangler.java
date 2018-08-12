@@ -46,6 +46,7 @@ public class EntityVillangler extends EntityAgeable implements INpc, IMerchant
 	public EntityVillangler(World worldIn) 
 	{
 		this(worldIn, VillanglerVariant.DEFAULT);
+		//TODO mating
 	}
 	
 	public EntityVillangler(World worldIn, VillanglerVariant variant) 
@@ -218,6 +219,12 @@ public class EntityVillangler extends EntityAgeable implements INpc, IMerchant
 	}
 	
 	@Override
+	protected boolean canDespawn() 
+	{
+		return false;
+	}
+	
+	@Override
 	public void readEntityFromNBT(NBTTagCompound compound) 
 	{
 		super.readEntityFromNBT(compound);
@@ -248,7 +255,9 @@ public class EntityVillangler extends EntityAgeable implements INpc, IMerchant
 	public static enum VillanglerVariant
 	{
 		DEFAULT(0, new VillanglerMerchantGenDefault()),
-		ECONOMIST(1, new VillanglerMerchantGenEconomist());
+		ECONOMIST(1, new VillanglerMerchantGenEconomist()),
+		LIBRARIAN(2, new VillanglerMerchantGenLibrarian()),
+		SCIENTIST(3, new VillanglerMerchantGenScientist());
 		
 		private final int id;
 		private final VillanglerMerchantRecipeListGenerator recipeListGenerator;

@@ -12,6 +12,7 @@ import net.minecraft.block.BlockCarpet;
 import net.minecraft.block.BlockChest;
 import net.minecraft.block.BlockFlower;
 import net.minecraft.block.BlockFlower.EnumFlowerType;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockRotatedPillar;
@@ -34,12 +35,19 @@ import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.BlockObilisk;
 import zaexides.steamworld.blocks.machines.BlockMachine;
+import zaexides.steamworld.entity.villangler.EntityVillangler;
+import zaexides.steamworld.entity.villangler.EntityVillangler.VillanglerVariant;
 import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.init.LootTableInitializer;
 import zaexides.steamworld.te.TileEntityObilisk;
+import zaexides.steamworld.utility.interfaces.IResettable;
 
-public class TemplateProcessorTowerResidence implements ITemplateProcessor, IInitializableProcessor
+public class TemplateProcessorTowerResidence implements ITemplateProcessor, IInitializableProcessor, IResettable
 {	
+	private static final float VILLANGLER_CHANCE = 0.1f;
+	private static final int MAX_VILLANGLERS = 2;
+	private int currentVillanglerCount = 0;
+	
 	private IBlockState carpet;
 	private EnumDyeColor bedColor;
 	
@@ -88,6 +96,21 @@ public class TemplateProcessorTowerResidence implements ITemplateProcessor, IIni
 				blockInfoIn = new BlockInfo(pos, blockInfoIn.blockState, tileEntity.serializeNBT());
 			}
 		}
+		else if(blockInfoIn.blockState.getMaterial() == Material.AIR && !worldIn.canSeeSky(pos))
+		{
+			if(currentVillanglerCount < MAX_VILLANGLERS && worldIn.rand.nextFloat() < VILLANGLER_CHANCE)
+			{
+				EntityVillangler villangler = new EntityVillangler(worldIn, VillanglerVariant.DEFAULT);
+				villangler.setPositionAndRotation(pos.getX(), pos.getY(), pos.getZ(), 0, 0);
+				if(villangler.isNotColliding())
+				{
+					worldIn.spawnEntity(villangler);
+					currentVillanglerCount++;
+				}
+				else
+					worldIn.removeEntity(villangler);
+			}
+		}
 		
 		return blockInfoIn;
 	}
@@ -101,5 +124,11 @@ public class TemplateProcessorTowerResidence implements ITemplateProcessor, IIni
 				return EnumFacing.VALUES[i];
 		}
 		return EnumFacing.EAST;
+	}
+
+	@Override
+	public void Reset() 
+	{
+		currentVillanglerCount = 0;
 	}
 }

@@ -9,6 +9,7 @@ import com.mojang.authlib.GameProfile;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeaves;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.init.Blocks;
@@ -22,12 +23,19 @@ import net.minecraft.world.gen.structure.template.Template.BlockInfo;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.BlockObilisk;
+import zaexides.steamworld.entity.villangler.EntityVillangler;
+import zaexides.steamworld.entity.villangler.EntityVillangler.VillanglerVariant;
 import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.init.LootTableInitializer;
 import zaexides.steamworld.te.TileEntityObilisk;
+import zaexides.steamworld.utility.interfaces.IResettable;
 
-public class TemplateProcessorTowerFarm implements ITemplateProcessor, IInitializableProcessor
+public class TemplateProcessorTowerFarm implements ITemplateProcessor, IInitializableProcessor, IResettable
 {	
+	private static final float VILLANGLER_CHANCE = 0.03f;
+	private static final int MAX_VILLANGLERS = 3;
+	private int currentVillanglerCount = 0;
+	
 	private IBlockState crop;
 	
 	public void Init(Random random)
@@ -50,7 +58,28 @@ public class TemplateProcessorTowerFarm implements ITemplateProcessor, IInitiali
 			blockInfoIn = new BlockInfo(pos, Blocks.FARMLAND.getDefaultState(), null);
 		else if(blockInfoIn.blockState.getBlock() == Blocks.WHEAT)
 			blockInfoIn = new BlockInfo(pos, crop, null);
+		else if(blockInfoIn.blockState.getMaterial() == Material.AIR && !worldIn.canSeeSky(pos))
+		{
+			if(currentVillanglerCount < MAX_VILLANGLERS && worldIn.rand.nextFloat() < VILLANGLER_CHANCE)
+			{
+				EntityVillangler villangler = new EntityVillangler(worldIn, VillanglerVariant.DEFAULT);
+				villangler.setPositionAndRotation(pos.getX(), pos.getY(), pos.getZ(), 0, 0);
+				if(villangler.isNotColliding())
+				{
+					worldIn.spawnEntity(villangler);
+					currentVillanglerCount++;
+				}
+				else
+					worldIn.removeEntity(villangler);
+			}
+		}
 				
 		return blockInfoIn;
+	}
+
+	@Override
+	public void Reset() 
+	{
+		currentVillanglerCount = 0;
 	}
 }

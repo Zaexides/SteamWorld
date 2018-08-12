@@ -2,7 +2,10 @@ package zaexides.steamworld.client.rendering.entity;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityAgeable;
+import zaexides.steamworld.entity.villangler.EntityVillangler;
 
 /**
  * Fishagger - Zae
@@ -69,7 +72,16 @@ public class ModelVillangler extends ModelBase {
     @Override
     public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) 
     { 
-        this.body.render(f5);
+    	if(((EntityAgeable)entity).isChild())
+    	{
+    		GlStateManager.pushMatrix();
+    		GlStateManager.scale(0.5, 0.5, 0.5);
+    		GlStateManager.translate(0, 24.0 * f5, 0);
+    		this.body.render(f5);
+    		GlStateManager.popMatrix();
+    	}
+    	else
+    		this.body.render(f5);
     }
 
     /**
@@ -93,5 +105,13 @@ public class ModelVillangler extends ModelBase {
     	
     	this.head.rotateAngleY = netHeadYaw * 0.017453292f;
     	this.head.rotateAngleX = headPitch * 0.017453292f;
+    	
+    	this.illiciumNear.rotateAngleX = (float)Math.cos(limbSwing) * 0.325f * limbSwingAmount;
+    	this.illiciumFar.rotateAngleX = illiciumNear.rotateAngleX * 0.7f;
+    	this.illiciumFar.rotateAngleY = (float)Math.sin(limbSwing * 0.98) * 0.18f * limbSwingAmount;
+    	this.esca.rotateAngleX = 0.3490658503988659F - illiciumNear.rotateAngleX - illiciumFar.rotateAngleX;
+    	this.esca.rotateAngleY = -illiciumFar.rotateAngleY;
+    	this.illiciumNear.rotateAngleX += 0.5235987755982988F;
+    	this.illiciumFar.rotateAngleX += 2.2689280275926285F;
     }
 }

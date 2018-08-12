@@ -229,6 +229,8 @@ item.steamworld.generic_material_plate_iron.name=Iron Plate
 item.steamworld.generic_material_plate_gold.name=Gold Plate
 item.steamworld.generic_material_ender_core.name=Ender Core
 item.steamworld.generic_material_biomatter.name=Biomass
+item.steamworld.generic_material_poor_coin.name=Poor Ancite Coin
+item.steamworld.generic_material_rich_coin.name=Rich Ancite Coin
 
 #####################
 # Item Tooltip Text #
@@ -258,7 +260,7 @@ entity.steamworld.anemone_stinger.name=Anemone Stinger
 entity.steamworld.propellorshell.name=Proshellor
 entity.steamworld.eclipse_stalker.name=Eclipse Stalker
 entity.steamworld.ancite_golem.name=Ancite Golem
-entity.steamworld.villangler=Villangler
+entity.steamworld.villangler.name=Villangler
 
 ##################
 # Death Messages #

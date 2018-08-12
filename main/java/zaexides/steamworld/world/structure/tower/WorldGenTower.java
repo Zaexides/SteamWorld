@@ -16,6 +16,7 @@ import net.minecraft.world.gen.structure.template.Template;
 import net.minecraftforge.fml.common.IWorldGenerator;
 import zaexides.steamworld.ConfigHandler;
 import zaexides.steamworld.ModInfo;
+import zaexides.steamworld.utility.interfaces.IResettable;
 
 public class WorldGenTower implements IWorldGenerator
 {
@@ -82,6 +83,9 @@ public class WorldGenTower implements IWorldGenerator
 	private BlockPos GenerateTowerPart(World world, Random random, BlockPos pos)
 	{
 		int templateId = random.nextInt(templates.length);
+		
+		if(processors[templateId] instanceof IResettable)
+			((IResettable)processors[templateId]).Reset();
 		int partHeight = PlacePart(
 				templates[templateId], 
 				processors[templateId], 
