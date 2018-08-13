@@ -11,6 +11,6 @@ That aside, feel free to suggest changes and/or fixes, they are always welcome.
 Bugs can also be reported via the issue tracker, using the template.
 
 ## Copyright
-SteamWorld is © 2017 Zaexides
+SteamWorld is © 2017-2018 Zaexides
 
 *May contain code of McJty, Harry's Tech Reviews and CJMinecraft*
