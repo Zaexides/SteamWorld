@@ -12,6 +12,7 @@ import net.minecraft.entity.IMerchant;
 import net.minecraft.entity.INpc;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIOpenDoor;
+import net.minecraft.entity.ai.EntityAIPanic;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWanderAvoidWater;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
@@ -27,6 +28,7 @@ import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
@@ -36,6 +38,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import zaexides.steamworld.entity.ai.EntityAILookAtTradePlayerBetter;
 import zaexides.steamworld.entity.ai.EntityAITradePlayerBetter;
+import zaexides.steamworld.entity.ai.EntityAIVillanglerMate;
 
 public class EntityVillangler extends EntityAgeable implements INpc, IMerchant
 {
@@ -90,14 +93,32 @@ public class EntityVillangler extends EntityAgeable implements INpc, IMerchant
 	}
 	
 	@Override
+	protected void onGrowingAdult() 
+	{
+		super.onGrowingAdult();
+		setVariant(rand.nextInt(VillanglerVariant.values().length));
+	}
+	
+	@Override
 	protected void initEntityAI() 
 	{
 		this.tasks.addTask(0, new EntityAISwimming(this));
-		this.tasks.addTask(1, new EntityAITradePlayerBetter(this));
-		this.tasks.addTask(1, new EntityAILookAtTradePlayerBetter(this));
-		this.tasks.addTask(2, new EntityAIWanderAvoidWater(this, 0.6));
-		this.tasks.addTask(3, new EntityAIWatchClosest(this, EntityLiving.class, 4.0f));
-		this.tasks.addTask(4, new EntityAIOpenDoor(this, true));
+		this.tasks.addTask(1, new EntityAIPanic(this, 1.0)
+				{
+					@Override
+					public boolean shouldExecute() 
+					{
+						if(getRevengeTarget() instanceof EntityPlayer)
+							return false;
+						return super.shouldExecute();
+					}
+				});
+		this.tasks.addTask(2, new EntityAITradePlayerBetter(this));
+		this.tasks.addTask(2, new EntityAILookAtTradePlayerBetter(this));
+		this.tasks.addTask(3, new EntityAIWanderAvoidWater(this, 0.6));
+		this.tasks.addTask(4, new EntityAIVillanglerMate(this, 0.8));
+		this.tasks.addTask(5, new EntityAIWatchClosest(this, EntityLiving.class, 4.0f));
+		this.tasks.addTask(6, new EntityAIOpenDoor(this, true));
 	}
 	
 	@Override
