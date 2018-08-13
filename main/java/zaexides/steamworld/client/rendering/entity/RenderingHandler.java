@@ -12,6 +12,7 @@ import zaexides.steamworld.entity.EntityAnciteGolem;
 import zaexides.steamworld.entity.EntityAnemone;
 import zaexides.steamworld.entity.EntityAnemoneStinger;
 import zaexides.steamworld.entity.EntityEclipseStalker;
+import zaexides.steamworld.entity.EntityGlowDusty;
 import zaexides.steamworld.entity.EntityPropellorShell;
 import zaexides.steamworld.entity.EntitySkyFish;
 import zaexides.steamworld.entity.villangler.EntityVillangler;
@@ -28,5 +29,6 @@ public class RenderingHandler
 		RenderingRegistry.registerEntityRenderingHandler(EntityEclipseStalker.class, EntityRendererEclipseStalker::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityAnciteGolem.class, EntityRendererAnciteGolem::new);
 		RenderingRegistry.registerEntityRenderingHandler(EntityVillangler.class, EntityRendererVillangler::new);
+		RenderingRegistry.registerEntityRenderingHandler(EntityGlowDusty.class, EntityRendererGlowDusty::new);
 	}
 }
