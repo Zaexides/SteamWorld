@@ -3,11 +3,14 @@ package zaexides.steamworld.entity.villangler;
 import java.util.ArrayList;
 import java.util.Random;
 
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemMonsterPlacer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.WeightedRandom;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
+import zaexides.steamworld.init.EntityInitializer;
 import zaexides.steamworld.init.ItemInitializer;
 import zaexides.steamworld.items.SWItemIngot;
 
@@ -29,6 +32,10 @@ public class VillanglerMerchantGenDefault extends VillanglerMerchantRecipeListGe
 		builder.addTrade(30, new ItemStack(Items.GUNPOWDER, 10), new ItemStack(CURRENCY_POOR.getItem(), 4, CURRENCY_POOR.getMetadata()));
 		builder.addTrade(30, new ItemStack(Items.ROTTEN_FLESH, 15), new ItemStack(CURRENCY_POOR.getItem(), 4, CURRENCY_POOR.getMetadata()));
 		builder.addTrade(30, new ItemStack(Items.BONE, 7), new ItemStack(CURRENCY_POOR.getItem(), 2, CURRENCY_POOR.getMetadata()));
+		
+		ItemStack glowdustyEggStack = new ItemStack(Items.SPAWN_EGG);
+		ItemMonsterPlacer.applyEntityIdToItemStack(glowdustyEggStack, EntityInitializer.GLOWDUSTY);
+		builder.addTrade(10, new ItemStack(CURRENCY_RICH.getItem(), 2, CURRENCY_RICH.getMetadata()), glowdustyEggStack);
 		
 		weightList = builder.build();
 	}

@@ -41,7 +41,7 @@ public class EntityRendererGlowDusty extends RenderLiving<EntityGlowDusty>
 		if(!this.renderOutlines && !entity.isInvisible())
 		{
 			GlStateManager.pushMatrix();
-			GlStateManager.translate(x, y + 0.35, z);
+			GlStateManager.translate(x, y + 0.3, z);
 			GlStateManager.rotate(-this.renderManager.playerViewY, 0, 1, 0);
 			GlStateManager.rotate((float)(this.renderManager.options.thirdPersonView == 2 ? -1 : 1) * this.renderManager.playerViewX, 1.0F, 0.0F, 0.0F);
 			GlStateManager.disableLighting();

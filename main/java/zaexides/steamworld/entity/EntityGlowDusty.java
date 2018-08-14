@@ -6,14 +6,27 @@ import org.apache.logging.log4j.Level;
 
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.IEntityLivingData;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAIFollowParent;
+import net.minecraft.entity.ai.EntityAILookIdle;
+import net.minecraft.entity.ai.EntityAIMate;
+import net.minecraft.entity.ai.EntityAIPanic;
+import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAIWanderAvoidWaterFlying;
+import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import zaexides.steamworld.SteamWorld;
+import zaexides.steamworld.init.LootTableInitializer;
 
 public class EntityGlowDusty extends EntityFlyingAnimal
 {
@@ -29,6 +42,26 @@ public class EntityGlowDusty extends EntityFlyingAnimal
 	{
 		this(worldIn);
 		setColor(color);
+	}
+	
+	@Override
+	protected void initEntityAI() 
+	{
+		this.tasks.addTask(0, new EntityAISwimming(this));
+		this.tasks.addTask(1, new EntityAIMate(this, 0.7));
+		this.tasks.addTask(2, new EntityAIPanic(this, 1.0));
+		this.tasks.addTask(4, new EntityAIWanderAvoidWaterFlying(this, 0.7));
+		this.tasks.addTask(5, new EntityAIFollowParent(this, 0.8));
+		this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
+		this.tasks.addTask(7, new EntityAILookIdle(this));
+	}
+	
+	@Override
+	protected void applyEntityAttributes() 
+	{
+		super.applyEntityAttributes();
+		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(1.0);
+		this.getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).setBaseValue(1.3);
 	}
 	
 	@Override
@@ -56,6 +89,12 @@ public class EntityGlowDusty extends EntityFlyingAnimal
 		
 		setColor(Color.HSBtoRGB(rand.nextFloat(), s, b));
 		return super.onInitialSpawn(difficulty, livingdata);
+	}
+	
+	@Override
+	public boolean isBreedingItem(ItemStack stack) 
+	{
+		return stack.getItem() == Items.REDSTONE;
 	}
 	
 	public int getColor() 
@@ -95,5 +134,11 @@ public class EntityGlowDusty extends EntityFlyingAnimal
 		super.readEntityFromNBT(compound);
 		if(compound.hasKey("Color"))
 			setColor(compound.getInteger("Color"));
+	}
+	
+	@Override
+	protected ResourceLocation getLootTable() 
+	{
+		return LootTableInitializer.DROPS_GLOWDUSTY;
 	}
 }

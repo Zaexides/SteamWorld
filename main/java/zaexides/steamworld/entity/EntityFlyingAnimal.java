@@ -2,6 +2,7 @@ package zaexides.steamworld.entity;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.MoverType;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityFlyHelper;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityFlying;
@@ -29,6 +30,13 @@ public abstract class EntityFlyingAnimal extends EntityAnimal implements EntityF
         pathnavigateflying.setCanFloat(true);
         pathnavigateflying.setCanEnterDoors(true);
         return pathnavigateflying;
+	}
+	
+	@Override
+	protected void applyEntityAttributes() 
+	{
+		super.applyEntityAttributes();
+		this.getAttributeMap().registerAttribute(SharedMonsterAttributes.FLYING_SPEED);
 	}
 	
 	@Override

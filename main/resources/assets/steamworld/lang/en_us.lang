@@ -261,6 +261,7 @@ entity.steamworld.propellorshell.name=Proshellor
 entity.steamworld.eclipse_stalker.name=Eclipse Stalker
 entity.steamworld.ancite_golem.name=Ancite Golem
 entity.steamworld.villangler.name=Villangler
+entity.steamworld.glowdusty.name=Glowdusty
 
 ##################
 # Death Messages #

@@ -31,6 +31,7 @@ public class LootTableInitializer
 			
 	public static final ResourceLocation DROPS_SKYFISH = register("entities/skyfish");
 	public static final ResourceLocation DROPS_ANEMONE = register("entities/anemone");
+	public static final ResourceLocation DROPS_GLOWDUSTY = register("entities/glowdusty");
 	
 	private static ResourceLocation register(String location)
 	{

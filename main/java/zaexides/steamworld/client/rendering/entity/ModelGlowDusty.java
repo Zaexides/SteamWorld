@@ -76,13 +76,21 @@ public class ModelGlowDusty extends ModelBase {
         this.body.render(f5);
         GlStateManager.popMatrix();
     }
-
-    /**
-     * This is a helper function from Tabula to set the rotation of model parts
-     */
-    public void setRotateAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-        modelRenderer.rotateAngleX = x;
-        modelRenderer.rotateAngleY = y;
-        modelRenderer.rotateAngleZ = z;
+    
+    @Override
+    public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw,
+    		float headPitch, float scaleFactor, Entity entityIn) 
+    {
+    	double velY = entityIn.motionY;
+    	
+    	if(velY >= 0)
+    		this.wingLeft.rotateAngleZ = (float)Math.cos(ageInTicks * 10 * (velY + 0.2)) * 1.0f;
+    	else
+    		this.wingLeft.rotateAngleZ = 0.2f;
+    	
+    	this.wingRight.rotateAngleZ = -this.wingLeft.rotateAngleZ;
+    	
+    	this.body.rotateAngleY = netHeadYaw * 0.017453292f;
+    	this.body.rotateAngleX = headPitch * 0.017453292f;
     }
 }
