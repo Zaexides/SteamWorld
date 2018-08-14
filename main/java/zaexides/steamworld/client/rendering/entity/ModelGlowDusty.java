@@ -74,38 +74,7 @@ public class ModelGlowDusty extends ModelBase {
         GlStateManager.translate(-this.body.offsetX, -this.body.offsetY, -this.body.offsetZ);
         GlStateManager.translate(-this.body.rotationPointX * f5, -this.body.rotationPointY * f5, -this.body.rotationPointZ * f5);
         this.body.render(f5);
-        renderAura(entity, f5);
         GlStateManager.popMatrix();
-    }
-    
-    private void renderAura(Entity entity, float f5)
-    {
-    	//TODO get this to billboard
-    	GlStateManager.pushMatrix();
-    	GlStateManager.translate(0, 2, 0);
-    	GlStateManager.scale(32, 32, 32);
-    	GlStateManager.rotate(1.0f, 0, 0, 0);
-    	
-    	float rotationX = ActiveRenderInfo.getRotationX();
-    	float rotationXY = ActiveRenderInfo.getRotationXY();
-    	float rotationXZ = ActiveRenderInfo.getRotationXZ();
-    	float rotationYZ = ActiveRenderInfo.getRotationYZ();
-    	float rotationZ = ActiveRenderInfo.getRotationZ();
-    	Vec3d[] avec3d = new Vec3d[] {new Vec3d((double)(-rotationX * f5 - rotationXY * f5), (double)(-rotationZ * f5), (double)(-rotationYZ * f5 - rotationXZ * f5)), new Vec3d((double)(-rotationX * f5 + rotationXY * f5), (double)(rotationZ * f5), (double)(-rotationYZ * f5 + rotationXZ * f5)), new Vec3d((double)(rotationX * f5 + rotationXY * f5), (double)(rotationZ * f5), (double)(rotationYZ * f5 + rotationXZ * f5)), new Vec3d((double)(rotationX * f5 - rotationXY * f5), (double)(-rotationZ * f5), (double)(rotationYZ * f5 - rotationXZ * f5))};
-    	
-    	Tessellator tessellator = Tessellator.getInstance();
-    	BufferBuilder builder = tessellator.getBuffer();
-    	
-    	builder.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_TEX);
-    	
-    	builder.pos(avec3d[0].x, avec3d[0].y, avec3d[0].z).tex(0.0f, 0.5f).endVertex();
-    	builder.pos(avec3d[1].x, avec3d[1].y, avec3d[1].z).tex(0.5f, 0.5f).endVertex();
-    	builder.pos(avec3d[2].x, avec3d[2].y, avec3d[2].z).tex(0.5f, 1.0f).endVertex();
-    	builder.pos(avec3d[3].x, avec3d[3].y, avec3d[3].z).tex(0.0f, 1.0f).endVertex();
-    	
-    	tessellator.draw();
-    	
-    	GlStateManager.popMatrix();
     }
 
     /**
