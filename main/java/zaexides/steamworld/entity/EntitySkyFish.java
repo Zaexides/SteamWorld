@@ -49,7 +49,7 @@ import zaexides.steamworld.init.LootTableInitializer;
 import zaexides.steamworld.init.SoundInitializer;
 import zaexides.steamworld.items.ItemMaterial;
 
-public class EntitySkyFish extends EntityAnimal implements EntityFlying, IEntityBreakBlockCallback
+public class EntitySkyFish extends EntityFlyingAnimal implements IEntityBreakBlockCallback
 {
 	private byte woodEaten, leavesEaten;
 	
@@ -72,8 +72,6 @@ public class EntitySkyFish extends EntityAnimal implements EntityFlying, IEntity
 	{
 		super(worldIn);
 		setSize(1.8f, 0.7f);
-		this.moveHelper = new EntityFlyHelper(this);
-		this.spawnableBlock = Blocks.AIR;
 		hunger = worldIn.rand.nextInt(7200) - 3600; //Initial hunger (-3600 to 3600 = -3 to 3 minutes)
 	}
 	
@@ -93,90 +91,11 @@ public class EntitySkyFish extends EntityAnimal implements EntityFlying, IEntity
 		this.tasks.addTask(6, new EntityAIWatchClosest(this, EntityPlayer.class, 3.0F));
         this.tasks.addTask(7, new EntityAILookIdle(this));
 	}
-	
-	@Override
-	protected PathNavigate createNavigator(World worldIn)
-	{
-		PathNavigateFlying pathnavigateflying = new PathNavigateFlying(this, worldIn);
-        pathnavigateflying.setCanOpenDoors(false);
-        pathnavigateflying.setCanFloat(true);
-        pathnavigateflying.setCanEnterDoors(true);
-        return pathnavigateflying;
-	}
 
 	@Override
 	public EntityAgeable createChild(EntityAgeable ageable) 
 	{
 		return new EntitySkyFish(this.world);
-	}
-	
-	@Override
-	public void fall(float distance, float damageMultiplier) {
-	}
-	
-	@Override
-	protected void updateFallState(double y, boolean onGroundIn, IBlockState state, BlockPos pos) {
-	}
-	
-	@Override
-	public void travel(float strafe, float up, float forward) 
-	{
-		if (this.isInWater())
-        {
-            this.moveRelative(strafe, up, forward, 0.02F);
-            this.move(MoverType.SELF, this.motionX, this.motionY, this.motionZ);
-            this.motionX *= 0.800000011920929D;
-            this.motionY *= 0.800000011920929D;
-            this.motionZ *= 0.800000011920929D;
-        }
-        else if (this.isInLava())
-        {
-            this.moveRelative(strafe, up, forward, 0.02F);
-            this.move(MoverType.SELF, this.motionX, this.motionY, this.motionZ);
-            this.motionX *= 0.5D;
-            this.motionY *= 0.5D;
-            this.motionZ *= 0.5D;
-        }
-        else
-        {
-            float f = 0.91F;
-
-            if (this.onGround)
-            {
-                BlockPos underPos = new BlockPos(MathHelper.floor(this.posX), MathHelper.floor(this.getEntityBoundingBox().minY) - 1, MathHelper.floor(this.posZ));
-                IBlockState underState = this.world.getBlockState(underPos);
-                f = underState.getBlock().getSlipperiness(underState, this.world, underPos, this) * 0.91F;
-            }
-
-            float f1 = 0.16277136F / (f * f * f);
-            this.moveRelative(strafe, up, forward, this.onGround ? 0.1F * f1 : 0.02F);
-            f = 0.91F;
-
-            if (this.onGround)
-            {
-                BlockPos underPos = new BlockPos(MathHelper.floor(this.posX), MathHelper.floor(this.getEntityBoundingBox().minY) - 1, MathHelper.floor(this.posZ));
-                IBlockState underState = this.world.getBlockState(underPos);
-                f = underState.getBlock().getSlipperiness(underState, this.world, underPos, this) * 0.91F;
-            }
-
-            this.move(MoverType.SELF, this.motionX, this.motionY, this.motionZ);
-            this.motionX *= (double)f;
-            this.motionY *= (double)f;
-            this.motionZ *= (double)f;
-        }
-
-        this.prevLimbSwingAmount = this.limbSwingAmount;
-        double d1 = this.posX - this.prevPosX;
-        double d0 = this.posZ - this.prevPosZ;
-        float f2 = MathHelper.sqrt(d1 * d1 + d0 * d0) * 4.0F;
-
-        if (f2 > 1.0F)
-        {
-            f2 = 1.0F;
-        }
-
-        this.limbSwingAmount += (f2 - this.limbSwingAmount) * 0.4F;
-        this.limbSwing += this.limbSwingAmount;
 	}
 	
 	@Override
@@ -186,11 +105,6 @@ public class EntitySkyFish extends EntityAnimal implements EntityFlying, IEntity
 		this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(6.0);
 		this.getAttributeMap().registerAttribute(SharedMonsterAttributes.FLYING_SPEED);
 		this.getEntityAttribute(SharedMonsterAttributes.FLYING_SPEED).setBaseValue(0.6);
-	}
-	
-	@Override
-	public boolean isOnLadder() {
-		return false;
 	}
 	
 	@Override

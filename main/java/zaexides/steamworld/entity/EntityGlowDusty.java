@@ -15,7 +15,7 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import zaexides.steamworld.SteamWorld;
 
-public class EntityGlowDusty extends EntityAnimal
+public class EntityGlowDusty extends EntityFlyingAnimal
 {
 	private static final DataParameter<Integer> COLOR = EntityDataManager.<Integer>createKey(EntityGlowDusty.class, DataSerializers.VARINT);
 	
