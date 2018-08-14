@@ -26,6 +26,7 @@ import zaexides.steamworld.fluids.FluidPreservation;
 import zaexides.steamworld.fluids.FluidWithering;
 import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.init.ItemInitializer;
+import zaexides.steamworld.init.PotionTypeInitializer;
 import zaexides.steamworld.items.SWItemIngot;
 
 public class VillanglerMerchantGenScientist extends VillanglerMerchantRecipeListGenerator
@@ -43,6 +44,7 @@ public class VillanglerMerchantGenScientist extends VillanglerMerchantRecipeList
 		builder.addTrade(20, new ItemStack(CURRENCY_POOR.getItem(), 20, CURRENCY_POOR.getMetadata()), GetPotionStack(PotionTypes.STRENGTH));
 		builder.addTrade(22, new ItemStack(CURRENCY_POOR.getItem(), 25, CURRENCY_POOR.getMetadata()), GetPotionStack(PotionTypes.HEALING));
 		builder.addTrade(19, new ItemStack(CURRENCY_POOR.getItem(), 30, CURRENCY_POOR.getMetadata()), GetPotionStack(PotionTypes.REGENERATION));
+		builder.addTrade(16, new ItemStack(CURRENCY_POOR.getItem(), 45, CURRENCY_POOR.getMetadata()), GetPotionStack(PotionTypeInitializer.LUCK));
 		builder.addTrade(15, new ItemStack(CURRENCY_POOR.getItem(), 12, CURRENCY_POOR.getMetadata()), new ItemStack(BlockInitializer.BLOCK_FLOWER, 1, BlockSWFlower.EnumType.WITHER.getMeta()));
 		builder.addTrade(25, new ItemStack(BlockInitializer.BLOCK_FLOWER, 1, BlockSWFlower.EnumType.WITHER.getMeta()), new ItemStack(CURRENCY_POOR.getItem(), 10, CURRENCY_POOR.getMetadata()));
 		

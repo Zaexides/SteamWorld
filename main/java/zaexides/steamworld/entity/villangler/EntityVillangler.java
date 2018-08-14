@@ -49,7 +49,6 @@ public class EntityVillangler extends EntityAgeable implements INpc, IMerchant
 	public EntityVillangler(World worldIn) 
 	{
 		this(worldIn, VillanglerVariant.DEFAULT);
-		//TODO mating
 	}
 	
 	public EntityVillangler(World worldIn, VillanglerVariant variant) 
@@ -62,8 +61,16 @@ public class EntityVillangler extends EntityAgeable implements INpc, IMerchant
 	@Override
 	public IEntityLivingData onInitialSpawn(DifficultyInstance difficulty, IEntityLivingData livingdata)
 	{
-		setVariant(rand.nextInt(VillanglerVariant.values().length));
+		setRandomVariant(true);
 		return super.onInitialSpawn(difficulty, livingdata);
+	}
+	
+	private void setRandomVariant(boolean includeCultist)
+	{
+		int i = -1;
+		while(i == -1 || (i == VillanglerVariant.CULTIST.id && !includeCultist))
+			i = rand.nextInt(VillanglerVariant.values().length);
+		setVariant(i);
 	}
 	
 	@Override
@@ -96,7 +103,7 @@ public class EntityVillangler extends EntityAgeable implements INpc, IMerchant
 	protected void onGrowingAdult() 
 	{
 		super.onGrowingAdult();
-		setVariant(rand.nextInt(VillanglerVariant.values().length));
+		setRandomVariant(false);
 	}
 	
 	@Override
@@ -278,7 +285,9 @@ public class EntityVillangler extends EntityAgeable implements INpc, IMerchant
 		DEFAULT(0, new VillanglerMerchantGenDefault()),
 		ECONOMIST(1, new VillanglerMerchantGenEconomist()),
 		LIBRARIAN(2, new VillanglerMerchantGenLibrarian()),
-		SCIENTIST(3, new VillanglerMerchantGenScientist());
+		SCIENTIST(3, new VillanglerMerchantGenScientist()),
+		BREEDER(4, new VillanglerMerchantGenBreeder()),
+		CULTIST(5, new VillanglerMerchantGenCultist());
 		
 		private final int id;
 		private final VillanglerMerchantRecipeListGenerator recipeListGenerator;

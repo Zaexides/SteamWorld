@@ -31,7 +31,8 @@ public class WorldGenTower implements IWorldGenerator
 					new ResourceLocation(ModInfo.MODID, "tower/sw_tower_farm"),
 					new ResourceLocation(ModInfo.MODID, "tower/sw_tower_food"),
 					new ResourceLocation(ModInfo.MODID, "tower/sw_tower_library"),
-					new ResourceLocation(ModInfo.MODID, "tower/sw_tower_residence")
+					new ResourceLocation(ModInfo.MODID, "tower/sw_tower_residence"),
+					new ResourceLocation(ModInfo.MODID, "tower/sw_tower_animal"),
 			};
 	
 	private static ITemplateProcessor[] processors = new ITemplateProcessor[]
@@ -39,7 +40,8 @@ public class WorldGenTower implements IWorldGenerator
 					new TemplateProcessorTowerFarm(),
 					new TemplateProcessorTowerFood(),
 					new TemplateProcessorTowerLibrary(),
-					new TemplateProcessorTowerResidence()
+					new TemplateProcessorTowerResidence(),
+					new TemplateProcessorTowerAnimal(),
 			};
 		
 	@Override

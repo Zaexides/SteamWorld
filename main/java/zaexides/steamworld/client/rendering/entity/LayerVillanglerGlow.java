@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.entity.layers.LayerRenderer;
 import net.minecraft.util.ResourceLocation;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.entity.villangler.EntityVillangler;
+import zaexides.steamworld.entity.villangler.EntityVillangler.VillanglerVariant;
 
 public class LayerVillanglerGlow implements LayerRenderer<EntityVillangler>
 {
@@ -22,6 +23,9 @@ public class LayerVillanglerGlow implements LayerRenderer<EntityVillangler>
 	public void doRenderLayer(EntityVillangler entitylivingbaseIn, float limbSwing, float limbSwingAmount, float partialTicks,
 			float ageInTicks, float netHeadYaw, float headPitch, float scale) 
 	{
+		if(entitylivingbaseIn.getVariant() == VillanglerVariant.CULTIST)
+			return;
+		
 		this.rendererVillangler.bindTexture(EMISSION_MAP);
 		GlStateManager.enableBlend();
 		GlStateManager.blendFunc(GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ONE);

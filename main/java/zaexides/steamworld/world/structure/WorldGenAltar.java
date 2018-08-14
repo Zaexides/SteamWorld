@@ -26,6 +26,7 @@ public class WorldGenAltar implements IWorldGenerator
 	private static final int MIN_HEIGHT = 10, MAX_HEIGHT = 30;
 	
 	private static final ResourceLocation TEMPLATE_LOCATION = new ResourceLocation(ModInfo.MODID, "corite_altar");
+	private static final TemplateProcessorAltar ALTAR_TEMPLATE_PROCESSOR = new TemplateProcessorAltar();
 	
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator,
@@ -49,5 +50,6 @@ public class WorldGenAltar implements IWorldGenerator
 		Template template = world.getSaveHandler().getStructureTemplateManager().getTemplate(world.getMinecraftServer(), TEMPLATE_LOCATION);
 		
 		template.addBlocksToWorld(world, pos, placementSettings);
+		template.addBlocksToWorld(world, pos, ALTAR_TEMPLATE_PROCESSOR, placementSettings, 2);
 	}
 }

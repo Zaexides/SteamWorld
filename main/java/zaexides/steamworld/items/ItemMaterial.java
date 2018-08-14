@@ -86,7 +86,8 @@ public class ItemMaterial extends SteamWorldItem implements IOreDictionaryRegist
 		ENDER_CORE(6, "ender_core", "enderCore"),
 		BIOMATTER(7, "biomatter", 400, "itemBiomass", "itemBiomatter"),
 		CURRENCY_LOW(8, "poor_coin"),
-		CURRENCY_HIGH(9, "rich_coin");
+		CURRENCY_HIGH(9, "rich_coin"),
+		LEVIATHAN_FEATHER(10, "leviathan_feather");
 		
 		private final int meta;
 		private final String name;
