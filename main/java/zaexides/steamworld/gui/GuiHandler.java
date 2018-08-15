@@ -135,7 +135,7 @@ public class GuiHandler implements IGuiHandler
 		case MANUAL_ANCITE:
 			return new GuiManual(11, new ResourceLocation(ModInfo.MODID, "textures/gui/manual_ancite.png"));
 		case MANUAL_ENDRITCH:
-			return new GuiManual(14, new ResourceLocation(ModInfo.MODID, "textures/gui/manual_endritch.png"));
+			return new GuiManual(16, new ResourceLocation(ModInfo.MODID, "textures/gui/manual_endritch.png"));
 		}
 		
 		return null;

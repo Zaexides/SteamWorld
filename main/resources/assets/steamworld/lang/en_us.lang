@@ -491,3 +491,7 @@ text.steamworld.manual.title.teleporter=Teleporter
 text.steamworld.manual.page.teleporter=At the Endritch tier, you get access to creating Teleporters!\n\nThey work quite simple:\nYou select a Net ID, and then another teleporter to teleport to.\n\nIt'll work as long as the sender has steam and both teleporters share the same Net ID!
 text.steamworld.manual.title.teleporter_details=
 text.steamworld.manual.page.teleporter_details=1.The steam tank of your Teleporter.\n2.The list of other teleporters.\n3.Toggle visibility of other Net ID teleporters.\n4.Upload your Teleporter.\n5.Your Teleporter's name.\n6.Your Teleporter's Net ID.
+text.steamworld.manual.title.portal=Sky of Old Portal
+text.steamworld.manual.page.portal=Ready to move on?\nThen place a Teleporter down on a 5x5 square of quartz blocks, add a 5x5 frame around it and place an obilisk on top of it. Make sure the rest of this cuboid consists out of nothing but air.
+text.steamworld.manual.title.portal_2=
+text.steamworld.manual.page.portal_2=If done correctly, congratulations! You can now enter the Sky of Old!\n\nUp next is to explore this new world, but don't forget to bring an elytra!
