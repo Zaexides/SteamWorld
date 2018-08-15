@@ -2,17 +2,21 @@ package zaexides.steamworld.te.generic_machine;
 
 import org.apache.logging.log4j.Level;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.DimensionManager;
@@ -23,6 +27,7 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import zaexides.steamworld.SteamWorld;
+import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.savedata.world.TeleporterData;
 import zaexides.steamworld.savedata.world.TeleporterSaveData;
 import zaexides.steamworld.te.SyncedTileEntity;
@@ -38,6 +43,12 @@ public class TileEntityTeleporter extends SyncedTileEntity implements ICapabilit
 	
 	public int cooldown = 0;
 	private final int MAX_COOLDOWN = 100;
+	
+	private final int PORTAL_UPDATE_FREQUENCY = 5;
+	private int portalUpdateTimer = 0;
+	private final IBlockState QUARTZ_BLOCK_STATE = Blocks.QUARTZ_BLOCK.getDefaultState();
+	private final IBlockState AIR_BLOCK_STATE = Blocks.AIR.getDefaultState();
+	private final IBlockState PORTAL_BLOCK_STATE = BlockInitializer.BLOCK_SW_PORTAL.getDefaultState();
 	
 	public SteamWorldSteamTank steamTank = new SteamWorldSteamTank(Fluid.BUCKET_VOLUME * 4, this);
 	
@@ -153,5 +164,92 @@ public class TileEntityTeleporter extends SyncedTileEntity implements ICapabilit
 	{
 		if(cooldown > 0)
 			cooldown--;
+		portalUpdateTimer++;
+		if(portalUpdateTimer >= PORTAL_UPDATE_FREQUENCY)
+		{
+			updateSkyOfOldPortalStatus();
+			portalUpdateTimer = 0;
+		}
+	}
+	
+	public void updateSkyOfOldPortalStatus()
+	{
+		if(world.provider.getDimensionType().getId() != 0)
+			return;
+		
+		int state = getPortalState();
+		if(state == 1 || state == 2)
+			setPortal(state == 1);
+	}
+	
+	private void setPortal(boolean active)
+	{
+		for(int dx = -1; dx <= 1; dx++)
+		{
+			for(int dz = -1; dz <= 1; dz++)
+			{
+				int xzDistance = (dx * dx) + (dz * dz);
+				if(xzDistance != 0)
+					world.setBlockState(pos.add(dx, 0, dz), active ? PORTAL_BLOCK_STATE : AIR_BLOCK_STATE);
+			}
+		}
+	}
+	
+	/*
+	 * Returns portal state.
+	 * 0 = Valid, Active
+	 * 1 = Valid, Inactive
+	 * 2 = Invalid, Active
+	 * 3 = Invalid, Inactive
+	 */
+	private int getPortalState()
+	{
+		int state = 0;
+		for(int dx = -2; dx <= 2; dx++)
+		{
+			for(int dz = -2; dz <= 2; dz++)
+			{
+				for(int dy = -1; dy <= 3; dy++)
+				{
+					BlockPos checkPos = pos.add(dx, dy, dz);
+					int xzDistance = (dx * dx) + (dz * dz);
+					if((dy == 0 && xzDistance > 3) || dy == -1)
+					{
+						if(world.getBlockState(checkPos) != QUARTZ_BLOCK_STATE)
+							state |= 2;
+					}
+					else if(dy == 0 && xzDistance > 0)
+					{
+						if(world.getBlockState(checkPos) != PORTAL_BLOCK_STATE)
+						{
+							if(world.getBlockState(checkPos) != AIR_BLOCK_STATE)
+								state |= 2;
+							else
+								state |= 1;
+						}
+					}
+					else if(dy == 0 && xzDistance == 0)
+					{
+						if(world.getBlockState(checkPos).getBlock() != BlockInitializer.MACHINE_VARIANT)
+							state |= 2;
+					}
+					else if(dy > 0)
+					{
+						if(xzDistance == 0)
+						{
+							if(world.getBlockState(checkPos).getBlock() != BlockInitializer.OBILISK)
+								state |= 2;
+						}
+						else
+						{
+							if(world.getBlockState(checkPos) != AIR_BLOCK_STATE)
+								state |= 2;
+						}
+					}
+				}
+			}
+		}
+		
+		return state;
 	}
 }

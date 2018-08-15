@@ -207,7 +207,10 @@ public class BlockMachineVariant extends Block implements IMetaName, IModeledObj
 			{
 				TileEntity tileEntity = worldIn.getTileEntity(pos);
 				if(tileEntity instanceof TileEntityTeleporter)
+				{
 					teleporterSaveData.removeTeleporterData(((TileEntityTeleporter)tileEntity).ownId);
+					((TileEntityTeleporter)tileEntity).updateSkyOfOldPortalStatus();
+				}
 			}
 			break;
 		default:
