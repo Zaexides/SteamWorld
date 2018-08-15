@@ -24,8 +24,8 @@ public class WorldGenCrypt implements IWorldGenerator
 {
 	private static final float CHANCE_PER_CHUNK = 0.007f;
 	private static final float CHANCE_MODIFIER_IN_DESERT = 0.5f;
-	private static final float CHANCE_MODIFIER_IN_MOUNTAIN = 10.0f;
-	private static final float CHANCE_MODIFIER_IN_SNOW = 2.5f;
+	private static final float CHANCE_MODIFIER_IN_MOUNTAIN = 2.0f;
+	private static final float CHANCE_MODIFIER_IN_SNOW = 1.2f;
 	private static final int MIN_HEIGHT = 10, MAX_HEIGHT = 30;
 	
 	private static final ResourceLocation CRYPT_TEMPLATE_LOCATION = new ResourceLocation(ModInfo.MODID, "ancitecrypt");

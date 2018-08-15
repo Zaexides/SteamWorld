@@ -32,6 +32,10 @@ public class WorldGenAltar implements IWorldGenerator
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator,
 			IChunkProvider chunkProvider) 
 	{
+		for(int i = 0; i < 6; i++)
+			random.nextFloat(); //Mix up the number to not end up getting the same values as the other worldgen structures.
+		//Not sure™ why it's doing that.
+		
 		if(world.provider.getDimension() == ConfigHandler.dimensionId && random.nextFloat() <= CHANCE_PER_CHUNK)
 		{
 			GenerateStructure(world, random, chunkX, chunkZ);

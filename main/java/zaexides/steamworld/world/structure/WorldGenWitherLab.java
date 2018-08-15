@@ -31,6 +31,10 @@ public class WorldGenWitherLab implements IWorldGenerator
 		if(!ConfigHandler.generateDwarvenStructure)
 			return;
 		
+		for(int i = 0; i < 12; i++)
+			random.nextFloat(); //Mix up the number to not end up getting the same values as the other worldgen structures.
+		//Not sure™ why it's doing that.
+		
 		if(world.provider.getDimension() == ConfigHandler.dimensionId && random.nextFloat() <= CHANCE_PER_CHUNK)
 		{
 			GenerateStructure(world, random, chunkX, chunkZ);
