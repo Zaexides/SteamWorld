@@ -67,7 +67,7 @@ public class VillanglerMerchantGenLibrarian extends VillanglerMerchantRecipeList
 	@Override
 	public MerchantRecipeList generateMerchantRecipeList(MerchantRecipeList merchantRecipeList, Random random) 
 	{
-		int recipeAmount = random.nextInt(10) + 5;
+		int recipeAmount = random.nextInt(4) + 2;
 		for(int i = 0; i < recipeAmount;)
 		{
 			int attempts = 0;

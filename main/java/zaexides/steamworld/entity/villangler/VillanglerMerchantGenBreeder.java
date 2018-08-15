@@ -63,7 +63,7 @@ public class VillanglerMerchantGenBreeder extends VillanglerMerchantRecipeListGe
 	@Override
 	public MerchantRecipeList generateMerchantRecipeList(MerchantRecipeList merchantRecipeList, Random random) 
 	{
-		int recipeAmount = random.nextInt(3) + 6;
+		int recipeAmount = random.nextInt(4) + 2;
 		for(int i = 0; i < recipeAmount;)
 		{
 			int attempts = 0;
