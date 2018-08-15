@@ -52,7 +52,17 @@ public class BlockSWPortal extends SteamWorldBlock
 		}
 		
 		if(entityIn instanceof EntityPlayer)
-			worldIn.getMinecraftServer().getPlayerList().transferPlayerToDimension((EntityPlayerMP)entityIn, targetDimension, new SteamWorldTeleporter((WorldServer)targetWorld, spawnPos, true));
+		{
+			EntityPlayerMP playerMP = (EntityPlayerMP) entityIn;
+			if(playerMP.timeUntilPortal > 0)
+				playerMP.timeUntilPortal = 10;
+			else
+			{
+				if(!net.minecraftforge.common.ForgeHooks.onTravelToDimension(playerMP, targetDimension))
+					return;
+				worldIn.getMinecraftServer().getPlayerList().transferPlayerToDimension(playerMP, targetDimension, new SteamWorldTeleporter((WorldServer)targetWorld, spawnPos, true));
+			}
+		}
 		else
 			worldIn.getMinecraftServer().getPlayerList().transferEntityToWorld(entityIn, lastDimension, (WorldServer)worldIn, (WorldServer)targetWorld, new SteamWorldTeleporter((WorldServer)targetWorld, spawnPos, true));
 	}

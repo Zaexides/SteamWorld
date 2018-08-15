@@ -115,7 +115,7 @@ public class WorldProviderSkyOfOld extends WorldProviderSurface
 	@Override
 	public BlockPos getSpawnPoint() 
 	{
-		return new BlockPos(16, 87, 16);
+		return new BlockPos(16, 86, 16);
 	}
 	
 	@Override
