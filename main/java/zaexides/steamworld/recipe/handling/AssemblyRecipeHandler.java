@@ -67,6 +67,7 @@ public class AssemblyRecipeHandler
 		final RecipeInputItemStack ADVANCED_MACHINE_PARTS = new RecipeInputItemStack(new ItemStack(ItemInitializer.GENERIC_MATERIAL, 1, ItemMaterial.EnumVarietyMaterial.ADVANCED_MACHINE_PARTS.getMeta()));
 		final RecipeInputOreDic COAL_BLOCK = new RecipeInputOreDic("blockCoal");
 		final RecipeInputOreDic NUGGET_ANCITE = new RecipeInputOreDic("nuggetAncite");
+		final RecipeInputOreDic INGOT_GALITE = new RecipeInputOreDic("ingotGalite");
 		final RecipeInputOreDic PLATE_GALITE = new RecipeInputOreDic("plateGalite");
 		final RecipeInputOreDic PLATE_ESSEN = new RecipeInputOreDic("plateEssen");
 		final RecipeInputOreDic INGOT_ESSEN = new RecipeInputOreDic("ingotEssen");
@@ -178,7 +179,25 @@ public class AssemblyRecipeHandler
 				INGOT_GOLD
 				);
 		
-		AssemblyRecipe recipeEssenPlate = new AssemblyRecipe(new ItemStack(ItemInitializer.GENERIC_MATERIAL, 1, ItemMaterial.EnumVarietyMaterial.ESSEN_PLATE.getMeta()), 100,
+		AssemblyRecipe recipeGalitePlate = new AssemblyRecipe(new ItemStack(ItemInitializer.GENERIC_MATERIAL, 1, ItemMaterial.EnumVarietyMaterial.GALITE_PLATE.getMeta()), 100,
+				INGOT_GALITE,
+				INGOT_GALITE,
+				INGOT_GALITE,
+				EMPTY_INPUT,
+				EMPTY_INPUT,
+				EMPTY_INPUT
+				);
+		
+		AssemblyRecipe recipeGalitePlateDouble = new AssemblyRecipe(new ItemStack(ItemInitializer.GENERIC_MATERIAL, 2, ItemMaterial.EnumVarietyMaterial.GALITE_PLATE.getMeta()), 100,
+				INGOT_GALITE,
+				INGOT_GALITE,
+				INGOT_GALITE,
+				INGOT_GALITE,
+				INGOT_GALITE,
+				INGOT_GALITE
+				);
+		
+		AssemblyRecipe recipeEssenPlate = new AssemblyRecipe(new ItemStack(ItemInitializer.GENERIC_MATERIAL, 1, ItemMaterial.EnumVarietyMaterial.ESSEN_PLATE.getMeta()), 150,
 				PLATE_GALITE,
 				INGOT_ESSEN,
 				EMPTY_INPUT,
@@ -187,7 +206,7 @@ public class AssemblyRecipeHandler
 				EMPTY_INPUT
 				);
 		
-		AssemblyRecipe recipeEssenPlateDouble = new AssemblyRecipe(new ItemStack(ItemInitializer.GENERIC_MATERIAL, 2, ItemMaterial.EnumVarietyMaterial.ESSEN_PLATE.getMeta()), 100,
+		AssemblyRecipe recipeEssenPlateDouble = new AssemblyRecipe(new ItemStack(ItemInitializer.GENERIC_MATERIAL, 2, ItemMaterial.EnumVarietyMaterial.ESSEN_PLATE.getMeta()), 150,
 				PLATE_GALITE,
 				INGOT_ESSEN,
 				PLATE_GALITE,
@@ -196,7 +215,7 @@ public class AssemblyRecipeHandler
 				EMPTY_INPUT
 				);
 		
-		AssemblyRecipe recipeEssenPlateTriple = new AssemblyRecipe(new ItemStack(ItemInitializer.GENERIC_MATERIAL, 3, ItemMaterial.EnumVarietyMaterial.ESSEN_PLATE.getMeta()), 100,
+		AssemblyRecipe recipeEssenPlateTriple = new AssemblyRecipe(new ItemStack(ItemInitializer.GENERIC_MATERIAL, 3, ItemMaterial.EnumVarietyMaterial.ESSEN_PLATE.getMeta()), 150,
 				PLATE_GALITE,
 				INGOT_ESSEN,
 				PLATE_GALITE,

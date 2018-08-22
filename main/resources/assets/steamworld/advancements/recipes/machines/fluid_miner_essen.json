@@ -2,22 +2,23 @@
   "parent": "minecraft:recipes/root",
   "rewards": {
     "recipes": [
-      "steamworld:plate_galite"
+      "steamworld:fluid_miner_essen"
     ]
   },
   "criteria": {
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "steamworld:plate_galite"
+        "recipe": "steamworld:fluid_miner_essen"
       }
     },
-    "has_galite": {
+    "has_essen": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "item": "steamworld:ingot", "data": 3
+            "item": "steamworld:ingot",
+            "data": 5
           }
         ]
       }
@@ -26,7 +27,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_galite"
+      "has_essen"
     ]
   ]
 }

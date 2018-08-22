@@ -1,0 +1,36 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "steamworld:wood_drill",
+      "steamworld:stone_drill",
+      "steamworld:iron_drill",
+      "steamworld:gold_drill",
+      "steamworld:diamond_drill",
+      "steamworld:galite_drill",
+      "steamworld:wood_pump",
+      "steamworld:stone_pump",
+      "steamworld:iron_pump",
+      "steamworld:gold_pump",
+      "steamworld:diamond_pump",
+      "steamworld:galite_pump"
+    ]
+  },
+  "criteria": {
+    "has_galite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "steamworld:ingot", "data": 3
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_galite"
+    ]
+  ]
+}
