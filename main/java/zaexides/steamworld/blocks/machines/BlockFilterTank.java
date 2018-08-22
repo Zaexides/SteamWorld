@@ -45,13 +45,6 @@ public class BlockFilterTank extends SteamWorldBlock implements ITileEntityProvi
 	{
 		ItemInitializer.ITEMS.add(new ItemBlockMachine(this).AddToolTip("item.steamworld.filter_tank.tooltip[0]").AddToolTip("item.steamworld.filter_tank.tooltip[1]").setRegistryName(this.getRegistryName()).setMaxStackSize(maxStackSize));
 	}
-	
-	@Override
-	public void RegisterModels() 
-	{
-		super.RegisterModels();
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFilterTank.class, new FilteredTankModel());
-	}
 
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) 

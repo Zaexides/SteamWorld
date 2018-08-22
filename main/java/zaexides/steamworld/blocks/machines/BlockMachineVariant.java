@@ -31,7 +31,6 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.oredict.OreDictionary;
-import scala.tools.nsc.transform.patmat.ScalaLogic.TreesAndTypesDomain.Var;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.item.ItemBlockVariant;
@@ -126,8 +125,6 @@ public class BlockMachineVariant extends Block implements IMetaName, IModeledObj
 		for(int i = 0; i < EnumType.values().length; i++)
 		{
 			SteamWorld.proxy.RegisterItemRenderers(Item.getItemFromBlock(this), i, "inventory", "generic_machine_" + BlockMachineVariant.EnumType.values()[i].getName());
-			if(i == EnumType.TELEPORTER.getMeta())
-				ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTeleporter.class, new TeleporterModel());
 		}
 	}
 	

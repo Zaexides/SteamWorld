@@ -15,7 +15,7 @@ import zaexides.steamworld.utility.interfaces.IMetaName;
 
 public class ItemBlockMachine extends ItemBlock
 {
-	private List<String> tooltips;
+	private List<String> unlocalizedTooltips;
 	
 	public ItemBlockMachine(Block block)
 	{
@@ -26,9 +26,9 @@ public class ItemBlockMachine extends ItemBlock
 	
 	public ItemBlockMachine AddToolTip(String tooltipUnlocalized)
 	{
-		if(tooltips == null)
-			tooltips = new ArrayList<String>();
-		tooltips.add(I18n.format(tooltipUnlocalized));
+		if(unlocalizedTooltips == null)
+			unlocalizedTooltips = new ArrayList<String>();
+		unlocalizedTooltips.add(tooltipUnlocalized);
 		return this;
 	}
 	
@@ -36,8 +36,11 @@ public class ItemBlockMachine extends ItemBlock
 	public void addInformation(ItemStack stack, World worldIn, List<String> tooltip, ITooltipFlag flagIn) 
 	{
 		super.addInformation(stack, worldIn, tooltip, flagIn);
-		if(tooltips != null)
-			tooltip.addAll(tooltips);
+		if(unlocalizedTooltips != null)
+		{
+			for(String unlocalizedTooltip : unlocalizedTooltips)
+				tooltip.add(I18n.format(unlocalizedTooltip));
+		}
 	}
 	
 	@Override

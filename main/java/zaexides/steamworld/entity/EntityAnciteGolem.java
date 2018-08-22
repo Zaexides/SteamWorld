@@ -277,7 +277,6 @@ public class EntityAnciteGolem extends EntityGolem implements IMob, IRangedAttac
         }
 
         boolean flag = entityIn.attackEntityFrom(DamageSource.causeMobDamage(this), f);
-        SteamWorld.logger.log(Level.INFO, flag);
 
         if (flag)
         {

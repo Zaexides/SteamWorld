@@ -134,7 +134,6 @@ public class BlockAltar extends SteamWorldBlock implements ITileEntityProvider, 
 	{
 		SteamWorld.proxy.RegisterItemRenderers(Item.getItemFromBlock(this), 0, "inventory", "altar");
 		SteamWorld.proxy.RegisterItemRenderers(Item.getItemFromBlock(this), 1, "inventory", "altar_decorative");
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAltar.class, new AltarModel());
 	}
 	
 	@Override

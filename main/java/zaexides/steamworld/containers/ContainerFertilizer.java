@@ -43,7 +43,6 @@ public class ContainerFertilizer extends SWContainer
 				{
 					@Override
 					public boolean isItemValid(ItemStack stack) {
-						SteamWorld.logger.log(Level.INFO, "BARB");
 						if(stack.getItem() instanceof ItemDye)
 						{
 							EnumDyeColor dyeColor = EnumDyeColor.byDyeDamage(stack.getMetadata());
