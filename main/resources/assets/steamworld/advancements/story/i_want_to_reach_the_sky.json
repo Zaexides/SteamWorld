@@ -1,0 +1,30 @@
+{
+	"parent": "steamworld:story/treasure",
+	
+	"display":
+	{
+	    "icon": { "item": "steamworld:generic_machine", "data": 1 },
+	    "title": { "translate": "advancement.steamworld.i_want_to_reach_the_sky.title" },
+	    "description": { "translate": "advancement.steamworld.i_want_to_reach_the_sky.desc" }
+	},
+	
+	"criteria":
+	{
+	   "got_launcher":
+	   {
+	       "trigger": "minecraft:inventory_changed",
+	       "conditions":
+	       {
+	           "items": 
+	           [
+	               { "item": "steamworld:generic_machine", "data": 1 }
+	           ]
+	       }
+	   }
+	},
+	
+	"requirements":
+	[
+	   ["got_launcher"]
+	]
+}

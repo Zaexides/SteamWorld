@@ -1,0 +1,30 @@
+{
+	"parent": "steamworld:story/flat",
+	
+	"display":
+	{
+	    "icon": { "item": "steamworld:upgrade", "data": 2 },
+	    "title": { "translate": "advancement.steamworld.upgrade_that_pierces_the_sky.title" },
+	    "description": { "translate": "advancement.steamworld.upgrade_that_pierces_the_sky.desc" }
+	},
+	
+	"criteria":
+	{
+	   "has_essen_upgrade":
+	   {
+	       "trigger": "minecraft:inventory_changed",
+           "conditions":
+           {
+               "items": 
+               [
+                   { "item": "steamworld:upgrade", "data": 2 }
+               ]
+           }
+	   }
+	},
+	
+	"requirements":
+	[
+	   ["has_essen_upgrade"]
+	]
+}

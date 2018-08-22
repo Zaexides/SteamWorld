@@ -1,0 +1,28 @@
+{
+	"parent": "steamworld:story/traderoute_established",
+	
+	"display":
+	{
+	    "icon": { "item": "steamworld:generic_material", "data": 9 },
+	    "title": { "translate": "advancement.steamworld.monopoly.title" },
+	    "description": { "translate": "advancement.steamworld.monopoly.desc" },
+	    "frame": "challenge"
+	},
+	
+	"criteria":
+	{
+	   "traded_a_lot_with_villanglers":
+       {
+           "trigger": "steamworld:villangler_trade",
+           "conditions":
+           {
+                "amount": 100
+           }
+       }
+	},
+	
+	"requirements":
+	[
+	   ["traded_a_lot_with_villanglers"]
+	]
+}

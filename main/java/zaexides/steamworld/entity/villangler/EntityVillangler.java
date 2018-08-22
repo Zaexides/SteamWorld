@@ -36,6 +36,7 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import zaexides.steamworld.advancements.SteamWorldCriteriaTriggers;
 import zaexides.steamworld.entity.ai.EntityAILookAtTradePlayerBetter;
 import zaexides.steamworld.entity.ai.EntityAITradePlayerBetter;
 import zaexides.steamworld.entity.ai.EntityAIVillanglerMate;
@@ -212,6 +213,22 @@ public class EntityVillangler extends EntityAgeable implements INpc, IMerchant
         if (recipe.getRewardsExp())
         {
             this.world.spawnEntity(new EntityXPOrb(this.world, this.posX, this.posY + 0.5D, this.posZ, i));
+        }
+        
+        if(this.customer instanceof EntityPlayerMP)
+        {
+        	NBTTagCompound compound = this.customer.getEntityData();
+			if(!compound.hasKey(EntityPlayer.PERSISTED_NBT_TAG))
+				compound.setTag(EntityPlayer.PERSISTED_NBT_TAG, new NBTTagCompound());
+			NBTTagCompound persistingData = compound.getCompoundTag(EntityPlayer.PERSISTED_NBT_TAG);
+			
+			int tradeCount = 0;
+			if(persistingData.hasKey("sw_villangler_trades"))
+				tradeCount = persistingData.getInteger("sw_villangler_trades");
+			tradeCount++;
+			persistingData.setInteger("sw_villangler_trades", tradeCount);
+			
+        	SteamWorldCriteriaTriggers.VILLANGLER_TRADE_TRIGGER.trigger((EntityPlayerMP)this.customer);
         }
 	}
 

@@ -1,0 +1,30 @@
+{
+	"parent": "steamworld:story/flat",
+	
+	"display":
+	{
+	    "icon": { "item": "steamworld:fluid_miner_essen", "data": 0 },
+	    "title": { "translate": "advancement.steamworld.free_juice.title" },
+	    "description": { "translate": "advancement.steamworld.free_juice.desc" }
+	},
+	
+	"criteria":
+	{
+	   "has_fluid_miner":
+	   {
+	       "trigger": "minecraft:inventory_changed",
+           "conditions":
+           {
+               "items": 
+               [
+                   { "item": "steamworld:fluid_miner_essen", "data": 0 }
+               ]
+           }
+	   }
+	},
+	
+	"requirements":
+	[
+	   ["has_fluid_miner"]
+	]
+}

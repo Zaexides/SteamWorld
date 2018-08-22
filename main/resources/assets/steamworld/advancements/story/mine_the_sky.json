@@ -1,0 +1,30 @@
+{
+	"parent": "steamworld:story/better_than_ancite",
+	
+	"display":
+	{
+	    "icon": { "item": "steamworld:pickaxe_galite" },
+	    "title": { "translate": "advancement.steamworld.mine_the_sky.title" },
+	    "description": { "translate": "advancement.steamworld.mine_the_sky.desc" }
+	},
+	
+	"criteria":
+	{
+	   "has_galite_pickaxe":
+	   {
+	       "trigger": "minecraft:inventory_changed",
+           "conditions":
+           {
+               "items": 
+               [
+                   { "item": "steamworld:pickaxe_galite" }
+               ]
+           }
+	   }
+	},
+	
+	"requirements":
+	[
+	   ["has_galite_pickaxe"]
+	]
+}

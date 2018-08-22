@@ -1,0 +1,30 @@
+{
+	"parent": "steamworld:story/better_than_ancite",
+	
+	"display":
+	{
+	    "icon": { "item": "steamworld:ingot", "data": 5 },
+	    "title": { "translate": "advancement.steamworld.the_essence_of_progression.title" },
+	    "description": { "translate": "advancement.steamworld.the_essence_of_progression.desc" }
+	},
+	
+	"criteria":
+	{
+	   "has_essen":
+	   {
+	       "trigger": "minecraft:inventory_changed",
+           "conditions":
+           {
+               "items": 
+               [
+                   { "item": "steamworld:ingot", "data": 5 }
+               ]
+           }
+	   }
+	},
+	
+	"requirements":
+	[
+	   ["has_essen"]
+	]
+}

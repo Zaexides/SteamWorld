@@ -1,0 +1,30 @@
+{
+	"parent": "steamworld:story/the_essence_of_progression",
+	
+	"display":
+	{
+	    "icon": { "item": "steamworld:generic_material", "data": 0 },
+	    "title": { "translate": "advancement.steamworld.flat.title" },
+	    "description": { "translate": "advancement.steamworld.flat.desc" }
+	},
+	
+	"criteria":
+	{
+	   "has_essen_plate":
+	   {
+	       "trigger": "minecraft:inventory_changed",
+           "conditions":
+           {
+               "items": 
+               [
+                   { "item": "steamworld:generic_material", "data": 0 }
+               ]
+           }
+	   }
+	},
+	
+	"requirements":
+	[
+	   ["has_essen_plate"]
+	]
+}

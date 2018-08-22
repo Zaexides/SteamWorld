@@ -356,6 +356,28 @@ advancement.steamworld.enter_the_endernet.title=Enter the EnderNet
 advancement.steamworld.enter_the_endernet.desc=Combine an Ender Pearl, a Block of Endritch and a Nugget of Emerald, and what do you get? An interdimensional teleporter.
 advancement.steamworld.a_whole_new_world.title=It's a whole new world!
 advancement.steamworld.a_whole_new_world.desc=Enter the Sky of Old.
+advancement.steamworld.i_want_to_reach_the_sky.title=I want to Reach the Sky!
+advancement.steamworld.i_want_to_reach_the_sky.desc=Craft a launcher.
+advancement.steamworld.better_than_ancite.title=Better than Ancite
+advancement.steamworld.better_than_ancite.desc=Craft a Galite Ingot, the first step in the Sky of Old!
+advancement.steamworld.the_essence_of_progression.title=The Essence of Progression
+advancement.steamworld.the_essence_of_progression.desc=Craft an Essen Ingot by melting Essen Dust, made with 1 Galite Dust and 8 Territe Dust.
+advancement.steamworld.flat.title=It's Flat!
+advancement.steamworld.flat.desc=Made an Essen Plate.
+advancement.steamworld.upgrade_that_pierces_the_sky.title=Upgrade that Pierces the Sky
+advancement.steamworld.upgrade_that_pierces_the_sky.desc=Craft an Essen Upgrade with Machine Parts, Essen Plates and Diamond Plates in the Assembler.
+advancement.steamworld.more_ore.title=More Ore!
+advancement.steamworld.more_ore.desc=Craft the Ender Miner and start turning Steam into Ore.
+advancement.steamworld.free_juice.title=Free Juice
+advancement.steamworld.free_juice.desc=Craft the Ender Fluid Miner and start turning Steam into.. Possibly more steam.
+advancement.steamworld.mine_the_sky.title=Mine the Sky
+advancement.steamworld.mine_the_sky.desc=Craft a Galite Pickaxe, necessary to obtain Territe.
+advancement.steamworld.reaching_even_higher.title=Reaching even Higher
+advancement.steamworld.reaching_even_higher.desc=Craft the Galite Jet Orb.
+advancement.steamworld.traderoute_established.title=Trade Route Established
+advancement.steamworld.traderoute_established.desc=Trade with a Villangler to obtain their currency.
+advancement.steamworld.monopoly.title=Monopoly
+advancement.steamworld.monopoly.desc=Trade with Villanglers. A lot.
 
 #########################
 # Sound Event Subtitles #

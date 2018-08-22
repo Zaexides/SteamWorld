@@ -25,6 +25,7 @@ import zaexides.steamworld.ConfigHandler;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.RegistryHandler;
 import zaexides.steamworld.SteamWorld;
+import zaexides.steamworld.advancements.SteamWorldCriteriaTriggers;
 import zaexides.steamworld.events.MiscEventHandler;
 import zaexides.steamworld.gui.GuiHandler;
 import zaexides.steamworld.init.BlockInitializer;
@@ -69,6 +70,7 @@ public class CommonProxy
     	RegistryHandler.RegisterFluids();
     	RegistryHandler.RegisterTileEntities();
     	
+    	SteamWorldCriteriaTriggers.RegisterTriggers();
     	LootTableInitializer.registerConditions();
     	
     	if(Loader.isModLoaded("tconstruct"))

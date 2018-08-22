@@ -1,0 +1,41 @@
+{
+	"parent": "steamworld:story/a_whole_new_world",
+	
+	"display":
+	{
+	    "icon": { "item": "steamworld:generic_material", "data": 8 },
+	    "title": { "translate": "advancement.steamworld.traderoute_established.title" },
+	    "description": { "translate": "advancement.steamworld.traderoute_established.desc" }
+	},
+	
+	"criteria":
+	{
+	   "has_coin":
+       {
+           "trigger": "minecraft:inventory_changed",
+           "conditions":
+           {
+               "items": 
+               [
+                   { "item": "steamworld:generic_material", "data": 9 }
+               ]
+           }
+       },
+       "has_lesser_coin":
+       {
+           "trigger": "minecraft:inventory_changed",
+           "conditions":
+           {
+               "items": 
+               [
+                   { "item": "steamworld:generic_material", "data": 8 }
+               ]
+           }
+       }
+	},
+	
+	"requirements":
+	[
+	   ["has_coin", "has_lesser_coin"]
+	]
+}

@@ -1,0 +1,30 @@
+{
+	"parent": "steamworld:story/better_than_ancite",
+	
+	"display":
+	{
+	    "icon": { "item": "steamworld:galite_jet" },
+	    "title": { "translate": "advancement.steamworld.reaching_even_higher.title" },
+	    "description": { "translate": "advancement.steamworld.reaching_even_higher.desc" }
+	},
+	
+	"criteria":
+	{
+	   "has_galite_jet":
+	   {
+	       "trigger": "minecraft:inventory_changed",
+           "conditions":
+           {
+               "items": 
+               [
+                   { "item": "steamworld:galite_jet" }
+               ]
+           }
+	   }
+	},
+	
+	"requirements":
+	[
+	   ["has_galite_jet"]
+	]
+}

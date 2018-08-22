@@ -1,0 +1,30 @@
+{
+	"parent": "steamworld:story/flat",
+	
+	"display":
+	{
+	    "icon": { "item": "steamworld:miner_essen", "data": 0 },
+	    "title": { "translate": "advancement.steamworld.more_ore.title" },
+	    "description": { "translate": "advancement.steamworld.more_ore.desc" }
+	},
+	
+	"criteria":
+	{
+	   "has_miner":
+	   {
+	       "trigger": "minecraft:inventory_changed",
+           "conditions":
+           {
+               "items": 
+               [
+                   { "item": "steamworld:miner_essen", "data": 0 }
+               ]
+           }
+	   }
+	},
+	
+	"requirements":
+	[
+	   ["has_miner"]
+	]
+}
