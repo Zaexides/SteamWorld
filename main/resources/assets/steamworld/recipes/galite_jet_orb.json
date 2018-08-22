@@ -1,0 +1,39 @@
+{
+    "type": "forge:ore_shaped",
+    
+    "pattern":
+    [
+        "rgr",
+        "gTg",
+        "rbr"
+    ],
+    
+    "key":
+    {
+        "r":
+        {
+            "type": "forge:ore_dict",
+            "ore": "dustRedstone"
+        },
+        "g":
+        {
+            "type": "forge:ore_dict",
+            "ore": "ingotGalite"
+        },
+        "T":
+        {
+            "type": "forge:ore_dict",
+            "ore": "blockTerrite"
+        },
+        "b":
+        {
+            "item": "minecraft:stone_button"
+        }
+    },
+    
+    "result":
+    {
+        "item": "steamworld:galite_jet",
+        "count": 1
+    }
+}
