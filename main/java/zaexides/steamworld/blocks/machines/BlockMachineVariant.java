@@ -36,6 +36,7 @@ import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.item.ItemBlockVariant;
 import zaexides.steamworld.client.rendering.tile.FilteredTankModel;
+import zaexides.steamworld.client.rendering.tile.TeleporterModel;
 import zaexides.steamworld.gui.GuiHandler;
 import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.init.ItemInitializer;
@@ -125,6 +126,8 @@ public class BlockMachineVariant extends Block implements IMetaName, IModeledObj
 		for(int i = 0; i < EnumType.values().length; i++)
 		{
 			SteamWorld.proxy.RegisterItemRenderers(Item.getItemFromBlock(this), i, "inventory", "generic_machine_" + BlockMachineVariant.EnumType.values()[i].getName());
+			if(i == EnumType.TELEPORTER.getMeta())
+				ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTeleporter.class, new TeleporterModel());
 		}
 	}
 	
@@ -190,6 +193,8 @@ public class BlockMachineVariant extends Block implements IMetaName, IModeledObj
 	@Override
 	public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) 
 	{
+		if(worldIn.isRemote)
+			return;
 		TileEntity tileEntity = worldIn.getTileEntity(pos);
 		if(tileEntity != null && tileEntity instanceof IGenericMachineWalkActivate)
 			((IGenericMachineWalkActivate)tileEntity).onWalkedOn(entityIn);

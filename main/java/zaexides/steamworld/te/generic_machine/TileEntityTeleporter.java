@@ -42,7 +42,9 @@ public class TileEntityTeleporter extends SyncedTileEntity implements ICapabilit
 	public int targetId = -1;
 	
 	public int cooldown = 0;
-	private final int MAX_COOLDOWN = 100;
+	public final int MAX_COOLDOWN = 100;
+	
+	public final int REQUIRED_STEAM = 2000;
 	
 	private final int PORTAL_UPDATE_FREQUENCY = 5;
 	private int portalUpdateTimer = 0;
@@ -96,7 +98,7 @@ public class TileEntityTeleporter extends SyncedTileEntity implements ICapabilit
 	@Override
 	public void onWalkedOn(Entity entity)
 	{
-		if(steamTank.getFluidAmount() < 2000 && targetId != -1)
+		if(steamTank.getFluidAmount() < REQUIRED_STEAM && targetId != -1)
 			return;
 		
 		if (cooldown <= 0 && entity instanceof EntityLivingBase && !entity.isRiding() && !entity.isBeingRidden() && entity.isNonBoss())
@@ -163,7 +165,10 @@ public class TileEntityTeleporter extends SyncedTileEntity implements ICapabilit
 	public void update() 
 	{
 		if(cooldown > 0)
+		{
 			cooldown--;
+			markDirty();
+		}
 		portalUpdateTimer++;
 		if(portalUpdateTimer >= PORTAL_UPDATE_FREQUENCY)
 		{
