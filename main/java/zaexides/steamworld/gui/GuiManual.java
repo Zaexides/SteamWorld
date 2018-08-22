@@ -58,6 +58,11 @@ public class GuiManual extends GuiScreen
 					new Page("teleporter_details", new ResourceLocation(ModInfo.MODID, "textures/gui/manual_endritch.png"), 212, 256, 135, 82, 512, 512),
 					new Page("portal", new ResourceLocation(ModInfo.MODID, "textures/gui/manual_endritch.png"), 0, 334, 96, 119, 512, 512),
 					new Page("portal_2"),
+					//Essen
+					new Page("plates", new ResourceLocation(ModInfo.MODID, "textures/gui/manual_essen.png"), 0, 256, 54, 38, 512, 512),
+					new Page("upgrades_2", new ResourceLocation(ModInfo.MODID, "textures/gui/manual_essen.png"), 54, 256, 100, 75, 512, 512),
+					new Page("miner", new ResourceLocation(ModInfo.MODID, "textures/gui/manual_essen.png"), 154, 256, 135, 77, 512, 512),
+					new Page("eclipse", new ResourceLocation(ModInfo.MODID, "textures/gui/manual_essen.png"), 0, 294, 54, 47, 512, 512),
 			};
 	
 	private final int maxPageOverride;

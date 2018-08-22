@@ -58,6 +58,7 @@ public class GuiHandler implements IGuiHandler
 	public static final int MANUAL_STEAITE = 300;
 	public static final int MANUAL_ANCITE = 301;
 	public static final int MANUAL_ENDRITCH = 302;
+	public static final int MANUAL_ESSEN = 303;
 
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
@@ -136,6 +137,8 @@ public class GuiHandler implements IGuiHandler
 			return new GuiManual(11, new ResourceLocation(ModInfo.MODID, "textures/gui/manual_ancite.png"));
 		case MANUAL_ENDRITCH:
 			return new GuiManual(16, new ResourceLocation(ModInfo.MODID, "textures/gui/manual_endritch.png"));
+		case MANUAL_ESSEN:
+			return new GuiManual(20, new ResourceLocation(ModInfo.MODID, "textures/gui/manual_essen.png"));
 		}
 		
 		return null;

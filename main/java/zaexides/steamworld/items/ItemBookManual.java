@@ -74,7 +74,8 @@ public class ItemBookManual extends SteamWorldItem implements IModeledObject
 	{
 		STEAITE_MANUAL(0, "steaite", GuiHandler.MANUAL_STEAITE),
 		ANCITE_MANUAL(1, "ancite", GuiHandler.MANUAL_ANCITE),
-		ENDRITCH_MANUAL(2, "endritch", GuiHandler.MANUAL_ENDRITCH);
+		ENDRITCH_MANUAL(2, "endritch", GuiHandler.MANUAL_ENDRITCH),
+		ESSEN_MANUAL(3, "essen", GuiHandler.MANUAL_ESSEN);
 		
 		private final int meta;
 		private final String name;
