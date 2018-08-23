@@ -1,12 +1,9 @@
 package zaexides.steamworld.blocks.machines;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
@@ -21,17 +18,11 @@ import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandlerItem;
-import net.minecraftforge.fml.client.registry.ClientRegistry;
-import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.IItemHandler;
-import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.SteamWorldBlock;
 import zaexides.steamworld.blocks.item.ItemBlockMachine;
-import zaexides.steamworld.client.rendering.tile.FilteredTankModel;
 import zaexides.steamworld.init.ItemInitializer;
 import zaexides.steamworld.te.TileEntityFilterTank;
-import zaexides.steamworld.utility.interfaces.IModeledObject;
 
 public class BlockFilterTank extends SteamWorldBlock implements ITileEntityProvider, IWrenchable
 {

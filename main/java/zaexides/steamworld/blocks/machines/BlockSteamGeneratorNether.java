@@ -2,19 +2,12 @@ package zaexides.steamworld.blocks.machines;
 
 import java.util.Random;
 
-import org.apache.logging.log4j.Level;
-
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.PropertyBool;
-import net.minecraft.block.properties.PropertyDirection;
-import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -23,25 +16,15 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
-import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.IItemHandler;
-import scala.languageFeature.postfixOps;
 import zaexides.steamworld.SteamWorld;
-import zaexides.steamworld.blocks.SteamWorldBlock;
-import zaexides.steamworld.fluids.FluidSteam;
 import zaexides.steamworld.gui.GuiHandler;
 import zaexides.steamworld.te.TileEntitySteamGenerator;
 import zaexides.steamworld.te.TileEntitySteamGeneratorNether;
-import zaexides.steamworld.te.TileEntityValve;
 
 public class BlockSteamGeneratorNether extends BlockMachine implements ITileEntityProvider
 {

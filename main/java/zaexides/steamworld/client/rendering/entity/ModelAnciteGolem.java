@@ -1,11 +1,8 @@
 package zaexides.steamworld.client.rendering.entity;
 
-import org.apache.logging.log4j.Level;
-
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
-import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.entity.EntityAnciteGolem;
 
 /**

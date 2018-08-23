@@ -4,13 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockStairs;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
-import scala.AnyValCompanion;
-import scala.reflect.internal.Trees.New;
-import zaexides.steamworld.ModInfo;
-import zaexides.steamworld.SteamWorld;
+import net.minecraftforge.fluids.Fluid;
 import zaexides.steamworld.blocks.BlockAltar;
 import zaexides.steamworld.blocks.BlockAncite;
 import zaexides.steamworld.blocks.BlockCoriteTorch;
@@ -27,7 +22,6 @@ import zaexides.steamworld.blocks.BlockSteam;
 import zaexides.steamworld.blocks.BlockWitheringJuice;
 import zaexides.steamworld.blocks.SteamWorldBlock;
 import zaexides.steamworld.blocks.SteamWorldBlockOre;
-import zaexides.steamworld.blocks.BlockDecorative.EnumType;
 import zaexides.steamworld.blocks.machines.BlockAssembler;
 import zaexides.steamworld.blocks.machines.BlockDrain;
 import zaexides.steamworld.blocks.machines.BlockExperienceMachine;
@@ -50,8 +44,6 @@ import zaexides.steamworld.blocks.machines.BlockValve;
 import zaexides.steamworld.blocks.machines.energy.BlockDynamo;
 import zaexides.steamworld.blocks.machines.energy.BlockSteamGeneratorElectric;
 import zaexides.steamworld.utility.SWMaterials;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class BlockInitializer 
 {

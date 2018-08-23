@@ -8,7 +8,6 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import zaexides.steamworld.blocks.BlockAltar;
-import zaexides.steamworld.init.BlockInitializer;
 
 public class TileEntityAltar extends SyncedTileEntity implements ICapabilityProvider
 {

@@ -6,7 +6,6 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import zaexides.steamworld.blocks.BlockLegacy;
-import zaexides.steamworld.utility.interfaces.IMetaName;
 
 public class ItemBlockLegacy extends ItemBlock
 {

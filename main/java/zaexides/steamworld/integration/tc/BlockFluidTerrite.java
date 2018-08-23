@@ -8,10 +8,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
-import zaexides.steamworld.SteamWorld;
-import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
 
 public class BlockFluidTerrite extends BlockTinkersIntegrationFluid implements IModeledObject

@@ -3,14 +3,11 @@ package zaexides.steamworld.savedata.world;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.logging.log4j.Level;
-
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.MapStorage;
 import net.minecraft.world.storage.WorldSavedData;
 import zaexides.steamworld.ModInfo;
-import zaexides.steamworld.SteamWorld;
 
 public class TeleporterSaveData extends WorldSavedData
 {

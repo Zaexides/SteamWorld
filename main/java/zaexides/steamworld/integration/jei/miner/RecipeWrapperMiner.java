@@ -1,25 +1,14 @@
 package zaexides.steamworld.integration.jei.miner;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import org.apache.logging.log4j.Level;
-
-import com.google.common.collect.ImmutableList;
 
 import mezz.jei.api.ingredients.IIngredients;
 import mezz.jei.api.recipe.IRecipeWrapper;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
-import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.items.ItemMinerMachineTool;
-import zaexides.steamworld.recipe.handling.DustRecipeHandler;
 import zaexides.steamworld.recipe.handling.MinerRecipe;
-import zaexides.steamworld.recipe.handling.DustRecipe;
 import zaexides.steamworld.recipe.handling.utility.IRecipeInput;
 import zaexides.steamworld.recipe.handling.utility.RecipeInputItemStack;
 import zaexides.steamworld.recipe.handling.utility.RecipeInputOreDic;

@@ -1,7 +1,6 @@
 package zaexides.steamworld.utility.capability;
 
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.items.ItemStackHandler;
 
 public class ItemStackHandlerOutput extends ItemStackHandlerSteamWorld
 {

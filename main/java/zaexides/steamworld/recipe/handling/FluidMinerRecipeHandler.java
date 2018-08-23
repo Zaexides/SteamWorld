@@ -6,19 +6,9 @@ import java.util.Random;
 
 import org.apache.logging.log4j.Level;
 
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fml.common.registry.ForgeRegistries;
-import net.minecraftforge.oredict.OreDictionary;
-import scala.collection.generic.BitOperations.Int;
 import zaexides.steamworld.SteamWorld;
-import zaexides.steamworld.recipe.handling.utility.IRecipeInput;
-import zaexides.steamworld.recipe.handling.utility.RecipeInputItemStack;
-import zaexides.steamworld.recipe.handling.utility.RecipeInputOreDic;
 
 public class FluidMinerRecipeHandler 
 {

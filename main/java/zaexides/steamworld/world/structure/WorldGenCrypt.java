@@ -2,8 +2,6 @@ package zaexides.steamworld.world.structure;
 
 import java.util.Random;
 
-import org.apache.logging.log4j.Level;
-
 import net.minecraft.init.Biomes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Rotation;
@@ -12,13 +10,10 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.IChunkGenerator;
-import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraft.world.gen.structure.template.PlacementSettings;
 import net.minecraft.world.gen.structure.template.Template;
 import net.minecraftforge.fml.common.IWorldGenerator;
-import zaexides.steamworld.ConfigHandler;
 import zaexides.steamworld.ModInfo;
-import zaexides.steamworld.SteamWorld;
 
 public class WorldGenCrypt implements IWorldGenerator
 {

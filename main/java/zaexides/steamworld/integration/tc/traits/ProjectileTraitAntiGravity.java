@@ -4,7 +4,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import slimeknights.tconstruct.library.entity.EntityProjectileBase;
 import slimeknights.tconstruct.library.traits.AbstractProjectileTrait;
-import zaexides.steamworld.integration.tc.TCMaterials;
 
 public class ProjectileTraitAntiGravity extends AbstractProjectileTrait
 {

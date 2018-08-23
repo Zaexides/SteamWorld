@@ -1,44 +1,24 @@
 package zaexides.steamworld.te;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Objects;
-import java.util.Queue;
 
-import javax.swing.plaf.basic.BasicBorders.MarginBorder;
-
-import org.apache.logging.log4j.Level;
-
-import com.jcraft.jorbis.Block;
-
-import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
-import scala.annotation.elidable;
-import scala.collection.generic.BitOperations.Int;
 import zaexides.steamworld.ConfigHandler;
-import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.machines.BlockValve;
-import zaexides.steamworld.init.BlockInitializer;
-import zaexides.steamworld.utility.PosFacing;
 import zaexides.steamworld.utility.capability.MultiFluidTank;
-import zaexides.steamworld.utility.capability.SteamWorldFluidTank;
 
 public class TileEntityValve extends SyncedTileEntity implements ICapabilityProvider, ITickable
 {

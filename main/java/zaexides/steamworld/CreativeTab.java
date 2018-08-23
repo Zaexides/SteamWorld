@@ -1,12 +1,9 @@
 package zaexides.steamworld;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import scala.sys.process.processInternal;
 import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.init.ItemInitializer;
 

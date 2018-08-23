@@ -1,27 +1,12 @@
 package zaexides.steamworld.blocks;
 
-import java.util.List;
-
-import org.apache.logging.log4j.Level;
-
-import akka.event.Logging.Debug;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockGrass;
-import net.minecraft.block.BlockLeaves;
 import net.minecraft.block.BlockLiquid;
-import net.minecraft.block.BlockLog;
-import net.minecraft.block.BlockSnow;
-import net.minecraft.block.BlockTallGrass;
-import net.minecraft.block.IGrowable;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
-import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyInteger;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -33,14 +18,11 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.IPlantable;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.gui.GuiHandler;
 import zaexides.steamworld.te.TileEntityObilisk;
-import zaexides.steamworld.te.TileEntityValve;
 
 public class BlockObilisk extends SteamWorldBlock implements ITileEntityProvider
 {

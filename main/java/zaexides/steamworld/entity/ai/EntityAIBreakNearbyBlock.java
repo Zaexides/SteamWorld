@@ -1,16 +1,11 @@
 package zaexides.steamworld.entity.ai;
 
-import org.apache.logging.log4j.Level;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.ai.EntityAIBase;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
-import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.entity.interfaces.IEntityBreakBlockCallback;
 
 public class EntityAIBreakNearbyBlock extends EntityAIBase

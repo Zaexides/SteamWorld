@@ -2,9 +2,6 @@ package zaexides.steamworld.te;
 
 import java.util.List;
 
-import org.apache.logging.log4j.Level;
-
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityEnderman;
@@ -16,9 +13,6 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.living.EnderTeleportEvent;
-import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.init.SoundInitializer;
 
 public class TileEntityNetherAccelerator extends TileEntity implements ITickable

@@ -1,7 +1,6 @@
 package zaexides.steamworld.recipe.handling.utility;
 
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.NonNullList;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class RecipeInputOreDic implements IRecipeInput

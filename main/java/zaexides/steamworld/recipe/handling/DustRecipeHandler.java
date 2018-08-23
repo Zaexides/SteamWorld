@@ -1,16 +1,11 @@
 package zaexides.steamworld.recipe.handling;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.logging.log4j.Level;
 
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.oredict.OreDictionary;
-import zaexides.steamworld.ConfigHandler;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.recipe.handling.utility.IRecipeInput;
 import zaexides.steamworld.recipe.handling.utility.RecipeInputItemStack;

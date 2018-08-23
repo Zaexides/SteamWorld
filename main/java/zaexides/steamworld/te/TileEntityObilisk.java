@@ -2,13 +2,8 @@ package zaexides.steamworld.te;
 
 import java.util.Random;
 
-import org.apache.logging.log4j.Level;
-
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import scala.noinline;
-import zaexides.steamworld.SteamWorld;
 
 public class TileEntityObilisk extends SyncedTileEntity
 {

@@ -4,23 +4,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.logging.log4j.Level;
-
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.fml.client.config.GuiUtils;
-import scala.collection.generic.BitOperations.Int;
-import scala.xml.Text;
 import zaexides.steamworld.ModInfo;
-import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.containers.ContainerFertilizer;
 import zaexides.steamworld.te.TileEntityFertilizer;
 import zaexides.steamworld.utility.SWGuiUtil;

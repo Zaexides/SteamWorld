@@ -2,17 +2,10 @@ package zaexides.steamworld.client.rendering.entity;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
-import net.minecraft.util.math.Vec3d;
 import zaexides.steamworld.entity.EntityGlowDusty;
-import net.minecraft.client.renderer.ActiveRenderInfo;
-import net.minecraft.client.renderer.BufferBuilder;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
-
-import org.lwjgl.opengl.GL11;
 
 /**
  * GlowDusty - Zae

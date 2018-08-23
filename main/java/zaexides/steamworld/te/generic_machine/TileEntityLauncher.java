@@ -1,10 +1,7 @@
 package zaexides.steamworld.te.generic_machine;
 
-import org.apache.logging.log4j.Level;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
@@ -14,7 +11,6 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
-import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.init.SoundInitializer;
 import zaexides.steamworld.te.SyncedTileEntity;
 import zaexides.steamworld.te.generic_machine.interfaces.IGenericMachineWalkActivate;

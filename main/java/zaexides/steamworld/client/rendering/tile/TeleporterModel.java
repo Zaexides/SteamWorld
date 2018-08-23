@@ -1,6 +1,5 @@
 package zaexides.steamworld.client.rendering.tile;
 
-import org.apache.logging.log4j.Level;
 import org.lwjgl.opengl.GL11;
 
 import net.minecraft.client.renderer.BufferBuilder;
@@ -11,7 +10,6 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ResourceLocation;
 import zaexides.steamworld.ModInfo;
-import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.te.generic_machine.TileEntityTeleporter;
 
 public class TeleporterModel extends TileEntitySpecialRenderer<TileEntityTeleporter>

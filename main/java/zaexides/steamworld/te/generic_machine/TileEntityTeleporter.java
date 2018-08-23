@@ -1,17 +1,11 @@
 package zaexides.steamworld.te.generic_machine;
 
-import org.apache.logging.log4j.Level;
-
-import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.MoverType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -19,21 +13,16 @@ import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
-import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
-import net.minecraftforge.fml.relauncher.SideOnly;
-import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.savedata.world.TeleporterData;
 import zaexides.steamworld.savedata.world.TeleporterSaveData;
 import zaexides.steamworld.te.SyncedTileEntity;
 import zaexides.steamworld.te.generic_machine.interfaces.IGenericMachineWalkActivate;
 import zaexides.steamworld.utility.SteamWorldTeleporter;
-import zaexides.steamworld.utility.capability.SteamWorldFluidTank;
 import zaexides.steamworld.utility.capability.SteamWorldSteamTank;
 
 public class TileEntityTeleporter extends SyncedTileEntity implements ICapabilityProvider, ITickable, IGenericMachineWalkActivate

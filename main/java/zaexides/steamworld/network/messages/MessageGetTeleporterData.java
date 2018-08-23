@@ -1,16 +1,12 @@
 package zaexides.steamworld.network.messages;
 
-import org.apache.logging.log4j.Level;
-
 import io.netty.buffer.ByteBuf;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.world.World;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.savedata.world.TeleporterSaveData;
 
 public class MessageGetTeleporterData implements IMessage

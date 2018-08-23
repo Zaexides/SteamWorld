@@ -1,7 +1,6 @@
 package zaexides.steamworld;
 
 import org.apache.logging.log4j.Level;
-import org.omg.PortableServer.ServantActivator;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -10,30 +9,14 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.BiomeProvider;
-import net.minecraft.world.biome.Biome.BiomeProperties;
-import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.common.BiomeManager;
-import net.minecraftforge.common.BiomeManager.BiomeEntry;
-import net.minecraftforge.common.BiomeManager.BiomeType;
-import net.minecraftforge.common.DimensionManager;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.event.RegistryEvent.Register;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidRegistry.FluidRegisterEvent;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.oredict.OreDictionary;
-import zaexides.steamworld.blocks.BlockAncite;
 import zaexides.steamworld.blocks.BlockDecorative;
-import zaexides.steamworld.blocks.BlockSteam;
 import zaexides.steamworld.blocks.SteamWorldBlockOre;
 import zaexides.steamworld.fluids.FluidPreservation;
 import zaexides.steamworld.fluids.FluidSteam;
@@ -42,7 +25,6 @@ import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.init.ItemInitializer;
 import zaexides.steamworld.init.SoundInitializer;
 import zaexides.steamworld.integration.tc.TCMaterials;
-import zaexides.steamworld.integration.tc.TinkersMelting;
 import zaexides.steamworld.items.ItemDust;
 import zaexides.steamworld.items.ItemMaterial;
 import zaexides.steamworld.items.SWItemIngot;
@@ -75,13 +57,6 @@ import zaexides.steamworld.te.generic_machine.TileEntityLauncher;
 import zaexides.steamworld.te.generic_machine.TileEntityTeleporter;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
 import zaexides.steamworld.utility.interfaces.IOreDictionaryRegisterable;
-import zaexides.steamworld.world.WorldGenerationOres;
-import zaexides.steamworld.world.dimension.WorldProviderSkyOfOld;
-import zaexides.steamworld.world.structure.WorldGenCrypt;
-import zaexides.steamworld.world.structure.WorldGenCrystal;
-import zaexides.steamworld.world.structure.WorldGenPortalBuilding;
-import zaexides.steamworld.world.structure.WorldGenWitherLab;
-import zaexides.steamworld.world.structure.tower.WorldGenTower;
 
 @EventBusSubscriber(modid = ModInfo.MODID)
 public class RegistryHandler 

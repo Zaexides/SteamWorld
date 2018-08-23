@@ -1,14 +1,10 @@
 package zaexides.steamworld.fluids;
 
-import org.apache.logging.log4j.Level;
-
 import net.minecraft.item.EnumRarity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
 import zaexides.steamworld.ModInfo;
-import zaexides.steamworld.SteamWorld;
 
 public class FluidWithering extends Fluid
 {

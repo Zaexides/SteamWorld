@@ -2,37 +2,25 @@ package zaexides.steamworld.blocks;
 
 import java.util.Random;
 
-import org.apache.logging.log4j.Level;
-
-import com.google.common.util.concurrent.Service.State;
-
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.NonNullList;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.oredict.OreDictionary;
-import scala.tools.nsc.transform.patmat.ScalaLogic.TreesAndTypesDomain.Var;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.item.ItemBlockVariant;
@@ -40,7 +28,6 @@ import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.init.ItemInitializer;
 import zaexides.steamworld.utility.interfaces.IMetaName;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
-import zaexides.steamworld.utility.interfaces.IOreDictionaryRegisterable;
 
 public class BlockSWFlower extends BlockBush implements IMetaName, IModeledObject
 {

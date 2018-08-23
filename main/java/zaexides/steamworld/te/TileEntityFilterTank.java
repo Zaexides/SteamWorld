@@ -1,23 +1,13 @@
 package zaexides.steamworld.te;
 
-import org.apache.logging.log4j.Level;
-
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
-import zaexides.steamworld.SteamWorld;
-import zaexides.steamworld.fluids.FluidSteam;
 import zaexides.steamworld.utility.capability.SteamWorldFluidTank;
 
 public class TileEntityFilterTank extends SyncedTileEntity implements ICapabilityProvider

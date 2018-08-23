@@ -1,24 +1,19 @@
 package zaexides.steamworld.init;
 
-import org.apache.logging.log4j.Level;
-
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biome.BiomeProperties;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.common.BiomeDictionary.Type;
-import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.BiomeManager.BiomeEntry;
-import net.minecraftforge.common.BiomeManager.BiomeType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import zaexides.steamworld.ModInfo;
-import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.world.biomes.BiomeBlazingWithers;
+import zaexides.steamworld.world.biomes.BiomeColdLand;
 import zaexides.steamworld.world.biomes.BiomeForestIsland;
 import zaexides.steamworld.world.biomes.BiomeForgottenSky;
-import zaexides.steamworld.world.biomes.BiomeColdLand;
 import zaexides.steamworld.world.biomes.BiomeNatureIsland;
 import zaexides.steamworld.world.biomes.BiomeWetlands;
 import zaexides.steamworld.world.dimension.BiomeProviderSkyOfOld;

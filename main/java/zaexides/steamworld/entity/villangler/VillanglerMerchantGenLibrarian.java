@@ -1,25 +1,16 @@
 package zaexides.steamworld.entity.villangler;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
+
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentData;
 import net.minecraft.init.Items;
-import net.minecraft.init.MobEffects;
-import net.minecraft.init.PotionTypes;
 import net.minecraft.item.ItemEnchantedBook;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.potion.PotionHelper;
-import net.minecraft.potion.PotionType;
-import net.minecraft.potion.PotionUtils;
 import net.minecraft.util.WeightedRandom;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
-import zaexides.steamworld.init.ItemInitializer;
-import zaexides.steamworld.items.SWItemIngot;
 
 public class VillanglerMerchantGenLibrarian extends VillanglerMerchantRecipeListGenerator
 {

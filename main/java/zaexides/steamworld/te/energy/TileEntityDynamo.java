@@ -8,14 +8,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.energy.CapabilityEnergy;
-import net.minecraftforge.energy.EnergyStorage;
 import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import zaexides.steamworld.ConfigHandler;
 import zaexides.steamworld.te.SyncedTileEntity;
-import zaexides.steamworld.utility.capability.SteamWorldFluidTank;
 import zaexides.steamworld.utility.capability.SteamWorldSteamTank;
 
 public class TileEntityDynamo extends SyncedTileEntity implements ITickable, ICapabilityProvider

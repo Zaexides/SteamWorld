@@ -3,13 +3,10 @@ package zaexides.steamworld.world.biomes;
 import java.util.Random;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.ChunkPrimer;
 import zaexides.steamworld.entity.EntityPropellorShell;
 import zaexides.steamworld.entity.EntitySkyFish;
-import zaexides.steamworld.init.BlockInitializer;
 
 public class BiomeForgottenSky extends BiomeSteamWorld
 {

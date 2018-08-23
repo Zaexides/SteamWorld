@@ -2,8 +2,6 @@ package zaexides.steamworld.world.storage.loot.conditions;
 
 import java.util.Random;
 
-import org.apache.logging.log4j.Level;
-
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSerializationContext;
@@ -14,7 +12,6 @@ import net.minecraft.world.storage.loot.LootContext;
 import net.minecraft.world.storage.loot.conditions.LootCondition;
 import net.minecraft.world.storage.loot.conditions.LootConditionManager;
 import zaexides.steamworld.ModInfo;
-import zaexides.steamworld.SteamWorld;
 
 public class RandomChanceWithLuck implements LootCondition
 {	

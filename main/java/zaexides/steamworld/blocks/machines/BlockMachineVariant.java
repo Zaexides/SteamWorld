@@ -1,12 +1,7 @@
 package zaexides.steamworld.blocks.machines;
 
-import org.apache.logging.log4j.Level;
-
-import com.google.common.util.concurrent.Service.State;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
@@ -16,11 +11,9 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -29,29 +22,21 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.client.registry.ClientRegistry;
-import net.minecraftforge.oredict.OreDictionary;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.item.ItemBlockVariant;
-import zaexides.steamworld.client.rendering.tile.FilteredTankModel;
-import zaexides.steamworld.client.rendering.tile.TeleporterModel;
 import zaexides.steamworld.gui.GuiHandler;
 import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.init.ItemInitializer;
 import zaexides.steamworld.network.PacketHandler;
 import zaexides.steamworld.network.messages.MessageGetTeleporterData;
-import zaexides.steamworld.savedata.world.TeleporterData;
 import zaexides.steamworld.savedata.world.TeleporterSaveData;
-import zaexides.steamworld.te.TileEntityFilterTank;
-import zaexides.steamworld.te.TileEntityFisher;
 import zaexides.steamworld.te.generic_machine.TileEntityLauncher;
 import zaexides.steamworld.te.generic_machine.TileEntityTeleporter;
 import zaexides.steamworld.te.generic_machine.interfaces.IGenericMachineWalkActivate;
 import zaexides.steamworld.utility.SWMaterials;
 import zaexides.steamworld.utility.interfaces.IMetaName;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
-import zaexides.steamworld.utility.interfaces.IOreDictionaryRegisterable;
 
 public class BlockMachineVariant extends Block implements IMetaName, IModeledObject, IWrenchable, ITileEntityProvider
 {

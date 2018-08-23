@@ -1,30 +1,17 @@
 package zaexides.steamworld.gui;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
-import org.apache.logging.log4j.Level;
-
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.audio.PositionedSoundRecord;
-import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeVersion;
 import net.minecraftforge.common.MinecraftForge;
 import zaexides.steamworld.ModInfo;
-import zaexides.steamworld.SteamWorld;
-import zaexides.steamworld.te.TileEntityObilisk;
-import zaexides.steamworld.utility.AnciteScriptHandler;
-import zaexides.steamworld.utility.SWGuiUtil;
 
 public class GuiManual extends GuiScreen
 {

@@ -1,24 +1,17 @@
 package zaexides.steamworld.world.dimension;
 
-import org.apache.logging.log4j.Level;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.init.Biomes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.DimensionType;
-import net.minecraft.world.WorldProvider;
 import net.minecraft.world.WorldProviderSurface;
-import net.minecraft.world.biome.BiomeProvider;
-import net.minecraft.world.biome.BiomeProviderSingle;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraftforge.client.IRenderHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import zaexides.steamworld.ConfigHandler;
 import zaexides.steamworld.ModInfo;
-import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.client.rendering.world.SkyRendererSkyOfOld;
 
 public class WorldProviderSkyOfOld extends WorldProviderSurface

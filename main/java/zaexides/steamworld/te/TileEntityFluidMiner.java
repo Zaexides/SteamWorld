@@ -1,57 +1,20 @@
 package zaexides.steamworld.te;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.logging.log4j.Level;
-
-import com.typesafe.config.Config;
-
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockCrops;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.audio.Sound;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Enchantments;
-import net.minecraft.init.Items;
-import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ITickable;
-import net.minecraft.util.NonNullList;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.WorldServer;
-import net.minecraft.world.storage.loot.LootContext;
-import net.minecraft.world.storage.loot.LootTableList;
-import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.ItemHandlerHelper;
-import net.minecraftforge.items.ItemStackHandler;
-import zaexides.steamworld.ConfigHandler;
-import zaexides.steamworld.SteamWorld;
-import zaexides.steamworld.blocks.machines.BlockFisher;
-import zaexides.steamworld.blocks.machines.BlockGrinder;
-import zaexides.steamworld.blocks.machines.BlockSWFurnace;
-import zaexides.steamworld.fluids.FluidSteam;
 import zaexides.steamworld.items.ItemMinerMachineTool;
-import zaexides.steamworld.recipe.handling.DustRecipeHandler;
 import zaexides.steamworld.recipe.handling.FluidMinerRecipeHandler;
-import zaexides.steamworld.recipe.handling.MinerRecipeHandler;
 import zaexides.steamworld.utility.capability.FluidInputOutput;
 import zaexides.steamworld.utility.capability.ItemStackHandlerInput;
-import zaexides.steamworld.utility.capability.ItemStackHandlerOutput;
 import zaexides.steamworld.utility.capability.SteamWorldFluidTank;
 
 public class TileEntityFluidMiner extends TileEntityMachine implements ITickable

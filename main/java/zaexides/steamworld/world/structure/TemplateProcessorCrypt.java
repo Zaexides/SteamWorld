@@ -1,17 +1,9 @@
 package zaexides.steamworld.world.structure;
 
-import java.util.Random;
-import java.util.UUID;
-
-import org.apache.logging.log4j.Level;
-
 import com.mojang.authlib.GameProfile;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockChest;
-import net.minecraft.block.BlockLeaves;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityLockableLoot;
@@ -22,8 +14,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.template.ITemplateProcessor;
 import net.minecraft.world.gen.structure.template.Template.BlockInfo;
 import zaexides.steamworld.ModInfo;
-import zaexides.steamworld.SteamWorld;
-import zaexides.steamworld.blocks.BlockObilisk;
 import zaexides.steamworld.entity.EntityAnciteGolem;
 import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.init.LootTableInitializer;

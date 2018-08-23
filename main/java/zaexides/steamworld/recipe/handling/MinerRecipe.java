@@ -1,6 +1,5 @@
 package zaexides.steamworld.recipe.handling;
 
-import net.minecraft.item.ItemStack;
 import zaexides.steamworld.recipe.handling.utility.IRecipeInput;
 
 public class MinerRecipe 

@@ -1,7 +1,6 @@
 package zaexides.steamworld.network.messages;
 
 import io.netty.buffer.ByteBuf;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -9,9 +8,6 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-import zaexides.steamworld.network.PacketHandler;
-import zaexides.steamworld.savedata.world.TeleporterData;
-import zaexides.steamworld.savedata.world.TeleporterSaveData;
 import zaexides.steamworld.te.generic_machine.TileEntityTeleporter;
 
 public class MessageTeleporterConnect implements IMessage

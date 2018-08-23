@@ -6,11 +6,8 @@ import java.util.Random;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.EnumEnchantmentType;
 import net.minecraft.init.Enchantments;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagList;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.OreDictionary;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.utility.interfaces.IOreDictionaryRegisterable;

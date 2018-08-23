@@ -2,8 +2,6 @@ package zaexides.steamworld.world.biomes;
 
 import java.util.Random;
 
-import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.monster.EntityPolarBear;
 import net.minecraft.entity.monster.EntityStray;
 import net.minecraft.entity.passive.EntityRabbit;
@@ -14,7 +12,6 @@ import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.gen.feature.WorldGenAbstractTree;
 import net.minecraft.world.gen.feature.WorldGenTaiga1;
 import net.minecraft.world.gen.feature.WorldGenTaiga2;
-import zaexides.steamworld.init.BlockInitializer;
 
 public class BiomeColdLand extends BiomeSteamWorld
 {

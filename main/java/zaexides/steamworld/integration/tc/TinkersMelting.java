@@ -1,32 +1,19 @@
 package zaexides.steamworld.integration.tc;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-
-import org.apache.logging.log4j.Level;
-
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.event.FMLInterModComms;
 import slimeknights.mantle.util.RecipeMatch;
-import slimeknights.mantle.util.RecipeMatch.Match;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.smeltery.CastingRecipe;
 import slimeknights.tconstruct.library.smeltery.MeltingRecipe;
-import slimeknights.tconstruct.smeltery.TinkerSmeltery;
-import zaexides.steamworld.ModInfo;
-import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.BlockAncite;
 import zaexides.steamworld.fluids.tc.FluidTinkersIntegration;
 import zaexides.steamworld.init.BlockInitializer;

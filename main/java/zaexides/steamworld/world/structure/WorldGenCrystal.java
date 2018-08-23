@@ -1,32 +1,21 @@
 package zaexides.steamworld.world.structure;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import com.sun.jna.Native.ffi_callback;
-
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.init.Biomes;
-import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityMobSpawner;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.Rotation;
 import net.minecraft.util.WeightedRandom;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraftforge.common.DungeonHooks.DungeonMob;
 import net.minecraftforge.fml.common.IWorldGenerator;
 import zaexides.steamworld.ConfigHandler;
-import zaexides.steamworld.ModInfo;
-import zaexides.steamworld.blocks.SteamWorldBlockOre;
 import zaexides.steamworld.init.BiomeInitializer;
-import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.init.EntityInitializer;
 import zaexides.steamworld.utility.WeightedBlock;
 

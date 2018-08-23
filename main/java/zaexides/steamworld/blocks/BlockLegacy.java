@@ -13,7 +13,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import zaexides.steamworld.blocks.item.ItemBlockLegacy;
-import zaexides.steamworld.blocks.item.ItemBlockVariant;
 import zaexides.steamworld.init.ItemInitializer;
 
 public class BlockLegacy extends SteamWorldBlock

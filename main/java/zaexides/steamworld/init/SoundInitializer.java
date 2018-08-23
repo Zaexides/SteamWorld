@@ -5,8 +5,6 @@ import java.util.List;
 
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.common.Mod;
 import zaexides.steamworld.ModInfo;
 
 public class SoundInitializer 

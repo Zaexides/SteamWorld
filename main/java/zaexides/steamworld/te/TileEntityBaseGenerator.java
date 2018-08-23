@@ -1,8 +1,6 @@
 package zaexides.steamworld.te;
 
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraftforge.common.capabilities.Capability;
@@ -11,11 +9,8 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
-import net.minecraftforge.items.CapabilityItemHandler;
-import zaexides.steamworld.blocks.machines.BlockSteamGenerator;
 import zaexides.steamworld.fluids.FluidSteam;
 import zaexides.steamworld.utility.capability.FluidInputOutput;
-import zaexides.steamworld.utility.capability.ItemStackHandlerInput;
 import zaexides.steamworld.utility.capability.SteamWorldFluidTank;
 
 public class TileEntityBaseGenerator extends SyncedTileEntity implements ICapabilityProvider, ITickable

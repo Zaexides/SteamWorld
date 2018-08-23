@@ -1,24 +1,16 @@
 package zaexides.steamworld.integration.jei;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import javax.annotation.Nonnull;
 
-import com.jcraft.jorbis.Block;
-
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.IModRegistry;
-import mezz.jei.api.ISubtypeRegistry;
 import mezz.jei.api.JEIPlugin;
-import mezz.jei.api.ingredients.IModIngredientRegistration;
 import mezz.jei.api.recipe.IRecipeCategoryRegistration;
 import mezz.jei.api.recipe.VanillaRecipeCategoryUid;
 import mezz.jei.api.recipe.transfer.IRecipeTransferRegistry;
-import net.minecraft.client.gui.inventory.GuiFurnace;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import scala.reflect.internal.Trees.New;
 import zaexides.steamworld.containers.ContainerAssembler;
 import zaexides.steamworld.containers.ContainerFluidMiner;
 import zaexides.steamworld.containers.ContainerMiner;
@@ -30,7 +22,6 @@ import zaexides.steamworld.gui.GuiMiner;
 import zaexides.steamworld.gui.GuiSteamFurnace;
 import zaexides.steamworld.gui.GuiSteamGrinder;
 import zaexides.steamworld.init.BlockInitializer;
-import zaexides.steamworld.init.ItemInitializer;
 import zaexides.steamworld.integration.jei.assembler.RecipeCategoryAssembler;
 import zaexides.steamworld.integration.jei.assembler.RecipeWrapperAssembler;
 import zaexides.steamworld.integration.jei.fluid_miner.RecipeCategoryFluidMiner;
@@ -39,15 +30,14 @@ import zaexides.steamworld.integration.jei.grinder.RecipeCategoryGrinder;
 import zaexides.steamworld.integration.jei.grinder.RecipeWrapperGrinder;
 import zaexides.steamworld.integration.jei.miner.RecipeCategoryMiner;
 import zaexides.steamworld.integration.jei.miner.RecipeWrapperMiner;
-import zaexides.steamworld.items.ItemDust;
 import zaexides.steamworld.recipe.handling.AssemblyRecipe;
 import zaexides.steamworld.recipe.handling.AssemblyRecipeHandler;
+import zaexides.steamworld.recipe.handling.DustRecipe;
 import zaexides.steamworld.recipe.handling.DustRecipeHandler;
 import zaexides.steamworld.recipe.handling.FluidMinerRecipe;
 import zaexides.steamworld.recipe.handling.FluidMinerRecipeHandler;
 import zaexides.steamworld.recipe.handling.MinerRecipe;
 import zaexides.steamworld.recipe.handling.MinerRecipeHandler;
-import zaexides.steamworld.recipe.handling.DustRecipe;
 
 @JEIPlugin
 public class SteamWorldJEI implements IModPlugin

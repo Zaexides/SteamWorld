@@ -2,15 +2,10 @@ package zaexides.steamworld.events;
 
 import java.time.LocalDate;
 
-import org.apache.logging.log4j.Level;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.ChunkPos;
-import net.minecraft.util.text.TextComponentString;
-import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootEntry;
 import net.minecraft.world.storage.loot.LootEntryItem;
 import net.minecraft.world.storage.loot.LootTableList;
@@ -18,24 +13,16 @@ import net.minecraft.world.storage.loot.RandomValueRange;
 import net.minecraft.world.storage.loot.conditions.LootCondition;
 import net.minecraft.world.storage.loot.functions.LootFunction;
 import net.minecraft.world.storage.loot.functions.SetMetadata;
-import net.minecraftforge.common.ForgeChunkManager;
 import net.minecraftforge.common.ForgeHooks;
-import net.minecraftforge.common.ForgeChunkManager.Ticket;
-import net.minecraftforge.common.ForgeChunkManager.Type;
 import net.minecraftforge.event.LootTableLoadEvent;
-import net.minecraftforge.event.entity.item.ItemEvent;
 import net.minecraftforge.event.world.BlockEvent;
-import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
-import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
+import net.minecraftforge.items.ItemHandlerHelper;
 import zaexides.steamworld.ConfigHandler;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.init.ItemInitializer;
-import net.minecraftforge.items.ItemHandlerHelper;
-
 import zaexides.steamworld.items.ItemTreasure;
 import zaexides.steamworld.utility.interfaces.IBlockBreakInterruptor;
 

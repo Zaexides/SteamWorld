@@ -1,13 +1,9 @@
 package zaexides.steamworld.gui;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.client.config.GuiUtils;
-import scala.collection.generic.BitOperations.Int;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.containers.ContainerSteamGenerator;
 import zaexides.steamworld.te.TileEntitySteamGenerator;

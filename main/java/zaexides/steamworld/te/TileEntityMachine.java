@@ -2,10 +2,7 @@ package zaexides.steamworld.te;
 
 import net.minecraft.util.ITickable;
 import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
-import zaexides.steamworld.blocks.machines.BlockFisher;
 import zaexides.steamworld.blocks.machines.BlockMachine;
-import zaexides.steamworld.utility.capability.SteamWorldFluidTank;
 import zaexides.steamworld.utility.capability.SteamWorldSteamTank;
 
 public abstract class TileEntityMachine extends SyncedTileEntity implements ITickable

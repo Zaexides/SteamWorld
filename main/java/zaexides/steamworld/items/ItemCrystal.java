@@ -5,7 +5,6 @@ import java.util.Random;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.init.Enchantments;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagList;
 
 public class ItemCrystal extends SteamWorldItem
 {

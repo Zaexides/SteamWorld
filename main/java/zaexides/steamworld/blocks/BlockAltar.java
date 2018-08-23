@@ -1,7 +1,5 @@
 package zaexides.steamworld.blocks;
 
-import org.apache.logging.log4j.Level;
-
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;
@@ -22,11 +20,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.items.IItemHandler;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.item.ItemBlockVariant;
-import zaexides.steamworld.client.rendering.tile.AltarModel;
 import zaexides.steamworld.init.ItemInitializer;
 import zaexides.steamworld.te.TileEntityAltar;
 import zaexides.steamworld.utility.interfaces.IBlockBreakInterruptor;

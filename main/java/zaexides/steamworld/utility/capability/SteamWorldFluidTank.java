@@ -4,7 +4,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
-import zaexides.steamworld.te.TileEntitySteamGenerator;
 
 public class SteamWorldFluidTank extends FluidTank
 {

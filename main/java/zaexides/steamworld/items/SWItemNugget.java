@@ -1,15 +1,11 @@
 package zaexides.steamworld.items;
 
-import net.minecraft.client.resources.I18n;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.oredict.OreDictionary;
 import zaexides.steamworld.SteamWorld;
-import zaexides.steamworld.blocks.BlockAncite;
-import zaexides.steamworld.items.SWItemIngot.EnumVarietyMaterial;
 import zaexides.steamworld.utility.interfaces.IModeledObject;
 import zaexides.steamworld.utility.interfaces.IOreDictionaryRegisterable;
 

@@ -2,17 +2,11 @@ package zaexides.steamworld.te;
 
 import java.util.List;
 
-import org.apache.logging.log4j.Level;
-
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
-import zaexides.steamworld.ConfigHandler;
-import zaexides.steamworld.SteamWorld;
 
 public class TileEntityPipe extends TileEntity
 {

@@ -1,21 +1,12 @@
 package zaexides.steamworld.gui;
 
-import org.apache.logging.log4j.Level;
-
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.client.config.GuiUtils;
-import scala.collection.generic.BitOperations.Int;
 import zaexides.steamworld.ModInfo;
-import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.containers.ContainerMiner;
-import zaexides.steamworld.te.TileEntityMachine;
 import zaexides.steamworld.te.TileEntityMiner;
 import zaexides.steamworld.utility.SWGuiUtil;
 import zaexides.steamworld.utility.interfaces.IGuiContainerUtil;

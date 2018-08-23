@@ -2,8 +2,6 @@ package zaexides.steamworld.items;
 
 import java.util.List;
 
-import org.apache.logging.log4j.Level;
-
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;

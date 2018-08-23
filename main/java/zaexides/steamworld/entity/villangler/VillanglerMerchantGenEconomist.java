@@ -8,8 +8,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.WeightedRandom;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
-import zaexides.steamworld.init.ItemInitializer;
-import zaexides.steamworld.items.SWItemIngot;
 
 public class VillanglerMerchantGenEconomist extends VillanglerMerchantRecipeListGenerator
 {

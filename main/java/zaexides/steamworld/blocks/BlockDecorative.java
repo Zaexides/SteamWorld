@@ -1,10 +1,5 @@
 package zaexides.steamworld.blocks;
 
-import java.util.Random;
-
-import com.google.common.base.Predicate;
-import com.google.common.util.concurrent.Service.State;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -15,7 +10,6 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.NonNullList;
@@ -25,10 +19,8 @@ import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
-import scala.tools.nsc.transform.patmat.ScalaLogic.TreesAndTypesDomain.Var;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.SteamWorld;
-import zaexides.steamworld.blocks.BlockAncite.EnumType;
 import zaexides.steamworld.blocks.item.ItemBlockVariant;
 import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.init.ItemInitializer;

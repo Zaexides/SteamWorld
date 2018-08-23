@@ -1,17 +1,13 @@
 package zaexides.steamworld.client.rendering.tile;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.Vec3d;
 import zaexides.steamworld.te.TileEntityAltar;
-import zaexides.steamworld.utility.RenderingUtil;
 
 public class AltarModel extends TileEntitySpecialRenderer<TileEntityAltar>
 {

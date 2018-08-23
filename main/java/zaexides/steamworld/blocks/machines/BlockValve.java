@@ -1,8 +1,5 @@
 package zaexides.steamworld.blocks.machines;
 
-import java.util.Random;
-
-import net.minecraft.block.Block;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.PropertyBool;

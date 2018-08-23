@@ -6,8 +6,6 @@ import java.util.List;
 
 import org.apache.logging.log4j.Level;
 
-import com.typesafe.config.Config;
-
 import net.minecraftforge.common.config.Configuration;
 import zaexides.steamworld.proxy.CommonProxy;
 import zaexides.steamworld.recipe.handling.FluidMinerRecipeHandler;

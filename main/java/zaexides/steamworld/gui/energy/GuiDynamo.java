@@ -4,16 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraftforge.fml.client.config.GuiUtils;
-import scala.collection.generic.BitOperations.Int;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.containers.ContainerSimple;
 import zaexides.steamworld.te.energy.TileEntityDynamo;

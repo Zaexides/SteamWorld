@@ -1,14 +1,11 @@
 package zaexides.steamworld.utility;
 
-import org.apache.logging.log4j.Level;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Teleporter;
 import net.minecraft.world.WorldServer;
 import zaexides.steamworld.ConfigHandler;
-import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.init.BlockInitializer;
 
 public class SteamWorldTeleporter extends Teleporter

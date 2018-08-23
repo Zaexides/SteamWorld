@@ -8,12 +8,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.SteamWorldBlock;
-import zaexides.steamworld.init.ItemInitializer;
 import zaexides.steamworld.te.TileEntityNetherAccelerator;
 
 public class BlockNetherAccelerator extends SteamWorldBlock implements ITileEntityProvider, IWrenchable

@@ -1,10 +1,11 @@
 package zaexides.steamworld.client.rendering.entity;
 
+import org.lwjgl.opengl.GL11;
+
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
-import net.minecraft.entity.Entity;
 import net.minecraft.client.renderer.GlStateManager;
-import org.lwjgl.opengl.GL11;
+import net.minecraft.entity.Entity;
 
 /**
  * Eclipse Stalker - Zae

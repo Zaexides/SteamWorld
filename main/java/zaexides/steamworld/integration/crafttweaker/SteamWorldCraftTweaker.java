@@ -1,23 +1,18 @@
 package zaexides.steamworld.integration.crafttweaker;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.minecraft.CraftTweakerMC;
 import crafttweaker.api.oredict.IOreDictEntry;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.oredict.OreDictionary;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
 import zaexides.steamworld.recipe.handling.AssemblyRecipe;
 import zaexides.steamworld.recipe.handling.AssemblyRecipeHandler;
-import zaexides.steamworld.recipe.handling.DustRecipeHandler;
 import zaexides.steamworld.recipe.handling.DustRecipe;
+import zaexides.steamworld.recipe.handling.DustRecipeHandler;
 import zaexides.steamworld.recipe.handling.utility.IRecipeInput;
 import zaexides.steamworld.recipe.handling.utility.RecipeInputItemStack;
 import zaexides.steamworld.recipe.handling.utility.RecipeInputOreDic;

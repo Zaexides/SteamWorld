@@ -3,16 +3,14 @@ package zaexides.steamworld.init;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
-import scala.reflect.internal.Trees.New;
 import zaexides.steamworld.items.ItemBookManual;
 import zaexides.steamworld.items.ItemCrystal;
-import zaexides.steamworld.items.ItemMinerMachineTool;
 import zaexides.steamworld.items.ItemDust;
 import zaexides.steamworld.items.ItemGaliteJet;
 import zaexides.steamworld.items.ItemMaterial;
+import zaexides.steamworld.items.ItemMinerMachineTool;
 import zaexides.steamworld.items.ItemTreasure;
 import zaexides.steamworld.items.ItemUpgrade;
 import zaexides.steamworld.items.ItemWrench;

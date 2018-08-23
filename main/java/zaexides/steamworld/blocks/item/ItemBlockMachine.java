@@ -6,12 +6,9 @@ import java.util.List;
 import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import zaexides.steamworld.blocks.machines.BlockMachine;
-import zaexides.steamworld.utility.interfaces.IMetaName;
 
 public class ItemBlockMachine extends ItemBlock
 {

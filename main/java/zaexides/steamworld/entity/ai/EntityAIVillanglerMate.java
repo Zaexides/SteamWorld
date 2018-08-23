@@ -3,12 +3,9 @@ package zaexides.steamworld.entity.ai;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.item.EntityXPOrb;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.stats.StatList;
 import net.minecraft.util.EnumParticleTypes;
 import zaexides.steamworld.entity.villangler.EntityVillangler;
 

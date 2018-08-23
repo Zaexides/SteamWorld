@@ -5,12 +5,8 @@ import java.util.List;
 
 import org.apache.logging.log4j.Level;
 
-import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.NonNullList;
-import net.minecraftforge.oredict.OreDictionary;
 import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.BlockDecorative;
 import zaexides.steamworld.blocks.machines.BlockMachineVariant;
@@ -19,7 +15,6 @@ import zaexides.steamworld.init.ItemInitializer;
 import zaexides.steamworld.items.ItemMaterial;
 import zaexides.steamworld.items.ItemUpgrade;
 import zaexides.steamworld.items.SWItemIngot;
-import zaexides.steamworld.items.SWItemNugget;
 import zaexides.steamworld.recipe.handling.utility.IRecipeInput;
 import zaexides.steamworld.recipe.handling.utility.RecipeInputItemStack;
 import zaexides.steamworld.recipe.handling.utility.RecipeInputOreDic;

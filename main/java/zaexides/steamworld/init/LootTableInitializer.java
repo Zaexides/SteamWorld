@@ -1,15 +1,7 @@
 package zaexides.steamworld.init;
 
-import org.apache.logging.log4j.Level;
-
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.storage.loot.LootEntry;
-import net.minecraft.world.storage.loot.LootEntryItem;
 import net.minecraft.world.storage.loot.LootTableList;
-import net.minecraft.world.storage.loot.functions.LootFunction;
-import net.minecraftforge.event.LootTableLoadEvent;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import zaexides.steamworld.ModInfo;
 import zaexides.steamworld.world.storage.loot.conditions.RandomChanceWithLootingAndLuck;
 import zaexides.steamworld.world.storage.loot.conditions.RandomChanceWithLuck;

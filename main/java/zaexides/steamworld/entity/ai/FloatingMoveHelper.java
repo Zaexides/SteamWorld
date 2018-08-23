@@ -3,7 +3,6 @@ package zaexides.steamworld.entity.ai;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityMoveHelper;
-import net.minecraft.entity.ai.EntityMoveHelper.Action;
 import net.minecraft.util.math.MathHelper;
 
 public class FloatingMoveHelper extends EntityMoveHelper

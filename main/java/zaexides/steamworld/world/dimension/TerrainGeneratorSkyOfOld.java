@@ -2,10 +2,6 @@ package zaexides.steamworld.world.dimension;
 
 import java.util.Random;
 
-import org.apache.logging.log4j.Level;
-
-import com.sun.jna.platform.unix.X11;
-
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.math.MathHelper;
@@ -15,7 +11,6 @@ import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.NoiseGeneratorOctaves;
 import net.minecraft.world.gen.NoiseGeneratorPerlin;
-import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.BlockDecorative;
 import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.world.biomes.BiomeSteamWorld;

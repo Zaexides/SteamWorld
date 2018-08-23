@@ -5,14 +5,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-import org.apache.logging.log4j.Level;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
@@ -25,10 +22,8 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.IFluidBlock;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import zaexides.steamworld.ConfigHandler;
-import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.blocks.machines.BlockDrain;
 import zaexides.steamworld.init.BlockInitializer;
-import zaexides.steamworld.utility.PosFacing;
 import zaexides.steamworld.utility.capability.SteamWorldFluidTank;
 
 public class TileEntityDrain extends SyncedTileEntity implements ICapabilityProvider, ITickable

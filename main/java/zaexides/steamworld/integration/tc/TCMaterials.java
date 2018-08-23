@@ -5,14 +5,10 @@ import java.util.List;
 
 import org.apache.logging.log4j.Level;
 
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.util.IStringSerializable;
 import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fml.common.Optional;
-import scala.reflect.macros.internal.macroImpl;
 import slimeknights.tconstruct.library.MaterialIntegration;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.Util;
@@ -28,14 +24,12 @@ import slimeknights.tconstruct.library.utils.HarvestLevels;
 import slimeknights.tconstruct.tools.TinkerTraits;
 import zaexides.steamworld.ConfigHandler;
 import zaexides.steamworld.SteamWorld;
-import zaexides.steamworld.blocks.BlockDecorative.EnumType;
+import zaexides.steamworld.blocks.BlockDecorative;
 import zaexides.steamworld.init.BlockInitializer;
 import zaexides.steamworld.init.ItemInitializer;
 import zaexides.steamworld.integration.tc.traits.ProjectileTraitAntiGravity;
 import zaexides.steamworld.integration.tc.traits.TraitDualNature;
 import zaexides.steamworld.integration.tc.traits.TraitSelective;
-import zaexides.steamworld.blocks.BlockDecorative;
-import zaexides.steamworld.items.SWItemNugget.EnumVarietyMaterial;
 
 public class TCMaterials 
 {
