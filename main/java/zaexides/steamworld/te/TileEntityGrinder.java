@@ -20,7 +20,7 @@ public class TileEntityGrinder extends TileEntityMachine implements ITickable
 	public ItemStackHandlerOutput outputStack = new ItemStackHandlerOutput(1);
 			
 	private int amount = 1;
-	public final int MAX_PROGRESSION = 200;
+	public final int MAX_PROGRESSION = 240;
 	
 	private static final int BASE_COST_PER_TICK = 4;
 			

@@ -32,7 +32,7 @@ public class OreDictionaryScanner
 				DustRecipeHandler.RegisterRecipe("ingot" + materialName, dust);
 			if(OreDictionary.doesOreNameExist("ore" + materialName))
 			{
-				DustRecipe dustRecipe = DustRecipeHandler.RegisterRecipe("ore" + materialName, new ItemStack(dust.getItem(), 2, dust.getMetadata()));
+				DustRecipe dustRecipe = DustRecipeHandler.RegisterRecipe("ore" + materialName, new ItemStack(dust.getItem(), 1, dust.getMetadata()));
 				if(dustRecipe != null)
 					dustRecipe.setAffectedByLevel(true);
 			}
