@@ -22,6 +22,7 @@ public class ConfigHandler
 	public static int pipeSystemMaxRange = 50;
 	public static int dimensionId = 38620;
 	public static boolean spawnWithManual = true;
+	public static int tierOneGrinderOreDustAmount = 1;
 	
 	private static final String CATEGORY_WORLDGEN = "worldgen";
 	public static boolean generateSteaiteOre = true;
@@ -131,6 +132,7 @@ public class ConfigHandler
 		fertilizerArea = config.getInt("fertilizer_area", CATEGORY_GENERAL, fertilizerArea, 1, Integer.MAX_VALUE, "Area radius the fertilizer will check in. e.g. entering \"5\" will make it check up to 5 blocks in a cube away (so an 11x11x11 area).");
 		fluidControllerUpdateRate = config.getInt("fluid_controller_update_rate", CATEGORY_GENERAL, fluidControllerUpdateRate, 1, 5, "Update rate of the Fluid Controller. If it's set to 5, it'll update every 5 ticks. It'll scale the amount of fluid transported to the update rate. This can be increased to decrease lag.");
 		pipeSystemMaxRange = config.getInt("pipe_syste_max_range", CATEGORY_GENERAL, pipeSystemMaxRange, 1, Integer.MAX_VALUE, "Maximum reach of a pipe system.");
+		tierOneGrinderOreDustAmount = config.getInt("tier_one_grinder_ore_dust_amount", CATEGORY_GENERAL, tierOneGrinderOreDustAmount, 1, 32, "The amount of dust a tier 1 grinder will produce from ores. If it's a tier 2 grinder, the amount will be this + 1, this + 2 for tier 3, etc.");
 		dimensionId = config.getInt("dimension_id", CATEGORY_GENERAL, dimensionId, Integer.MIN_VALUE, Integer.MAX_VALUE, "The ID that the SteamWorld dimension will use.");
 		spawnWithManual = config.getBoolean("spawn_with_manual", CATEGORY_GENERAL, spawnWithManual, "Whether or not new player spawn with manuals.");
 	}

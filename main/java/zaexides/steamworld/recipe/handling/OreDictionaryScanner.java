@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
+import zaexides.steamworld.ConfigHandler;
 
 public class OreDictionaryScanner 
 {
@@ -32,7 +33,7 @@ public class OreDictionaryScanner
 				DustRecipeHandler.RegisterRecipe("ingot" + materialName, dust);
 			if(OreDictionary.doesOreNameExist("ore" + materialName))
 			{
-				DustRecipe dustRecipe = DustRecipeHandler.RegisterRecipe("ore" + materialName, new ItemStack(dust.getItem(), 1, dust.getMetadata()));
+				DustRecipe dustRecipe = DustRecipeHandler.RegisterRecipe("ore" + materialName, new ItemStack(dust.getItem(), ConfigHandler.tierOneGrinderOreDustAmount, dust.getMetadata()));
 				if(dustRecipe != null)
 					dustRecipe.setAffectedByLevel(true);
 			}
