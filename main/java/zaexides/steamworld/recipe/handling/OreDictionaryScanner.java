@@ -29,15 +29,15 @@ public class OreDictionaryScanner
 			String materialName = oreName.substring(4);
 			ItemStack dust = dustStacks.get(0);
 			
-			if(OreDictionary.doesOreNameExist("ingot" + materialName))
+			if(OreDictionary.doesOreNameExist("ingot" + materialName) && OreDictionary.getOres("ingot" + materialName).size() > 0)
 				DustRecipeHandler.RegisterRecipe("ingot" + materialName, dust);
-			if(OreDictionary.doesOreNameExist("ore" + materialName))
+			if(OreDictionary.doesOreNameExist("ore" + materialName) && OreDictionary.getOres("ore" + materialName).size() > 0)
 			{
 				DustRecipe dustRecipe = DustRecipeHandler.RegisterRecipe("ore" + materialName, new ItemStack(dust.getItem(), ConfigHandler.tierOneGrinderOreDustAmount, dust.getMetadata()));
 				if(dustRecipe != null)
 					dustRecipe.setAffectedByLevel(true);
 			}
-			if(OreDictionary.doesOreNameExist("block" + materialName))
+			if(OreDictionary.doesOreNameExist("block" + materialName) && OreDictionary.getOres("block" + materialName).size() > 0)
 				DustRecipeHandler.RegisterRecipe("block" + materialName, new ItemStack(dust.getItem(), 9, dust.getMetadata()));
 		}
 	}
