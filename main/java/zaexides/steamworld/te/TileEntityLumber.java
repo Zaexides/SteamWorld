@@ -176,7 +176,12 @@ public class TileEntityLumber extends TileEntityMachine implements ITickable
 				leaves.getDrops(leavesDrops, world, pos, blockState, production);
 				
 				if(world.rand.nextInt(10) == 0)
-					leavesDrops.add(new ItemStack(Items.STICK, world.rand.nextInt(production - 1) + 1));
+				{
+					int sticks = 1;
+					if(production > 1)
+						sticks += world.rand.nextInt(production - 1);
+					leavesDrops.add(new ItemStack(Items.STICK, sticks));
+				}
 				
 				for(int i = 0; i < leavesDrops.size(); i++)
 				{
