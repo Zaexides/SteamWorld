@@ -33,10 +33,10 @@ public class BiomeInitializer
 	@SubscribeEvent
 	public static void registerBiomes(RegistryEvent.Register<Biome> event)
 	{
-		registerBiome(FORGOTTEN_SKY, "Forgotten Sky", 2000, Type.VOID, Type.COLD);
+		registerBiome(FORGOTTEN_SKY, "Forgotten Sky", 2000, Type.VOID, Type.END, Type.COLD);
 		registerBiome(NATURE_ISLAND, "Nature Island", 700, Type.PLAINS, Type.LUSH);
-		registerBiome(HIGHLAND_ISLAND, "Highland Island", 400, Type.COLD, Type.HILLS);
-		registerBiome(HIGHLAND_ISLAND_SNOW, "Snow Highland Island", 80, Type.COLD, Type.HILLS, Type.SNOWY);
+		registerBiome(HIGHLAND_ISLAND, "Highland Island", 400, Type.COLD, Type.SPARSE, Type.CONIFEROUS, Type.HILLS);
+		registerBiome(HIGHLAND_ISLAND_SNOW, "Snow Highland Island", 80, Type.COLD, Type.SPARSE, Type.CONIFEROUS, Type.HILLS, Type.SNOWY);
 		registerBiome(FOREST_ISLAND, "Forest Island", 600, Type.FOREST, Type.LUSH, Type.DENSE);
 		registerBiome(WETLANDS, "Floating Wetlands", 300, Type.WET, Type.SWAMP);
 		
