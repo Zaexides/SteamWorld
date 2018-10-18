@@ -56,13 +56,13 @@ public class WorldGenerationOres implements IWorldGenerator
 	private static final int CRYSTAL_GENERATION_CHANCE = 8;
 	private static final int CRYSTAL_MIN_HEIGHT = 1, CRYSTAL_MAX_HEIGHT = 255;
 	
-	private static final int GALITE_ORE_VEIN_SIZE = 5;
-	private static final int GALITE_GENERATION_CHANCE = 9;
-	private static final int GALITE_MIN_HEIGHT = 40, GALITE_MAX_HEIGHT = 85;
+	private static final int GALITE_ORE_VEIN_SIZE = 9;
+	private static final int GALITE_GENERATION_CHANCE = 12;
+	private static final int GALITE_MIN_HEIGHT = 40, GALITE_MAX_HEIGHT = 90;
 	
 	private static final int TERRITE_ORE_VEIN_SIZE = 4;
-	private static final int TERRITE_GENERATION_CHANCE = 7;
-	private static final int TERRITE_MIN_HEIGHT = 60, TERRITE_MAX_HEIGHT = 120;
+	private static final int TERRITE_GENERATION_CHANCE = 8;
+	private static final int TERRITE_MIN_HEIGHT = 30, TERRITE_MAX_HEIGHT = 120;
 	
 	public WorldGenerationOres()
 	{
