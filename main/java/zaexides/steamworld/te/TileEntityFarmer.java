@@ -8,7 +8,9 @@ import org.apache.logging.log4j.Level;
 import com.typesafe.config.Config;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockCactus;
 import net.minecraft.block.BlockCrops;
+import net.minecraft.block.BlockReed;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.Sound;
@@ -116,7 +118,7 @@ public class TileEntityFarmer extends TileEntityMachine implements ITickable
 				{
 					for(int zOff = -radius; zOff <= radius; zOff++)
 					{
-						if(steamTank.getFluidAmount() < (COST_PER_CROP * production))
+						if(!hasSteam())
 							return false;
 						
 						if(!harvestBlock(pos.add(xOff, yOff, zOff)))
@@ -144,36 +146,67 @@ public class TileEntityFarmer extends TileEntityMachine implements ITickable
 			
 			if(crop.isMaxAge(blockState))
 			{
-				NonNullList<ItemStack> drops = NonNullList.create();
-				crop.getDrops(drops, world, pos, blockState, production);
-				
-				for(int i = 0; i < drops.size(); i++)
-				{
-					ItemStack dropStack = drops.get(i);
-					
-					if(!ConfigHandler.farmerDropBlacklist.contains(dropStack.getItem().getRegistryName().toString()))
-					{
-						if(!(dropStack.getItem() instanceof IPlantable) || ConfigHandler.farmerAllowSeedDropUpgrade)
-							dropStack.grow(dropStack.getCount() * (production - 1));
-						
-						if(dropStack.getItem() instanceof ItemSeeds)
-							dropStack.shrink(1);
-						
-						ItemStack stack = outputStack.insertItemStacked(dropStack, false);
-						
-						if(!stack.isEmpty())
-							success = false;
-						InventoryHelper.spawnItemStack(world, pos.getX() + 0.5f, pos.getY() + 1.5f, pos.getZ() + 0.5f, stack);
-					}
-				}
-				
-				steamTank.drain(COST_PER_CROP * production, true);
-				world.destroyBlock(pos, false);
+				success = harvestAndAddDrops(pos, crop, blockState, true);
 				world.setBlockState(pos, crop.withAge(0), 3);
 			}
 			return success;
 		}
+		else if(blockState.getBlock() instanceof BlockCactus || blockState.getBlock() instanceof BlockReed)
+			return harvestGrowingBlock(pos, blockState.getBlock());
 		return true;
+	}
+	
+	private boolean harvestGrowingBlock(BlockPos pos, Block targetBlock)
+	{
+		int topYPos = 0;
+		while(pos.up(topYPos + 1).getY() <= world.getActualHeight() && world.getBlockState(pos.up(topYPos + 1)).getBlock().equals(targetBlock))
+			topYPos++;
+		
+		boolean success = false;
+		
+		while(topYPos > 0 && hasSteam())
+		{
+			if(harvestAndAddDrops(pos.up(topYPos), targetBlock, world.getBlockState(pos.up(topYPos)), false))
+				success = true;
+			topYPos--;
+		}
+		return success;
+	}
+	
+	private boolean harvestAndAddDrops(BlockPos pos, Block crop, IBlockState blockState, boolean multiplyDrops)
+	{
+		boolean success = true;
+		NonNullList<ItemStack> drops = NonNullList.create();
+		crop.getDrops(drops, world, pos, blockState, production);
+		
+		for(int i = 0; i < drops.size(); i++)
+		{
+			ItemStack dropStack = drops.get(i);
+			
+			if(!ConfigHandler.farmerDropBlacklist.contains(dropStack.getItem().getRegistryName().toString()))
+			{
+				if(multiplyDrops && (!(dropStack.getItem() instanceof IPlantable) || ConfigHandler.farmerAllowSeedDropUpgrade))
+					dropStack.grow(dropStack.getCount() * (production - 1));
+				
+				if(dropStack.getItem() instanceof ItemSeeds)
+					dropStack.shrink(1);
+				
+				ItemStack stack = outputStack.insertItemStacked(dropStack, false);
+				
+				if(!stack.isEmpty())
+					success = false;
+				InventoryHelper.spawnItemStack(world, pos.getX() + 0.5f, pos.getY() + 1.5f, pos.getZ() + 0.5f, stack);
+			}
+		}
+		
+		steamTank.drain(COST_PER_CROP * production, true);
+		world.destroyBlock(pos, false);
+		return success;
+	}
+	
+	private boolean hasSteam()
+	{
+		return steamTank.getFluidAmount() >= (COST_PER_CROP * production);
 	}
 	
 	private int emptySlots()
