@@ -203,7 +203,6 @@ public class EntityVillangler extends EntityAgeable implements INpc, IMerchant
 	@Override
 	public void useRecipe(MerchantRecipe recipe) 
 	{
-		recipe.incrementToolUses();
         this.livingSoundTime = -this.getTalkInterval();
         int i = 3 + this.rand.nextInt(4);
 
