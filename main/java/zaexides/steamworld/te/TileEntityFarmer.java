@@ -1,7 +1,10 @@
 package zaexides.steamworld.te;
 
+import org.apache.logging.log4j.Level;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCactus;
+import net.minecraft.block.BlockCocoa;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.block.BlockReed;
 import net.minecraft.block.state.IBlockState;
@@ -19,6 +22,7 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
 import zaexides.steamworld.ConfigHandler;
+import zaexides.steamworld.SteamWorld;
 import zaexides.steamworld.utility.capability.ItemStackHandlerOutput;
 
 public class TileEntityFarmer extends TileEntityMachine implements ITickable
@@ -30,6 +34,7 @@ public class TileEntityFarmer extends TileEntityMachine implements ITickable
 	private static int radius = ConfigHandler.farmerArea;
 	
 	private static final int COST_PER_CROP = 25;
+	private static final int COCOA_MAX_AGE = 2;
 			
 	public void SetStats(int production)
 	{
@@ -125,8 +130,20 @@ public class TileEntityFarmer extends TileEntityMachine implements ITickable
 			}
 			return success;
 		}
-		else if(blockState.getBlock() instanceof BlockCactus || blockState.getBlock() instanceof BlockReed)
+		else if((blockState.getBlock() instanceof BlockCactus || blockState.getBlock() instanceof BlockReed) && world.getBlockState(pos.down()).getBlock() == blockState.getBlock())
 			return harvestGrowingBlock(pos, blockState.getBlock());
+		else if(blockState.getBlock() instanceof BlockCocoa)
+		{
+			BlockCocoa cocoa = (BlockCocoa) blockState.getBlock();
+			boolean success = true;
+			
+			if(blockState.getValue(BlockCocoa.AGE) >= COCOA_MAX_AGE)
+			{
+				success = harvestAndAddDrops(pos, cocoa, blockState, true);
+				world.setBlockState(pos, blockState.withProperty(BlockCocoa.AGE, 0), 3);
+			}
+			return success;
+		}
 		return true;
 	}
 	
@@ -138,7 +155,7 @@ public class TileEntityFarmer extends TileEntityMachine implements ITickable
 		
 		boolean success = false;
 		
-		while(topYPos > 0 && hasSteam())
+		while(topYPos >= 0 && hasSteam())
 		{
 			if(harvestAndAddDrops(pos.up(topYPos), targetBlock, world.getBlockState(pos.up(topYPos)), false))
 				success = true;
