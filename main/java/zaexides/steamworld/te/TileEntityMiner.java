@@ -36,7 +36,7 @@ public class TileEntityMiner extends TileEntityMachine implements ITickable
 	public byte maxTier = 4;
 	
 	private static final int BASE_COST_PER_TICK = 5;
-	public static final int TIME_PER_ORE = 1200;
+	public static final int TIME_PER_ORE = 3600;
 	
 	public float progression;
 			
