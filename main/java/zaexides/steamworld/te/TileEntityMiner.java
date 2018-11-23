@@ -136,7 +136,10 @@ public class TileEntityMiner extends TileEntityMachine implements ITickable
 			{
 				byte drillTier = drillHead.getTier();
 				
-				ItemStack output = MinerRecipeHandler.GetRandomResult(world.rand, drillTier).copy();
+				ItemStack output = ItemStack.EMPTY;
+				while(output == null || output.isEmpty())
+					output = MinerRecipeHandler.GetRandomResult(world.rand, drillTier).copy();
+
 				int fortuneLevel = EnchantmentHelper.getEnchantmentLevel(Enchantments.FORTUNE, drillStack);
 				for(int i = 0; i < fortuneLevel; i++)
 				{

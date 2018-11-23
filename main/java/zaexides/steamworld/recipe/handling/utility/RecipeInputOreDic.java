@@ -1,6 +1,7 @@
 package zaexides.steamworld.recipe.handling.utility;
 
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class RecipeInputOreDic implements IRecipeInput
@@ -21,7 +22,11 @@ public class RecipeInputOreDic implements IRecipeInput
 	@Override
 	public boolean isEmpty() 
 	{
-		return !OreDictionary.doesOreNameExist(oreDicName);
+		if(!OreDictionary.doesOreNameExist(oreDicName))
+			return true;
+		
+		NonNullList<ItemStack> ores = OreDictionary.getOres(oreDicName);
+		return ores == null || ores.size() == 0;
 	}
 
 	@Override

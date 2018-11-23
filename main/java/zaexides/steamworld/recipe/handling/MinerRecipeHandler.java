@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Level;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.oredict.OreDictionary;
@@ -37,7 +38,18 @@ public class MinerRecipeHandler
 		
 		if(output instanceof RecipeInputOreDic)
 		{
-			return OreDictionary.getOres(((RecipeInputOreDic)output).oreDicName).get(0);
+			NonNullList<ItemStack> oreList = OreDictionary.getOres(((RecipeInputOreDic)output).oreDicName, false);
+			int i = 0;
+			ItemStack selectedOre = null;
+			while(selectedOre == null && i < oreList.size())
+			{
+				selectedOre = oreList.get(i);
+				i++;
+			}
+			
+			if(selectedOre == null)
+				selectedOre = ItemStack.EMPTY;
+			return selectedOre;
 		}
 		else if(output instanceof RecipeInputItemStack)
 		{
