@@ -38,18 +38,7 @@ public class MinerRecipeHandler
 		
 		if(output instanceof RecipeInputOreDic)
 		{
-			NonNullList<ItemStack> oreList = OreDictionary.getOres(((RecipeInputOreDic)output).oreDicName, false);
-			int i = 0;
-			ItemStack selectedOre = null;
-			while(selectedOre == null && i < oreList.size())
-			{
-				selectedOre = oreList.get(i);
-				i++;
-			}
-			
-			if(selectedOre == null)
-				selectedOre = ItemStack.EMPTY;
-			return selectedOre;
+			return OreDictionary.getOres(((RecipeInputOreDic)output).oreDicName).get(0);
 		}
 		else if(output instanceof RecipeInputItemStack)
 		{
