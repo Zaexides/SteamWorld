@@ -87,7 +87,7 @@ public class BiomeProviderSkyOfOld extends BiomeProvider
 	@Override
 	public Biome[] getBiomes(Biome[] oldBiomeList, int x, int z, int width, int depth) 
 	{
-		return getBiomes(oldBiomeList, x, z, width, depth);
+		return super.getBiomes(oldBiomeList, x, z, width, depth);
 	}
 	
 	@Override
